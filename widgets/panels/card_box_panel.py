@@ -3,6 +3,7 @@ from typing import Any
 
 import wx
 
+from utils.card_images import get_card_image
 from utils.constants import (
     DARK_ACCENT,
     DARK_ALT,
@@ -44,6 +45,9 @@ class CardBoxPanel(wx.Panel):
         self._mana_cost = ""
         self._card_color = ManaIconFactory.FALLBACK_COLORS["c"]
         self._mana_cost_bitmap: wx.Bitmap | None = None
+        self._template_bitmap: wx.Bitmap | None = None
+        self._card_bitmap: wx.Bitmap | None = None
+        self._image_available = False
 
         self.SetBackgroundColour(DARK_ALT)
         self.SetBackgroundStyle(wx.BG_STYLE_PAINT)
@@ -154,6 +158,8 @@ class CardBoxPanel(wx.Panel):
         self._mana_cost = meta.get("mana_cost", "") or ""
         self._mana_cost_bitmap = None
         self._card_color = self._resolve_card_color(meta)
+        self._template_bitmap = self._build_template_bitmap()
+        self._refresh_card_bitmap()
 
         qty_value = card["qty"]
         qty_for_check = int(qty_value) if isinstance(qty_value, float) else qty_value
@@ -176,20 +182,70 @@ class CardBoxPanel(wx.Panel):
 
     def _on_paint(self, _event: wx.PaintEvent) -> None:
         dc = wx.AutoBufferedPaintDC(self)
-        dc.SetBackground(wx.Brush(wx.Colour(*self._card_color)))
-        dc.Clear()
-
         rect = self.GetClientRect()
-        dc.SetPen(wx.Pen(wx.Colour(0, 0, 0, 120), 2))
-        dc.SetBrush(wx.TRANSPARENT_BRUSH)
-        dc.DrawRoundedRectangle(rect, DECK_CARD_CORNER_RADIUS)
-
-        self._draw_placeholder_details(dc, rect)
+        if self._image_available and self._card_bitmap:
+            dc.DrawBitmap(self._card_bitmap, rect.x, rect.y, True)
+        elif self._template_bitmap:
+            dc.DrawBitmap(self._template_bitmap, rect.x, rect.y, True)
+        else:
+            dc.SetBackground(wx.Brush(wx.Colour(*self._card_color)))
+            dc.Clear()
 
         if self._active:
             dc.SetPen(wx.Pen(wx.Colour(*DARK_ACCENT), 3))
             dc.SetBrush(wx.TRANSPARENT_BRUSH)
             dc.DrawRoundedRectangle(rect, DECK_CARD_CORNER_RADIUS)
+
+    def _refresh_card_bitmap(self) -> None:
+        image_path = get_card_image(self.card["name"], "normal")
+        if image_path and image_path.exists():
+            try:
+                img = wx.Image(str(image_path), wx.BITMAP_TYPE_ANY)
+            except Exception:
+                self._image_available = False
+                self._card_bitmap = None
+                return
+            if img.IsOk():
+                scaled = self._scale_image_to_card(img)
+                self._card_bitmap = self._render_bitmap_with_image(scaled)
+                self._image_available = True
+                return
+        self._image_available = False
+        self._card_bitmap = None
+
+    def _scale_image_to_card(self, image: wx.Image) -> wx.Image:
+        img_width = image.GetWidth()
+        img_height = image.GetHeight()
+        if img_width <= 0 or img_height <= 0:
+            return image
+        scale = min(DECK_CARD_WIDTH / img_width, DECK_CARD_HEIGHT / img_height)
+        new_width = max(1, int(img_width * scale))
+        new_height = max(1, int(img_height * scale))
+        return image.Scale(new_width, new_height, wx.IMAGE_QUALITY_HIGH)
+
+    def _render_bitmap_with_image(self, image: wx.Image) -> wx.Bitmap:
+        bitmap = wx.Bitmap(DECK_CARD_WIDTH, DECK_CARD_HEIGHT)
+        dc = wx.MemoryDC(bitmap)
+        dc.SetBackground(wx.Brush(wx.Colour(0, 0, 0)))
+        dc.Clear()
+        x = (DECK_CARD_WIDTH - image.GetWidth()) // 2
+        y = (DECK_CARD_HEIGHT - image.GetHeight()) // 2
+        dc.DrawBitmap(wx.Bitmap(image), x, y, True)
+        dc.SelectObject(wx.NullBitmap)
+        return bitmap
+
+    def _build_template_bitmap(self) -> wx.Bitmap:
+        bitmap = wx.Bitmap(DECK_CARD_WIDTH, DECK_CARD_HEIGHT)
+        dc = wx.MemoryDC(bitmap)
+        dc.SetBackground(wx.Brush(wx.Colour(*self._card_color)))
+        dc.Clear()
+        rect = wx.Rect(0, 0, DECK_CARD_WIDTH, DECK_CARD_HEIGHT)
+        dc.SetPen(wx.Pen(wx.Colour(0, 0, 0, 120), 2))
+        dc.SetBrush(wx.TRANSPARENT_BRUSH)
+        dc.DrawRoundedRectangle(rect, DECK_CARD_CORNER_RADIUS)
+        self._draw_placeholder_details(dc, rect)
+        dc.SelectObject(wx.NullBitmap)
+        return bitmap
 
     def _draw_placeholder_details(self, dc: wx.DC, rect: wx.Rect) -> None:
         cost_bitmap = self._get_mana_cost_bitmap()

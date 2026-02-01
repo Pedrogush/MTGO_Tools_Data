@@ -7,12 +7,12 @@ from utils.card_images import get_card_image
 from utils.constants import (
     DARK_ACCENT,
     DARK_ALT,
-    LIGHT_TEXT,
     DECK_CARD_BADGE_PADDING,
     DECK_CARD_BUTTON_MARGIN,
     DECK_CARD_CORNER_RADIUS,
     DECK_CARD_HEIGHT,
     DECK_CARD_WIDTH,
+    LIGHT_TEXT,
 )
 from utils.mana_icon_factory import ManaIconFactory
 
@@ -99,9 +99,7 @@ class CardBoxPanel(wx.Panel):
 
         # Bind click events to all widgets so clicks anywhere on the card work
         self._bind_click_targets([self, self.qty_label])
-        self._bind_hover_targets(
-            [self, self.qty_label, self.button_panel]
-        )
+        self._bind_hover_targets([self, self.qty_label, self.button_panel])
 
     def update_quantity(
         self, qty: int | float, owned_text: str, owned_colour: tuple[int, int, int]
@@ -172,7 +170,9 @@ class CardBoxPanel(wx.Panel):
         if not normalized:
             return ManaIconFactory.FALLBACK_COLORS["c"]
         if len(normalized) == 1:
-            return ManaIconFactory.FALLBACK_COLORS.get(normalized[0], ManaIconFactory.FALLBACK_COLORS["c"])
+            return ManaIconFactory.FALLBACK_COLORS.get(
+                normalized[0], ManaIconFactory.FALLBACK_COLORS["c"]
+            )
         return ManaIconFactory.FALLBACK_COLORS["multicolor"]
 
     def _get_mana_cost_bitmap(self) -> wx.Bitmap | None:
@@ -264,7 +264,9 @@ class CardBoxPanel(wx.Panel):
         dc.SetTextForeground(LIGHT_TEXT)
         name_font = wx.Font(10, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD)
         dc.SetFont(name_font)
-        name_lines = self._wrap_text(dc, self.card["name"], rect.width - (DECK_CARD_BADGE_PADDING * 2))
+        name_lines = self._wrap_text(
+            dc, self.card["name"], rect.width - (DECK_CARD_BADGE_PADDING * 2)
+        )
         line_height = dc.GetTextExtent("Ag")[1]
         total_height = line_height * len(name_lines)
         start_y = rect.y + rect.height - total_height - (DECK_CARD_BADGE_PADDING * 3)

@@ -268,7 +268,7 @@ class CardBoxPanel(wx.Panel):
                 rect.y + DECK_CARD_BADGE_PADDING,
             )
 
-        dc.SetTextForeground(LIGHT_TEXT)
+        dc.SetTextForeground(wx.Colour(0, 0, 0))
         name_font = wx.Font(10, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD)
         dc.SetFont(name_font)
         name_lines = self._wrap_text(
@@ -276,7 +276,7 @@ class CardBoxPanel(wx.Panel):
         )
         line_height = dc.GetTextExtent("Ag")[1]
         total_height = line_height * len(name_lines)
-        start_y = rect.y + rect.height - total_height - (DECK_CARD_BADGE_PADDING * 3)
+        start_y = rect.y + (rect.height - total_height) // 2
         for line in name_lines:
             text_width = dc.GetTextExtent(line)[0]
             text_x = rect.x + (rect.width - text_width) // 2

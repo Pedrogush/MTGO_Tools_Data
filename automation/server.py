@@ -9,7 +9,8 @@ import json
 import socket
 import threading
 import time
-from typing import TYPE_CHECKING, Any, Callable
+from collections.abc import Callable
+from typing import TYPE_CHECKING, Any
 
 import wx
 from loguru import logger
@@ -94,7 +95,7 @@ class AutomationServer:
                     client_socket, addr = self._server_socket.accept()
                     logger.debug(f"Client connected from {addr}")
                     self._handle_client(client_socket)
-                except socket.timeout:
+                except TimeoutError:
                     continue
                 except Exception as e:
                     if self._running:
@@ -265,11 +266,13 @@ class AutomationServer:
         buttons = []
         for child in parent.GetChildren():
             if isinstance(child, wx.Button):
-                buttons.append({
-                    "label": child.GetLabel(),
-                    "enabled": child.IsEnabled(),
-                    "id": child.GetId(),
-                })
+                buttons.append(
+                    {
+                        "label": child.GetLabel(),
+                        "enabled": child.IsEnabled(),
+                        "id": child.GetId(),
+                    }
+                )
         return buttons
 
     def _handle_click(self, widget: str, label: str | None = None) -> dict[str, Any]:
@@ -340,7 +343,9 @@ class AutomationServer:
             ]
         return {"archetypes": archetypes, "count": len(archetypes)}
 
-    def _handle_select_archetype(self, index: int | None = None, name: str | None = None) -> dict[str, Any]:
+    def _handle_select_archetype(
+        self, index: int | None = None, name: str | None = None
+    ) -> dict[str, Any]:
         """Select an archetype by index or name."""
         if self.frame.research_panel is None:
             return {"selected": False, "error": "Research panel not available"}
@@ -371,10 +376,12 @@ class AutomationServer:
         decks = []
         if hasattr(self.frame, "deck_list"):
             for i in range(self.frame.deck_list.GetCount()):
-                decks.append({
-                    "index": i,
-                    "text": self.frame.deck_list.GetString(i),
-                })
+                decks.append(
+                    {
+                        "index": i,
+                        "text": self.frame.deck_list.GetString(i),
+                    }
+                )
         return {"decks": decks, "count": len(decks)}
 
     def _handle_select_deck(self, index: int) -> dict[str, Any]:

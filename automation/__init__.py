@@ -7,7 +7,7 @@ This module provides:
 - CLI: Command-line interface for manual testing and scripting
 """
 
-from automation.server import AutomationServer
 from automation.client import AutomationClient
+from automation.server import AutomationServer
 
 __all__ = ["AutomationServer", "AutomationClient"]

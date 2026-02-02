@@ -12,11 +12,13 @@ from automation.server import BUFFER_SIZE, DEFAULT_PORT
 
 class AutomationError(Exception):
     """Raised when an automation command fails."""
+
     pass
 
 
 class ConnectionError(AutomationError):
     """Raised when unable to connect to the automation server."""
+
     pass
 
 
@@ -44,7 +46,7 @@ class AutomationClient:
                     raise AutomationError(response.get("error", "Unknown error"))
 
                 return response.get("result", {})
-        except socket.error as e:
+        except OSError as e:
             raise ConnectionError(f"Failed to connect to automation server: {e}") from e
         except json.JSONDecodeError as e:
             raise AutomationError(f"Invalid response from server: {e}") from e
@@ -170,7 +172,9 @@ class AutomationClient:
         self._send_command("wait", ms=ms)
 
 
-def connect(host: str = "127.0.0.1", port: int = DEFAULT_PORT, timeout: float = 30.0) -> AutomationClient:
+def connect(
+    host: str = "127.0.0.1", port: int = DEFAULT_PORT, timeout: float = 30.0
+) -> AutomationClient:
     """Create and return an automation client.
 
     Args:

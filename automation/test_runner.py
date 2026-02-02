@@ -15,9 +15,9 @@ Usage:
 
 import sys
 import time
-from typing import Callable
+from collections.abc import Callable
 
-from automation.client import AutomationClient, AutomationError, ConnectionError
+from automation.client import AutomationClient
 
 
 class TestResult:

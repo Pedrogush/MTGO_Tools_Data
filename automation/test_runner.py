@@ -20,7 +20,7 @@ from collections.abc import Callable
 from automation.client import AutomationClient
 
 
-class TestResult:
+class RunResult:
     """Simple test result container."""
 
     def __init__(self, name: str, passed: bool, message: str = "", duration: float = 0.0):
@@ -35,21 +35,21 @@ class UITestRunner:
 
     def __init__(self, client: AutomationClient):
         self.client = client
-        self.results: list[TestResult] = []
+        self.results: list[RunResult] = []
 
-    def run_test(self, name: str, test_fn: Callable[[], None]) -> TestResult:
+    def run_test(self, name: str, test_fn: Callable[[], None]) -> RunResult:
         """Run a single test and capture the result."""
         start_time = time.time()
         try:
             test_fn()
             duration = time.time() - start_time
-            result = TestResult(name, True, "OK", duration)
+            result = RunResult(name, True, "OK", duration)
         except AssertionError as e:
             duration = time.time() - start_time
-            result = TestResult(name, False, str(e), duration)
+            result = RunResult(name, False, str(e), duration)
         except Exception as e:
             duration = time.time() - start_time
-            result = TestResult(name, False, f"Error: {e}", duration)
+            result = RunResult(name, False, f"Error: {e}", duration)
 
         self.results.append(result)
         status = "PASS" if result.passed else "FAIL"
@@ -70,30 +70,30 @@ class UITestRunner:
         print("=" * 50)
 
 
-def test_connection(client: AutomationClient) -> None:
-    """Test that we can connect to the app."""
+def check_connection(client: AutomationClient) -> None:
+    """Check that we can connect to the app."""
     result = client.ping()
     assert "status" in result, "Ping response should contain 'status'"
     assert result["status"] == "ok", f"Expected status 'ok', got '{result['status']}'"
 
 
-def test_get_window_info(client: AutomationClient) -> None:
-    """Test getting window information."""
+def check_get_window_info(client: AutomationClient) -> None:
+    """Check getting window information."""
     info = client.get_window_info()
     assert "title" in info, "Window info should contain 'title'"
     assert "MTGO" in info["title"], f"Window title should contain 'MTGO', got '{info['title']}'"
     assert info["visible"], "Window should be visible"
 
 
-def test_get_status(client: AutomationClient) -> None:
-    """Test getting status bar text."""
+def check_get_status(client: AutomationClient) -> None:
+    """Check getting status bar text."""
     status = client.get_status()
     # Status should be a string (may be empty initially)
     assert isinstance(status, str), f"Status should be a string, got {type(status)}"
 
 
-def test_list_widgets(client: AutomationClient) -> None:
-    """Test listing available widgets."""
+def check_list_widgets(client: AutomationClient) -> None:
+    """Check listing available widgets."""
     result = client.list_widgets()
     assert "widgets" in result, "Response should contain 'widgets'"
     widgets = result["widgets"]
@@ -101,8 +101,8 @@ def test_list_widgets(client: AutomationClient) -> None:
     assert "research_panel" in widgets, "Should have research_panel widget"
 
 
-def test_get_format(client: AutomationClient) -> None:
-    """Test getting current format."""
+def check_get_format(client: AutomationClient) -> None:
+    """Check getting current format."""
     format_name = client.get_format()
     assert isinstance(format_name, str), f"Format should be a string, got {type(format_name)}"
     # Format should be one of the known formats
@@ -110,8 +110,8 @@ def test_get_format(client: AutomationClient) -> None:
     assert format_name in known_formats, f"Unknown format: {format_name}"
 
 
-def test_screenshot(client: AutomationClient) -> None:
-    """Test taking a screenshot."""
+def check_screenshot(client: AutomationClient) -> None:
+    """Check taking a screenshot."""
     import os
     import tempfile
 
@@ -129,8 +129,8 @@ def test_screenshot(client: AutomationClient) -> None:
             os.unlink(path)
 
 
-def test_switch_tab(client: AutomationClient) -> None:
-    """Test switching tabs."""
+def check_switch_tab(client: AutomationClient) -> None:
+    """Check switching tabs."""
     result = client.switch_tab("Stats")
     assert result.get("switched"), f"Should switch to Stats tab: {result}"
 
@@ -164,13 +164,13 @@ def run_all_tests() -> int:
     runner = UITestRunner(client)
 
     print("Running tests...")
-    runner.run_test("Connection", lambda: test_connection(client))
-    runner.run_test("Window Info", lambda: test_get_window_info(client))
-    runner.run_test("Status Bar", lambda: test_get_status(client))
-    runner.run_test("List Widgets", lambda: test_list_widgets(client))
-    runner.run_test("Get Format", lambda: test_get_format(client))
-    runner.run_test("Screenshot", lambda: test_screenshot(client))
-    runner.run_test("Switch Tabs", lambda: test_switch_tab(client))
+    runner.run_test("Connection", lambda: check_connection(client))
+    runner.run_test("Window Info", lambda: check_get_window_info(client))
+    runner.run_test("Status Bar", lambda: check_get_status(client))
+    runner.run_test("List Widgets", lambda: check_list_widgets(client))
+    runner.run_test("Get Format", lambda: check_get_format(client))
+    runner.run_test("Screenshot", lambda: check_screenshot(client))
+    runner.run_test("Switch Tabs", lambda: check_switch_tab(client))
 
     runner.print_summary()
 

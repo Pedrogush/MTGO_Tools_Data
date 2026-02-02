@@ -51,7 +51,7 @@ class CardTablePanel(wx.Panel):
 
         self.scroller = scrolled.ScrolledPanel(self, style=wx.VSCROLL)
         self.scroller.SetBackgroundColour(DARK_PANEL)
-        self.grid_sizer = wx.GridSizer(0, 4, 8, 8)
+        self.grid_sizer = wx.GridSizer(0, 6, 8, 8)
         self.scroller.SetSizer(self.grid_sizer)
         self.scroller.SetupScrolling(scroll_x=False, scroll_y=True, rate_x=5, rate_y=5)
         outer.Add(self.scroller, 1, wx.EXPAND)
@@ -118,9 +118,9 @@ class CardTablePanel(wx.Panel):
                 )
                 self.grid_sizer.Add(cell, 0, wx.EXPAND)
                 self.card_widgets.append(cell)
-            remainder = len(self.cards) % 4
+            remainder = len(self.cards) % 6
             if remainder:
-                for _ in range(4 - remainder):
+                for _ in range(6 - remainder):
                     spacer = wx.Panel(self.scroller)
                     spacer.SetBackgroundColour(DARK_PANEL)
                     self.grid_sizer.Add(spacer, 0, wx.EXPAND)

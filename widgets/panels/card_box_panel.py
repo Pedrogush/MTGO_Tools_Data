@@ -48,6 +48,7 @@ class CardBoxPanel(wx.Panel):
         self._template_bitmap: wx.Bitmap | None = None
         self._card_bitmap: wx.Bitmap | None = None
         self._image_available = False
+        self._image_attempted = False
 
         self.SetBackgroundColour(DARK_ALT)
         self.SetBackgroundStyle(wx.BG_STYLE_PAINT)
@@ -157,7 +158,9 @@ class CardBoxPanel(wx.Panel):
         self._mana_cost_bitmap = None
         self._card_color = self._resolve_card_color(meta)
         self._template_bitmap = self._build_template_bitmap()
-        self._refresh_card_bitmap()
+        self._image_attempted = False
+        self._image_available = False
+        self._card_bitmap = None
 
         qty_value = card["qty"]
         qty_for_check = int(qty_value) if isinstance(qty_value, float) else qty_value
@@ -183,13 +186,16 @@ class CardBoxPanel(wx.Panel):
     def _on_paint(self, _event: wx.PaintEvent) -> None:
         dc = wx.AutoBufferedPaintDC(self)
         rect = self.GetClientRect()
+        dc.SetBackground(wx.Brush(wx.Colour(*self._card_color)))
+        dc.Clear()
+
+        if not self._image_attempted:
+            self._refresh_card_bitmap()
+
         if self._image_available and self._card_bitmap:
             dc.DrawBitmap(self._card_bitmap, rect.x, rect.y, True)
         elif self._template_bitmap:
             dc.DrawBitmap(self._template_bitmap, rect.x, rect.y, True)
-        else:
-            dc.SetBackground(wx.Brush(wx.Colour(*self._card_color)))
-            dc.Clear()
 
         if self._active:
             dc.SetPen(wx.Pen(wx.Colour(*DARK_ACCENT), 3))
@@ -197,6 +203,7 @@ class CardBoxPanel(wx.Panel):
             dc.DrawRoundedRectangle(rect, DECK_CARD_CORNER_RADIUS)
 
     def _refresh_card_bitmap(self) -> None:
+        self._image_attempted = True
         image_path = get_card_image(self.card["name"], "normal")
         if image_path and image_path.exists():
             try:

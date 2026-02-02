@@ -9,6 +9,7 @@ from controllers.app_controller import get_deck_selector_controller
 if TYPE_CHECKING:
     from controllers.app_controller import AppController
 
+from utils.card_images import CardImageRequest
 from utils.constants import (
     APP_FRAME_MIN_SIZE,
     APP_FRAME_SIZE,
@@ -169,7 +170,7 @@ class AppFrame(AppEventHandlers, SideboardGuideHandlers, CardTablePanelHandler, 
         right_sizer.Add(content_split, 1, wx.EXPAND | wx.BOTTOM, PADDING_LG)
 
         middle_column = wx.BoxSizer(wx.VERTICAL)
-        content_split.Add(middle_column, 2, wx.EXPAND | wx.RIGHT, PADDING_LG)
+        content_split.Add(middle_column, 0, wx.EXPAND | wx.RIGHT, PADDING_LG)
 
         deck_workspace = self._build_deck_workspace(right_panel)
         middle_column.Add(deck_workspace, 1, wx.EXPAND)
@@ -304,9 +305,7 @@ class AppFrame(AppEventHandlers, SideboardGuideHandlers, CardTablePanelHandler, 
         self.card_inspector_panel.set_printings_request_handler(
             self.controller.image_service.fetch_printings_by_name_async
         )
-        self.controller.image_service.set_image_download_callback(
-            self.card_inspector_panel.handle_image_downloaded
-        )
+        self.controller.image_service.set_image_download_callback(self._handle_image_downloaded)
         self.controller.image_service.set_printings_loaded_callback(
             self.card_inspector_panel.handle_printings_loaded
         )
@@ -322,6 +321,13 @@ class AppFrame(AppEventHandlers, SideboardGuideHandlers, CardTablePanelHandler, 
 
         return inspector_sizer
 
+    def _handle_image_downloaded(self, request: CardImageRequest) -> None:
+        self.card_inspector_panel.handle_image_downloaded(request)
+        self.main_table.refresh_card_image(request.card_name)
+        self.side_table.refresh_card_image(request.card_name)
+        if self.out_table:
+            self.out_table.refresh_card_image(request.card_name)
+
     def _build_deck_workspace(self, parent: wx.Window) -> wx.StaticBoxSizer:
         detail_box = wx.StaticBox(parent, label="Deck Workspace")
         detail_box.SetForegroundColour(LIGHT_TEXT)
@@ -333,6 +339,12 @@ class AppFrame(AppEventHandlers, SideboardGuideHandlers, CardTablePanelHandler, 
 
         # Deck tables tab
         self._build_deck_tables_tab()
+        deck_tabs_width = CardTablePanel.grid_width()
+        self.deck_tabs.SetMinSize((deck_tabs_width, -1))
+        self.deck_tabs.SetMaxSize((deck_tabs_width, -1))
+        detail_box_width = deck_tabs_width + (PADDING_MD * 2)
+        detail_box.SetMinSize((detail_box_width, -1))
+        detail_box.SetMaxSize((detail_box_width, -1))
 
         # Stats, guide, and notes tabs
         self.deck_stats_panel = DeckStatsPanel(

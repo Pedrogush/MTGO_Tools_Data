@@ -4,12 +4,15 @@ from typing import Any
 import wx
 import wx.lib.scrolledpanel as scrolled
 
-from utils.constants import DARK_PANEL, SUBDUED_TEXT
+from utils.constants import DARK_PANEL, DECK_CARD_WIDTH, SUBDUED_TEXT
 from utils.mana_icon_factory import ManaIconFactory
 from widgets.panels.card_box_panel import CardBoxPanel
 
 
 class CardTablePanel(wx.Panel):
+    GRID_COLUMNS = 6
+    GRID_GAP = 8
+
     def __init__(
         self,
         parent: wx.Window,
@@ -51,10 +54,14 @@ class CardTablePanel(wx.Panel):
 
         self.scroller = scrolled.ScrolledPanel(self, style=wx.VSCROLL)
         self.scroller.SetBackgroundColour(DARK_PANEL)
-        self.grid_sizer = wx.GridSizer(0, 4, 8, 8)
+        self.grid_sizer = wx.GridSizer(0, self.GRID_COLUMNS, self.GRID_GAP, self.GRID_GAP)
         self.scroller.SetSizer(self.grid_sizer)
         self.scroller.SetupScrolling(scroll_x=False, scroll_y=True, rate_x=5, rate_y=5)
         outer.Add(self.scroller, 1, wx.EXPAND)
+
+    @classmethod
+    def grid_width(cls) -> int:
+        return (DECK_CARD_WIDTH * cls.GRID_COLUMNS) + (cls.GRID_GAP * (cls.GRID_COLUMNS - 1))
 
     def set_cards(self, cards: list[dict[str, Any]]) -> None:
         if self._try_incremental_update(cards):
@@ -118,9 +125,9 @@ class CardTablePanel(wx.Panel):
                 )
                 self.grid_sizer.Add(cell, 0, wx.EXPAND)
                 self.card_widgets.append(cell)
-            remainder = len(self.cards) % 4
+            remainder = len(self.cards) % 6
             if remainder:
-                for _ in range(4 - remainder):
+                for _ in range(6 - remainder):
                     spacer = wx.Panel(self.scroller)
                     spacer.SetBackgroundColour(DARK_PANEL)
                     self.grid_sizer.Add(spacer, 0, wx.EXPAND)
@@ -196,6 +203,14 @@ class CardTablePanel(wx.Panel):
             self.active_panel.set_active(False)
         self.active_panel = None
         self.selected_name = None
+
+    def refresh_card_image(self, card_name: str) -> None:
+        if not card_name:
+            return
+        key = card_name.lower()
+        for widget in self.card_widgets:
+            if widget.card["name"].lower() == key:
+                widget.refresh_image()
 
     def _notify_selection(self, card: dict[str, Any] | None) -> None:
         if self._on_select:

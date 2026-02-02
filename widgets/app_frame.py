@@ -170,7 +170,7 @@ class AppFrame(AppEventHandlers, SideboardGuideHandlers, CardTablePanelHandler, 
         right_sizer.Add(content_split, 1, wx.EXPAND | wx.BOTTOM, PADDING_LG)
 
         middle_column = wx.BoxSizer(wx.VERTICAL)
-        content_split.Add(middle_column, 2, wx.EXPAND | wx.RIGHT, PADDING_LG)
+        content_split.Add(middle_column, 0, wx.EXPAND | wx.RIGHT, PADDING_LG)
 
         deck_workspace = self._build_deck_workspace(right_panel)
         middle_column.Add(deck_workspace, 1, wx.EXPAND)
@@ -341,6 +341,12 @@ class AppFrame(AppEventHandlers, SideboardGuideHandlers, CardTablePanelHandler, 
 
         # Deck tables tab
         self._build_deck_tables_tab()
+        deck_tabs_width = CardTablePanel.grid_width()
+        self.deck_tabs.SetMinSize((deck_tabs_width, -1))
+        self.deck_tabs.SetMaxSize((deck_tabs_width, -1))
+        detail_box_width = deck_tabs_width + (PADDING_MD * 2)
+        detail_box.SetMinSize((detail_box_width, -1))
+        detail_box.SetMaxSize((detail_box_width, -1))
 
         # Stats, guide, and notes tabs
         self.deck_stats_panel = DeckStatsPanel(

@@ -107,6 +107,9 @@ class AppController:
         self.loading_decks = False
         self.loading_daily_average = False
 
+        # Bridge status check backoff (increases timeout on consecutive timeouts)
+        self._bridge_timeout_backoff = 0.0
+
         # Load stores
         self.notes_store_path = NOTES_STORE
         self.outboard_store_path = OUTBOARD_STORE
@@ -344,25 +347,45 @@ class AppController:
     # ============= Collection Management =============
 
     def check_mtgo_bridge_status(self) -> None:
-        """Check if MTGO is running and logged in, then update UI button states."""
+        """Check if MTGO is running and logged in, then update UI button states.
+
+        Uses exponential backoff on timeout failures - each consecutive timeout
+        adds 2 seconds to the timeout, up to a maximum of 15 seconds total.
+        Backoff resets on successful connection.
+        """
+        from queue import Empty
+
         callbacks = self._ui_callbacks
         on_mtgo_status = callbacks.get("on_mtgo_status_change")
+
+        # Apply backoff to timeout (max 10 seconds additional)
+        effective_timeout = MTGO_BRIDGE_USERNAME_TIMEOUT_SECONDS + min(
+            self._bridge_timeout_backoff, 10.0
+        )
 
         mtgo_ready = False
         try:
             payload = mtgo_bridge_client.run_bridge_command(
-                "username", timeout=MTGO_BRIDGE_USERNAME_TIMEOUT_SECONDS
+                "username", timeout=effective_timeout
             )
             if isinstance(payload, dict):
                 username = payload.get("username")
                 error = payload.get("error")
                 if username and not error:
                     mtgo_ready = True
+                    self._bridge_timeout_backoff = 0.0  # Reset backoff on success
                     logger.debug(f"MTGO ready: logged in as {username}")
                 else:
                     logger.debug(f"MTGO not ready: {error or 'no username'}")
         except mtgo_bridge_client.BridgeCommandError as exc:
             logger.debug(f"MTGO not ready: {exc}")
+        except Empty:
+            # Timeout - increase backoff for next attempt
+            self._bridge_timeout_backoff += 2.0
+            logger.debug(
+                f"MTGO bridge timed out after {effective_timeout}s, "
+                f"backoff now {self._bridge_timeout_backoff}s"
+            )
         except Exception as exc:
             logger.debug(f"MTGO status check failed: {exc}")
 

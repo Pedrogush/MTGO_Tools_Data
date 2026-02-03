@@ -914,7 +914,7 @@ opponent = opponents[0] if opponents else None
 
 The opponent tracker now works out of the box:
 ```bash
-python main_wx.py
+python main.py
 # Opens deck builder → Click "Opponent Tracker" button
 # Widget automatically detects when you join a match
 ```

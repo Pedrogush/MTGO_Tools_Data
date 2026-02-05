@@ -232,9 +232,7 @@ class CardBoxPanel(wx.Panel):
         self._image_available = False
         self._card_bitmap = None
 
-    def _build_image_name_candidates(
-        self, card: dict[str, Any], meta: dict[str, Any]
-    ) -> list[str]:
+    def _build_image_name_candidates(self, card: dict[str, Any], meta: dict[str, Any]) -> list[str]:
         candidates: list[str] = []
         base_name = card.get("name")
         if base_name:

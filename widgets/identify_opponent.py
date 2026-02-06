@@ -585,4 +585,24 @@ class MTGOpponentDeckSpy(wx.Frame):
         event.Skip()
 
 
+def main() -> None:
+    """Launch the opponent tracker as a standalone application."""
+    from utils.constants import LOGS_DIR, ensure_base_dirs
+    from utils.logging_config import configure_logging
+
+    ensure_base_dirs()
+    log_file = configure_logging(LOGS_DIR)
+    if log_file:
+        logger.info(f"Writing logs to {log_file}")
+
+    app = wx.App(False)
+    frame = MTGOpponentDeckSpy()
+    frame.Show()
+    app.MainLoop()
+
+
+if __name__ == "__main__":
+    main()
+
+
 __all__ = ["MTGOpponentDeckSpy"]

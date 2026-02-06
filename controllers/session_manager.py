@@ -13,8 +13,8 @@ from utils.constants import (
     DECKS_DIR,
     FORMAT_OPTIONS,
 )
-from utils.i18n import DEFAULT_LOCALE, SUPPORTED_LOCALES, normalize_locale
 from utils.deck import sanitize_zone_cards
+from utils.i18n import DEFAULT_LOCALE, SUPPORTED_LOCALES, normalize_locale
 
 
 class DeckSelectorSessionManager:

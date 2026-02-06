@@ -25,14 +25,8 @@ A Python tool for Magic: The Gathering Online that combines web scraping, log fi
 
 **Use Case:** Helps competitive MTGO players by providing intelligence on opponents' recent decks and facilitating metagame research, all through passive observation and web scraping (no gameplay automation).
 
-**Quick Start:**
 ```bash
-python main_wx.py  # Launch wxPython-based deck builder (main entry point)
-```
-
-Or run legacy Tkinter version:
-```bash
-python main.py  # Launch legacy Tkinter GUI (deprecated)
+python main.py  
 ```
 
 # CI/PR Workflow
@@ -920,7 +914,7 @@ opponent = opponents[0] if opponents else None
 
 The opponent tracker now works out of the box:
 ```bash
-python main_wx.py
+python main.py
 # Opens deck builder → Click "Opponent Tracker" button
 # Widget automatically detects when you join a match
 ```

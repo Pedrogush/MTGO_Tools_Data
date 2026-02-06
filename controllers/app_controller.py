@@ -34,14 +34,12 @@ from services.deck_workflow_service import DeckWorkflowService
 from services.image_service import get_image_service
 from services.search_service import get_search_service
 from services.store_service import get_store_service
-from utils import mtgo_bridge_client
 from utils.background_worker import BackgroundWorker
 from utils.card_data import CardDataManager
 from utils.constants import (
     COLLECTION_CACHE_MAX_AGE_SECONDS,
     GUIDE_STORE,
     MTGO_BRIDGE_SHUTDOWN_TIMEOUT_SECONDS,
-    MTGO_BRIDGE_USERNAME_TIMEOUT_SECONDS,
     MTGO_DECKLISTS_ENABLED,
     NOTES_STORE,
     OUTBOARD_STORE,
@@ -125,10 +123,7 @@ class AppController:
             worker=self._worker,
             frame_provider=lambda: self.frame,
         )
-        self._mtgo_background_helpers = MtgoBackgroundHelpers(
-            worker=self._worker,
-            status_check=self.check_mtgo_bridge_status,
-        )
+        self._mtgo_background_helpers = MtgoBackgroundHelpers(worker=self._worker)
 
         self.frame = self.create_frame()
 
@@ -343,32 +338,6 @@ class AppController:
 
     # ============= Collection Management =============
 
-    def check_mtgo_bridge_status(self) -> None:
-        """Check if MTGO is running and logged in, then update UI button states."""
-        callbacks = self._ui_callbacks
-        on_mtgo_status = callbacks.get("on_mtgo_status_change")
-
-        mtgo_ready = False
-        try:
-            payload = mtgo_bridge_client.run_bridge_command(
-                "username", timeout=MTGO_BRIDGE_USERNAME_TIMEOUT_SECONDS
-            )
-            if isinstance(payload, dict):
-                username = payload.get("username")
-                error = payload.get("error")
-                if username and not error:
-                    mtgo_ready = True
-                    logger.debug(f"MTGO ready: logged in as {username}")
-                else:
-                    logger.debug(f"MTGO not ready: {error or 'no username'}")
-        except mtgo_bridge_client.BridgeCommandError as exc:
-            logger.debug(f"MTGO not ready: {exc}")
-        except Exception as exc:
-            logger.debug(f"MTGO status check failed: {exc}")
-
-        if on_mtgo_status:
-            on_mtgo_status(mtgo_ready)
-
     def load_collection_from_cache(self, directory: Path) -> tuple[bool, dict[str, Any] | None]:
         try:
             info = self.collection_service.load_from_cached_file(directory)
@@ -503,10 +472,6 @@ class AppController:
 
         # Step 4: Check and download bulk data if needed (non-blocking)
         self.check_and_download_bulk_data()
-
-        # Step 5: Check MTGO bridge status and start periodic checking
-        self.check_mtgo_bridge_status()
-        self._mtgo_background_helpers.start_status_monitoring()
 
     # ============= Frame Factory =============
 

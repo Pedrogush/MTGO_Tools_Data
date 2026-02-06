@@ -192,9 +192,8 @@ class TestRadarIntegration:
 class TestRadarPanelLogic:
     """Test compact radar panel logic without GUI."""
 
-    def test_format_card_line(self):
-        """Test card line formatting for compact display."""
-        # Format: "4x CardName (95%)"
+    def test_format_top_card_line(self):
+        """Test card line formatting for top cards view."""
         avg_copies = 4
         card_name = "Lightning Bolt"
         inclusion_rate = 95.0
@@ -202,22 +201,68 @@ class TestRadarPanelLogic:
         line = f"{avg_copies}x {card_name} ({inclusion_rate:.0f}%)"
         assert line == "4x Lightning Bolt (95%)"
 
+    def test_format_full_decklist_line(self):
+        """Test card line formatting for full decklist view."""
+        count = 4
+        card_name = "Lightning Bolt"
+
+        line = f"{count} {card_name}"
+        assert line == "4 Lightning Bolt"
+
     def test_mainboard_card_limit(self):
-        """Test that mainboard cards are limited to 15."""
+        """Test that mainboard cards are limited to 15 in top cards view."""
+        from widgets.panels.compact_radar_panel import _TOP_MAINBOARD_LIMIT
+
+        assert _TOP_MAINBOARD_LIMIT == 15
+
         total_cards = 50
-        mainboard_display = min(15, total_cards)
+        mainboard_display = min(_TOP_MAINBOARD_LIMIT, total_cards)
         assert mainboard_display == 15
 
         total_cards = 10
-        mainboard_display = min(15, total_cards)
+        mainboard_display = min(_TOP_MAINBOARD_LIMIT, total_cards)
         assert mainboard_display == 10
 
     def test_sideboard_card_limit(self):
-        """Test that sideboard cards are limited to 8."""
+        """Test that sideboard cards are limited to 8 in top cards view."""
+        from widgets.panels.compact_radar_panel import _TOP_SIDEBOARD_LIMIT
+
+        assert _TOP_SIDEBOARD_LIMIT == 8
+
         total_cards = 20
-        sideboard_display = min(8, total_cards)
+        sideboard_display = min(_TOP_SIDEBOARD_LIMIT, total_cards)
         assert sideboard_display == 8
 
         total_cards = 5
-        sideboard_display = min(8, total_cards)
+        sideboard_display = min(_TOP_SIDEBOARD_LIMIT, total_cards)
         assert sideboard_display == 5
+
+    def test_view_mode_enum(self):
+        """Test that view mode enum has expected values."""
+        from widgets.panels.compact_radar_panel import RadarViewMode
+
+        assert RadarViewMode.TOP_CARDS.value == "top"
+        assert RadarViewMode.FULL_DECKLIST.value == "full"
+
+    def test_full_decklist_includes_all_cards(self):
+        """Test that full decklist mode counts all cards."""
+        from services.radar_service import CardFrequency
+
+        cards = [
+            CardFrequency("Card A", 10, 40, 4, 4.0, 100.0, 4.0, {4: 10}),
+            CardFrequency("Card B", 5, 10, 2, 2.0, 50.0, 1.0, {2: 5, 0: 5}),
+            CardFrequency("Card C", 3, 3, 1, 1.0, 30.0, 0.3, {1: 3, 0: 7}),
+        ]
+
+        # Full decklist should include all cards
+        total = sum(max(1, round(c.avg_copies)) for c in cards)
+        assert total == 4 + 2 + 1  # 7 total
+
+    def test_full_decklist_min_one_copy(self):
+        """Test that full decklist shows at least 1 copy per card."""
+        from services.radar_service import CardFrequency
+
+        # Card with avg_copies < 0.5 rounds to 0, but we clamp to 1
+        card = CardFrequency("Rare Card", 1, 1, 1, 0.3, 10.0, 0.03, {1: 1, 0: 9})
+        count = max(1, round(card.avg_copies))
+        assert count == 1

@@ -180,6 +180,9 @@ def test_get_image_path_returns_path_after_add_image_when_initial_miss(tmp_path)
     # First lookup returns None (card not yet downloaded)
     result_before = cache.get_image_path("New Card", "normal")
     assert result_before is None
+    # None hits must not be stored — a subsequent download must be visible.
+    # (add_image() is responsible for invalidating the key, not the test.)
+    assert ("new card", "normal") not in cache._path_cache
 
     # Simulate download completing
     image_file = cache.cache_dir / "normal" / "uuid-new.jpg"

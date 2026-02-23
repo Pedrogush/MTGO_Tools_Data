@@ -199,6 +199,116 @@ def test_get_image_path_returns_path_after_add_image_when_initial_miss(tmp_path)
     assert result_after == image_file
 
 
+def test_get_image_path_cache_key_is_case_insensitive(tmp_path, monkeypatch):
+    """get_image_path() must treat card names case-insensitively for cache hits."""
+    cache = card_images.CardImageCache(
+        cache_dir=tmp_path / "cache", db_path=tmp_path / "cache" / "images.db"
+    )
+    image_file = cache.cache_dir / "normal" / "uuid-case.jpg"
+    image_file.parent.mkdir(parents=True, exist_ok=True)
+    image_file.write_bytes(b"fake")
+    cache.add_image(
+        uuid="uuid-case",
+        name="Lightning Bolt",
+        set_code="LEB",
+        collector_number="161",
+        image_size="normal",
+        file_path=image_file,
+    )
+    # Clear path cache to force a DB hit on the first lookup
+    cache._path_cache.clear()
+
+    call_count = 0
+    original_from_db = cache._get_image_path_from_db
+
+    def counting_from_db(card_name: str, size: str):
+        nonlocal call_count
+        call_count += 1
+        return original_from_db(card_name, size)
+
+    monkeypatch.setattr(cache, "_get_image_path_from_db", counting_from_db)
+
+    result = cache.get_image_path("LIGHTNING BOLT", "normal")
+    assert result == image_file
+
+    # Second call must come from in-process cache, not DB
+    result2 = cache.get_image_path("LIGHTNING BOLT", "normal")
+    assert result2 == image_file
+    assert call_count == 1, f"Expected DB called once, got {call_count}"
+
+
+def test_add_image_invalidates_only_matching_size_key(tmp_path):
+    """add_image() must evict only the key for the updated size, leaving other sizes intact."""
+    cache = card_images.CardImageCache(
+        cache_dir=tmp_path / "cache", db_path=tmp_path / "cache" / "images.db"
+    )
+    small_file = cache.cache_dir / "small" / "uuid-size-small.jpg"
+    normal_file = cache.cache_dir / "normal" / "uuid-size-normal.jpg"
+    small_file.parent.mkdir(parents=True, exist_ok=True)
+    normal_file.parent.mkdir(parents=True, exist_ok=True)
+    small_file.write_bytes(b"small")
+    normal_file.write_bytes(b"normal")
+
+    cache.add_image(
+        uuid="uuid-size",
+        name="Test Card",
+        set_code="SET",
+        collector_number="1",
+        image_size="small",
+        file_path=small_file,
+    )
+    cache.add_image(
+        uuid="uuid-size",
+        name="Test Card",
+        set_code="SET",
+        collector_number="1",
+        image_size="normal",
+        file_path=normal_file,
+    )
+
+    # Populate both size entries in the path cache
+    assert cache.get_image_path("Test Card", "small") == small_file
+    assert cache.get_image_path("Test Card", "normal") == normal_file
+    assert ("test card", "small") in cache._path_cache
+    assert ("test card", "normal") in cache._path_cache
+
+    # add_image() for "normal" must only invalidate the normal key
+    cache.add_image(
+        uuid="uuid-size-v2",
+        name="Test Card",
+        set_code="SET",
+        collector_number="1",
+        image_size="normal",
+        file_path=normal_file,
+    )
+
+    assert ("test card", "normal") not in cache._path_cache, "normal key must be invalidated"
+    assert ("test card", "small") in cache._path_cache, "small key must remain untouched"
+
+
+def test_add_image_with_none_optional_params_does_not_raise(tmp_path):
+    """add_image() must succeed when scryfall_uri and artist are omitted."""
+    cache = card_images.CardImageCache(
+        cache_dir=tmp_path / "cache", db_path=tmp_path / "cache" / "images.db"
+    )
+    image_file = cache.cache_dir / "normal" / "uuid-opt.jpg"
+    image_file.parent.mkdir(parents=True, exist_ok=True)
+    image_file.write_bytes(b"fake")
+
+    # Must not raise even without the optional scryfall_uri and artist kwargs
+    cache.add_image(
+        uuid="u1",
+        name="Opt Card",
+        set_code="SET",
+        collector_number="1",
+        image_size="normal",
+        file_path=image_file,
+    )
+
+    result = cache.get_image_path("Opt Card", "normal")
+    assert result == image_file
+
+
 def test_get_image_path_is_thread_safe(tmp_path):
     """Concurrent calls to get_image_path() for the same key must not raise."""
     cache = card_images.CardImageCache(

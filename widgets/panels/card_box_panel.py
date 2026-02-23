@@ -113,6 +113,15 @@ class CardBoxPanel(wx.Panel):
         self.Layout()
         self.Refresh()
 
+    def preload_image(self) -> None:
+        """Resolve and cache the card bitmap before the first paint event.
+
+        Call this while the parent scroller is frozen to avoid triggering
+        incremental repaints during deck load.
+        """
+        if not self._image_attempted:
+            self._refresh_card_bitmap()
+
     def refresh_image(self) -> None:
         self._image_attempted = False
         self._image_available = False

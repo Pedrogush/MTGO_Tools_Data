@@ -132,6 +132,8 @@ class CardTablePanel(wx.Panel):
                 )
                 self.grid_sizer.Add(cell, 0, wx.EXPAND)
                 self.card_widgets.append(cell)
+            for widget in self.card_widgets:
+                widget.preload_image()
             remainder = len(self.cards) % self.GRID_COLUMNS
             if remainder:
                 for _ in range(self.GRID_COLUMNS - remainder):

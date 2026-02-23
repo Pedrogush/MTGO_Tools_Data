@@ -401,8 +401,8 @@ class CardImageCache:
         collector_number: str,
         image_size: str,
         file_path: Path,
-        scryfall_uri: str = None,
-        artist: str = None,
+        scryfall_uri: str | None = None,
+        artist: str | None = None,
         face_index: int = 0,
     ) -> None:
         """Add image record to database."""

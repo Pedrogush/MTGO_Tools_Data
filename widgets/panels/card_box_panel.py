@@ -18,6 +18,8 @@ from utils.mana_icon_factory import ManaIconFactory
 
 
 class CardBoxPanel(wx.Panel):
+    _template_cache: dict[tuple[str, str, tuple[int, int, int]], wx.Bitmap] = {}
+
     def __init__(
         self,
         parent: wx.Window,
@@ -272,6 +274,10 @@ class CardBoxPanel(wx.Panel):
         return bitmap
 
     def _build_template_bitmap(self) -> wx.Bitmap:
+        key = (self.card["name"], self._mana_cost, self._card_color)
+        cached = CardBoxPanel._template_cache.get(key)
+        if cached is not None:
+            return cached
         bitmap = wx.Bitmap(DECK_CARD_WIDTH, DECK_CARD_HEIGHT)
         dc = wx.MemoryDC(bitmap)
         dc.SetBackground(wx.Brush(wx.Colour(*self._card_color)))
@@ -282,6 +288,7 @@ class CardBoxPanel(wx.Panel):
         dc.DrawRoundedRectangle(rect, DECK_CARD_CORNER_RADIUS)
         self._draw_placeholder_details(dc, rect)
         dc.SelectObject(wx.NullBitmap)
+        CardBoxPanel._template_cache[key] = bitmap
         return bitmap
 
     def _draw_placeholder_details(self, dc: wx.DC, rect: wx.Rect) -> None:

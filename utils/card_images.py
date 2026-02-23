@@ -19,6 +19,7 @@ from __future__ import annotations
 import json
 import os
 import sqlite3
+import threading
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass
 from datetime import datetime, timezone
@@ -103,6 +104,8 @@ class CardImageCache:
         self.db_path = self.db_path.resolve()
         self._path_roots = self._build_path_roots()
         self._init_database()
+        self._path_cache: dict[tuple[str, str], Path | None] = {}
+        self._path_cache_lock: threading.Lock = threading.Lock()
 
     def _ensure_directories(self) -> None:
         """Create cache directories if they don't exist."""
@@ -277,6 +280,20 @@ class CardImageCache:
         Returns:
             Path to cached image file, or None if not cached
         """
+        key = (card_name.lower(), size)
+        with self._path_cache_lock:
+            if key in self._path_cache:
+                return self._path_cache[key]
+        result = self._get_image_path_from_db(card_name, size)
+        with self._path_cache_lock:
+            # Only cache positive hits; None means "not yet downloaded"
+            # and would suppress future availability after a download.
+            if result is not None:
+                self._path_cache[key] = result
+        return result
+
+    def _get_image_path_from_db(self, card_name: str, size: str) -> Path | None:
+        """Query the database for a card image path, including double-faced alias lookup."""
         with sqlite3.connect(self.db_path, timeout=SQLITE_CONNECTION_TIMEOUT_SECONDS) as conn:
             cursor = conn.execute(
                 """
@@ -430,6 +447,10 @@ class CardImageCache:
                 ),
             )
             conn.commit()
+
+        key = (name.lower(), image_size)
+        with self._path_cache_lock:
+            self._path_cache.pop(key, None)
 
     def get_cache_stats(self) -> dict[str, Any]:
         """Get cache statistics."""

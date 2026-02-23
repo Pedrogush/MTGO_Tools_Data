@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import sqlite3
+import threading
 from datetime import datetime
 
 from utils import card_images
@@ -130,3 +131,106 @@ def test_is_bulk_data_outdated_respects_cached_metadata(tmp_path, monkeypatch):
 
     assert is_outdated is False
     assert returned_metadata["download_uri"] == metadata["download_uri"]
+
+
+def test_get_image_path_calls_db_only_once_for_same_name(tmp_path, monkeypatch):
+    """get_image_path() should hit _get_image_path_from_db only once per unique key."""
+    cache = card_images.CardImageCache(
+        cache_dir=tmp_path / "cache", db_path=tmp_path / "cache" / "images.db"
+    )
+    image_file = cache.cache_dir / "normal" / "test.jpg"
+    image_file.parent.mkdir(parents=True, exist_ok=True)
+    image_file.write_bytes(b"fake")
+
+    call_count = 0
+    original_from_db = cache._get_image_path_from_db
+
+    def counting_from_db(card_name: str, size: str):
+        nonlocal call_count
+        call_count += 1
+        return original_from_db(card_name, size)
+
+    monkeypatch.setattr(cache, "_get_image_path_from_db", counting_from_db)
+
+    # Seed the DB directly so the first lookup succeeds
+    cache.add_image(
+        uuid="uuid-once",
+        name="Test Card",
+        set_code="SET",
+        collector_number="001",
+        image_size="normal",
+        file_path=image_file,
+    )
+    # Clear path cache so the first real call goes to DB
+    cache._path_cache.clear()
+
+    result1 = cache.get_image_path("Test Card", "normal")
+    result2 = cache.get_image_path("Test Card", "normal")
+
+    assert result1 == result2 == image_file
+    assert call_count == 1, f"Expected DB called once, got {call_count}"
+
+
+def test_get_image_path_returns_path_after_add_image_when_initial_miss(tmp_path):
+    """After a None lookup, add_image() must invalidate the cache so next call returns the path."""
+    cache = card_images.CardImageCache(
+        cache_dir=tmp_path / "cache", db_path=tmp_path / "cache" / "images.db"
+    )
+
+    # First lookup returns None (card not yet downloaded)
+    result_before = cache.get_image_path("New Card", "normal")
+    assert result_before is None
+
+    # Simulate download completing
+    image_file = cache.cache_dir / "normal" / "uuid-new.jpg"
+    image_file.parent.mkdir(parents=True, exist_ok=True)
+    image_file.write_bytes(b"fake")
+    cache.add_image(
+        uuid="uuid-new",
+        name="New Card",
+        set_code="SET",
+        collector_number="002",
+        image_size="normal",
+        file_path=image_file,
+    )
+
+    # Lookup after add_image() must return the path
+    result_after = cache.get_image_path("New Card", "normal")
+    assert result_after == image_file
+
+
+def test_get_image_path_is_thread_safe(tmp_path):
+    """Concurrent calls to get_image_path() for the same key must not raise."""
+    cache = card_images.CardImageCache(
+        cache_dir=tmp_path / "cache", db_path=tmp_path / "cache" / "images.db"
+    )
+    image_file = cache.cache_dir / "normal" / "uuid-thread.jpg"
+    image_file.parent.mkdir(parents=True, exist_ok=True)
+    image_file.write_bytes(b"fake")
+    cache.add_image(
+        uuid="uuid-thread",
+        name="Thread Card",
+        set_code="SET",
+        collector_number="003",
+        image_size="normal",
+        file_path=image_file,
+    )
+    cache._path_cache.clear()
+
+    results: list[object] = []
+    errors: list[Exception] = []
+
+    def worker():
+        try:
+            results.append(cache.get_image_path("Thread Card", "normal"))
+        except Exception as exc:
+            errors.append(exc)
+
+    threads = [threading.Thread(target=worker) for _ in range(20)]
+    for t in threads:
+        t.start()
+    for t in threads:
+        t.join()
+
+    assert not errors, f"Thread errors: {errors}"
+    assert all(r == image_file for r in results)

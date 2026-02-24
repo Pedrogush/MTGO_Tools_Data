@@ -272,7 +272,7 @@ class CardBoxPanel(wx.Panel):
         scale = min(DECK_CARD_WIDTH / img_width, DECK_CARD_HEIGHT / img_height)
         new_width = max(1, int(img_width * scale))
         new_height = max(1, int(img_height * scale))
-        return image.Scale(new_width, new_height, wx.IMAGE_QUALITY_HIGH)
+        return image.Scale(new_width, new_height, wx.IMAGE_QUALITY_NORMAL)
 
     def _render_bitmap_with_image(self, image: wx.Image) -> wx.Bitmap:
         bitmap = wx.Bitmap(DECK_CARD_WIDTH, DECK_CARD_HEIGHT)

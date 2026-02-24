@@ -6,6 +6,7 @@ import wx.lib.scrolledpanel as scrolled
 
 from utils.constants import DARK_PANEL, DECK_CARD_WIDTH, SUBDUED_TEXT
 from utils.mana_icon_factory import ManaIconFactory
+from utils.perf import timed
 from widgets.panels.card_box_panel import CardBoxPanel
 
 
@@ -109,6 +110,7 @@ class CardTablePanel(wx.Panel):
         self.count_label.SetLabel(f"{total} card{'s' if total != 1 else ''}")
         return True
 
+    @timed
     def _rebuild_grid(self) -> None:
         self.Freeze()
         try:

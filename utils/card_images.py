@@ -45,6 +45,7 @@ from utils.constants import (
     CACHE_DIR,
     SQLITE_CONNECTION_TIMEOUT_SECONDS,
 )
+from utils.perf import timed
 
 # Image cache configuration
 IMAGE_CACHE_DIR = CACHE_DIR / "card_images"
@@ -270,6 +271,7 @@ class CardImageCache:
                 return candidate
         return None
 
+    @timed
     def get_image_path(self, card_name: str, size: str = "normal") -> Path | None:
         """Get cached image path for a card name.
 

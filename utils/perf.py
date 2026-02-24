@@ -14,7 +14,10 @@ R = TypeVar("R")
 def timed(func: Callable[P, R]) -> Callable[P, R]:
     """Log execution time of *func* at DEBUG level.
 
-    Cost when DEBUG is disabled: one ``logger.debug`` guard check (~30 ns).
+    Overhead per call: two ``time.perf_counter()`` syscalls plus one
+    ``logger.debug`` guard check (~80–150 ns total). Suitable for methods
+    that are called at most a few times per user action; do NOT apply to
+    sub-millisecond callbacks firing at 60 FPS.
     """
 
     @functools.wraps(func)

@@ -24,6 +24,7 @@ from utils.constants import (
     CARD_IMAGE_FLIP_ICON_TEXT_SCALE,
     CARD_IMAGE_PLACEHOLDER_INSET,
 )
+from utils.perf import timed
 
 
 class CardImageDisplay(wx.Panel):
@@ -148,6 +149,7 @@ class CardImageDisplay(wx.Panel):
         """
         return self.show_images([image_path] if image_path else [])
 
+    @timed
     def _load_image_at_index(self, index: int, animate: bool = True) -> bool:
         """Load and display the image at the given index.
 
@@ -451,6 +453,7 @@ class CardImageDisplay(wx.Panel):
         icon_y = self.flip_icon_margin
         return wx.Rect(icon_x, icon_y, self.flip_icon_size, self.flip_icon_size)
 
+    @timed
     def _apply_rounded_corners_to_image(self, image: wx.Image, radius: int) -> wx.Image:
         """Apply rounded corners to an image using alpha channel manipulation.
 

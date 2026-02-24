@@ -15,6 +15,7 @@ from utils.constants import (
     LIGHT_TEXT,
 )
 from utils.mana_icon_factory import ManaIconFactory
+from utils.perf import timed
 
 
 class CardBoxPanel(wx.Panel):
@@ -221,6 +222,7 @@ class CardBoxPanel(wx.Panel):
             dc.SetBrush(wx.TRANSPARENT_BRUSH)
             dc.DrawRoundedRectangle(rect, DECK_CARD_CORNER_RADIUS)
 
+    @timed
     def _refresh_card_bitmap(self) -> None:
         self._image_attempted = True
         image_path = None
@@ -261,6 +263,7 @@ class CardBoxPanel(wx.Panel):
                 break
         return candidates
 
+    @timed
     def _scale_image_to_card(self, image: wx.Image) -> wx.Image:
         img_width = image.GetWidth()
         img_height = image.GetHeight()
@@ -282,6 +285,7 @@ class CardBoxPanel(wx.Panel):
         dc.SelectObject(wx.NullBitmap)
         return bitmap
 
+    @timed
     def _build_template_bitmap(self) -> wx.Bitmap:
         key = (self.card["name"], self._mana_cost, self._card_color)
         cached = CardBoxPanel._template_cache.get(key)

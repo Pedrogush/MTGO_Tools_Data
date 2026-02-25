@@ -247,6 +247,19 @@ class CardImageCache:
                 if wsl_path.exists():
                     return wsl_path
 
+        # Project may have been renamed (e.g. magic_online_metagame_crawler →
+        # mtgo_tools).  The stored absolute path no longer exists but the file
+        # itself (identified by its UUID filename) lives under the current
+        # cache_dir.  Reconstruct the path from just the last two components
+        # (size-subfolder/uuid.jpg) relative to the current cache_dir.
+        try:
+            raw_path = Path(raw.replace("\\", "/"))
+            rebased = self.cache_dir / raw_path.parts[-2] / raw_path.name
+            if rebased.exists():
+                return rebased
+        except Exception:
+            pass
+
         return resolved
 
     def _normalize_path(self, path: Path) -> Path:

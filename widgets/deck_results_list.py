@@ -37,6 +37,13 @@ class DeckResultsList(wx.VListBox):
     def GetCount(self) -> int:
         return len(self._items)
 
+    def GetString(self, n: int) -> str:
+        """Return the display text for item n (compatible with wx.ListBox API)."""
+        if n < 0 or n >= len(self._items):
+            return ""
+        line_one, line_two = self._items[n]
+        return f"{line_one}\n{line_two}" if line_two else line_one
+
     def _split_lines(self, text: str) -> tuple[str, str]:
         lines = [line.strip() for line in text.splitlines() if line.strip()]
         if not lines:

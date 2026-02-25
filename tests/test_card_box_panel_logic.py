@@ -53,7 +53,7 @@ CardBoxPanel = _cbp_mod.CardBoxPanel
         ({"name": "Island"}, {}, ["Island"]),
         ({"name": "A // B"}, {}, ["A // B"]),
         ({"name": "A"}, {"aliases": ["Alias1"]}, ["A", "Alias1"]),
-        ({"name": "A"}, {"aliases": ["A // B", "Other"]}, ["A", "A // B", "Other"]),
+        ({"name": "A"}, {"aliases": ["A // B", "Other"]}, ["A // B", "A", "Other"]),
         ({"name": "A"}, {"aliases": "bad"}, ["A"]),
         ({"name": ""}, {}, []),
     ],

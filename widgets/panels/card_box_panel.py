@@ -313,11 +313,14 @@ class CardBoxPanel(wx.Panel):
             for alias in aliases:
                 if alias and alias not in candidates:
                     candidates.append(alias)
-        # Prioritize the combined face name if present.
+        # Mirror card_inspector_panel._resolve_image_request_name: put the
+        # combined DFC name (containing "//") at position 0 so it is tried
+        # before any individual face name.  This matches how Card Inspector
+        # resolves images for double-faced cards.
         for alias in list(candidates):
             if "//" in alias and alias != candidates[0]:
-                candidates.insert(1, alias)
                 candidates.remove(alias)
+                candidates.insert(0, alias)
                 break
         return candidates
 

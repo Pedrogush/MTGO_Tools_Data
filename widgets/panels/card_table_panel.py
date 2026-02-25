@@ -199,8 +199,17 @@ class CardTablePanel(wx.Panel):
         if not card_name:
             return
         key = card_name.lower()
+        # For DFCs the downloaded name is the combined form "A // B".  Cards in
+        # the deck may be stored under the individual face name ("A" or "B"), so
+        # build a set of all name variants to match against.
+        face_keys: set[str] = {key}
+        if "//" in key:
+            for part in key.split("//"):
+                stripped = part.strip()
+                if stripped:
+                    face_keys.add(stripped)
         for widget in self.card_widgets:
-            if widget.card["name"].lower() == key:
+            if widget.card["name"].lower() in face_keys:
                 widget.refresh_image()  # resets state and triggers load_image_async()
 
     def _notify_selection(self, card: dict[str, Any] | None) -> None:

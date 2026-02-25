@@ -19,6 +19,7 @@ from __future__ import annotations
 import json
 import os
 import sqlite3
+import threading
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass
 from datetime import datetime, timezone
@@ -39,7 +40,12 @@ from utils.atomic_io import (
     atomic_write_stream,
     locked_path,
 )
-from utils.constants import BULK_DATA_CACHE_FRESHNESS_SECONDS, CACHE_DIR
+from utils.constants import (
+    BULK_DATA_CACHE_FRESHNESS_SECONDS,
+    CACHE_DIR,
+    SQLITE_CONNECTION_TIMEOUT_SECONDS,
+)
+from utils.perf import timed
 
 # Image cache configuration
 IMAGE_CACHE_DIR = CACHE_DIR / "card_images"
@@ -99,6 +105,8 @@ class CardImageCache:
         self.db_path = self.db_path.resolve()
         self._path_roots = self._build_path_roots()
         self._init_database()
+        self._path_cache: dict[tuple[str, str], Path | None] = {}
+        self._path_cache_lock: threading.Lock = threading.Lock()
 
     def _ensure_directories(self) -> None:
         """Create cache directories if they don't exist."""
@@ -129,7 +137,7 @@ class CardImageCache:
 
     def _init_database(self) -> None:
         """Initialize SQLite database schema."""
-        with sqlite3.connect(self.db_path) as conn:
+        with sqlite3.connect(self.db_path, timeout=SQLITE_CONNECTION_TIMEOUT_SECONDS) as conn:
             self._create_schema(conn)
             self._ensure_face_index_support(conn)
             conn.commit()
@@ -239,6 +247,19 @@ class CardImageCache:
                 if wsl_path.exists():
                     return wsl_path
 
+        # Project may have been renamed (e.g. magic_online_metagame_crawler →
+        # mtgo_tools).  The stored absolute path no longer exists but the file
+        # itself (identified by its UUID filename) lives under the current
+        # cache_dir.  Reconstruct the path from just the last two components
+        # (size-subfolder/uuid.jpg) relative to the current cache_dir.
+        try:
+            raw_path = Path(raw.replace("\\", "/"))
+            rebased = self.cache_dir / raw_path.parts[-2] / raw_path.name
+            if rebased.exists():
+                return rebased
+        except Exception:
+            pass
+
         return resolved
 
     def _normalize_path(self, path: Path) -> Path:
@@ -263,6 +284,7 @@ class CardImageCache:
                 return candidate
         return None
 
+    @timed
     def get_image_path(self, card_name: str, size: str = "normal") -> Path | None:
         """Get cached image path for a card name.
 
@@ -273,7 +295,21 @@ class CardImageCache:
         Returns:
             Path to cached image file, or None if not cached
         """
-        with sqlite3.connect(self.db_path) as conn:
+        key = (card_name.lower(), size)
+        with self._path_cache_lock:
+            if key in self._path_cache:
+                return self._path_cache[key]
+        result = self._get_image_path_from_db(card_name, size)
+        with self._path_cache_lock:
+            # Only cache positive hits; None means "not yet downloaded"
+            # and would suppress future availability after a download.
+            if result is not None:
+                self._path_cache[key] = result
+        return result
+
+    def _get_image_path_from_db(self, card_name: str, size: str) -> Path | None:
+        """Query the database for a card image path, including double-faced alias lookup."""
+        with sqlite3.connect(self.db_path, timeout=SQLITE_CONNECTION_TIMEOUT_SECONDS) as conn:
             cursor = conn.execute(
                 """
                 SELECT file_path
@@ -333,7 +369,7 @@ class CardImageCache:
         """Get cached image path for a specific printing."""
         if not set_code:
             return self.get_image_path(card_name, size)
-        with sqlite3.connect(self.db_path) as conn:
+        with sqlite3.connect(self.db_path, timeout=SQLITE_CONNECTION_TIMEOUT_SECONDS) as conn:
             cursor = conn.execute(
                 """
                 SELECT file_path
@@ -361,7 +397,7 @@ class CardImageCache:
             query = "SELECT file_path FROM card_images WHERE uuid = ? AND face_index = ? AND image_size = ?"
             params = (uuid, face_index, size)
 
-        with sqlite3.connect(self.db_path) as conn:
+        with sqlite3.connect(self.db_path, timeout=SQLITE_CONNECTION_TIMEOUT_SECONDS) as conn:
             cursor = conn.execute(query, params)
             row = cursor.fetchone()
             if row:
@@ -372,7 +408,7 @@ class CardImageCache:
 
     def get_image_paths_by_uuid(self, uuid: str, size: str = "normal") -> list[Path]:
         """Return all cached face images for a UUID, ordered by face index."""
-        with sqlite3.connect(self.db_path) as conn:
+        with sqlite3.connect(self.db_path, timeout=SQLITE_CONNECTION_TIMEOUT_SECONDS) as conn:
             rows = conn.execute(
                 """
                 SELECT face_index, file_path
@@ -397,14 +433,14 @@ class CardImageCache:
         collector_number: str,
         image_size: str,
         file_path: Path,
-        scryfall_uri: str = None,
-        artist: str = None,
+        scryfall_uri: str | None = None,
+        artist: str | None = None,
         face_index: int = 0,
     ) -> None:
         """Add image record to database."""
         file_path_str = str(Path(file_path).resolve())
 
-        with sqlite3.connect(self.db_path) as conn:
+        with sqlite3.connect(self.db_path, timeout=SQLITE_CONNECTION_TIMEOUT_SECONDS) as conn:
             conn.execute(
                 """
                 INSERT OR REPLACE INTO card_images
@@ -427,9 +463,13 @@ class CardImageCache:
             )
             conn.commit()
 
+        key = (name.lower(), image_size)
+        with self._path_cache_lock:
+            self._path_cache.pop(key, None)
+
     def get_cache_stats(self) -> dict[str, Any]:
         """Get cache statistics."""
-        with sqlite3.connect(self.db_path) as conn:
+        with sqlite3.connect(self.db_path, timeout=SQLITE_CONNECTION_TIMEOUT_SECONDS) as conn:
             total = conn.execute("SELECT COUNT(DISTINCT uuid) FROM card_images").fetchone()[0]
             by_size = {}
             for size in IMAGE_SIZES.values():
@@ -502,7 +542,7 @@ class BulkImageDownloader:
 
     def _get_cached_bulk_data_record(self) -> tuple[str | None, str | None]:
         """Return the saved bulk data metadata (updated_at, download URI)."""
-        with sqlite3.connect(self.cache.db_path) as conn:
+        with sqlite3.connect(self.cache.db_path, timeout=SQLITE_CONNECTION_TIMEOUT_SECONDS) as conn:
             row = conn.execute(
                 "SELECT downloaded_at, bulk_data_uri FROM bulk_data_meta WHERE id = 1"
             ).fetchone()
@@ -581,7 +621,9 @@ class BulkImageDownloader:
             atomic_write_stream(BULK_DATA_CACHE, resp.iter_content(chunk_size=CHUNK_SIZE))
 
             # Update database metadata (defer card count to avoid parsing 500MB file)
-            with sqlite3.connect(self.cache.db_path) as conn:
+            with sqlite3.connect(
+                self.cache.db_path, timeout=SQLITE_CONNECTION_TIMEOUT_SECONDS
+            ) as conn:
                 conn.execute(
                     """
                     INSERT OR REPLACE INTO bulk_data_meta (id, downloaded_at, total_cards, bulk_data_uri)

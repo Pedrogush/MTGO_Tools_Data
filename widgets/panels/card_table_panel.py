@@ -6,12 +6,14 @@ import wx.lib.scrolledpanel as scrolled
 
 from utils.constants import DARK_PANEL, DECK_CARD_WIDTH, SUBDUED_TEXT
 from utils.mana_icon_factory import ManaIconFactory
+from utils.perf import timed
 from widgets.panels.card_box_panel import CardBoxPanel
 
 
 class CardTablePanel(wx.Panel):
     GRID_COLUMNS = 4
     GRID_GAP = 8
+    POOL_SIZE = 60
 
     def __init__(
         self,
@@ -38,6 +40,7 @@ class CardTablePanel(wx.Panel):
         self._on_hover = on_hover
         self.cards: list[dict[str, Any]] = []
         self.card_widgets: list[CardBoxPanel] = []
+        self._pool: list[CardBoxPanel] = []
         self.active_panel: CardBoxPanel | None = None
         self.selected_name: str | None = None
 
@@ -54,7 +57,27 @@ class CardTablePanel(wx.Panel):
 
         self.scroller = scrolled.ScrolledPanel(self, style=wx.VSCROLL)
         self.scroller.SetBackgroundColour(DARK_PANEL)
-        self.grid_sizer = wx.GridSizer(0, self.GRID_COLUMNS, self.GRID_GAP, self.GRID_GAP)
+        self.grid_sizer = wx.WrapSizer(wx.HORIZONTAL)
+
+        # Pre-create POOL_SIZE panels. Visible panels show cards; hidden panels
+        # are excluded from layout via sizer.Show(panel, False).
+        for _ in range(self.POOL_SIZE):
+            cell = CardBoxPanel(
+                self.scroller,
+                zone,
+                {"name": "", "qty": 0},
+                icon_factory,
+                get_metadata,
+                owned_status,
+                on_delta,
+                on_remove,
+                self._handle_card_click,
+                on_hover,
+            )
+            self.grid_sizer.Add(cell, 0, wx.RIGHT | wx.BOTTOM, self.GRID_GAP)
+            self.grid_sizer.Show(cell, False)
+            self._pool.append(cell)
+
         self.scroller.SetSizer(self.grid_sizer)
         self.scroller.SetupScrolling(scroll_x=False, scroll_y=True, rate_x=5, rate_y=5)
         outer.Add(self.scroller, 1, wx.EXPAND)
@@ -64,87 +87,48 @@ class CardTablePanel(wx.Panel):
         scrollbar_width = wx.SystemSettings.GetMetric(wx.SYS_VSCROLL_X)
         if scrollbar_width <= 0:
             scrollbar_width = 16
-        return (
-            (DECK_CARD_WIDTH * cls.GRID_COLUMNS)
-            + (cls.GRID_GAP * (cls.GRID_COLUMNS - 1))
-            + scrollbar_width
-        )
+        # Each panel has GRID_GAP right-border, so effective width per column is
+        # DECK_CARD_WIDTH + GRID_GAP. The scroller must be wide enough for exactly
+        # GRID_COLUMNS panels plus the vertical scrollbar.
+        return (DECK_CARD_WIDTH + cls.GRID_GAP) * cls.GRID_COLUMNS + scrollbar_width
 
     def set_cards(self, cards: list[dict[str, Any]]) -> None:
-        if self._try_incremental_update(cards):
-            self.cards = cards
-            return
         self.cards = cards
-        self._rebuild_grid()
+        self._update_panels(cards)
 
-    def _try_incremental_update(self, new_cards: list[dict[str, Any]]) -> bool:
-        """Try to update existing widgets incrementally instead of rebuilding.
-        Returns True if incremental update was possible, False if full rebuild needed."""
-        if len(new_cards) != len(self.card_widgets):
-            return False
-
-        # Check if cards match widgets in the same order
-        # (new_cards may have been sorted while widgets are in old order)
-        for widget, new_card in zip(self.card_widgets, new_cards):
-            if widget.card["name"].lower() != new_card["name"].lower():
-                return False
-
-        # All cards match widget order - update only changed quantities
-        total = 0
-        for widget, new_card in zip(self.card_widgets, new_cards):
-            qty = new_card["qty"]
-            total += qty
-
-            # Only update widget if quantity or ownership color changed
-            # Compare against widget's current displayed value to detect changes
-            current_qty_str = widget.qty_label.GetLabel()
-            if current_qty_str != str(qty):
-                widget.card = new_card
-                owned_text, owned_colour = self._owned_status(new_card["name"], int(qty))
-                widget.update_quantity(qty, owned_text, owned_colour)
-            else:
-                # Still need to update card reference even if qty didn't change
-                widget.card = new_card
-
-        self.count_label.SetLabel(f"{total} card{'s' if total != 1 else ''}")
-        return True
-
-    def _rebuild_grid(self) -> None:
-        self.scroller.Freeze()
+    @timed
+    def _update_panels(self, cards: list[dict[str, Any]]) -> None:
+        """Update the fixed pool of panels in-place; no widgets are created or destroyed."""
+        self.Freeze()
         try:
-            self.grid_sizer.Clear(delete_windows=True)
-            self.card_widgets = []
-            self.active_panel = None
-            total = sum(card["qty"] for card in self.cards)
-            self.count_label.SetLabel(f"{total} card{'s' if total != 1 else ''}")
-            for card in self.cards:
-                cell = CardBoxPanel(
-                    self.scroller,
-                    self.zone,
-                    card,
-                    self.icon_factory,
-                    self._get_metadata,
-                    self._owned_status,
-                    self._on_delta,
-                    self._on_remove,
-                    self._handle_card_click,
-                    self._on_hover,
-                )
-                self.grid_sizer.Add(cell, 0, wx.EXPAND)
-                self.card_widgets.append(cell)
-            remainder = len(self.cards) % self.GRID_COLUMNS
-            if remainder:
-                for _ in range(self.GRID_COLUMNS - remainder):
-                    spacer = wx.Panel(self.scroller)
-                    spacer.SetBackgroundColour(DARK_PANEL)
-                    self.grid_sizer.Add(spacer, 0, wx.EXPAND)
-            self.grid_sizer.Layout()
-            self.scroller.Layout()
-            self.scroller.FitInside()
-            self.scroller.SetupScrolling(scroll_x=False, scroll_y=True, rate_x=5, rate_y=5)
-            self._restore_selection()
+            self.scroller.Freeze()
+            try:
+                self.active_panel = None
+                total = sum(card["qty"] for card in cards)
+                self.count_label.SetLabel(f"{total} card{'s' if total != 1 else ''}")
+
+                for i, panel in enumerate(self._pool):
+                    if i < len(cards):
+                        panel.assign_card(cards[i], self.zone)
+                        self.grid_sizer.Show(panel, True)
+                    else:
+                        self.grid_sizer.Show(panel, False)
+
+                self.card_widgets = self._pool[: len(cards)]
+
+                self.grid_sizer.Layout()
+                self.scroller.Layout()
+                self.scroller.FitInside()
+                self.scroller.SetupScrolling(scroll_x=False, scroll_y=True, rate_x=5, rate_y=5)
+                self._restore_selection()
+            finally:
+                self.scroller.Thaw()
         finally:
-            self.scroller.Thaw()
+            self.Thaw()
+
+        # Fire all image loads simultaneously after the UI is unfrozen.
+        for panel in self.card_widgets:
+            panel.load_image_async()
 
     def _handle_card_click(self, zone: str, card: dict[str, Any], panel: CardBoxPanel) -> None:
         if self.active_panel is panel:
@@ -215,9 +199,18 @@ class CardTablePanel(wx.Panel):
         if not card_name:
             return
         key = card_name.lower()
+        # For DFCs the downloaded name is the combined form "A // B".  Cards in
+        # the deck may be stored under the individual face name ("A" or "B"), so
+        # build a set of all name variants to match against.
+        face_keys: set[str] = {key}
+        if "//" in key:
+            for part in key.split("//"):
+                stripped = part.strip()
+                if stripped:
+                    face_keys.add(stripped)
         for widget in self.card_widgets:
-            if widget.card["name"].lower() == key:
-                widget.refresh_image()
+            if widget.card["name"].lower() in face_keys:
+                widget.refresh_image()  # resets state and triggers load_image_async()
 
     def _notify_selection(self, card: dict[str, Any] | None) -> None:
         if self._on_select:

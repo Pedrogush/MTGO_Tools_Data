@@ -1,7 +1,9 @@
 from collections.abc import Callable
+from threading import Thread
 from typing import Any
 
 import wx
+from PIL import Image as PilImage
 
 from utils.card_images import get_card_image
 from utils.constants import (
@@ -15,9 +17,12 @@ from utils.constants import (
     LIGHT_TEXT,
 )
 from utils.mana_icon_factory import ManaIconFactory
+from utils.perf import timed
 
 
 class CardBoxPanel(wx.Panel):
+    _template_cache: dict[tuple[str, str, tuple[int, int, int]], wx.Bitmap] = {}
+
     def __init__(
         self,
         parent: wx.Window,
@@ -49,6 +54,7 @@ class CardBoxPanel(wx.Panel):
         self._card_bitmap: wx.Bitmap | None = None
         self._image_available = False
         self._image_attempted = False
+        self._image_generation: int = 0
         self._image_name_candidates: list[str] = []
 
         self.SetBackgroundColour(DARK_ALT)
@@ -81,15 +87,15 @@ class CardBoxPanel(wx.Panel):
         self.button_panel.SetSizer(btn_sizer)
         add_btn = wx.Button(self.button_panel, label="+")
         self._style_action_button(add_btn)
-        add_btn.Bind(wx.EVT_BUTTON, lambda _evt: self._on_delta(zone, card["name"], 1))
+        add_btn.Bind(wx.EVT_BUTTON, lambda _evt: self._on_delta(self.zone, self.card["name"], 1))
         btn_sizer.Add(add_btn, 0)
         sub_btn = wx.Button(self.button_panel, label="−")
         self._style_action_button(sub_btn)
-        sub_btn.Bind(wx.EVT_BUTTON, lambda _evt: self._on_delta(zone, card["name"], -1))
+        sub_btn.Bind(wx.EVT_BUTTON, lambda _evt: self._on_delta(self.zone, self.card["name"], -1))
         btn_sizer.Add(sub_btn, 0, wx.LEFT, 2)
         rem_btn = wx.Button(self.button_panel, label="×")
         self._style_action_button(rem_btn)
-        rem_btn.Bind(wx.EVT_BUTTON, lambda _evt: self._on_remove(zone, card["name"]))
+        rem_btn.Bind(wx.EVT_BUTTON, lambda _evt: self._on_remove(self.zone, self.card["name"]))
         btn_sizer.Add(rem_btn, 0, wx.LEFT, 2)
         buttons_row = wx.BoxSizer(wx.HORIZONTAL)
         buttons_row.Add(self.button_panel, 0, wx.LEFT | wx.BOTTOM, DECK_CARD_BUTTON_MARGIN)
@@ -111,10 +117,77 @@ class CardBoxPanel(wx.Panel):
         self.Layout()
         self.Refresh()
 
+    def preload_image(self) -> None:
+        """No-op: image loading is now asynchronous via load_image_async()."""
+
     def refresh_image(self) -> None:
         self._image_attempted = False
         self._image_available = False
         self._card_bitmap = None
+        self.load_image_async()
+
+    def assign_card(self, card: dict[str, Any], zone: str) -> None:
+        """Re-assign this panel to display a different card in-place.
+
+        Invalidates any in-progress async image load via the generation counter.
+        The caller must follow up with load_image_async() to start a new load.
+        """
+        self._image_generation += 1
+        self.card = card
+        self.zone = zone
+        self._update_card_state(card)
+        self.qty_label.SetLabel(str(card["qty"]))
+        self.Layout()
+        self.Refresh()
+
+    def load_image_async(self) -> None:
+        """Start asynchronous image loading in a background thread.
+
+        Safe to call simultaneously on many panels — all I/O happens in parallel
+        daemon threads and results are posted back to the main thread via
+        wx.CallAfter, so the UI is never blocked.
+        """
+        self._image_generation += 1
+        gen = self._image_generation
+        self._image_attempted = True
+        candidates = list(self._image_name_candidates)
+        Thread(target=self._image_load_worker, args=(gen, candidates), daemon=True).start()
+
+    def _image_load_worker(self, gen: int, candidates: list[str]) -> None:
+        """Background thread: locate and load the card image via PIL."""
+        image_path = None
+        for name in candidates:
+            path = get_card_image(name, "normal")
+            if path and path.exists():
+                image_path = path
+                break
+        if not image_path:
+            wx.CallAfter(self._on_image_load_done, gen, None)
+            return
+        try:
+            pil_img = PilImage.open(str(image_path)).convert("RGB")
+            w, h = pil_img.size
+            scale = min(DECK_CARD_WIDTH / w, DECK_CARD_HEIGHT / h)
+            new_w = max(1, int(w * scale))
+            new_h = max(1, int(h * scale))
+            pil_img = pil_img.resize((new_w, new_h), PilImage.LANCZOS)
+            wx.CallAfter(self._on_image_load_done, gen, pil_img)
+        except Exception:
+            wx.CallAfter(self._on_image_load_done, gen, None)
+
+    def _on_image_load_done(self, gen: int, pil_img: "PilImage.Image | None") -> None:
+        """Main-thread callback: apply the loaded image bitmap."""
+        if gen != self._image_generation:
+            return  # stale result superseded by a newer assign_card / load
+        if pil_img is None:
+            self._image_available = False
+            self._card_bitmap = None
+        else:
+            w, h = pil_img.size
+            wx_img = wx.Image(w, h)
+            wx_img.SetData(pil_img.tobytes())
+            self._card_bitmap = self._render_bitmap_with_image(wx_img)
+            self._image_available = True
         self.Refresh()
 
     def set_active(self, active: bool) -> None:
@@ -197,9 +270,6 @@ class CardBoxPanel(wx.Panel):
         dc.SetBackground(wx.Brush(wx.Colour(*self._card_color)))
         dc.Clear()
 
-        if not self._image_attempted:
-            self._refresh_card_bitmap()
-
         if self._image_available and self._card_bitmap:
             dc.DrawBitmap(self._card_bitmap, rect.x, rect.y, True)
         elif self._template_bitmap:
@@ -210,6 +280,7 @@ class CardBoxPanel(wx.Panel):
             dc.SetBrush(wx.TRANSPARENT_BRUSH)
             dc.DrawRoundedRectangle(rect, DECK_CARD_CORNER_RADIUS)
 
+    @timed
     def _refresh_card_bitmap(self) -> None:
         self._image_attempted = True
         image_path = None
@@ -242,14 +313,18 @@ class CardBoxPanel(wx.Panel):
             for alias in aliases:
                 if alias and alias not in candidates:
                     candidates.append(alias)
-        # Prioritize the combined face name if present.
+        # Mirror card_inspector_panel._resolve_image_request_name: put the
+        # combined DFC name (containing "//") at position 0 so it is tried
+        # before any individual face name.  This matches how Card Inspector
+        # resolves images for double-faced cards.
         for alias in list(candidates):
             if "//" in alias and alias != candidates[0]:
-                candidates.insert(1, alias)
                 candidates.remove(alias)
+                candidates.insert(0, alias)
                 break
         return candidates
 
+    @timed
     def _scale_image_to_card(self, image: wx.Image) -> wx.Image:
         img_width = image.GetWidth()
         img_height = image.GetHeight()
@@ -271,7 +346,12 @@ class CardBoxPanel(wx.Panel):
         dc.SelectObject(wx.NullBitmap)
         return bitmap
 
+    @timed
     def _build_template_bitmap(self) -> wx.Bitmap:
+        key = (self.card["name"], self._mana_cost, self._card_color)
+        cached = CardBoxPanel._template_cache.get(key)
+        if cached is not None:
+            return cached
         bitmap = wx.Bitmap(DECK_CARD_WIDTH, DECK_CARD_HEIGHT)
         dc = wx.MemoryDC(bitmap)
         dc.SetBackground(wx.Brush(wx.Colour(*self._card_color)))
@@ -282,6 +362,7 @@ class CardBoxPanel(wx.Panel):
         dc.DrawRoundedRectangle(rect, DECK_CARD_CORNER_RADIUS)
         self._draw_placeholder_details(dc, rect)
         dc.SelectObject(wx.NullBitmap)
+        CardBoxPanel._template_cache[key] = bitmap
         return bitmap
 
     def _draw_placeholder_details(self, dc: wx.DC, rect: wx.Rect) -> None:

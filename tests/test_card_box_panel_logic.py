@@ -77,29 +77,24 @@ def test_build_image_name_candidates(
 # ---------------------------------------------------------------------------
 # preload_image
 # ---------------------------------------------------------------------------
-def test_preload_image_calls_refresh_exactly_once() -> None:
-    """preload_image() must delegate to _refresh_card_bitmap exactly once."""
-    stub = types.SimpleNamespace(_image_attempted=False)
+def test_preload_image_is_no_op() -> None:
+    """preload_image() is now a no-op; it must not crash or call _refresh_card_bitmap."""
     call_count = 0
 
     def fake_refresh() -> None:
         nonlocal call_count
         call_count += 1
-        stub._image_attempted = True
 
-    stub._refresh_card_bitmap = fake_refresh
+    stub = types.SimpleNamespace(_image_attempted=False, _refresh_card_bitmap=fake_refresh)
 
     CardBoxPanel.preload_image(stub)
-    CardBoxPanel.preload_image(stub)  # second call — must be a no-op
+    CardBoxPanel.preload_image(stub)
 
-    assert call_count == 1
+    assert call_count == 0
 
 
-def test_preload_image_skips_if_already_attempted() -> None:
-    """preload_image() must not call _refresh_card_bitmap when _image_attempted is True."""
-
-    def _raise_if_called() -> None:
-        raise AssertionError("_refresh_card_bitmap must not be called")
-
-    stub = types.SimpleNamespace(_image_attempted=True, _refresh_card_bitmap=_raise_if_called)
-    CardBoxPanel.preload_image(stub)  # must not raise
+def test_preload_image_does_not_raise_regardless_of_state() -> None:
+    """preload_image() must be safe to call whether or not _image_attempted is set."""
+    for attempted in (True, False):
+        stub = types.SimpleNamespace(_image_attempted=attempted)
+        CardBoxPanel.preload_image(stub)  # must not raise

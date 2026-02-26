@@ -18,7 +18,7 @@ from widgets.buttons.mana_button import create_mana_button
 
 
 _MANA_IMG_H = 26   # Row image height — matches ManaIconFactory default icon_size (no downscale)
-_MANA_IMG_W = 116  # Canvas width (spans most of the 120px "Mana Cost" column)
+_MANA_IMG_W = 200  # Canvas width — matches the 145px "Mana Cost" column
 _MANA_ICON_GAP = 1  # Pixels between adjacent mana icons
 
 
@@ -42,10 +42,10 @@ class _SearchResultsView(wx.ListCtrl):
     def _build_mana_image_list(self) -> None:
         """Build a wx.ImageList mapping each unique mana cost to a composite bitmap.
 
-        Each symbol is fetched individually via bitmap_for_symbol (which renders
-        on DARK_ALT), then scaled to _MANA_IMG_H and right-justified on a
-        DARK_ALT canvas.  This avoids the black inter-symbol gaps that appear
-        when bitmap_for_cost composites onto a transparent/black background.
+        Each symbol is scaled from its raw source bitmap directly to its final
+        display size in a single pass, avoiding quality loss from chained
+        downscales.  The final height is _MANA_IMG_H when all symbols fit within
+        the canvas, or proportionally smaller when they would overflow.
         """
         from utils.mana_icon_factory import tokenize_mana_symbols
 
@@ -59,41 +59,40 @@ class _SearchResultsView(wx.ListCtrl):
             if not tokens:
                 continue
 
-            # Scale each symbol bitmap to _MANA_IMG_H.
-            # bitmap_for_symbol renders on DARK_ALT, so no colour bleed at edges.
-            scaled_icons: list[wx.Bitmap] = []
+            # Collect render-scale bitmaps (before the factory's own downscale).
+            # Using hires gives a single downscale from ~78px to the final size
+            # instead of two chained downscales (78→26, then 26→final).
+            raws: list[wx.Bitmap] = []
             for token in tokens:
-                raw = self._mana_icons.bitmap_for_symbol(token)
-                img = raw.ConvertToImage()
-                orig_h = img.GetHeight()
-                if orig_h <= 0:
-                    continue
-                factor = _MANA_IMG_H / orig_h
-                new_w = max(1, int(img.GetWidth() * factor))
-                scaled_icons.append(wx.Bitmap(img.Scale(new_w, _MANA_IMG_H, wx.IMAGE_QUALITY_HIGH)))
-
-            if not scaled_icons:
+                raw = self._mana_icons.bitmap_for_symbol_hires(token)
+                if raw and raw.IsOk():
+                    raws.append(raw)
+            if not raws:
                 continue
 
-            total_w = (
-                sum(b.GetWidth() for b in scaled_icons)
-                + max(0, len(scaled_icons) - 1) * _MANA_ICON_GAP
+            # Compute each symbol's width if scaled to full row height.
+            widths_at_full_h = [
+                max(1, int(b.GetWidth() * _MANA_IMG_H / b.GetHeight()))
+                if b.GetHeight() > 0 else 1
+                for b in raws
+            ]
+            total_at_full_h = (
+                sum(widths_at_full_h) + max(0, len(raws) - 1) * _MANA_ICON_GAP
             )
 
-            # If icons overflow the canvas, scale them down proportionally.
-            if total_w > _MANA_IMG_W:
-                ratio = _MANA_IMG_W / total_w
-                rescaled = []
-                for b in scaled_icons:
-                    img2 = b.ConvertToImage()
-                    nw = max(1, int(img2.GetWidth() * ratio))
-                    nh = max(1, int(img2.GetHeight() * ratio))
-                    rescaled.append(wx.Bitmap(img2.Scale(nw, nh, wx.IMAGE_QUALITY_HIGH)))
-                scaled_icons = rescaled
-                total_w = (
-                    sum(b.GetWidth() for b in scaled_icons)
-                    + max(0, len(scaled_icons) - 1) * _MANA_ICON_GAP
+            # Single squeeze factor: 1.0 when icons fit, <1.0 when they overflow.
+            squeeze = min(1.0, _MANA_IMG_W / total_at_full_h) if total_at_full_h > 0 else 1.0
+            final_h = max(1, int(_MANA_IMG_H * squeeze))
+
+            # Single-pass scale: raw → final size.
+            scaled_icons: list[wx.Bitmap] = []
+            for bmp, w_full in zip(raws, widths_at_full_h):
+                final_w = max(1, int(w_full * squeeze))
+                scaled_icons.append(
+                    wx.Bitmap(bmp.ConvertToImage().Scale(final_w, final_h, wx.IMAGE_QUALITY_HIGH))
                 )
+
+            total_w = sum(b.GetWidth() for b in scaled_icons) + max(0, len(scaled_icons) - 1) * _MANA_ICON_GAP
 
             # DARK_ALT canvas — gaps between icons match the list background.
             canvas = wx.Bitmap(_MANA_IMG_W, _MANA_IMG_H)
@@ -373,8 +372,8 @@ class DeckBuilderPanel(wx.Panel):
         # indent (equal to the image-list item width).  Columns 1+ are sub-item columns
         # and are never indented by LVSIL_SMALL, so the Name cell is unindented.
         results.InsertColumn(0, "", width=0)
-        results.InsertColumn(1, "Name", format=wx.LIST_FORMAT_LEFT, width=245)
-        results.InsertColumn(2, "Mana Cost", width=145)
+        results.InsertColumn(1, "Name", format=wx.LIST_FORMAT_LEFT, width=180)
+        results.InsertColumn(2, "Mana Cost", width=_MANA_IMG_W)
         results.SetBackgroundColour(DARK_ALT)
         results.SetForegroundColour(LIGHT_TEXT)
         results.Bind(wx.EVT_LIST_ITEM_SELECTED, self._on_result_item_selected)

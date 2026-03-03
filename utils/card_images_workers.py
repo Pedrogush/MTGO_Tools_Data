@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import json
 from pathlib import Path
 from typing import Any
 
@@ -17,6 +16,7 @@ from utils.atomic_io import atomic_write_json, locked_path
 from utils.card_images import (
     BulkImageDownloader,
     CardImageCache,
+    _bulk_cards_decoder,
     build_printing_index,
 )
 
@@ -45,8 +45,8 @@ def build_printing_index_worker(
         raise FileNotFoundError("Bulk data cache not found; cannot build printings index")
 
     with locked_path(bulk_path):
-        with bulk_path.open("r", encoding="utf-8") as fh:
-            cards = json.load(fh)
+        raw = bulk_path.read_bytes()
+    cards = _bulk_cards_decoder.decode(raw)
 
     by_name, stats = build_printing_index(cards)
     payload = {

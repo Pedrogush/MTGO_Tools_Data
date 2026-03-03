@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import json
 from pathlib import Path
 from typing import Any
 
@@ -9,6 +8,7 @@ from loguru import logger
 from utils import constants
 from utils.atomic_io import atomic_write_json, locked_path
 from utils.deck import sanitize_zone_cards
+from utils.json_io import fast_load
 
 
 class StateService:
@@ -22,9 +22,8 @@ class StateService:
             return {}
         try:
             with locked_path(self.settings_path):
-                with self.settings_path.open("r", encoding="utf-8") as fh:
-                    return json.load(fh)
-        except json.JSONDecodeError as exc:  # pragma: no cover - defensive logging
+                return fast_load(self.settings_path)
+        except Exception as exc:  # pragma: no cover - defensive logging
             logger.warning(f"Failed to load deck selector settings: {exc}")
             return {}
 

@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import json
 import time
 from collections import Counter, defaultdict
 from collections.abc import Iterable
@@ -16,6 +15,7 @@ from navigators.mtgo_decklists import fetch_deck_event, fetch_decklist_index
 from utils.archetype_classifier import ArchetypeClassifier
 from utils.atomic_io import atomic_write_json, locked_path
 from utils.constants import MTGO_DECK_CACHE_FILE, MTGO_DECKLISTS_ENABLED
+from utils.json_io import fast_load
 
 try:
     from datetime import UTC
@@ -30,9 +30,8 @@ def _load_cache() -> dict[str, Any]:
         return {}
     try:
         with locked_path(MTGO_DECK_CACHE_FILE):
-            with MTGO_DECK_CACHE_FILE.open("r", encoding="utf-8") as fh:
-                return json.load(fh)
-    except json.JSONDecodeError as exc:
+            return fast_load(MTGO_DECK_CACHE_FILE)
+    except Exception as exc:
         logger.warning(f"Invalid deck cache JSON: {exc}")
         return {}
 

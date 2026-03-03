@@ -8,11 +8,12 @@ This module handles all card-related data access including:
 - Printing information
 """
 
-import json
 from collections.abc import Callable
 from pathlib import Path
 from typing import Any
 
+import msgspec
+import msgspec.json
 from loguru import logger
 
 from utils.card_data import CardDataManager
@@ -22,6 +23,25 @@ from utils.card_images import (
     ensure_printing_index_cache,
     get_card_image,
 )
+
+# ---------------------------------------------------------------------------
+# msgspec schema for collection files
+# ---------------------------------------------------------------------------
+
+
+class _CollectionEntry(msgspec.Struct, gc=False):
+    """A single card entry in a collection JSON file.
+
+    Only the three fields we actually need are declared; all other keys in
+    the JSON object are silently ignored by msgspec.
+    """
+
+    name: str
+    quantity: float  # Accept int or float; we coerce to int after decoding.
+    id: Any = None  # Optional UUID / numeric card ID
+
+
+_collection_any_decoder: msgspec.json.Decoder[Any] = msgspec.json.Decoder(Any)
 
 
 class CardRepository:
@@ -264,7 +284,7 @@ class CardRepository:
             return []
 
         try:
-            raw_data = filepath.read_text(encoding="utf-8")
+            raw_data = filepath.read_bytes()
         except FileNotFoundError:
             logger.info(f"Collection file {filepath} does not exist")
             return []
@@ -272,19 +292,21 @@ class CardRepository:
             logger.error(f"Unable to read collection file {filepath}: {exc}")
             return []
 
+        # Decode the outer wrapper (may be a list or a dict with a nested list)
+        # using the untyped Any decoder so the existing _extract_cards logic works.
         try:
-            payload = json.loads(raw_data)
-        except json.JSONDecodeError as exc:
+            payload = _collection_any_decoder.decode(raw_data)
+        except msgspec.DecodeError as exc:
             logger.error(f"Invalid JSON in collection file {filepath}: {exc}")
             return []
 
-        card_entries = _extract_cards(payload)
-        if not card_entries:
+        raw_entries = _extract_cards(payload)
+        if not raw_entries:
             logger.warning(f"No card entries found in collection file {filepath}")
             return []
 
         parsed_cards: list[dict[str, Any]] = []
-        for entry in card_entries:
+        for entry in raw_entries:
             if not isinstance(entry, dict):
                 continue
 

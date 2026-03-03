@@ -20,15 +20,15 @@ from utils.constants import (
     ONE_DAY_SECONDS,
 )
 from utils.deck_text_cache import get_deck_cache
+from utils.json_io import fast_load
 
 
 def _load_cached_archetypes(mtg_format: str, max_age: int = METAGAME_CACHE_TTL_SECONDS):
     if not ARCHETYPE_LIST_CACHE_FILE.exists():
         return None
     try:
-        with ARCHETYPE_LIST_CACHE_FILE.open("r", encoding="utf-8") as fh:
-            data = json.load(fh)
-    except json.JSONDecodeError as exc:
+        data = fast_load(ARCHETYPE_LIST_CACHE_FILE)
+    except Exception as exc:
         logger.warning(f"Cached archetype list invalid: {exc}")
         return None
     entry = data.get(mtg_format)
@@ -41,12 +41,8 @@ def _load_cached_archetypes(mtg_format: str, max_age: int = METAGAME_CACHE_TTL_S
 
 def _save_cached_archetypes(mtg_format: str, items: list[dict]):
     try:
-        if ARCHETYPE_LIST_CACHE_FILE.exists():
-            with ARCHETYPE_LIST_CACHE_FILE.open("r", encoding="utf-8") as fh:
-                data = json.load(fh)
-        else:
-            data = {}
-    except json.JSONDecodeError:
+        data = fast_load(ARCHETYPE_LIST_CACHE_FILE) if ARCHETYPE_LIST_CACHE_FILE.exists() else {}
+    except Exception:
         data = {}
     data[mtg_format] = {"timestamp": time.time(), "items": items}
     ARCHETYPE_LIST_CACHE_FILE.parent.mkdir(parents=True, exist_ok=True)
@@ -115,9 +111,8 @@ def _load_cached_archetype_decks(archetype: str, max_age: int = METAGAME_CACHE_T
     if not ARCHETYPE_DECKS_CACHE_FILE.exists():
         return None
     try:
-        with ARCHETYPE_DECKS_CACHE_FILE.open("r", encoding="utf-8") as fh:
-            data = json.load(fh)
-    except json.JSONDecodeError as exc:
+        data = fast_load(ARCHETYPE_DECKS_CACHE_FILE)
+    except Exception as exc:
         logger.warning(f"Cached archetype decks invalid: {exc}")
         return None
     entry = data.get(archetype)
@@ -131,12 +126,8 @@ def _load_cached_archetype_decks(archetype: str, max_age: int = METAGAME_CACHE_T
 def _save_cached_archetype_decks(archetype: str, items: list[dict]):
     """Save archetype deck list to cache."""
     try:
-        if ARCHETYPE_DECKS_CACHE_FILE.exists():
-            with ARCHETYPE_DECKS_CACHE_FILE.open("r", encoding="utf-8") as fh:
-                data = json.load(fh)
-        else:
-            data = {}
-    except json.JSONDecodeError:
+        data = fast_load(ARCHETYPE_DECKS_CACHE_FILE) if ARCHETYPE_DECKS_CACHE_FILE.exists() else {}
+    except Exception:
         data = {}
     data[archetype] = {"timestamp": time.time(), "items": items}
     ARCHETYPE_DECKS_CACHE_FILE.parent.mkdir(parents=True, exist_ok=True)
@@ -194,9 +185,8 @@ def get_archetype_stats(mtg_format: str):
     stats = {}
     if cache_path.exists():
         try:
-            with cache_path.open("r", encoding="utf-8") as f:
-                stats = json.load(f)
-        except json.JSONDecodeError as exc:
+            stats = fast_load(cache_path)
+        except Exception as exc:
             logger.warning(f"Invalid archetype cache at {cache_path}: {exc}")
             stats = {}
         if (

@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import json
 import os
 import tempfile
 import threading
@@ -10,6 +9,8 @@ from collections.abc import Iterable, Iterator
 from contextlib import contextmanager
 from pathlib import Path
 from typing import Any
+
+import msgspec.json
 
 _lock_registry: dict[Path, threading.RLock] = {}
 _lock_registry_lock = threading.Lock()
@@ -101,5 +102,13 @@ def atomic_write_json(
     ensure_ascii: bool = False,
     separators: tuple[str, str] | None = None,
 ) -> None:
-    data = json.dumps(payload, indent=indent, ensure_ascii=ensure_ascii, separators=separators)
-    atomic_write_text(path, data)
+    # msgspec.json.encode always produces compact UTF-8 bytes (no ASCII escaping).
+    # The ``ensure_ascii`` parameter is accepted for API compatibility but ignored
+    # because msgspec always uses UTF-8 encoding (never escapes non-ASCII chars).
+    raw: bytes = msgspec.json.encode(payload)
+    if indent is not None:
+        raw = msgspec.json.format(raw, indent=indent)
+    # When callers explicitly request compact output via ``separators``,
+    # ``indent`` is typically None so the branch above is skipped and we
+    # already have compact bytes – nothing more to do.
+    atomic_write_bytes(path, raw)

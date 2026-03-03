@@ -125,10 +125,16 @@ class CardTablePanel(wx.Panel):
 
                 self.card_widgets = self._pool[: len(cards)]
 
+                y_scroll = self.scroller.GetScrollPos(wx.VERTICAL)
+
                 self.grid_sizer.Layout()
                 self.scroller.Layout()
                 self.scroller.FitInside()
                 self.scroller.SetupScrolling(scroll_x=False, scroll_y=True, rate_x=5, rate_y=5)
+
+                if y_scroll > 0:
+                    self.scroller.Scroll(-1, y_scroll)
+
                 self._restore_selection()
             finally:
                 self.scroller.Thaw()

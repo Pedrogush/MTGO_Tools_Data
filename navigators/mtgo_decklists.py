@@ -18,6 +18,7 @@ from utils.constants import (
     MTGO_DECKLISTS_ENABLED,
     MTGO_DECKLISTS_REQUEST_TIMEOUT_SECONDS,
 )
+from utils.json_io import fast_decode, fast_load
 
 BASE_URL = "https://www.mtgo.com"
 DECKLIST_INDEX_URL = "https://www.mtgo.com/decklists/{year}/{month:02d}"
@@ -27,9 +28,8 @@ def _load_cache() -> dict[str, Any]:
     if not MTGO_DECK_CACHE_FILE.exists():
         return {}
     try:
-        with MTGO_DECK_CACHE_FILE.open("r", encoding="utf-8") as fh:
-            return json.load(fh)
-    except json.JSONDecodeError as exc:
+        return fast_load(MTGO_DECK_CACHE_FILE)
+    except Exception as exc:
         logger.warning(f"Invalid MTGO deck cache JSON ({MTGO_DECK_CACHE_FILE}): {exc}")
         return {}
 
@@ -133,7 +133,7 @@ def _parse_deck_event(html: str) -> dict[str, Any]:
     match = DETAIL_RE.search(html)
     if not match:
         raise ValueError("Could not locate deck JSON payload")
-    payload = json.loads(match.group(1))
+    payload = fast_decode(match.group(1))
     return payload
 
 

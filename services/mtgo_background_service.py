@@ -1,6 +1,5 @@
 """Background service for fetching MTGO data."""
 
-import json
 import time
 from datetime import datetime, timedelta
 
@@ -21,6 +20,7 @@ from utils.constants import (
     MTGO_METADATA_CACHE_FILE,
 )
 from utils.deck_text_cache import get_deck_cache
+from utils.json_io import fast_load
 
 MTGO_METADATA_CACHE = MTGO_METADATA_CACHE_FILE
 
@@ -117,9 +117,8 @@ def save_mtgo_deck_metadata(archetype: str, mtg_format: str, deck_metadata: dict
         with locked_path(MTGO_METADATA_CACHE):
             if MTGO_METADATA_CACHE.exists():
                 try:
-                    with MTGO_METADATA_CACHE.open("r", encoding="utf-8") as fh:
-                        data = json.load(fh)
-                except json.JSONDecodeError:
+                    data = fast_load(MTGO_METADATA_CACHE)
+                except Exception:
                     logger.warning("MTGO metadata cache invalid JSON; resetting file")
                     data = {}
             else:
@@ -162,9 +161,8 @@ def load_mtgo_deck_metadata(archetype: str, mtg_format: str) -> list[dict]:
 
         try:
             with locked_path(MTGO_METADATA_CACHE):
-                with MTGO_METADATA_CACHE.open("r", encoding="utf-8") as fh:
-                    data = json.load(fh)
-        except json.JSONDecodeError:
+                data = fast_load(MTGO_METADATA_CACHE)
+        except Exception:
             logger.warning("MTGO metadata cache invalid JSON; returning empty results")
             return []
 

@@ -16,13 +16,15 @@ Architecture:
 
 from __future__ import annotations
 
-import json
 import os
 import sqlite3
 import threading
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass
 from datetime import datetime, timezone
+
+import msgspec
+import msgspec.json
 
 try:  # Python 3.11+ has UTC
     from datetime import UTC
@@ -69,6 +71,91 @@ SCRYFALL_CARD_SEARCH_URL = "https://api.scryfall.com/cards/search"
 MAX_WORKERS = 10  # Concurrent download threads
 CHUNK_SIZE = 8192  # Download chunk size
 REQUEST_TIMEOUT = 30  # Seconds
+
+
+# ---------------------------------------------------------------------------
+# msgspec schemas for fast JSON loading
+# ---------------------------------------------------------------------------
+
+
+class BulkCardFace(msgspec.Struct, gc=False):
+    """Minimal face entry from Scryfall bulk data (only fields we use)."""
+
+    name: str | None = None
+    image_uris: dict[str, str] | None = None
+
+    def get(self, key: str, default: Any = None) -> Any:  # noqa: ANN401
+        return getattr(self, key, default)
+
+    def __getitem__(self, key: str) -> Any:  # noqa: ANN401
+        try:
+            return getattr(self, key)
+        except AttributeError:
+            raise KeyError(key) from None
+
+
+class BulkCard(msgspec.Struct, gc=False):
+    """Minimal Scryfall bulk-data card record containing only the fields
+    required by :func:`build_printing_index`.  msgspec silently skips all
+    other fields present in the JSON, which makes parsing even faster.
+
+    Dict-compatible accessors are provided so that the existing
+    ``card.get(...)`` call sites continue to work unchanged.
+    """
+
+    name: str | None = None
+    id: str | None = None
+    set: str | None = None
+    set_name: str | None = None
+    collector_number: str | None = None
+    released_at: str | None = None
+    card_faces: list[BulkCardFace] | None = None
+
+    def get(self, key: str, default: Any = None) -> Any:  # noqa: ANN401
+        return getattr(self, key, default)
+
+    def __getitem__(self, key: str) -> Any:  # noqa: ANN401
+        try:
+            return getattr(self, key)
+        except AttributeError:
+            raise KeyError(key) from None
+
+
+class PrintingEntry(msgspec.Struct, gc=False):
+    """A single card printing record stored in the printings index."""
+
+    id: str
+    set: str
+    set_name: str
+    collector_number: str
+    released_at: str
+
+    def get(self, key: str, default: Any = None) -> Any:  # noqa: ANN401
+        return getattr(self, key, default)
+
+    def __getitem__(self, key: str) -> Any:  # noqa: ANN401
+        try:
+            return getattr(self, key)
+        except AttributeError:
+            raise KeyError(key) from None
+
+
+class PrintingIndexPayload(msgspec.Struct):
+    """Root structure of the saved printing index cache file."""
+
+    version: int
+    generated_at: str
+    bulk_mtime: float
+    unique_names: int
+    total_printings: int
+    data: dict[str, list[PrintingEntry]]
+
+
+# Pre-instantiated decoders – reusing avoids re-building on every call.
+_bulk_cards_decoder: msgspec.json.Decoder[list[BulkCard]] = msgspec.json.Decoder(list[BulkCard])
+_printing_index_decoder: msgspec.json.Decoder[PrintingIndexPayload] = msgspec.json.Decoder(
+    PrintingIndexPayload
+)
 
 
 @dataclass(frozen=True)
@@ -799,8 +886,10 @@ class BulkImageDownloader:
             }
 
         try:
+            from utils.json_io import fast_load
+
             with locked_path(BULK_DATA_CACHE):
-                cards_data = json.loads(BULK_DATA_CACHE.read_text(encoding="utf-8"))
+                cards_data = fast_load(BULK_DATA_CACHE)
             if max_cards:
                 cards_data = cards_data[:max_cards]
 
@@ -920,15 +1009,16 @@ def _load_printing_index_payload() -> dict[str, Any] | None:
         return None
     try:
         with locked_path(PRINTING_INDEX_CACHE):
-            with PRINTING_INDEX_CACHE.open("r", encoding="utf-8") as fh:
-                payload = json.load(fh)
-    except Exception as exc:
+            raw = PRINTING_INDEX_CACHE.read_bytes()
+        payload = _printing_index_decoder.decode(raw)
+    except (msgspec.DecodeError, OSError) as exc:
         logger.warning(f"Failed to read printings index cache: {exc}")
         return None
-    if payload.get("version") != PRINTING_INDEX_VERSION:
+    if payload.version != PRINTING_INDEX_VERSION:
         logger.info("Discarding printings index cache due to version mismatch")
         return None
-    return payload
+    # Convert to plain dict so callers can use .get() / [] as before.
+    return msgspec.to_builtins(payload)
 
 
 def load_printing_index_payload() -> dict[str, Any] | None:
@@ -950,8 +1040,8 @@ def ensure_printing_index_cache(force: bool = False) -> dict[str, Any]:
 
     logger.info("Building card printings index from bulk data…")
     with locked_path(BULK_DATA_CACHE):
-        with BULK_DATA_CACHE.open("r", encoding="utf-8") as fh:
-            cards = json.load(fh)
+        raw = BULK_DATA_CACHE.read_bytes()
+    cards = _bulk_cards_decoder.decode(raw)
 
     by_name, stats = build_printing_index(cards)
 

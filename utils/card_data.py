@@ -7,6 +7,8 @@ import zipfile
 from pathlib import Path
 from typing import Any
 
+import msgspec
+import msgspec.json
 from curl_cffi import requests
 from loguru import logger
 
@@ -17,6 +19,61 @@ from utils.constants import (
     ATOMIC_DATA_URL,
     CARD_DATA_DIR,
 )
+
+# ---------------------------------------------------------------------------
+# msgspec schemas for the atomic-cards index
+# ---------------------------------------------------------------------------
+
+
+class CardEntry(msgspec.Struct, gc=False):
+    """A single card record as stored in the local atomic-cards index.
+
+    ``gc=False`` disables cyclic-garbage-collection tracking for this type,
+    which measurably reduces parse time when decoding large lists of structs.
+    """
+
+    name: str
+    name_lower: str
+    aliases: list[str]
+    colors: list[str]
+    color_identity: list[str]
+    legalities: dict[str, str]
+    mana_cost: str | None = None
+    mana_value: float | None = None
+    type_line: str | None = None
+    oracle_text: str | None = None
+    power: str | None = None
+    toughness: str | None = None
+    loyalty: str | None = None
+
+    # ------------------------------------------------------------------
+    # Dict-compatible accessors so that existing callers that treat the
+    # returned value as a dict continue to work without modification.
+    # ------------------------------------------------------------------
+
+    def get(self, key: str, default: Any = None) -> Any:  # noqa: ANN401
+        return getattr(self, key, default)
+
+    def __getitem__(self, key: str) -> Any:  # noqa: ANN401
+        try:
+            return getattr(self, key)
+        except AttributeError:
+            raise KeyError(key) from None
+
+    def __contains__(self, key: object) -> bool:
+        return isinstance(key, str) and hasattr(self, key)
+
+
+class CardIndex(msgspec.Struct):
+    """Root structure of the saved atomic-cards index file."""
+
+    cards: list[CardEntry]
+    cards_by_name: dict[str, CardEntry]
+
+
+# Pre-instantiated decoder – reusing it avoids re-building the decoder on
+# every call, which matters for repeat loads (e.g. force-refresh).
+_card_index_decoder: msgspec.json.Decoder[CardIndex] = msgspec.json.Decoder(CardIndex)
 
 
 def load_card_manager(data_dir: Path | str = CARD_DATA_DIR, force: bool = False) -> CardDataManager:
@@ -47,13 +104,13 @@ class CardDataManager:
         self.data_dir.mkdir(parents=True, exist_ok=True)
         self.index_path = self.data_dir / "atomic_cards_index.json"
         self.meta_path = self.data_dir / "atomic_cards_meta.json"
-        self._cards: list[dict[str, Any]] | None = None
-        self._cards_by_name: dict[str, dict[str, Any]] | None = None
+        self._cards: list[CardEntry] | None = None
+        self._cards_by_name: dict[str, CardEntry] | None = None
 
     def ensure_latest(self, force: bool = False) -> None:
 
         remote_meta = self._fetch_remote_meta()
-        local_meta = self._load_json(self.meta_path) or {}
+        local_meta = self._load_meta_json() or {}
         missing_index = not self.index_path.exists()
         needs_refresh = force or missing_index
         if not needs_refresh and remote_meta:
@@ -87,17 +144,17 @@ class CardDataManager:
         type_filter: str | None = None,
         color_identity: list[str] | None = None,
         limit: int | None = None,
-    ) -> list[dict[str, Any]]:
+    ) -> list[CardEntry]:
         self._require_cards()
         query = (query or "").strip().lower()
         fmt = (format_filter or "").strip().lower()
         type_filter = (type_filter or "").strip().lower()
         color_identity = [c.upper() for c in (color_identity or [])]
-        results: list[dict[str, Any]] = []
+        results: list[CardEntry] = []
         for card in self._cards or []:
-            name_lower = card["name_lower"]
-            type_line = (card.get("type_line") or "").lower()
-            oracle_text = (card.get("oracle_text") or "").lower()
+            name_lower = card.name_lower
+            type_line = (card.type_line or "").lower()
+            oracle_text = (card.oracle_text or "").lower()
             if query:
                 haystacks = (
                     name_lower,
@@ -106,12 +163,12 @@ class CardDataManager:
                 )
                 if not any(query in h for h in haystacks if h):
                     continue
-            if fmt and card.get("legalities", {}).get(fmt) != "Legal":
+            if fmt and card.legalities.get(fmt) != "Legal":
                 continue
             if type_filter and type_filter not in type_line:
                 continue
             if color_identity:
-                identity = card.get("color_identity", [])
+                identity = card.color_identity
                 if not all(c in identity for c in color_identity):
                     continue
             results.append(card)
@@ -119,7 +176,7 @@ class CardDataManager:
                 break
         return results
 
-    def get_card(self, name: str) -> dict[str, Any] | None:
+    def get_card(self, name: str) -> CardEntry | None:
         self._require_cards()
         return (self._cards_by_name or {}).get(name.lower())
 
@@ -128,7 +185,7 @@ class CardDataManager:
         seen = set()
         formats: list[str] = []
         for card in self._cards or []:
-            for fmt, state in (card.get("legalities") or {}).items():
+            for fmt, state in card.legalities.items():
                 if state != "Legal" or fmt in seen:
                     continue
                 seen.add(fmt)
@@ -191,19 +248,25 @@ class CardDataManager:
         self._cards_by_name = index["cards_by_name"]
 
     def _load_index(self) -> None:
-        data = self._load_json(self.index_path)
-        if not data:
+        """Load the card index using a typed msgspec decoder for maximum speed."""
+        if not self.index_path.exists():
             raise RuntimeError("Card data index missing or invalid")
-        self._cards = data["cards"]
-        self._cards_by_name = data["cards_by_name"]
+        try:
+            data = self.index_path.read_bytes()
+            card_index = _card_index_decoder.decode(data)
+        except (msgspec.DecodeError, OSError) as exc:
+            raise RuntimeError(f"Card data index missing or invalid: {exc}") from exc
+        self._cards = card_index.cards
+        self._cards_by_name = card_index.cards_by_name
 
-    def _load_json(self, path: Path) -> dict[str, Any] | None:
-        if not path.exists():
+    def _load_meta_json(self) -> dict[str, Any] | None:
+        """Load the small metadata sidecar file (stdlib json is fine at ~260 bytes)."""
+        if not self.meta_path.exists():
             return None
         try:
-            return json.loads(path.read_text(encoding="utf-8"))
+            return json.loads(self.meta_path.read_text(encoding="utf-8"))
         except json.JSONDecodeError as exc:
-            logger.warning(f"Invalid JSON at {path}: {exc}")
+            logger.warning(f"Invalid JSON at {self.meta_path}: {exc}")
             return None
 
     def _build_index(self, atomic_cards: dict[str, list[dict[str, Any]]]) -> dict[str, Any]:
@@ -296,4 +359,4 @@ class CardDataManager:
         return merged
 
 
-__all__ = ["CardDataManager", "load_card_manager"]
+__all__ = ["CardDataManager", "CardEntry", "load_card_manager"]

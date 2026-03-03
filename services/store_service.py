@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
-import json
 from pathlib import Path
 from typing import Any
 
 from loguru import logger
 
 from utils.atomic_io import atomic_write_json, locked_path
+from utils.json_io import fast_load
 
 
 class StoreService:
@@ -28,12 +28,12 @@ class StoreService:
             return {}
         try:
             with locked_path(path):
-                return json.loads(path.read_text(encoding="utf-8"))
-        except json.JSONDecodeError:
-            logger.warning(f"Invalid JSON at {path}; ignoring store")
-            return {}
-        except OSError as exc:
-            logger.warning(f"Failed to read {path}: {exc}")
+                return fast_load(path)
+        except Exception as exc:
+            if isinstance(exc, OSError):
+                logger.warning(f"Failed to read {path}: {exc}")
+            else:
+                logger.warning(f"Invalid JSON at {path}; ignoring store")
             return {}
 
     def save_store(self, path: Path, data: dict[str, Any]) -> None:

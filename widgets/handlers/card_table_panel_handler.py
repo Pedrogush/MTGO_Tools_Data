@@ -201,6 +201,12 @@ class CardTablePanelHandler:
                 return zone if zone in {"main", "side"} else "main"
         return "main"
 
+    def _add_search_card_to_active_zone(self: AppFrame, name: str) -> None:
+        """Add a card from the builder search results to the currently active zone."""
+        zone = self._get_active_zone_for_add()
+        self._handle_zone_delta(zone, name, 1)
+        self._focus_card_in_zone(zone, name)
+
     def _focus_card_in_zone(self: AppFrame, zone: str, card_name: str) -> None:
         table = self._get_table_for_zone(zone)
         if not table:

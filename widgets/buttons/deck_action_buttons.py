@@ -20,6 +20,7 @@ class DeckActionButtons(wx.Panel):
         on_copy: Callable[[], None] | None = None,
         on_save: Callable[[], None] | None = None,
         on_daily_average: Callable[[], None] | None = None,
+        on_load: Callable[[], None] | None = None,
         labels: dict[str, str] | None = None,
     ):
         """
@@ -30,12 +31,14 @@ class DeckActionButtons(wx.Panel):
             on_copy: Callback when Copy button clicked
             on_save: Callback when Save Deck button clicked
             on_daily_average: Callback when Today's Average button clicked
+            on_load: Callback when Load Deck button clicked
         """
         super().__init__(parent)
 
         self.on_copy = on_copy
         self.on_save = on_save
         self.on_daily_average = on_daily_average
+        self.on_load = on_load
         self._labels = labels or {}
 
         self._build_ui()
@@ -60,6 +63,12 @@ class DeckActionButtons(wx.Panel):
         self.copy_button.Disable()
         self.copy_button.Bind(wx.EVT_BUTTON, self._on_copy_clicked)
         button_row.Add(self.copy_button, 0, wx.RIGHT, 6)
+
+        # Load Deck button
+        self.load_button = wx.Button(self, label=self._labels.get("load_deck", "Load Deck"))
+        stylize_button(self.load_button)
+        self.load_button.Bind(wx.EVT_BUTTON, self._on_load_clicked)
+        button_row.Add(self.load_button, 0, wx.RIGHT, 6)
 
         # Save Deck button
         self.save_button = wx.Button(self, label=self._labels.get("save_deck", "Save Deck"))
@@ -96,6 +105,13 @@ class DeckActionButtons(wx.Panel):
         self.enable_copy(enable)
         self.enable_save(enable)
 
+    def enable_load(self, enable: bool = True) -> None:
+        """Enable or disable the Load Deck button."""
+        if enable:
+            self.load_button.Enable()
+        else:
+            self.load_button.Disable()
+
     # ============= Private Methods =============
 
     def _on_daily_average_clicked(self, _event: wx.Event) -> None:
@@ -107,6 +123,11 @@ class DeckActionButtons(wx.Panel):
         """Handle Copy button click."""
         if self.on_copy:
             self.on_copy()
+
+    def _on_load_clicked(self, _event: wx.Event) -> None:
+        """Handle Load Deck button click."""
+        if self.on_load:
+            self.on_load()
 
     def _on_save_clicked(self, _event: wx.Event) -> None:
         """Handle Save Deck button click."""

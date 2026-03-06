@@ -9,6 +9,7 @@ import wx
 from loguru import logger
 
 from utils.card_data import CardDataManager
+from utils.constants import DECKS_DIR
 from utils.ui_helpers import open_child_window, widget_exists
 from widgets.identify_opponent import MTGOpponentDeckSpy
 from widgets.match_history import MatchHistoryFrame
@@ -186,6 +187,27 @@ class AppEventHandlers:
         if not self.controller.deck_repo.get_decks_list():
             return
         self._start_daily_average_build()
+
+    def on_load_deck_clicked(self: AppFrame) -> None:
+        default_dir = str(DECKS_DIR) if DECKS_DIR.exists() else str(Path.home())
+        with wx.FileDialog(
+            self,
+            "Load Deck",
+            defaultDir=default_dir,
+            wildcard="Text files (*.txt)|*.txt|All files (*.*)|*.*",
+            style=wx.FD_OPEN | wx.FD_FILE_MUST_EXIST,
+        ) as dlg:
+            if dlg.ShowModal() != wx.ID_OK:
+                return
+            file_path = dlg.GetPath()
+
+        try:
+            deck_text = Path(file_path).read_text(encoding="utf-8")
+        except OSError as exc:
+            wx.MessageBox(f"Failed to read deck file:\n{exc}", "Load Deck", wx.OK | wx.ICON_ERROR)
+            return
+
+        self._on_deck_content_ready(deck_text, source="file")
 
     def on_copy_clicked(self: AppFrame, _event: wx.CommandEvent) -> None:
         deck_content = self.controller.build_deck_text(self.zone_cards).strip()

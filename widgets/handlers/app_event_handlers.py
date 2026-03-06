@@ -187,6 +187,28 @@ class AppEventHandlers:
             return
         self._start_daily_average_build()
 
+    def on_load_deck_clicked(self: AppFrame) -> None:
+        save_dir = self.controller.deck_save_dir
+        default_dir = str(save_dir) if save_dir.exists() else str(Path.home())
+        with wx.FileDialog(
+            self,
+            "Load Deck",
+            defaultDir=default_dir,
+            wildcard="Text files (*.txt)|*.txt|All files (*.*)|*.*",
+            style=wx.FD_OPEN | wx.FD_FILE_MUST_EXIST,
+        ) as dlg:
+            if dlg.ShowModal() != wx.ID_OK:
+                return
+            file_path = dlg.GetPath()
+
+        try:
+            deck_text = Path(file_path).read_text(encoding="utf-8")
+        except OSError as exc:
+            wx.MessageBox(f"Failed to read deck file:\n{exc}", "Load Deck", wx.OK | wx.ICON_ERROR)
+            return
+
+        self._on_deck_content_ready(deck_text, source="file")
+
     def on_copy_clicked(self: AppFrame, _event: wx.CommandEvent) -> None:
         deck_content = self.controller.build_deck_text(self.zone_cards).strip()
         if not deck_content:

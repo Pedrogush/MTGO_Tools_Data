@@ -318,9 +318,11 @@ class AppFrame(AppEventHandlers, SideboardGuideHandlers, CardTablePanelHandler, 
             on_copy=lambda: self.on_copy_clicked(None),
             on_save=lambda: self.on_save_clicked(None),
             on_daily_average=lambda: self.on_daily_average_clicked(None),
+            on_load=self.on_load_deck_clicked,
             labels={
                 "daily_average": self._t("deck_actions.daily_average"),
                 "copy": self._t("deck_actions.copy"),
+                "load_deck": self._t("deck_actions.load_deck"),
                 "save_deck": self._t("deck_actions.save_deck"),
             },
         )
@@ -334,6 +336,7 @@ class AppFrame(AppEventHandlers, SideboardGuideHandlers, CardTablePanelHandler, 
         # Keep references for backward compatibility
         self.daily_average_button = self.deck_action_buttons.daily_average_button
         self.copy_button = self.deck_action_buttons.copy_button
+        self.load_button = self.deck_action_buttons.load_button
         self.save_button = self.deck_action_buttons.save_button
 
         return deck_sizer

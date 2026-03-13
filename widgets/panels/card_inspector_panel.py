@@ -432,9 +432,7 @@ class CardInspectorPanel(wx.Panel):
                 wx.CallAfter(self._apply_no_printings_image, gen, card_name, active_request, path)
             else:
                 uuid = active_request.uuid if active_request else None
-                image_paths = (
-                    image_cache.get_image_paths_by_uuid(uuid, "normal") if uuid else []
-                )
+                image_paths = image_cache.get_image_paths_by_uuid(uuid, "normal") if uuid else []
                 name_printing_path = None
                 if not image_paths and active_request and active_request.set_code:
                     name_printing_path = image_cache.get_image_path_for_printing(

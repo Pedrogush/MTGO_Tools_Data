@@ -41,6 +41,7 @@ class CardEntry(msgspec.Struct, gc=False):
     mana_cost: str | None = None
     mana_value: float | None = None
     type_line: str | None = None
+    back_type_line: str | None = None
     oracle_text: str | None = None
     power: str | None = None
     toughness: str | None = None
@@ -290,6 +291,20 @@ class CardDataManager:
                     existing["legalities"] = self._merge_legalities(
                         existing.get("legalities"), candidate.get("legalities")
                     )
+                    # For MDFCs, detect which face this printing represents and
+                    # store the back-face type so callers can identify land backs.
+                    face_name = (printing.get("faceName") or "").strip()
+                    if face_name and "//" in canonical_name:
+                        front_name = canonical_name.split("//", 1)[0].strip()
+                        face_type = printing.get("type")
+                        if face_name.lower() == front_name.lower():
+                            # This printing is the front face; existing entry holds
+                            # the back-face type — swap so front is canonical.
+                            existing["back_type_line"] = existing.get("type_line")
+                            existing["type_line"] = face_type
+                        else:
+                            # This printing is the back face.
+                            existing["back_type_line"] = face_type
                 aliases = candidate.setdefault("aliases", set())
                 aliases.update(self._collect_name_aliases(canonical_name, printing))
         card_list = sorted(cards.values(), key=lambda c: c["name_lower"])

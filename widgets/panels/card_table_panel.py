@@ -105,8 +105,26 @@ class CardTablePanel(wx.Panel):
             self.scroller.Freeze()
             try:
                 self.active_panel = None
-                total = sum(card["qty"] for card in cards)
-                self.count_label.SetLabel(f"{total} card{'s' if total != 1 else ''}")
+                total = lands = mdfcs = 0
+                for card in cards:
+                    qty = card["qty"]
+                    total += qty
+                    meta = self._get_metadata(card["name"]) or {}
+                    type_line = (meta.get("type_line") or "").lower()
+                    back_type_line = (meta.get("back_type_line") or "").lower()
+                    if "land" in type_line:
+                        lands += qty
+                    elif "land" in back_type_line:
+                        mdfcs += qty
+                label = f"{total} card{'s' if total != 1 else ''}"
+                parts = []
+                if lands:
+                    parts.append(f"{lands} land{'s' if lands != 1 else ''}")
+                if mdfcs:
+                    parts.append(f"{mdfcs} MDFC{'s' if mdfcs != 1 else ''}")
+                if parts:
+                    label += " | " + " + ".join(parts)
+                self.count_label.SetLabel(label)
 
                 for i, panel in enumerate(self._pool):
                     if i < len(cards):

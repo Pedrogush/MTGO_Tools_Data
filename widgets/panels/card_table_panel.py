@@ -106,7 +106,18 @@ class CardTablePanel(wx.Panel):
             try:
                 self.active_panel = None
                 total = sum(card["qty"] for card in cards)
-                self.count_label.SetLabel(f"{total} card{'s' if total != 1 else ''}")
+                lands = sum(
+                    card["qty"]
+                    for card in cards
+                    if "land"
+                    in (
+                        (self._get_metadata(card["name"]) or {}).get("type_line") or ""
+                    ).lower()
+                )
+                label = f"{total} card{'s' if total != 1 else ''}"
+                if lands:
+                    label += f" | {lands} land{'s' if lands != 1 else ''}"
+                self.count_label.SetLabel(label)
 
                 for i, panel in enumerate(self._pool):
                     if i < len(cards):

@@ -366,6 +366,79 @@ def test_group_cards_by_type_unknown():
     assert "Weird Card" in [c["name"] for c in grouped.get("Other", [])]
 
 
+# ============= Oracle Text Mode Tests =============
+
+
+def test_matches_text_filter_all_mode_phrase_match():
+    """'all' mode matches when the full phrase is present."""
+    mock_repo = SimpleNamespace()
+    service = SearchService(card_repository=mock_repo)
+    card = create_mock_card(oracle_text="Draw a card. Then discard a card.")
+    assert service._matches_text_filter(card, "draw a card", "all")
+
+
+def test_matches_text_filter_all_mode_phrase_no_match():
+    """'all' mode does not match when only some words are present."""
+    mock_repo = SimpleNamespace()
+    service = SearchService(card_repository=mock_repo)
+    card = create_mock_card(oracle_text="Destroy target artifact.")
+    assert not service._matches_text_filter(card, "draw card", "all")
+
+
+def test_matches_text_filter_any_mode_single_word_match():
+    """'any' mode matches when at least one word is present."""
+    mock_repo = SimpleNamespace()
+    service = SearchService(card_repository=mock_repo)
+    card = create_mock_card(oracle_text="Draw a card.")
+    assert service._matches_text_filter(card, "draw discard", "any")
+
+
+def test_matches_text_filter_any_mode_no_match():
+    """'any' mode returns False when no individual word matches."""
+    mock_repo = SimpleNamespace()
+    service = SearchService(card_repository=mock_repo)
+    card = create_mock_card(oracle_text="Destroy target artifact.")
+    assert not service._matches_text_filter(card, "draw flying", "any")
+
+
+def test_filter_cards_text_mode_any():
+    """filter_cards respects text_mode='any'."""
+    mock_repo = SimpleNamespace()
+    service = SearchService(card_repository=mock_repo)
+    cards = [
+        create_mock_card(name="Draw Card", oracle_text="Draw a card."),
+        create_mock_card(name="Fly Card", oracle_text="This creature has flying."),
+        create_mock_card(name="Destroy Card", oracle_text="Destroy target creature."),
+    ]
+    results = service.filter_cards(cards, text_contains="draw flying", text_mode="any")
+    names = [c["name"] for c in results]
+    assert "Draw Card" in names
+    assert "Fly Card" in names
+    assert "Destroy Card" not in names
+
+
+def test_search_with_builder_filters_text_mode_any():
+    """search_with_builder_filters respects text_mode='any'."""
+    from utils.card_data import CardDataManager
+
+    mock_repo = SimpleNamespace()
+    service = SearchService(card_repository=mock_repo)
+
+    draw_card = create_mock_card(name="Draw Card", oracle_text="Draw a card.")
+    discard_card = create_mock_card(name="Discard Card", oracle_text="Discard a card.")
+    other_card = create_mock_card(name="Other Card", oracle_text="Destroy target creature.")
+
+    mock_manager = Mock(spec=CardDataManager)
+    mock_manager.search_cards.return_value = [draw_card, discard_card, other_card]
+
+    filters = {"text": "draw discard", "text_mode": "any"}
+    results = service.search_with_builder_filters(filters, mock_manager)
+    names = [c["name"] for c in results]
+    assert "Draw Card" in names
+    assert "Discard Card" in names
+    assert "Other Card" not in names
+
+
 def test_group_cards_by_type_removes_empty_groups():
     """Test that empty groups are removed."""
     mock_repo = SimpleNamespace()

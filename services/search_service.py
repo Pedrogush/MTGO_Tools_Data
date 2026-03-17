@@ -193,8 +193,9 @@ class SearchService:
         color_mode = filters.get("color_mode", "Any")
         selected_colors = filters.get("selected_colors", [])
 
-        # Perform initial search
-        query = filters.get("name") or filters.get("text") or ""
+        # Perform initial search — only use name for pre-filtering;
+        # oracle text filtering is handled per-card below.
+        query = filters.get("name") or ""
         results = card_manager.search_cards(query=query, format_filter=None)
 
         # Apply all filters

@@ -79,6 +79,7 @@ class SearchService:
         mana_value: float | None = None,
         mana_value_comparator: str = "=",
         text_contains: str | None = None,
+        text_mode: str = "all",
     ) -> list[dict[str, Any]]:
         """
         Filter a list of cards by various criteria.
@@ -93,6 +94,7 @@ class SearchService:
             mana_value: Mana value to compare against
             mana_value_comparator: Comparison operator ("<", "≤", "=", "≥", ">")
             text_contains: Text that must appear in card text
+            text_mode: How to match text ("all" = full phrase, "any" = any single word)
 
         Returns:
             Filtered list of cards
@@ -127,7 +129,11 @@ class SearchService:
 
         # Apply text search filter
         if text_contains:
-            filtered = [card for card in filtered if self._matches_text_filter(card, text_contains)]
+            filtered = [
+                card
+                for card in filtered
+                if self._matches_text_filter(card, text_contains, text_mode)
+            ]
 
         return filtered
 
@@ -187,8 +193,9 @@ class SearchService:
         color_mode = filters.get("color_mode", "Any")
         selected_colors = filters.get("selected_colors", [])
 
-        # Perform initial search
-        query = filters.get("name") or filters.get("text") or ""
+        # Perform initial search — only use name for pre-filtering;
+        # oracle text filtering is handled per-card below.
+        query = filters.get("name") or ""
         results = card_manager.search_cards(query=query, format_filter=None)
 
         # Apply all filters
@@ -214,8 +221,9 @@ class SearchService:
 
             # Oracle text filter
             if filters.get("text"):
-                oracle_text = (card.get("oracle_text") or "").lower()
-                if filters["text"].lower() not in oracle_text:
+                if not self._matches_text_filter(
+                    card, filters["text"], filters.get("text_mode", "all")
+                ):
                     continue
 
             # Format legality filter
@@ -295,12 +303,21 @@ class SearchService:
             return False
         return matches_mana_value(card_value, target, comparator)
 
-    def _matches_text_filter(self, card: dict[str, Any], query: str) -> bool:
-        """Check if card text contains query string."""
+    def _matches_text_filter(self, card: dict[str, Any], query: str, mode: str = "all") -> bool:
+        """Check if card text contains query string.
+
+        Args:
+            card: Card dictionary
+            query: Text to search for
+            mode: "all" requires the full phrase; "any" matches if any single word is found
+        """
         text = card.get("oracle_text", "") or card.get("text", "")
         if not text:
             return False
-        return query.lower() in text.lower()
+        text_lower = text.lower()
+        if mode == "any":
+            return all(word in text_lower for word in query.lower().split())
+        return query.lower() in text_lower
 
     # ============= Search Suggestions =============
 

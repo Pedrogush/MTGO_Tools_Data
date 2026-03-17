@@ -30,6 +30,7 @@ class FakeDeckRepo:
 
     def save_deck_to_file(self, deck_name: str, deck_content: str, directory) -> object:
         from pathlib import Path
+
         from utils.deck import sanitize_filename
 
         safe_name = sanitize_filename(deck_name, fallback="saved_deck")

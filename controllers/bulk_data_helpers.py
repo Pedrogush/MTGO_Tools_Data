@@ -33,7 +33,9 @@ class BulkDataHelpers:
 
         on_status = callbacks.on_status if callbacks else lambda msg: None
         on_download_needed = callbacks.on_bulk_download_needed if callbacks else lambda reason: None
-        on_download_complete = callbacks.on_bulk_download_complete if callbacks else lambda msg: None
+        on_download_complete = (
+            callbacks.on_bulk_download_complete if callbacks else lambda msg: None
+        )
         on_download_failed = callbacks.on_bulk_download_failed if callbacks else lambda msg: None
 
         on_status("Checking card image database…")
@@ -116,7 +118,9 @@ class BulkDataHelpers:
             return
 
         on_status = callbacks.on_status if callbacks else lambda msg: None
-        on_download_complete = callbacks.on_bulk_download_complete if callbacks else lambda msg: None
+        on_download_complete = (
+            callbacks.on_bulk_download_complete if callbacks else lambda msg: None
+        )
         on_download_failed = callbacks.on_bulk_download_failed if callbacks else lambda msg: None
 
         on_status("Downloading card image database...")

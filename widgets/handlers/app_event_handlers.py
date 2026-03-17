@@ -9,6 +9,7 @@ import wx
 from loguru import logger
 
 from utils.card_data import CardDataManager
+from utils.constants import DEFAULT_SEARCH_LIMIT
 from utils.ui_helpers import open_child_window, widget_exists
 from widgets.identify_opponent import MTGOpponentDeckSpy
 from widgets.match_history import MatchHistoryFrame
@@ -444,7 +445,9 @@ class AppEventHandlers:
         search_service = self.controller.search_service
 
         def _run_search() -> list:
-            return search_service.search_with_builder_filters(filters, card_manager)
+            return search_service.search_with_builder_filters(
+                filters, card_manager, limit=DEFAULT_SEARCH_LIMIT
+            )
 
         def _on_results(results: list) -> None:
             if seq != self._search_seq:

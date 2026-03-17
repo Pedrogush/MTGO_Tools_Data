@@ -67,6 +67,7 @@ class AppFrame(AppEventHandlers, SideboardGuideHandlers, CardTablePanelHandler, 
         self.controller: AppController = controller
         self.card_data_dialogs_disabled = False
         self._builder_search_pending = False
+        self._search_seq = 0
         self.locale = self.controller.get_language()
         self._deck_source_values = ["both", "mtggoldfish", "mtgo"]
         self._language_values = list(SUPPORTED_LOCALES)

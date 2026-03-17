@@ -439,8 +439,19 @@ class AppEventHandlers:
                     self.builder_panel.status_label.SetLabel("Mana value must be numeric.")
                 return
 
-        results = self.controller.search_service.search_with_builder_filters(filters, card_manager)
-        self.builder_panel.update_results(results)
+        self._search_seq += 1
+        seq = self._search_seq
+        search_service = self.controller.search_service
+
+        def _run_search() -> list:
+            return search_service.search_with_builder_filters(filters, card_manager)
+
+        def _on_results(results: list) -> None:
+            if seq != self._search_seq:
+                return
+            self.builder_panel.update_results(results)
+
+        self.controller._worker.submit(_run_search, on_success=_on_results)
 
     def _on_builder_clear(self: AppFrame) -> None:
         self.builder_panel.clear_filters()

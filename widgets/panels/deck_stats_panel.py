@@ -74,15 +74,15 @@ class DeckStatsPanel(wx.Panel):
         self.curve_list.AppendTextColumn("Count", width=80)
         self.curve_list.SetBackgroundColour(DARK_ALT)
         self.curve_list.SetForegroundColour(LIGHT_TEXT)
-        split.Add(self.curve_list, 0, wx.RIGHT, 12)
+        split.Add(self.curve_list, 1, wx.RIGHT | wx.EXPAND, 12)
 
         # Color concentration list
         self.color_list = dv.DataViewListCtrl(self)
-        self.color_list.AppendTextColumn("Color", width=120)
-        self.color_list.AppendTextColumn("Share", width=100)
+        self.color_list.AppendTextColumn("Color", width=100)
+        self.color_list.AppendTextColumn("Share", width=90)
         self.color_list.SetBackgroundColour(DARK_ALT)
         self.color_list.SetForegroundColour(LIGHT_TEXT)
-        split.Add(self.color_list, 0, wx.RIGHT, 12)
+        split.Add(self.color_list, 1, wx.RIGHT | wx.EXPAND, 12)
 
         # Type counts list
         self.type_list = dv.DataViewListCtrl(self)
@@ -90,7 +90,7 @@ class DeckStatsPanel(wx.Panel):
         self.type_list.AppendTextColumn("Count", width=80)
         self.type_list.SetBackgroundColour(DARK_ALT)
         self.type_list.SetForegroundColour(LIGHT_TEXT)
-        split.Add(self.type_list, 0)
+        split.Add(self.type_list, 1, wx.EXPAND)
 
         # Hand/land probability label
         self.hand_land_label = wx.StaticText(self, label="")
@@ -120,11 +120,18 @@ class DeckStatsPanel(wx.Panel):
         # Analyze deck
         stats = self.deck_service.analyze_deck(deck_text)
 
+        # Count actual lands from zone_cards using type metadata (includes MDFCs)
+        land_count, mdfc_count = self._count_lands()
+        total_land_count = land_count + mdfc_count
+
         # Update summary
+        land_label = f"{land_count} land{'s' if land_count != 1 else ''}"
+        if mdfc_count:
+            land_label += f" + {mdfc_count} MDFC{'s' if mdfc_count != 1 else ''}"
         summary = (
             f"Mainboard: {stats['mainboard_count']} cards ({stats['unique_mainboard']} unique)  |  "
             f"Sideboard: {stats['sideboard_count']} cards ({stats['unique_sideboard']} unique)  |  "
-            f"Estimated lands: {stats['estimated_lands']}"
+            f"Lands: {land_label}"
         )
         self.summary_label.SetLabel(summary)
 
@@ -132,7 +139,7 @@ class DeckStatsPanel(wx.Panel):
         self._render_curve()
         self._render_color_concentration()
         self._render_type_counts()
-        self._render_hand_land_pct(stats["mainboard_count"], stats["estimated_lands"])
+        self._render_hand_land_pct(stats["mainboard_count"], total_land_count)
 
     def set_card_manager(self, card_manager: CardDataManager) -> None:
         """Set the card data manager for metadata lookups."""
@@ -147,6 +154,25 @@ class DeckStatsPanel(wx.Panel):
         self.hand_land_label.SetLabel("")
 
     # ============= Private Methods =============
+
+    def _count_lands(self) -> tuple[int, int]:
+        """Count lands and MDFC-lands in the mainboard using card type metadata.
+
+        Returns:
+            (lands, mdfcs) where lands are cards with Land in front type_line and
+            mdfcs are cards with Land only in the back face type_line.
+        """
+        lands = mdfcs = 0
+        for entry in self.zone_cards.get("main", []):
+            qty = entry["qty"]
+            meta = self.card_manager.get_card(entry["name"]) if self.card_manager else None
+            type_line = (meta.get("type_line") or "").lower() if meta else ""
+            back_type_line = (meta.get("back_type_line") or "").lower() if meta else ""
+            if "land" in type_line:
+                lands += qty
+            elif "land" in back_type_line:
+                mdfcs += qty
+        return lands, mdfcs
 
     def _render_curve(self) -> None:
         """Render the mana curve chart."""

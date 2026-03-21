@@ -130,8 +130,10 @@ class TestGamelogParserVsScreenshots:
 
     # ------------------------------------------------------------------
 
-    def test_infers_username_as_pedrogush(self, inferred_username):
-        assert inferred_username == "pedrogush"
+    def test_infers_username_as_local_username(self, inferred_username):
+        local_username = os.environ.get("MTGO_USERNAME")
+        assert local_username is not None, "MTGO_USERNAME env var not set (source env/Scripts/activate)"
+        assert inferred_username == local_username
 
     def test_parsed_count_in_expected_range(self, parsed_matches, truth):
         """Total parsed matches should be at least as many as Modern entries in truth.
@@ -171,7 +173,7 @@ class TestGamelogParserVsScreenshots:
         from datetime import datetime, timedelta
 
         by_opponent = self._build_parsed_by_opponent(parsed_matches, inferred_username)
-        WINDOW = timedelta(hours=3)
+        WINDOW = timedelta(minutes=60)  # 25 min clock per player = 50 min max match
 
         mismatches = []
         checked = 0
@@ -239,7 +241,7 @@ class TestGamelogParserVsScreenshots:
         no_winner = [m for m in parsed_matches if m.get("winner") is None]
         assert no_winner == [], f"{len(no_winner)} matches have winner=None"
 
-    def test_all_matches_contain_pedrogush(self, parsed_matches, inferred_username):
+    def test_all_matches_contain_local_username(self, parsed_matches, inferred_username):
         """Every gamelog on this machine should involve the local user."""
         missing = [m for m in parsed_matches if inferred_username not in m.get("players", [])]
         assert missing == [], f"{len(missing)} matches don't include {inferred_username}"

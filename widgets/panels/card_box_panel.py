@@ -9,10 +9,18 @@ from utils.card_images import get_card_image
 from utils.constants import (
     DARK_ACCENT,
     DARK_ALT,
+    DECK_CARD_ACTION_BUTTON_FG,
+    DECK_CARD_ACTION_BUTTON_SIZE,
+    DECK_CARD_ACTIVE_BORDER_WIDTH,
     DECK_CARD_BADGE_PADDING,
+    DECK_CARD_BASE_FONT_SIZE,
     DECK_CARD_BUTTON_MARGIN,
     DECK_CARD_CORNER_RADIUS,
     DECK_CARD_HEIGHT,
+    DECK_CARD_IMAGE_BG,
+    DECK_CARD_NAME_FONT_SIZE,
+    DECK_CARD_TEMPLATE_BORDER_ALPHA,
+    DECK_CARD_TEMPLATE_BORDER_WIDTH,
     DECK_CARD_WIDTH,
     LIGHT_TEXT,
 )
@@ -66,7 +74,9 @@ class CardBoxPanel(wx.Panel):
         layout = wx.BoxSizer(wx.VERTICAL)
         self.SetSizer(layout)
 
-        base_font = wx.Font(11, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL)
+        base_font = wx.Font(
+            DECK_CARD_BASE_FONT_SIZE, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL
+        )
 
         # Quantity label
         badge_row = wx.BoxSizer(wx.HORIZONTAL)
@@ -238,9 +248,9 @@ class CardBoxPanel(wx.Panel):
 
     def _style_action_button(self, button: wx.Button) -> None:
         button.SetBackgroundColour(DARK_ACCENT)
-        button.SetForegroundColour(wx.Colour(12, 14, 18))
+        button.SetForegroundColour(wx.Colour(*DECK_CARD_ACTION_BUTTON_FG))
         button.SetWindowStyleFlag(wx.BORDER_NONE)
-        button.SetMinSize((28, 28))
+        button.SetMinSize(DECK_CARD_ACTION_BUTTON_SIZE)
         font = button.GetFont()
         font.MakeBold()
         button.SetFont(font)
@@ -289,7 +299,7 @@ class CardBoxPanel(wx.Panel):
             dc.DrawBitmap(self._template_bitmap, rect.x, rect.y, True)
 
         if self._active:
-            dc.SetPen(wx.Pen(wx.Colour(*DARK_ACCENT), 3))
+            dc.SetPen(wx.Pen(wx.Colour(*DARK_ACCENT), DECK_CARD_ACTIVE_BORDER_WIDTH))
             dc.SetBrush(wx.TRANSPARENT_BRUSH)
             dc.DrawRoundedRectangle(rect, DECK_CARD_CORNER_RADIUS)
 
@@ -351,7 +361,7 @@ class CardBoxPanel(wx.Panel):
     def _render_bitmap_with_image(self, image: wx.Image) -> wx.Bitmap:
         bitmap = wx.Bitmap(DECK_CARD_WIDTH, DECK_CARD_HEIGHT)
         dc = wx.MemoryDC(bitmap)
-        dc.SetBackground(wx.Brush(wx.Colour(0, 0, 0)))
+        dc.SetBackground(wx.Brush(wx.Colour(*DECK_CARD_IMAGE_BG)))
         dc.Clear()
         x = (DECK_CARD_WIDTH - image.GetWidth()) // 2
         y = (DECK_CARD_HEIGHT - image.GetHeight()) // 2
@@ -370,7 +380,12 @@ class CardBoxPanel(wx.Panel):
         dc.SetBackground(wx.Brush(wx.Colour(*self._card_color)))
         dc.Clear()
         rect = wx.Rect(0, 0, DECK_CARD_WIDTH, DECK_CARD_HEIGHT)
-        dc.SetPen(wx.Pen(wx.Colour(0, 0, 0, 120), 2))
+        dc.SetPen(
+            wx.Pen(
+                wx.Colour(*DECK_CARD_IMAGE_BG, DECK_CARD_TEMPLATE_BORDER_ALPHA),
+                DECK_CARD_TEMPLATE_BORDER_WIDTH,
+            )
+        )
         dc.SetBrush(wx.TRANSPARENT_BRUSH)
         dc.DrawRoundedRectangle(rect, DECK_CARD_CORNER_RADIUS)
         self._draw_placeholder_details(dc, rect)
@@ -393,7 +408,9 @@ class CardBoxPanel(wx.Panel):
             )
 
         dc.SetTextForeground(wx.Colour(0, 0, 0))
-        name_font = wx.Font(10, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD)
+        name_font = wx.Font(
+            DECK_CARD_NAME_FONT_SIZE, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD
+        )
         dc.SetFont(name_font)
         name_lines = self._wrap_text(
             dc, self.card["name"], rect.width - (DECK_CARD_BADGE_PADDING * 2)

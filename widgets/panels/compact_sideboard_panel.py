@@ -10,7 +10,8 @@ from __future__ import annotations
 import wx
 from loguru import logger
 
-from utils.constants import DARK_BG, DARK_PANEL, LIGHT_TEXT, SUBDUED_TEXT
+from utils.constants import DARK_BG, DARK_PANEL, LIGHT_TEXT, PADDING_SM, SUBDUED_TEXT
+from utils.constants.ui_layout import COMPACT_SIDEBOARD_TOGGLE_BTN_SIZE
 
 
 class CompactSideboardPanel(wx.Panel):
@@ -32,7 +33,7 @@ class CompactSideboardPanel(wx.Panel):
 
         # Header row: archetype label + play/draw toggle
         header = wx.BoxSizer(wx.HORIZONTAL)
-        sizer.Add(header, 0, wx.EXPAND | wx.ALL, 4)
+        sizer.Add(header, 0, wx.EXPAND | wx.ALL, PADDING_SM)
 
         self.header_label = wx.StaticText(self, label="Guide: —")
         self.header_label.SetForegroundColour(LIGHT_TEXT)
@@ -40,23 +41,23 @@ class CompactSideboardPanel(wx.Panel):
         self.header_label.SetFont(font.Bold())
         header.Add(self.header_label, 1, wx.ALIGN_CENTER_VERTICAL)
 
-        self.toggle_btn = wx.Button(self, label="On Draw", size=(70, 22))
+        self.toggle_btn = wx.Button(self, label="On Draw", size=COMPACT_SIDEBOARD_TOGGLE_BTN_SIZE)
         self.toggle_btn.SetBackgroundColour(DARK_BG)
         self.toggle_btn.SetForegroundColour(LIGHT_TEXT)
         self.toggle_btn.Bind(wx.EVT_BUTTON, self._on_toggle_play_draw)
         self.toggle_btn.Hide()
-        header.Add(self.toggle_btn, 0, wx.LEFT, 4)
+        header.Add(self.toggle_btn, 0, wx.LEFT, PADDING_SM)
 
         # Status label (no guide found / no pinned deck)
         self.status_label = wx.StaticText(self, label="")
         self.status_label.SetForegroundColour(SUBDUED_TEXT)
-        sizer.Add(self.status_label, 0, wx.LEFT | wx.RIGHT | wx.BOTTOM, 4)
+        sizer.Add(self.status_label, 0, wx.LEFT | wx.RIGHT | wx.BOTTOM, PADDING_SM)
 
         # Cards list
         self.card_list = wx.ListBox(self, style=wx.LB_SINGLE)
         self.card_list.SetBackgroundColour(DARK_BG)
         self.card_list.SetForegroundColour(LIGHT_TEXT)
-        sizer.Add(self.card_list, 1, wx.EXPAND | wx.LEFT | wx.RIGHT | wx.BOTTOM, 4)
+        sizer.Add(self.card_list, 1, wx.EXPAND | wx.LEFT | wx.RIGHT | wx.BOTTOM, PADDING_SM)
 
     # ============= Public API =============
 

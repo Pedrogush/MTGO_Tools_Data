@@ -14,9 +14,15 @@ from utils.constants import (
     ARCHETYPE_LIST_CACHE_FILE,
     CURR_DECK_FILE,
     DECK_TEXT_CACHE_FILE,
+    GOLDFISH_DECK_TABLE_COL_DATE,
+    GOLDFISH_DECK_TABLE_COL_EVENT,
+    GOLDFISH_DECK_TABLE_COL_NUMBER,
+    GOLDFISH_DECK_TABLE_COL_PLAYER,
+    GOLDFISH_DECK_TABLE_COL_RESULT,
     METAGAME_CACHE_TTL_SECONDS,
     MTGGOLDFISH_REQUEST_TIMEOUT_SECONDS,
     MTGGOLDFISH_STALE_CACHE_SECONDS,
+    MTGGOLDFISH_STATS_LOOKBACK_DAYS,
     ONE_DAY_SECONDS,
 )
 from utils.deck_text_cache import get_deck_cache
@@ -166,11 +172,14 @@ def get_archetype_decks(archetype: str):
         tds: list[bs4.Tag] = tr.find_all("td")
         decks.append(
             {
-                "date": tds[0].text.strip(),
-                "number": tds[1].select_one("a").attrs.get("href").replace("/deck/", ""),
-                "player": tds[2].text.strip(),
-                "event": tds[3].text.strip(),
-                "result": tds[4].text.strip(),
+                "date": tds[GOLDFISH_DECK_TABLE_COL_DATE].text.strip(),
+                "number": tds[GOLDFISH_DECK_TABLE_COL_NUMBER]
+                .select_one("a")
+                .attrs.get("href")
+                .replace("/deck/", ""),
+                "player": tds[GOLDFISH_DECK_TABLE_COL_PLAYER].text.strip(),
+                "event": tds[GOLDFISH_DECK_TABLE_COL_EVENT].text.strip(),
+                "result": tds[GOLDFISH_DECK_TABLE_COL_RESULT].text.strip(),
                 "name": archetype,
                 "source": "mtggoldfish",
             }
@@ -200,7 +209,7 @@ def get_archetype_stats(mtg_format: str):
         stats[mtg_format][archetype["name"]] = {"decks": get_archetype_decks(archetype["href"])}
         # for day in the past week display the number of decks
         stats[mtg_format][archetype["name"]]["results"] = {}
-        for day in range(7):
+        for day in range(MTGGOLDFISH_STATS_LOOKBACK_DAYS):
             date = (datetime.now() - timedelta(days=day)).strftime("%Y-%m-%d")
             stats[mtg_format][archetype["name"]]["results"][date] = len(
                 [

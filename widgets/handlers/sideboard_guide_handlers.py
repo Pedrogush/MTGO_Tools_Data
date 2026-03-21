@@ -9,6 +9,12 @@ from loguru import logger
 
 from utils.atomic_io import atomic_write_json
 from utils.constants import ACTIVE_GUIDE_FILE
+from utils.constants.app import DECK_HASH_DISPLAY_LENGTH
+from utils.constants.ui_layout import PADDING_BASE, PADDING_XL
+from utils.constants.ui_windows import (
+    GUIDE_IMPORT_OPTIONS_DIALOG_HEIGHT,
+    GUIDE_IMPORT_OPTIONS_DIALOG_WIDTH,
+)
 from widgets.dialogs.guide_entry_dialog import GuideEntryDialog
 
 if TYPE_CHECKING:
@@ -248,7 +254,11 @@ class SideboardGuideHandlers:
         file_path = file_dlg.GetPath()
         file_dlg.Destroy()
 
-        options_dlg = wx.Dialog(self, title="Import Options", size=(400, 150))
+        options_dlg = wx.Dialog(
+            self,
+            title="Import Options",
+            size=(GUIDE_IMPORT_OPTIONS_DIALOG_WIDTH, GUIDE_IMPORT_OPTIONS_DIALOG_HEIGHT),
+        )
         panel = wx.Panel(options_dlg)
         sizer = wx.BoxSizer(wx.VERTICAL)
 
@@ -257,16 +267,16 @@ class SideboardGuideHandlers:
             "If unchecked, will overwrite existing entries for matching archetypes. "
             "If checked, will add entries even if archetypes already exist."
         )
-        sizer.Add(enable_double_checkbox, 0, wx.ALL, 12)
+        sizer.Add(enable_double_checkbox, 0, wx.ALL, PADDING_XL)
 
         btn_sizer = wx.BoxSizer(wx.HORIZONTAL)
         btn_sizer.AddStretchSpacer()
         ok_btn = wx.Button(panel, label="Import", id=wx.ID_OK)
         ok_btn.SetDefault()
-        btn_sizer.Add(ok_btn, 0, wx.RIGHT, 8)
+        btn_sizer.Add(ok_btn, 0, wx.RIGHT, PADDING_BASE)
         cancel_btn = wx.Button(panel, label="Cancel", id=wx.ID_CANCEL)
         btn_sizer.Add(cancel_btn, 0)
-        sizer.Add(btn_sizer, 0, wx.EXPAND | wx.ALL, 8)
+        sizer.Add(btn_sizer, 0, wx.EXPAND | wx.ALL, PADDING_BASE)
 
         panel.SetSizer(sizer)
         options_dlg.Centre()
@@ -496,7 +506,7 @@ class SideboardGuideHandlers:
             atomic_write_json(ACTIVE_GUIDE_FILE, payload, indent=2)
             self.sideboard_guide_panel.set_pinned(True)
             self._set_status(
-                f"Pinned guide for '{deck_name or deck_hash[:8]}' to Opponent Tracker."
+                f"Pinned guide for '{deck_name or deck_hash[:DECK_HASH_DISPLAY_LENGTH]}' to Opponent Tracker."
             )
             logger.info(f"Pinned guide: hash={deck_hash}, name={deck_name!r}")
         except OSError as exc:

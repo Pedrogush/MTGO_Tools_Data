@@ -13,6 +13,13 @@ import wx
 import wx.dataview as dv
 
 from utils.constants import DARK_ALT, DARK_PANEL, LIGHT_TEXT, SUBDUED_TEXT
+from utils.constants.colors import PIN_BUTTON_COLOR, WARNING_LABEL_COLOR
+from utils.constants.ui_layout import (
+    GUIDE_COL_ARCHETYPE_WIDTH,
+    GUIDE_COL_CARDS_WIDTH,
+    GUIDE_COL_NOTES_WIDTH,
+    PADDING_MD,
+)
 from utils.stylize import stylize_button
 
 
@@ -66,55 +73,55 @@ class SideboardGuidePanel(wx.Panel):
 
         # Guide entries list
         self.guide_view = dv.DataViewListCtrl(self, style=dv.DV_ROW_LINES)
-        self.guide_view.AppendTextColumn("Archetype", width=150)
-        self.guide_view.AppendTextColumn("Play: Out", width=150)
-        self.guide_view.AppendTextColumn("Play: In", width=150)
-        self.guide_view.AppendTextColumn("Draw: Out", width=150)
-        self.guide_view.AppendTextColumn("Draw: In", width=150)
-        self.guide_view.AppendTextColumn("Notes", width=180)
+        self.guide_view.AppendTextColumn("Archetype", width=GUIDE_COL_ARCHETYPE_WIDTH)
+        self.guide_view.AppendTextColumn("Play: Out", width=GUIDE_COL_CARDS_WIDTH)
+        self.guide_view.AppendTextColumn("Play: In", width=GUIDE_COL_CARDS_WIDTH)
+        self.guide_view.AppendTextColumn("Draw: Out", width=GUIDE_COL_CARDS_WIDTH)
+        self.guide_view.AppendTextColumn("Draw: In", width=GUIDE_COL_CARDS_WIDTH)
+        self.guide_view.AppendTextColumn("Notes", width=GUIDE_COL_NOTES_WIDTH)
         self.guide_view.SetBackgroundColour(DARK_ALT)
         self.guide_view.SetForegroundColour(LIGHT_TEXT)
-        sizer.Add(self.guide_view, 1, wx.EXPAND | wx.ALL, 6)
+        sizer.Add(self.guide_view, 1, wx.EXPAND | wx.ALL, PADDING_MD)
 
         # Button row
         buttons = wx.BoxSizer(wx.HORIZONTAL)
-        sizer.Add(buttons, 0, wx.EXPAND | wx.LEFT | wx.RIGHT | wx.BOTTOM, 6)
+        sizer.Add(buttons, 0, wx.EXPAND | wx.LEFT | wx.RIGHT | wx.BOTTOM, PADDING_MD)
 
         self.add_btn = wx.Button(self, label="Add")
         stylize_button(self.add_btn)
         self.add_btn.Bind(wx.EVT_BUTTON, self._on_add_clicked)
-        buttons.Add(self.add_btn, 0, wx.RIGHT, 6)
+        buttons.Add(self.add_btn, 0, wx.RIGHT, PADDING_MD)
 
         self.edit_btn = wx.Button(self, label="Edit")
         stylize_button(self.edit_btn)
         self.edit_btn.Bind(wx.EVT_BUTTON, self._on_edit_clicked)
-        buttons.Add(self.edit_btn, 0, wx.RIGHT, 6)
+        buttons.Add(self.edit_btn, 0, wx.RIGHT, PADDING_MD)
 
         self.remove_btn = wx.Button(self, label="Delete")
         stylize_button(self.remove_btn)
         self.remove_btn.Bind(wx.EVT_BUTTON, self._on_remove_clicked)
-        buttons.Add(self.remove_btn, 0, wx.RIGHT, 6)
+        buttons.Add(self.remove_btn, 0, wx.RIGHT, PADDING_MD)
 
         self.exclusions_btn = wx.Button(self, label="Exclusions")
         stylize_button(self.exclusions_btn)
         self.exclusions_btn.Bind(wx.EVT_BUTTON, self._on_exclusions_clicked)
-        buttons.Add(self.exclusions_btn, 0, wx.RIGHT, 6)
+        buttons.Add(self.exclusions_btn, 0, wx.RIGHT, PADDING_MD)
 
         self.export_btn = wx.Button(self, label="Export")
         stylize_button(self.export_btn)
         self.export_btn.Bind(wx.EVT_BUTTON, self._on_export_clicked)
-        buttons.Add(self.export_btn, 0, wx.RIGHT, 6)
+        buttons.Add(self.export_btn, 0, wx.RIGHT, PADDING_MD)
 
         self.import_btn = wx.Button(self, label="Import")
         stylize_button(self.import_btn)
         self.import_btn.Bind(wx.EVT_BUTTON, self._on_import_clicked)
-        buttons.Add(self.import_btn, 0, wx.RIGHT, 6)
+        buttons.Add(self.import_btn, 0, wx.RIGHT, PADDING_MD)
 
         buttons.AddStretchSpacer(1)
 
         self.pin_btn = wx.Button(self, label="Pin for Tracker")
         stylize_button(self.pin_btn)
-        self.pin_btn.SetBackgroundColour(wx.Colour(140, 90, 210))
+        self.pin_btn.SetBackgroundColour(wx.Colour(*PIN_BUTTON_COLOR))
         self.pin_btn.SetToolTip(
             "Pin this deck's sideboard guide so the Opponent Tracker can look up matchup plans automatically."
         )
@@ -126,13 +133,13 @@ class SideboardGuidePanel(wx.Panel):
         # Exclusions label
         self.exclusions_label = wx.StaticText(self, label="Exclusions: —")
         self.exclusions_label.SetForegroundColour(SUBDUED_TEXT)
-        sizer.Add(self.exclusions_label, 0, wx.LEFT | wx.RIGHT | wx.BOTTOM, 6)
+        sizer.Add(self.exclusions_label, 0, wx.LEFT | wx.RIGHT | wx.BOTTOM, PADDING_MD)
 
         # Warning label (hidden by default)
         self.warning_label = wx.StaticText(self, label="")
-        self.warning_label.SetForegroundColour(wx.Colour(255, 165, 0))  # Orange
+        self.warning_label.SetForegroundColour(wx.Colour(*WARNING_LABEL_COLOR))
         self.warning_label.Hide()
-        sizer.Add(self.warning_label, 0, wx.LEFT | wx.RIGHT | wx.BOTTOM, 6)
+        sizer.Add(self.warning_label, 0, wx.LEFT | wx.RIGHT | wx.BOTTOM, PADDING_MD)
 
     # ============= Public API =============
 

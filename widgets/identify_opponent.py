@@ -29,6 +29,32 @@ from utils.archetype_resolver import find_archetype_by_name
 from utils.atomic_io import atomic_write_json, locked_path
 from utils.constants import (
     ACTIVE_GUIDE_FILE,
+    CALC_ACTION_BUTTON_SPACING,
+    CALC_BUTTON_GREEN,
+    CALC_COPIES_DEFAULT,
+    CALC_COPIES_MAX,
+    CALC_DECK_SIZE_DEFAULT,
+    CALC_DECK_SIZE_MAX,
+    CALC_DECK_SIZE_MIN,
+    CALC_DRAWN_DEFAULT,
+    CALC_GRID_COLS,
+    CALC_GRID_HGAP,
+    CALC_GRID_ROWS,
+    CALC_GRID_VGAP,
+    CALC_PRESET_BUTTON_HEIGHT,
+    CALC_PRESET_BUTTON_SPACING,
+    CALC_PRESET_BUTTON_WIDTH,
+    CALC_PRESET_OPEN_40_DECK,
+    CALC_PRESET_OPEN_40_DRAWN,
+    CALC_PRESET_OPEN_60_DECK,
+    CALC_PRESET_OPEN_60_DRAWN,
+    CALC_PRESET_T3_DRAW_DECK,
+    CALC_PRESET_T3_DRAW_DRAWN,
+    CALC_PRESET_T3_PLAY_DECK,
+    CALC_PRESET_T3_PLAY_DRAWN,
+    CALC_SECTION_PADDING,
+    CALC_SPIN_WIDTH,
+    CALC_TARGET_DEFAULT,
     CONFIG_DIR,
     DARK_BG,
     DARK_PANEL,
@@ -36,15 +62,19 @@ from utils.constants import (
     DECK_MONITOR_CONFIG_FILE,
     FORMAT_OPTIONS,
     GOLDFISH,
+    GOLDFISH_PLAYER_TABLE_COLUMNS,
     GUIDE_STORE,
     LIGHT_TEXT,
     MTGGOLDFISH_REQUEST_TIMEOUT_SECONDS,
     OPPONENT_TRACKER_CACHE_TTL_SECONDS,
+    OPPONENT_TRACKER_CONFIG_SAVE_DELAY_MS,
     OPPONENT_TRACKER_FRAME_SIZE,
     OPPONENT_TRACKER_LABEL_WRAP_WIDTH,
     OPPONENT_TRACKER_POLL_INTERVAL_MS,
+    OPPONENT_TRACKER_RADAR_THREAD_JOIN_TIMEOUT_SECONDS,
     OPPONENT_TRACKER_SECTION_PADDING,
     OPPONENT_TRACKER_SPACER_HEIGHT,
+    RADAR_MAX_DECKS_OPPONENT_TRACKER,
     SUBDUED_TEXT,
 )
 from utils.find_opponent_names import find_opponent_names
@@ -103,7 +133,7 @@ def get_latest_deck(player: str, option: str):
         tds = entry.find_all("td")
         if not tds:
             continue
-        if len(tds) != 8:
+        if len(tds) != GOLDFISH_PLAYER_TABLE_COLUMNS:
             continue
         entry_format: str = tds[2].text
         if entry_format.lower().strip() == option.lower():
@@ -181,7 +211,7 @@ class MTGOpponentDeckSpy(wx.Frame):
 
         self.status_label = wx.StaticText(panel, label="Watching for MTGO match windows…")
         self._stylize_label(self.status_label, subtle=True)
-        self.status_label.Wrap(320)
+        self.status_label.Wrap(OPPONENT_TRACKER_LABEL_WRAP_WIDTH)
         sizer.Add(
             self.status_label,
             0,
@@ -279,17 +309,21 @@ class MTGOpponentDeckSpy(wx.Frame):
         title_font = title.GetFont()
         title_font.MakeBold()
         title.SetFont(title_font)
-        calc_sizer.Add(title, 0, wx.ALL, 6)
+        calc_sizer.Add(title, 0, wx.ALL, CALC_SECTION_PADDING)
 
         # Input grid
-        grid = wx.FlexGridSizer(4, 2, 4, 8)
-        calc_sizer.Add(grid, 0, wx.ALL | wx.EXPAND, 6)
+        grid = wx.FlexGridSizer(CALC_GRID_ROWS, CALC_GRID_COLS, CALC_GRID_VGAP, CALC_GRID_HGAP)
+        calc_sizer.Add(grid, 0, wx.ALL | wx.EXPAND, CALC_SECTION_PADDING)
 
         # Deck Size
         lbl_deck = wx.StaticText(self.calc_panel, label="Deck Size:")
         lbl_deck.SetForegroundColour(LIGHT_TEXT)
         self.spin_deck_size = wx.SpinCtrl(
-            self.calc_panel, min=1, max=250, initial=60, size=(70, -1)
+            self.calc_panel,
+            min=CALC_DECK_SIZE_MIN,
+            max=CALC_DECK_SIZE_MAX,
+            initial=CALC_DECK_SIZE_DEFAULT,
+            size=(CALC_SPIN_WIDTH, -1),
         )
         self.spin_deck_size.SetToolTip("Total cards in deck (N)")
         grid.Add(lbl_deck, 0, wx.ALIGN_CENTER_VERTICAL)
@@ -298,7 +332,13 @@ class MTGOpponentDeckSpy(wx.Frame):
         # Copies in Deck
         lbl_copies = wx.StaticText(self.calc_panel, label="Copies in Deck:")
         lbl_copies.SetForegroundColour(LIGHT_TEXT)
-        self.spin_copies = wx.SpinCtrl(self.calc_panel, min=0, max=60, initial=4, size=(70, -1))
+        self.spin_copies = wx.SpinCtrl(
+            self.calc_panel,
+            min=0,
+            max=CALC_COPIES_MAX,
+            initial=CALC_COPIES_DEFAULT,
+            size=(CALC_SPIN_WIDTH, -1),
+        )
         self.spin_copies.SetToolTip("Number of target cards in deck (K)")
         grid.Add(lbl_copies, 0, wx.ALIGN_CENTER_VERTICAL)
         grid.Add(self.spin_copies, 0)
@@ -306,7 +346,13 @@ class MTGOpponentDeckSpy(wx.Frame):
         # Cards Drawn
         lbl_drawn = wx.StaticText(self.calc_panel, label="Cards Drawn:")
         lbl_drawn.SetForegroundColour(LIGHT_TEXT)
-        self.spin_drawn = wx.SpinCtrl(self.calc_panel, min=0, max=60, initial=7, size=(70, -1))
+        self.spin_drawn = wx.SpinCtrl(
+            self.calc_panel,
+            min=0,
+            max=CALC_COPIES_MAX,
+            initial=CALC_DRAWN_DEFAULT,
+            size=(CALC_SPIN_WIDTH, -1),
+        )
         self.spin_drawn.SetToolTip("Number of cards drawn (n)")
         grid.Add(lbl_drawn, 0, wx.ALIGN_CENTER_VERTICAL)
         grid.Add(self.spin_drawn, 0)
@@ -314,43 +360,53 @@ class MTGOpponentDeckSpy(wx.Frame):
         # Target Copies
         lbl_target = wx.StaticText(self.calc_panel, label="Target Copies:")
         lbl_target.SetForegroundColour(LIGHT_TEXT)
-        self.spin_target = wx.SpinCtrl(self.calc_panel, min=0, max=60, initial=1, size=(70, -1))
+        self.spin_target = wx.SpinCtrl(
+            self.calc_panel,
+            min=0,
+            max=CALC_COPIES_MAX,
+            initial=CALC_TARGET_DEFAULT,
+            size=(CALC_SPIN_WIDTH, -1),
+        )
         self.spin_target.SetToolTip("Desired number of target cards (k)")
         grid.Add(lbl_target, 0, wx.ALIGN_CENTER_VERTICAL)
         grid.Add(self.spin_target, 0)
 
         # Preset buttons
         preset_sizer = wx.BoxSizer(wx.HORIZONTAL)
-        calc_sizer.Add(preset_sizer, 0, wx.LEFT | wx.RIGHT | wx.BOTTOM, 6)
+        calc_sizer.Add(preset_sizer, 0, wx.LEFT | wx.RIGHT | wx.BOTTOM, CALC_SECTION_PADDING)
 
         presets = [
-            ("Open 60", 60, 7),
-            ("Open 40", 40, 7),
-            ("T3 Play", 60, 9),
-            ("T3 Draw", 60, 10),
+            ("Open 60", CALC_PRESET_OPEN_60_DECK, CALC_PRESET_OPEN_60_DRAWN),
+            ("Open 40", CALC_PRESET_OPEN_40_DECK, CALC_PRESET_OPEN_40_DRAWN),
+            ("T3 Play", CALC_PRESET_T3_PLAY_DECK, CALC_PRESET_T3_PLAY_DRAWN),
+            ("T3 Draw", CALC_PRESET_T3_DRAW_DECK, CALC_PRESET_T3_DRAW_DRAWN),
         ]
         for label, deck, drawn in presets:
-            btn = wx.Button(self.calc_panel, label=label, size=(55, 24))
+            btn = wx.Button(
+                self.calc_panel,
+                label=label,
+                size=(CALC_PRESET_BUTTON_WIDTH, CALC_PRESET_BUTTON_HEIGHT),
+            )
             btn.SetBackgroundColour(DARK_BG)
             btn.SetForegroundColour(LIGHT_TEXT)
             btn.Bind(
                 wx.EVT_BUTTON,
                 lambda evt, d=deck, n=drawn: self._apply_preset(d, n),
             )
-            preset_sizer.Add(btn, 0, wx.RIGHT, 4)
+            preset_sizer.Add(btn, 0, wx.RIGHT, CALC_PRESET_BUTTON_SPACING)
 
         # Action buttons
         action_sizer = wx.BoxSizer(wx.HORIZONTAL)
-        calc_sizer.Add(action_sizer, 0, wx.LEFT | wx.RIGHT | wx.BOTTOM, 6)
+        calc_sizer.Add(action_sizer, 0, wx.LEFT | wx.RIGHT | wx.BOTTOM, CALC_SECTION_PADDING)
 
         calc_btn = wx.Button(self.calc_panel, label="Calculate")
-        calc_btn.SetBackgroundColour("#2a6b2a")
+        calc_btn.SetBackgroundColour(CALC_BUTTON_GREEN)
         calc_btn.SetForegroundColour(LIGHT_TEXT)
         font = calc_btn.GetFont()
         font.MakeBold()
         calc_btn.SetFont(font)
         calc_btn.Bind(wx.EVT_BUTTON, self._on_calculate)
-        action_sizer.Add(calc_btn, 0, wx.RIGHT, 8)
+        action_sizer.Add(calc_btn, 0, wx.RIGHT, CALC_ACTION_BUTTON_SPACING)
 
         clear_btn = wx.Button(self.calc_panel, label="Clear")
         clear_btn.SetBackgroundColour(DARK_BG)
@@ -370,7 +426,7 @@ class MTGOpponentDeckSpy(wx.Frame):
         # Result display
         self.calc_result_label = wx.StaticText(self.calc_panel, label="")
         self.calc_result_label.SetForegroundColour(LIGHT_TEXT)
-        calc_sizer.Add(self.calc_result_label, 0, wx.ALL, 6)
+        calc_sizer.Add(self.calc_result_label, 0, wx.ALL, CALC_SECTION_PADDING)
 
         # Add panel to parent sizer but hide initially
         parent_sizer.Add(
@@ -539,10 +595,10 @@ class MTGOpponentDeckSpy(wx.Frame):
 
     def _on_clear_calculator(self, _event: wx.CommandEvent) -> None:
         """Reset calculator to default values."""
-        self.spin_deck_size.SetValue(60)
-        self.spin_copies.SetValue(4)
-        self.spin_drawn.SetValue(7)
-        self.spin_target.SetValue(1)
+        self.spin_deck_size.SetValue(CALC_DECK_SIZE_DEFAULT)
+        self.spin_copies.SetValue(CALC_COPIES_DEFAULT)
+        self.spin_drawn.SetValue(CALC_DRAWN_DEFAULT)
+        self.spin_target.SetValue(CALC_TARGET_DEFAULT)
         self.calc_result_label.SetLabel("")
 
     # ------------------------------------------------------------------ Radar integration ---------------------------------------------------
@@ -622,7 +678,7 @@ class MTGOpponentDeckSpy(wx.Frame):
             radar = self.radar_service.calculate_radar(
                 archetype_dict,
                 format_name,
-                max_decks=10,
+                max_decks=RADAR_MAX_DECKS_OPPONENT_TRACKER,
                 progress_callback=update_progress,
             )
 
@@ -724,7 +780,7 @@ class MTGOpponentDeckSpy(wx.Frame):
                     wx.CallAfter(self._update_guide_display)
 
         self.status_label.SetLabel(f"Match detected: vs {self.player_name}")
-        self.status_label.Wrap(320)
+        self.status_label.Wrap(OPPONENT_TRACKER_LABEL_WRAP_WIDTH)
         self._refresh_opponent_display()
 
     def _lookup_decks_all_formats(
@@ -775,7 +831,7 @@ class MTGOpponentDeckSpy(wx.Frame):
 
     # ------------------------------------------------------------------ Persistence -----------------------------------------------------------
     def _persist_config_async(self) -> None:
-        wx.CallLater(200, self._save_config)
+        wx.CallLater(OPPONENT_TRACKER_CONFIG_SAVE_DELAY_MS, self._save_config)
 
     def _save_config(self) -> None:
         try:
@@ -903,7 +959,9 @@ class MTGOpponentDeckSpy(wx.Frame):
         if self._radar_worker_thread and self._radar_worker_thread.is_alive():
             self._radar_cancel_requested = True
             # Give it a moment to clean up
-            self._radar_worker_thread.join(timeout=1.0)
+            self._radar_worker_thread.join(
+                timeout=OPPONENT_TRACKER_RADAR_THREAD_JOIN_TIMEOUT_SECONDS
+            )
 
         if self._poll_timer.IsRunning():
             self._poll_timer.Stop()

@@ -44,7 +44,13 @@ from utils.atomic_io import (
 )
 from utils.constants import (
     BULK_DATA_CACHE_FRESHNESS_SECONDS,
+    BYTES_PER_MB,
     CACHE_DIR,
+    SCRYFALL_BULK_STREAM_TIMEOUT_SECONDS,
+    SCRYFALL_DOWNLOAD_CHUNK_SIZE,
+    SCRYFALL_DOWNLOAD_PROGRESS_INTERVAL,
+    SCRYFALL_MAX_DOWNLOAD_WORKERS,
+    SCRYFALL_REQUEST_TIMEOUT_SECONDS,
     SQLITE_CONNECTION_TIMEOUT_SECONDS,
 )
 from utils.perf import timed
@@ -68,9 +74,6 @@ IMAGE_SIZES = {
 BULK_DATA_URL = "https://api.scryfall.com/bulk-data/default-cards"
 SCRYFALL_CARD_NAMED_URL = "https://api.scryfall.com/cards/named"
 SCRYFALL_CARD_SEARCH_URL = "https://api.scryfall.com/cards/search"
-MAX_WORKERS = 10  # Concurrent download threads
-CHUNK_SIZE = 8192  # Download chunk size
-REQUEST_TIMEOUT = 30  # Seconds
 
 
 # ---------------------------------------------------------------------------
@@ -231,7 +234,8 @@ class CardImageCache:
 
     def _create_schema(self, conn: sqlite3.Connection) -> None:
         """Create base tables if they do not exist."""
-        conn.execute("""
+        conn.execute(
+            """
             CREATE TABLE IF NOT EXISTS card_images (
                 uuid TEXT NOT NULL,
                 face_index INTEGER NOT NULL DEFAULT 0,
@@ -245,21 +249,28 @@ class CardImageCache:
                 artist TEXT,
                 PRIMARY KEY (uuid, face_index, image_size)
             )
-        """)
-        conn.execute("""
+        """
+        )
+        conn.execute(
+            """
             CREATE INDEX IF NOT EXISTS idx_card_name ON card_images(name)
-        """)
-        conn.execute("""
+        """
+        )
+        conn.execute(
+            """
             CREATE INDEX IF NOT EXISTS idx_set_code ON card_images(set_code)
-        """)
-        conn.execute("""
+        """
+        )
+        conn.execute(
+            """
             CREATE TABLE IF NOT EXISTS bulk_data_meta (
                 id INTEGER PRIMARY KEY CHECK (id = 1),
                 downloaded_at TEXT NOT NULL,
                 total_cards INTEGER NOT NULL,
                 bulk_data_uri TEXT NOT NULL
             )
-        """)
+        """
+        )
 
     def _ensure_face_index_support(self, conn: sqlite3.Connection) -> None:
         """Ensure the card_images table can store multiple faces per UUID."""
@@ -271,7 +282,8 @@ class CardImageCache:
         logger.info("Migrating card_images table to support multi-face entries")
         conn.execute("ALTER TABLE card_images RENAME TO card_images_old")
         self._create_schema(conn)
-        conn.execute("""
+        conn.execute(
+            """
             INSERT INTO card_images (
                 uuid,
                 face_index,
@@ -296,7 +308,8 @@ class CardImageCache:
                 scryfall_uri,
                 artist
             FROM card_images_old
-        """)
+        """
+        )
         conn.execute("DROP TABLE card_images_old")
 
     def _resolve_path(self, stored_path: str) -> Path:
@@ -584,7 +597,7 @@ class CardImageCache:
 class BulkImageDownloader:
     """High-throughput bulk image downloader using Scryfall data."""
 
-    def __init__(self, cache: CardImageCache, max_workers: int = MAX_WORKERS):
+    def __init__(self, cache: CardImageCache, max_workers: int = SCRYFALL_MAX_DOWNLOAD_WORKERS):
         self.cache = cache
         self.max_workers = max_workers
         self.session = requests.Session()
@@ -593,7 +606,7 @@ class BulkImageDownloader:
     def _fetch_bulk_metadata(self) -> dict[str, Any]:
         """Fetch the bulk data metadata from Scryfall."""
         logger.info("Fetching bulk data metadata from Scryfall...")
-        resp = self.session.get(BULK_DATA_URL, timeout=REQUEST_TIMEOUT)
+        resp = self.session.get(BULK_DATA_URL, timeout=SCRYFALL_REQUEST_TIMEOUT_SECONDS)
         resp.raise_for_status()
         return resp.json()
 
@@ -602,7 +615,9 @@ class BulkImageDownloader:
         params = {"exact": name}
         if set_code:
             params["set"] = set_code.lower()
-        resp = self.session.get(SCRYFALL_CARD_NAMED_URL, params=params, timeout=REQUEST_TIMEOUT)
+        resp = self.session.get(
+            SCRYFALL_CARD_NAMED_URL, params=params, timeout=SCRYFALL_REQUEST_TIMEOUT_SECONDS
+        )
         resp.raise_for_status()
         return resp.json()
 
@@ -612,7 +627,7 @@ class BulkImageDownloader:
         results: list[dict[str, Any]] = []
         url: str | None = SCRYFALL_CARD_SEARCH_URL
         while url:
-            resp = self.session.get(url, params=params, timeout=REQUEST_TIMEOUT)
+            resp = self.session.get(url, params=params, timeout=SCRYFALL_REQUEST_TIMEOUT_SECONDS)
             resp.raise_for_status()
             payload = resp.json()
             results.extend(payload.get("data", []))
@@ -699,13 +714,17 @@ class BulkImageDownloader:
 
         try:
             logger.info(f"Downloading bulk data from {download_uri}")
-            logger.info(f"Size: {metadata.get('size', 0) / (1024 * 1024):.1f} MB")
+            logger.info(f"Size: {metadata.get('size', 0) / BYTES_PER_MB:.1f} MB")
 
             # Download with progress
-            resp = self.session.get(download_uri, stream=True, timeout=120)
+            resp = self.session.get(
+                download_uri, stream=True, timeout=SCRYFALL_BULK_STREAM_TIMEOUT_SECONDS
+            )
             resp.raise_for_status()
 
-            atomic_write_stream(BULK_DATA_CACHE, resp.iter_content(chunk_size=CHUNK_SIZE))
+            atomic_write_stream(
+                BULK_DATA_CACHE, resp.iter_content(chunk_size=SCRYFALL_DOWNLOAD_CHUNK_SIZE)
+            )
 
             # Update database metadata (defer card count to avoid parsing 500MB file)
             with sqlite3.connect(
@@ -827,7 +846,7 @@ class BulkImageDownloader:
             return False, f"No {size} image for {name}", None
 
         try:
-            resp = self.session.get(image_url, timeout=REQUEST_TIMEOUT)
+            resp = self.session.get(image_url, timeout=SCRYFALL_REQUEST_TIMEOUT_SECONDS)
             resp.raise_for_status()
         except Exception as exc:
             logger.debug(f"Failed to download {name}: {exc}")
@@ -924,7 +943,7 @@ class BulkImageDownloader:
                         logger.debug(f"Exception in download: {exc}")
 
                     # Progress callback
-                    if progress_callback and completed % 100 == 0:
+                    if progress_callback and completed % SCRYFALL_DOWNLOAD_PROGRESS_INTERVAL == 0:
                         progress_callback(
                             completed,
                             total,

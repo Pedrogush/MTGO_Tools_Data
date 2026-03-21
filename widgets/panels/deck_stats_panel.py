@@ -9,6 +9,7 @@ wx.html2.WebView so they support hover tooltips and pixel-perfect layout.
 import math
 from collections import Counter
 from html import escape
+from pathlib import Path
 from typing import Any
 
 import wx
@@ -68,6 +69,38 @@ _HAND_COLOURS = [
 
 _CURVE_WARM = (255, 220, 40)
 _CURVE_COLD = (30, 50, 180)
+
+# Color key → mana SVG filename stem
+_COLOR_SVG_FILENAMES: dict[str, str] = {
+    "W": "w",
+    "U": "u",
+    "B": "b",
+    "R": "r",
+    "G": "g",
+    "C": "c",
+    "Colorless": "c",
+}
+
+
+def _load_mana_svgs() -> dict[str, str]:
+    """Load and inline mana symbol SVGs for each color key, sized 18×18."""
+    svg_dir = Path(__file__).parent.parent.parent / "assets" / "mana" / "svg"
+    result: dict[str, str] = {}
+    for key, stem in _COLOR_SVG_FILENAMES.items():
+        path = svg_dir / f"{stem}.svg"
+        if path.exists():
+            svg = path.read_text(encoding="utf-8")
+            svg = svg.replace('width="32" height="32"', 'width="18" height="18"')
+            svg = svg.replace("fill=\"#444\"", "fill=\"#ECECEC\"")
+            # Strip the XML comment line to reduce HTML payload
+            svg = "\n".join(
+                line for line in svg.splitlines() if not line.startswith("<!--")
+            )
+            result[key] = svg.strip()
+    return result
+
+
+_COLOR_SVG_HTML: dict[str, str] = _load_mana_svgs()
 
 
 def _lerp_hex(c1: tuple[int, int, int], c2: tuple[int, int, int], t: float) -> str:
@@ -182,7 +215,7 @@ html, body {
   gap: 4px;
   flex: 1;
   min-height: 0;
-  padding-bottom: 18px;  /* room for x-axis labels */
+  padding-bottom: 22px;  /* room for x-axis labels (icons up to 18px tall) */
   position: relative;
 }
 
@@ -222,13 +255,17 @@ html, body {
 /* x-axis label below bars */
 .vbar-lbl {
   position: absolute;
-  bottom: -18px;
+  bottom: -22px;
   font-size: 10px;
   color: #8B929E;
   white-space: nowrap;
   text-align: center;
   left: 50%;
   transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
 }
 
 /* ── Floating tooltip (JS-positioned, never clipped) ── */
@@ -329,6 +366,7 @@ function hideTip() { tip.style.display = 'none'; }
 def _build_vbars(
     items: list[tuple[str, str, float, str, str]],  # (label, val_text, raw, colour, tooltip)
     val_font_size: int = 10,
+    icon_map: dict[str, str] | None = None,
 ) -> str:
     """Render the inner bar columns of a vertical bar chart."""
     if not items:
@@ -340,12 +378,13 @@ def _build_vbars(
     for label, val_text, raw, colour, tooltip in items:
         pct = raw / max_raw * 100
         tip_attr = escape(tooltip, quote=True)
+        lbl_html = icon_map[label] if (icon_map and label in icon_map) else escape(label)
         html += (
             f'<div class="vbar-col" data-tip="{tip_attr}"'
             f' onmouseenter="showTip(this,event)" onmousemove="moveTip(event)" onmouseleave="hideTip()">'
             f'<div class="vbar-val" style="font-size:{val_font_size}px">{escape(val_text)}</div>'
             f'<div class="vbar" style="height:{pct:.1f}%;background:{colour};"></div>'
-            f'<div class="vbar-lbl">{escape(label)}</div>'
+            f'<div class="vbar-lbl">{lbl_html}</div>'
             f'</div>'
         )
     html += "</div>"
@@ -389,7 +428,7 @@ def _build_html(
     hand_items: list[tuple[str, str, float, str, str]],
 ) -> str:
     curve_html = _build_vbars(curve_items)
-    color_html = _build_vbars(color_items)
+    color_html = _build_vbars(color_items, icon_map=_COLOR_SVG_HTML if _COLOR_SVG_HTML else None)
     type_html = _build_hbars(type_items)
     hand_html = _build_vbars(hand_items, val_font_size=15)
 
@@ -588,7 +627,7 @@ class DeckStatsPanel(wx.Panel):
             full_name, hex_colour = _COLOR_MAP.get(color, (color, "#828282"))
             pct = count / grand_total * 100
             tooltip = f"{full_name}: {pct:.1f}%"
-            items.append((full_name, f"{pct:.0f}%", pct, hex_colour, tooltip))
+            items.append((color, f"{pct:.0f}%", pct, hex_colour, tooltip))
         return items
 
     def _type_items(self) -> list[tuple[str, int, int, str, str]]:

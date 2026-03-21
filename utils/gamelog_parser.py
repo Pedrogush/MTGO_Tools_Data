@@ -216,68 +216,86 @@ def locate_gamelog_directory_via_bridge() -> str | None:
     return None
 
 
-def locate_gamelog_directory_fallback() -> str | None:
+def _candidate_appdata_bases() -> list[Path]:
+    """Return candidate AppData/Local/Apps/2.0/Data paths for the current platform."""
+    paths = []
+
+    # WSL: scan all user home dirs under /mnt/c/Users/
+    wsl_users = Path("/mnt/c/Users")
+    if wsl_users.is_dir():
+        for user_dir in wsl_users.iterdir():
+            candidate = user_dir / "AppData" / "Local" / "Apps" / "2.0" / "Data"
+            if candidate.is_dir():
+                paths.append(candidate)
+
+    # Windows native: USERNAME env var is set by cmd/PowerShell
+    win_username = os.environ.get("USERNAME", "")
+    if win_username:
+        candidate = Path(rf"C:\Users\{win_username}\AppData\Local\Apps\2.0\Data")
+        if candidate.is_dir() and candidate not in paths:
+            paths.append(candidate)
+
+    return paths
+
+
+def find_all_gamelog_dirs(appdata_base: str | None = None) -> list[str]:
     """
-    Try common MTGO log file locations as fallback.
+    Scan MTGO ClickOnce installation directories for folders containing GameLog files.
+
+    MTGO ClickOnce layout:
+        AppData/Local/Apps/2.0/Data/{hash}/{hash}/mtgo*/Data/AppFiles/{hash}/
+        Match_GameLog_*.dat files live directly in the innermost hash folder.
+
+    Args:
+        appdata_base: Override the AppData/Local/Apps/2.0/Data base path.
+                      Auto-detected for both Windows and WSL if None.
 
     Returns:
-        Path to GameLog directory if found, None otherwise
+        List of directory paths that contain Match_GameLog_*.dat files,
+        sorted newest-first by the most recent log file's mtime.
     """
-    username = os.environ.get("USERNAME", "")
+    if appdata_base:
+        bases = [Path(appdata_base)]
+    else:
+        bases = _candidate_appdata_bases()
 
-    # Common MTGO installation paths
-    potential_paths = [
-        # ClickOnce deployment (most common)
-        rf"C:\Users\{username}\AppData\Local\Apps\2.0",
-        # Steam version
-        r"C:\Program Files (x86)\Steam\steamapps\common\Magic The Gathering Online\MTGO",
-        # Direct install
-        r"C:\Program Files (x86)\Wizards of the Coast\Magic Online",
-    ]
+    found: list[Path] = []
+    for base in bases:
+        # ClickOnce layout: Data/{hash}/{hash}/mtgo*/Data/AppFiles/{hash}/
+        for candidate in base.glob("*/*/mtgo*/Data/AppFiles/*/"):
+            if candidate.is_dir() and any(candidate.glob("Match_GameLog_*.dat")):
+                found.append(candidate)
 
-    for base_path in potential_paths:
-        if not os.path.exists(base_path):
-            continue
+    def _newest_mtime(d: Path) -> float:
+        mtimes = [f.stat().st_mtime for f in d.glob("Match_GameLog_*.dat")]
+        return max(mtimes) if mtimes else 0.0
 
-        # For ClickOnce deployment, need to search subdirectories
-        if "AppData\\Local\\Apps" in base_path:
-            for root, dirs, _files in os.walk(base_path):
-                if "GameLogs" in dirs:
-                    gamelog_path = os.path.join(root, "GameLogs")
-                    # Verify it contains actual log files
-                    if any(f.startswith("Match_GameLog_") for f in os.listdir(gamelog_path)):
-                        return gamelog_path
-        else:
-            # For other installations, look for GameLogs subdirectory
-            gamelog_path = os.path.join(base_path, "GameLogs")
-            if os.path.exists(gamelog_path):
-                return gamelog_path
-
-    return None
+    found.sort(key=_newest_mtime, reverse=True)
+    dirs = [str(d) for d in found]
+    logger.debug(f"Found {len(dirs)} MTGO GameLog director{'y' if len(dirs) == 1 else 'ies'}: {dirs}")
+    return dirs
 
 
 def locate_gamelog_directory() -> str | None:
     """
-    Locate MTGO GameLog directory.
+    Locate the most recent MTGO GameLog directory.
 
     Strategy:
     1. Try using MTGOBridge + MTGOSDK (if MTGO is running)
-    2. Fall back to searching common installation paths
+    2. Fall back to scanning the ClickOnce AppData tree
 
     Returns:
         Path to GameLog directory if found, None otherwise
     """
-    # Try SDK method first (requires MTGO running)
     path = locate_gamelog_directory_via_bridge()
     if path:
         logger.debug(f"Located GameLogs via MTGOSDK: {path}")
         return path
 
-    # Fallback to filesystem search
-    path = locate_gamelog_directory_fallback()
-    if path:
-        logger.debug(f"Located GameLogs via filesystem search: {path}")
-        return path
+    dirs = find_all_gamelog_dirs()
+    if dirs:
+        logger.debug(f"Located GameLogs via filesystem scan: {dirs[0]}")
+        return dirs[0]
 
     logger.warning("Could not locate MTGO GameLog directory")
     return None
@@ -801,13 +819,16 @@ def find_gamelog_files(directory: str, since_date: datetime | None = None) -> li
 
 
 def parse_all_gamelogs(
-    directory: str = None, limit: int = None, progress_callback=None
+    directory: str | list[str] | None = None,
+    limit: int = None,
+    progress_callback=None,
 ) -> list[dict]:
     """
-    Parse all GameLog files in directory.
+    Parse all GameLog files across all MTGO GameLog directories.
 
     Args:
-        directory: Path to GameLog directory (auto-detected if None)
+        directory: Single path, list of paths, or None to auto-detect all
+                   MTGO ClickOnce directories on this machine.
         limit: Maximum number of files to parse (None for all)
         progress_callback: Optional callback(current, total) for progress updates
 
@@ -815,11 +836,23 @@ def parse_all_gamelogs(
         List of parsed match data dicts
     """
     if directory is None:
-        directory = locate_gamelog_directory()
-        if directory is None:
-            raise RuntimeError("Could not locate MTGO GameLog directory")
+        directories = find_all_gamelog_dirs()
+        if not directories:
+            raise RuntimeError("Could not locate any MTGO GameLog directories")
+    elif isinstance(directory, list):
+        directories = directory
+    else:
+        directories = [directory]
 
-    log_files = find_gamelog_files(directory)
+    log_files: list[str] = []
+    seen: set[str] = set()
+    for d in directories:
+        for f in find_gamelog_files(d):
+            # Deduplicate by filename in case dirs overlap
+            name = os.path.basename(f)
+            if name not in seen:
+                seen.add(name)
+                log_files.append(f)
 
     if limit:
         log_files = log_files[:limit]
@@ -835,7 +868,10 @@ def parse_all_gamelogs(
         if match_data:
             matches.append(match_data)
 
-    logger.debug(f"Parsed {len(matches)} matches from {len(log_files)} log files")
+    logger.debug(
+        f"Parsed {len(matches)} matches from {len(log_files)} log files"
+        f" across {len(directories)} director{'y' if len(directories) == 1 else 'ies'}"
+    )
 
     return matches
 

@@ -27,6 +27,7 @@ _CARD_TYPES = [
     "Artifact",
     "Planeswalker",
     "Battle",
+    "Kindred",
 ]
 
 # MTG color identity → (full display label, hex bar colour)
@@ -49,6 +50,7 @@ _TYPE_COLOURS: dict[str, str] = {
     "Artifact": "#9B9BA5",
     "Planeswalker": "#5FA0B9",
     "Battle": "#AF735A",
+    "Kindred": "#7A9E6A",
     "Other": "#828282",
 }
 

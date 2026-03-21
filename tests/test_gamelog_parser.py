@@ -93,8 +93,9 @@ class TestInferUsername:
         assert result is None
 
     def test_all_same_player(self):
-        matches = [{"players": ["pedrogush", f"opp{i}"]} for i in range(100)]
-        assert infer_username_from_matches(matches) == "pedrogush"
+        username = os.environ.get("MTGO_USERNAME", "testplayer")
+        matches = [{"players": [username, f"opp{i}"]} for i in range(100)]
+        assert infer_username_from_matches(matches) == username
 
 
 # ---------------------------------------------------------------------------

@@ -50,23 +50,23 @@ _TYPE_COLOURS: dict[str, tuple[int, int, int]] = {
     "Other": (130, 130, 130),
 }
 
-# Opening-hand land count: 0=very red, 3=green, 7=very red
+# Opening-hand land count: 0-1=red, 2-3=green, 4-7=red
 _HAND_COLOURS: list[tuple[int, int, int]] = [
-    (220, 40, 40),  # 0 lands – very red
-    (205, 75, 55),  # 1 land  – red
-    (190, 135, 65),  # 2 lands – red fading to green
-    (60, 190, 85),  # 3 lands – green
-    (130, 185, 70),  # 4 lands – green fading to red
-    (200, 130, 55),  # 5 lands – orange-red
-    (210, 70, 55),  # 6 lands – red
-    (225, 35, 35),  # 7 lands – very red
+    (210, 60, 60),  # 0 lands – red
+    (210, 60, 60),  # 1 land  – red
+    (60, 190, 80),  # 2 lands – green
+    (60, 190, 80),  # 3 lands – green
+    (210, 60, 60),  # 4 lands – red
+    (210, 60, 60),  # 5 lands – red
+    (210, 60, 60),  # 6 lands – red
+    (210, 60, 60),  # 7 lands – red
 ]
 
 # Mana curve gradient endpoints
 _CURVE_WARM = (255, 220, 40)  # yellow at CMC 0
 _CURVE_COLD = (30, 50, 180)  # dark blue at CMC 15
 
-_BAR_PAD = 6
+_BAR_PAD = 8
 _TITLE_H = 20
 _VALUE_H = 16
 _LABEL_H = 16
@@ -104,12 +104,13 @@ def _hypergeometric_exactly(n_total: int, n_success: int, n_draw: int, k: int) -
 
 
 class BarChartPanel(wx.Panel):
-    """Custom panel that draws a vertical bar chart."""
+    """Custom panel that draws a vertical or horizontal bar chart."""
 
-    def __init__(self, parent: wx.Window, title: str = "") -> None:
+    def __init__(self, parent: wx.Window, title: str = "", orientation: str = "vertical") -> None:
         super().__init__(parent)
         self.SetBackgroundColour(wx.Colour(*DARK_ALT))
         self._title = title
+        self._orientation = orientation
         # list of (label, display_value, raw_value, bar_colour)
         self._items: list[tuple[str, str, float, tuple[int, int, int]]] = []
         self.Bind(wx.EVT_PAINT, self._on_paint)
@@ -160,17 +161,11 @@ class BarChartPanel(wx.Panel):
         dc.SetBackground(wx.Brush(wx.Colour(*DARK_ALT)))
         dc.Clear()
 
-        # Title
+        font = wx.Font(12, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL)
+        dc.SetFont(font)
+
         title_h = 0
         if self._title:
-            dc.SetFont(
-                wx.Font(
-                    8,
-                    wx.FONTFAMILY_DEFAULT,
-                    wx.FONTSTYLE_NORMAL,
-                    wx.FONTWEIGHT_NORMAL,
-                )
-            )
             dc.SetTextForeground(wx.Colour(*SUBDUED_TEXT))
             dc.DrawText(self._title, _BAR_PAD, 4)
             title_h = _TITLE_H
@@ -178,25 +173,37 @@ class BarChartPanel(wx.Panel):
         if not self._items:
             return
 
+        dc.SetPen(wx.TRANSPARENT_PEN)
+        if self._orientation == "horizontal":
+            self._draw_horizontal(dc, w, h, title_h)
+        else:
+            self._draw_vertical(dc, w, h, title_h)
+
+    def _draw_vertical(self, dc: wx.DC, w: int, h: int, title_h: int) -> None:
         n = len(self._items)
 
-        # Bar area bounds
         bar_top = title_h + _VALUE_H + 4
         bar_bottom = h - _LABEL_H - _BAR_PAD
         bar_area_h = bar_bottom - bar_top
         if bar_area_h <= 0:
             return
 
-        avail_w = w - _BAR_PAD * 2
-        bar_spacing = max(2, avail_w // max(n * 5, 1))
-        bar_w = max((avail_w - bar_spacing * (n - 1)) // n, 4)
+        # Bar width tracks label character size; column pitch also accounts for
+        # value text width so neither overlaps at any font size / DPI.
+        char_w = dc.GetCharWidth()
+        max_label_chars = max(len(lbl) for lbl, _, _, _ in self._items)
+        bar_w = char_w * max(max_label_chars, 1) + 4
+
+        max_val_tw = max(dc.GetTextExtent(dv)[0] for _, dv, _, _ in self._items)
+        min_gap = char_w  # minimum gap between adjacent value texts
+        col_pitch = max(bar_w + char_w, max_val_tw + min_gap)
+        bar_spacing = col_pitch - bar_w
+
         total_used = bar_w * n + bar_spacing * (n - 1)
+        avail_w = w - _BAR_PAD * 2
         x_start = _BAR_PAD + max((avail_w - total_used) // 2, 0)
 
         max_val = max(raw for _, _, raw, _ in self._items) or 1.0
-
-        dc.SetFont(wx.Font(8, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL))
-        dc.SetPen(wx.TRANSPARENT_PEN)
 
         for i, (label, display_val, raw_val, colour) in enumerate(self._items):
             x = x_start + i * (bar_w + bar_spacing)
@@ -204,7 +211,6 @@ class BarChartPanel(wx.Panel):
             bar_h = max(int(bar_area_h * raw_val / max_val), 2 if raw_val > 0 else 0)
             bar_y = bar_bottom - bar_h
 
-            # Bar
             dc.SetBrush(wx.Brush(wx.Colour(*colour)))
             if bar_h > 0:
                 dc.DrawRoundedRectangle(x, bar_y, bar_w, bar_h, min(3, bar_w // 4))
@@ -222,6 +228,39 @@ class BarChartPanel(wx.Panel):
             lw, _ = dc.GetTextExtent(label)
             lbl_x = x + (bar_w - lw) // 2
             dc.DrawText(label, max(lbl_x, 0), bar_bottom + _BAR_PAD // 2)
+
+    def _draw_horizontal(self, dc: wx.DC, w: int, h: int, title_h: int) -> None:
+        _LABEL_W = 90
+        _VALUE_W = 60
+        _ROW_H = 22
+
+        max_val = max(raw for _, _, raw, _ in self._items) or 1.0
+        bar_area_w = max(w - _LABEL_W - _VALUE_W - _BAR_PAD * 3, 20)
+
+        y = title_h + _BAR_PAD
+
+        for label, display_val, raw_val, colour in self._items:
+            bar_w = int(bar_area_w * raw_val / max_val)
+            row_y = y + (_ROW_H - 14) // 2
+
+            # Label (right-aligned)
+            dc.SetTextForeground(wx.Colour(*LIGHT_TEXT))
+            lbl_tw, _ = dc.GetTextExtent(label)
+            lbl_x = _LABEL_W - lbl_tw - _BAR_PAD
+            dc.DrawText(label, max(lbl_x, 0), row_y)
+
+            # Bar
+            bar_x = _LABEL_W + _BAR_PAD
+            bar_y = y + (_ROW_H - 12) // 2
+            dc.SetBrush(wx.Brush(wx.Colour(*colour)))
+            if bar_w > 0:
+                dc.DrawRoundedRectangle(bar_x, bar_y, bar_w, 12, 3)
+
+            # Value
+            dc.SetTextForeground(wx.Colour(*SUBDUED_TEXT))
+            dc.DrawText(display_val, bar_x + bar_area_w + _BAR_PAD, row_y)
+
+            y += _ROW_H
 
 
 class DeckStatsPanel(wx.Panel):
@@ -270,7 +309,7 @@ class DeckStatsPanel(wx.Panel):
         self.color_chart = BarChartPanel(self, title="Color Share")
         split.Add(self.color_chart, 1, wx.EXPAND | wx.RIGHT, 4)
 
-        self.type_chart = BarChartPanel(self, title="Card Types")
+        self.type_chart = BarChartPanel(self, title="Card Types", orientation="horizontal")
         split.Add(self.type_chart, 1, wx.EXPAND)
 
         # Bottom row: opening-hand land count odds

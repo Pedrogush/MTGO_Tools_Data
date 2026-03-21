@@ -18,7 +18,7 @@ from utils.gamelog_parser import (
 # Helpers
 # ---------------------------------------------------------------------------
 
-SCREENSHOTS_TRUTH = Path(__file__).parent / "data" / "match_history_screenshots.json"
+SCREENSHOTS_TRUTH = Path(__file__).parent / "fixtures" / "match_history_screenshots.json"
 
 _GAMELOG_DIR_WINDOWS = (
     r"C:\Users\Pedro\AppData\Local\Apps\2.0\Data\OVGXG70W.D8K\9MANX5J8.5ON"

@@ -5,6 +5,7 @@ Shows summary statistics, mana curve breakdown, color concentration, type counts
 and opening-hand land probability analysis.
 """
 
+import math
 from collections import Counter
 from typing import Any
 
@@ -13,7 +14,6 @@ import wx
 from services.deck_service import DeckService, get_deck_service
 from utils.card_data import CardDataManager
 from utils.constants import DARK_ACCENT, DARK_ALT, DARK_PANEL, LIGHT_TEXT, SUBDUED_TEXT
-from utils.math_utils import hypergeometric_at_least
 
 _CARD_TYPES = [
     "Land",
@@ -26,39 +26,98 @@ _CARD_TYPES = [
     "Battle",
 ]
 
-# MTG color identity → (display name, bar colour)
+# MTG color identity → (short label, bar colour)
 _COLOR_MAP: dict[str, tuple[str, tuple[int, int, int]]] = {
-    "W": ("White", (220, 210, 170)),
-    "U": ("Blue", (59, 130, 246)),
-    "B": ("Black", (140, 120, 160)),
-    "R": ("Red", (210, 70, 50)),
-    "G": ("Green", (60, 160, 70)),
-    "C": ("Colorless", (160, 150, 130)),
-    "Colorless": ("Colorless", (160, 150, 130)),
+    "W": ("W", (220, 210, 170)),
+    "U": ("U", (59, 130, 246)),
+    "B": ("B", (140, 120, 160)),
+    "R": ("R", (210, 70, 50)),
+    "G": ("G", (60, 160, 70)),
+    "C": ("C", (160, 150, 130)),
+    "Colorless": ("C", (160, 150, 130)),
 }
 
-_ROW_H = 22
-_LABEL_W = 90
-_VALUE_W = 60
+# Slightly varied adjacent colors — intentional, not rainbow
+_TYPE_COLOURS: dict[str, tuple[int, int, int]] = {
+    "Land": (145, 125, 95),
+    "Creature": (90, 135, 185),
+    "Instant": (80, 165, 145),
+    "Sorcery": (120, 100, 175),
+    "Enchantment": (165, 110, 150),
+    "Artifact": (155, 155, 165),
+    "Planeswalker": (95, 160, 185),
+    "Battle": (175, 115, 90),
+    "Other": (130, 130, 130),
+}
+
+# Opening-hand land count: 0=very red, 3=green, 7=very red
+_HAND_COLOURS: list[tuple[int, int, int]] = [
+    (220, 40, 40),  # 0 lands – very red
+    (205, 75, 55),  # 1 land  – red
+    (190, 135, 65),  # 2 lands – red fading to green
+    (60, 190, 85),  # 3 lands – green
+    (130, 185, 70),  # 4 lands – green fading to red
+    (200, 130, 55),  # 5 lands – orange-red
+    (210, 70, 55),  # 6 lands – red
+    (225, 35, 35),  # 7 lands – very red
+]
+
+# Mana curve gradient endpoints
+_CURVE_WARM = (255, 220, 40)  # yellow at CMC 0
+_CURVE_COLD = (30, 50, 180)  # dark blue at CMC 15
+
 _BAR_PAD = 6
-_TITLE_H = 22
+_TITLE_H = 20
+_VALUE_H = 16
+_LABEL_H = 16
+
+
+def _lerp_colour(
+    c1: tuple[int, int, int], c2: tuple[int, int, int], t: float
+) -> tuple[int, int, int]:
+    return (
+        int(c1[0] + (c2[0] - c1[0]) * t),
+        int(c1[1] + (c2[1] - c1[1]) * t),
+        int(c1[2] + (c2[2] - c1[2]) * t),
+    )
+
+
+def _curve_colour(bucket: str) -> tuple[int, int, int]:
+    if bucket == "X":
+        cmc = 12
+    elif bucket.endswith("+") and bucket[:-1].isdigit():
+        cmc = int(bucket[:-1])
+    elif bucket.isdigit():
+        cmc = int(bucket)
+    else:
+        cmc = 0
+    t = min(cmc / 15.0, 1.0)
+    return _lerp_colour(_CURVE_WARM, _CURVE_COLD, t)
+
+
+def _hypergeometric_exactly(n_total: int, n_success: int, n_draw: int, k: int) -> float:
+    """P(X = k) under the hypergeometric distribution."""
+    n_fail = n_total - n_success
+    if k < 0 or k > n_success or n_draw - k < 0 or n_draw - k > n_fail:
+        return 0.0
+    return math.comb(n_success, k) * math.comb(n_fail, n_draw - k) / math.comb(n_total, n_draw)
 
 
 class BarChartPanel(wx.Panel):
-    """Custom panel that draws a horizontal bar chart."""
+    """Custom panel that draws a vertical bar chart."""
 
     def __init__(self, parent: wx.Window, title: str = "") -> None:
         super().__init__(parent)
         self.SetBackgroundColour(wx.Colour(*DARK_ALT))
         self._title = title
         # list of (label, display_value, raw_value, bar_colour)
-        self._items: list[tuple[str, str, int, tuple[int, int, int]]] = []
+        self._items: list[tuple[str, str, float, tuple[int, int, int]]] = []
         self.Bind(wx.EVT_PAINT, self._on_paint)
         self.Bind(wx.EVT_SIZE, self._on_size)
 
     def set_data(
         self,
-        items: list[tuple[str, str, int]],
+        items: list[tuple[str, str, float]],
         bar_colour: tuple[int, int, int] = DARK_ACCENT,
         per_item_colours: list[tuple[int, int, int]] | None = None,
     ) -> None:
@@ -78,8 +137,6 @@ class BarChartPanel(wx.Panel):
             )
             for i, (label, display_val, raw_val) in enumerate(items)
         ]
-        min_h = _TITLE_H + len(self._items) * _ROW_H + _BAR_PAD * 2
-        self.SetMinSize((-1, min_h))
         self.Refresh()
 
     def clear(self) -> None:
@@ -104,46 +161,67 @@ class BarChartPanel(wx.Panel):
         dc.Clear()
 
         # Title
-        y = 4
+        title_h = 0
         if self._title:
+            dc.SetFont(
+                wx.Font(
+                    8,
+                    wx.FONTFAMILY_DEFAULT,
+                    wx.FONTSTYLE_NORMAL,
+                    wx.FONTWEIGHT_NORMAL,
+                )
+            )
             dc.SetTextForeground(wx.Colour(*SUBDUED_TEXT))
-            dc.SetFont(wx.Font(8, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL))
-            dc.DrawText(self._title, _BAR_PAD, y)
-            y += _TITLE_H
+            dc.DrawText(self._title, _BAR_PAD, 4)
+            title_h = _TITLE_H
 
         if not self._items:
             return
 
-        max_val = max(raw for _, _, raw, _ in self._items) or 1
-        bar_area_w = max(w - _LABEL_W - _VALUE_W - _BAR_PAD * 3, 20)
+        n = len(self._items)
 
-        dc.SetFont(wx.Font(9, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL))
+        # Bar area bounds
+        bar_top = title_h + _VALUE_H + 4
+        bar_bottom = h - _LABEL_H - _BAR_PAD
+        bar_area_h = bar_bottom - bar_top
+        if bar_area_h <= 0:
+            return
 
-        for label, display_val, raw_val, colour in self._items:
-            bar_w = int(bar_area_w * raw_val / max_val)
+        avail_w = w - _BAR_PAD * 2
+        bar_spacing = max(2, avail_w // max(n * 5, 1))
+        bar_w = max((avail_w - bar_spacing * (n - 1)) // n, 4)
+        total_used = bar_w * n + bar_spacing * (n - 1)
+        x_start = _BAR_PAD + max((avail_w - total_used) // 2, 0)
 
-            # Row background (subtle alternation already from panel bg)
-            row_y = y + (_ROW_H - 14) // 2
+        max_val = max(raw for _, _, raw, _ in self._items) or 1.0
 
-            # Label
-            dc.SetTextForeground(wx.Colour(*LIGHT_TEXT))
-            lbl_tw, _ = dc.GetTextExtent(label)
-            lbl_x = _LABEL_W - lbl_tw - _BAR_PAD
-            dc.DrawText(label, max(lbl_x, 0), row_y)
+        dc.SetFont(wx.Font(8, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL))
+        dc.SetPen(wx.TRANSPARENT_PEN)
+
+        for i, (label, display_val, raw_val, colour) in enumerate(self._items):
+            x = x_start + i * (bar_w + bar_spacing)
+
+            bar_h = max(int(bar_area_h * raw_val / max_val), 2 if raw_val > 0 else 0)
+            bar_y = bar_bottom - bar_h
 
             # Bar
-            bar_x = _LABEL_W + _BAR_PAD
-            bar_y = y + (_ROW_H - 12) // 2
             dc.SetBrush(wx.Brush(wx.Colour(*colour)))
-            dc.SetPen(wx.TRANSPARENT_PEN)
-            if bar_w > 0:
-                dc.DrawRoundedRectangle(bar_x, bar_y, bar_w, 12, 3)
+            if bar_h > 0:
+                dc.DrawRoundedRectangle(x, bar_y, bar_w, bar_h, min(3, bar_w // 4))
 
-            # Value
+            # Value above bar
+            dc.SetTextForeground(wx.Colour(*LIGHT_TEXT))
+            tw, th = dc.GetTextExtent(display_val)
+            val_x = x + (bar_w - tw) // 2
+            val_y = bar_y - th - 2
+            if val_y >= title_h:
+                dc.DrawText(display_val, max(val_x, 0), val_y)
+
+            # Label below bar area
             dc.SetTextForeground(wx.Colour(*SUBDUED_TEXT))
-            dc.DrawText(display_val, bar_x + bar_area_w + _BAR_PAD, row_y)
-
-            y += _ROW_H
+            lw, _ = dc.GetTextExtent(label)
+            lbl_x = x + (bar_w - lw) // 2
+            dc.DrawText(label, max(lbl_x, 0), bar_bottom + _BAR_PAD // 2)
 
 
 class DeckStatsPanel(wx.Panel):
@@ -182,26 +260,22 @@ class DeckStatsPanel(wx.Panel):
         self.summary_label.SetForegroundColour(LIGHT_TEXT)
         sizer.Add(self.summary_label, 0, wx.ALL, 6)
 
-        # Split view for curve, color, and type charts
+        # Top row: mana curve, color share, card types
         split = wx.BoxSizer(wx.HORIZONTAL)
-        sizer.Add(split, 1, wx.EXPAND | wx.ALL, 6)
+        sizer.Add(split, 3, wx.EXPAND | wx.LEFT | wx.RIGHT | wx.TOP, 6)
 
-        # Mana curve bar chart
         self.curve_chart = BarChartPanel(self, title="Mana Curve")
-        split.Add(self.curve_chart, 1, wx.RIGHT | wx.EXPAND, 12)
+        split.Add(self.curve_chart, 1, wx.EXPAND | wx.RIGHT, 4)
 
-        # Color concentration bar chart
         self.color_chart = BarChartPanel(self, title="Color Share")
-        split.Add(self.color_chart, 1, wx.RIGHT | wx.EXPAND, 12)
+        split.Add(self.color_chart, 1, wx.EXPAND | wx.RIGHT, 4)
 
-        # Type counts bar chart
         self.type_chart = BarChartPanel(self, title="Card Types")
         split.Add(self.type_chart, 1, wx.EXPAND)
 
-        # Hand/land probability label
-        self.hand_land_label = wx.StaticText(self, label="")
-        self.hand_land_label.SetForegroundColour(SUBDUED_TEXT)
-        sizer.Add(self.hand_land_label, 0, wx.LEFT | wx.RIGHT | wx.BOTTOM, 6)
+        # Bottom row: opening-hand land count odds
+        self.hand_odds_chart = BarChartPanel(self, title="Opening Hand — Land Count")
+        sizer.Add(self.hand_odds_chart, 2, wx.EXPAND | wx.ALL, 6)
 
     # ============= Public API =============
 
@@ -220,7 +294,7 @@ class DeckStatsPanel(wx.Panel):
             self.curve_chart.clear()
             self.color_chart.clear()
             self.type_chart.clear()
-            self.hand_land_label.SetLabel("")
+            self.hand_odds_chart.clear()
             return
 
         # Analyze deck
@@ -245,7 +319,7 @@ class DeckStatsPanel(wx.Panel):
         self._render_curve()
         self._render_color_concentration()
         self._render_type_counts()
-        self._render_hand_land_pct(stats["mainboard_count"], total_land_count)
+        self._render_hand_odds(stats["mainboard_count"], total_land_count)
 
     def set_card_manager(self, card_manager: CardDataManager) -> None:
         """Set the card data manager for metadata lookups."""
@@ -257,7 +331,7 @@ class DeckStatsPanel(wx.Panel):
         self.curve_chart.clear()
         self.color_chart.clear()
         self.type_chart.clear()
-        self.hand_land_label.SetLabel("")
+        self.hand_odds_chart.clear()
 
     # ============= Private Methods =============
 
@@ -312,7 +386,8 @@ class DeckStatsPanel(wx.Panel):
             (bucket, str(counts[bucket]), counts[bucket])
             for bucket in sorted(counts.keys(), key=curve_key)
         ]
-        self.curve_chart.set_data(items, bar_colour=DARK_ACCENT)
+        per_item_colours = [_curve_colour(bucket) for bucket, _, _ in items]
+        self.curve_chart.set_data(items, per_item_colours=per_item_colours)
 
     def _render_color_concentration(self) -> None:
         """Render the color concentration bar chart."""
@@ -341,10 +416,9 @@ class DeckStatsPanel(wx.Panel):
         items = []
         colours = []
         for color, count in sorted_colors:
-            name, bar_colour = _COLOR_MAP.get(color, (color, DARK_ACCENT))
+            short_name, bar_colour = _COLOR_MAP.get(color, (color, DARK_ACCENT))
             percentage = (count / grand_total) * 100
-            display = f"{count} ({percentage:.1f}%)"
-            items.append((name, display, count))
+            items.append((short_name, f"{percentage:.0f}%", count))
             colours.append(bar_colour)
 
         self.color_chart.set_data(items, per_item_colours=colours)
@@ -372,25 +446,20 @@ class DeckStatsPanel(wx.Panel):
             for card_type in display_order
             if counts[card_type]
         ]
-        self.type_chart.set_data(items, bar_colour=DARK_ACCENT)
+        per_item_colours = [_TYPE_COLOURS.get(ct, DARK_ACCENT) for ct, _, _ in items]
+        self.type_chart.set_data(items, per_item_colours=per_item_colours)
 
-    def _render_hand_land_pct(self, deck_size: int, land_count: int) -> None:
-        """Render opening-hand land probability label."""
-        if deck_size <= 0 or land_count <= 0:
-            self.hand_land_label.SetLabel("")
+    def _render_hand_odds(self, deck_size: int, land_count: int) -> None:
+        """Render opening-hand land count probability as a bar chart."""
+        if deck_size <= 0:
+            self.hand_odds_chart.clear()
             return
 
-        parts = []
-        for target in (2, 3, 4):
-            if target > land_count:
-                break
-            try:
-                pct = hypergeometric_at_least(deck_size, land_count, 7, target) * 100
-                parts.append(f"≥{target} lands: {pct:.1f}%")
-            except ValueError:
-                break
+        hand_size = 7
+        items: list[tuple[str, str, float]] = []
+        for k in range(hand_size + 1):
+            prob = _hypergeometric_exactly(deck_size, land_count, hand_size, k)
+            pct = prob * 100
+            items.append((str(k), f"{pct:.1f}%", pct))
 
-        if parts:
-            self.hand_land_label.SetLabel("Opening hand (7 cards) — " + "  |  ".join(parts))
-        else:
-            self.hand_land_label.SetLabel("")
+        self.hand_odds_chart.set_data(items, per_item_colours=_HAND_COLOURS)

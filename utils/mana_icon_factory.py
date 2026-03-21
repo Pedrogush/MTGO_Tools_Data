@@ -4,6 +4,19 @@ from pathlib import Path
 import wx
 
 from utils.constants import DARK_ALT, SUBDUED_TEXT
+from utils.constants.ui_images import (
+    BUILDER_MANA_ICON_GAP,
+    MANA_COST_BITMAP_GAP,
+    MANA_GLYPH_FONT_SIZE_BASE,
+    MANA_GLYPH_FONT_SIZE_MIN,
+    MANA_ICON_BLUR_RADIUS,
+    MANA_ICON_DEFAULT_SIZE,
+    MANA_ICON_MIN_SIZE,
+    MANA_ICON_PANEL_HEIGHT_PADDING,
+    MANA_ICON_SPAN_PADDING,
+    MANA_OUTLINE_DARK_RGB,
+    MANA_TEXT_DARK_RGB,
+)
 from utils.mana_resources import ManaIconResources
 
 
@@ -40,7 +53,7 @@ class ManaIconFactory:
         "multicolor": (246, 223, 138),
     }
 
-    def __init__(self, icon_size: int = 26) -> None:
+    def __init__(self, icon_size: int = MANA_ICON_DEFAULT_SIZE) -> None:
         self._cache: dict[str, wx.Bitmap] = {}
         self._hires_cache: dict[str, wx.Bitmap] = {}  # pre-downscale, render-scale resolution
         self._cost_cache: dict[str, wx.Bitmap] = {}
@@ -50,7 +63,7 @@ class ManaIconFactory:
             self.FALLBACK_COLORS,
         )
         ManaIconResources.ensure_font_loaded(assets_root)
-        self._icon_size = max(8, icon_size)
+        self._icon_size = max(MANA_ICON_MIN_SIZE, icon_size)
 
     def render(self, parent: wx.Window, mana_cost: str) -> wx.Window:
         panel = wx.Panel(parent)
@@ -66,10 +79,15 @@ class ManaIconFactory:
         for idx, token in enumerate(tokens):
             bmp = self._get_bitmap(token)
             icon = wx.StaticBitmap(panel, bitmap=bmp)
-            margin = 1 if idx < len(tokens) - 1 else 0
+            margin = BUILDER_MANA_ICON_GAP if idx < len(tokens) - 1 else 0
             sizer.Add(icon, 0, wx.RIGHT, margin)
-        icon_span = self._icon_size + 2
-        panel.SetMinSize((max(icon_span, len(tokens) * icon_span), self._icon_size + 6))
+        icon_span = self._icon_size + MANA_ICON_SPAN_PADDING
+        panel.SetMinSize(
+            (
+                max(icon_span, len(tokens) * icon_span),
+                self._icon_size + MANA_ICON_PANEL_HEIGHT_PADDING,
+            )
+        )
         return panel
 
     def bitmap_for_symbol_hires(self, symbol: str) -> wx.Bitmap:
@@ -111,7 +129,9 @@ class ManaIconFactory:
             return self._cost_cache[cache_key]
         bitmaps = [self._get_bitmap(token) for token in tokens]
         height = max((bmp.GetHeight() for bmp in bitmaps), default=0)
-        width = sum(bmp.GetWidth() for bmp in bitmaps) + max(0, len(bitmaps) - 1) * 2
+        width = (
+            sum(bmp.GetWidth() for bmp in bitmaps) + max(0, len(bitmaps) - 1) * MANA_COST_BITMAP_GAP
+        )
         if width <= 0 or height <= 0:
             return None
         composed = wx.Bitmap(width, height)
@@ -127,7 +147,7 @@ class ManaIconFactory:
             dc.DrawBitmap(bmp, x, max(0, y), True)
             x += bmp.GetWidth()
             if idx < len(bitmaps) - 1:
-                x += 2
+                x += MANA_COST_BITMAP_GAP
         dc.SelectObject(wx.NullBitmap)
         self._cost_cache[cache_key] = composed
         return composed
@@ -162,13 +182,23 @@ class ManaIconFactory:
             radius * 2,
         )
 
-        text_font = self._build_render_font(13 * scale)
-        text_color = wx.Colour(20, 20, 20)
+        text_font = self._build_render_font(MANA_GLYPH_FONT_SIZE_BASE * scale)
+        text_color = wx.Colour(MANA_TEXT_DARK_RGB, MANA_TEXT_DARK_RGB, MANA_TEXT_DARK_RGB)
         if components:
             second_color = self._draw_hybrid_circle(gctx, cx, cy, radius, components)
         else:
             fill_color = self._color_for_key(key or "")
-            gctx.SetPen(wx.Pen(wx.Colour(25, 25, 25, self._OUTLINE_ALPHA), self._OUTLINE_WIDTH))
+            gctx.SetPen(
+                wx.Pen(
+                    wx.Colour(
+                        MANA_OUTLINE_DARK_RGB,
+                        MANA_OUTLINE_DARK_RGB,
+                        MANA_OUTLINE_DARK_RGB,
+                        self._OUTLINE_ALPHA,
+                    ),
+                    self._OUTLINE_WIDTH,
+                )
+            )
             gctx.SetBrush(wx.Brush(wx.Colour(*fill_color)))
             gctx.DrawEllipse(cx - radius, cy - radius, radius * 2, radius * 2)
             glyph_to_draw = glyph or self._glyph_fallback(key)
@@ -191,7 +221,7 @@ class ManaIconFactory:
                 text_color,
             )
         img = bmp.ConvertToImage()
-        img = img.Blur(1)
+        img = img.Blur(MANA_ICON_BLUR_RADIUS)
         self._hires_cache[symbol] = wx.Bitmap(img)  # store at render-scale before downscale
         img = img.Scale(self._icon_size, self._icon_size, wx.IMAGE_QUALITY_HIGH)
         final = wx.Bitmap(img)
@@ -225,7 +255,12 @@ class ManaIconFactory:
     ) -> None:
         color = self._color_for_key(key or "")
         pen_color = (
-            wx.Colour(25, 25, 25, self._OUTLINE_ALPHA_COMPONENT)
+            wx.Colour(
+                MANA_OUTLINE_DARK_RGB,
+                MANA_OUTLINE_DARK_RGB,
+                MANA_OUTLINE_DARK_RGB,
+                self._OUTLINE_ALPHA_COMPONENT,
+            )
             if outline
             else wx.Colour(0, 0, 0, 0)
         )
@@ -250,7 +285,17 @@ class ManaIconFactory:
         rect = (cx - radius, cy - radius, radius * 2, radius * 2)
         base = self._color_for_key(components[0])
         second = self._color_for_key(components[1])
-        gctx.SetPen(wx.Pen(wx.Colour(25, 25, 25, self._OUTLINE_ALPHA_STRONG), self._OUTLINE_WIDTH))
+        gctx.SetPen(
+            wx.Pen(
+                wx.Colour(
+                    MANA_OUTLINE_DARK_RGB,
+                    MANA_OUTLINE_DARK_RGB,
+                    MANA_OUTLINE_DARK_RGB,
+                    self._OUTLINE_ALPHA_STRONG,
+                ),
+                self._OUTLINE_WIDTH,
+            )
+        )
         gctx.SetBrush(wx.Brush(wx.Colour(*base)))
         gctx.DrawEllipse(*rect)
         gctx.StrokeLine(cx - radius, cy + radius, cx + radius, cy - radius)
@@ -324,7 +369,7 @@ class ManaIconFactory:
         return bmp
 
     def _scaled_font(self, font: wx.Font, factor: float) -> wx.Font:
-        size = max(6, int(font.GetPointSize() * factor))
+        size = max(MANA_GLYPH_FONT_SIZE_MIN, int(font.GetPointSize() * factor))
         try:
             return wx.Font(
                 size,

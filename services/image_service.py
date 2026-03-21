@@ -30,6 +30,13 @@ from utils.card_images_workers import (
     build_printing_index_worker,
     download_bulk_metadata_worker,
 )
+from utils.constants.timing import (
+    IMAGE_DOWNLOAD_INITIAL_BACKOFF_SECONDS,
+    IMAGE_DOWNLOAD_MAX_RETRIES,
+    IMAGE_DOWNLOAD_QUEUE_IDLE_WAIT_SECONDS,
+    IMAGE_DOWNLOAD_QUEUE_STOP_TIMEOUT_SECONDS,
+    IMAGE_DOWNLOAD_SLOW_THRESHOLD_SECONDS,
+)
 from utils.process_worker import ProcessHandle, ProcessWorker
 
 
@@ -67,7 +74,7 @@ class CardImageDownloadQueue:
         )
         self._thread.start()
 
-    def stop(self, timeout: float = 2.0) -> None:
+    def stop(self, timeout: float = IMAGE_DOWNLOAD_QUEUE_STOP_TIMEOUT_SECONDS) -> None:
         """Stop the background worker."""
         self._stop_event.set()
         with self._condition:
@@ -121,7 +128,7 @@ class CardImageDownloadQueue:
                 while (
                     not self._queue or self._inflight_count >= self._MAX_CONCURRENT_DOWNLOADS
                 ) and not self._stop_event.is_set():
-                    self._condition.wait(timeout=0.5)
+                    self._condition.wait(timeout=IMAGE_DOWNLOAD_QUEUE_IDLE_WAIT_SECONDS)
                 if self._stop_event.is_set():
                     break
                 request = self._queue.popleft()
@@ -155,8 +162,8 @@ class CardImageDownloadQueue:
         )
         if self._is_cached(request):
             return True
-        max_retries = 5
-        backoff_seconds = 0.5
+        max_retries = IMAGE_DOWNLOAD_MAX_RETRIES
+        backoff_seconds = IMAGE_DOWNLOAD_INITIAL_BACKOFF_SECONDS
         attempt = 0
         while True:
             started_at = time.monotonic()
@@ -174,7 +181,7 @@ class CardImageDownloadQueue:
                 return False
             elapsed = time.monotonic() - started_at
             if success:
-                if elapsed > 1.5 and not self._is_cached(request):
+                if elapsed > IMAGE_DOWNLOAD_SLOW_THRESHOLD_SECONDS and not self._is_cached(request):
                     logger.error(
                         f"Assuming card image download failed for {request.card_name} "
                         f"({elapsed:.2f}s elapsed)."

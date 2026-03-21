@@ -6,7 +6,25 @@ from typing import Any
 import wx
 
 from services.radar_service import RadarData
-from utils.constants import DARK_ALT, DARK_PANEL, FORMAT_OPTIONS, LIGHT_TEXT, SUBDUED_TEXT
+from utils.constants import (
+    BUILDER_FORMATS_GRID_COLS,
+    BUILDER_FORMATS_GRID_HGAP,
+    BUILDER_MANA_ALL_BTN_SIZE,
+    BUILDER_MANA_CANVAS_WIDTH,
+    BUILDER_MANA_ICON_GAP,
+    BUILDER_MANA_ROW_HEIGHT,
+    BUILDER_NAME_COL_DEFAULT_WIDTH,
+    BUILDER_NAME_COL_MIN_WIDTH,
+    BUILDER_SEARCH_DEBOUNCE_MS,
+    DARK_ALT,
+    DARK_PANEL,
+    FORMAT_OPTIONS,
+    LIGHT_TEXT,
+    PADDING_MD,
+    PADDING_SM,
+    PADDING_XS,
+    SUBDUED_TEXT,
+)
 from utils.mana_icon_factory import ManaIconFactory
 from utils.stylize import (
     stylize_button,
@@ -15,10 +33,6 @@ from utils.stylize import (
     stylize_textctrl,
 )
 from widgets.buttons.mana_button import create_mana_button
-
-_MANA_IMG_H = 26  # Row image height — matches ManaIconFactory default icon_size (no downscale)
-_MANA_IMG_W = 200  # Canvas width — matches the 145px "Mana Cost" column
-_MANA_ICON_GAP = 1  # Pixels between adjacent mana icons
 
 
 class _SearchResultsView(wx.ListCtrl):
@@ -31,7 +45,7 @@ class _SearchResultsView(wx.ListCtrl):
         self._mana_img_index: dict[str, int] = {}
         self._mana_img_list: wx.ImageList | None = None
         if mana_icons:
-            self._mana_img_list = wx.ImageList(_MANA_IMG_W, _MANA_IMG_H)
+            self._mana_img_list = wx.ImageList(BUILDER_MANA_CANVAS_WIDTH, BUILDER_MANA_ROW_HEIGHT)
             self.AssignImageList(self._mana_img_list, wx.IMAGE_LIST_SMALL)
         self.Bind(wx.EVT_SIZE, self._on_size)
 
@@ -42,7 +56,9 @@ class _SearchResultsView(wx.ListCtrl):
 
     def _fit_name_column(self) -> None:
         """Set Name column (index 1) width to consume all space left by Mana Cost column."""
-        name_w = max(40, self.GetClientSize().width - _MANA_IMG_W)
+        name_w = max(
+            BUILDER_NAME_COL_MIN_WIDTH, self.GetClientSize().width - BUILDER_MANA_CANVAS_WIDTH
+        )
         self.SetColumnWidth(1, name_w)
 
     def SetData(self, data: list[dict[str, Any]]) -> None:
@@ -90,14 +106,22 @@ class _SearchResultsView(wx.ListCtrl):
 
             # Compute each symbol's width if scaled to full row height.
             widths_at_full_h = [
-                max(1, int(b.GetWidth() * _MANA_IMG_H / b.GetHeight())) if b.GetHeight() > 0 else 1
+                (
+                    max(1, int(b.GetWidth() * BUILDER_MANA_ROW_HEIGHT / b.GetHeight()))
+                    if b.GetHeight() > 0
+                    else 1
+                )
                 for b in raws
             ]
-            total_at_full_h = sum(widths_at_full_h) + max(0, len(raws) - 1) * _MANA_ICON_GAP
+            total_at_full_h = sum(widths_at_full_h) + max(0, len(raws) - 1) * BUILDER_MANA_ICON_GAP
 
             # Single squeeze factor: 1.0 when icons fit, <1.0 when they overflow.
-            squeeze = min(1.0, _MANA_IMG_W / total_at_full_h) if total_at_full_h > 0 else 1.0
-            final_h = max(1, int(_MANA_IMG_H * squeeze))
+            squeeze = (
+                min(1.0, BUILDER_MANA_CANVAS_WIDTH / total_at_full_h)
+                if total_at_full_h > 0
+                else 1.0
+            )
+            final_h = max(1, int(BUILDER_MANA_ROW_HEIGHT * squeeze))
 
             # Single-pass scale: raw → final size.
             scaled_icons: list[wx.Bitmap] = []
@@ -109,23 +133,23 @@ class _SearchResultsView(wx.ListCtrl):
 
             total_w = (
                 sum(b.GetWidth() for b in scaled_icons)
-                + max(0, len(scaled_icons) - 1) * _MANA_ICON_GAP
+                + max(0, len(scaled_icons) - 1) * BUILDER_MANA_ICON_GAP
             )
 
             # DARK_ALT canvas — gaps between icons match the list background.
-            canvas = wx.Bitmap(_MANA_IMG_W, _MANA_IMG_H)
+            canvas = wx.Bitmap(BUILDER_MANA_CANVAS_WIDTH, BUILDER_MANA_ROW_HEIGHT)
             dc = wx.MemoryDC(canvas)
             dc.SetBackground(wx.Brush(DARK_ALT))
             dc.Clear()
 
             # Right-justify: start at (canvas_width - total_icon_width).
-            x = _MANA_IMG_W - total_w
+            x = BUILDER_MANA_CANVAS_WIDTH - total_w
             for idx, icon_bmp in enumerate(scaled_icons):
-                y = (_MANA_IMG_H - icon_bmp.GetHeight()) // 2
+                y = (BUILDER_MANA_ROW_HEIGHT - icon_bmp.GetHeight()) // 2
                 dc.DrawBitmap(icon_bmp, x, max(0, y), False)
                 x += icon_bmp.GetWidth()
                 if idx < len(scaled_icons) - 1:
-                    x += _MANA_ICON_GAP
+                    x += BUILDER_MANA_ICON_GAP
 
             dc.SelectObject(wx.NullBitmap)
             self._mana_img_index[cost] = self._mana_img_list.Add(canvas)
@@ -174,8 +198,6 @@ class _SearchResultsView(wx.ListCtrl):
 
 class DeckBuilderPanel(wx.Panel):
     """Panel for searching and filtering MTG cards by various properties."""
-
-    _SEARCH_DEBOUNCE_MS = 300
 
     def __init__(
         self,
@@ -242,12 +264,12 @@ class DeckBuilderPanel(wx.Panel):
         back_btn = wx.Button(self, label="Deck Research")
         stylize_button(back_btn)
         back_btn.Bind(wx.EVT_BUTTON, lambda _evt: self._on_back_clicked())
-        sizer.Add(back_btn, 0, wx.EXPAND | wx.ALL, 6)
+        sizer.Add(back_btn, 0, wx.EXPAND | wx.ALL, PADDING_MD)
 
         # Info label
         info = wx.StaticText(self, label="Deck Builder: search MTG cards by property.")
         stylize_label(info, True)
-        sizer.Add(info, 0, wx.LEFT | wx.RIGHT | wx.BOTTOM, 6)
+        sizer.Add(info, 0, wx.LEFT | wx.RIGHT | wx.BOTTOM, PADDING_MD)
 
         # Search fields
         field_specs = [
@@ -259,12 +281,12 @@ class DeckBuilderPanel(wx.Panel):
         for key, label_text, hint in field_specs:
             lbl = wx.StaticText(self, label=label_text)
             stylize_label(lbl, True)
-            sizer.Add(lbl, 0, wx.LEFT | wx.RIGHT, 6)
+            sizer.Add(lbl, 0, wx.LEFT | wx.RIGHT, PADDING_MD)
             ctrl = wx.TextCtrl(self)
             stylize_textctrl(ctrl)
             ctrl.SetHint(hint)
             ctrl.Bind(wx.EVT_TEXT, self._on_filters_changed)
-            sizer.Add(ctrl, 0, wx.EXPAND | wx.LEFT | wx.RIGHT | wx.BOTTOM, 6)
+            sizer.Add(ctrl, 0, wx.EXPAND | wx.LEFT | wx.RIGHT | wx.BOTTOM, PADDING_MD)
             self.inputs[key] = ctrl
 
             # Oracle Text field gets a match-mode selector
@@ -272,7 +294,9 @@ class DeckBuilderPanel(wx.Panel):
                 text_match_row = wx.BoxSizer(wx.HORIZONTAL)
                 text_match_label = wx.StaticText(self, label="Match")
                 stylize_label(text_match_label, True)
-                text_match_row.Add(text_match_label, 0, wx.ALIGN_CENTER_VERTICAL | wx.RIGHT, 6)
+                text_match_row.Add(
+                    text_match_label, 0, wx.ALIGN_CENTER_VERTICAL | wx.RIGHT, PADDING_MD
+                )
                 text_mode_choice = wx.Choice(self, choices=["Exact phrase", "All words"])
                 text_mode_choice.SetSelection(0)
                 stylize_choice(text_mode_choice)
@@ -280,7 +304,7 @@ class DeckBuilderPanel(wx.Panel):
                 text_mode_choice.Bind(wx.EVT_CHOICE, self._on_filters_changed)
                 text_match_row.Add(text_mode_choice, 0)
                 text_match_row.AddStretchSpacer(1)
-                sizer.Add(text_match_row, 0, wx.LEFT | wx.RIGHT | wx.BOTTOM, 6)
+                sizer.Add(text_match_row, 0, wx.LEFT | wx.RIGHT | wx.BOTTOM, PADDING_MD)
 
             # Mana cost field gets extra controls
             if key == "mana":
@@ -288,7 +312,7 @@ class DeckBuilderPanel(wx.Panel):
                 match_row = wx.BoxSizer(wx.HORIZONTAL)
                 match_label = wx.StaticText(self, label="Match")
                 stylize_label(match_label, True)
-                match_row.Add(match_label, 0, wx.RIGHT, 6)
+                match_row.Add(match_label, 0, wx.RIGHT, PADDING_MD)
                 exact_cb = wx.CheckBox(self, label="Exact symbols")
                 exact_cb.SetForegroundColour(LIGHT_TEXT)
                 exact_cb.SetBackgroundColour(DARK_PANEL)
@@ -296,67 +320,72 @@ class DeckBuilderPanel(wx.Panel):
                 self.mana_exact_cb = exact_cb
                 exact_cb.Bind(wx.EVT_CHECKBOX, self._on_filters_changed)
                 match_row.AddStretchSpacer(1)
-                sizer.Add(match_row, 0, wx.LEFT | wx.RIGHT | wx.BOTTOM, 6)
+                sizer.Add(match_row, 0, wx.LEFT | wx.RIGHT | wx.BOTTOM, PADDING_MD)
 
                 # Mana symbol keyboard
                 keyboard_row = wx.BoxSizer(wx.HORIZONTAL)
                 keyboard_row.AddStretchSpacer(1)
                 for token in ["W", "U", "B", "R", "G", "C", "X"]:
                     btn = create_mana_button(self, token, self._append_mana_symbol, self.mana_icons)
-                    keyboard_row.Add(btn, 0, wx.ALL, 2)
-                all_btn = wx.Button(self, label="All", size=(52, 28))
+                    keyboard_row.Add(btn, 0, wx.ALL, PADDING_XS)
+                all_btn = wx.Button(self, label="All", size=BUILDER_MANA_ALL_BTN_SIZE)
                 stylize_button(all_btn)
                 all_btn.Bind(wx.EVT_BUTTON, lambda _evt: self._open_mana_keyboard())
-                keyboard_row.Add(all_btn, 0, wx.ALL, 2)
+                keyboard_row.Add(all_btn, 0, wx.ALL, PADDING_XS)
                 keyboard_row.AddStretchSpacer(1)
                 sizer.Add(
-                    keyboard_row, 0, wx.ALIGN_CENTER_HORIZONTAL | wx.LEFT | wx.RIGHT | wx.BOTTOM, 4
+                    keyboard_row,
+                    0,
+                    wx.ALIGN_CENTER_HORIZONTAL | wx.LEFT | wx.RIGHT | wx.BOTTOM,
+                    PADDING_SM,
                 )
 
         # Mana value filter
         mv_row = wx.BoxSizer(wx.HORIZONTAL)
         mv_label = wx.StaticText(self, label="Mana Value Filter")
         stylize_label(mv_label, True)
-        mv_row.Add(mv_label, 0, wx.ALIGN_CENTER_VERTICAL | wx.RIGHT, 6)
+        mv_row.Add(mv_label, 0, wx.ALIGN_CENTER_VERTICAL | wx.RIGHT, PADDING_MD)
         mv_choice = wx.Choice(self, choices=["Any", "<", "≤", "=", "≥", ">"])
         mv_choice.SetSelection(0)
         stylize_choice(mv_choice)
         self.mv_comparator = mv_choice
         mv_choice.Bind(wx.EVT_CHOICE, self._on_filters_changed)
-        mv_row.Add(mv_choice, 0, wx.RIGHT, 6)
+        mv_row.Add(mv_choice, 0, wx.RIGHT, PADDING_MD)
         mv_value = wx.TextCtrl(self)
         stylize_textctrl(mv_value)
         mv_value.SetHint("e.g. 3")
         self.mv_value = mv_value
         mv_value.Bind(wx.EVT_TEXT, self._on_filters_changed)
         mv_row.Add(mv_value, 1)
-        sizer.Add(mv_row, 0, wx.EXPAND | wx.LEFT | wx.RIGHT | wx.BOTTOM, 6)
+        sizer.Add(mv_row, 0, wx.EXPAND | wx.LEFT | wx.RIGHT | wx.BOTTOM, PADDING_MD)
 
         # Format checkboxes
         formats_label = wx.StaticText(self, label="Formats")
         stylize_label(formats_label, True)
-        sizer.Add(formats_label, 0, wx.LEFT | wx.RIGHT, 6)
-        formats_grid = wx.FlexGridSizer(0, 2, 4, 8)
+        sizer.Add(formats_label, 0, wx.LEFT | wx.RIGHT, PADDING_MD)
+        formats_grid = wx.FlexGridSizer(
+            0, BUILDER_FORMATS_GRID_COLS, PADDING_SM, BUILDER_FORMATS_GRID_HGAP
+        )
         for fmt in FORMAT_OPTIONS:
             cb = wx.CheckBox(self, label=fmt)
             cb.SetForegroundColour(LIGHT_TEXT)
             cb.SetBackgroundColour(DARK_PANEL)
-            formats_grid.Add(cb, 0, wx.RIGHT, 6)
+            formats_grid.Add(cb, 0, wx.RIGHT, PADDING_MD)
             cb.Bind(wx.EVT_CHECKBOX, self._on_filters_changed)
             self.format_checks.append(cb)
-        sizer.Add(formats_grid, 0, wx.LEFT | wx.RIGHT | wx.BOTTOM, 6)
+        sizer.Add(formats_grid, 0, wx.LEFT | wx.RIGHT | wx.BOTTOM, PADDING_MD)
 
         # Color identity filter
         color_label = wx.StaticText(self, label="Color Identity Filter")
         stylize_label(color_label, True)
-        sizer.Add(color_label, 0, wx.LEFT | wx.RIGHT, 6)
+        sizer.Add(color_label, 0, wx.LEFT | wx.RIGHT, PADDING_MD)
 
         color_mode = wx.Choice(self, choices=["Any", "At least", "Exactly", "Not these"])
         color_mode.SetSelection(0)
         stylize_choice(color_mode)
         self.color_mode_choice = color_mode
         color_mode.Bind(wx.EVT_CHOICE, self._on_filters_changed)
-        sizer.Add(color_mode, 0, wx.LEFT | wx.RIGHT | wx.BOTTOM, 6)
+        sizer.Add(color_mode, 0, wx.LEFT | wx.RIGHT | wx.BOTTOM, PADDING_MD)
 
         colors_row = wx.BoxSizer(wx.HORIZONTAL)
         for code, label in [
@@ -370,24 +399,24 @@ class DeckBuilderPanel(wx.Panel):
             cb = wx.CheckBox(self, label=label)
             cb.SetForegroundColour(LIGHT_TEXT)
             cb.SetBackgroundColour(DARK_PANEL)
-            colors_row.Add(cb, 0, wx.RIGHT, 6)
+            colors_row.Add(cb, 0, wx.RIGHT, PADDING_MD)
             cb.Bind(wx.EVT_CHECKBOX, self._on_filters_changed)
             self.color_checks[code] = cb
-        sizer.Add(colors_row, 0, wx.LEFT | wx.RIGHT | wx.BOTTOM, 6)
+        sizer.Add(colors_row, 0, wx.LEFT | wx.RIGHT | wx.BOTTOM, PADDING_MD)
 
         # Clear button
         controls = wx.BoxSizer(wx.HORIZONTAL)
         clear_btn = wx.Button(self, label="Clear Filters")
         stylize_button(clear_btn)
         clear_btn.Bind(wx.EVT_BUTTON, lambda _evt: self._on_clear())
-        controls.Add(clear_btn, 0, wx.RIGHT, 6)
+        controls.Add(clear_btn, 0, wx.RIGHT, PADDING_MD)
 
         # Radar toggle checkbox
         self.radar_cb = wx.CheckBox(self, label="Use Radar Filter")
         self.radar_cb.SetForegroundColour(LIGHT_TEXT)
         self.radar_cb.SetBackgroundColour(DARK_PANEL)
         self.radar_cb.Bind(wx.EVT_CHECKBOX, self._on_radar_toggle)
-        controls.Add(self.radar_cb, 0, wx.ALIGN_CENTER_VERTICAL | wx.RIGHT, 6)
+        controls.Add(self.radar_cb, 0, wx.ALIGN_CENTER_VERTICAL | wx.RIGHT, PADDING_MD)
 
         # Radar zone choice
         self.radar_zone_choice = wx.Choice(self, choices=["Both", "Mainboard", "Sideboard"])
@@ -395,7 +424,7 @@ class DeckBuilderPanel(wx.Panel):
         stylize_choice(self.radar_zone_choice)
         self.radar_zone_choice.Enable(False)
         self.radar_zone_choice.Bind(wx.EVT_CHOICE, self._on_radar_zone_changed)
-        controls.Add(self.radar_zone_choice, 0, wx.ALIGN_CENTER_VERTICAL | wx.RIGHT, 6)
+        controls.Add(self.radar_zone_choice, 0, wx.ALIGN_CENTER_VERTICAL | wx.RIGHT, PADDING_MD)
 
         # Open Radar button
         self.open_radar_btn = wx.Button(self, label="Open Radar...")
@@ -404,7 +433,7 @@ class DeckBuilderPanel(wx.Panel):
         controls.Add(self.open_radar_btn, 0)
 
         controls.AddStretchSpacer(1)
-        sizer.Add(controls, 0, wx.EXPAND | wx.LEFT | wx.RIGHT | wx.BOTTOM, 6)
+        sizer.Add(controls, 0, wx.EXPAND | wx.LEFT | wx.RIGHT | wx.BOTTOM, PADDING_MD)
 
         # Results list (virtual ListCtrl for handling large datasets)
         results = _SearchResultsView(self, style=0, mana_icons=self.mana_icons)
@@ -412,15 +441,17 @@ class DeckBuilderPanel(wx.Panel):
         # indent (equal to the image-list item width).  Columns 1+ are sub-item columns
         # and are never indented by LVSIL_SMALL, so the Name cell is unindented.
         results.InsertColumn(0, "", width=0)
-        results.InsertColumn(1, "Name", format=wx.LIST_FORMAT_LEFT, width=180)
-        results.InsertColumn(2, "Mana Cost", width=_MANA_IMG_W)
+        results.InsertColumn(
+            1, "Name", format=wx.LIST_FORMAT_LEFT, width=BUILDER_NAME_COL_DEFAULT_WIDTH
+        )
+        results.InsertColumn(2, "Mana Cost", width=BUILDER_MANA_CANVAS_WIDTH)
         results.SetBackgroundColour(DARK_ALT)
         results.SetForegroundColour(LIGHT_TEXT)
         results.Bind(wx.EVT_LIST_ITEM_SELECTED, self._on_result_item_selected)
         results.Bind(wx.EVT_LEFT_DOWN, self._on_results_left_down)
         results.Bind(wx.EVT_LIST_ITEM_ACTIVATED, self._on_result_activated)
         results.Bind(wx.EVT_KEY_DOWN, self._on_result_key_down)
-        sizer.Add(results, 1, wx.EXPAND | wx.LEFT, 6)
+        sizer.Add(results, 1, wx.EXPAND | wx.LEFT, PADDING_MD)
         self.results_ctrl = results
 
         # Add to zone buttons
@@ -429,7 +460,7 @@ class DeckBuilderPanel(wx.Panel):
         stylize_button(add_main_btn)
         add_main_btn.Enable(False)
         add_main_btn.Bind(wx.EVT_BUTTON, lambda _evt: self._on_add_to_zone("main"))
-        add_btns_row.Add(add_main_btn, 1, wx.RIGHT, 4)
+        add_btns_row.Add(add_main_btn, 1, wx.RIGHT, PADDING_SM)
         self._add_main_btn = add_main_btn
 
         add_side_btn = wx.Button(self, label="+ Sideboard")
@@ -439,12 +470,12 @@ class DeckBuilderPanel(wx.Panel):
         add_btns_row.Add(add_side_btn, 1)
         self._add_side_btn = add_side_btn
 
-        sizer.Add(add_btns_row, 0, wx.EXPAND | wx.LEFT | wx.RIGHT | wx.TOP, 6)
+        sizer.Add(add_btns_row, 0, wx.EXPAND | wx.LEFT | wx.RIGHT | wx.TOP, PADDING_MD)
 
         # Status label
         status = wx.StaticText(self, label="Results update automatically as you type.")
         status.SetForegroundColour(SUBDUED_TEXT)
-        sizer.Add(status, 0, wx.LEFT | wx.RIGHT | wx.BOTTOM, 6)
+        sizer.Add(status, 0, wx.LEFT | wx.RIGHT | wx.BOTTOM, PADDING_MD)
         self.status_label = status
 
     def _on_back_clicked(self) -> None:
@@ -651,7 +682,7 @@ class DeckBuilderPanel(wx.Panel):
             return
         if self._search_timer.IsRunning():
             self._search_timer.Stop()
-        self._search_timer.StartOnce(self._SEARCH_DEBOUNCE_MS)
+        self._search_timer.StartOnce(BUILDER_SEARCH_DEBOUNCE_MS)
 
     def _on_search_timer(self, _event: wx.TimerEvent) -> None:
         """Run the search after the debounce timer fires."""

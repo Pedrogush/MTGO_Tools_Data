@@ -6,3 +6,14 @@ DARK_PANEL = (34, 39, 46)
 DARK_ALT = (40, 46, 54)
 DARK_ACCENT = (59, 130, 246)
 LIGHT_TEXT = (236, 236, 236)
+
+# Deck workspace card display colors
+DECK_CARD_ACTION_BUTTON_FG = (12, 14, 18)  # near-black foreground text on action buttons
+DECK_CARD_IMAGE_BG = (0, 0, 0)  # black fill used when centering card images
+
+# Opponent Tracker — calculator button accent color
+CALC_BUTTON_GREEN = "#2a6b2a"
+
+# Sideboard Guide Panel — button and label colors
+PIN_BUTTON_COLOR = (140, 90, 210)  # purple accent for the "Pin for Tracker" button
+WARNING_LABEL_COLOR = (255, 165, 0)  # orange for inline warning messages

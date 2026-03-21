@@ -18,6 +18,45 @@ import wx.html2
 from services.deck_service import DeckService, get_deck_service
 from utils.card_data import CardDataManager
 from utils.constants import DARK_PANEL
+from utils.constants.deck_rules import (
+    STATS_CURVE_COLOUR_LERP_MAX_CMC,
+    STATS_CURVE_HIGH_CMC_BUCKET,
+    STATS_CURVE_UNKNOWN_SORT_KEY,
+    STATS_CURVE_X_CMC_FOR_COLOUR,
+    STATS_CURVE_X_SORT_KEY,
+    STATS_HAND_COLLAPSE_THRESHOLD,
+    STATS_HAND_SIZE,
+)
+from utils.constants.ui_images import (
+    STATS_MANA_SVG_DISPLAY_SIZE,
+    STATS_MANA_SVG_SOURCE_SIZE,
+)
+from utils.constants.ui_layout import (
+    PADDING_BASE,
+    PADDING_MD,
+    PADDING_SM,
+    STATS_BAR_BORDER_RADIUS,
+    STATS_CHART_BORDER_RADIUS,
+    STATS_FONT_SIZE_BODY,
+    STATS_FONT_SIZE_LABEL,
+    STATS_FONT_SIZE_SMALL,
+    STATS_FONT_SIZE_VALUE,
+    STATS_HBAR_COUNT_WIDTH,
+    STATS_HBAR_LABEL_WIDTH,
+    STATS_HBAR_ROW_HEIGHT,
+    STATS_HBAR_TRACK_HEIGHT,
+    STATS_HBAR_ZERO_OPACITY,
+    STATS_TOOLTIP_BELOW_OFFSET_Y,
+    STATS_TOOLTIP_BORDER_RADIUS,
+    STATS_TOOLTIP_EDGE_MARGIN,
+    STATS_TOOLTIP_FLIP_OFFSET_X,
+    STATS_TOOLTIP_OFFSET_X,
+    STATS_TOOLTIP_OFFSET_Y,
+    STATS_TOOLTIP_PADDING,
+    STATS_TOOLTIP_Z_INDEX,
+    STATS_VBAR_XAXIS_BOTTOM_OFFSET,
+    STATS_VBAR_XAXIS_PADDING_BOTTOM,
+)
 
 _CARD_TYPES = [
     "Land",
@@ -90,7 +129,10 @@ def _load_mana_svgs() -> dict[str, str]:
         path = svg_dir / f"{stem}.svg"
         if path.exists():
             svg = path.read_text(encoding="utf-8")
-            svg = svg.replace('width="32" height="32"', 'width="18" height="18"')
+            svg = svg.replace(
+                f'width="{STATS_MANA_SVG_SOURCE_SIZE}" height="{STATS_MANA_SVG_SOURCE_SIZE}"',
+                f'width="{STATS_MANA_SVG_DISPLAY_SIZE}" height="{STATS_MANA_SVG_DISPLAY_SIZE}"',
+            )
             svg = svg.replace('fill="#444"', 'fill="#ECECEC"')
             # Strip the XML comment line to reduce HTML payload
             svg = "\n".join(line for line in svg.splitlines() if not line.startswith("<!--"))
@@ -110,14 +152,14 @@ def _lerp_hex(c1: tuple[int, int, int], c2: tuple[int, int, int], t: float) -> s
 
 def _curve_colour(bucket: str) -> str:
     if bucket == "X":
-        cmc = 12
+        cmc = STATS_CURVE_X_CMC_FOR_COLOUR
     elif bucket.endswith("+") and bucket[:-1].isdigit():
         cmc = int(bucket[:-1])
     elif bucket.isdigit():
         cmc = int(bucket)
     else:
         cmc = 0
-    return _lerp_hex(_CURVE_WARM, _CURVE_COLD, min(cmc / 15.0, 1.0))
+    return _lerp_hex(_CURVE_WARM, _CURVE_COLD, min(cmc / STATS_CURVE_COLOUR_LERP_MAX_CMC, 1.0))
 
 
 def _hypergeometric_exactly(n_total: int, n_success: int, n_draw: int, k: int) -> float:
@@ -132,92 +174,92 @@ def _hypergeometric_exactly(n_total: int, n_success: int, n_draw: int, k: int) -
 # HTML builder
 # ---------------------------------------------------------------------------
 
-_CSS = """
-* { box-sizing: border-box; margin: 0; padding: 0; }
+_CSS = f"""
+* {{ box-sizing: border-box; margin: 0; padding: 0; }}
 
-html, body {
+html, body {{
   height: 100%;
   background: #22272E;
   color: #ECECEC;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  font-size: 12px;
+  font-size: {STATS_FONT_SIZE_BODY}px;
   overflow: hidden;
-}
+}}
 
-.root {
+.root {{
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: 8px;
-  gap: 6px;
-}
+  padding: {PADDING_BASE}px;
+  gap: {PADDING_MD}px;
+}}
 
 /* ── Summary bar ── */
-.summary {
+.summary {{
   color: #B9BFCA;
-  font-size: 11px;
+  font-size: {STATS_FONT_SIZE_LABEL}px;
   flex-shrink: 0;
-  padding: 2px 0;
+  padding: {PADDING_SM // 2}px 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
+}}
 
 /* ── Top row: three charts side-by-side ── */
-.top-row {
+.top-row {{
   display: flex;
-  gap: 8px;
+  gap: {PADDING_BASE}px;
   flex: 3;
   min-height: 0;
-}
+}}
 
 /* ── Bottom chart ── */
-.bottom-row {
+.bottom-row {{
   flex: 2;
   min-height: 0;
-}
+}}
 
 /* ── Shared chart container ── */
-.chart {
+.chart {{
   display: flex;
   flex-direction: column;
   background: #28303A;
-  border-radius: 6px;
-  padding: 8px 8px 4px 8px;
+  border-radius: {STATS_CHART_BORDER_RADIUS}px;
+  padding: {PADDING_BASE}px {PADDING_BASE}px {PADDING_SM}px {PADDING_BASE}px;
   flex: 1;
   min-width: 0;
   overflow: hidden;
-}
+}}
 
-.chart-title {
-  font-size: 11px;
+.chart-title {{
+  font-size: {STATS_FONT_SIZE_LABEL}px;
   font-weight: 600;
   color: #8B929E;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  margin-bottom: 4px;
+  margin-bottom: {PADDING_SM}px;
   flex-shrink: 0;
-}
+}}
 
-.chart-empty {
+.chart-empty {{
   color: #555;
   font-style: italic;
-  padding: 8px;
-}
+  padding: {PADDING_BASE}px;
+}}
 
 /* ── Vertical bar chart ── */
-.vbar-area {
+.vbar-area {{
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  gap: 4px;
+  gap: {PADDING_SM}px;
   flex: 1;
   min-height: 0;
-  padding-bottom: 22px;  /* room for x-axis labels (icons up to 18px tall) */
+  padding-bottom: {STATS_VBAR_XAXIS_PADDING_BOTTOM}px;  /* room for x-axis labels (icons up to {STATS_MANA_SVG_DISPLAY_SIZE}px tall) */
   position: relative;
-}
+}}
 
-.vbar-col {
+.vbar-col {{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -227,34 +269,34 @@ html, body {
   height: 100%;
   position: relative;
   cursor: default;
-}
+}}
 
 /* value label above bar */
-.vbar-val {
-  font-size: 10px;
+.vbar-val {{
+  font-size: {STATS_FONT_SIZE_SMALL}px;
   color: #ECECEC;
   margin-bottom: 2px;
   white-space: nowrap;
   line-height: 1;
   text-align: center;
-}
+}}
 
-.vbar {
+.vbar {{
   width: 100%;
-  border-radius: 3px 3px 0 0;
+  border-radius: {STATS_BAR_BORDER_RADIUS}px {STATS_BAR_BORDER_RADIUS}px 0 0;
   transition: filter 0.1s;
   min-height: 2px;
-}
+}}
 
-.vbar-col:hover .vbar {
+.vbar-col:hover .vbar {{
   filter: brightness(1.3);
-}
+}}
 
 /* x-axis label below bars */
-.vbar-lbl {
+.vbar-lbl {{
   position: absolute;
-  bottom: -22px;
-  font-size: 10px;
+  bottom: {STATS_VBAR_XAXIS_BOTTOM_OFFSET}px;
+  font-size: {STATS_FONT_SIZE_SMALL}px;
   color: #8B929E;
   white-space: nowrap;
   text-align: center;
@@ -264,105 +306,105 @@ html, body {
   align-items: center;
   justify-content: center;
   line-height: 1;
-}
+}}
 
 /* ── Floating tooltip (JS-positioned, never clipped) ── */
-#tooltip {
+#tooltip {{
   display: none;
   position: fixed;
   background: rgba(10, 12, 16, 0.93);
   color: #ECECEC;
-  padding: 4px 9px;
-  border-radius: 4px;
+  padding: {STATS_TOOLTIP_PADDING};
+  border-radius: {STATS_TOOLTIP_BORDER_RADIUS}px;
   white-space: nowrap;
-  font-size: 11px;
+  font-size: {STATS_FONT_SIZE_LABEL}px;
   pointer-events: none;
-  z-index: 999;
+  z-index: {STATS_TOOLTIP_Z_INDEX};
   border: 1px solid #3B4351;
-}
+}}
 
 /* ── Horizontal bar chart (Card Types) ── */
-.hbar-area {
+.hbar-area {{
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   flex: 1;
   min-height: 0;
-  gap: 4px;
+  gap: {PADDING_SM}px;
   padding-top: 2px;
-}
+}}
 
-.hbar-row {
+.hbar-row {{
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: {PADDING_MD}px;
   cursor: default;
   position: relative;
-  height: 20px;
+  height: {STATS_HBAR_ROW_HEIGHT}px;
   flex-shrink: 0;
-}
+}}
 
-.hbar-label {
-  width: 82px;
+.hbar-label {{
+  width: {STATS_HBAR_LABEL_WIDTH}px;
   text-align: left;
   color: #ECECEC;
-  font-size: 11px;
+  font-size: {STATS_FONT_SIZE_LABEL}px;
   flex-shrink: 0;
   white-space: nowrap;
-}
+}}
 
-.hbar-track {
+.hbar-track {{
   flex: 1;
   position: relative;
-  height: 12px;
-  border-radius: 3px;
+  height: {STATS_HBAR_TRACK_HEIGHT}px;
+  border-radius: {STATS_BAR_BORDER_RADIUS}px;
   background: #1C2028;
-}
+}}
 
-.hbar {
+.hbar {{
   height: 100%;
-  border-radius: 3px;
+  border-radius: {STATS_BAR_BORDER_RADIUS}px;
   transition: filter 0.1s;
-}
+}}
 
-.hbar-row:hover .hbar {
+.hbar-row:hover .hbar {{
   filter: brightness(1.3);
-}
+}}
 
-.hbar-count {
-  width: 28px;
-  font-size: 11px;
+.hbar-count {{
+  width: {STATS_HBAR_COUNT_WIDTH}px;
+  font-size: {STATS_FONT_SIZE_LABEL}px;
   color: #8B929E;
   flex-shrink: 0;
-}
+}}
 """
 
 
-_JS_TOOLTIP = """
+_JS_TOOLTIP = f"""
 <div id="tooltip"></div>
 <script>
 var tip = document.getElementById('tooltip');
-function showTip(el, evt) {
+function showTip(el, evt) {{
   tip.textContent = el.dataset.tip;
   tip.style.display = 'block';
   moveTip(evt);
-}
-function moveTip(evt) {
-  var x = evt.clientX + 12, y = evt.clientY - 28;
+}}
+function moveTip(evt) {{
+  var x = evt.clientX + {STATS_TOOLTIP_OFFSET_X}, y = evt.clientY - {STATS_TOOLTIP_OFFSET_Y};
   var tw = tip.offsetWidth, th = tip.offsetHeight;
-  if (x + tw > window.innerWidth - 4) x = evt.clientX - tw - 8;
-  if (y < 4) y = evt.clientY + 14;
+  if (x + tw > window.innerWidth - {STATS_TOOLTIP_EDGE_MARGIN}) x = evt.clientX - tw - {STATS_TOOLTIP_FLIP_OFFSET_X};
+  if (y < {STATS_TOOLTIP_EDGE_MARGIN}) y = evt.clientY + {STATS_TOOLTIP_BELOW_OFFSET_Y};
   tip.style.left = x + 'px';
   tip.style.top  = y + 'px';
-}
-function hideTip() { tip.style.display = 'none'; }
+}}
+function hideTip() {{ tip.style.display = 'none'; }}
 </script>
 """
 
 
 def _build_vbars(
     items: list[tuple[str, str, float, str, str]],  # (label, val_text, raw, colour, tooltip)
-    val_font_size: int = 10,
+    val_font_size: int = STATS_FONT_SIZE_SMALL,
     icon_map: dict[str, str] | None = None,
 ) -> str:
     """Render the inner bar columns of a vertical bar chart."""
@@ -402,7 +444,7 @@ def _build_hbars(
         pct = count / max_count * 100
         tip_attr = escape(tooltip, quote=True)
         # Zero-count rows: dim the label and show an empty track
-        dim = ' style="opacity:0.35"' if count == 0 else ""
+        dim = f' style="opacity:{STATS_HBAR_ZERO_OPACITY}"' if count == 0 else ""
         html += (
             f'<div class="hbar-row" data-tip="{tip_attr}"'
             f' onmouseenter="showTip(this,event)" onmousemove="moveTip(event)" onmouseleave="hideTip()">'
@@ -427,7 +469,7 @@ def _build_html(
     curve_html = _build_vbars(curve_items)
     color_html = _build_vbars(color_items, icon_map=_COLOR_SVG_HTML if _COLOR_SVG_HTML else None)
     type_html = _build_hbars(type_items)
-    hand_html = _build_vbars(hand_items, val_font_size=15)
+    hand_html = _build_vbars(hand_items, val_font_size=STATS_FONT_SIZE_VALUE)
 
     return f"""<!DOCTYPE html>
 <html>
@@ -569,7 +611,11 @@ class DeckStatsPanel(wx.Panel):
             mana_value = meta.get("mana_value") if meta else None
             if isinstance(mana_value, int | float):
                 value = int(mana_value)
-                bucket = "7+" if value >= 7 else str(value)
+                bucket = (
+                    f"{STATS_CURVE_HIGH_CMC_BUCKET}+"
+                    if value >= STATS_CURVE_HIGH_CMC_BUCKET
+                    else str(value)
+                )
             else:
                 bucket = "X"
             counts[bucket] += entry["qty"]
@@ -579,12 +625,12 @@ class DeckStatsPanel(wx.Panel):
 
         def curve_key(b: str) -> int:
             if b == "X":
-                return 99
+                return STATS_CURVE_X_SORT_KEY
             if b.endswith("+") and b[:-1].isdigit():
                 return int(b[:-1]) + 10
             if b.isdigit():
                 return int(b)
-            return 98
+            return STATS_CURVE_UNKNOWN_SORT_KEY
 
         # Fill in zero buckets so the curve is continuous from 0 to the max CMC present
         numeric_buckets = [int(b) for b in counts if b.isdigit()]
@@ -668,19 +714,23 @@ class DeckStatsPanel(wx.Panel):
         if deck_size <= 0:
             return []
 
-        hand_size = 7
+        hand_size = STATS_HAND_SIZE
         probs = [
             _hypergeometric_exactly(deck_size, land_count, hand_size, k) * 100
             for k in range(hand_size + 1)
         ]
 
-        # Collapse 6 and 7 into "6+" to avoid unreadably tiny bars
-        collapsed_prob = probs[6] + probs[7]
-        display = list(zip(range(6), probs[:6])) + [(6, collapsed_prob)]
+        # Collapse the last two counts into "6+" to avoid unreadably tiny bars
+        collapsed_prob = (
+            probs[STATS_HAND_COLLAPSE_THRESHOLD] + probs[STATS_HAND_COLLAPSE_THRESHOLD + 1]
+        )
+        display = list(
+            zip(range(STATS_HAND_COLLAPSE_THRESHOLD), probs[:STATS_HAND_COLLAPSE_THRESHOLD])
+        ) + [(STATS_HAND_COLLAPSE_THRESHOLD, collapsed_prob)]
 
         items = []
         for k, pct in display:
-            label = f"{k}+" if k == 6 else str(k)
+            label = f"{k}+" if k == STATS_HAND_COLLAPSE_THRESHOLD else str(k)
             n_word = "land" if k == 1 else "lands"
             tooltip = f"{label} {n_word} in opener: {pct:.1f}%"
             colour = _HAND_COLOURS[min(k, len(_HAND_COLOURS) - 1)]

@@ -126,7 +126,7 @@ class CardRepository:
 
     def is_card_data_loaded(self) -> bool:
         """Check if card data has been loaded."""
-        return self.card_data_manager._cards is not None
+        return self._card_data_manager is not None and self._card_data_manager.is_loaded
 
     def load_card_data(self, force: bool = False) -> bool:
         """
@@ -386,7 +386,7 @@ class CardRepository:
         Returns:
             Initialized CardDataManager
         """
-        if not force and self._card_data_manager is not None:
+        if not force and self._card_data_manager is not None and self._card_data_manager.is_loaded:
             return self._card_data_manager
 
         from utils.card_data import load_card_manager

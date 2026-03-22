@@ -151,7 +151,7 @@ class AppController:
         on_error: Callable[[Exception], None],
         on_status: Callable[[str], None],
     ) -> None:
-        if self.card_repo.get_card_manager() or self.card_repo.is_card_data_loading():
+        if self.card_repo.is_card_data_loaded() or self.card_repo.is_card_data_loading():
             return
 
         self.card_repo.set_card_data_loading(True)

@@ -14,6 +14,7 @@ def mock_card_manager():
     """Mock CardDataManager for testing."""
     manager = SimpleNamespace()
     manager._cards = {"Lightning Bolt": {"name": "Lightning Bolt", "cmc": 1}}
+    manager.is_loaded = True
     manager.get_card = Mock(return_value={"name": "Lightning Bolt", "mana_cost": "{R}", "cmc": 1})
     manager.search_cards = Mock(
         return_value=[
@@ -116,6 +117,7 @@ def test_is_card_data_loaded_false():
     """Test checking when card data is not loaded."""
     manager = SimpleNamespace()
     manager._cards = None
+    manager.is_loaded = False
     repo = CardRepository(card_data_manager=manager)
 
     assert repo.is_card_data_loaded() is False

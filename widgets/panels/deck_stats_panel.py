@@ -587,11 +587,14 @@ class DeckStatsPanel(wx.Panel):
 
     # ── Private helpers ─────────────────────────────────────────────────────
 
+    def _card_data_available(self) -> bool:
+        return self.card_manager is not None and self.card_manager.is_loaded
+
     def _count_lands(self) -> tuple[int, int]:
         lands = mdfcs = 0
         for entry in self.zone_cards.get("main", []):
             qty = entry["qty"]
-            meta = self.card_manager.get_card(entry["name"]) if self.card_manager else None
+            meta = self.card_manager.get_card(entry["name"]) if self._card_data_available() else None
             type_line = (meta.get("type_line") or "").lower() if meta else ""
             back_type_line = (meta.get("back_type_line") or "").lower() if meta else ""
             if "land" in type_line:
@@ -602,7 +605,7 @@ class DeckStatsPanel(wx.Panel):
 
     def _curve_items(self) -> list[tuple[str, str, float, str, str]]:
         """Build mana curve data items."""
-        if not self.card_manager:
+        if not self._card_data_available():
             return []
 
         counts: Counter[str] = Counter()
@@ -651,7 +654,7 @@ class DeckStatsPanel(wx.Panel):
 
     def _color_items(self) -> list[tuple[str, str, float, str, str]]:
         """Build color share data items."""
-        if not self.card_manager:
+        if not self._card_data_available():
             return []
 
         totals: Counter[str] = Counter()
@@ -681,7 +684,7 @@ class DeckStatsPanel(wx.Panel):
         counts: Counter[str] = Counter()
         for entry in self.zone_cards.get("main", []):
             type_line = ""
-            if self.card_manager:
+            if self._card_data_available():
                 meta = self.card_manager.get_card(entry["name"])
                 type_line = (meta.get("type_line") or "") if meta else ""
 

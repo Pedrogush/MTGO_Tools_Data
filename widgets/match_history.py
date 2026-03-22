@@ -335,6 +335,11 @@ class MatchHistoryFrame(wx.Frame):
             self.tree.SetItemText(item, 2, f"{total_mulls} ({mull_detail})")
             self.tree.SetItemText(item, 3, date_str)
 
+            # Cache the resolved opponent so on_item_selected can look it up
+            # without re-deriving it (avoids misidentification when
+            # current_username is None and player order is ambiguous).
+            match["_opp_name"] = opp_name
+
             # Store full match data in item
             self.tree.SetItemData(item, match)
 
@@ -394,22 +399,14 @@ class MatchHistoryFrame(wx.Frame):
 
     def _get_opponent_name(self, match_data: dict[str, Any]) -> str | None:
         """Return the opponent's display name from a match dict."""
-        players = match_data.get("players", [])
-        if not players:
-            return None
-        if self.current_username:
-            for p in players:
-                if p.lower() != self.current_username.lower():
-                    return p
-        # Fallback: player 2 is the opponent
-        return players[1] if len(players) > 1 else None
+        # Use the name that was resolved during _populate_history, where the
+        # current_username / player-perspective logic already ran correctly.
+        return match_data.get("_opp_name") or None
 
     def _update_opp_stats(self, opp_name: str) -> None:
         """Compute and display stats for all matches vs opp_name."""
         matches = [
-            m
-            for m in self.history_items
-            if isinstance(m, dict) and opp_name in m.get("players", [])
+            m for m in self.history_items if isinstance(m, dict) and m.get("_opp_name") == opp_name
         ]
         if not matches:
             self._clear_opp_stats()

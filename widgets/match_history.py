@@ -139,6 +139,19 @@ class MatchHistoryFrame(wx.Frame):
         row3.Add(self.avg_mulligans_label, 1, wx.ALIGN_CENTER_VERTICAL)
         metrics_inner.Add(row3, 0, wx.EXPAND)
 
+        metrics_inner.Add(wx.StaticLine(box_parent), 0, wx.EXPAND | wx.TOP | wx.BOTTOM, 6)
+
+        row_opp = wx.BoxSizer(wx.HORIZONTAL)
+        self.opp_match_rate_label = wx.StaticText(
+            box_parent, label="Vs. Opponent Match Win Rate: —"
+        )
+        self.opp_match_rate_label.SetForegroundColour(SUBDUED_TEXT)
+        row_opp.Add(self.opp_match_rate_label, 1, wx.ALIGN_CENTER_VERTICAL)
+        self.opp_mull_rate_label = wx.StaticText(box_parent, label="Vs. Opponent Mull Rate: —")
+        self.opp_mull_rate_label.SetForegroundColour(SUBDUED_TEXT)
+        row_opp.Add(self.opp_mull_rate_label, 1, wx.ALIGN_CENTER_VERTICAL)
+        metrics_inner.Add(row_opp, 0, wx.EXPAND)
+
         filter_row = wx.BoxSizer(wx.HORIZONTAL)
         metrics_sizer.Add(filter_row, 0, wx.EXPAND | wx.LEFT | wx.RIGHT | wx.BOTTOM, 6)
         filter_row.Add(
@@ -173,6 +186,7 @@ class MatchHistoryFrame(wx.Frame):
         self.tree.AppendColumn("Mulligans", width=90)
         self.tree.AppendColumn("Date", width=140)
         self.tree.Bind(dv.EVT_TREELIST_ITEM_ACTIVATED, self.on_item_activated)
+        self.tree.Bind(dv.EVT_TREELIST_SELECTION_CHANGED, self.on_item_selected)
         sizer.Add(self.tree, 1, wx.LEFT | wx.RIGHT | wx.BOTTOM | wx.EXPAND, 10)
 
     def _on_frame_size(self, event: wx.SizeEvent) -> None:
@@ -321,11 +335,17 @@ class MatchHistoryFrame(wx.Frame):
             self.tree.SetItemText(item, 2, f"{total_mulls} ({mull_detail})")
             self.tree.SetItemText(item, 3, date_str)
 
+            # Cache the resolved opponent so on_item_selected can look it up
+            # without re-deriving it (avoids misidentification when
+            # current_username is None and player order is ambiguous).
+            match["_opp_name"] = opp_name
+
             # Store full match data in item
             self.tree.SetItemData(item, match)
 
         self._set_busy(False, f"Loaded {len(matches)} matches")
         self._update_metrics()
+        self._clear_opp_stats()
 
     def on_item_activated(self, event: dv.TreeListEvent) -> None:
         """Show deck list when match is double-clicked."""
@@ -357,6 +377,59 @@ class MatchHistoryFrame(wx.Frame):
         dlg = wx.MessageDialog(self, deck_text, "Deck Lists", wx.OK | wx.ICON_INFORMATION)
         dlg.ShowModal()
         dlg.Destroy()
+
+    def on_item_selected(self, event: dv.TreeListEvent) -> None:
+        """Update vs-opponent stats when a match row is selected."""
+        item = event.GetItem()
+        if not item.IsOk():
+            self._clear_opp_stats()
+            return
+
+        match_data = self.tree.GetItemData(item)
+        if not match_data:
+            self._clear_opp_stats()
+            return
+
+        opp_name = self._get_opponent_name(match_data)
+        if not opp_name:
+            self._clear_opp_stats()
+            return
+
+        self._update_opp_stats(opp_name)
+
+    def _get_opponent_name(self, match_data: dict[str, Any]) -> str | None:
+        """Return the opponent's display name from a match dict."""
+        # Use the name that was resolved during _populate_history, where the
+        # current_username / player-perspective logic already ran correctly.
+        return match_data.get("_opp_name") or None
+
+    def _update_opp_stats(self, opp_name: str) -> None:
+        """Compute and display stats for all matches vs opp_name."""
+        matches = [
+            m for m in self.history_items if isinstance(m, dict) and m.get("_opp_name") == opp_name
+        ]
+        if not matches:
+            self._clear_opp_stats()
+            return
+
+        metrics = self._iter_matches(matches)
+        total = len(metrics)
+        wins = sum(1 for m in metrics if m["match_win"])
+        total_mulls = sum(m["total_mulligans"] for m in metrics)
+        games_played = sum(m["games_total"] for m in metrics)
+        win_pct = (wins / total * 100) if total else 0.0
+        mull_rate = (total_mulls / games_played * 100) if games_played else 0.0
+
+        self.opp_match_rate_label.SetLabel(
+            f"Vs. {opp_name} Match Win Rate: {win_pct:.1f}% ({wins}/{total})"
+        )
+        self.opp_mull_rate_label.SetLabel(
+            f"Vs. {opp_name} Mull Rate: {mull_rate:.1f}%" f" ({total_mulls}/{games_played} games)"
+        )
+
+    def _clear_opp_stats(self) -> None:
+        self.opp_match_rate_label.SetLabel("Vs. Opponent Match Win Rate: —")
+        self.opp_mull_rate_label.SetLabel("Vs. Opponent Mull Rate: —")
 
     def _set_busy(self, busy: bool, message: str | None = None) -> None:
         if self.refresh_button:

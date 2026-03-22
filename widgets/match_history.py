@@ -34,7 +34,9 @@ class MatchHistoryFrame(wx.Frame):
 
     def __init__(self, parent: wx.Window | None = None) -> None:
         style = wx.DEFAULT_FRAME_STYLE | wx.STAY_ON_TOP
-        super().__init__(parent, title="MTGO Match History (wx)", size=(self._FIXED_WIDTH, 460), style=style)
+        super().__init__(
+            parent, title="MTGO Match History (wx)", size=(self._FIXED_WIDTH, 460), style=style
+        )
         # Lock horizontal size; allow vertical resize only
         self.SetSizeHints(self._FIXED_WIDTH, 300, self._FIXED_WIDTH, -1)
 

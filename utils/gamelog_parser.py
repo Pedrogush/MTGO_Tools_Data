@@ -272,7 +272,9 @@ def find_all_gamelog_dirs(appdata_base: str | None = None) -> list[str]:
 
     found.sort(key=_newest_mtime, reverse=True)
     dirs = [str(d) for d in found]
-    logger.debug(f"Found {len(dirs)} MTGO GameLog director{'y' if len(dirs) == 1 else 'ies'}: {dirs}")
+    logger.debug(
+        f"Found {len(dirs)} MTGO GameLog director{'y' if len(dirs) == 1 else 'ies'}: {dirs}"
+    )
     return dirs
 
 

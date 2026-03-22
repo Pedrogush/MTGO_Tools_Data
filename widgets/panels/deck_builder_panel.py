@@ -286,7 +286,7 @@ class DeckBuilderPanel(wx.Panel):
             stylize_textctrl(ctrl)
             ctrl.SetHint(hint)
             ctrl.Bind(wx.EVT_TEXT, self._on_filters_changed)
-            sizer.Add(ctrl, 0, wx.EXPAND | wx.LEFT | wx.RIGHT | wx.BOTTOM, PADDING_MD)
+            sizer.Add(ctrl, 0, wx.EXPAND | wx.LEFT | wx.RIGHT | wx.BOTTOM, PADDING_SM)
             self.inputs[key] = ctrl
 
             # Oracle Text field gets a match-mode selector
@@ -304,7 +304,7 @@ class DeckBuilderPanel(wx.Panel):
                 text_mode_choice.Bind(wx.EVT_CHOICE, self._on_filters_changed)
                 text_match_row.Add(text_mode_choice, 0)
                 text_match_row.AddStretchSpacer(1)
-                sizer.Add(text_match_row, 0, wx.LEFT | wx.RIGHT | wx.BOTTOM, PADDING_MD)
+                sizer.Add(text_match_row, 0, wx.LEFT | wx.RIGHT | wx.BOTTOM, PADDING_XS)
 
             # Mana cost field gets extra controls
             if key == "mana":
@@ -320,7 +320,7 @@ class DeckBuilderPanel(wx.Panel):
                 self.mana_exact_cb = exact_cb
                 exact_cb.Bind(wx.EVT_CHECKBOX, self._on_filters_changed)
                 match_row.AddStretchSpacer(1)
-                sizer.Add(match_row, 0, wx.LEFT | wx.RIGHT | wx.BOTTOM, PADDING_MD)
+                sizer.Add(match_row, 0, wx.LEFT | wx.RIGHT | wx.BOTTOM, PADDING_XS)
 
                 # Mana symbol keyboard
                 keyboard_row = wx.BoxSizer(wx.HORIZONTAL)
@@ -337,7 +337,7 @@ class DeckBuilderPanel(wx.Panel):
                     keyboard_row,
                     0,
                     wx.ALIGN_CENTER_HORIZONTAL | wx.LEFT | wx.RIGHT | wx.BOTTOM,
-                    PADDING_SM,
+                    PADDING_XS,
                 )
 
         # Mana value filter
@@ -357,7 +357,7 @@ class DeckBuilderPanel(wx.Panel):
         self.mv_value = mv_value
         mv_value.Bind(wx.EVT_TEXT, self._on_filters_changed)
         mv_row.Add(mv_value, 1)
-        sizer.Add(mv_row, 0, wx.EXPAND | wx.LEFT | wx.RIGHT | wx.BOTTOM, PADDING_MD)
+        sizer.Add(mv_row, 0, wx.EXPAND | wx.LEFT | wx.RIGHT | wx.BOTTOM, PADDING_SM)
 
         # Format checkboxes
         formats_label = wx.StaticText(self, label="Formats")
@@ -373,7 +373,7 @@ class DeckBuilderPanel(wx.Panel):
             formats_grid.Add(cb, 0, wx.RIGHT, PADDING_MD)
             cb.Bind(wx.EVT_CHECKBOX, self._on_filters_changed)
             self.format_checks.append(cb)
-        sizer.Add(formats_grid, 0, wx.LEFT | wx.RIGHT | wx.BOTTOM, PADDING_MD)
+        sizer.Add(formats_grid, 0, wx.LEFT | wx.RIGHT | wx.BOTTOM, PADDING_SM)
 
         # Color identity filter
         color_label = wx.StaticText(self, label="Color Identity Filter")
@@ -385,7 +385,7 @@ class DeckBuilderPanel(wx.Panel):
         stylize_choice(color_mode)
         self.color_mode_choice = color_mode
         color_mode.Bind(wx.EVT_CHOICE, self._on_filters_changed)
-        sizer.Add(color_mode, 0, wx.LEFT | wx.RIGHT | wx.BOTTOM, PADDING_MD)
+        sizer.Add(color_mode, 0, wx.LEFT | wx.RIGHT | wx.BOTTOM, PADDING_SM)
 
         colors_row = wx.BoxSizer(wx.HORIZONTAL)
         for code, label in [
@@ -399,10 +399,10 @@ class DeckBuilderPanel(wx.Panel):
             cb = wx.CheckBox(self, label=label)
             cb.SetForegroundColour(LIGHT_TEXT)
             cb.SetBackgroundColour(DARK_PANEL)
-            colors_row.Add(cb, 0, wx.RIGHT, PADDING_MD)
+            colors_row.Add(cb, 0, wx.RIGHT, PADDING_SM)
             cb.Bind(wx.EVT_CHECKBOX, self._on_filters_changed)
             self.color_checks[code] = cb
-        sizer.Add(colors_row, 0, wx.LEFT | wx.RIGHT | wx.BOTTOM, PADDING_MD)
+        sizer.Add(colors_row, 0, wx.LEFT | wx.RIGHT | wx.BOTTOM, PADDING_SM)
 
         # Clear button
         controls = wx.BoxSizer(wx.HORIZONTAL)

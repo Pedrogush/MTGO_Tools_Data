@@ -7,6 +7,7 @@ from publisher.contracts import (
     validate_deck_text_blob,
     validate_latest_manifest,
     validate_metagame_snapshot,
+    validate_run_manifest,
 )
 from publisher.runner import main
 
@@ -18,4 +19,5 @@ __all__ = [
     "validate_deck_text_blob",
     "validate_latest_manifest",
     "validate_metagame_snapshot",
+    "validate_run_manifest",
 ]

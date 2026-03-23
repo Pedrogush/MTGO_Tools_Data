@@ -12,6 +12,7 @@ ARCHETYPE_LIST_KIND = "archetype_list"
 ARCHETYPE_DECKS_KIND = "archetype_decks"
 METAGAME_KIND = "metagame_daily"
 DECK_TEXTS_KIND = "deck_text_blob"
+RUN_MANIFEST_KIND = "publisher_run"
 
 
 def _require_mapping(payload: Any, kind: str) -> Mapping[str, Any]:
@@ -58,6 +59,7 @@ def build_latest_manifest(*, generated_at: str, retention_days: int) -> dict[str
             "archetype_decks": [],
             "metagame_daily": [],
             "deck_text_blobs": [],
+            "runs": [],
         },
     }
 
@@ -117,9 +119,10 @@ def build_deck_text_blob(
     *,
     generated_at: str,
     format_name: str,
-    archetype: Mapping[str, Any],
+    deck_id: str,
     source: str,
-    deck_texts: Sequence[Mapping[str, Any]],
+    deck_name: str,
+    deck_text: str,
 ) -> dict[str, Any]:
     return {
         "schema_version": SCHEMA_VERSION,
@@ -127,8 +130,30 @@ def build_deck_text_blob(
         "generated_at": generated_at,
         "format": format_name,
         "source": source,
-        "archetype": dict(archetype),
-        "deck_texts": [dict(item) for item in deck_texts],
+        "deck_id": deck_id,
+        "deck_name": deck_name,
+        "deck_text": deck_text,
+    }
+
+
+def build_run_manifest(
+    *,
+    generated_at: str,
+    command: str,
+    status: str,
+    max_stale_hours: int,
+    results: Sequence[Mapping[str, Any]],
+    summary: Mapping[str, int],
+) -> dict[str, Any]:
+    return {
+        "schema_version": SCHEMA_VERSION,
+        "kind": RUN_MANIFEST_KIND,
+        "generated_at": generated_at,
+        "command": command,
+        "status": status,
+        "max_stale_hours": max_stale_hours,
+        "summary": dict(summary),
+        "results": [dict(item) for item in results],
     }
 
 
@@ -148,8 +173,12 @@ def validate_latest_manifest(payload: Any) -> dict[str, Any]:
         "archetype_decks",
         "metagame_daily",
         "deck_text_blobs",
+        "runs",
     }
     for group in required_groups:
+        entries = latest.get(group, [])
+        if group not in latest:
+            latest[group] = entries
         entries = _require_sequence(latest, group, "latest_manifest.latest")
         for entry in entries:
             entry_mapping = _require_mapping(entry, f"latest_manifest.latest.{group}[]")
@@ -181,6 +210,8 @@ def validate_archetype_deck_snapshot(payload: Any) -> dict[str, Any]:
         deck = _require_mapping(entry, f"{ARCHETYPE_DECKS_KIND}.decks[]")
         _require_string(deck, "number", f"{ARCHETYPE_DECKS_KIND}.decks[]")
         _require_string(deck, "source", f"{ARCHETYPE_DECKS_KIND}.decks[]")
+        if "deck_text_path" in deck:
+            _require_string(deck, "deck_text_path", f"{ARCHETYPE_DECKS_KIND}.decks[]")
     return dict(snapshot)
 
 
@@ -209,12 +240,37 @@ def validate_metagame_snapshot(payload: Any) -> dict[str, Any]:
 def validate_deck_text_blob(payload: Any) -> dict[str, Any]:
     snapshot = deepcopy(_validate_common_snapshot(payload, kind=DECK_TEXTS_KIND))
     _require_string(snapshot, "source", DECK_TEXTS_KIND)
-    archetype = _require_mapping(snapshot.get("archetype"), f"{DECK_TEXTS_KIND}.archetype")
-    _require_string(archetype, "name", f"{DECK_TEXTS_KIND}.archetype")
-    _require_string(archetype, "href", f"{DECK_TEXTS_KIND}.archetype")
-    deck_texts = _require_sequence(snapshot, "deck_texts", DECK_TEXTS_KIND)
-    for entry in deck_texts:
-        item = _require_mapping(entry, f"{DECK_TEXTS_KIND}.deck_texts[]")
-        _require_string(item, "deck_id", f"{DECK_TEXTS_KIND}.deck_texts[]")
-        _require_string(item, "deck_text", f"{DECK_TEXTS_KIND}.deck_texts[]")
+    _require_string(snapshot, "deck_id", DECK_TEXTS_KIND)
+    _require_string(snapshot, "deck_name", DECK_TEXTS_KIND)
+    _require_string(snapshot, "deck_text", DECK_TEXTS_KIND)
     return dict(snapshot)
+
+
+def validate_run_manifest(payload: Any) -> dict[str, Any]:
+    manifest = deepcopy(_require_mapping(payload, RUN_MANIFEST_KIND))
+    if manifest.get("schema_version") != SCHEMA_VERSION:
+        raise ValueError(f"{RUN_MANIFEST_KIND}.schema_version must be {SCHEMA_VERSION}")
+    if manifest.get("kind") != RUN_MANIFEST_KIND:
+        raise ValueError(f"{RUN_MANIFEST_KIND}.kind must be {RUN_MANIFEST_KIND}")
+    _require_string(manifest, "generated_at", RUN_MANIFEST_KIND)
+    _require_string(manifest, "command", RUN_MANIFEST_KIND)
+    _require_string(manifest, "status", RUN_MANIFEST_KIND)
+    max_stale_hours = manifest.get("max_stale_hours")
+    if not isinstance(max_stale_hours, int) or max_stale_hours < 1:
+        raise ValueError(f"{RUN_MANIFEST_KIND}.max_stale_hours must be a positive integer")
+    summary = _require_mapping(manifest.get("summary"), f"{RUN_MANIFEST_KIND}.summary")
+    for key, value in summary.items():
+        if not isinstance(key, str) or not isinstance(value, int) or value < 0:
+            raise ValueError(f"{RUN_MANIFEST_KIND}.summary must map strings to non-negative ints")
+    results = _require_sequence(manifest, "results", RUN_MANIFEST_KIND)
+    for entry in results:
+        result = _require_mapping(entry, f"{RUN_MANIFEST_KIND}.results[]")
+        _require_string(result, "scope", f"{RUN_MANIFEST_KIND}.results[]")
+        _require_string(result, "status", f"{RUN_MANIFEST_KIND}.results[]")
+        if "format" in result:
+            _require_string(result, "format", f"{RUN_MANIFEST_KIND}.results[]")
+        if "path" in result:
+            _require_string(result, "path", f"{RUN_MANIFEST_KIND}.results[]")
+        if "message" in result:
+            _require_string(result, "message", f"{RUN_MANIFEST_KIND}.results[]")
+    return dict(manifest)

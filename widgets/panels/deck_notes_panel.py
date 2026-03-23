@@ -197,6 +197,22 @@ class DeckNotesPanel(wx.Panel):
         self.cards_sizer = wx.BoxSizer(wx.VERTICAL)
         self.scroll_win.SetSizer(self.cards_sizer)
 
+        self.empty_state_panel = wx.Panel(self)
+        self.empty_state_panel.SetBackgroundColour(DARK_ALT)
+        empty_sizer = wx.BoxSizer(wx.VERTICAL)
+        self.empty_state_panel.SetSizer(empty_sizer)
+        empty_sizer.AddStretchSpacer(1)
+        empty_label = wx.StaticText(
+            self.empty_state_panel,
+            label='No deck notes yet, click "Add" to create a deck note entry.',
+            style=wx.ALIGN_CENTRE_HORIZONTAL,
+        )
+        empty_label.SetForegroundColour(SUBDUED_TEXT)
+        empty_sizer.Add(empty_label, 0, wx.ALIGN_CENTER | wx.ALL, 12)
+        empty_sizer.AddStretchSpacer(1)
+        self.empty_state_panel.Hide()
+        outer.Add(self.empty_state_panel, 1, wx.EXPAND | wx.LEFT | wx.RIGHT | wx.BOTTOM, 6)
+
     # ═══════════════════════════════════════════════════════════════════════
     # Public API
     # ═══════════════════════════════════════════════════════════════════════
@@ -251,10 +267,14 @@ class DeckNotesPanel(wx.Panel):
             self._card_widgets.append(widget)
             self.cards_sizer.Add(widget, 0, wx.EXPAND | wx.ALL, 4)
 
+        has_cards = bool(self._cards)
+        self.scroll_win.Show(has_cards)
+        self.empty_state_panel.Show(not has_cards)
         self.cards_sizer.Layout()
         self.scroll_win.Layout()
         self.scroll_win.FitInside()
         self.scroll_win.Thaw()
+        self.Layout()
 
     def _make_card_widget(self, card: dict[str, str]) -> _NoteCardWidget:
         return _NoteCardWidget(

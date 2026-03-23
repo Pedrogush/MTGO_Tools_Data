@@ -374,9 +374,10 @@ class DeckBuilderPanel(wx.Panel):
             except Exception:
                 bmp = None
             if bmp and bmp.IsOk():
-                btn: wx.ToggleButton = wx.BitmapToggleButton(
-                    self, wx.ID_ANY, bmp, size=(bmp.GetWidth() + 8, bmp.GetHeight() + 8)
-                )
+                grey_bmp = wx.Bitmap(bmp.ConvertToImage().ConvertToGreyscale())
+                btn_size = (bmp.GetWidth() + 8, bmp.GetHeight() + 8)
+                btn: wx.ToggleButton = wx.BitmapToggleButton(self, wx.ID_ANY, grey_bmp, size=btn_size)
+                btn.SetBitmapPressed(bmp)
             else:
                 btn = wx.ToggleButton(self, label=code, size=(28, 28))
                 btn.SetForegroundColour(LIGHT_TEXT)

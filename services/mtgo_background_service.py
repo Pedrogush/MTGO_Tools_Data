@@ -1,12 +1,12 @@
 """Background service for fetching MTGO data."""
 
 import time
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 try:
     from datetime import UTC
 except ImportError:  # pragma: no cover - Python 3.10 fallback
-    UTC = UTC
+    UTC = timezone.utc  # noqa: UP017
 
 from loguru import logger
 

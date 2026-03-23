@@ -244,6 +244,8 @@ class DeckNotesPanel(wx.Panel):
             self._card_widgets.append(widget)
             self.cards_sizer.Add(widget, 0, wx.EXPAND | wx.ALL, 4)
 
+        self.cards_sizer.Layout()
+        self.scroll_win.Layout()
         self.scroll_win.FitInside()
         self.scroll_win.Thaw()
 

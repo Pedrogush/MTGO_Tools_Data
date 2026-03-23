@@ -55,6 +55,11 @@ Each publisher command also writes `data/latest/runs/<command>.json` with
 per-scope `success`, `skipped`, `stale-fallback`, and `hard-failure` statuses.
 Commands only return non-zero when freshness guarantees are violated.
 
+Checked-tree retention is one week. `data/hourly/` and `data/daily/` are pruned
+before automated commits, while `data/latest/` remains the stable consumer
+entrypoint. Git history is retained separately and is not rewritten by the
+publisher workflows.
+
 ## Publisher CLI
 
 The headless publisher entrypoint is `python -m publisher.runner`.
@@ -64,6 +69,7 @@ python -m publisher.runner --output-root data --timestamp 2026-03-23T12:00:00Z s
 python -m publisher.runner --output-root data --timestamp 2026-03-23T12:00:00Z scrape-decks --format Modern --archetype "Temur Rhinos" --days 7
 python -m publisher.runner --output-root data --timestamp 2026-03-23T12:00:00Z scrape-deck-texts --format Modern --archetype "Temur Rhinos" --days 7
 python -m publisher.runner --output-root data --timestamp 2026-03-23T12:00:00Z scrape-metagame --format Modern --day 2026-03-23
+python -m publisher.retention --output-root data --timestamp 2026-03-23T18:00:00Z --retention-days 7
 ```
 
 Outputs are written into repository-managed staging paths under `data/latest/`,
@@ -71,6 +77,17 @@ Outputs are written into repository-managed staging paths under `data/latest/`,
 Each command also writes `data/latest/runs/<command>.json`, with per-scope
 statuses (`success`, `skipped`, `stale-fallback`, `hard-failure`) and returns a
 non-zero exit code only when freshness guarantees are violated.
+
+## Publishing Schedules
+
+See [docs/publishing_workflows.md](docs/publishing_workflows.md) for the exact
+workflow behavior. In short:
+
+- Hourly publishing runs at minute `15` and writes deck metadata plus deck text
+  blobs for `Modern`, `Standard`, `Pioneer`, `Legacy`, `Vintage`, and `Pauper`.
+- Daily metagame publishing runs at `02:45` UTC, which is `23:45` in
+  `America/Sao_Paulo`.
+- Both workflows share a concurrency group and only push when `data/` changed.
 
 ## Development
 

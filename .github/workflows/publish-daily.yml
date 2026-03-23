@@ -1,0 +1,72 @@
+name: Publish Daily Metagame
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 23:45 America/Sao_Paulo
+    - cron: "45 2 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-data-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  publish-daily:
+    runs-on: ubuntu-latest
+    env:
+      PUBLISH_FORMATS: "Modern Standard Pioneer Legacy Vintage Pauper"
+      PUBLISH_OUTPUT_ROOT: data
+      PUBLISH_RETENTION_DAYS: "7"
+      TZ: America/Sao_Paulo
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-dev.txt
+
+      - name: Publish daily metagame snapshots
+        run: |
+          formats=()
+          for format in $PUBLISH_FORMATS; do
+            formats+=(--format "$format")
+          done
+
+          python -m publisher.runner \
+            --output-root "$PUBLISH_OUTPUT_ROOT" \
+            --retention-days "$PUBLISH_RETENTION_DAYS" \
+            scrape-metagame \
+            "${formats[@]}" \
+            --day "$(date +%F)"
+
+      - name: Prune retained working tree
+        run: |
+          python -m publisher.retention \
+            --output-root "$PUBLISH_OUTPUT_ROOT" \
+            --retention-days "$PUBLISH_RETENTION_DAYS"
+
+      - name: Commit changed snapshots
+        run: |
+          if [ -z "$(git status --porcelain -- "$PUBLISH_OUTPUT_ROOT")" ]; then
+            echo "No published data changes detected."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$PUBLISH_OUTPUT_ROOT"
+          git commit -m "Publish daily metagame snapshots"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin HEAD:"${GITHUB_REF_NAME}"

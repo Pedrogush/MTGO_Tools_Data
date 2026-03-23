@@ -55,7 +55,10 @@ python -m publisher.runner --output-root data --timestamp 2026-03-23T12:00:00Z s
 ```
 
 Outputs are written into repository-managed staging paths under `data/latest/`,
-`data/hourly/`, and `data/daily/`.
+`data/hourly/`, `data/daily/`, and `data/archive/`.
+Each command also writes `data/latest/runs/<command>.json`, with per-scope
+statuses (`success`, `skipped`, `stale-fallback`, `hard-failure`) and returns a
+non-zero exit code only when freshness guarantees are violated.
 
 ## Development
 

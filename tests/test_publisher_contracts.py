@@ -4,11 +4,13 @@ from publisher.contracts import (
     build_deck_text_blob,
     build_latest_manifest,
     build_metagame_snapshot,
+    build_run_manifest,
     validate_archetype_deck_snapshot,
     validate_archetype_list_snapshot,
     validate_deck_text_blob,
     validate_latest_manifest,
     validate_metagame_snapshot,
+    validate_run_manifest,
 )
 
 TIMESTAMP = "2026-03-23T12:00:00Z"
@@ -46,10 +48,21 @@ def test_contract_builders_validate_examples() -> None:
         generated_at=TIMESTAMP,
         format_name="modern",
         source="both",
-        archetype=archetypes[0],
-        deck_texts=[{"deck_id": "123", "deck_text": "4 Ragavan, Nimble Pilferer"}],
+        deck_id="123",
+        deck_name="Temur Rhinos",
+        deck_text="4 Ragavan, Nimble Pilferer",
     )
-    assert validate_deck_text_blob(deck_text_blob)["deck_texts"][0]["deck_id"] == "123"
+    assert validate_deck_text_blob(deck_text_blob)["deck_id"] == "123"
+
+    run_manifest = build_run_manifest(
+        generated_at=TIMESTAMP,
+        command="scrape-decks",
+        status="success",
+        max_stale_hours=24,
+        results=[{"scope": "archetype-decks", "status": "success", "format": "modern"}],
+        summary={"success": 1},
+    )
+    assert validate_run_manifest(run_manifest)["command"] == "scrape-decks"
 
 
 def test_latest_manifest_validates_with_all_categories() -> None:
@@ -71,8 +84,15 @@ def test_latest_manifest_validates_with_all_categories() -> None:
     manifest["latest"]["deck_text_blobs"].append(
         {
             "format": "modern",
-            "archetype": "temur-rhinos",
-            "path": "latest/deck-texts/modern/temur-rhinos.json",
+            "deck_id": "123",
+            "path": "archive/deck-texts/modern/123.json",
+            "updated_at": TIMESTAMP,
+        }
+    )
+    manifest["latest"]["runs"].append(
+        {
+            "format": "scrape-decks",
+            "path": "latest/runs/scrape-decks.json",
             "updated_at": TIMESTAMP,
         }
     )

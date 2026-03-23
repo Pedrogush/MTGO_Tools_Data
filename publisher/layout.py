@@ -12,6 +12,7 @@ from utils.atomic_io import atomic_write_json
 
 DEFAULT_OUTPUT_ROOT = Path("data")
 DEFAULT_RETENTION_DAYS = 7
+DEFAULT_MAX_STALE_HOURS = 24
 
 
 def normalize_name(value: str) -> str:
@@ -46,6 +47,10 @@ def load_latest_manifest(
 
 def write_json(path: Path, payload: dict[str, Any]) -> None:
     atomic_write_json(path, payload, indent=2)
+
+
+def relative_posix_path(path: Path, output_root: Path) -> str:
+    return path.relative_to(output_root).as_posix()
 
 
 def update_latest_manifest(

@@ -40,6 +40,22 @@ publisher. The supported surface is the scraper and publisher path only.
 ## Architecture
 
 See [docs/scraping_surface.md](docs/scraping_surface.md) for the current scrape-only boundary.
+See [docs/published_data.md](docs/published_data.md) for the publisher artifact
+contract and repository data layout.
+
+## Publisher CLI
+
+The headless publisher entrypoint is `python -m publisher.runner`.
+
+```bash
+python -m publisher.runner --output-root data --timestamp 2026-03-23T12:00:00Z scrape-archetypes --format Modern
+python -m publisher.runner --output-root data --timestamp 2026-03-23T12:00:00Z scrape-decks --format Modern --archetype "Temur Rhinos" --days 7
+python -m publisher.runner --output-root data --timestamp 2026-03-23T12:00:00Z scrape-deck-texts --format Modern --archetype "Temur Rhinos" --days 7
+python -m publisher.runner --output-root data --timestamp 2026-03-23T12:00:00Z scrape-metagame --format Modern --day 2026-03-23
+```
+
+Outputs are written into repository-managed staging paths under `data/latest/`,
+`data/hourly/`, and `data/daily/`.
 
 ## Development
 

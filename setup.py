@@ -18,9 +18,24 @@ setuptools.setup(
     version="0.2",
     author="yochi",
     author_email="pedrogush@gmail.com",
-    description="MTG Metagame Analysis: Opponent tracking and deck research tools for MTGO",
-    packages=["widgets", "navigators", "utils"],
-    classifiers=["Programming Language :: Python :: 3", "Operating System :: Windows"],
+    description="Headless MTGO and MTGGoldfish scrape publisher",
+    packages=setuptools.find_packages(
+        include=[
+            "navigators",
+            "navigators.*",
+            "publisher",
+            "publisher.*",
+            "repositories",
+            "repositories.*",
+            "scraping",
+            "scraping.*",
+            "services",
+            "services.*",
+            "utils",
+            "utils.*",
+        ]
+    ),
+    classifiers=["Programming Language :: Python :: 3", "Operating System :: OS Independent"],
     python_requires=">=3.11",
     install_requires=load_requirements("requirements.txt"),
 )

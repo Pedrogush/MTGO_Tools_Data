@@ -1,41 +1,14 @@
-# MTGO Metagame Tools
+# MTGO Scrapes Repository
 
-A comprehensive desktop application for Magic: The Gathering Online (MTGO) players, providing metagame analysis, deck research, opponent tracking, and collection management.
+Headless MTGO and MTGGoldfish scraping surface for scheduled publishing.
 
 ![Version](https://img.shields.io/badge/version-0.2-blue)
 ![Python](https://img.shields.io/badge/python-3.11+-green)
-![Platform](https://img.shields.io/badge/platform-Windows-lightgrey)
+![Platform](https://img.shields.io/badge/platform-headless-lightgrey)
 ![License](https://img.shields.io/badge/license-MIT-orange)
 
-> Note: MTGO decklist scraping is temporarily disabled while we move that feature to a new
-> service/API. The desktop app will fall back to MTGGoldfish-only data until the integration is
-> complete.
-
-## Features
-
-### Metagame Analysis
-- **Live Metagame Data**: Fetch and analyze current metagame trends from MTGGoldfish
-- **Archetype Browser**: Browse top decks by format with win rates and popularity metrics
-- **Meta Statistics**: View archetype distribution over time with customizable date ranges
-- **Daily Deck Averages**: Generate average decklists from top-performing archetypes
-
-### Deck Research & Builder
-- **Deck Import**: Import decks from MTGGoldfish, MTGO, or paste directly
-- **Visual Deck Builder**: Build and edit decks with full card search and filtering
-- **Collection Integration**: See which cards you own and what you're missing
-- **Mana Curve Analysis**: Visualize deck statistics including mana curve, land count, and color distribution
-- **Card Inspector**: View high-quality card images with Scryfall integration
-
-### Match Tools
-- **Opponent Tracking**: Automatically detect opponents and fetch their recent decklists
-- **Match History**: Comprehensive match history with win rate statistics and game logs
-- **Sideboard Guides**: Create and manage matchup-specific sideboarding strategies
-- **Timer Alerts**: Get notified when MTGO challenge events are about to start
-
-### Collection Management
-- **MTGO Integration**: Import your collection directly from MTGO via the .NET Bridge
-- **Deck Ownership Analysis**: Check which cards you need for any deck
-- **Missing Cards Report**: Generate lists of cards needed for deck building
+This repository is being reduced from a desktop application clone to a scrape
+publisher. The supported surface is the scraper and publisher path only.
 
 ## Screenshots
 
@@ -43,18 +16,15 @@ A comprehensive desktop application for Magic: The Gathering Online (MTGO) playe
 
 ## Installation
 
-### Quick Start (Windows)
+### Quick Start
 
 1. **Prerequisites**:
-   - Windows 10 or later
    - Python 3.11 or newer
-   - MongoDB (optional, for deck persistence)
-   - .NET 9.0 SDK (for MTGO Bridge)
 
 2. **Clone the repository**:
    ```bash
-   git clone https://github.com/Pedrogush/MTGO_Tools.git
-   cd MTGO_Tools
+   git clone https://github.com/Pedrogush/MTGO_Scrapes_Repository.git
+   cd MTGO_Scrapes_Repository
    ```
 
 3. **Install Python dependencies**:
@@ -62,54 +32,14 @@ A comprehensive desktop application for Magic: The Gathering Online (MTGO) playe
    pip install -r requirements-dev.txt
    ```
 
-4. **Run the application**:
+4. **Run the scraper tests**:
    ```bash
-   python main.py
+   python -m pytest tests/test_mtggoldfish.py tests/test_metagame_repository.py tests/test_metagame_stats.py tests/test_scraping_surface.py
    ```
-
-## Usage
-
-### Launching the Application
-
-```bash
-python main.py
-```
-
-The main window provides access to all features through a tabbed interface:
-
-- **Research**: Browse metagame archetypes and import decks
-- **Builder**: Build and edit decks with full card search
-- **Stats**: View deck statistics and mana curve analysis
-- **Sideboard Guide**: Create matchup-specific boarding plans
-- **Notes**: Add custom notes to your decks
-
-### Menu Bar Features
-
-- **File**:
-  - Save/Load decks
-  - Copy deck to clipboard
-  - Import from collection export
-
-- **Collection**:
-  - Load MTGO collection
-  - Refresh from bridge
-  - Download card images
-
-- **Tools**:
-  - Opponent Deck Spy
-  - Match History Viewer
-  - Metagame Analysis
-  - Challenge Timer Alerts
-
-### Keyboard Shortcuts
-
-- `Ctrl+S`: Save current deck
-- `Ctrl+O`: Open deck from file
-- `Ctrl+C`: Copy deck to clipboard (when deck list has focus)
 
 ## Architecture
 
-This project follows a layered architecture pattern with clear separation of concerns. See [ARCHITECTURE.md](ARCHITECTURE.md) for detailed information about project structure, module organization, and data flow. Use the architecture diagram generation tools in `scripts/` to visualize the codebase.
+See [docs/scraping_surface.md](docs/scraping_surface.md) for the current scrape-only boundary.
 
 ## Development
 
@@ -118,17 +48,12 @@ This project follows a layered architecture pattern with clear separation of con
 - Python 3.11+
 - Black and Ruff for code formatting
 - pytest for testing
-- SSH access to Windows machine (for running tests)
 
 ### Development Workflow
 
 ```bash
-# Run linters, tests, and commit (automated)
-./lint_test_commit.sh
-
-# Or manually:
-black .
-ruff check --fix .
+ruff check .
+black --check .
 pytest
 ```
 
@@ -144,28 +69,7 @@ pytest tests/test_deck_service.py
 # Run with verbose output
 pytest -v
 
-# Run UI tests (requires display)
-pytest tests/ui/
 ```
-
-#### GameLog / Match History Tests
-
-The gamelog parser integration tests (`tests/test_gamelog_parser.py`) parse your local MTGO GameLog files and compare results against your own match history. They require:
-
-1. **MTGO GameLog files** present on the machine (created automatically by MTGO during matches).
-2. **`MTGO_USERNAME`** environment variable set to your MTGO username.
-
-If you activated the virtual environment via `env/Scripts/activate` (bash) or `env\Scripts\activate.bat` (Windows cmd), this variable is set automatically to the configured username. For a different machine or user, edit the relevant activate script and replace `pedrogush` with your own MTGO username:
-
-```bash
-# env/Scripts/activate (bash)
-export MTGO_USERNAME="your_mtgo_username"
-
-# env\Scripts\activate.bat (cmd)
-set MTGO_USERNAME=your_mtgo_username
-```
-
-Tests are skipped automatically when no GameLog directory is found, so they are safe to run on machines without MTGO installed.
 
 ### Code Quality
 
@@ -181,38 +85,19 @@ Configuration is in `pyproject.toml`.
 
 ```
 magic_online_metagame_crawler/
-├── main.py                 # Application entry point
-├── controllers/            # Central application control
-│   └── app_controller.py   # Main app controller
-├── widgets/                # UI components
-│   ├── app_frame.py        # Main application window
-│   ├── panels/             # Reusable UI panels
-│   ├── dialogs/            # Modal dialogs
-│   └── buttons/            # Custom button widgets
-├── services/               # Business logic layer
-│   ├── deck_service.py
-│   ├── collection_service.py
-│   ├── search_service.py
-│   └── image_service.py
-├── repositories/           # Data access layer
-│   ├── deck_repository.py
-│   ├── card_repository.py
-│   └── metagame_repository.py
+├── scraping/               # Headless scrape facade
+├── services/               # MTGO event processing
+├── repositories/           # Metagame repository
 ├── navigators/             # External API integrations
 │   ├── mtggoldfish.py      # MTGGoldfish scraper
 │   └── mtgo_decklists.py   # MTGO.com parser
 ├── utils/                  # Utility modules
-│   ├── card_data.py        # Card metadata management
-│   ├── gamelog_parser.py   # Match history parsing
-│   └── archetype_classifier.py
-├── dotnet/MTGOBridge/      # .NET bridge for MTGO integration
+│   ├── archetype_classifier.py
+│   ├── deck_text_cache.py
+│   └── metagame_stats.py
 ├── tests/                  # Test suite
 └── scripts/                # Utility scripts
 ```
-
-## MTGO Bridge
-
-The MTGO Bridge is a .NET component that interfaces with Magic Online to extract collection and match history data using MTGOSDK. Build the bridge with `cd dotnet/MTGOBridge && dotnet build`. MTGO must be running when using collection import features.
 
 ## Contributing
 

@@ -5,19 +5,15 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "mtg_metagame_tools"
 version = "0.2"
-description = "MTG Metagame Analysis: Opponent tracking and deck research tools for MTGO"
+description = "Headless MTGO and MTGGoldfish scrape publisher"
 authors = [{name = "yochi", email = "pedrogush@gmail.com"}]
 requires-python = ">=3.11"
 classifiers = [
     "Programming Language :: Python :: 3",
-    "Operating System :: Microsoft :: Windows",
+    "Operating System :: OS Independent",
 ]
 
 [project.scripts]
-mtgo-opponent-tracker = "widgets.identify_opponent:main"
-mtgo-match-history = "widgets.match_history:main"
-mtgo-timer-alert = "widgets.timer_alert:main"
-mtgo-metagame = "widgets.metagame_analysis:main"
 
 [tool.ruff]
 # Exclude common directories
@@ -68,10 +64,6 @@ ignore = [
 "test_*.py" = ["C901"]
 "**/tests/**" = ["C901"]
 # Widget entry points insert project root into sys.path before other imports
-"widgets/identify_opponent.py" = ["E402"]
-"widgets/match_history.py" = ["E402"]
-"widgets/timer_alert.py" = ["E402"]
-"widgets/metagame_analysis.py" = ["E402"]
 
 [tool.black]
 line-length = 100

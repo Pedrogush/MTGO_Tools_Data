@@ -27,32 +27,9 @@ def _optional_reset(module_path: str, attr_name: str):
         return _noop
 
 
-reset_card_repository = _optional_reset("repositories.card_repository", "reset_card_repository")
-reset_deck_repository = _optional_reset("repositories.deck_repository", "reset_deck_repository")
 reset_metagame_repository = _optional_reset(
     "repositories.metagame_repository", "reset_metagame_repository"
 )
-reset_deck_service = _optional_reset("services.deck_service", "reset_deck_service")
-reset_image_service = _optional_reset("services.image_service", "reset_image_service")
-reset_search_service = _optional_reset("services.search_service", "reset_search_service")
-reset_collection_service = _optional_reset(
-    "services.collection_service", "reset_collection_service"
-)
-
-
-def reset_all_services() -> None:
-    """Reset all global service instances."""
-    reset_collection_service()
-    reset_deck_service()
-    reset_search_service()
-    reset_image_service()
-
-
-def reset_all_repositories() -> None:
-    """Reset all global repository instances."""
-    reset_card_repository()
-    reset_deck_repository()
-    reset_metagame_repository()
 
 
 def reset_all_globals() -> None:
@@ -61,5 +38,4 @@ def reset_all_globals() -> None:
     This is the recommended function to call in test teardown or setup
     to ensure complete isolation between tests.
     """
-    reset_all_services()
-    reset_all_repositories()
+    reset_metagame_repository()

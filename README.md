@@ -40,8 +40,20 @@ publisher. The supported surface is the scraper and publisher path only.
 ## Architecture
 
 See [docs/scraping_surface.md](docs/scraping_surface.md) for the current scrape-only boundary.
-See [docs/published_data.md](docs/published_data.md) for the publisher artifact
-contract and repository data layout.
+
+## Published Data
+
+Publisher outputs are written under `data/`:
+
+- `data/latest/` for stable consumer-facing pointers.
+- `data/hourly/<timestamp>/` for hourly snapshots and run manifests.
+- `data/daily/<date>/` for daily metagame snapshots.
+- `data/archive/deck-texts/<format>/<deck-id>.json` for deduplicated per-deck
+  text blobs referenced from deck metadata snapshots.
+
+Each publisher command also writes `data/latest/runs/<command>.json` with
+per-scope `success`, `skipped`, `stale-fallback`, and `hard-failure` statuses.
+Commands only return non-zero when freshness guarantees are violated.
 
 ## Publisher CLI
 

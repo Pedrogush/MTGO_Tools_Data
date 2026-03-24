@@ -310,3 +310,51 @@ def test_scrape_deck_texts_reuses_existing_published_blob(monkeypatch, tmp_path)
     )
     assert run_manifest["results"][-1]["status"] == "skipped"
     assert run_manifest["results"][-1]["message"] == "Reused existing published deck-text blob."
+
+
+def test_scrape_deck_texts_skips_empty_recent_window_without_failing(monkeypatch, tmp_path):
+    monkeypatch.setattr(
+        "publisher.runner.fetch_archetypes",
+        lambda *args, **kwargs: [{"name": "Temur Rhinos", "href": "modern-temur-rhinos"}],
+    )
+
+    class _OldDeckRepo(_FakeRepo):
+        def get_decks_for_archetype(self, archetype, force_refresh=False, source_filter=None):
+            return [
+                {
+                    "name": archetype["name"],
+                    "number": "123",
+                    "date": "2026-03-01",
+                    "player": "Alice",
+                    "event": "Modern Challenge",
+                    "source": "mtggoldfish",
+                }
+            ]
+
+    monkeypatch.setattr("publisher.runner.ScrapingMetagameRepository", _OldDeckRepo)
+
+    exit_code = main(
+        [
+            "--output-root",
+            str(tmp_path),
+            "--timestamp",
+            TIMESTAMP,
+            "scrape-deck-texts",
+            "--format",
+            "Modern",
+            "--days",
+            "7",
+        ]
+    )
+
+    assert exit_code == 0
+    latest_path = tmp_path / "latest" / "decks" / "modern" / "temur-rhinos.json"
+    snapshot = json.loads(latest_path.read_text(encoding="utf-8"))
+    run_manifest = json.loads(
+        (tmp_path / "latest" / "runs" / "scrape-deck-texts-modern.json").read_text(encoding="utf-8")
+    )
+
+    assert snapshot["decks"] == []
+    assert run_manifest["status"] == "success"
+    assert run_manifest["results"][1]["status"] == "skipped"
+    assert run_manifest["results"][1]["message"] == "No decks found within the last 7 days."

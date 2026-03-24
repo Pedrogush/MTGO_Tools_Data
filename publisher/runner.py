@@ -434,9 +434,44 @@ def _write_archetype_deck_snapshots(
                 force_refresh=True,
                 source_filter=source_filter,
             )
+            filtered_decks = _filter_recent_decks(decks, days)
+            if decks and days is not None and not filtered_decks:
+                snapshot = build_archetype_deck_snapshot(
+                    generated_at=generated_at,
+                    format_name=normalized_format,
+                    archetype=archetype,
+                    source=source_filter or "both",
+                    decks=[],
+                )
+                validate_archetype_deck_snapshot(snapshot)
+                hourly_path = (
+                    hourly_snapshot_dir(output_root, generated_at)
+                    / "decks"
+                    / normalized_format
+                    / f"{archetype_slug}.json"
+                )
+                write_json(latest_path, snapshot)
+                write_json(hourly_path, snapshot)
+                update_latest_manifest(
+                    output_root,
+                    generated_at=generated_at,
+                    retention_days=recorder.retention_days,
+                    category="archetype_decks",
+                    discriminator={"format": normalized_format, "archetype": archetype_slug},
+                    relative_path=relative_posix_path(latest_path, output_root),
+                )
+                recorder.add(
+                    scope="archetype-decks",
+                    status=STATUS_SKIPPED,
+                    format_name=normalized_format,
+                    archetype=archetype_slug,
+                    path=relative_posix_path(latest_path, output_root),
+                    message=f"No decks found within the last {days} days.",
+                )
+                continue
             recent_decks = sorted(
                 _with_deck_text_refs(
-                    _filter_recent_decks(decks, days),
+                    filtered_decks,
                     output_root=output_root,
                     format_name=normalized_format,
                 ),

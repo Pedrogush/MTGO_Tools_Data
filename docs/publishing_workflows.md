@@ -32,3 +32,19 @@ Checked-tree retention is seven days for `data/hourly/` and `data/daily/`.
 `data/latest/` remains the stable consumer entrypoint, and deck-text blobs under
 `data/archive/` are pruned when they are no longer referenced by any retained or
 latest deck snapshot. Git history is not rewritten by this policy.
+
+## Local warmup run
+
+To run the hourly deck-text publisher locally without the workflow's remote
+`3` second deck download delay, use:
+
+```bash
+./scripts/run_publish_hourly_local.sh Modern Affinity 1
+```
+
+Arguments are:
+
+- format (default: `Modern`)
+- archetype filter (optional, default: none)
+- days window (default: `7`)
+- output root (optional, default: `/tmp/publish-hourly-local-<timestamp>`)

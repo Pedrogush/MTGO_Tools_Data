@@ -1,10 +1,11 @@
 import json
 
-from publisher.contracts import build_latest_manifest
+from publisher.contracts import build_deck_text_blob, build_latest_manifest
 from publisher.layout import write_json
 from publisher.retention import prune_output_tree
 
 NOW = "2026-03-23T18:00:00Z"
+OLD_BLOB_TIMESTAMP = "2026-03-10T18:00:00Z"
 
 
 def _write_snapshot(path, payload):
@@ -12,7 +13,7 @@ def _write_snapshot(path, payload):
     write_json(path, payload)
 
 
-def test_prune_output_tree_removes_old_snapshots_and_unreferenced_deck_texts(tmp_path):
+def test_prune_output_tree_removes_old_snapshots_and_only_expired_deck_texts(tmp_path):
     retained_hourly = tmp_path / "hourly" / "2026-03-23T12-00-00Z" / "decks" / "modern"
     expired_hourly = tmp_path / "hourly" / "2026-03-15T12-00-00Z" / "decks" / "modern"
     retained_daily = tmp_path / "daily" / "2026-03-20" / "metagame"
@@ -47,6 +48,10 @@ def test_prune_output_tree_removes_old_snapshots_and_unreferenced_deck_texts(tmp
                 {
                     "number": "999",
                     "deck_text_path": "archive/deck-texts/modern/999.json",
+                },
+                {
+                    "number": "888",
+                    "deck_text_path": "archive/deck-texts/modern/888.json",
                 }
             ]
         },
@@ -54,10 +59,37 @@ def test_prune_output_tree_removes_old_snapshots_and_unreferenced_deck_texts(tmp
     _write_snapshot(retained_daily / "modern.json", {"stats": []})
     _write_snapshot(expired_daily / "modern.json", {"stats": []})
     _write_snapshot(
-        tmp_path / "archive" / "deck-texts" / "modern" / "123.json", {"deck_text": "keep"}
+        tmp_path / "archive" / "deck-texts" / "modern" / "123.json",
+        build_deck_text_blob(
+            generated_at=NOW,
+            format_name="modern",
+            deck_id="123",
+            source="mtggoldfish",
+            deck_name="keep-referenced",
+            deck_text="keep",
+        ),
     )
     _write_snapshot(
-        tmp_path / "archive" / "deck-texts" / "modern" / "999.json", {"deck_text": "drop"}
+        tmp_path / "archive" / "deck-texts" / "modern" / "999.json",
+        build_deck_text_blob(
+            generated_at=NOW,
+            format_name="modern",
+            deck_id="999",
+            source="mtggoldfish",
+            deck_name="keep-unreferenced",
+            deck_text="keep",
+        ),
+    )
+    _write_snapshot(
+        tmp_path / "archive" / "deck-texts" / "modern" / "888.json",
+        build_deck_text_blob(
+            generated_at=OLD_BLOB_TIMESTAMP,
+            format_name="modern",
+            deck_id="888",
+            source="mtggoldfish",
+            deck_name="drop-expired",
+            deck_text="drop",
+        ),
     )
 
     manifest = build_latest_manifest(generated_at=NOW, retention_days=7)
@@ -83,6 +115,12 @@ def test_prune_output_tree_removes_old_snapshots_and_unreferenced_deck_texts(tmp
                 "path": "archive/deck-texts/modern/999.json",
                 "updated_at": NOW,
             },
+            {
+                "format": "modern",
+                "deck_id": "888",
+                "path": "archive/deck-texts/modern/888.json",
+                "updated_at": OLD_BLOB_TIMESTAMP,
+            },
         ]
     )
     _write_snapshot(tmp_path / "latest" / "latest.json", manifest)
@@ -98,7 +136,8 @@ def test_prune_output_tree_removes_old_snapshots_and_unreferenced_deck_texts(tmp
     assert (tmp_path / "daily" / "2026-03-20").exists()
     assert not (tmp_path / "daily" / "2026-03-10").exists()
     assert (tmp_path / "archive" / "deck-texts" / "modern" / "123.json").exists()
-    assert not (tmp_path / "archive" / "deck-texts" / "modern" / "999.json").exists()
+    assert (tmp_path / "archive" / "deck-texts" / "modern" / "999.json").exists()
+    assert not (tmp_path / "archive" / "deck-texts" / "modern" / "888.json").exists()
 
     latest_manifest = json.loads((tmp_path / "latest" / "latest.json").read_text(encoding="utf-8"))
     assert latest_manifest["retention_days"] == 7
@@ -107,6 +146,12 @@ def test_prune_output_tree_removes_old_snapshots_and_unreferenced_deck_texts(tmp
             "format": "modern",
             "deck_id": "123",
             "path": "archive/deck-texts/modern/123.json",
+            "updated_at": NOW,
+        },
+        {
+            "format": "modern",
+            "deck_id": "999",
+            "path": "archive/deck-texts/modern/999.json",
             "updated_at": NOW,
         }
     ]

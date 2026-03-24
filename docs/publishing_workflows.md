@@ -39,12 +39,17 @@ To run the hourly deck-text publisher locally without the workflow's remote
 `3` second deck download delay, use:
 
 ```bash
-./scripts/run_publish_hourly_local.sh Modern Affinity 1
+./scripts/run_publish_hourly_local.sh
 ```
 
-Arguments are:
+This helper runs all hourly formats (`Modern`, `Standard`, `Pioneer`,
+`Legacy`, `Vintage`, `Pauper`) and traverses all archetypes for each format.
+It uses the same `publisher.runner scrape-deck-texts` command path as
+`publish-hourly.yml`, but pins `--deck-download-delay-seconds 0` for local
+warmups.
 
-- format (default: `Modern`)
-- archetype filter (optional, default: none)
-- days window (default: `7`)
-- output root (optional, default: `/tmp/publish-hourly-local-<timestamp>`)
+Optional environment variables:
+
+- `PUBLISH_WARMUP_DAYS` (default: `7`)
+- `PUBLISH_OUTPUT_ROOT` (default: `/tmp/publish-hourly-local-<timestamp>`)
+- `PUBLISH_RETENTION_DAYS` (default: `7`)

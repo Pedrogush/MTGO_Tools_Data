@@ -4,26 +4,41 @@ set -euo pipefail
 # Run the same publisher command path as publish-hourly.yml, but without
 # the remote workflow's download delay so local warmups complete faster.
 
-format="${1:-Modern}"
-archetype="${2:-}"
-days="${3:-7}"
-output_root="${4:-/tmp/publish-hourly-local-$(date +%s)}"
+formats=(Modern Standard Pioneer Legacy Vintage Pauper)
+days="${PUBLISH_WARMUP_DAYS:-7}"
+output_root="${PUBLISH_OUTPUT_ROOT:-/tmp/publish-hourly-local-$(date +%s)}"
 retention_days="${PUBLISH_RETENTION_DAYS:-7}"
 
-cmd=(
-  python3 -m publisher.runner
-  --output-root "$output_root"
-  --retention-days "$retention_days"
-  scrape-deck-texts
-  --format "$format"
-  --deck-download-delay-seconds 0
-  --days "$days"
-)
+echo "Output root: $output_root"
+echo "Retention days: $retention_days"
+echo "Warmup window days: $days"
+echo "Formats: ${formats[*]}"
 
-if [[ -n "$archetype" ]]; then
-  cmd+=(--archetype "$archetype")
+failed_formats=()
+for format in "${formats[@]}"; do
+  cmd=(
+    python3 -m publisher.runner
+    --output-root "$output_root"
+    --retention-days "$retention_days"
+    scrape-deck-texts
+    --format "$format"
+    --deck-download-delay-seconds 0
+    --days "$days"
+  )
+
+  echo
+  echo "Running format: $format"
+  echo "Command: ${cmd[*]}"
+  if ! "${cmd[@]}"; then
+    failed_formats+=("$format")
+  fi
+done
+
+if ((${#failed_formats[@]} > 0)); then
+  echo
+  echo "Completed with failures in formats: ${failed_formats[*]}"
+  exit 1
 fi
 
-echo "Output root: $output_root"
-echo "Running: ${cmd[*]}"
-"${cmd[@]}"
+echo
+echo "Completed successfully for all formats."

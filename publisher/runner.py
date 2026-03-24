@@ -90,6 +90,21 @@ def _load_json_if_present(path: Path) -> dict[str, Any] | None:
         return json.load(fh)
 
 
+def _load_reusable_deck_text_blob(
+    path: Path, *, format_name: str, deck_id: str
+) -> dict[str, Any] | None:
+    payload = _load_json_if_present(path)
+    if not payload:
+        return None
+    try:
+        validated = validate_deck_text_blob(payload)
+    except ValueError:
+        return None
+    if validated.get("format") != format_name or validated.get("deck_id") != deck_id:
+        return None
+    return validated
+
+
 def _is_path_fresh(path: Path, *, generated_at: str, max_stale_hours: int) -> bool:
     payload = _load_json_if_present(path)
     if not payload:
@@ -528,6 +543,29 @@ def _write_deck_text_blobs(
     for index, (deck_id, deck) in enumerate(sorted(unique_decks.items())):
         archive_path = _deck_text_archive_path(output_root, normalized_format, deck_id)
         try:
+            reused_blob = _load_reusable_deck_text_blob(
+                archive_path,
+                format_name=normalized_format,
+                deck_id=deck_id,
+            )
+            if reused_blob is not None:
+                update_latest_manifest(
+                    output_root,
+                    generated_at=generated_at,
+                    retention_days=recorder.retention_days,
+                    category="deck_text_blobs",
+                    discriminator={"format": normalized_format, "deck_id": deck_id},
+                    relative_path=relative_posix_path(archive_path, output_root),
+                )
+                recorder.add(
+                    scope="deck-text",
+                    status=STATUS_SKIPPED,
+                    format_name=normalized_format,
+                    deck_id=deck_id,
+                    path=relative_posix_path(archive_path, output_root),
+                    message="Reused existing published deck-text blob.",
+                )
+                continue
             if index > 0 and deck_download_delay_seconds > 0:
                 logger.info(
                     "Sleeping {} seconds before downloading deck {}",

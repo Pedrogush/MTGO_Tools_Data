@@ -252,3 +252,61 @@ def test_scrape_deck_texts_sleeps_between_unique_downloads(monkeypatch, tmp_path
 
     assert exit_code == 0
     assert sleeps == [3.0]
+
+
+def test_scrape_deck_texts_reuses_existing_published_blob(monkeypatch, tmp_path):
+    monkeypatch.setattr(
+        "publisher.runner.fetch_archetypes",
+        lambda *args, **kwargs: [{"name": "Temur Rhinos", "href": "modern-temur-rhinos"}],
+    )
+    monkeypatch.setattr("publisher.runner.ScrapingMetagameRepository", _FakeRepo)
+
+    archive_path = tmp_path / "archive" / "deck-texts" / "modern" / "123.json"
+    archive_path.parent.mkdir(parents=True, exist_ok=True)
+    archive_path.write_text(
+        json.dumps(
+            {
+                "schema_version": "1",
+                "kind": "deck_text_blob",
+                "generated_at": "2026-03-22T12:00:00Z",
+                "format": "modern",
+                "source": "mtggoldfish",
+                "deck_id": "123",
+                "deck_name": "Temur Rhinos",
+                "deck_text": "Deck 123",
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    sleeps: list[float] = []
+    monkeypatch.setattr("publisher.runner.time.sleep", sleeps.append)
+
+    def _boom(*args, **kwargs):
+        raise AssertionError("download_deck_content should not be called for reused blobs")
+
+    monkeypatch.setattr(_FakeRepo, "download_deck_content", _boom)
+
+    exit_code = main(
+        [
+            "--output-root",
+            str(tmp_path),
+            "--timestamp",
+            TIMESTAMP,
+            "scrape-deck-texts",
+            "--format",
+            "Modern",
+            "--days",
+            "7",
+            "--deck-download-delay-seconds",
+            "3",
+        ]
+    )
+
+    assert exit_code == 0
+    assert sleeps == []
+    run_manifest = json.loads(
+        (tmp_path / "latest" / "runs" / "scrape-deck-texts.json").read_text(encoding="utf-8")
+    )
+    assert run_manifest["results"][-1]["status"] == "skipped"
+    assert run_manifest["results"][-1]["message"] == "Reused existing published deck-text blob."

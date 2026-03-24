@@ -28,6 +28,8 @@ from utils.constants import (
 from utils.deck_text_cache import get_deck_cache
 from utils.json_io import fast_load
 
+EMPTY_ARCHETYPE_DECK_RETRY_DELAYS_SECONDS = (2, 5, 10)
+
 
 def _load_cached_archetypes(mtg_format: str, max_age: int = METAGAME_CACHE_TTL_SECONDS):
     if not ARCHETYPE_LIST_CACHE_FILE.exists():
@@ -141,6 +143,38 @@ def _save_cached_archetype_decks(archetype: str, items: list[dict]):
         json.dump(data, fh, indent=2)
 
 
+def _parse_archetype_decks(page_text: str, archetype: str) -> list[dict]:
+    soup = bs4.BeautifulSoup(page_text, "lxml")
+    table = soup.select_one("table.table-striped")
+    if not table:
+        logger.warning(f"Deck table missing for archetype {archetype}")
+        return []
+
+    trs: list[bs4.Tag] = table.find_all("tr")[1:]
+    decks: list[dict] = []
+    for tr in trs:
+        tds: list[bs4.Tag] = tr.find_all("td")
+        if len(tds) <= GOLDFISH_DECK_TABLE_COL_RESULT:
+            logger.warning(f"Deck row missing expected columns for archetype {archetype}")
+            continue
+        deck_link = tds[GOLDFISH_DECK_TABLE_COL_NUMBER].select_one("a")
+        if deck_link is None:
+            logger.warning(f"Deck row missing deck link for archetype {archetype}")
+            continue
+        decks.append(
+            {
+                "date": tds[GOLDFISH_DECK_TABLE_COL_DATE].text.strip(),
+                "number": deck_link.attrs.get("href").replace("/deck/", ""),
+                "player": tds[GOLDFISH_DECK_TABLE_COL_PLAYER].text.strip(),
+                "event": tds[GOLDFISH_DECK_TABLE_COL_EVENT].text.strip(),
+                "result": tds[GOLDFISH_DECK_TABLE_COL_RESULT].text.strip(),
+                "name": archetype,
+                "source": "mtggoldfish",
+            }
+        )
+    return decks
+
+
 def get_archetype_decks(archetype: str):
     # Check cache first
     cached = _load_cached_archetype_decks(archetype)
@@ -149,41 +183,36 @@ def get_archetype_decks(archetype: str):
         return cached
 
     logger.debug(f"Fetching decks for archetype {archetype} from MTGGoldfish")
-    try:
-        page = requests.get(
-            f"https://www.mtggoldfish.com/archetype/{archetype}/decks",
-            impersonate="chrome",
-            timeout=MTGGOLDFISH_REQUEST_TIMEOUT_SECONDS,
-        )
-        page.raise_for_status()
-    except Exception as exc:
-        logger.error(f"Failed to fetch decks for archetype {archetype}: {exc}")
+    retry_delays = (0, *EMPTY_ARCHETYPE_DECK_RETRY_DELAYS_SECONDS)
+    decks: list[dict] = []
+    for attempt, delay_seconds in enumerate(retry_delays, start=1):
+        if delay_seconds:
+            logger.warning(
+                "No deck rows returned for archetype {}. Retrying in {} seconds (attempt {}/{})",
+                archetype,
+                delay_seconds,
+                attempt,
+                len(retry_delays),
+            )
+            time.sleep(delay_seconds)
+        try:
+            page = requests.get(
+                f"https://www.mtggoldfish.com/archetype/{archetype}/decks",
+                impersonate="chrome",
+                timeout=MTGGOLDFISH_REQUEST_TIMEOUT_SECONDS,
+            )
+            page.raise_for_status()
+        except Exception as exc:
+            logger.error(f"Failed to fetch decks for archetype {archetype}: {exc}")
+            return []
+
+        decks = _parse_archetype_decks(page.text, archetype)
+        if decks:
+            break
+    else:
+        logger.warning(f"Deck scrape returned no rows for archetype {archetype} after retries")
         return []
 
-    soup = bs4.BeautifulSoup(page.text, "lxml")
-    table = soup.select_one("table.table-striped")
-    if not table:
-        logger.warning(f"Deck table missing for archetype {archetype}")
-        return []
-    trs: list[bs4.Tag] = table.find_all("tr")
-    trs = trs[1:]
-    decks = []
-    for tr in trs:
-        tds: list[bs4.Tag] = tr.find_all("td")
-        decks.append(
-            {
-                "date": tds[GOLDFISH_DECK_TABLE_COL_DATE].text.strip(),
-                "number": tds[GOLDFISH_DECK_TABLE_COL_NUMBER]
-                .select_one("a")
-                .attrs.get("href")
-                .replace("/deck/", ""),
-                "player": tds[GOLDFISH_DECK_TABLE_COL_PLAYER].text.strip(),
-                "event": tds[GOLDFISH_DECK_TABLE_COL_EVENT].text.strip(),
-                "result": tds[GOLDFISH_DECK_TABLE_COL_RESULT].text.strip(),
-                "name": archetype,
-                "source": "mtggoldfish",
-            }
-        )
     # Save to cache
     _save_cached_archetype_decks(archetype, decks)
     return decks

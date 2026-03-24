@@ -134,6 +134,41 @@ def test_scrape_metagame_writes_daily_snapshot(monkeypatch, tmp_path):
     assert snapshot["stats"][0]["archetype"] == "Temur Rhinos"
 
 
+def test_scrape_metagame_accepts_titlecase_stats_key(monkeypatch, tmp_path):
+    monkeypatch.setattr(
+        "publisher.runner.get_archetype_stats",
+        lambda _format: {
+            "Modern": {
+                "timestamp": 1.0,
+                "Temur Rhinos": {
+                    "decks": [{"number": "123"}],
+                    "results": {"2026-03-22": 1, "2026-03-23": 0},
+                },
+            }
+        },
+    )
+
+    exit_code = main(
+        [
+            "--output-root",
+            str(tmp_path),
+            "--timestamp",
+            TIMESTAMP,
+            "scrape-metagame",
+            "--format",
+            "Modern",
+            "--day",
+            "2026-03-23",
+        ]
+    )
+
+    assert exit_code == 0
+    latest_path = tmp_path / "latest" / "metagame" / "modern.json"
+    snapshot = json.loads(latest_path.read_text(encoding="utf-8"))
+    assert latest_path.exists()
+    assert snapshot["stats"][0]["archetype"] == "Temur Rhinos"
+
+
 def test_scrape_decks_references_shared_deck_text_blob(monkeypatch, tmp_path):
     monkeypatch.setattr(
         "publisher.runner.fetch_archetypes",

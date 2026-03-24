@@ -327,7 +327,7 @@ def _write_metagame_snapshot(
     latest_path = output_root / "latest" / "metagame" / f"{normalized_format}.json"
     try:
         raw_stats = get_archetype_stats(format_name)
-        format_stats = raw_stats.get(format_name.lower(), {})
+        format_stats = raw_stats.get(format_name) or raw_stats.get(normalized_format, {})
         if not format_stats:
             raise RuntimeError(f"Metagame scrape returned no stats for {format_name}")
         stats_rows = []

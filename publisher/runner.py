@@ -68,6 +68,12 @@ def _parse_day(timestamp: str, override: str | None = None) -> str:
     return timestamp.split("T", 1)[0]
 
 
+def _command_label(command: str, formats: list[str] | None) -> str:
+    if not formats or len(formats) != 1:
+        return command
+    return f"{command}-{normalize_name(formats[0])}"
+
+
 def _parse_deck_date(date_str: str) -> datetime | None:
     for fmt in ("%Y-%m-%d", "%m/%d/%Y"):
         try:
@@ -664,9 +670,10 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     generated_at = _parse_timestamp(args.timestamp)
     output_root = Path(args.output_root)
+    command_label = _command_label(args.command, getattr(args, "formats", None))
     recorder = RunRecorder(
         output_root=output_root,
-        command=args.command,
+        command=command_label,
         generated_at=generated_at,
         retention_days=args.retention_days,
         max_stale_hours=args.max_stale_hours,

@@ -51,9 +51,11 @@ Publisher outputs are written under `data/`:
 - `data/archive/deck-texts/<format>/<deck-id>.json` for deduplicated per-deck
   text blobs referenced from deck metadata snapshots.
 
-Each publisher command also writes `data/latest/runs/<command>.json` with
-per-scope `success`, `skipped`, `stale-fallback`, and `hard-failure` statuses.
-Commands only return non-zero when freshness guarantees are violated.
+Each publisher command also writes a run manifest under `data/latest/runs/`.
+Single-format runs use `data/latest/runs/<command>-<format>.json`; multi-format
+runs keep `data/latest/runs/<command>.json`. These manifests record per-scope
+`success`, `skipped`, `stale-fallback`, and `hard-failure` statuses. Commands
+only return non-zero when freshness guarantees are violated.
 
 Checked-tree retention is one week. `data/hourly/` and `data/daily/` are pruned
 before automated commits, while `data/latest/` remains the stable consumer
@@ -74,22 +76,25 @@ python -m publisher.retention --output-root data --timestamp 2026-03-23T18:00:00
 
 Outputs are written into repository-managed staging paths under `data/latest/`,
 `data/hourly/`, `data/daily/`, and `data/archive/`.
-Each command also writes `data/latest/runs/<command>.json`, with per-scope
-statuses (`success`, `skipped`, `stale-fallback`, `hard-failure`) and returns a
-non-zero exit code only when freshness guarantees are violated.
+Each command also writes a run manifest under `data/latest/runs/`. Single-format
+runs use `data/latest/runs/<command>-<format>.json`; multi-format runs keep
+`data/latest/runs/<command>.json`. These manifests store per-scope statuses
+(`success`, `skipped`, `stale-fallback`, `hard-failure`) and the command only
+returns a non-zero exit code when freshness guarantees are violated.
 
 ## Publishing Schedules
 
 See [docs/publishing_workflows.md](docs/publishing_workflows.md) for the exact
 workflow behavior. In short:
 
-- Hourly publishing runs at minute `15` and fans out into one job per format,
-  writing deck metadata plus deck text blobs for `Modern`, `Standard`,
-  `Pioneer`, `Legacy`, `Vintage`, and `Pauper`.
+- Hourly publishing runs every two hours at minute `15`, fans out into one job
+  per format, uploads per-format artifacts, then commits the merged result once
+  after all format jobs finish. It writes deck metadata plus deck text blobs for
+  `Modern`, `Standard`, `Pioneer`, `Legacy`, `Vintage`, and `Pauper`.
 - Daily metagame publishing runs at `02:45` UTC, which is `23:45` in
   `America/Sao_Paulo`, also as one job per format.
-- Each format job has its own concurrency key and only pushes when `data/`
-  changed.
+- Each format job has its own concurrency key, but only the final merge job
+  pushes when `data/` changed.
 
 ## Development
 

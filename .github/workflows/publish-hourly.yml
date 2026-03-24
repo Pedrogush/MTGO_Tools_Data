@@ -150,7 +150,7 @@ jobs:
         with:
           pattern: publish-hourly-*
           merge-multiple: true
-          path: .
+          path: ${{ env.PUBLISH_OUTPUT_ROOT }}
 
       - name: Prune retained working tree
         run: |

@@ -32,3 +32,24 @@ Checked-tree retention is seven days for `data/hourly/` and `data/daily/`.
 `data/latest/` remains the stable consumer entrypoint, and deck-text blobs under
 `data/archive/` are pruned when they are no longer referenced by any retained or
 latest deck snapshot. Git history is not rewritten by this policy.
+
+## Local warmup run
+
+To run the hourly deck-text publisher locally without the workflow's remote
+`3` second deck download delay, use:
+
+```bash
+./scripts/run_publish_hourly_local.sh
+```
+
+This helper runs all hourly formats (`Modern`, `Standard`, `Pioneer`,
+`Legacy`, `Vintage`, `Pauper`) and traverses all archetypes for each format.
+It uses the same `publisher.runner scrape-deck-texts` command path as
+`publish-hourly.yml`, but pins `--deck-download-delay-seconds 0` for local
+warmups.
+
+Optional environment variables:
+
+- `PUBLISH_WARMUP_DAYS` (default: `7`)
+- `PUBLISH_OUTPUT_ROOT` (default: `/tmp/publish-hourly-local-<timestamp>`)
+- `PUBLISH_RETENTION_DAYS` (default: `7`)

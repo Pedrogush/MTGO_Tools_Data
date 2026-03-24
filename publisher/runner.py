@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import time
 from collections import Counter
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -47,6 +48,7 @@ STATUS_SKIPPED = "skipped"
 STATUS_STALE_FALLBACK = "stale-fallback"
 STATUS_HARD_FAILURE = "hard-failure"
 HARD_FAILURE_STATES = {STATUS_HARD_FAILURE}
+DEFAULT_DECK_DOWNLOAD_DELAY_SECONDS = 0.0
 
 
 def _utc_now() -> str:
@@ -494,6 +496,7 @@ def _write_deck_text_blobs(
     archetype_filters: list[str] | None,
     days: int | None,
     source_filter: str | None,
+    deck_download_delay_seconds: float,
 ) -> None:
     repo = ScrapingMetagameRepository()
     normalized_format = normalize_name(format_name)
@@ -522,9 +525,16 @@ def _write_deck_text_blobs(
         )
         return
 
-    for deck_id, deck in sorted(unique_decks.items()):
+    for index, (deck_id, deck) in enumerate(sorted(unique_decks.items())):
         archive_path = _deck_text_archive_path(output_root, normalized_format, deck_id)
         try:
+            if index > 0 and deck_download_delay_seconds > 0:
+                logger.info(
+                    "Sleeping {} seconds before downloading deck {}",
+                    deck_download_delay_seconds,
+                    deck_id,
+                )
+                time.sleep(deck_download_delay_seconds)
             deck_text = repo.download_deck_content(deck, source_filter=source_filter)
             snapshot = build_deck_text_blob(
                 generated_at=generated_at,
@@ -594,6 +604,11 @@ def build_parser() -> argparse.ArgumentParser:
     deck_texts.add_argument("--archetype", dest="archetypes", action="append")
     deck_texts.add_argument("--days", type=int)
     deck_texts.add_argument(
+        "--deck-download-delay-seconds",
+        type=float,
+        default=DEFAULT_DECK_DOWNLOAD_DELAY_SECONDS,
+    )
+    deck_texts.add_argument(
         "--source-filter", choices=["mtggoldfish", "mtgo", "both"], default="both"
     )
 
@@ -650,6 +665,7 @@ def main(argv: list[str] | None = None) -> int:
                 archetype_filters=args.archetypes,
                 days=args.days,
                 source_filter=None if args.source_filter == "both" else args.source_filter,
+                deck_download_delay_seconds=args.deck_download_delay_seconds,
             )
     elif args.command == "scrape-decks":
         for format_name in args.formats:

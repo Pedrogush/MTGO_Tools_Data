@@ -201,3 +201,54 @@ def test_scrape_deck_texts_deduplicates_by_deck_id(monkeypatch, tmp_path):
     assert blob["deck_text"] == "Deck 123"
     assert len(manifest["latest"]["deck_text_blobs"]) == 1
     assert manifest["latest"]["deck_text_blobs"][0]["path"] == "archive/deck-texts/modern/123.json"
+
+
+def test_scrape_deck_texts_sleeps_between_unique_downloads(monkeypatch, tmp_path):
+    monkeypatch.setattr(
+        "publisher.runner.fetch_archetypes",
+        lambda *args, **kwargs: [{"name": "Temur Rhinos", "href": "modern-temur-rhinos"}],
+    )
+
+    class _MultiDeckRepo(_FakeRepo):
+        def get_decks_for_archetype(self, archetype, force_refresh=False, source_filter=None):
+            return [
+                {
+                    "name": archetype["name"],
+                    "number": "123",
+                    "date": "2026-03-22",
+                    "player": "Alice",
+                    "event": "Modern Challenge",
+                    "source": "mtggoldfish",
+                },
+                {
+                    "name": archetype["name"],
+                    "number": "456",
+                    "date": "2026-03-22",
+                    "player": "Bob",
+                    "event": "Modern Challenge",
+                    "source": "mtggoldfish",
+                },
+            ]
+
+    sleeps: list[float] = []
+    monkeypatch.setattr("publisher.runner.ScrapingMetagameRepository", _MultiDeckRepo)
+    monkeypatch.setattr("publisher.runner.time.sleep", sleeps.append)
+
+    exit_code = main(
+        [
+            "--output-root",
+            str(tmp_path),
+            "--timestamp",
+            TIMESTAMP,
+            "scrape-deck-texts",
+            "--format",
+            "Modern",
+            "--days",
+            "7",
+            "--deck-download-delay-seconds",
+            "3",
+        ]
+    )
+
+    assert exit_code == 0
+    assert sleeps == [3.0]

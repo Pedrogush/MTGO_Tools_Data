@@ -83,11 +83,13 @@ non-zero exit code only when freshness guarantees are violated.
 See [docs/publishing_workflows.md](docs/publishing_workflows.md) for the exact
 workflow behavior. In short:
 
-- Hourly publishing runs at minute `15` and writes deck metadata plus deck text
-  blobs for `Modern`, `Standard`, `Pioneer`, `Legacy`, `Vintage`, and `Pauper`.
+- Hourly publishing runs at minute `15` and fans out into one job per format,
+  writing deck metadata plus deck text blobs for `Modern`, `Standard`,
+  `Pioneer`, `Legacy`, `Vintage`, and `Pauper`.
 - Daily metagame publishing runs at `02:45` UTC, which is `23:45` in
-  `America/Sao_Paulo`.
-- Both workflows share a concurrency group and only push when `data/` changed.
+  `America/Sao_Paulo`, also as one job per format.
+- Each format job has its own concurrency key and only pushes when `data/`
+  changed.
 
 ## Development
 

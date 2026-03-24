@@ -117,6 +117,50 @@ jobs:
           path: artifact
           if-no-files-found: error
 
+      - name: Summarize run manifest
+        if: always()
+        env:
+          MATRIX_FORMAT: ${{ matrix.format }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          from publisher.layout import normalize_name
+
+          data_root = Path(os.environ["PUBLISH_OUTPUT_ROOT"])
+          normalized_format = normalize_name(os.environ["MATRIX_FORMAT"])
+          run_manifest_path = (
+              data_root / "latest" / "runs" / f"scrape-metagame-{normalized_format}.json"
+          )
+          if not run_manifest_path.exists():
+              print(f"Run manifest not found: {run_manifest_path}")
+              raise SystemExit(0)
+
+          payload = json.loads(run_manifest_path.read_text(encoding="utf-8"))
+          print(
+              json.dumps(
+                  {
+                      "path": run_manifest_path.as_posix(),
+                      "status": payload.get("status"),
+                      "summary": payload.get("summary", {}),
+                  },
+                  indent=2,
+              )
+          )
+
+          failures = [
+              result for result in payload.get("results", []) if result.get("status") == "hard-failure"
+          ]
+          if failures:
+              print("Hard failures:")
+              for failure in failures[:20]:
+                  print(json.dumps(failure, sort_keys=True))
+              if len(failures) > 20:
+                  print(f"... {len(failures) - 20} additional hard failures omitted")
+          PY
+
       - name: Fail if freshness guarantees were violated
         if: steps.publish.outputs.exit_code != '0'
         run: |
@@ -238,4 +282,24 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add "$PUBLISH_OUTPUT_ROOT"
           git commit -m "Publish daily metagame snapshots"
-          git push origin HEAD:"${GITHUB_REF_NAME}"
+
+          for attempt in 1 2 3; do
+            if git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin HEAD:"${GITHUB_REF_NAME}"; then
+              exit 0
+            fi
+
+            git rebase --abort || true
+            if [ "$attempt" -eq 3 ]; then
+              echo "Failed to push published snapshots after $attempt attempts."
+              exit 1
+            fi
+
+            echo "Retrying push after remote updates (attempt $attempt failed)."
+            sleep 5
+          done
+
+      - name: Fail if any format missed freshness guarantees
+        if: needs.publish-daily.result != 'success'
+        run: |
+          echo "One or more daily format jobs failed freshness guarantees."
+          exit 1

@@ -10,17 +10,23 @@ permissions:
   contents: write
 
 concurrency:
-  group: publish-data-${{ github.ref }}
+  group: publish-daily-workflow-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
   publish-daily:
+    strategy:
+      fail-fast: false
+      matrix:
+        format: [Modern, Standard, Pioneer, Legacy, Vintage, Pauper]
     runs-on: ubuntu-latest
     env:
-      PUBLISH_FORMATS: "Modern Standard Pioneer Legacy Vintage Pauper"
       PUBLISH_OUTPUT_ROOT: data
       PUBLISH_RETENTION_DAYS: "7"
       TZ: America/Sao_Paulo
+    concurrency:
+      group: publish-daily-${{ github.ref }}-${{ matrix.format }}
+      cancel-in-progress: false
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -40,17 +46,12 @@ jobs:
       - name: Publish daily metagame snapshots
         id: publish
         run: |
-          formats=()
-          for format in $PUBLISH_FORMATS; do
-            formats+=(--format "$format")
-          done
-
           set +e
           python -m publisher.runner \
             --output-root "$PUBLISH_OUTPUT_ROOT" \
             --retention-days "$PUBLISH_RETENTION_DAYS" \
             scrape-metagame \
-            "${formats[@]}" \
+            --format "${{ matrix.format }}" \
             --day "$(date +%F)"
           exit_code=$?
           echo "exit_code=$exit_code" >> "$GITHUB_OUTPUT"
@@ -72,7 +73,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add "$PUBLISH_OUTPUT_ROOT"
-          git commit -m "Publish daily metagame snapshots"
+          git commit -m "Publish daily metagame snapshots for ${{ matrix.format }}"
           git pull --rebase origin "${GITHUB_REF_NAME}"
           git push origin HEAD:"${GITHUB_REF_NAME}"
 

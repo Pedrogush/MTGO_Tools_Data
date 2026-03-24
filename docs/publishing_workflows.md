@@ -2,15 +2,17 @@
 
 Scheduled publishing is split into two workflows:
 
-- `publish-hourly.yml` runs every hour at minute `15` and publishes the current
-  archetype/deck metadata plus referenced deck-text blobs for `Modern`,
-  `Standard`, `Pioneer`, `Legacy`, `Vintage`, and `Pauper`.
+- `publish-hourly.yml` runs every hour at minute `15` and fans out into one job
+  per format for `Modern`, `Standard`, `Pioneer`, `Legacy`, `Vintage`, and
+  `Pauper`. Each job publishes current archetype/deck metadata plus referenced
+  deck-text blobs for just that format.
 - `publish-daily.yml` runs at `02:45` UTC, which is `23:45` in
-  `America/Sao_Paulo`, and publishes the daily metagame aggregate for the same
-  formats.
+  `America/Sao_Paulo`, and also fans out into one job per format for the daily
+  metagame aggregate.
 
-Both workflows share the same concurrency group so only one publish job writes
-to `data/` at a time. Each workflow:
+Each format job has its own concurrency group, so a new `Modern` run can block
+or wait on another `Modern` run without cancelling unrelated formats. Each
+workflow job:
 
 1. Runs the publisher CLI.
 2. Prunes the checked-out tree with `python -m publisher.retention`.

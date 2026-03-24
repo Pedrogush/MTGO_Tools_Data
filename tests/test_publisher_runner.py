@@ -45,7 +45,7 @@ def test_scrape_archetypes_writes_run_manifest_and_posix_path(monkeypatch, tmp_p
     assert exit_code == 0
     latest_path = tmp_path / "latest" / "archetypes" / "modern.json"
     manifest_path = tmp_path / "latest" / "latest.json"
-    run_path = tmp_path / "latest" / "runs" / "scrape-archetypes.json"
+    run_path = tmp_path / "latest" / "runs" / "scrape-archetypes-modern.json"
     assert latest_path.exists()
     assert (tmp_path / "hourly" / "2026-03-23T12-00-00Z" / "archetypes" / "modern.json").exists()
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
@@ -92,7 +92,7 @@ def test_scrape_archetypes_uses_stale_fallback_when_latest_is_fresh(monkeypatch,
 
     assert second_exit == 0
     run_manifest = json.loads(
-        (tmp_path / "latest" / "runs" / "scrape-archetypes.json").read_text(encoding="utf-8")
+        (tmp_path / "latest" / "runs" / "scrape-archetypes-modern.json").read_text(encoding="utf-8")
     )
     assert run_manifest["results"][0]["status"] == "stale-fallback"
 
@@ -306,7 +306,7 @@ def test_scrape_deck_texts_reuses_existing_published_blob(monkeypatch, tmp_path)
     assert exit_code == 0
     assert sleeps == []
     run_manifest = json.loads(
-        (tmp_path / "latest" / "runs" / "scrape-deck-texts.json").read_text(encoding="utf-8")
+        (tmp_path / "latest" / "runs" / "scrape-deck-texts-modern.json").read_text(encoding="utf-8")
     )
     assert run_manifest["results"][-1]["status"] == "skipped"
     assert run_manifest["results"][-1]["message"] == "Reused existing published deck-text blob."

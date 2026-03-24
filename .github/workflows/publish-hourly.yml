@@ -19,6 +19,7 @@ jobs:
       PUBLISH_FORMATS: "Modern Standard Pioneer Legacy Vintage Pauper"
       PUBLISH_OUTPUT_ROOT: data
       PUBLISH_RETENTION_DAYS: "7"
+      PUBLISH_DECK_DOWNLOAD_DELAY_SECONDS: "3"
       TZ: America/Sao_Paulo
     steps:
       - name: Check out repository
@@ -37,18 +38,24 @@ jobs:
           pip install -r requirements-dev.txt
 
       - name: Publish hourly deck and deck-text snapshots
+        id: publish
         run: |
           formats=()
           for format in $PUBLISH_FORMATS; do
             formats+=(--format "$format")
           done
 
+          set +e
           python -m publisher.runner \
             --output-root "$PUBLISH_OUTPUT_ROOT" \
             --retention-days "$PUBLISH_RETENTION_DAYS" \
             scrape-deck-texts \
             "${formats[@]}" \
+            --deck-download-delay-seconds "$PUBLISH_DECK_DOWNLOAD_DELAY_SECONDS" \
             --days "$PUBLISH_RETENTION_DAYS"
+          exit_code=$?
+          echo "exit_code=$exit_code" >> "$GITHUB_OUTPUT"
+          exit 0
 
       - name: Prune retained working tree
         run: |
@@ -69,3 +76,9 @@ jobs:
           git commit -m "Publish hourly scrape snapshots"
           git pull --rebase origin "${GITHUB_REF_NAME}"
           git push origin HEAD:"${GITHUB_REF_NAME}"
+
+      - name: Fail if freshness guarantees were violated
+        if: steps.publish.outputs.exit_code != '0'
+        run: |
+          echo "Publisher exited with code ${{ steps.publish.outputs.exit_code }}."
+          exit 1

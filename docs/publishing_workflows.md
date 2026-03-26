@@ -1,6 +1,6 @@
 # Publishing Workflows
 
-Scheduled publishing is split into two workflows:
+Scheduled publishing is split into three workflows:
 
 - `publish-decklists.yml` runs hourly at minute `15` and fans out into
   one job per format for `Modern`, `Standard`, `Pioneer`, `Legacy`, `Vintage`,
@@ -8,6 +8,10 @@ Scheduled publishing is split into two workflows:
   referenced deck-text blobs for just that format, uploads those format-scoped
   results as artifacts, and a single downstream job merges and commits `data/`
   once for the whole workflow.
+- `publish-client-bundle.yml` runs hourly at minute `30`, repackages the latest
+  committed client-facing deck snapshots, metagame snapshots, and deck-text
+  archive blobs into `data/latest/client-bundle.tar.gz`, and commits only when
+  the deterministic bundle bytes change.
 - `publish-metagame.yml` runs hourly at minute `45` and also fans out into one
   job per format for the metagame aggregate.
 

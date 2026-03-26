@@ -46,6 +46,9 @@ See [docs/scraping_surface.md](docs/scraping_surface.md) for the current scrape-
 Publisher outputs are written under `data/`:
 
 - `data/latest/` for stable consumer-facing pointers.
+- `data/latest/client-bundle.tar.gz` for single-request client bootstrap. The
+  bundle contains the stable `latest/` deck and metagame snapshots plus the
+  referenced `archive/deck-texts/` blobs.
 - `data/hourly/<timestamp>/` for hourly snapshots and run manifests.
 - `data/daily/<date>/` for daily metagame snapshots.
 - `data/archive/deck-texts/<format>/<deck-id>.json` for deduplicated per-deck

@@ -9,8 +9,9 @@ It has four phases:
 
 1. Decklist publishing fans out into one job per format for `Modern`,
    `Standard`, `Pioneer`, `Legacy`, `Vintage`, and `Pauper`. Each job publishes
-   current archetype/deck metadata plus referenced deck-text blobs for just
-   that format and uploads those format-scoped results as artifacts.
+   MTGO event decklists (plus archetype classification), then publishes current
+   archetype/deck metadata plus referenced deck-text blobs for just that format,
+   and uploads those format-scoped results as artifacts.
 2. Metagame publishing also fans out into one job per format and uploads its
    format-scoped artifacts.
 3. Radar publishing fans out into one job per format, downloads the matching
@@ -47,7 +48,7 @@ latest deck snapshot. Git history is not rewritten by this policy.
 
 ## Local warmup run
 
-To run the hourly deck-text publisher locally without the workflow's remote
+To run the hourly MTGO + deck-text publisher locally without the workflow's remote
 `3` second deck download delay, use:
 
 ```bash
@@ -56,12 +57,14 @@ To run the hourly deck-text publisher locally without the workflow's remote
 
 This helper runs all hourly formats (`Modern`, `Standard`, `Pioneer`,
 `Legacy`, `Vintage`, `Pauper`) and traverses all archetypes for each format.
-It uses the same `publisher.runner scrape-deck-texts` command path as the
-decklist stage inside `publish-data.yml`, but pins
-`--deck-download-delay-seconds 0` for local warmups.
+It first runs `publisher.runner scrape-mtgo-decklists`, then
+`publisher.runner scrape-deck-texts`, matching the decklist stage inside
+`publish-data.yml`, and pins a lower local delay by default.
 
 Optional environment variables:
 
 - `PUBLISH_WARMUP_DAYS` (default: `7`)
 - `PUBLISH_OUTPUT_ROOT` (default: `data`)
 - `PUBLISH_RETENTION_DAYS` (default: `7`)
+- `PUBLISH_MTGO_EVENT_DELAY_SECONDS` (default: `0.5`)
+- `PUBLISH_DECK_DOWNLOAD_DELAY_SECONDS` (default: `0.5`)

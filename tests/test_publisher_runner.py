@@ -559,3 +559,97 @@ def test_scrape_radars_skips_format_card_pool_for_filtered_runs(tmp_path):
     )
     assert run_manifest["results"][-1]["scope"] == "format-card-pool"
     assert run_manifest["results"][-1]["status"] == "skipped"
+
+
+def test_scrape_mtgo_decklists_writes_archived_event_snapshots(monkeypatch, tmp_path):
+    monkeypatch.setattr(
+        "publisher.runner.fetch_mtgo_events_for_period",
+        lambda **kwargs: [
+            {
+                "url": "https://www.mtgo.com/decklist/modern-challenge-64-2026-03-2612836735",
+                "title": "Modern Challenge 64",
+                "date": "2026-03-26T12:00:00Z",
+                "event_type": "challenge",
+            }
+        ],
+    )
+    monkeypatch.setattr(
+        "publisher.runner.fetch_event",
+        lambda _url: {
+            "title": "Modern Challenge 64",
+            "publish_date": "2026-03-26",
+            "decklists": [
+                {
+                    "loginplayeventcourseid": "123",
+                    "player": "Alice",
+                    "wins": {"wins": "5", "losses": "2"},
+                    "main_deck": [
+                        {
+                            "sideboard": "false",
+                            "qty": "4",
+                            "card_attributes": {"card_name": "Lightning Bolt"},
+                        }
+                    ],
+                    "sideboard_deck": [],
+                }
+            ],
+        },
+    )
+
+    class _FakeDeckCache:
+        def set(self, deck_id, deck_text, source):
+            assert deck_id == "123"
+            assert "Lightning Bolt" in deck_text
+            assert source == "mtgo"
+            return True
+
+    class _FakeClassifier:
+        def assign_archetypes(self, decks, fmt):
+            for deck in decks:
+                deck["archetype"] = "Mono Red Prowess"
+                deck["archetype_score"] = 1.0
+            assert fmt == "modern"
+
+    monkeypatch.setattr("publisher.runner.get_deck_cache", lambda: _FakeDeckCache())
+    monkeypatch.setattr("publisher.runner.ArchetypeClassifier", lambda: _FakeClassifier())
+    monkeypatch.setattr("publisher.runner.save_mtgo_deck_metadata", lambda *args, **kwargs: None)
+
+    exit_code = main(
+        [
+            "--output-root",
+            str(tmp_path),
+            "--timestamp",
+            TIMESTAMP,
+            "scrape-mtgo-decklists",
+            "--format",
+            "Modern",
+            "--days",
+            "7",
+            "--event-delay-seconds",
+            "0",
+        ]
+    )
+
+    assert exit_code == 0
+    latest_path = tmp_path / "latest" / "mtgo-decklists" / "modern.json"
+    event_path = (
+        tmp_path
+        / "archive"
+        / "mtgo-decklists"
+        / "modern"
+        / "modern-challenge-64-2026-03-2612836735.json"
+    )
+    run_path = tmp_path / "latest" / "runs" / "scrape-mtgo-decklists-modern.json"
+    manifest_path = tmp_path / "latest" / "latest.json"
+
+    assert latest_path.exists()
+    assert event_path.exists()
+    assert run_path.exists()
+
+    latest_snapshot = json.loads(latest_path.read_text(encoding="utf-8"))
+    event_snapshot = json.loads(event_path.read_text(encoding="utf-8"))
+    latest_manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+
+    assert latest_snapshot["events"][0]["id"] == "modern-challenge-64-2026-03-2612836735"
+    assert event_snapshot["decks"][0]["archetype"] == "Mono Red Prowess"
+    assert latest_manifest["latest"]["mtgo_decklists"][0]["path"] == "latest/mtgo-decklists/modern.json"

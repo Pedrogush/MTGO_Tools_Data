@@ -32,6 +32,10 @@ def _mtgo_feature_disabled(message: str) -> bool:
     return False
 
 
+def _normalize_format_token(value: str | None) -> str:
+    return "".join(ch for ch in (value or "").lower() if ch.isalnum())
+
+
 def parse_mtgo_deck(raw_deck: dict) -> dict:
     """Parse raw MTGO deck into clean simplified format."""
     deck_id = raw_deck.get("loginplayeventcourseid") or raw_deck.get("decktournamentid")
@@ -72,7 +76,7 @@ def parse_mtgo_deck(raw_deck: dict) -> dict:
     }
 
 
-def convert_deck_to_classifier_format(clean_deck: dict) -> dict:
+def convert_deck_to_classifier_format(clean_deck: dict, mtg_format: str = "modern") -> dict:
     """Convert clean deck format to ArchetypeClassifier format."""
     mainboard = [
         {"name": card["card_name"], "count": card["qty"]} for card in clean_deck["mainboard"]
@@ -81,7 +85,7 @@ def convert_deck_to_classifier_format(clean_deck: dict) -> dict:
         {"name": card["card_name"], "count": card["qty"]} for card in clean_deck["sideboard"]
     ]
 
-    return {"mainboard": mainboard, "sideboard": sideboard, "format": "modern"}
+    return {"mainboard": mainboard, "sideboard": sideboard, "format": mtg_format}
 
 
 def deck_to_text(clean_deck: dict) -> str:
@@ -208,7 +212,7 @@ def fetch_mtgo_events_for_period(
                 if not entry.get("format"):
                     continue
 
-                if mtg_format.lower() not in entry["format"].lower():
+                if _normalize_format_token(entry["format"]) != _normalize_format_token(mtg_format):
                     continue
 
                 # Parse publish date
@@ -287,7 +291,9 @@ def process_mtgo_event(
         deck_cache = get_deck_cache()
 
         clean_decks = [parse_mtgo_deck(raw_deck) for raw_deck in raw_decklists]
-        classifier_decks = [convert_deck_to_classifier_format(deck) for deck in clean_decks]
+        classifier_decks = [
+            convert_deck_to_classifier_format(deck, mtg_format=mtg_format) for deck in clean_decks
+        ]
 
         classifier.assign_archetypes(classifier_decks, mtg_format)
 

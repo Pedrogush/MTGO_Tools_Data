@@ -15,6 +15,7 @@ FORMAT_CARD_POOL_KIND = "format_card_pool"
 METAGAME_KIND = "metagame_daily"
 DECK_TEXTS_KIND = "deck_text_blob"
 RUN_MANIFEST_KIND = "publisher_run"
+MTGO_DECKLISTS_KIND = "mtgo_decklists"
 
 
 def _require_mapping(payload: Any, kind: str) -> Mapping[str, Any]:
@@ -63,6 +64,7 @@ def build_latest_manifest(*, generated_at: str, retention_days: int) -> dict[str
             "format_card_pools": [],
             "metagame_daily": [],
             "deck_text_blobs": [],
+            "mtgo_decklists": [],
             "runs": [],
         },
     }
@@ -209,6 +211,25 @@ def build_run_manifest(
     }
 
 
+def build_mtgo_decklists_snapshot(
+    *,
+    generated_at: str,
+    format_name: str,
+    source: str,
+    days: int,
+    events: Sequence[Mapping[str, Any]],
+) -> dict[str, Any]:
+    return {
+        "schema_version": SCHEMA_VERSION,
+        "kind": MTGO_DECKLISTS_KIND,
+        "generated_at": generated_at,
+        "format": format_name,
+        "source": source,
+        "days": days,
+        "events": [dict(item) for item in events],
+    }
+
+
 def validate_latest_manifest(payload: Any) -> dict[str, Any]:
     manifest = deepcopy(_require_mapping(payload, LATEST_MANIFEST_KIND))
     if manifest.get("schema_version") != SCHEMA_VERSION:
@@ -227,6 +248,7 @@ def validate_latest_manifest(payload: Any) -> dict[str, Any]:
         "format_card_pools",
         "metagame_daily",
         "deck_text_blobs",
+        "mtgo_decklists",
         "runs",
     }
     for group in required_groups:
@@ -404,3 +426,17 @@ def validate_run_manifest(payload: Any) -> dict[str, Any]:
         if "message" in result:
             _require_string(result, "message", f"{RUN_MANIFEST_KIND}.results[]")
     return dict(manifest)
+
+
+def validate_mtgo_decklists_snapshot(payload: Any) -> dict[str, Any]:
+    snapshot = deepcopy(_validate_common_snapshot(payload, kind=MTGO_DECKLISTS_KIND))
+    _require_string(snapshot, "source", MTGO_DECKLISTS_KIND)
+    days = snapshot.get("days")
+    if not isinstance(days, int) or days < 1:
+        raise ValueError(f"{MTGO_DECKLISTS_KIND}.days must be a positive integer")
+    events = _require_sequence(snapshot, "events", MTGO_DECKLISTS_KIND)
+    for entry in events:
+        event = _require_mapping(entry, f"{MTGO_DECKLISTS_KIND}.events[]")
+        _require_string(event, "id", f"{MTGO_DECKLISTS_KIND}.events[]")
+        _require_string(event, "url", f"{MTGO_DECKLISTS_KIND}.events[]")
+    return dict(snapshot)

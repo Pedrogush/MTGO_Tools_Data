@@ -91,26 +91,21 @@ runs use `data/latest/runs/<command>-<format>.json`; multi-format runs keep
 (`success`, `skipped`, `stale-fallback`, `hard-failure`) and the command only
 returns a non-zero exit code when freshness guarantees are violated.
 
-## Publishing Schedules
+## Publishing Schedule
 
 See [docs/publishing_workflows.md](docs/publishing_workflows.md) for the exact
 workflow behavior. In short:
 
-- Decklist publishing runs hourly at minute `15`, fans out into one job
-  per format, uploads per-format artifacts, then commits the merged result once
-  after all format jobs finish. It writes deck metadata plus deck text blobs for
+- `publish-data.yml` runs hourly at minute `15`.
+- Decklist and metagame publishing fan out into one job per format for
   `Modern`, `Standard`, `Pioneer`, `Legacy`, `Vintage`, and `Pauper`.
-- Radar publishing runs after a successful decklist workflow completion, fans
-  out into one job per format, and writes archetype radar snapshots under
-  `data/latest/radars/` plus matching hourly snapshots. The same run also
-  writes one format-wide card-pool artifact under `data/latest/card-pools/`.
-- Daily metagame publishing runs at `02:45` UTC, which is `23:45` in
-  `America/Sao_Paulo`, also as one job per format.
-- Client bundle publishing repackages the latest committed deck, radar,
-  format card-pool, metagame, and deck-text artifacts into
-  `data/latest/client-bundle.tar.gz`.
-- Each format job has its own concurrency key, but only the final merge job
-  pushes when `data/` changed.
+- Radar publishing then runs in the same workflow, one job per format, using
+  the same-run decklist artifacts instead of waiting on a separate workflow.
+- A single final merge job downloads every format artifact, prunes retention,
+  rebuilds `data/latest/latest.json`, rebuilds
+  `data/latest/client-bundle.tar.gz`, and commits `data/` once.
+- Each format job keeps its own concurrency key, but only the final merge job
+  pushes, so the publish stages stay in sync on one workflow run.
 
 ## Development
 

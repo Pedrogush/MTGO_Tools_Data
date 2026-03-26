@@ -49,6 +49,25 @@ class RadarData:
     decks_failed: int
 
 
+@dataclass
+class CardCopyTotal:
+    """Total copies played for one card across a full-format card pool."""
+
+    card_name: str
+    copies_played: int
+
+
+@dataclass
+class FormatCardPoolData:
+    """Aggregated card-pool view for all published decks in one format."""
+
+    format_name: str
+    cards: list[str]
+    copy_totals: list[CardCopyTotal]
+    total_decks_analyzed: int
+    decks_failed: int
+
+
 class RadarService:
     """Service for calculating archetype radar card-frequency snapshots."""
 
@@ -265,6 +284,64 @@ class RadarService:
 
         return frequencies
 
+    def calculate_format_card_pool_from_deck_texts(
+        self,
+        *,
+        format_name: str,
+        deck_texts: Iterable[str],
+        deck_names: Iterable[str] | None = None,
+        decks_failed: int = 0,
+        progress_callback: Callable[[int, int, str], None] | None = None,
+    ) -> FormatCardPoolData:
+        """Aggregate a format-wide card pool from preloaded deck-text blobs."""
+
+        texts = list(deck_texts)
+        names = list(deck_names) if deck_names is not None else []
+        if names and len(names) != len(texts):
+            raise ValueError("deck_names must match deck_texts length")
+
+        card_totals: dict[str, int] = defaultdict(int)
+        card_names: set[str] = set()
+        successful_decks = 0
+        total_texts = len(texts)
+
+        for index, deck_text in enumerate(texts, 1):
+            deck_name = names[index - 1] if index - 1 < len(names) else f"Deck {index}"
+            if progress_callback:
+                progress_callback(index, total_texts, deck_name)
+            try:
+                analysis = self._analyze_deck(deck_text)
+                combined_counts: dict[str, int] = defaultdict(int)
+                for zone in ("mainboard_cards", "sideboard_cards"):
+                    for card_name, count in analysis[zone]:
+                        count_int = int(count)
+                        combined_counts[card_name] += count_int
+                        card_names.add(card_name)
+
+                for card_name, count in combined_counts.items():
+                    card_totals[card_name] += count
+
+                successful_decks += 1
+            except Exception as exc:  # noqa: BLE001
+                logger.warning("Failed to analyze deck {} for card pool: {}", deck_name, exc)
+                decks_failed += 1
+
+        copy_totals = [
+            CardCopyTotal(card_name=card_name, copies_played=copies_played)
+            for card_name, copies_played in sorted(
+                card_totals.items(),
+                key=lambda item: (-item[1], item[0].lower()),
+            )
+        ]
+
+        return FormatCardPoolData(
+            format_name=format_name,
+            cards=sorted(card_names, key=str.lower),
+            copy_totals=copy_totals,
+            total_decks_analyzed=successful_decks,
+            decks_failed=decks_failed,
+        )
+
     def export_radar_as_decklist(
         self,
         radar: RadarData,
@@ -332,6 +409,8 @@ def reset_radar_service() -> None:
 
 __all__ = [
     "CardFrequency",
+    "CardCopyTotal",
+    "FormatCardPoolData",
     "RadarData",
     "RadarService",
     "get_radar_service",

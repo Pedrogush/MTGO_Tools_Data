@@ -47,10 +47,13 @@ Publisher outputs are written under `data/`:
 
 - `data/latest/` for stable consumer-facing pointers.
 - `data/latest/client-bundle.tar.gz` for single-request client bootstrap. The
-  bundle contains the stable `latest/` deck, radar, and metagame snapshots
-  plus the referenced `archive/deck-texts/` blobs.
+  bundle contains the stable `latest/` deck, radar, format card-pool, and
+  metagame snapshots plus the referenced `archive/deck-texts/` blobs.
 - `data/latest/radars/<format>/<archetype>.json` for published archetype radar
   snapshots derived from published deck-text blobs.
+- `data/latest/card-pools/<format>.json` for the format-wide card pool built
+  from all published decklists in that format. It includes the unique card list
+  and per-card total copies played, sorted descending by copies.
 - `data/hourly/<timestamp>/` for hourly snapshots and run manifests.
 - `data/daily/<date>/` for daily metagame snapshots.
 - `data/archive/deck-texts/<format>/<deck-id>.json` for deduplicated per-deck
@@ -99,11 +102,13 @@ workflow behavior. In short:
   `Modern`, `Standard`, `Pioneer`, `Legacy`, `Vintage`, and `Pauper`.
 - Radar publishing runs after a successful decklist workflow completion, fans
   out into one job per format, and writes archetype radar snapshots under
-  `data/latest/radars/` plus matching hourly snapshots.
+  `data/latest/radars/` plus matching hourly snapshots. The same run also
+  writes one format-wide card-pool artifact under `data/latest/card-pools/`.
 - Daily metagame publishing runs at `02:45` UTC, which is `23:45` in
   `America/Sao_Paulo`, also as one job per format.
 - Client bundle publishing repackages the latest committed deck, radar,
-  metagame, and deck-text artifacts into `data/latest/client-bundle.tar.gz`.
+  format card-pool, metagame, and deck-text artifacts into
+  `data/latest/client-bundle.tar.gz`.
 - Each format job has its own concurrency key, but only the final merge job
   pushes when `data/` changed.
 

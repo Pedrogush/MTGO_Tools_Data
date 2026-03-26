@@ -9,7 +9,9 @@ from services.mtgo_background_service import (
     save_mtgo_deck_metadata,
 )
 from services.radar_service import (
+    CardCopyTotal,
     CardFrequency,
+    FormatCardPoolData,
     RadarData,
     RadarService,
     get_radar_service,
@@ -23,7 +25,9 @@ __all__ = [
     "parse_mtgo_deck",
     "process_mtgo_event",
     "save_mtgo_deck_metadata",
+    "CardCopyTotal",
     "CardFrequency",
+    "FormatCardPoolData",
     "RadarData",
     "RadarService",
     "get_radar_service",

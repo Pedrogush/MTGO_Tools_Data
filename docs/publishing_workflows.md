@@ -9,15 +9,17 @@ Scheduled publishing is split into four workflows:
   results as artifacts, and a single downstream job merges and commits `data/`
   once for the whole workflow.
 - `publish-client-bundle.yml` runs hourly at minute `30`, repackages the latest
-  committed client-facing deck snapshots, radar snapshots, metagame snapshots,
-  and deck-text archive blobs into `data/latest/client-bundle.tar.gz`, and
-  commits only when the deterministic bundle bytes change.
+  committed client-facing deck snapshots, radar snapshots, format card-pool
+  snapshots, metagame snapshots, and deck-text archive blobs into
+  `data/latest/client-bundle.tar.gz`, and commits only when the deterministic
+  bundle bytes change.
 - `publish-metagame.yml` runs hourly at minute `45` and also fans out into one
   job per format for the metagame aggregate.
 - `publish-radars.yml` runs after a successful `publish-decklists.yml`
   completion, fans out into one job per format, publishes archetype radar
-  snapshots from the already-published deck snapshots and deck-text blobs, and
-  commits the merged `data/` tree once for the workflow.
+  snapshots from the already-published deck snapshots and deck-text blobs,
+  also writes one format-wide card-pool artifact per format, and commits the
+  merged `data/` tree once for the workflow.
 
 Each format job has its own concurrency group, so a new `Modern` run can block
 or wait on another `Modern` run without cancelling unrelated formats. For the
@@ -33,7 +35,7 @@ The decklists and radar merge jobs then:
 1. Downloads all format artifacts into the checked-out tree.
 2. Prunes the checked-out tree with `python -m publisher.retention`.
 3. Rebuilds `data/latest/latest.json` from the merged outputs, including
-   `archetype_radars`.
+   `archetype_radars` and `format_card_pools`.
 4. Commits and pushes `data/` only when the tree actually changed.
 
 Checked-tree retention is seven days for `data/hourly/` and `data/daily/`.

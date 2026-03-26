@@ -48,7 +48,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements-dev.txt
 
-      - name: Publish archetype radar snapshots
+      - name: Publish archetype radar and format card-pool snapshots
         id: publish
         run: |
           set +e
@@ -93,6 +93,7 @@ jobs:
               shutil.copy2(path, destination)
 
           copy_path(data_root / "latest" / "radars" / normalized_format)
+          copy_path(data_root / "latest" / "card-pools" / f"{normalized_format}.json")
           copy_path(data_root / "latest" / "runs" / f"scrape-radars-{normalized_format}.json")
 
           hourly_root = data_root / "hourly"
@@ -101,6 +102,7 @@ jobs:
                   if not snapshot_dir.is_dir():
                       continue
                   copy_path(snapshot_dir / "radars" / normalized_format)
+                  copy_path(snapshot_dir / "card-pools" / f"{normalized_format}.json")
                   copy_path(snapshot_dir / "runs" / f"scrape-radars-{normalized_format}.json")
 
           metadata_path = artifact_root / ".artifact-format"
@@ -258,6 +260,9 @@ jobs:
                   archetype=normalize_name(archetype.get("name", path.stem)),
               )
 
+          for path in sorted((output_root / "latest" / "card-pools").glob("*.json")):
+              append_entry("format_card_pools", path)
+
           for path in sorted((output_root / "latest" / "metagame").glob("*.json")):
               append_entry("metagame_daily", path)
 
@@ -290,7 +295,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add "$PUBLISH_OUTPUT_ROOT"
-          git commit -m "Publish archetype radar snapshots"
+          git commit -m "Publish radar and card-pool snapshots"
 
           for attempt in 1 2 3; do
             if git pull --rebase origin "${TARGET_REF_NAME}" && git push origin HEAD:"${TARGET_REF_NAME}"; then

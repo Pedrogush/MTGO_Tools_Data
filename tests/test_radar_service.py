@@ -4,7 +4,13 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from services.radar_service import CardFrequency, RadarData, RadarService
+from services.radar_service import (
+    CardCopyTotal,
+    CardFrequency,
+    FormatCardPoolData,
+    RadarData,
+    RadarService,
+)
 
 
 @pytest.fixture
@@ -152,3 +158,28 @@ def test_export_radar_as_decklist():
     assert "1 Consider" not in decklist
     assert "Sideboard" in decklist
     assert "2 Abrade" in decklist
+
+
+def test_calculate_format_card_pool_from_deck_texts():
+    service = RadarService()
+
+    card_pool = service.calculate_format_card_pool_from_deck_texts(
+        format_name="modern",
+        deck_texts=[
+            "4 Lightning Bolt\n2 Consider\nsideboard\n1 Pyroblast\n",
+            "3 Lightning Bolt\n1 Spell Pierce\nsideboard\n2 Pyroblast\n",
+        ],
+    )
+
+    assert card_pool == FormatCardPoolData(
+        format_name="modern",
+        cards=["Consider", "Lightning Bolt", "Pyroblast", "Spell Pierce"],
+        copy_totals=[
+            CardCopyTotal("Lightning Bolt", 7),
+            CardCopyTotal("Pyroblast", 3),
+            CardCopyTotal("Consider", 2),
+            CardCopyTotal("Spell Pierce", 1),
+        ],
+        total_decks_analyzed=2,
+        decks_failed=0,
+    )

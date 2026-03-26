@@ -11,6 +11,7 @@ LATEST_MANIFEST_KIND = "latest_manifest"
 ARCHETYPE_LIST_KIND = "archetype_list"
 ARCHETYPE_DECKS_KIND = "archetype_decks"
 ARCHETYPE_RADAR_KIND = "archetype_radar"
+FORMAT_CARD_POOL_KIND = "format_card_pool"
 METAGAME_KIND = "metagame_daily"
 DECK_TEXTS_KIND = "deck_text_blob"
 RUN_MANIFEST_KIND = "publisher_run"
@@ -59,6 +60,7 @@ def build_latest_manifest(*, generated_at: str, retention_days: int) -> dict[str
             "archetype_lists": [],
             "archetype_decks": [],
             "archetype_radars": [],
+            "format_card_pools": [],
             "metagame_daily": [],
             "deck_text_blobs": [],
             "runs": [],
@@ -142,6 +144,29 @@ def build_archetype_radar_snapshot(
     }
 
 
+def build_format_card_pool_snapshot(
+    *,
+    generated_at: str,
+    format_name: str,
+    source: str,
+    total_decks_analyzed: int,
+    decks_failed: int,
+    cards: Sequence[str],
+    copy_totals: Sequence[Mapping[str, Any]],
+) -> dict[str, Any]:
+    return {
+        "schema_version": SCHEMA_VERSION,
+        "kind": FORMAT_CARD_POOL_KIND,
+        "generated_at": generated_at,
+        "format": format_name,
+        "source": source,
+        "total_decks_analyzed": total_decks_analyzed,
+        "decks_failed": decks_failed,
+        "cards": list(cards),
+        "copy_totals": [dict(item) for item in copy_totals],
+    }
+
+
 def build_deck_text_blob(
     *,
     generated_at: str,
@@ -199,6 +224,7 @@ def validate_latest_manifest(payload: Any) -> dict[str, Any]:
         "archetype_lists",
         "archetype_decks",
         "archetype_radars",
+        "format_card_pools",
         "metagame_daily",
         "deck_text_blobs",
         "runs",
@@ -287,6 +313,35 @@ def validate_archetype_radar_snapshot(payload: Any) -> dict[str, Any]:
                     raise ValueError(
                         f"{ARCHETYPE_RADAR_KIND}.{zone}[].copy_distribution values must be non-negative"
                     )
+    return dict(snapshot)
+
+
+def validate_format_card_pool_snapshot(payload: Any) -> dict[str, Any]:
+    snapshot = deepcopy(_validate_common_snapshot(payload, kind=FORMAT_CARD_POOL_KIND))
+    _require_string(snapshot, "source", FORMAT_CARD_POOL_KIND)
+
+    total_decks_analyzed = snapshot.get("total_decks_analyzed")
+    if not isinstance(total_decks_analyzed, int) or total_decks_analyzed < 0:
+        raise ValueError(f"{FORMAT_CARD_POOL_KIND}.total_decks_analyzed must be non-negative")
+
+    decks_failed = snapshot.get("decks_failed")
+    if not isinstance(decks_failed, int) or decks_failed < 0:
+        raise ValueError(f"{FORMAT_CARD_POOL_KIND}.decks_failed must be non-negative")
+
+    cards = _require_sequence(snapshot, "cards", FORMAT_CARD_POOL_KIND)
+    for entry in cards:
+        if not isinstance(entry, str) or not entry:
+            raise ValueError(f"{FORMAT_CARD_POOL_KIND}.cards[] must be non-empty strings")
+
+    copy_totals = _require_sequence(snapshot, "copy_totals", FORMAT_CARD_POOL_KIND)
+    for entry in copy_totals:
+        item = _require_mapping(entry, f"{FORMAT_CARD_POOL_KIND}.copy_totals[]")
+        _require_string(item, "card_name", f"{FORMAT_CARD_POOL_KIND}.copy_totals[]")
+        copies_played = item.get("copies_played")
+        if not isinstance(copies_played, int) or copies_played < 0:
+            raise ValueError(
+                f"{FORMAT_CARD_POOL_KIND}.copy_totals[].copies_played must be non-negative"
+            )
     return dict(snapshot)
 
 

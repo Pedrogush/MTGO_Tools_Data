@@ -151,6 +151,9 @@ def prune_output_tree(
     manifest["latest"]["archetype_radars"] = _existing_entries(
         output_root, manifest["latest"].get("archetype_radars", [])
     )
+    manifest["latest"]["format_card_pools"] = _existing_entries(
+        output_root, manifest["latest"].get("format_card_pools", [])
+    )
     manifest["latest"]["metagame_daily"] = _existing_entries(
         output_root, manifest["latest"].get("metagame_daily", [])
     )

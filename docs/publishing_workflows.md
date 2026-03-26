@@ -12,6 +12,10 @@ Scheduled publishing is split into three workflows:
   committed client-facing deck snapshots, metagame snapshots, and deck-text
   archive blobs into `data/latest/client-bundle.tar.gz`, and commits only when
   the deterministic bundle bytes change.
+- `publish-client-bundle.yml` runs hourly at minute `30`, repackages the latest
+  committed client-facing deck snapshots, metagame snapshots, and deck-text
+  archive blobs into `data/latest/client-bundle.tar.gz`, and commits only when
+  the deterministic bundle bytes change.
 - `publish-metagame.yml` runs hourly at minute `45` and also fans out into one
   job per format for the metagame aggregate.
 

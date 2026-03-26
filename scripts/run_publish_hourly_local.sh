@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Run the same publisher command path as publish-hourly.yml, but target the
+# Run the same publisher command path as publish-decklists.yml, but target the
 # repository's data tree by default so local warmups populate
 # data/archive/deck-texts for later GitHub Actions runs.
 #

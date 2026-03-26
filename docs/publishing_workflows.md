@@ -2,26 +2,25 @@
 
 Scheduled publishing is split into two workflows:
 
-- `publish-hourly.yml` runs every two hours at minute `15` and fans out into
+- `publish-decklists.yml` runs hourly at minute `15` and fans out into
   one job per format for `Modern`, `Standard`, `Pioneer`, `Legacy`, `Vintage`,
   and `Pauper`. Each job publishes current archetype/deck metadata plus
   referenced deck-text blobs for just that format, uploads those format-scoped
   results as artifacts, and a single downstream job merges and commits `data/`
   once for the whole workflow.
-- `publish-daily.yml` runs at `02:45` UTC, which is `23:45` in
-  `America/Sao_Paulo`, and also fans out into one job per format for the daily
-  metagame aggregate.
+- `publish-metagame.yml` runs hourly at minute `45` and also fans out into one
+  job per format for the metagame aggregate.
 
 Each format job has its own concurrency group, so a new `Modern` run can block
 or wait on another `Modern` run without cancelling unrelated formats. For the
-hourly workflow, the per-format jobs no longer push directly, which avoids
+decklists workflow, the per-format jobs no longer push directly, which avoids
 rebasing concurrent edits to shared files like `data/latest/latest.json`. Each
 format job:
 
 1. Runs the publisher CLI.
 2. Uploads only its format-scoped published files as an artifact.
 
-The hourly merge job then:
+The decklists merge job then:
 
 1. Downloads all format artifacts into the checked-out tree.
 2. Prunes the checked-out tree with `python -m publisher.retention`.
@@ -45,11 +44,11 @@ To run the hourly deck-text publisher locally without the workflow's remote
 This helper runs all hourly formats (`Modern`, `Standard`, `Pioneer`,
 `Legacy`, `Vintage`, `Pauper`) and traverses all archetypes for each format.
 It uses the same `publisher.runner scrape-deck-texts` command path as
-`publish-hourly.yml`, but pins `--deck-download-delay-seconds 0` for local
+`publish-decklists.yml`, but pins `--deck-download-delay-seconds 0` for local
 warmups.
 
 Optional environment variables:
 
 - `PUBLISH_WARMUP_DAYS` (default: `7`)
-- `PUBLISH_OUTPUT_ROOT` (default: `/tmp/publish-hourly-local-<timestamp>`)
+- `PUBLISH_OUTPUT_ROOT` (default: `data`)
 - `PUBLISH_RETENTION_DAYS` (default: `7`)

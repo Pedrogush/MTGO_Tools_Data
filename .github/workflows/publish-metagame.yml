@@ -1,20 +1,20 @@
-name: Publish Daily Metagame
+name: publish-metagame
 
 on:
   workflow_dispatch:
   schedule:
-    # 23:45 America/Sao_Paulo
-    - cron: "45 2 * * *"
+    # Minute 45 of every hour
+    - cron: "45 * * * *"
 
 permissions:
   contents: write
 
 concurrency:
-  group: publish-daily-workflow-${{ github.ref }}
+  group: publish-metagame-workflow-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
-  publish-daily:
+  publish-metagame:
     strategy:
       fail-fast: false
       matrix:
@@ -25,7 +25,7 @@ jobs:
       PUBLISH_RETENTION_DAYS: "7"
       TZ: America/Sao_Paulo
     concurrency:
-      group: publish-daily-${{ github.ref }}-${{ matrix.format }}
+      group: publish-metagame-${{ github.ref }}-${{ matrix.format }}
       cancel-in-progress: false
     steps:
       - name: Check out repository
@@ -43,7 +43,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements-dev.txt
 
-      - name: Publish daily metagame snapshots
+      - name: Publish metagame snapshots
         id: publish
         run: |
           set +e
@@ -113,7 +113,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: publish-daily-${{ matrix.format }}
+          name: publish-metagame-${{ matrix.format }}
           path: artifact
           if-no-files-found: error
 
@@ -167,8 +167,8 @@ jobs:
           echo "Publisher exited with code ${{ steps.publish.outputs.exit_code }}."
           exit 1
 
-  commit-daily:
-    needs: publish-daily
+  commit-metagame:
+    needs: publish-metagame
     if: always()
     runs-on: ubuntu-latest
     env:
@@ -194,7 +194,7 @@ jobs:
       - name: Download format artifacts
         uses: actions/download-artifact@v4
         with:
-          pattern: publish-daily-*
+          pattern: publish-metagame-*
           merge-multiple: true
           path: ${{ env.PUBLISH_OUTPUT_ROOT }}
 
@@ -281,7 +281,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add "$PUBLISH_OUTPUT_ROOT"
-          git commit -m "Publish daily metagame snapshots"
+          git commit -m "Publish metagame snapshots"
 
           for attempt in 1 2 3; do
             if git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin HEAD:"${GITHUB_REF_NAME}"; then
@@ -299,7 +299,7 @@ jobs:
           done
 
       - name: Fail if any format missed freshness guarantees
-        if: needs.publish-daily.result != 'success'
+        if: needs.publish-metagame.result != 'success'
         run: |
-          echo "One or more daily format jobs failed freshness guarantees."
+          echo "One or more metagame format jobs failed freshness guarantees."
           exit 1

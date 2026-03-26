@@ -467,18 +467,95 @@ def test_scrape_radars_writes_snapshots_from_published_deck_texts(tmp_path):
 
     assert exit_code == 0
     latest_path = tmp_path / "latest" / "radars" / "modern" / "temur-rhinos.json"
+    card_pool_path = tmp_path / "latest" / "card-pools" / "modern.json"
     manifest_path = tmp_path / "latest" / "latest.json"
     run_path = tmp_path / "latest" / "runs" / "scrape-radars-modern.json"
     snapshot = json.loads(latest_path.read_text(encoding="utf-8"))
+    card_pool = json.loads(card_pool_path.read_text(encoding="utf-8"))
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     run_manifest = json.loads(run_path.read_text(encoding="utf-8"))
 
     assert latest_path.exists()
+    assert card_pool_path.exists()
     assert snapshot["kind"] == "archetype_radar"
     assert snapshot["total_decks_analyzed"] == 2
     assert snapshot["mainboard_cards"][0]["card_name"] == "Crashing Footfalls"
+    assert card_pool["kind"] == "format_card_pool"
+    assert card_pool["cards"] == ["Crashing Footfalls", "Fire // Ice", "Force of Vigor"]
+    assert card_pool["copy_totals"] == [
+        {"card_name": "Crashing Footfalls", "copies_played": 8},
+        {"card_name": "Fire // Ice", "copies_played": 6},
+        {"card_name": "Force of Vigor", "copies_played": 3},
+    ]
     assert (
         manifest["latest"]["archetype_radars"][0]["path"]
         == "latest/radars/modern/temur-rhinos.json"
     )
-    assert run_manifest["summary"]["success"] == 1
+    assert manifest["latest"]["format_card_pools"][0]["path"] == "latest/card-pools/modern.json"
+    assert run_manifest["summary"]["success"] == 2
+
+
+def test_scrape_radars_skips_format_card_pool_for_filtered_runs(tmp_path):
+    deck_snapshot_path = tmp_path / "latest" / "decks" / "modern" / "temur-rhinos.json"
+    deck_snapshot_path.parent.mkdir(parents=True, exist_ok=True)
+    deck_snapshot_path.write_text(
+        json.dumps(
+            build_archetype_deck_snapshot(
+                generated_at=TIMESTAMP,
+                format_name="modern",
+                source="both",
+                archetype={"name": "Temur Rhinos", "href": "modern-temur-rhinos"},
+                decks=[
+                    {
+                        "name": "Temur Rhinos",
+                        "number": "123",
+                        "date": "2026-03-22",
+                        "player": "Alice",
+                        "event": "Modern Challenge",
+                        "source": "mtggoldfish",
+                        "deck_text_path": "archive/deck-texts/modern/123.json",
+                    }
+                ],
+            ),
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
+    blob_path = tmp_path / "archive" / "deck-texts" / "modern" / "123.json"
+    blob_path.parent.mkdir(parents=True, exist_ok=True)
+    blob_path.write_text(
+        json.dumps(
+            build_deck_text_blob(
+                generated_at=TIMESTAMP,
+                format_name="modern",
+                source="mtggoldfish",
+                deck_id="123",
+                deck_name="Temur Rhinos",
+                deck_text="4 Crashing Footfalls\n",
+            ),
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
+
+    exit_code = main(
+        [
+            "--output-root",
+            str(tmp_path),
+            "--timestamp",
+            TIMESTAMP,
+            "scrape-radars",
+            "--format",
+            "Modern",
+            "--archetype",
+            "Temur Rhinos",
+        ]
+    )
+
+    assert exit_code == 0
+    assert not (tmp_path / "latest" / "card-pools" / "modern.json").exists()
+    run_manifest = json.loads(
+        (tmp_path / "latest" / "runs" / "scrape-radars-modern.json").read_text(encoding="utf-8")
+    )
+    assert run_manifest["results"][-1]["scope"] == "format-card-pool"
+    assert run_manifest["results"][-1]["status"] == "skipped"

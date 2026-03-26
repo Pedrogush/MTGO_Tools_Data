@@ -258,6 +258,9 @@ jobs:
                   archetype=normalize_name(archetype.get("name", path.stem)),
               )
 
+          for path in sorted((output_root / "latest" / "card-pools").glob("*.json")):
+              append_entry("format_card_pools", path)
+
           for path in sorted((output_root / "latest" / "metagame").glob("*.json")):
               append_entry("metagame_daily", path)
 

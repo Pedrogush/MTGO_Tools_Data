@@ -3,6 +3,7 @@ from publisher.contracts import (
     build_archetype_list_snapshot,
     build_archetype_radar_snapshot,
     build_deck_text_blob,
+    build_format_card_pool_snapshot,
     build_latest_manifest,
     build_metagame_snapshot,
     build_run_manifest,
@@ -10,6 +11,7 @@ from publisher.contracts import (
     validate_archetype_list_snapshot,
     validate_archetype_radar_snapshot,
     validate_deck_text_blob,
+    validate_format_card_pool_snapshot,
     validate_latest_manifest,
     validate_metagame_snapshot,
     validate_run_manifest,
@@ -60,6 +62,23 @@ def test_contract_builders_validate_examples() -> None:
     )
     assert validate_archetype_radar_snapshot(radar_snapshot)["total_decks_analyzed"] == 3
 
+    card_pool_snapshot = build_format_card_pool_snapshot(
+        generated_at=TIMESTAMP,
+        format_name="modern",
+        source="published-deck-texts",
+        total_decks_analyzed=10,
+        decks_failed=1,
+        cards=["Counterspell", "Lightning Bolt"],
+        copy_totals=[
+            {"card_name": "Lightning Bolt", "copies_played": 28},
+            {"card_name": "Counterspell", "copies_played": 10},
+        ],
+    )
+    assert (
+        validate_format_card_pool_snapshot(card_pool_snapshot)["copy_totals"][0]["copies_played"]
+        == 28
+    )
+
     metagame_snapshot = build_metagame_snapshot(
         generated_at=TIMESTAMP,
         format_name="modern",
@@ -108,6 +127,13 @@ def test_latest_manifest_validates_with_all_categories() -> None:
             "format": "modern",
             "archetype": "temur-rhinos",
             "path": "latest/radars/modern/temur-rhinos.json",
+            "updated_at": TIMESTAMP,
+        }
+    )
+    manifest["latest"]["format_card_pools"].append(
+        {
+            "format": "modern",
+            "path": "latest/card-pools/modern.json",
             "updated_at": TIMESTAMP,
         }
     )

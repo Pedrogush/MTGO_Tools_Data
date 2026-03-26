@@ -33,6 +33,10 @@ def test_build_client_bundle_includes_expected_paths(tmp_path):
         tmp_path / "latest" / "radars" / "modern" / "temur-rhinos.json",
         {"kind": "archetype_radar"},
     )
+    _write_json(
+        tmp_path / "latest" / "card-pools" / "modern.json",
+        {"kind": "format_card_pool"},
+    )
     _write_json(tmp_path / "latest" / "metagame" / "modern.json", {"kind": "metagame_daily"})
     _write_json(
         tmp_path / "archive" / "deck-texts" / "modern" / "123.json",
@@ -43,12 +47,13 @@ def test_build_client_bundle_includes_expected_paths(tmp_path):
     bundle_path = tmp_path / "latest" / "client-bundle.tar.gz"
 
     assert summary["bundle_path"] == bundle_path.as_posix()
-    assert summary["file_count"] == 6
+    assert summary["file_count"] == 7
     assert summary["counts"] == {
         "archetype_decks": 1,
         "archetype_lists": 1,
         "archetype_radars": 1,
         "deck_text_blobs": 1,
+        "format_card_pools": 1,
         "latest_manifest": 1,
         "metagame_daily": 1,
     }
@@ -60,6 +65,7 @@ def test_build_client_bundle_includes_expected_paths(tmp_path):
             "latest/archetypes/modern.json",
             "latest/decks/modern/temur-rhinos.json",
             "latest/radars/modern/temur-rhinos.json",
+            "latest/card-pools/modern.json",
             "latest/metagame/modern.json",
             "archive/deck-texts/modern/123.json",
         ]

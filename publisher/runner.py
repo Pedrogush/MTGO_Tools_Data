@@ -19,12 +19,14 @@ from publisher.contracts import (
     build_archetype_list_snapshot,
     build_archetype_radar_snapshot,
     build_deck_text_blob,
+    build_format_card_pool_snapshot,
     build_metagame_snapshot,
     build_run_manifest,
     validate_archetype_deck_snapshot,
     validate_archetype_list_snapshot,
     validate_archetype_radar_snapshot,
     validate_deck_text_blob,
+    validate_format_card_pool_snapshot,
     validate_metagame_snapshot,
     validate_run_manifest,
 )
@@ -695,14 +697,14 @@ def _load_radar_source_texts(
     format_name: str,
     decks: list[dict[str, Any]],
     repo: ScrapingMetagameRepository,
-) -> tuple[list[str], list[str], int]:
-    deck_texts: list[str] = []
-    deck_names: list[str] = []
+) -> tuple[list[dict[str, str]], int]:
+    loaded_decks: list[dict[str, str]] = []
     failed_decks = 0
 
     for index, deck in enumerate(decks, 1):
         deck_id = str(deck.get("number", "")).strip()
         deck_name = str(deck.get("name", "")).strip() or deck_id or f"Deck {index}"
+        dedupe_key = deck_id or f"anon-{index}-{deck_name}"
 
         blob_path: Path | None = None
         deck_text_path = deck.get("deck_text_path")
@@ -718,21 +720,107 @@ def _load_radar_source_texts(
                 deck_id=deck_id,
             )
             if reusable_blob is not None:
-                deck_texts.append(reusable_blob["deck_text"])
-                deck_names.append(deck_name)
+                loaded_decks.append(
+                    {
+                        "dedupe_key": dedupe_key,
+                        "deck_id": deck_id,
+                        "deck_name": deck_name,
+                        "deck_text": reusable_blob["deck_text"],
+                    }
+                )
                 continue
 
         try:
             source_filter = deck.get("source")
             if source_filter not in {"mtggoldfish", "mtgo"}:
                 source_filter = None
-            deck_texts.append(repo.download_deck_content(deck, source_filter=source_filter))
-            deck_names.append(deck_name)
+            loaded_decks.append(
+                {
+                    "dedupe_key": dedupe_key,
+                    "deck_id": deck_id,
+                    "deck_name": deck_name,
+                    "deck_text": repo.download_deck_content(deck, source_filter=source_filter),
+                }
+            )
         except Exception as exc:  # noqa: BLE001
             logger.warning("Failed to load radar source deck {}: {}", deck_name, exc)
             failed_decks += 1
 
-    return deck_texts, deck_names, failed_decks
+    return loaded_decks, failed_decks
+
+
+def _write_format_card_pool_snapshot(
+    *,
+    output_root: Path,
+    generated_at: str,
+    recorder: RunRecorder,
+    max_stale_hours: int,
+    format_name: str,
+    loaded_decks: list[dict[str, str]],
+    failed_decks: int,
+) -> None:
+    normalized_format = normalize_name(format_name)
+    latest_path = output_root / "latest" / "card-pools" / f"{normalized_format}.json"
+    radar_service = RadarService()
+
+    try:
+        if not loaded_decks:
+            raise RuntimeError("No deck texts were available for format card-pool generation.")
+
+        card_pool = radar_service.calculate_format_card_pool_from_deck_texts(
+            format_name=normalized_format,
+            deck_texts=[deck["deck_text"] for deck in loaded_decks],
+            deck_names=[deck["deck_name"] for deck in loaded_decks],
+            decks_failed=failed_decks,
+        )
+        snapshot = build_format_card_pool_snapshot(
+            generated_at=generated_at,
+            format_name=normalized_format,
+            source="published-deck-texts",
+            total_decks_analyzed=card_pool.total_decks_analyzed,
+            decks_failed=card_pool.decks_failed,
+            cards=card_pool.cards,
+            copy_totals=[asdict(item) for item in card_pool.copy_totals],
+        )
+        validate_format_card_pool_snapshot(snapshot)
+        hourly_path = (
+            hourly_snapshot_dir(output_root, generated_at)
+            / "card-pools"
+            / f"{normalized_format}.json"
+        )
+        write_json(latest_path, snapshot)
+        write_json(hourly_path, snapshot)
+        update_latest_manifest(
+            output_root,
+            generated_at=generated_at,
+            retention_days=recorder.retention_days,
+            category="format_card_pools",
+            discriminator={"format": normalized_format},
+            relative_path=relative_posix_path(latest_path, output_root),
+        )
+        recorder.add(
+            scope="format-card-pool",
+            status=STATUS_SUCCESS,
+            format_name=normalized_format,
+            path=relative_posix_path(latest_path, output_root),
+        )
+    except Exception as exc:  # noqa: BLE001
+        if _is_path_fresh(latest_path, generated_at=generated_at, max_stale_hours=max_stale_hours):
+            recorder.add(
+                scope="format-card-pool",
+                status=STATUS_STALE_FALLBACK,
+                format_name=normalized_format,
+                path=relative_posix_path(latest_path, output_root),
+                message=str(exc),
+            )
+            return
+        recorder.add(
+            scope="format-card-pool",
+            status=STATUS_HARD_FAILURE,
+            format_name=normalized_format,
+            path=relative_posix_path(latest_path, output_root),
+            message=str(exc),
+        )
 
 
 def _write_archetype_radar_snapshots(
@@ -772,6 +860,8 @@ def _write_archetype_radar_snapshots(
 
     repo = ScrapingMetagameRepository()
     radar_service = RadarService()
+    format_card_pool_decks: dict[str, dict[str, str]] = {}
+    format_card_pool_failed_decks = 0
 
     for snapshot_path in snapshot_paths:
         archetype_slug = normalize_name(snapshot_path.stem)
@@ -829,20 +919,24 @@ def _write_archetype_radar_snapshots(
                 )
                 continue
 
-            deck_texts, deck_names, failed_decks = _load_radar_source_texts(
+            loaded_decks, failed_decks = _load_radar_source_texts(
                 output_root=output_root,
                 format_name=normalized_format,
                 decks=selected_decks,
                 repo=repo,
             )
-            if not deck_texts:
+            if not loaded_decks:
                 raise RuntimeError("No deck texts were available for radar generation.")
+
+            format_card_pool_failed_decks += failed_decks
+            for deck in loaded_decks:
+                format_card_pool_decks.setdefault(deck["dedupe_key"], deck)
 
             radar = radar_service.calculate_radar_from_deck_texts(
                 archetype_name=archetype["name"],
                 format_name=normalized_format,
-                deck_texts=deck_texts,
-                deck_names=deck_names,
+                deck_texts=[deck["deck_text"] for deck in loaded_decks],
+                deck_names=[deck["deck_name"] for deck in loaded_decks],
                 decks_failed=failed_decks,
             )
             snapshot = build_archetype_radar_snapshot(
@@ -902,6 +996,25 @@ def _write_archetype_radar_snapshots(
                 path=relative_posix_path(latest_path, output_root),
                 message=str(exc),
             )
+
+    if archetype_filters:
+        recorder.add(
+            scope="format-card-pool",
+            status=STATUS_SKIPPED,
+            format_name=normalized_format,
+            message="Skipped format card-pool publication because archetype filters produce a partial format artifact.",
+        )
+        return
+
+    _write_format_card_pool_snapshot(
+        output_root=output_root,
+        generated_at=generated_at,
+        recorder=recorder,
+        max_stale_hours=max_stale_hours,
+        format_name=format_name,
+        loaded_decks=list(format_card_pool_decks.values()),
+        failed_decks=format_card_pool_failed_decks,
+    )
 
 
 def build_parser() -> argparse.ArgumentParser:

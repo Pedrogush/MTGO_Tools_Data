@@ -1,42 +1,44 @@
 # Publishing Workflows
 
-Scheduled publishing is split into four workflows:
+Scheduled publishing now runs through a single workflow: `publish-data.yml`.
 
-- `publish-decklists.yml` runs hourly at minute `15` and fans out into
-  one job per format for `Modern`, `Standard`, `Pioneer`, `Legacy`, `Vintage`,
-  and `Pauper`. Each job publishes current archetype/deck metadata plus
-  referenced deck-text blobs for just that format, uploads those format-scoped
-  results as artifacts, and a single downstream job merges and commits `data/`
-  once for the whole workflow.
-- `publish-client-bundle.yml` runs hourly at minute `30`, repackages the latest
-  committed client-facing deck snapshots, radar snapshots, format card-pool
-  snapshots, metagame snapshots, and deck-text archive blobs into
-  `data/latest/client-bundle.tar.gz`, and commits only when the deterministic
-  bundle bytes change.
-- `publish-metagame.yml` runs hourly at minute `45` and also fans out into one
-  job per format for the metagame aggregate.
-- `publish-radars.yml` runs after a successful `publish-decklists.yml`
-  completion, fans out into one job per format, publishes archetype radar
-  snapshots from the already-published deck snapshots and deck-text blobs,
-  also writes one format-wide card-pool artifact per format, and commits the
-  merged `data/` tree once for the workflow.
+The workflow runs hourly at minute `15` and keeps all publish stages inside the
+same workflow run so they do not race each other on `main`.
+
+It has four phases:
+
+1. Decklist publishing fans out into one job per format for `Modern`,
+   `Standard`, `Pioneer`, `Legacy`, `Vintage`, and `Pauper`. Each job publishes
+   current archetype/deck metadata plus referenced deck-text blobs for just
+   that format and uploads those format-scoped results as artifacts.
+2. Metagame publishing also fans out into one job per format and uploads its
+   format-scoped artifacts.
+3. Radar publishing fans out into one job per format, downloads the matching
+   same-run decklist artifact for that format, publishes archetype radar
+   snapshots plus one format-wide card-pool artifact, and uploads those results
+   as artifacts.
+4. A single final merge job downloads every artifact set, prunes `data/` with
+   `python -m publisher.retention`, rebuilds `data/latest/latest.json`, rebuilds
+   `data/latest/client-bundle.tar.gz`, and commits `data/` once for the whole
+   workflow.
 
 Each format job has its own concurrency group, so a new `Modern` run can block
 or wait on another `Modern` run without cancelling unrelated formats. For the
-decklists workflow, the per-format jobs no longer push directly, which avoids
-rebasing concurrent edits to shared files like `data/latest/latest.json`. Each
-format job:
+single workflow, the per-format jobs never push directly, which avoids rebasing
+concurrent edits to shared files like `data/latest/latest.json`. Each format
+job:
 
 1. Runs the publisher CLI.
 2. Uploads only its format-scoped published files as an artifact.
 
-The decklists and radar merge jobs then:
+The final merge job then:
 
-1. Downloads all format artifacts into the checked-out tree.
+1. Downloads all decklist, metagame, and radar artifacts into the checked-out tree.
 2. Prunes the checked-out tree with `python -m publisher.retention`.
 3. Rebuilds `data/latest/latest.json` from the merged outputs, including
    `archetype_radars` and `format_card_pools`.
-4. Commits and pushes `data/` only when the tree actually changed.
+4. Rebuilds the deterministic client bundle.
+5. Commits and pushes `data/` only when the tree actually changed.
 
 Checked-tree retention is seven days for `data/hourly/` and `data/daily/`.
 `data/latest/` remains the stable consumer entrypoint, and deck-text blobs under
@@ -54,9 +56,9 @@ To run the hourly deck-text publisher locally without the workflow's remote
 
 This helper runs all hourly formats (`Modern`, `Standard`, `Pioneer`,
 `Legacy`, `Vintage`, `Pauper`) and traverses all archetypes for each format.
-It uses the same `publisher.runner scrape-deck-texts` command path as
-`publish-decklists.yml`, but pins `--deck-download-delay-seconds 0` for local
-warmups.
+It uses the same `publisher.runner scrape-deck-texts` command path as the
+decklist stage inside `publish-data.yml`, but pins
+`--deck-download-delay-seconds 0` for local warmups.
 
 Optional environment variables:
 

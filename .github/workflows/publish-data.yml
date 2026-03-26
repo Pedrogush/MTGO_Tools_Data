@@ -1,0 +1,649 @@
+name: publish-data
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "15 * * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-data-workflow-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  publish-decklists:
+    strategy:
+      fail-fast: false
+      matrix:
+        format: [Modern, Standard, Pioneer, Legacy, Vintage, Pauper]
+    runs-on: ubuntu-latest
+    env:
+      PUBLISH_OUTPUT_ROOT: data
+      PUBLISH_RETENTION_DAYS: "7"
+      PUBLISH_DECK_DOWNLOAD_DELAY_SECONDS: "3"
+      TZ: America/Sao_Paulo
+    concurrency:
+      group: publish-data-decklists-${{ github.ref }}-${{ matrix.format }}
+      cancel-in-progress: false
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-dev.txt
+
+      - name: Publish decklist and deck-text snapshots
+        id: publish
+        run: |
+          set +e
+          python -m publisher.runner \
+            --output-root "$PUBLISH_OUTPUT_ROOT" \
+            --retention-days "$PUBLISH_RETENTION_DAYS" \
+            scrape-deck-texts \
+            --format "${{ matrix.format }}" \
+            --deck-download-delay-seconds "$PUBLISH_DECK_DOWNLOAD_DELAY_SECONDS" \
+            --days "$PUBLISH_RETENTION_DAYS"
+          exit_code=$?
+          echo "exit_code=$exit_code" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Package format artifact
+        if: always()
+        env:
+          MATRIX_FORMAT: ${{ matrix.format }}
+        run: |
+          python - <<'PY'
+          import os
+          import shutil
+          from pathlib import Path
+
+          from publisher.layout import normalize_name
+
+          data_root = Path(os.environ["PUBLISH_OUTPUT_ROOT"])
+          artifact_root = Path("artifact")
+          normalized_format = normalize_name(os.environ["MATRIX_FORMAT"])
+          artifact_root.mkdir(parents=True, exist_ok=True)
+
+          def copy_path(path: Path) -> None:
+              if not path.exists():
+                  return
+              if path.is_dir():
+                  for child in path.rglob("*"):
+                      if child.is_file():
+                          destination = artifact_root / child.relative_to(data_root)
+                          destination.parent.mkdir(parents=True, exist_ok=True)
+                          shutil.copy2(child, destination)
+                  return
+              destination = artifact_root / path.relative_to(data_root)
+              destination.parent.mkdir(parents=True, exist_ok=True)
+              shutil.copy2(path, destination)
+
+          copy_path(data_root / "latest" / "archetypes" / f"{normalized_format}.json")
+          copy_path(data_root / "latest" / "decks" / normalized_format)
+          copy_path(data_root / "latest" / "runs" / f"scrape-deck-texts-{normalized_format}.json")
+          copy_path(data_root / "archive" / "deck-texts" / normalized_format)
+
+          hourly_root = data_root / "hourly"
+          if hourly_root.exists():
+              for snapshot_dir in hourly_root.iterdir():
+                  if not snapshot_dir.is_dir():
+                      continue
+                  copy_path(snapshot_dir / "archetypes" / f"{normalized_format}.json")
+                  copy_path(snapshot_dir / "decks" / normalized_format)
+                  copy_path(snapshot_dir / "runs" / f"scrape-deck-texts-{normalized_format}.json")
+
+          metadata_path = artifact_root / ".artifact-format"
+          metadata_path.write_text(f"{normalized_format}\n", encoding="utf-8")
+          PY
+
+      - name: Upload format artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: publish-data-decklists-${{ matrix.format }}
+          path: artifact
+          if-no-files-found: error
+
+      - name: Summarize run manifest
+        if: always()
+        env:
+          MATRIX_FORMAT: ${{ matrix.format }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          from publisher.layout import normalize_name
+
+          data_root = Path(os.environ["PUBLISH_OUTPUT_ROOT"])
+          normalized_format = normalize_name(os.environ["MATRIX_FORMAT"])
+          run_manifest_path = (
+              data_root / "latest" / "runs" / f"scrape-deck-texts-{normalized_format}.json"
+          )
+          if not run_manifest_path.exists():
+              print(f"Run manifest not found: {run_manifest_path}")
+              raise SystemExit(0)
+
+          payload = json.loads(run_manifest_path.read_text(encoding="utf-8"))
+          print(
+              json.dumps(
+                  {
+                      "path": run_manifest_path.as_posix(),
+                      "status": payload.get("status"),
+                      "summary": payload.get("summary", {}),
+                  },
+                  indent=2,
+              )
+          )
+
+          failures = [
+              result for result in payload.get("results", []) if result.get("status") == "hard-failure"
+          ]
+          if failures:
+              print("Hard failures:")
+              for failure in failures[:20]:
+                  print(json.dumps(failure, sort_keys=True))
+              if len(failures) > 20:
+                  print(f"... {len(failures) - 20} additional hard failures omitted")
+          PY
+
+      - name: Fail if freshness guarantees were violated
+        if: steps.publish.outputs.exit_code != '0'
+        run: |
+          echo "Publisher exited with code ${{ steps.publish.outputs.exit_code }}."
+          exit 1
+
+  publish-metagame:
+    strategy:
+      fail-fast: false
+      matrix:
+        format: [Modern, Standard, Pioneer, Legacy, Vintage, Pauper]
+    runs-on: ubuntu-latest
+    env:
+      PUBLISH_OUTPUT_ROOT: data
+      PUBLISH_RETENTION_DAYS: "7"
+      TZ: America/Sao_Paulo
+    concurrency:
+      group: publish-data-metagame-${{ github.ref }}-${{ matrix.format }}
+      cancel-in-progress: false
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-dev.txt
+
+      - name: Publish metagame snapshots
+        id: publish
+        run: |
+          set +e
+          python -m publisher.runner \
+            --output-root "$PUBLISH_OUTPUT_ROOT" \
+            --retention-days "$PUBLISH_RETENTION_DAYS" \
+            scrape-metagame \
+            --format "${{ matrix.format }}" \
+            --day "$(date +%F)"
+          exit_code=$?
+          echo "exit_code=$exit_code" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Package format artifact
+        if: always()
+        env:
+          MATRIX_FORMAT: ${{ matrix.format }}
+        run: |
+          python - <<'PY'
+          import os
+          import shutil
+          from pathlib import Path
+
+          from publisher.layout import normalize_name
+
+          data_root = Path(os.environ["PUBLISH_OUTPUT_ROOT"])
+          artifact_root = Path("artifact")
+          normalized_format = normalize_name(os.environ["MATRIX_FORMAT"])
+          artifact_root.mkdir(parents=True, exist_ok=True)
+
+          def copy_path(path: Path) -> None:
+              if not path.exists():
+                  return
+              if path.is_dir():
+                  for child in path.rglob("*"):
+                      if child.is_file():
+                          destination = artifact_root / child.relative_to(data_root)
+                          destination.parent.mkdir(parents=True, exist_ok=True)
+                          shutil.copy2(child, destination)
+                  return
+              destination = artifact_root / path.relative_to(data_root)
+              destination.parent.mkdir(parents=True, exist_ok=True)
+              shutil.copy2(path, destination)
+
+          copy_path(data_root / "latest" / "metagame" / f"{normalized_format}.json")
+          copy_path(data_root / "latest" / "runs" / f"scrape-metagame-{normalized_format}.json")
+
+          daily_root = data_root / "daily"
+          if daily_root.exists():
+              for snapshot_dir in daily_root.iterdir():
+                  if not snapshot_dir.is_dir():
+                      continue
+                  copy_path(snapshot_dir / "metagame" / f"{normalized_format}.json")
+
+          hourly_root = data_root / "hourly"
+          if hourly_root.exists():
+              for snapshot_dir in hourly_root.iterdir():
+                  if not snapshot_dir.is_dir():
+                      continue
+                  copy_path(snapshot_dir / "runs" / f"scrape-metagame-{normalized_format}.json")
+
+          metadata_path = artifact_root / ".artifact-format"
+          metadata_path.write_text(f"{normalized_format}\n", encoding="utf-8")
+          PY
+
+      - name: Upload format artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: publish-data-metagame-${{ matrix.format }}
+          path: artifact
+          if-no-files-found: error
+
+      - name: Summarize run manifest
+        if: always()
+        env:
+          MATRIX_FORMAT: ${{ matrix.format }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          from publisher.layout import normalize_name
+
+          data_root = Path(os.environ["PUBLISH_OUTPUT_ROOT"])
+          normalized_format = normalize_name(os.environ["MATRIX_FORMAT"])
+          run_manifest_path = (
+              data_root / "latest" / "runs" / f"scrape-metagame-{normalized_format}.json"
+          )
+          if not run_manifest_path.exists():
+              print(f"Run manifest not found: {run_manifest_path}")
+              raise SystemExit(0)
+
+          payload = json.loads(run_manifest_path.read_text(encoding="utf-8"))
+          print(
+              json.dumps(
+                  {
+                      "path": run_manifest_path.as_posix(),
+                      "status": payload.get("status"),
+                      "summary": payload.get("summary", {}),
+                  },
+                  indent=2,
+              )
+          )
+
+          failures = [
+              result for result in payload.get("results", []) if result.get("status") == "hard-failure"
+          ]
+          if failures:
+              print("Hard failures:")
+              for failure in failures[:20]:
+                  print(json.dumps(failure, sort_keys=True))
+              if len(failures) > 20:
+                  print(f"... {len(failures) - 20} additional hard failures omitted")
+          PY
+
+      - name: Fail if freshness guarantees were violated
+        if: steps.publish.outputs.exit_code != '0'
+        run: |
+          echo "Publisher exited with code ${{ steps.publish.outputs.exit_code }}."
+          exit 1
+
+  publish-radars:
+    needs: publish-decklists
+    if: always()
+    strategy:
+      fail-fast: false
+      matrix:
+        format: [Modern, Standard, Pioneer, Legacy, Vintage, Pauper]
+    runs-on: ubuntu-latest
+    env:
+      PUBLISH_OUTPUT_ROOT: data
+      PUBLISH_RETENTION_DAYS: "7"
+      TZ: America/Sao_Paulo
+    concurrency:
+      group: publish-data-radars-${{ github.ref }}-${{ matrix.format }}
+      cancel-in-progress: false
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-dev.txt
+
+      - name: Download same-format decklist artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: publish-data-decklists-${{ matrix.format }}
+          path: ${{ env.PUBLISH_OUTPUT_ROOT }}
+
+      - name: Publish archetype radar and format card-pool snapshots
+        id: publish
+        run: |
+          set +e
+          python -m publisher.runner \
+            --output-root "$PUBLISH_OUTPUT_ROOT" \
+            --retention-days "$PUBLISH_RETENTION_DAYS" \
+            scrape-radars \
+            --format "${{ matrix.format }}"
+          exit_code=$?
+          echo "exit_code=$exit_code" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Package format artifact
+        if: always()
+        env:
+          MATRIX_FORMAT: ${{ matrix.format }}
+        run: |
+          python - <<'PY'
+          import os
+          import shutil
+          from pathlib import Path
+
+          from publisher.layout import normalize_name
+
+          data_root = Path(os.environ["PUBLISH_OUTPUT_ROOT"])
+          artifact_root = Path("artifact")
+          normalized_format = normalize_name(os.environ["MATRIX_FORMAT"])
+          artifact_root.mkdir(parents=True, exist_ok=True)
+
+          def copy_path(path: Path) -> None:
+              if not path.exists():
+                  return
+              if path.is_dir():
+                  for child in path.rglob("*"):
+                      if child.is_file():
+                          destination = artifact_root / child.relative_to(data_root)
+                          destination.parent.mkdir(parents=True, exist_ok=True)
+                          shutil.copy2(child, destination)
+                  return
+              destination = artifact_root / path.relative_to(data_root)
+              destination.parent.mkdir(parents=True, exist_ok=True)
+              shutil.copy2(path, destination)
+
+          copy_path(data_root / "latest" / "radars" / normalized_format)
+          copy_path(data_root / "latest" / "card-pools" / f"{normalized_format}.json")
+          copy_path(data_root / "latest" / "runs" / f"scrape-radars-{normalized_format}.json")
+
+          hourly_root = data_root / "hourly"
+          if hourly_root.exists():
+              for snapshot_dir in hourly_root.iterdir():
+                  if not snapshot_dir.is_dir():
+                      continue
+                  copy_path(snapshot_dir / "radars" / normalized_format)
+                  copy_path(snapshot_dir / "card-pools" / f"{normalized_format}.json")
+                  copy_path(snapshot_dir / "runs" / f"scrape-radars-{normalized_format}.json")
+
+          metadata_path = artifact_root / ".artifact-format"
+          metadata_path.write_text(f"{normalized_format}\n", encoding="utf-8")
+          PY
+
+      - name: Upload format artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: publish-data-radars-${{ matrix.format }}
+          path: artifact
+          if-no-files-found: error
+
+      - name: Summarize run manifest
+        if: always()
+        env:
+          MATRIX_FORMAT: ${{ matrix.format }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          from publisher.layout import normalize_name
+
+          data_root = Path(os.environ["PUBLISH_OUTPUT_ROOT"])
+          normalized_format = normalize_name(os.environ["MATRIX_FORMAT"])
+          run_manifest_path = (
+              data_root / "latest" / "runs" / f"scrape-radars-{normalized_format}.json"
+          )
+          if not run_manifest_path.exists():
+              print(f"Run manifest not found: {run_manifest_path}")
+              raise SystemExit(0)
+
+          payload = json.loads(run_manifest_path.read_text(encoding="utf-8"))
+          print(
+              json.dumps(
+                  {
+                      "path": run_manifest_path.as_posix(),
+                      "status": payload.get("status"),
+                      "summary": payload.get("summary", {}),
+                  },
+                  indent=2,
+              )
+          )
+
+          failures = [
+              result for result in payload.get("results", []) if result.get("status") == "hard-failure"
+          ]
+          if failures:
+              print("Hard failures:")
+              for failure in failures[:20]:
+                  print(json.dumps(failure, sort_keys=True))
+              if len(failures) > 20:
+                  print(f"... {len(failures) - 20} additional hard failures omitted")
+          PY
+
+      - name: Fail if freshness guarantees were violated
+        if: steps.publish.outputs.exit_code != '0'
+        run: |
+          echo "Publisher exited with code ${{ steps.publish.outputs.exit_code }}."
+          exit 1
+
+  commit-published-data:
+    needs:
+      - publish-decklists
+      - publish-metagame
+      - publish-radars
+    if: always()
+    runs-on: ubuntu-latest
+    env:
+      PUBLISH_OUTPUT_ROOT: data
+      PUBLISH_RETENTION_DAYS: "7"
+      TZ: America/Sao_Paulo
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-dev.txt
+
+      - name: Download decklist artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: publish-data-decklists-*
+          merge-multiple: true
+          path: ${{ env.PUBLISH_OUTPUT_ROOT }}
+
+      - name: Download metagame artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: publish-data-metagame-*
+          merge-multiple: true
+          path: ${{ env.PUBLISH_OUTPUT_ROOT }}
+
+      - name: Download radar artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: publish-data-radars-*
+          merge-multiple: true
+          path: ${{ env.PUBLISH_OUTPUT_ROOT }}
+
+      - name: Prune retained working tree
+        run: |
+          python -m publisher.retention \
+            --output-root "$PUBLISH_OUTPUT_ROOT" \
+            --retention-days "$PUBLISH_RETENTION_DAYS"
+
+      - name: Rebuild latest manifest
+        run: |
+          python - <<'PY'
+          from datetime import UTC, datetime
+          import json
+          import os
+          from pathlib import Path
+
+          from publisher.contracts import build_latest_manifest
+          from publisher.layout import normalize_name, write_json
+
+          output_root = Path(os.environ["PUBLISH_OUTPUT_ROOT"])
+          retention_days = int(os.environ["PUBLISH_RETENTION_DAYS"])
+          generated_at = datetime.now(UTC).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+          manifest = build_latest_manifest(generated_at=generated_at, retention_days=retention_days)
+
+          def load_payload(path: Path) -> dict:
+              return json.loads(path.read_text(encoding="utf-8"))
+
+          def relative_path(path: Path) -> str:
+              return path.relative_to(output_root).as_posix()
+
+          def append_entry(category: str, path: Path, format_value: str | None = None, **extra: str) -> None:
+              payload = load_payload(path)
+              manifest["latest"][category].append(
+                  {
+                      "format": format_value or payload.get("format") or path.stem,
+                      "path": relative_path(path),
+                      "updated_at": payload.get("generated_at", generated_at),
+                      **extra,
+                  }
+              )
+
+          for path in sorted((output_root / "latest" / "archetypes").glob("*.json")):
+              append_entry("archetype_lists", path)
+
+          for path in sorted((output_root / "latest" / "decks").rglob("*.json")):
+              payload = load_payload(path)
+              archetype = payload.get("archetype", {})
+              append_entry(
+                  "archetype_decks",
+                  path,
+                  archetype=normalize_name(archetype.get("name", path.stem)),
+              )
+
+          for path in sorted((output_root / "latest" / "radars").rglob("*.json")):
+              payload = load_payload(path)
+              archetype = payload.get("archetype", {})
+              append_entry(
+                  "archetype_radars",
+                  path,
+                  archetype=normalize_name(archetype.get("name", path.stem)),
+              )
+
+          for path in sorted((output_root / "latest" / "card-pools").glob("*.json")):
+              append_entry("format_card_pools", path)
+
+          for path in sorted((output_root / "latest" / "metagame").glob("*.json")):
+              append_entry("metagame_daily", path)
+
+          for path in sorted((output_root / "archive" / "deck-texts").rglob("*.json")):
+              payload = load_payload(path)
+              append_entry(
+                  "deck_text_blobs",
+                  path,
+                  deck_id=str(payload.get("deck_id", path.stem)),
+              )
+
+          for path in sorted((output_root / "latest" / "runs").glob("*.json")):
+              payload = load_payload(path)
+              append_entry(
+                  "runs",
+                  path,
+                  format_value=payload.get("command", path.stem),
+              )
+
+          write_json(output_root / "latest" / "latest.json", manifest)
+          PY
+
+      - name: Build client bundle
+        run: |
+          python publisher/client_bundle.py --output-root "$PUBLISH_OUTPUT_ROOT"
+
+      - name: Show bundle size
+        run: |
+          ls -lh "$PUBLISH_OUTPUT_ROOT/latest/client-bundle.tar.gz"
+
+      - name: Commit changed published data
+        run: |
+          if [ -z "$(git status --porcelain -- "$PUBLISH_OUTPUT_ROOT")" ]; then
+            echo "No published data changes detected."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$PUBLISH_OUTPUT_ROOT"
+          git commit -m "Publish scrape snapshots"
+
+          for attempt in 1 2 3; do
+            if git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin HEAD:"${GITHUB_REF_NAME}"; then
+              exit 0
+            fi
+
+            git rebase --abort || true
+            if [ "$attempt" -eq 3 ]; then
+              echo "Failed to push published data after $attempt attempts."
+              exit 1
+            fi
+
+            echo "Retrying push after remote updates (attempt $attempt failed)."
+            sleep 5
+          done
+
+      - name: Fail if any format missed freshness guarantees
+        if: ${{ needs.publish-decklists.result != 'success' || needs.publish-metagame.result != 'success' || needs.publish-radars.result != 'success' }}
+        run: |
+          echo "One or more publish jobs failed freshness guarantees."
+          exit 1

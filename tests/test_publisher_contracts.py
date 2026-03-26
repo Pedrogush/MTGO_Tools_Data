@@ -1,12 +1,14 @@
 from publisher.contracts import (
     build_archetype_deck_snapshot,
     build_archetype_list_snapshot,
+    build_archetype_radar_snapshot,
     build_deck_text_blob,
     build_latest_manifest,
     build_metagame_snapshot,
     build_run_manifest,
     validate_archetype_deck_snapshot,
     validate_archetype_list_snapshot,
+    validate_archetype_radar_snapshot,
     validate_deck_text_blob,
     validate_latest_manifest,
     validate_metagame_snapshot,
@@ -34,6 +36,29 @@ def test_contract_builders_validate_examples() -> None:
         decks=[{"number": "123", "source": "mtggoldfish", "date": "2026-03-22"}],
     )
     assert validate_archetype_deck_snapshot(deck_snapshot)["archetype"]["name"] == "Temur Rhinos"
+
+    radar_snapshot = build_archetype_radar_snapshot(
+        generated_at=TIMESTAMP,
+        format_name="modern",
+        archetype=archetypes[0],
+        source="published-deck-texts",
+        total_decks_analyzed=3,
+        decks_failed=1,
+        mainboard_cards=[
+            {
+                "card_name": "Lightning Bolt",
+                "appearances": 3,
+                "total_copies": 12,
+                "max_copies": 4,
+                "avg_copies": 4.0,
+                "inclusion_rate": 100.0,
+                "expected_copies": 4.0,
+                "copy_distribution": {4: 3},
+            }
+        ],
+        sideboard_cards=[],
+    )
+    assert validate_archetype_radar_snapshot(radar_snapshot)["total_decks_analyzed"] == 3
 
     metagame_snapshot = build_metagame_snapshot(
         generated_at=TIMESTAMP,
@@ -75,6 +100,14 @@ def test_latest_manifest_validates_with_all_categories() -> None:
             "format": "modern",
             "archetype": "temur-rhinos",
             "path": "latest/decks/modern/temur-rhinos.json",
+            "updated_at": TIMESTAMP,
+        }
+    )
+    manifest["latest"]["archetype_radars"].append(
+        {
+            "format": "modern",
+            "archetype": "temur-rhinos",
+            "path": "latest/radars/modern/temur-rhinos.json",
             "updated_at": TIMESTAMP,
         }
     )

@@ -6,6 +6,7 @@ import argparse
 import json
 import time
 from collections import Counter
+from dataclasses import asdict
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
@@ -16,11 +17,13 @@ from navigators.mtggoldfish import get_archetype_stats
 from publisher.contracts import (
     build_archetype_deck_snapshot,
     build_archetype_list_snapshot,
+    build_archetype_radar_snapshot,
     build_deck_text_blob,
     build_metagame_snapshot,
     build_run_manifest,
     validate_archetype_deck_snapshot,
     validate_archetype_list_snapshot,
+    validate_archetype_radar_snapshot,
     validate_deck_text_blob,
     validate_metagame_snapshot,
     validate_run_manifest,
@@ -37,6 +40,7 @@ from publisher.layout import (
     write_json,
 )
 from scraping import ScrapingMetagameRepository, fetch_archetypes
+from services.radar_service import RadarService
 
 try:
     from datetime import UTC
@@ -111,6 +115,19 @@ def _load_reusable_deck_text_blob(
     return validated
 
 
+def _load_published_deck_snapshot(path: Path, *, format_name: str) -> dict[str, Any] | None:
+    payload = _load_json_if_present(path)
+    if not payload:
+        return None
+    try:
+        validated = validate_archetype_deck_snapshot(payload)
+    except ValueError:
+        return None
+    if validated.get("format") != format_name:
+        return None
+    return validated
+
+
 def _is_path_fresh(path: Path, *, generated_at: str, max_stale_hours: int) -> bool:
     payload = _load_json_if_present(path)
     if not payload:
@@ -152,6 +169,15 @@ def _with_deck_text_refs(
             )
         enriched.append(entry)
     return enriched
+
+
+def _filter_requested_snapshot_paths(
+    paths: list[Path], archetype_filters: list[str] | None
+) -> list[Path]:
+    if not archetype_filters:
+        return paths
+    wanted = {normalize_name(value) for value in archetype_filters}
+    return [path for path in paths if normalize_name(path.stem) in wanted]
 
 
 class RunRecorder:
@@ -663,6 +689,221 @@ def _write_deck_text_blobs(
             )
 
 
+def _load_radar_source_texts(
+    *,
+    output_root: Path,
+    format_name: str,
+    decks: list[dict[str, Any]],
+    repo: ScrapingMetagameRepository,
+) -> tuple[list[str], list[str], int]:
+    deck_texts: list[str] = []
+    deck_names: list[str] = []
+    failed_decks = 0
+
+    for index, deck in enumerate(decks, 1):
+        deck_id = str(deck.get("number", "")).strip()
+        deck_name = str(deck.get("name", "")).strip() or deck_id or f"Deck {index}"
+
+        blob_path: Path | None = None
+        deck_text_path = deck.get("deck_text_path")
+        if isinstance(deck_text_path, str) and deck_text_path:
+            blob_path = output_root / Path(deck_text_path)
+        elif deck_id:
+            blob_path = _deck_text_archive_path(output_root, format_name, deck_id)
+
+        if blob_path is not None and deck_id:
+            reusable_blob = _load_reusable_deck_text_blob(
+                blob_path,
+                format_name=format_name,
+                deck_id=deck_id,
+            )
+            if reusable_blob is not None:
+                deck_texts.append(reusable_blob["deck_text"])
+                deck_names.append(deck_name)
+                continue
+
+        try:
+            source_filter = deck.get("source")
+            if source_filter not in {"mtggoldfish", "mtgo"}:
+                source_filter = None
+            deck_texts.append(repo.download_deck_content(deck, source_filter=source_filter))
+            deck_names.append(deck_name)
+        except Exception as exc:  # noqa: BLE001
+            logger.warning("Failed to load radar source deck {}: {}", deck_name, exc)
+            failed_decks += 1
+
+    return deck_texts, deck_names, failed_decks
+
+
+def _write_archetype_radar_snapshots(
+    *,
+    output_root: Path,
+    generated_at: str,
+    recorder: RunRecorder,
+    max_stale_hours: int,
+    format_name: str,
+    archetype_filters: list[str] | None,
+    max_decks: int | None,
+) -> None:
+    normalized_format = normalize_name(format_name)
+    deck_root = output_root / "latest" / "decks" / normalized_format
+    snapshot_paths = (
+        sorted(deck_root.glob("*.json"), key=lambda path: path.name) if deck_root.exists() else []
+    )
+    snapshot_paths = _filter_requested_snapshot_paths(snapshot_paths, archetype_filters)
+
+    if archetype_filters and not snapshot_paths:
+        recorder.add(
+            scope="archetype-radar",
+            status=STATUS_SKIPPED,
+            format_name=normalized_format,
+            message="No requested archetypes matched the current published deck snapshots.",
+        )
+        return
+
+    if not snapshot_paths:
+        recorder.add(
+            scope="archetype-radar",
+            status=STATUS_HARD_FAILURE,
+            format_name=normalized_format,
+            message="No latest deck snapshots were found for radar publishing.",
+        )
+        return
+
+    repo = ScrapingMetagameRepository()
+    radar_service = RadarService()
+
+    for snapshot_path in snapshot_paths:
+        archetype_slug = normalize_name(snapshot_path.stem)
+        latest_path = output_root / "latest" / "radars" / normalized_format / snapshot_path.name
+
+        try:
+            deck_snapshot = _load_published_deck_snapshot(
+                snapshot_path,
+                format_name=normalized_format,
+            )
+            if deck_snapshot is None:
+                raise RuntimeError(f"Published deck snapshot is invalid: {snapshot_path}")
+
+            archetype = deck_snapshot["archetype"]
+            archetype_slug = normalize_name(archetype.get("name", snapshot_path.stem))
+            selected_decks = list(deck_snapshot.get("decks", []))
+            if max_decks is not None:
+                selected_decks = selected_decks[:max_decks]
+
+            if not selected_decks:
+                snapshot = build_archetype_radar_snapshot(
+                    generated_at=generated_at,
+                    format_name=normalized_format,
+                    archetype=archetype,
+                    source="published-deck-texts",
+                    total_decks_analyzed=0,
+                    decks_failed=0,
+                    mainboard_cards=[],
+                    sideboard_cards=[],
+                )
+                validate_archetype_radar_snapshot(snapshot)
+                hourly_path = (
+                    hourly_snapshot_dir(output_root, generated_at)
+                    / "radars"
+                    / normalized_format
+                    / snapshot_path.name
+                )
+                write_json(latest_path, snapshot)
+                write_json(hourly_path, snapshot)
+                update_latest_manifest(
+                    output_root,
+                    generated_at=generated_at,
+                    retention_days=recorder.retention_days,
+                    category="archetype_radars",
+                    discriminator={"format": normalized_format, "archetype": archetype_slug},
+                    relative_path=relative_posix_path(latest_path, output_root),
+                )
+                recorder.add(
+                    scope="archetype-radar",
+                    status=STATUS_SKIPPED,
+                    format_name=normalized_format,
+                    archetype=archetype_slug,
+                    path=relative_posix_path(latest_path, output_root),
+                    message="No published decks were available for radar generation.",
+                )
+                continue
+
+            deck_texts, deck_names, failed_decks = _load_radar_source_texts(
+                output_root=output_root,
+                format_name=normalized_format,
+                decks=selected_decks,
+                repo=repo,
+            )
+            if not deck_texts:
+                raise RuntimeError("No deck texts were available for radar generation.")
+
+            radar = radar_service.calculate_radar_from_deck_texts(
+                archetype_name=archetype["name"],
+                format_name=normalized_format,
+                deck_texts=deck_texts,
+                deck_names=deck_names,
+                decks_failed=failed_decks,
+            )
+            snapshot = build_archetype_radar_snapshot(
+                generated_at=generated_at,
+                format_name=normalized_format,
+                archetype=archetype,
+                source="published-deck-texts",
+                total_decks_analyzed=radar.total_decks_analyzed,
+                decks_failed=radar.decks_failed,
+                mainboard_cards=[asdict(card) for card in radar.mainboard_cards],
+                sideboard_cards=[asdict(card) for card in radar.sideboard_cards],
+            )
+            validate_archetype_radar_snapshot(snapshot)
+            hourly_path = (
+                hourly_snapshot_dir(output_root, generated_at)
+                / "radars"
+                / normalized_format
+                / snapshot_path.name
+            )
+            write_json(latest_path, snapshot)
+            write_json(hourly_path, snapshot)
+            update_latest_manifest(
+                output_root,
+                generated_at=generated_at,
+                retention_days=recorder.retention_days,
+                category="archetype_radars",
+                discriminator={"format": normalized_format, "archetype": archetype_slug},
+                relative_path=relative_posix_path(latest_path, output_root),
+            )
+            recorder.add(
+                scope="archetype-radar",
+                status=STATUS_SUCCESS,
+                format_name=normalized_format,
+                archetype=archetype_slug,
+                path=relative_posix_path(latest_path, output_root),
+            )
+        except Exception as exc:  # noqa: BLE001
+            if _is_path_fresh(
+                latest_path,
+                generated_at=generated_at,
+                max_stale_hours=max_stale_hours,
+            ):
+                recorder.add(
+                    scope="archetype-radar",
+                    status=STATUS_STALE_FALLBACK,
+                    format_name=normalized_format,
+                    archetype=archetype_slug,
+                    path=relative_posix_path(latest_path, output_root),
+                    message=str(exc),
+                )
+                continue
+            recorder.add(
+                scope="archetype-radar",
+                status=STATUS_HARD_FAILURE,
+                format_name=normalized_format,
+                archetype=archetype_slug,
+                path=relative_posix_path(latest_path, output_root),
+                message=str(exc),
+            )
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Headless scrape publisher")
     parser.add_argument("--output-root", default=str(DEFAULT_OUTPUT_ROOT))
@@ -696,6 +937,11 @@ def build_parser() -> argparse.ArgumentParser:
     decks.add_argument("--archetype", dest="archetypes", action="append")
     decks.add_argument("--days", type=int)
     decks.add_argument("--source-filter", choices=["mtggoldfish", "mtgo", "both"], default="both")
+
+    radars = subparsers.add_parser("scrape-radars")
+    radars.add_argument("--format", dest="formats", action="append", required=True)
+    radars.add_argument("--archetype", dest="archetypes", action="append")
+    radars.add_argument("--max-decks", type=int)
 
     return parser
 
@@ -758,6 +1004,17 @@ def main(argv: list[str] | None = None) -> int:
                 archetype_filters=args.archetypes,
                 days=args.days,
                 source_filter=None if args.source_filter == "both" else args.source_filter,
+            )
+    elif args.command == "scrape-radars":
+        for format_name in args.formats:
+            _write_archetype_radar_snapshots(
+                output_root=output_root,
+                generated_at=generated_at,
+                recorder=recorder,
+                max_stale_hours=args.max_stale_hours,
+                format_name=format_name,
+                archetype_filters=args.archetypes,
+                max_decks=args.max_decks,
             )
     else:  # pragma: no cover
         parser.error(f"Unknown command: {args.command}")

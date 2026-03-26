@@ -47,8 +47,10 @@ Publisher outputs are written under `data/`:
 
 - `data/latest/` for stable consumer-facing pointers.
 - `data/latest/client-bundle.tar.gz` for single-request client bootstrap. The
-  bundle contains the stable `latest/` deck and metagame snapshots plus the
-  referenced `archive/deck-texts/` blobs.
+  bundle contains the stable `latest/` deck, radar, and metagame snapshots
+  plus the referenced `archive/deck-texts/` blobs.
+- `data/latest/radars/<format>/<archetype>.json` for published archetype radar
+  snapshots derived from published deck-text blobs.
 - `data/hourly/<timestamp>/` for hourly snapshots and run manifests.
 - `data/daily/<date>/` for daily metagame snapshots.
 - `data/archive/deck-texts/<format>/<deck-id>.json` for deduplicated per-deck
@@ -73,6 +75,7 @@ The headless publisher entrypoint is `python -m publisher.runner`.
 python -m publisher.runner --output-root data --timestamp 2026-03-23T12:00:00Z scrape-archetypes --format Modern
 python -m publisher.runner --output-root data --timestamp 2026-03-23T12:00:00Z scrape-decks --format Modern --archetype "Temur Rhinos" --days 7
 python -m publisher.runner --output-root data --timestamp 2026-03-23T12:00:00Z scrape-deck-texts --format Modern --archetype "Temur Rhinos" --days 7
+python -m publisher.runner --output-root data --timestamp 2026-03-23T12:00:00Z scrape-radars --format Modern --archetype "Temur Rhinos"
 python -m publisher.runner --output-root data --timestamp 2026-03-23T12:00:00Z scrape-metagame --format Modern --day 2026-03-23
 python -m publisher.retention --output-root data --timestamp 2026-03-23T18:00:00Z --retention-days 7
 ```
@@ -90,12 +93,17 @@ returns a non-zero exit code when freshness guarantees are violated.
 See [docs/publishing_workflows.md](docs/publishing_workflows.md) for the exact
 workflow behavior. In short:
 
-- Hourly publishing runs every two hours at minute `15`, fans out into one job
+- Decklist publishing runs hourly at minute `15`, fans out into one job
   per format, uploads per-format artifacts, then commits the merged result once
   after all format jobs finish. It writes deck metadata plus deck text blobs for
   `Modern`, `Standard`, `Pioneer`, `Legacy`, `Vintage`, and `Pauper`.
+- Radar publishing runs after a successful decklist workflow completion, fans
+  out into one job per format, and writes archetype radar snapshots under
+  `data/latest/radars/` plus matching hourly snapshots.
 - Daily metagame publishing runs at `02:45` UTC, which is `23:45` in
   `America/Sao_Paulo`, also as one job per format.
+- Client bundle publishing repackages the latest committed deck, radar,
+  metagame, and deck-text artifacts into `data/latest/client-bundle.tar.gz`.
 - Each format job has its own concurrency key, but only the final merge job
   pushes when `data/` changed.
 

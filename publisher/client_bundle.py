@@ -47,6 +47,7 @@ def collect_bundle_sources(output_root: Path) -> list[BundleSource]:
     grouped_patterns = (
         ("archetype_lists", "latest/archetypes/*.json"),
         ("archetype_decks", "latest/decks/**/*.json"),
+        ("archetype_radars", "latest/radars/**/*.json"),
         ("metagame_daily", "latest/metagame/*.json"),
         ("deck_text_blobs", "archive/deck-texts/**/*.json"),
     )

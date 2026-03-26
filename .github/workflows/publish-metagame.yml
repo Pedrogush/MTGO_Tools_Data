@@ -249,6 +249,15 @@ jobs:
                   archetype=normalize_name(archetype.get("name", path.stem)),
               )
 
+          for path in sorted((output_root / "latest" / "radars").rglob("*.json")):
+              payload = load_payload(path)
+              archetype = payload.get("archetype", {})
+              append_entry(
+                  "archetype_radars",
+                  path,
+                  archetype=normalize_name(archetype.get("name", path.stem)),
+              )
+
           for path in sorted((output_root / "latest" / "metagame").glob("*.json")):
               append_entry("metagame_daily", path)
 

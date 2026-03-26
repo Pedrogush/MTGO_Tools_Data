@@ -5,7 +5,6 @@ import sys
 import tarfile
 from pathlib import Path
 
-
 MODULE_PATH = Path(__file__).resolve().parents[1] / "publisher" / "client_bundle.py"
 MODULE_SPEC = importlib.util.spec_from_file_location("publisher_client_bundle", MODULE_PATH)
 assert MODULE_SPEC is not None and MODULE_SPEC.loader is not None
@@ -30,6 +29,10 @@ def test_build_client_bundle_includes_expected_paths(tmp_path):
         tmp_path / "latest" / "decks" / "modern" / "temur-rhinos.json",
         {"kind": "archetype_decks"},
     )
+    _write_json(
+        tmp_path / "latest" / "radars" / "modern" / "temur-rhinos.json",
+        {"kind": "archetype_radar"},
+    )
     _write_json(tmp_path / "latest" / "metagame" / "modern.json", {"kind": "metagame_daily"})
     _write_json(
         tmp_path / "archive" / "deck-texts" / "modern" / "123.json",
@@ -40,10 +43,11 @@ def test_build_client_bundle_includes_expected_paths(tmp_path):
     bundle_path = tmp_path / "latest" / "client-bundle.tar.gz"
 
     assert summary["bundle_path"] == bundle_path.as_posix()
-    assert summary["file_count"] == 5
+    assert summary["file_count"] == 6
     assert summary["counts"] == {
         "archetype_decks": 1,
         "archetype_lists": 1,
+        "archetype_radars": 1,
         "deck_text_blobs": 1,
         "latest_manifest": 1,
         "metagame_daily": 1,
@@ -55,6 +59,7 @@ def test_build_client_bundle_includes_expected_paths(tmp_path):
             "latest/latest.json",
             "latest/archetypes/modern.json",
             "latest/decks/modern/temur-rhinos.json",
+            "latest/radars/modern/temur-rhinos.json",
             "latest/metagame/modern.json",
             "archive/deck-texts/modern/123.json",
         ]

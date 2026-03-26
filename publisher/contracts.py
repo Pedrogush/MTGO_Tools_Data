@@ -10,6 +10,7 @@ SCHEMA_VERSION = "1"
 LATEST_MANIFEST_KIND = "latest_manifest"
 ARCHETYPE_LIST_KIND = "archetype_list"
 ARCHETYPE_DECKS_KIND = "archetype_decks"
+ARCHETYPE_RADAR_KIND = "archetype_radar"
 METAGAME_KIND = "metagame_daily"
 DECK_TEXTS_KIND = "deck_text_blob"
 RUN_MANIFEST_KIND = "publisher_run"
@@ -57,6 +58,7 @@ def build_latest_manifest(*, generated_at: str, retention_days: int) -> dict[str
         "latest": {
             "archetype_lists": [],
             "archetype_decks": [],
+            "archetype_radars": [],
             "metagame_daily": [],
             "deck_text_blobs": [],
             "runs": [],
@@ -112,6 +114,31 @@ def build_metagame_snapshot(
         "source": source,
         "generated_for_day": generated_for_day,
         "stats": [dict(item) for item in stats],
+    }
+
+
+def build_archetype_radar_snapshot(
+    *,
+    generated_at: str,
+    format_name: str,
+    archetype: Mapping[str, Any],
+    source: str,
+    total_decks_analyzed: int,
+    decks_failed: int,
+    mainboard_cards: Sequence[Mapping[str, Any]],
+    sideboard_cards: Sequence[Mapping[str, Any]],
+) -> dict[str, Any]:
+    return {
+        "schema_version": SCHEMA_VERSION,
+        "kind": ARCHETYPE_RADAR_KIND,
+        "generated_at": generated_at,
+        "format": format_name,
+        "source": source,
+        "archetype": dict(archetype),
+        "total_decks_analyzed": total_decks_analyzed,
+        "decks_failed": decks_failed,
+        "mainboard_cards": [dict(item) for item in mainboard_cards],
+        "sideboard_cards": [dict(item) for item in sideboard_cards],
     }
 
 
@@ -171,6 +198,7 @@ def validate_latest_manifest(payload: Any) -> dict[str, Any]:
     required_groups = {
         "archetype_lists",
         "archetype_decks",
+        "archetype_radars",
         "metagame_daily",
         "deck_text_blobs",
         "runs",
@@ -212,6 +240,53 @@ def validate_archetype_deck_snapshot(payload: Any) -> dict[str, Any]:
         _require_string(deck, "source", f"{ARCHETYPE_DECKS_KIND}.decks[]")
         if "deck_text_path" in deck:
             _require_string(deck, "deck_text_path", f"{ARCHETYPE_DECKS_KIND}.decks[]")
+    return dict(snapshot)
+
+
+def validate_archetype_radar_snapshot(payload: Any) -> dict[str, Any]:
+    snapshot = deepcopy(_validate_common_snapshot(payload, kind=ARCHETYPE_RADAR_KIND))
+    _require_string(snapshot, "source", ARCHETYPE_RADAR_KIND)
+    archetype = _require_mapping(snapshot.get("archetype"), f"{ARCHETYPE_RADAR_KIND}.archetype")
+    _require_string(archetype, "name", f"{ARCHETYPE_RADAR_KIND}.archetype")
+    _require_string(archetype, "href", f"{ARCHETYPE_RADAR_KIND}.archetype")
+
+    total_decks_analyzed = snapshot.get("total_decks_analyzed")
+    if not isinstance(total_decks_analyzed, int) or total_decks_analyzed < 0:
+        raise ValueError(f"{ARCHETYPE_RADAR_KIND}.total_decks_analyzed must be non-negative")
+
+    decks_failed = snapshot.get("decks_failed")
+    if not isinstance(decks_failed, int) or decks_failed < 0:
+        raise ValueError(f"{ARCHETYPE_RADAR_KIND}.decks_failed must be non-negative")
+
+    for zone in ("mainboard_cards", "sideboard_cards"):
+        cards = _require_sequence(snapshot, zone, ARCHETYPE_RADAR_KIND)
+        for entry in cards:
+            card = _require_mapping(entry, f"{ARCHETYPE_RADAR_KIND}.{zone}[]")
+            _require_string(card, "card_name", f"{ARCHETYPE_RADAR_KIND}.{zone}[]")
+            for key in ("appearances", "total_copies", "max_copies"):
+                value = card.get(key)
+                if not isinstance(value, int) or value < 0:
+                    raise ValueError(f"{ARCHETYPE_RADAR_KIND}.{zone}[].{key} must be non-negative")
+            for key in ("avg_copies", "inclusion_rate", "expected_copies"):
+                value = card.get(key)
+                if not isinstance(value, int | float):
+                    raise ValueError(f"{ARCHETYPE_RADAR_KIND}.{zone}[].{key} must be numeric")
+            distribution = _require_mapping(
+                card.get("copy_distribution"), f"{ARCHETYPE_RADAR_KIND}.{zone}[]"
+            )
+            for bucket, count in distribution.items():
+                if not isinstance(bucket, int | str):
+                    raise ValueError(
+                        f"{ARCHETYPE_RADAR_KIND}.{zone}[].copy_distribution keys must be int-like"
+                    )
+                if isinstance(bucket, str) and not bucket.isdigit():
+                    raise ValueError(
+                        f"{ARCHETYPE_RADAR_KIND}.{zone}[].copy_distribution keys must be int-like"
+                    )
+                if not isinstance(count, int) or count < 0:
+                    raise ValueError(
+                        f"{ARCHETYPE_RADAR_KIND}.{zone}[].copy_distribution values must be non-negative"
+                    )
     return dict(snapshot)
 
 

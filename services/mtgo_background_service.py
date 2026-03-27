@@ -232,13 +232,48 @@ def load_mtgo_deck_metadata(archetype: str, mtg_format: str) -> list[dict]:
         return []
 
 
+def _filter_entries_for_format_and_period(
+    entries: list[dict],
+    *,
+    start_date: datetime,
+    end_date: datetime,
+    mtg_format: str,
+) -> list[dict]:
+    events = []
+    for entry in entries:
+        if not entry.get("format"):
+            continue
+        if _normalize_format_token(entry["format"]) != _normalize_format_token(mtg_format):
+            continue
+        try:
+            publish_date_str = entry.get("publish_date", "")
+            if publish_date_str:
+                publish_date = datetime.fromisoformat(publish_date_str.replace("Z", "+00:00"))
+                if start_date <= publish_date <= end_date:
+                    events.append(
+                        {
+                            "url": entry["url"],
+                            "title": entry["title"],
+                            "date": entry["publish_date"],
+                            "event_type": entry.get("event_type", "unknown"),
+                        }
+                    )
+        except (ValueError, AttributeError):
+            pass
+    return events
+
+
 def fetch_mtgo_events_for_period(
-    start_date: datetime, end_date: datetime, mtg_format: str = "modern"
+    start_date: datetime,
+    end_date: datetime,
+    mtg_format: str = "modern",
+    preloaded_entries: list[dict] | None = None,
 ):
     """
     Fetch MTGO events between start_date and end_date.
 
-    Returns list of event URLs.
+    If preloaded_entries is provided, uses those instead of fetching from the network.
+    Returns list of event dicts with url, title, date, event_type.
     """
     if _mtgo_feature_disabled("skipping fetch_mtgo_events_for_period"):
         return []
@@ -246,6 +281,17 @@ def fetch_mtgo_events_for_period(
     logger.info(
         f"Fetching MTGO events for {mtg_format} from {start_date.date()} to {end_date.date()}"
     )
+
+    if preloaded_entries is not None:
+        events = _filter_entries_for_format_and_period(
+            preloaded_entries,
+            start_date=start_date,
+            end_date=end_date,
+            mtg_format=mtg_format,
+        )
+        logger.info(f"Total events found (preloaded index): {len(events)}")
+        return events
+
     events = []
     current_date = start_date
 
@@ -261,37 +307,15 @@ def fetch_mtgo_events_for_period(
                 f"fetch_decklist_index returned {len(entries)} total entries for {current_date.year}-{current_date.month:02d}"
             )
 
-            # Filter for the format and date range
-            matching_entries = 0
-            for entry in entries:
-                if not entry.get("format"):
-                    continue
-
-                if _normalize_format_token(entry["format"]) != _normalize_format_token(mtg_format):
-                    continue
-
-                # Parse publish date
-                try:
-                    publish_date_str = entry.get("publish_date", "")
-                    if publish_date_str:
-                        publish_date = datetime.fromisoformat(
-                            publish_date_str.replace("Z", "+00:00")
-                        )
-                        if start_date <= publish_date <= end_date:
-                            events.append(
-                                {
-                                    "url": entry["url"],
-                                    "title": entry["title"],
-                                    "date": entry["publish_date"],
-                                    "event_type": entry.get("event_type", "unknown"),
-                                }
-                            )
-                            matching_entries += 1
-                except (ValueError, AttributeError):
-                    pass
-
+            matching = _filter_entries_for_format_and_period(
+                entries,
+                start_date=start_date,
+                end_date=end_date,
+                mtg_format=mtg_format,
+            )
+            events.extend(matching)
             logger.info(
-                f"Found {matching_entries} {mtg_format} events in date range for {current_date.year}-{current_date.month:02d}"
+                f"Found {len(matching)} {mtg_format} events in date range for {current_date.year}-{current_date.month:02d}"
             )
 
             # Move to next month if needed

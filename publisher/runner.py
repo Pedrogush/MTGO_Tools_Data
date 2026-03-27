@@ -45,7 +45,7 @@ from publisher.layout import (
     write_json,
 )
 from scraping import ScrapingMetagameRepository, fetch_archetypes
-from scraping.mtgo import fetch_event
+from scraping.mtgo import fetch_event, fetch_event_index
 from services.radar_service import RadarService
 from services.mtgo_background_service import (
     build_mtgo_result_lookup,
@@ -70,7 +70,7 @@ STATUS_STALE_FALLBACK = "stale-fallback"
 STATUS_HARD_FAILURE = "hard-failure"
 HARD_FAILURE_STATES = {STATUS_HARD_FAILURE}
 DEFAULT_DECK_DOWNLOAD_DELAY_SECONDS = 0.0
-DEFAULT_MTGO_EVENT_DELAY_SECONDS = 0.5
+DEFAULT_MTGO_EVENT_DELAY_SECONDS = 3.0
 
 
 def _utc_now() -> str:
@@ -1042,6 +1042,29 @@ def _write_archetype_radar_snapshots(
     )
 
 
+def _fetch_mtgo_index(*, days: int, output_file: Path) -> None:
+    """Fetch MTGO decklist index pages for the given period and write combined entries to a file."""
+    end_date = datetime.now(UTC)
+    start_date = end_date - timedelta(days=days)
+    all_entries: list[dict[str, Any]] = []
+    seen_urls: set[str] = set()
+    current_date = start_date
+    while current_date <= end_date:
+        entries = fetch_event_index(current_date.year, current_date.month)
+        for entry in entries:
+            url = entry.get("url", "")
+            if url and url not in seen_urls:
+                seen_urls.add(url)
+                all_entries.append(entry)
+        if current_date.month == 12:
+            current_date = datetime(current_date.year + 1, 1, 1, tzinfo=UTC)
+        else:
+            current_date = datetime(current_date.year, current_date.month + 1, 1, tzinfo=UTC)
+    output_file.parent.mkdir(parents=True, exist_ok=True)
+    write_json(output_file, all_entries)
+    logger.info("Wrote MTGO index with {} entries to {}", len(all_entries), output_file)
+
+
 def _write_mtgo_decklist_snapshots(
     *,
     output_root: Path,
@@ -1051,6 +1074,7 @@ def _write_mtgo_decklist_snapshots(
     format_name: str,
     days: int,
     event_delay_seconds: float,
+    index_file: Path | None = None,
 ) -> None:
     normalized_format = normalize_name(format_name)
     latest_path = output_root / "latest" / "mtgo-decklists" / f"{normalized_format}.json"
@@ -1060,10 +1084,19 @@ def _write_mtgo_decklist_snapshots(
     start_date = end_date - timedelta(days=days)
 
     try:
+        preloaded_entries: list[dict[str, Any]] | None = None
+        if index_file is not None:
+            if index_file.exists():
+                preloaded_entries = json.loads(index_file.read_text(encoding="utf-8"))
+                logger.info("Using pre-fetched MTGO index with {} entries from {}", len(preloaded_entries), index_file)
+            else:
+                logger.warning("MTGO index file not found: {}; will fetch live.", index_file)
+
         events = fetch_mtgo_events_for_period(
             start_date=start_date,
             end_date=end_date,
             mtg_format=normalized_format,
+            preloaded_entries=preloaded_entries,
         )
         archived_events: list[dict[str, Any]] = []
 
@@ -1081,6 +1114,15 @@ def _write_mtgo_decklist_snapshots(
             try:
                 payload = fetch_event(event_url)
                 raw_decklists = payload.get("decklists", [])
+                if not raw_decklists:
+                    logger.warning("Event {} returned no decklists, skipping.", event_url)
+                    recorder.add(
+                        scope="mtgo-event",
+                        status=STATUS_SKIPPED,
+                        format_name=normalized_format,
+                        message=f"{event_url}: Event returned no decklists.",
+                    )
+                    continue
                 result_lookup = build_mtgo_result_lookup(payload)
                 clean_decks = [
                     parse_mtgo_deck(raw_deck, result_lookup=result_lookup) for raw_deck in raw_decklists
@@ -1275,6 +1317,11 @@ def build_parser() -> argparse.ArgumentParser:
         type=float,
         default=DEFAULT_MTGO_EVENT_DELAY_SECONDS,
     )
+    mtgo_decklists.add_argument("--index-file", type=Path, default=None)
+
+    mtgo_index = subparsers.add_parser("scrape-mtgo-index")
+    mtgo_index.add_argument("--days", type=int, default=MTGO_BACKGROUND_FETCH_DAYS)
+    mtgo_index.add_argument("--output-file", required=True)
 
     return parser
 
@@ -1359,7 +1406,14 @@ def main(argv: list[str] | None = None) -> int:
                 format_name=format_name,
                 days=args.days,
                 event_delay_seconds=args.event_delay_seconds,
+                index_file=args.index_file,
             )
+    elif args.command == "scrape-mtgo-index":
+        _fetch_mtgo_index(
+            days=args.days,
+            output_file=Path(args.output_file),
+        )
+        recorder.add(scope="mtgo-index", status=STATUS_SUCCESS, message=f"Wrote {args.output_file}")
     else:  # pragma: no cover
         parser.error(f"Unknown command: {args.command}")
 

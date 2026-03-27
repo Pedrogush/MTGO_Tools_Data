@@ -112,17 +112,6 @@ jobs:
           copy_path(data_root / "archive" / "deck-texts" / normalized_format)
           copy_path(data_root / "archive" / "mtgo-decklists" / normalized_format)
 
-          hourly_root = data_root / "hourly"
-          if hourly_root.exists():
-              for snapshot_dir in hourly_root.iterdir():
-                  if not snapshot_dir.is_dir():
-                      continue
-                  copy_path(snapshot_dir / "archetypes" / f"{normalized_format}.json")
-                  copy_path(snapshot_dir / "decks" / normalized_format)
-                  copy_path(snapshot_dir / "mtgo-decklists" / f"{normalized_format}.json")
-                  copy_path(snapshot_dir / "runs" / f"scrape-mtgo-decklists-{normalized_format}.json")
-                  copy_path(snapshot_dir / "runs" / f"scrape-deck-texts-{normalized_format}.json")
-
           metadata_path = artifact_root / ".artifact-format"
           metadata_path.write_text(f"{normalized_format}\n", encoding="utf-8")
           PY
@@ -261,20 +250,6 @@ jobs:
 
           copy_path(data_root / "latest" / "metagame" / f"{normalized_format}.json")
           copy_path(data_root / "latest" / "runs" / f"scrape-metagame-{normalized_format}.json")
-
-          daily_root = data_root / "daily"
-          if daily_root.exists():
-              for snapshot_dir in daily_root.iterdir():
-                  if not snapshot_dir.is_dir():
-                      continue
-                  copy_path(snapshot_dir / "metagame" / f"{normalized_format}.json")
-
-          hourly_root = data_root / "hourly"
-          if hourly_root.exists():
-              for snapshot_dir in hourly_root.iterdir():
-                  if not snapshot_dir.is_dir():
-                      continue
-                  copy_path(snapshot_dir / "runs" / f"scrape-metagame-{normalized_format}.json")
 
           metadata_path = artifact_root / ".artifact-format"
           metadata_path.write_text(f"{normalized_format}\n", encoding="utf-8")
@@ -422,15 +397,6 @@ jobs:
           copy_path(data_root / "latest" / "radars" / normalized_format)
           copy_path(data_root / "latest" / "card-pools" / f"{normalized_format}.json")
           copy_path(data_root / "latest" / "runs" / f"scrape-radars-{normalized_format}.json")
-
-          hourly_root = data_root / "hourly"
-          if hourly_root.exists():
-              for snapshot_dir in hourly_root.iterdir():
-                  if not snapshot_dir.is_dir():
-                      continue
-                  copy_path(snapshot_dir / "radars" / normalized_format)
-                  copy_path(snapshot_dir / "card-pools" / f"{normalized_format}.json")
-                  copy_path(snapshot_dir / "runs" / f"scrape-radars-{normalized_format}.json")
 
           metadata_path = artifact_root / ".artifact-format"
           metadata_path.write_text(f"{normalized_format}\n", encoding="utf-8")
@@ -637,6 +603,8 @@ jobs:
 
       - name: Commit changed published data
         run: |
+          rm -rf "$PUBLISH_OUTPUT_ROOT/daily" "$PUBLISH_OUTPUT_ROOT/hourly"
+
           if [ -z "$(git status --porcelain -- "$PUBLISH_OUTPUT_ROOT")" ]; then
             echo "No published data changes detected."
             exit 0
@@ -644,7 +612,7 @@ jobs:
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "$PUBLISH_OUTPUT_ROOT"
+          git add -A "$PUBLISH_OUTPUT_ROOT"
           git commit -m "Publish scrape snapshots"
 
           for attempt in 1 2 3; do

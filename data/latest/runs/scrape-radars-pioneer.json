@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-03-27T14:42:29Z",
+  "generated_at": "2026-03-27T17:36:10Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 26,
-    "success": 28
+    "skipped": 25,
+    "success": 30
   },
   "results": [
     {
@@ -51,11 +51,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "4c-scapeshift",
-      "path": "latest/radars/pioneer/4c-scapeshift.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pioneer/4c-scapeshift.json"
     },
     {
       "scope": "archetype-radar",
@@ -273,6 +272,13 @@
       "archetype": "jund-sacrifice",
       "path": "latest/radars/pioneer/jund-sacrifice.json",
       "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "mono-black-discard",
+      "path": "latest/radars/pioneer/mono-black-discard.json"
     },
     {
       "scope": "archetype-radar",

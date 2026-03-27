@@ -1,88 +1,20 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-03-27T18:29:54Z",
+  "generated_at": "2026-03-27T18:52:09Z",
   "command": "scrape-mtgo-decklists-pauper",
-  "status": "hard-failure",
+  "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 9,
-    "hard-failure": 2
+    "skipped": 1
   },
   "results": [
     {
-      "scope": "mtgo-event",
-      "status": "success",
-      "format": "pauper",
-      "path": "archive/mtgo-decklists/pauper/pauper-league-2026-03-2710405.json",
-      "message": "Cached 0/0 decks."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "success",
-      "format": "pauper",
-      "path": "archive/mtgo-decklists/pauper/pauper-challenge-32-2026-03-2612836740.json",
-      "message": "Cached 32/32 decks."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "success",
-      "format": "pauper",
-      "path": "archive/mtgo-decklists/pauper/pauper-league-2026-03-2610405.json",
-      "message": "Cached 22/22 decks."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "success",
-      "format": "pauper",
-      "path": "archive/mtgo-decklists/pauper/pauper-league-2026-03-2510405.json",
-      "message": "Cached 27/27 decks."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "success",
-      "format": "pauper",
-      "path": "archive/mtgo-decklists/pauper/pauper-league-2026-03-2410405.json",
-      "message": "Cached 27/27 decks."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "success",
-      "format": "pauper",
-      "path": "archive/mtgo-decklists/pauper/pauper-league-2026-03-2310405.json",
-      "message": "Cached 20/20 decks."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "success",
-      "format": "pauper",
-      "path": "archive/mtgo-decklists/pauper/pauper-challenge-32-2026-03-2212836012.json",
-      "message": "Cached 32/32 decks."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "hard-failure",
-      "format": "pauper",
-      "message": "https://www.mtgo.com/decklist/pauper-league-2026-03-2210405: Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "hard-failure",
-      "format": "pauper",
-      "message": "https://www.mtgo.com/decklist/pauper-challenge-32-2026-03-2112835994: Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "success",
-      "format": "pauper",
-      "path": "archive/mtgo-decklists/pauper/pauper-league-2026-03-2110405.json",
-      "message": "Cached 22/22 decks."
-    },
-    {
       "scope": "mtgo-decklists",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
-      "path": "latest/mtgo-decklists/pauper.json"
+      "path": "latest/mtgo-decklists/pauper.json",
+      "message": "No MTGO events matched the requested window."
     }
   ]
 }

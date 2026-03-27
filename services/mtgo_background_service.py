@@ -36,18 +36,72 @@ def _normalize_format_token(value: str | None) -> str:
     return "".join(ch for ch in (value or "").lower() if ch.isalnum())
 
 
-def parse_mtgo_deck(raw_deck: dict) -> dict:
+def _normalize_login_id(value: object) -> str | None:
+    if value is None:
+        return None
+    text = str(value).strip()
+    return text or None
+
+
+def _normalize_result_token(value: object) -> str:
+    if value is None:
+        return "?"
+    text = str(value).strip()
+    return text if text else "?"
+
+
+def _format_result(wins: str, losses: str) -> str:
+    if wins == "?" and losses == "?":
+        return "?"
+    return f"{wins}-{losses}"
+
+
+def build_mtgo_result_lookup(payload: dict) -> dict[str, tuple[str, str]]:
+    """Build login-id keyed win/loss records from an MTGO event payload."""
+    lookup: dict[str, tuple[str, str]] = {}
+
+    for row in payload.get("winloss", []):
+        if not isinstance(row, dict):
+            continue
+        login_id = _normalize_login_id(row.get("loginid"))
+        if not login_id:
+            continue
+        wins = _normalize_result_token(row.get("wins"))
+        losses = _normalize_result_token(row.get("losses"))
+        lookup[login_id] = (wins, losses)
+
+    for row in payload.get("decklists", []):
+        if not isinstance(row, dict):
+            continue
+        login_id = _normalize_login_id(row.get("loginid"))
+        if not login_id:
+            continue
+        wins_data = row.get("wins", {})
+        if isinstance(wins_data, dict):
+            wins = _normalize_result_token(wins_data.get("wins"))
+            losses = _normalize_result_token(wins_data.get("losses"))
+            if wins != "?" or losses != "?":
+                lookup[login_id] = (wins, losses)
+
+    return lookup
+
+
+def parse_mtgo_deck(raw_deck: dict, *, result_lookup: dict[str, tuple[str, str]] | None = None) -> dict:
     """Parse raw MTGO deck into clean simplified format."""
     deck_id = raw_deck.get("loginplayeventcourseid") or raw_deck.get("decktournamentid")
     player = raw_deck.get("player") or raw_deck.get("pilot") or "Unknown"
+    login_id = _normalize_login_id(raw_deck.get("loginid"))
 
-    wins_data = raw_deck.get("wins", {})
-    if isinstance(wins_data, dict):
-        wins = wins_data.get("wins", "5")
-        losses = wins_data.get("losses", "0")
+    if login_id and result_lookup and login_id in result_lookup:
+        wins, losses = result_lookup[login_id]
     else:
-        wins = "5"
-        losses = "0"
+        wins_data = raw_deck.get("wins", {})
+        if isinstance(wins_data, dict):
+            wins = _normalize_result_token(wins_data.get("wins"))
+            losses = _normalize_result_token(wins_data.get("losses"))
+        else:
+            wins = "?"
+            losses = "?"
 
     mainboard = []
     for card in raw_deck.get("main_deck", []):
@@ -68,6 +122,7 @@ def parse_mtgo_deck(raw_deck: dict) -> dict:
 
     return {
         "deck_id": deck_id,
+        "login_id": login_id,
         "player": player,
         "wins": wins,
         "losses": losses,
@@ -289,8 +344,9 @@ def process_mtgo_event(
 
         classifier = ArchetypeClassifier()
         deck_cache = get_deck_cache()
+        result_lookup = build_mtgo_result_lookup(payload)
 
-        clean_decks = [parse_mtgo_deck(raw_deck) for raw_deck in raw_decklists]
+        clean_decks = [parse_mtgo_deck(raw_deck, result_lookup=result_lookup) for raw_deck in raw_decklists]
         classifier_decks = [
             convert_deck_to_classifier_format(deck, mtg_format=mtg_format) for deck in clean_decks
         ]
@@ -314,9 +370,9 @@ def process_mtgo_event(
 
             archetype = classifier_deck.get("archetype", "Unknown")
             player = clean_deck.get("player", "Unknown")
-            wins = clean_deck.get("wins", "5")
-            losses = clean_deck.get("losses", "0")
-            result = f"{wins}-{losses}"
+            wins = _normalize_result_token(clean_deck.get("wins"))
+            losses = _normalize_result_token(clean_deck.get("losses"))
+            result = _format_result(wins, losses)
 
             deck_metadata = {
                 "number": deck_id,

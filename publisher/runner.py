@@ -48,6 +48,7 @@ from scraping import ScrapingMetagameRepository, fetch_archetypes
 from scraping.mtgo import fetch_event
 from services.radar_service import RadarService
 from services.mtgo_background_service import (
+    build_mtgo_result_lookup,
     convert_deck_to_classifier_format,
     deck_to_text,
     fetch_mtgo_events_for_period,
@@ -1080,7 +1081,10 @@ def _write_mtgo_decklist_snapshots(
             try:
                 payload = fetch_event(event_url)
                 raw_decklists = payload.get("decklists", [])
-                clean_decks = [parse_mtgo_deck(raw_deck) for raw_deck in raw_decklists]
+                result_lookup = build_mtgo_result_lookup(payload)
+                clean_decks = [
+                    parse_mtgo_deck(raw_deck, result_lookup=result_lookup) for raw_deck in raw_decklists
+                ]
                 classifier_decks = [
                     convert_deck_to_classifier_format(deck, mtg_format=normalized_format)
                     for deck in clean_decks
@@ -1100,19 +1104,20 @@ def _write_mtgo_decklist_snapshots(
                     if deck_cache.set(deck_id, deck_to_text(clean_deck), source="mtgo"):
                         decks_cached += 1
 
-                    wins = clean_deck.get("wins", "5")
-                    losses = clean_deck.get("losses", "0")
+                    wins = str(clean_deck.get("wins", "?")).strip() or "?"
+                    losses = str(clean_deck.get("losses", "?")).strip() or "?"
                     archetype = classifier_deck.get("archetype", "Unknown")
                     deck_metadata = {
                         "number": deck_id,
                         "date": event_date,
                         "event": event_title,
-                        "result": f"{wins}-{losses}",
+                        "result": "?" if wins == "?" and losses == "?" else f"{wins}-{losses}",
                         "player": clean_deck.get("player", "Unknown"),
                         "archetype": archetype,
                         "name": archetype,
                         "source": "mtgo",
                         "format": normalized_format,
+                        "deck_text": deck_to_text(clean_deck).rstrip("\n"),
                     }
                     save_mtgo_deck_metadata(archetype, normalized_format, deck_metadata)
                     deck_metadata_rows.append(deck_metadata)
@@ -1152,6 +1157,7 @@ def _write_mtgo_decklist_snapshots(
                         "decks_total": len(clean_decks),
                         "decks_cached": decks_cached,
                         "path": relative_archive_path,
+                        "decks": deck_metadata_rows,
                     }
                 )
                 if index < len(events) - 1 and event_delay_seconds > 0:

@@ -1,70 +1,63 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-03-27T16:33:08Z",
+  "generated_at": "2026-03-27T17:32:57Z",
   "command": "scrape-mtgo-decklists-standard",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "success": 9,
-    "hard-failure": 12
+    "hard-failure": 18,
+    "success": 2
   },
   "results": [
     {
       "scope": "mtgo-event",
-      "status": "success",
+      "status": "hard-failure",
       "format": "standard",
-      "path": "archive/mtgo-decklists/standard/standard-league-2026-03-2710429.json",
-      "message": "Cached 5/5 decks."
+      "message": "https://www.mtgo.com/decklist/standard-league-2026-03-2710429: Could not locate deck JSON payload"
     },
     {
       "scope": "mtgo-event",
-      "status": "success",
+      "status": "hard-failure",
       "format": "standard",
-      "path": "archive/mtgo-decklists/standard/standard-challenge-32-2026-03-2712836744.json",
-      "message": "Cached 32/32 decks."
+      "message": "https://www.mtgo.com/decklist/standard-challenge-32-2026-03-2712836744: Could not locate deck JSON payload"
     },
     {
       "scope": "mtgo-event",
-      "status": "success",
+      "status": "hard-failure",
       "format": "standard",
-      "path": "archive/mtgo-decklists/standard/standard-league-2026-03-2610429.json",
-      "message": "Cached 2/2 decks."
+      "message": "https://www.mtgo.com/decklist/standard-league-2026-03-2610429: Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "mtgo-event",
       "status": "success",
       "format": "standard",
       "path": "archive/mtgo-decklists/standard/standard-challenge-32-2026-03-2612836731.json",
-      "message": "Cached 32/32 decks."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "success",
-      "format": "standard",
-      "path": "archive/mtgo-decklists/standard/standard-last-chance-2026-03-2512836044.json",
-      "message": "Cached 32/32 decks."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "success",
-      "format": "standard",
-      "path": "archive/mtgo-decklists/standard/standard-league-2026-03-2510429.json",
       "message": "Cached 0/0 decks."
     },
     {
       "scope": "mtgo-event",
-      "status": "success",
+      "status": "hard-failure",
       "format": "standard",
-      "path": "archive/mtgo-decklists/standard/standard-challenge-64-2026-03-2412836039.json",
-      "message": "Cached 32/32 decks."
+      "message": "https://www.mtgo.com/decklist/standard-last-chance-2026-03-2512836044: Could not locate deck JSON payload"
     },
     {
       "scope": "mtgo-event",
-      "status": "success",
+      "status": "hard-failure",
       "format": "standard",
-      "path": "archive/mtgo-decklists/standard/standard-last-chance-2026-03-2412836033.json",
-      "message": "Cached 0/0 decks."
+      "message": "https://www.mtgo.com/decklist/standard-league-2026-03-2510429: Could not locate deck JSON payload"
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "hard-failure",
+      "format": "standard",
+      "message": "https://www.mtgo.com/decklist/standard-challenge-64-2026-03-2412836039: Could not locate deck JSON payload"
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "hard-failure",
+      "format": "standard",
+      "message": "https://www.mtgo.com/decklist/standard-last-chance-2026-03-2412836033: Could not locate deck JSON payload"
     },
     {
       "scope": "mtgo-event",
@@ -131,12 +124,6 @@
       "status": "hard-failure",
       "format": "standard",
       "message": "https://www.mtgo.com/decklist/standard-league-2026-03-2110429: Could not locate deck JSON payload"
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "hard-failure",
-      "format": "standard",
-      "message": "https://www.mtgo.com/decklist/standard-challenge-64-2026-03-2012835983: Could not locate deck JSON payload"
     },
     {
       "scope": "mtgo-decklists",

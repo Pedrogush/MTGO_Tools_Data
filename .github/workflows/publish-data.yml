@@ -160,6 +160,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       PUBLISH_RETENTION_DAYS: "7"
+      MTGO_DECKLISTS_ENABLED: "true"
       TZ: America/Sao_Paulo
     steps:
       - name: Check out repository
@@ -205,6 +206,7 @@ jobs:
       PUBLISH_OUTPUT_ROOT: data
       PUBLISH_RETENTION_DAYS: "7"
       PUBLISH_MTGO_EVENT_DELAY_SECONDS: "3"
+      MTGO_DECKLISTS_ENABLED: "true"
       TZ: America/Sao_Paulo
     concurrency:
       group: publish-data-mtgo-decklists-${{ github.ref }}-${{ matrix.format }}

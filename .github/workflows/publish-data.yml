@@ -23,8 +23,6 @@ jobs:
       PUBLISH_OUTPUT_ROOT: data
       PUBLISH_RETENTION_DAYS: "7"
       PUBLISH_DECK_DOWNLOAD_DELAY_SECONDS: "3"
-      PUBLISH_MTGO_EVENT_DELAY_SECONDS: "0.5"
-      MTGO_DECKLISTS_ENABLED: "true"
       TZ: America/Sao_Paulo
     concurrency:
       group: publish-data-decklists-${{ github.ref }}-${{ matrix.format }}
@@ -45,18 +43,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements-dev.txt
 
-      - name: Publish decklist and deck-text snapshots
+      - name: Publish deck-text snapshots
         id: publish
         run: |
           set +e
-          python -m publisher.runner \
-            --output-root "$PUBLISH_OUTPUT_ROOT" \
-            --retention-days "$PUBLISH_RETENTION_DAYS" \
-            scrape-mtgo-decklists \
-            --format "${{ matrix.format }}" \
-            --days "$PUBLISH_RETENTION_DAYS" \
-            --event-delay-seconds "$PUBLISH_MTGO_EVENT_DELAY_SECONDS"
-          mtgo_exit_code=$?
           python -m publisher.runner \
             --output-root "$PUBLISH_OUTPUT_ROOT" \
             --retention-days "$PUBLISH_RETENTION_DAYS" \
@@ -64,12 +54,7 @@ jobs:
             --format "${{ matrix.format }}" \
             --deck-download-delay-seconds "$PUBLISH_DECK_DOWNLOAD_DELAY_SECONDS" \
             --days "$PUBLISH_RETENTION_DAYS"
-          deck_exit_code=$?
-          if [ "$mtgo_exit_code" -ne 0 ] || [ "$deck_exit_code" -ne 0 ]; then
-            exit_code=1
-          else
-            exit_code=0
-          fi
+          exit_code=$?
           echo "exit_code=$exit_code" >> "$GITHUB_OUTPUT"
           exit 0
 
@@ -106,11 +91,8 @@ jobs:
 
           copy_path(data_root / "latest" / "archetypes" / f"{normalized_format}.json")
           copy_path(data_root / "latest" / "decks" / normalized_format)
-          copy_path(data_root / "latest" / "mtgo-decklists" / f"{normalized_format}.json")
-          copy_path(data_root / "latest" / "runs" / f"scrape-mtgo-decklists-{normalized_format}.json")
           copy_path(data_root / "latest" / "runs" / f"scrape-deck-texts-{normalized_format}.json")
           copy_path(data_root / "archive" / "deck-texts" / normalized_format)
-          copy_path(data_root / "archive" / "mtgo-decklists" / normalized_format)
 
           metadata_path = artifact_root / ".artifact-format"
           metadata_path.write_text(f"{normalized_format}\n", encoding="utf-8")
@@ -166,6 +148,146 @@ jobs:
                   print(json.dumps(failure, sort_keys=True))
               if len(failures) > 20:
                   print(f"... {len(failures) - 20} additional hard failures omitted")
+          PY
+
+      - name: Fail if freshness guarantees were violated
+        if: steps.publish.outputs.exit_code != '0'
+        run: |
+          echo "Publisher exited with code ${{ steps.publish.outputs.exit_code }}."
+          exit 1
+
+  publish-mtgo-decklists:
+    runs-on: ubuntu-latest
+    env:
+      PUBLISH_OUTPUT_ROOT: data
+      PUBLISH_RETENTION_DAYS: "7"
+      PUBLISH_MTGO_EVENT_DELAY_SECONDS: "3"
+      TZ: America/Sao_Paulo
+    concurrency:
+      group: publish-data-mtgo-decklists-${{ github.ref }}
+      cancel-in-progress: false
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-dev.txt
+
+      - name: Publish MTGO decklist snapshots sequentially by format
+        id: publish
+        run: |
+          set +e
+          exit_code=0
+          for format in Modern Standard Pioneer Legacy Vintage Pauper; do
+            python -m publisher.runner \
+              --output-root "$PUBLISH_OUTPUT_ROOT" \
+              --retention-days "$PUBLISH_RETENTION_DAYS" \
+              scrape-mtgo-decklists \
+              --format "$format" \
+              --days "$PUBLISH_RETENTION_DAYS" \
+              --event-delay-seconds "$PUBLISH_MTGO_EVENT_DELAY_SECONDS"
+            run_exit_code=$?
+            if [ "$run_exit_code" -ne 0 ]; then
+              exit_code=1
+            fi
+          done
+          echo "exit_code=$exit_code" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Package MTGO artifact
+        if: always()
+        run: |
+          python - <<'PY'
+          import os
+          import shutil
+          from pathlib import Path
+
+          from publisher.layout import normalize_name
+
+          data_root = Path(os.environ["PUBLISH_OUTPUT_ROOT"])
+          artifact_root = Path("artifact")
+          artifact_root.mkdir(parents=True, exist_ok=True)
+
+          def copy_path(path: Path) -> None:
+              if not path.exists():
+                  return
+              if path.is_dir():
+                  for child in path.rglob("*"):
+                      if child.is_file():
+                          destination = artifact_root / child.relative_to(data_root)
+                          destination.parent.mkdir(parents=True, exist_ok=True)
+                          shutil.copy2(child, destination)
+                  return
+              destination = artifact_root / path.relative_to(data_root)
+              destination.parent.mkdir(parents=True, exist_ok=True)
+              shutil.copy2(path, destination)
+
+          for format_name in ["Modern", "Standard", "Pioneer", "Legacy", "Vintage", "Pauper"]:
+              normalized_format = normalize_name(format_name)
+              copy_path(data_root / "latest" / "mtgo-decklists" / f"{normalized_format}.json")
+              copy_path(data_root / "latest" / "runs" / f"scrape-mtgo-decklists-{normalized_format}.json")
+              copy_path(data_root / "archive" / "mtgo-decklists" / normalized_format)
+          PY
+
+      - name: Upload MTGO artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: publish-data-decklists-mtgo
+          path: artifact
+          if-no-files-found: error
+
+      - name: Summarize MTGO run manifests
+        if: always()
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          from publisher.layout import normalize_name
+
+          data_root = Path(os.environ["PUBLISH_OUTPUT_ROOT"])
+          for format_name in ["Modern", "Standard", "Pioneer", "Legacy", "Vintage", "Pauper"]:
+              normalized_format = normalize_name(format_name)
+              run_manifest_path = (
+                  data_root / "latest" / "runs" / f"scrape-mtgo-decklists-{normalized_format}.json"
+              )
+              print(f"=== {format_name} ===")
+              if not run_manifest_path.exists():
+                  print(f"Run manifest not found: {run_manifest_path}")
+                  continue
+
+              payload = json.loads(run_manifest_path.read_text(encoding="utf-8"))
+              print(
+                  json.dumps(
+                      {
+                          "path": run_manifest_path.as_posix(),
+                          "status": payload.get("status"),
+                          "summary": payload.get("summary", {}),
+                      },
+                      indent=2,
+                  )
+              )
+
+              failures = [
+                  result for result in payload.get("results", []) if result.get("status") == "hard-failure"
+              ]
+              if failures:
+                  print("Hard failures:")
+                  for failure in failures[:20]:
+                      print(json.dumps(failure, sort_keys=True))
+                  if len(failures) > 20:
+                      print(f"... {len(failures) - 20} additional hard failures omitted")
           PY
 
       - name: Fail if freshness guarantees were violated
@@ -463,6 +585,7 @@ jobs:
   commit-published-data:
     needs:
       - publish-decklists
+      - publish-mtgo-decklists
       - publish-metagame
       - publish-radars
     if: always()
@@ -631,7 +754,7 @@ jobs:
           done
 
       - name: Fail if any format missed freshness guarantees
-        if: ${{ needs.publish-decklists.result != 'success' || needs.publish-metagame.result != 'success' || needs.publish-radars.result != 'success' }}
+        if: ${{ needs.publish-decklists.result != 'success' || needs.publish-mtgo-decklists.result != 'success' || needs.publish-metagame.result != 'success' || needs.publish-radars.result != 'success' }}
         run: |
           echo "One or more publish jobs failed freshness guarantees."
           exit 1

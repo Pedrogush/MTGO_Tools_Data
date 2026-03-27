@@ -6,6 +6,7 @@ from publisher.contracts import (
     build_format_card_pool_snapshot,
     build_latest_manifest,
     build_metagame_snapshot,
+    build_mtgo_decklists_snapshot,
     build_run_manifest,
     validate_archetype_deck_snapshot,
     validate_archetype_list_snapshot,
@@ -14,6 +15,7 @@ from publisher.contracts import (
     validate_format_card_pool_snapshot,
     validate_latest_manifest,
     validate_metagame_snapshot,
+    validate_mtgo_decklists_snapshot,
     validate_run_manifest,
 )
 
@@ -108,6 +110,20 @@ def test_contract_builders_validate_examples() -> None:
     )
     assert validate_run_manifest(run_manifest)["command"] == "scrape-decks"
 
+    mtgo_snapshot = build_mtgo_decklists_snapshot(
+        generated_at=TIMESTAMP,
+        format_name="modern",
+        source="mtgo.com",
+        days=7,
+        events=[
+            {
+                "id": "modern-challenge-64-2026-03-26",
+                "url": "https://www.mtgo.com/decklist/modern-challenge-64-2026-03-2612345678",
+            }
+        ],
+    )
+    assert validate_mtgo_decklists_snapshot(mtgo_snapshot)["events"][0]["id"].startswith("modern-")
+
 
 def test_latest_manifest_validates_with_all_categories() -> None:
     manifest = build_latest_manifest(generated_at=TIMESTAMP, retention_days=7)
@@ -145,6 +161,13 @@ def test_latest_manifest_validates_with_all_categories() -> None:
             "format": "modern",
             "deck_id": "123",
             "path": "archive/deck-texts/modern/123.json",
+            "updated_at": TIMESTAMP,
+        }
+    )
+    manifest["latest"]["mtgo_decklists"].append(
+        {
+            "format": "modern",
+            "path": "latest/mtgo-decklists/modern.json",
             "updated_at": TIMESTAMP,
         }
     )

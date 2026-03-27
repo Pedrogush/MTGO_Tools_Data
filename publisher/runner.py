@@ -10,6 +10,7 @@ from dataclasses import asdict
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlparse
 
 from loguru import logger
 
@@ -21,6 +22,7 @@ from publisher.contracts import (
     build_deck_text_blob,
     build_format_card_pool_snapshot,
     build_metagame_snapshot,
+    build_mtgo_decklists_snapshot,
     build_run_manifest,
     validate_archetype_deck_snapshot,
     validate_archetype_list_snapshot,
@@ -28,6 +30,7 @@ from publisher.contracts import (
     validate_deck_text_blob,
     validate_format_card_pool_snapshot,
     validate_metagame_snapshot,
+    validate_mtgo_decklists_snapshot,
     validate_run_manifest,
 )
 from publisher.layout import (
@@ -42,7 +45,19 @@ from publisher.layout import (
     write_json,
 )
 from scraping import ScrapingMetagameRepository, fetch_archetypes
+from scraping.mtgo import fetch_event
 from services.radar_service import RadarService
+from services.mtgo_background_service import (
+    build_mtgo_result_lookup,
+    convert_deck_to_classifier_format,
+    deck_to_text,
+    fetch_mtgo_events_for_period,
+    parse_mtgo_deck,
+    save_mtgo_deck_metadata,
+)
+from utils.archetype_classifier import ArchetypeClassifier
+from utils.constants import MTGO_BACKGROUND_FETCH_DAYS
+from utils.deck_text_cache import get_deck_cache
 
 try:
     from datetime import UTC
@@ -55,6 +70,7 @@ STATUS_STALE_FALLBACK = "stale-fallback"
 STATUS_HARD_FAILURE = "hard-failure"
 HARD_FAILURE_STATES = {STATUS_HARD_FAILURE}
 DEFAULT_DECK_DOWNLOAD_DELAY_SECONDS = 0.0
+DEFAULT_MTGO_EVENT_DELAY_SECONDS = 0.5
 
 
 def _utc_now() -> str:
@@ -155,6 +171,15 @@ def _filter_recent_decks(decks: list[dict[str, Any]], days: int | None) -> list[
 
 def _deck_text_archive_path(output_root: Path, format_name: str, deck_id: str) -> Path:
     return output_root / "archive" / "deck-texts" / format_name / f"{deck_id}.json"
+
+
+def _mtgo_event_archive_path(output_root: Path, format_name: str, event_id: str) -> Path:
+    return output_root / "archive" / "mtgo-decklists" / format_name / f"{event_id}.json"
+
+
+def _mtgo_event_id(event_url: str) -> str:
+    token = Path(urlparse(event_url).path).name or "unknown-event"
+    return normalize_name(token) or "unknown-event"
 
 
 def _with_deck_text_refs(
@@ -1017,6 +1042,192 @@ def _write_archetype_radar_snapshots(
     )
 
 
+def _write_mtgo_decklist_snapshots(
+    *,
+    output_root: Path,
+    generated_at: str,
+    recorder: RunRecorder,
+    max_stale_hours: int,
+    format_name: str,
+    days: int,
+    event_delay_seconds: float,
+) -> None:
+    normalized_format = normalize_name(format_name)
+    latest_path = output_root / "latest" / "mtgo-decklists" / f"{normalized_format}.json"
+    classifier = ArchetypeClassifier()
+    deck_cache = get_deck_cache()
+    end_date = datetime.now(UTC)
+    start_date = end_date - timedelta(days=days)
+
+    try:
+        events = fetch_mtgo_events_for_period(
+            start_date=start_date,
+            end_date=end_date,
+            mtg_format=normalized_format,
+        )
+        archived_events: list[dict[str, Any]] = []
+
+        for index, event in enumerate(events):
+            event_url = str(event.get("url", "")).strip()
+            if not event_url:
+                recorder.add(
+                    scope="mtgo-event",
+                    status=STATUS_HARD_FAILURE,
+                    format_name=normalized_format,
+                    message="Encountered MTGO event entry without URL.",
+                )
+                continue
+
+            try:
+                payload = fetch_event(event_url)
+                raw_decklists = payload.get("decklists", [])
+                result_lookup = build_mtgo_result_lookup(payload)
+                clean_decks = [
+                    parse_mtgo_deck(raw_deck, result_lookup=result_lookup) for raw_deck in raw_decklists
+                ]
+                classifier_decks = [
+                    convert_deck_to_classifier_format(deck, mtg_format=normalized_format)
+                    for deck in clean_decks
+                ]
+                classifier.assign_archetypes(classifier_decks, normalized_format)
+
+                event_date = payload.get("publish_date") or event.get("date") or generated_at
+                event_title = payload.get("title") or event.get("title") or "MTGO Event"
+                decks_cached = 0
+                deck_metadata_rows: list[dict[str, Any]] = []
+
+                for clean_deck, classifier_deck in zip(clean_decks, classifier_decks):
+                    deck_id = str(clean_deck.get("deck_id") or "").strip()
+                    if not deck_id:
+                        continue
+
+                    if deck_cache.set(deck_id, deck_to_text(clean_deck), source="mtgo"):
+                        decks_cached += 1
+
+                    wins = str(clean_deck.get("wins", "?")).strip() or "?"
+                    losses = str(clean_deck.get("losses", "?")).strip() or "?"
+                    archetype = classifier_deck.get("archetype", "Unknown")
+                    deck_metadata = {
+                        "number": deck_id,
+                        "date": event_date,
+                        "event": event_title,
+                        "result": "?" if wins == "?" and losses == "?" else f"{wins}-{losses}",
+                        "player": clean_deck.get("player", "Unknown"),
+                        "archetype": archetype,
+                        "name": archetype,
+                        "source": "mtgo",
+                        "format": normalized_format,
+                        "deck_text": deck_to_text(clean_deck).rstrip("\n"),
+                    }
+                    save_mtgo_deck_metadata(archetype, normalized_format, deck_metadata)
+                    deck_metadata_rows.append(deck_metadata)
+
+                event_id = _mtgo_event_id(event_url)
+                archive_path = _mtgo_event_archive_path(output_root, normalized_format, event_id)
+                event_snapshot = {
+                    "schema_version": "1",
+                    "kind": "mtgo_event_decklists",
+                    "generated_at": generated_at,
+                    "format": normalized_format,
+                    "event_id": event_id,
+                    "event_url": event_url,
+                    "event_title": event_title,
+                    "publish_date": event_date,
+                    "event_type": event.get("event_type", "unknown"),
+                    "decks_total": len(clean_decks),
+                    "decks_cached": decks_cached,
+                    "decks": deck_metadata_rows,
+                }
+                write_json(archive_path, event_snapshot)
+                relative_archive_path = relative_posix_path(archive_path, output_root)
+                recorder.add(
+                    scope="mtgo-event",
+                    status=STATUS_SUCCESS,
+                    format_name=normalized_format,
+                    path=relative_archive_path,
+                    message=f"Cached {decks_cached}/{len(clean_decks)} decks.",
+                )
+                archived_events.append(
+                    {
+                        "id": event_id,
+                        "url": event_url,
+                        "title": event_title,
+                        "publish_date": event_date,
+                        "event_type": event.get("event_type", "unknown"),
+                        "decks_total": len(clean_decks),
+                        "decks_cached": decks_cached,
+                        "path": relative_archive_path,
+                        "decks": deck_metadata_rows,
+                    }
+                )
+                if index < len(events) - 1 and event_delay_seconds > 0:
+                    time.sleep(event_delay_seconds)
+            except Exception as exc:  # noqa: BLE001
+                recorder.add(
+                    scope="mtgo-event",
+                    status=STATUS_HARD_FAILURE,
+                    format_name=normalized_format,
+                    message=f"{event_url}: {exc}",
+                )
+
+        if events and not archived_events:
+            raise RuntimeError(
+                "Failed to persist any MTGO events for this format; see run results for failures."
+            )
+
+        snapshot = build_mtgo_decklists_snapshot(
+            generated_at=generated_at,
+            format_name=normalized_format,
+            source="mtgo.com",
+            days=days,
+            events=archived_events,
+        )
+        validate_mtgo_decklists_snapshot(snapshot)
+        hourly_path = (
+            hourly_snapshot_dir(output_root, generated_at)
+            / "mtgo-decklists"
+            / f"{normalized_format}.json"
+        )
+        write_json(latest_path, snapshot)
+        write_json(hourly_path, snapshot)
+        update_latest_manifest(
+            output_root,
+            generated_at=generated_at,
+            retention_days=recorder.retention_days,
+            category="mtgo_decklists",
+            discriminator={"format": normalized_format},
+            relative_path=relative_posix_path(latest_path, output_root),
+        )
+        recorder.add(
+            scope="mtgo-decklists",
+            status=STATUS_SUCCESS if archived_events else STATUS_SKIPPED,
+            format_name=normalized_format,
+            path=relative_posix_path(latest_path, output_root),
+            message=(
+                "No MTGO events matched the requested window."
+                if not archived_events
+                else None
+            ),
+        )
+    except Exception as exc:  # noqa: BLE001
+        if _is_path_fresh(latest_path, generated_at=generated_at, max_stale_hours=max_stale_hours):
+            recorder.add(
+                scope="mtgo-decklists",
+                status=STATUS_STALE_FALLBACK,
+                format_name=normalized_format,
+                path=relative_posix_path(latest_path, output_root),
+                message=str(exc),
+            )
+            return
+        recorder.add(
+            scope="mtgo-decklists",
+            status=STATUS_HARD_FAILURE,
+            format_name=normalized_format,
+            path=relative_posix_path(latest_path, output_root),
+            message=str(exc),
+        )
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Headless scrape publisher")
     parser.add_argument("--output-root", default=str(DEFAULT_OUTPUT_ROOT))
@@ -1055,6 +1266,15 @@ def build_parser() -> argparse.ArgumentParser:
     radars.add_argument("--format", dest="formats", action="append", required=True)
     radars.add_argument("--archetype", dest="archetypes", action="append")
     radars.add_argument("--max-decks", type=int)
+
+    mtgo_decklists = subparsers.add_parser("scrape-mtgo-decklists")
+    mtgo_decklists.add_argument("--format", dest="formats", action="append", required=True)
+    mtgo_decklists.add_argument("--days", type=int, default=MTGO_BACKGROUND_FETCH_DAYS)
+    mtgo_decklists.add_argument(
+        "--event-delay-seconds",
+        type=float,
+        default=DEFAULT_MTGO_EVENT_DELAY_SECONDS,
+    )
 
     return parser
 
@@ -1128,6 +1348,17 @@ def main(argv: list[str] | None = None) -> int:
                 format_name=format_name,
                 archetype_filters=args.archetypes,
                 max_decks=args.max_decks,
+            )
+    elif args.command == "scrape-mtgo-decklists":
+        for format_name in args.formats:
+            _write_mtgo_decklist_snapshots(
+                output_root=output_root,
+                generated_at=generated_at,
+                recorder=recorder,
+                max_stale_hours=args.max_stale_hours,
+                format_name=format_name,
+                days=args.days,
+                event_delay_seconds=args.event_delay_seconds,
             )
     else:  # pragma: no cover
         parser.error(f"Unknown command: {args.command}")

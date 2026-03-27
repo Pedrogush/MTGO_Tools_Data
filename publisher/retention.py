@@ -164,6 +164,9 @@ def prune_output_tree(
     summary["deck_text_manifest_entries_removed"] = len(existing_deck_entries) - len(
         manifest["latest"]["deck_text_blobs"]
     )
+    manifest["latest"]["mtgo_decklists"] = _existing_entries(
+        output_root, manifest["latest"].get("mtgo_decklists", [])
+    )
 
     write_json(manifest_path, manifest)
     return summary

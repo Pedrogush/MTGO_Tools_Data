@@ -13,15 +13,38 @@ days="${PUBLISH_WARMUP_DAYS:-7}"
 output_root="${PUBLISH_OUTPUT_ROOT:-data}"
 retention_days="${PUBLISH_RETENTION_DAYS:-7}"
 deck_download_delay_seconds="${PUBLISH_DECK_DOWNLOAD_DELAY_SECONDS:-0.5}"
+mtgo_event_delay_seconds="${PUBLISH_MTGO_EVENT_DELAY_SECONDS:-0.5}"
+
+export MTGO_DECKLISTS_ENABLED="${MTGO_DECKLISTS_ENABLED:-true}"
 
 echo "Output root: $output_root"
 echo "Retention days: $retention_days"
 echo "Warmup window days: $days"
 echo "Deck download delay seconds: $deck_download_delay_seconds"
+echo "MTGO event delay seconds: $mtgo_event_delay_seconds"
+echo "MTGO decklists enabled: $MTGO_DECKLISTS_ENABLED"
 echo "Formats: ${formats[*]}"
 
 failed_formats=()
 for format in "${formats[@]}"; do
+  cmd=(
+    python3 -m publisher.runner
+    --output-root "$output_root"
+    --retention-days "$retention_days"
+    scrape-mtgo-decklists
+    --format "$format"
+    --days "$days"
+    --event-delay-seconds "$mtgo_event_delay_seconds"
+  )
+
+  echo
+  echo "Running MTGO ingest for format: $format"
+  echo "Command: ${cmd[*]}"
+  if ! "${cmd[@]}"; then
+    failed_formats+=("$format")
+    continue
+  fi
+
   cmd=(
     python3 -m publisher.runner
     --output-root "$output_root"

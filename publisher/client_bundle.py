@@ -50,7 +50,9 @@ def collect_bundle_sources(output_root: Path) -> list[BundleSource]:
         ("archetype_radars", "latest/radars/**/*.json"),
         ("format_card_pools", "latest/card-pools/*.json"),
         ("metagame_daily", "latest/metagame/*.json"),
+        ("mtgo_decklists", "latest/mtgo-decklists/*.json"),
         ("deck_text_blobs", "archive/deck-texts/**/*.json"),
+        ("mtgo_decklists", "archive/mtgo-decklists/**/*.json"),
     )
     for category, pattern in grouped_patterns:
         for path in _sorted_glob(output_root, pattern):

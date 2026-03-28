@@ -1,14 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-03-28T05:39:51Z",
+  "generated_at": "2026-03-28T06:36:50Z",
   "command": "scrape-mtgo-decklists-modern",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "success": 4,
-    "skipped": 2,
-    "hard-failure": 17
+    "success": 7,
+    "hard-failure": 15
   },
   "results": [
     {
@@ -27,9 +26,10 @@
     },
     {
       "scope": "mtgo-event",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
-      "message": "https://www.mtgo.com/decklist/modern-league-2026-03-2710397: Event returned no decklists."
+      "path": "archive/mtgo-decklists/modern/modern-league-2026-03-2710397.json",
+      "message": "Cached 51/51 decks."
     },
     {
       "scope": "mtgo-event",
@@ -52,21 +52,22 @@
     },
     {
       "scope": "mtgo-event",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "modern",
-      "message": "https://www.mtgo.com/decklist/modern-league-2026-03-2510397: Event returned no decklists."
+      "message": "https://www.mtgo.com/decklist/modern-league-2026-03-2510397: Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "mtgo-event",
       "status": "hard-failure",
       "format": "modern",
-      "message": "https://www.mtgo.com/decklist/modern-challenge-64-2026-03-2412836041: Could not locate deck JSON payload"
+      "message": "https://www.mtgo.com/decklist/modern-challenge-64-2026-03-2412836041: Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "mtgo-event",
-      "status": "hard-failure",
+      "status": "success",
       "format": "modern",
-      "message": "https://www.mtgo.com/decklist/modern-last-chance-2026-03-2412836036: Could not locate deck JSON payload"
+      "path": "archive/mtgo-decklists/modern/modern-last-chance-2026-03-2412836036.json",
+      "message": "Cached 32/32 decks."
     },
     {
       "scope": "mtgo-event",
@@ -76,21 +77,22 @@
     },
     {
       "scope": "mtgo-event",
-      "status": "hard-failure",
+      "status": "success",
       "format": "modern",
-      "message": "https://www.mtgo.com/decklist/modern-last-chance-2026-03-2312836029: Could not locate deck JSON payload"
+      "path": "archive/mtgo-decklists/modern/modern-last-chance-2026-03-2312836029.json",
+      "message": "Cached 32/32 decks."
     },
     {
       "scope": "mtgo-event",
       "status": "hard-failure",
       "format": "modern",
-      "message": "https://www.mtgo.com/decklist/modern-challenge-32-2026-03-2312836023: Could not locate deck JSON payload"
+      "message": "https://www.mtgo.com/decklist/modern-challenge-32-2026-03-2312836023: Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "mtgo-event",
       "status": "hard-failure",
       "format": "modern",
-      "message": "https://www.mtgo.com/decklist/modern-last-chance-2026-03-2312836020: Could not locate deck JSON payload"
+      "message": "https://www.mtgo.com/decklist/modern-last-chance-2026-03-2312836020: Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "mtgo-event",
@@ -139,12 +141,6 @@
       "status": "hard-failure",
       "format": "modern",
       "message": "https://www.mtgo.com/decklist/modern-showcase-challenge-2026-03-2112835952: Could not locate deck JSON payload"
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "hard-failure",
-      "format": "modern",
-      "message": "https://www.mtgo.com/decklist/modern-challenge-32-2026-03-2112835992: Could not locate deck JSON payload"
     },
     {
       "scope": "mtgo-decklists",

@@ -1,12 +1,12 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-03-28T21:24:37Z",
+  "generated_at": "2026-03-28T22:24:03Z",
   "command": "scrape-deck-texts-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 49,
+    "success": 50,
     "skipped": 450
   },
   "results": [
@@ -91,11 +91,10 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "cephalid-breakfast",
-      "path": "latest/decks/legacy/cephalid-breakfast.json",
-      "message": "No decks found within the last 7 days."
+      "path": "latest/decks/legacy/cephalid-breakfast.json"
     },
     {
       "scope": "archetype-decks",
@@ -3947,10 +3946,18 @@
     },
     {
       "scope": "deck-text",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "deck_id": "7705470",
-      "path": "archive/deck-texts/legacy/7705470.json"
+      "path": "archive/deck-texts/legacy/7705470.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "success",
+      "format": "legacy",
+      "deck_id": "7705529",
+      "path": "archive/deck-texts/legacy/7705529.json"
     }
   ]
 }

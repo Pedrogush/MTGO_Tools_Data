@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-03-28T01:55:25Z",
+  "generated_at": "2026-03-28T03:18:25Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 48,
-    "skipped": 12
+    "success": 46,
+    "skipped": 14
   },
   "results": [
     {
@@ -208,10 +208,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "green-cloudpost",
-      "path": "latest/radars/legacy/green-cloudpost.json"
+      "path": "latest/radars/legacy/green-cloudpost.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -222,10 +223,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "infect",
-      "path": "latest/radars/legacy/infect.json"
+      "path": "latest/radars/legacy/infect.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

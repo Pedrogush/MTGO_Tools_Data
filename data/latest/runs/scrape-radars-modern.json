@@ -1,23 +1,15 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-03-28T15:26:27Z",
+  "generated_at": "2026-03-28T16:27:42Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 13,
-    "success": 50
+    "success": 50,
+    "skipped": 12
   },
   "results": [
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "modern",
-      "archetype": "4c-scapeshift",
-      "path": "latest/radars/modern/4c-scapeshift.json",
-      "message": "No published decks were available for radar generation."
-    },
     {
       "scope": "archetype-radar",
       "status": "success",
@@ -52,6 +44,14 @@
       "format": "modern",
       "archetype": "azorius-genericblink",
       "path": "latest/radars/modern/azorius-genericblink.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "modern",
+      "archetype": "bant-midrange",
+      "path": "latest/radars/modern/bant-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -224,14 +224,6 @@
       "format": "modern",
       "archetype": "izzet-prowess",
       "path": "latest/radars/modern/izzet-prowess.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "modern",
-      "archetype": "izzet-splinter-twin",
-      "path": "latest/radars/modern/izzet-splinter-twin.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

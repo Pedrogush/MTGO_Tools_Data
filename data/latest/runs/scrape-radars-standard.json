@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-03-28T15:26:29Z",
+  "generated_at": "2026-03-28T16:27:47Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 38,
-    "skipped": 19
+    "success": 40,
+    "skipped": 17
   },
   "results": [
     {
@@ -114,11 +114,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
-      "archetype": "bant-omniscience",
-      "path": "latest/radars/standard/bant-omniscience.json",
-      "message": "No published decks were available for radar generation."
+      "archetype": "bant-gearhulk",
+      "path": "latest/radars/standard/bant-gearhulk.json"
     },
     {
       "scope": "archetype-radar",
@@ -220,14 +219,6 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "standard",
-      "archetype": "grixis-discard",
-      "path": "latest/radars/standard/grixis-discard.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "standard",
       "archetype": "grixis-monument",
       "path": "latest/radars/standard/grixis-monument.json",
       "message": "No published decks were available for radar generation."
@@ -288,6 +279,13 @@
       "format": "standard",
       "archetype": "izzet-spellementals",
       "path": "latest/radars/standard/izzet-spellementals.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "jeskai-artifacts",
+      "path": "latest/radars/standard/jeskai-artifacts.json"
     },
     {
       "scope": "archetype-radar",

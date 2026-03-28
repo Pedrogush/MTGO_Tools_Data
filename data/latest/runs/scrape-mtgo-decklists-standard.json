@@ -1,15 +1,21 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-03-28T18:25:59Z",
+  "generated_at": "2026-03-28T19:25:45Z",
   "command": "scrape-mtgo-decklists-standard",
-  "status": "hard-failure",
+  "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 16,
-    "hard-failure": 4
+    "success": 21
   },
   "results": [
+    {
+      "scope": "mtgo-event",
+      "status": "success",
+      "format": "standard",
+      "path": "archive/mtgo-decklists/standard/standard-challenge-32-2026-03-2812836767.json",
+      "message": "Cached 32/32 decks."
+    },
     {
       "scope": "mtgo-event",
       "status": "success",
@@ -96,27 +102,31 @@
     },
     {
       "scope": "mtgo-event",
-      "status": "hard-failure",
+      "status": "success",
       "format": "standard",
-      "message": "https://www.mtgo.com/decklist/standard-challenge-64-2026-03-2312836028: Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+      "path": "archive/mtgo-decklists/standard/standard-challenge-64-2026-03-2312836028.json",
+      "message": "Cached 32/32 decks."
     },
     {
       "scope": "mtgo-event",
-      "status": "hard-failure",
+      "status": "success",
       "format": "standard",
-      "message": "https://www.mtgo.com/decklist/standard-last-chance-2026-03-2312836024: Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+      "path": "archive/mtgo-decklists/standard/standard-last-chance-2026-03-2312836024.json",
+      "message": "Cached 32/32 decks."
     },
     {
       "scope": "mtgo-event",
-      "status": "hard-failure",
+      "status": "success",
       "format": "standard",
-      "message": "https://www.mtgo.com/decklist/standard-last-chance-2026-03-2312836019: Could not locate deck JSON payload"
+      "path": "archive/mtgo-decklists/standard/standard-last-chance-2026-03-2312836019.json",
+      "message": "Cached 32/32 decks."
     },
     {
       "scope": "mtgo-event",
-      "status": "hard-failure",
+      "status": "success",
       "format": "standard",
-      "message": "https://www.mtgo.com/decklist/standard-league-2026-03-2310429: Could not locate deck JSON payload"
+      "path": "archive/mtgo-decklists/standard/standard-league-2026-03-2310429.json",
+      "message": "Cached 13/13 decks."
     },
     {
       "scope": "mtgo-event",

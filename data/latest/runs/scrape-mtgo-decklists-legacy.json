@@ -1,13 +1,12 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-03-28T18:25:56Z",
+  "generated_at": "2026-03-28T19:25:53Z",
   "command": "scrape-mtgo-decklists-legacy",
-  "status": "hard-failure",
+  "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 14,
-    "hard-failure": 3
+    "success": 17
   },
   "results": [
     {
@@ -89,21 +88,24 @@
     },
     {
       "scope": "mtgo-event",
-      "status": "hard-failure",
+      "status": "success",
       "format": "legacy",
-      "message": "https://www.mtgo.com/decklist/legacy-last-chance-2026-03-2312836022: Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+      "path": "archive/mtgo-decklists/legacy/legacy-last-chance-2026-03-2312836022.json",
+      "message": "Cached 32/32 decks."
     },
     {
       "scope": "mtgo-event",
-      "status": "hard-failure",
+      "status": "success",
       "format": "legacy",
-      "message": "https://www.mtgo.com/decklist/legacy-league-2026-03-2310381: Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+      "path": "archive/mtgo-decklists/legacy/legacy-league-2026-03-2310381.json",
+      "message": "Cached 22/22 decks."
     },
     {
       "scope": "mtgo-event",
-      "status": "hard-failure",
+      "status": "success",
       "format": "legacy",
-      "message": "https://www.mtgo.com/decklist/legacy-challenge-32-2026-03-2212836011: Could not locate deck JSON payload"
+      "path": "archive/mtgo-decklists/legacy/legacy-challenge-32-2026-03-2212836011.json",
+      "message": "Cached 32/32 decks."
     },
     {
       "scope": "mtgo-event",

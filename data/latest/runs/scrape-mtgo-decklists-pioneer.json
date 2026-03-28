@@ -1,21 +1,21 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-03-28T06:36:45Z",
+  "generated_at": "2026-03-28T07:33:14Z",
   "command": "scrape-mtgo-decklists-pioneer",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "success": 6,
-    "hard-failure": 9
+    "hard-failure": 9,
+    "success": 3,
+    "skipped": 3
   },
   "results": [
     {
       "scope": "mtgo-event",
-      "status": "success",
+      "status": "hard-failure",
       "format": "pioneer",
-      "path": "archive/mtgo-decklists/pioneer/pioneer-league-2026-03-2810413.json",
-      "message": "Cached 1/1 decks."
+      "message": "https://www.mtgo.com/decklist/pioneer-league-2026-03-2810413: Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "mtgo-event",
@@ -26,48 +26,46 @@
     },
     {
       "scope": "mtgo-event",
+      "status": "skipped",
+      "format": "pioneer",
+      "message": "https://www.mtgo.com/decklist/pioneer-challenge-32-2026-03-2712836749: Event returned no decklists."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "hard-failure",
+      "format": "pioneer",
+      "message": "https://www.mtgo.com/decklist/pioneer-league-2026-03-2710413: Could not locate deck JSON payload"
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "hard-failure",
+      "format": "pioneer",
+      "message": "https://www.mtgo.com/decklist/pioneer-challenge-32-2026-03-2612836742: Could not locate deck JSON payload"
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "hard-failure",
+      "format": "pioneer",
+      "message": "https://www.mtgo.com/decklist/pioneer-league-2026-03-2610413: Could not locate deck JSON payload"
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "skipped",
+      "format": "pioneer",
+      "message": "https://www.mtgo.com/decklist/pioneer-league-2026-03-2510413: Event returned no decklists."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "hard-failure",
+      "format": "pioneer",
+      "message": "https://www.mtgo.com/decklist/pioneer-league-2026-03-2410413: Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    {
+      "scope": "mtgo-event",
       "status": "success",
       "format": "pioneer",
-      "path": "archive/mtgo-decklists/pioneer/pioneer-challenge-32-2026-03-2712836749.json",
+      "path": "archive/mtgo-decklists/pioneer/pioneer-challenge-32-2026-03-2312836030.json",
       "message": "Cached 32/32 decks."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "success",
-      "format": "pioneer",
-      "path": "archive/mtgo-decklists/pioneer/pioneer-league-2026-03-2710413.json",
-      "message": "Cached 5/5 decks."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "hard-failure",
-      "format": "pioneer",
-      "message": "https://www.mtgo.com/decklist/pioneer-challenge-32-2026-03-2612836742: Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "hard-failure",
-      "format": "pioneer",
-      "message": "https://www.mtgo.com/decklist/pioneer-league-2026-03-2610413: Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "hard-failure",
-      "format": "pioneer",
-      "message": "https://www.mtgo.com/decklist/pioneer-league-2026-03-2510413: Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "success",
-      "format": "pioneer",
-      "path": "archive/mtgo-decklists/pioneer/pioneer-league-2026-03-2410413.json",
-      "message": "Cached 7/7 decks."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "hard-failure",
-      "format": "pioneer",
-      "message": "https://www.mtgo.com/decklist/pioneer-challenge-32-2026-03-2312836030: Could not locate deck JSON payload"
     },
     {
       "scope": "mtgo-event",
@@ -83,9 +81,9 @@
     },
     {
       "scope": "mtgo-event",
-      "status": "hard-failure",
+      "status": "skipped",
       "format": "pioneer",
-      "message": "https://www.mtgo.com/decklist/pioneer-challenge-32-2026-03-2212836010: Could not locate deck JSON payload"
+      "message": "https://www.mtgo.com/decklist/pioneer-challenge-32-2026-03-2212836010: Event returned no decklists."
     },
     {
       "scope": "mtgo-event",

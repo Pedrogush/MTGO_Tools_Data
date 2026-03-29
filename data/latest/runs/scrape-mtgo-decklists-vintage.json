@@ -1,14 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-03-29T05:49:56Z",
+  "generated_at": "2026-03-29T06:41:17Z",
   "command": "scrape-mtgo-decklists-vintage",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 1,
-    "success": 14,
-    "hard-failure": 1
+    "success": 6,
+    "hard-failure": 9
   },
   "results": [
     {
@@ -26,51 +26,45 @@
     },
     {
       "scope": "mtgo-event",
-      "status": "success",
+      "status": "hard-failure",
       "format": "vintage",
-      "path": "archive/mtgo-decklists/vintage/vintage-league-2026-03-2810421.json",
-      "message": "Cached 3/3 decks."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "success",
-      "format": "vintage",
-      "path": "archive/mtgo-decklists/vintage/vintage-challenge-32-2026-03-2712836758.json",
-      "message": "Cached 32/32 decks."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "success",
-      "format": "vintage",
-      "path": "archive/mtgo-decklists/vintage/vintage-league-2026-03-2710421.json",
-      "message": "Cached 2/2 decks."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "success",
-      "format": "vintage",
-      "path": "archive/mtgo-decklists/vintage/vintage-challenge-32-2026-03-2612836737.json",
-      "message": "Cached 32/32 decks."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "success",
-      "format": "vintage",
-      "path": "archive/mtgo-decklists/vintage/vintage-league-2026-03-2610421.json",
-      "message": "Cached 7/7 decks."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "success",
-      "format": "vintage",
-      "path": "archive/mtgo-decklists/vintage/vintage-last-chance-2026-03-2512836045.json",
-      "message": "Cached 21/21 decks."
+      "message": "https://www.mtgo.com/decklist/vintage-league-2026-03-2810421: Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "mtgo-event",
       "status": "hard-failure",
       "format": "vintage",
-      "message": "https://www.mtgo.com/decklist/vintage-league-2026-03-2510421: Failed to perform, curl: (28) Operation timed out after 30003 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+      "message": "https://www.mtgo.com/decklist/vintage-challenge-32-2026-03-2712836758: Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "hard-failure",
+      "format": "vintage",
+      "message": "https://www.mtgo.com/decklist/vintage-league-2026-03-2710421: Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "hard-failure",
+      "format": "vintage",
+      "message": "https://www.mtgo.com/decklist/vintage-challenge-32-2026-03-2612836737: Could not locate deck JSON payload"
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "hard-failure",
+      "format": "vintage",
+      "message": "https://www.mtgo.com/decklist/vintage-league-2026-03-2610421: Could not locate deck JSON payload"
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "hard-failure",
+      "format": "vintage",
+      "message": "https://www.mtgo.com/decklist/vintage-last-chance-2026-03-2512836045: Could not locate deck JSON payload"
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "hard-failure",
+      "format": "vintage",
+      "message": "https://www.mtgo.com/decklist/vintage-league-2026-03-2510421: Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "mtgo-event",
@@ -88,17 +82,15 @@
     },
     {
       "scope": "mtgo-event",
-      "status": "success",
+      "status": "hard-failure",
       "format": "vintage",
-      "path": "archive/mtgo-decklists/vintage/vintage-league-2026-03-2410421.json",
-      "message": "Cached 6/6 decks."
+      "message": "https://www.mtgo.com/decklist/vintage-league-2026-03-2410421: Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "mtgo-event",
-      "status": "success",
+      "status": "hard-failure",
       "format": "vintage",
-      "path": "archive/mtgo-decklists/vintage/vintage-last-chance-2026-03-2312836027.json",
-      "message": "Cached 32/32 decks."
+      "message": "https://www.mtgo.com/decklist/vintage-last-chance-2026-03-2312836027: Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "mtgo-event",

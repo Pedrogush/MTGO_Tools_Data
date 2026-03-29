@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-03-29T15:24:38Z",
+  "generated_at": "2026-03-29T16:24:57Z",
   "command": "scrape-deck-texts-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 22,
-    "skipped": 218
+    "success": 21,
+    "skipped": 216
   },
   "results": [
     {
@@ -38,14 +38,6 @@
       "format": "pioneer",
       "archetype": "4c-legends",
       "path": "latest/decks/pioneer/4c-legends.json",
-      "message": "No decks found within the last 7 days."
-    },
-    {
-      "scope": "archetype-decks",
-      "status": "skipped",
-      "format": "pioneer",
-      "archetype": "4c-midrange",
-      "path": "latest/decks/pioneer/4c-midrange.json",
       "message": "No decks found within the last 7 days."
     },
     {
@@ -120,14 +112,6 @@
       "scope": "archetype-decks",
       "status": "skipped",
       "format": "pioneer",
-      "archetype": "azorius-rona-combo",
-      "path": "latest/decks/pioneer/azorius-rona-combo.json",
-      "message": "No decks found within the last 7 days."
-    },
-    {
-      "scope": "archetype-decks",
-      "status": "skipped",
-      "format": "pioneer",
       "archetype": "azorius-spirits",
       "path": "latest/decks/pioneer/azorius-spirits.json",
       "message": "No decks found within the last 7 days."
@@ -145,14 +129,6 @@
       "format": "pioneer",
       "archetype": "boros-heroic",
       "path": "latest/decks/pioneer/boros-heroic.json",
-      "message": "No decks found within the last 7 days."
-    },
-    {
-      "scope": "archetype-decks",
-      "status": "skipped",
-      "format": "pioneer",
-      "archetype": "boros-midrange",
-      "path": "latest/decks/pioneer/boros-midrange.json",
       "message": "No decks found within the last 7 days."
     },
     {
@@ -1902,10 +1878,11 @@
     },
     {
       "scope": "deck-text",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "deck_id": "7706414",
-      "path": "archive/deck-texts/pioneer/7706414.json"
+      "path": "archive/deck-texts/pioneer/7706414.json",
+      "message": "Reused existing published deck-text blob."
     }
   ]
 }

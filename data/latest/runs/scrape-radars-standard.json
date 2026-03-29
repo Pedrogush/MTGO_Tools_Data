@@ -1,7 +1,7 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-03-29T15:25:53Z",
+  "generated_at": "2026-03-29T16:26:48Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
@@ -222,6 +222,14 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "standard",
+      "archetype": "grixis-discard",
+      "path": "latest/radars/standard/grixis-discard.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "standard",
       "archetype": "grixis-monument",
       "path": "latest/radars/standard/grixis-monument.json",
       "message": "No published decks were available for radar generation."
@@ -284,14 +292,6 @@
       "format": "standard",
       "archetype": "izzet-spellementals",
       "path": "latest/radars/standard/izzet-spellementals.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "standard",
-      "archetype": "jeskai-artifacts",
-      "path": "latest/radars/standard/jeskai-artifacts.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

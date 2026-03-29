@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-03-29T15:24:33Z",
+  "generated_at": "2026-03-29T16:24:51Z",
   "command": "scrape-deck-texts-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "success": 51,
-    "skipped": 379
+    "skipped": 380
   },
   "results": [
     {
@@ -257,14 +257,6 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "jeskai-tempo",
-      "path": "latest/decks/legacy/jeskai-tempo.json",
-      "message": "No decks found within the last 7 days."
-    },
-    {
-      "scope": "archetype-decks",
       "status": "success",
       "format": "legacy",
       "archetype": "jund",
@@ -290,6 +282,13 @@
       "format": "legacy",
       "archetype": "loam-pox",
       "path": "latest/decks/legacy/loam-pox.json"
+    },
+    {
+      "scope": "archetype-decks",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "maverick",
+      "path": "latest/decks/legacy/maverick.json"
     },
     {
       "scope": "archetype-decks",
@@ -2914,6 +2913,13 @@
     },
     {
       "scope": "deck-text",
+      "status": "success",
+      "format": "legacy",
+      "deck_id": "7705042",
+      "path": "archive/deck-texts/legacy/7705042.json"
+    },
+    {
+      "scope": "deck-text",
       "status": "skipped",
       "format": "legacy",
       "deck_id": "7705043",
@@ -3386,17 +3392,19 @@
     },
     {
       "scope": "deck-text",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "deck_id": "7706408",
-      "path": "archive/deck-texts/legacy/7706408.json"
+      "path": "archive/deck-texts/legacy/7706408.json",
+      "message": "Reused existing published deck-text blob."
     },
     {
       "scope": "deck-text",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "deck_id": "7706409",
-      "path": "archive/deck-texts/legacy/7706409.json"
+      "path": "archive/deck-texts/legacy/7706409.json",
+      "message": "Reused existing published deck-text blob."
     }
   ]
 }

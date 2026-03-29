@@ -1,12 +1,12 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-03-29T15:24:37Z",
+  "generated_at": "2026-03-29T16:24:51Z",
   "command": "scrape-deck-texts-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 36,
+    "success": 39,
     "skipped": 306
   },
   "results": [
@@ -22,6 +22,14 @@
       "format": "pauper",
       "archetype": "4c-ephemerate",
       "path": "latest/decks/pauper/4c-ephemerate.json",
+      "message": "No decks found within the last 7 days."
+    },
+    {
+      "scope": "archetype-decks",
+      "status": "skipped",
+      "format": "pauper",
+      "archetype": "4c-reanimator",
+      "path": "latest/decks/pauper/4c-reanimator.json",
       "message": "No decks found within the last 7 days."
     },
     {
@@ -195,6 +203,14 @@
     },
     {
       "scope": "archetype-decks",
+      "status": "skipped",
+      "format": "pauper",
+      "archetype": "food-retriever-combo",
+      "path": "latest/decks/pauper/food-retriever-combo.json",
+      "message": "No decks found within the last 7 days."
+    },
+    {
+      "scope": "archetype-decks",
       "status": "success",
       "format": "pauper",
       "archetype": "glintblade",
@@ -214,14 +230,6 @@
       "format": "pauper",
       "archetype": "golgari-gardens",
       "path": "latest/decks/pauper/golgari-gardens.json"
-    },
-    {
-      "scope": "archetype-decks",
-      "status": "skipped",
-      "format": "pauper",
-      "archetype": "golgari-ponza",
-      "path": "latest/decks/pauper/golgari-ponza.json",
-      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
@@ -423,14 +431,6 @@
       "format": "pauper",
       "archetype": "spy-combo",
       "path": "latest/decks/pauper/spy-combo.json"
-    },
-    {
-      "scope": "archetype-decks",
-      "status": "skipped",
-      "format": "pauper",
-      "archetype": "storm",
-      "path": "latest/decks/pauper/storm.json",
-      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
@@ -2708,6 +2708,27 @@
       "deck_id": "7706323",
       "path": "archive/deck-texts/pauper/7706323.json",
       "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "success",
+      "format": "pauper",
+      "deck_id": "7706440",
+      "path": "archive/deck-texts/pauper/7706440.json"
+    },
+    {
+      "scope": "deck-text",
+      "status": "success",
+      "format": "pauper",
+      "deck_id": "7706441",
+      "path": "archive/deck-texts/pauper/7706441.json"
+    },
+    {
+      "scope": "deck-text",
+      "status": "success",
+      "format": "pauper",
+      "deck_id": "7706442",
+      "path": "archive/deck-texts/pauper/7706442.json"
     }
   ]
 }

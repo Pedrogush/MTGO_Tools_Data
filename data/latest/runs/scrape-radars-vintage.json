@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-03-29T01:55:41Z",
+  "generated_at": "2026-03-29T03:23:38Z",
   "command": "scrape-radars-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 20,
-    "skipped": 5
+    "success": 18,
+    "skipped": 7
   },
   "results": [
     {
@@ -149,10 +149,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "red-prison",
-      "path": "latest/radars/vintage/red-prison.json"
+      "path": "latest/radars/vintage/red-prison.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -178,10 +179,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "sultai-midrange",
-      "path": "latest/radars/vintage/sultai-midrange.json"
+      "path": "latest/radars/vintage/sultai-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "format-card-pool",

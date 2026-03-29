@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import re
+import time
 from collections.abc import Iterable
 from datetime import datetime
 from typing import Any
@@ -16,6 +17,7 @@ from loguru import logger
 from utils.constants import (
     MTGO_DECK_CACHE_FILE,
     MTGO_DECKLISTS_ENABLED,
+    MTGO_DECKLISTS_FETCH_RETRY_DELAYS_SECONDS,
     MTGO_DECKLISTS_REQUEST_TIMEOUT_SECONDS,
 )
 from utils.json_io import fast_decode, fast_load
@@ -42,11 +44,25 @@ def _save_cache(cache: dict[str, Any]) -> None:
 
 def _fetch_html(url: str) -> str:
     logger.debug(f"Fetching {url}")
-    response = requests.get(
-        url, impersonate="chrome", timeout=MTGO_DECKLISTS_REQUEST_TIMEOUT_SECONDS
-    )
-    response.raise_for_status()
-    return response.text
+    all_delays = (0.0, *MTGO_DECKLISTS_FETCH_RETRY_DELAYS_SECONDS)
+    last_exc: Exception | None = None
+    for attempt, delay in enumerate(all_delays, start=1):
+        if delay > 0:
+            logger.info(f"Retrying {url} (attempt {attempt}/{len(all_delays)}) after {delay}s")
+            time.sleep(delay)
+        try:
+            response = requests.get(
+                url, impersonate="chrome", timeout=MTGO_DECKLISTS_REQUEST_TIMEOUT_SECONDS
+            )
+            response.raise_for_status()
+            return response.text
+        except Exception as exc:
+            last_exc = exc
+            if attempt < len(all_delays):
+                logger.warning(f"Attempt {attempt}/{len(all_delays)} failed for {url}: {exc}")
+            else:
+                logger.error(f"All {len(all_delays)} attempts failed for {url}: {exc}")
+    raise last_exc  # type: ignore[misc]
 
 
 def _classify_event(title: str) -> tuple[str | None, str | None]:
@@ -148,11 +164,28 @@ def fetch_deck_event(url: str) -> dict[str, Any]:
     if url in deck_cache:
         return deck_cache[url]
 
-    html = _fetch_html(url)
-    payload = _parse_deck_event(html)
-    deck_cache[url] = payload
-    _save_cache(cache)
-    return payload
+    # _fetch_html already retries on network errors; here we additionally retry when
+    # the page is fetched successfully but parsing fails — this recovers from
+    # bot-protection pages that return 200 with HTML lacking the expected JSON payload.
+    all_delays = (0.0, *MTGO_DECKLISTS_FETCH_RETRY_DELAYS_SECONDS)
+    last_exc: Exception | None = None
+    for attempt, delay in enumerate(all_delays, start=1):
+        if delay > 0:
+            logger.info(f"Retrying parse of {url} (attempt {attempt}/{len(all_delays)}) after {delay}s")
+            time.sleep(delay)
+        html = _fetch_html(url)  # network errors propagate immediately (already retried inside)
+        try:
+            payload = _parse_deck_event(html)
+            deck_cache[url] = payload
+            _save_cache(cache)
+            return payload
+        except ValueError as exc:
+            last_exc = exc
+            if attempt < len(all_delays):
+                logger.warning(f"Parse attempt {attempt}/{len(all_delays)} failed for {url}: {exc}")
+            else:
+                logger.error(f"All {len(all_delays)} parse attempts failed for {url}: {exc}")
+    raise last_exc  # type: ignore[misc]
 
 
 def iter_deck_events(entries: Iterable[dict[str, Any]]) -> Iterable[dict[str, Any]]:

@@ -34,6 +34,9 @@ COLLECTION_BRIDGE_TIMEOUT_SECONDS = 60.0
 # External HTTP request timeouts
 MTGGOLDFISH_REQUEST_TIMEOUT_SECONDS = 30
 MTGO_DECKLISTS_REQUEST_TIMEOUT_SECONDS = 30
+
+# MTGO decklists fetch retry configuration (exponential backoff delays between attempts)
+MTGO_DECKLISTS_FETCH_RETRY_DELAYS_SECONDS = (2, 5, 15, 30)
 OPPONENT_TRACKER_REQUEST_TIMEOUT_SECONDS = 30
 
 # Opponent tracker timers

@@ -1205,12 +1205,45 @@ def _write_mtgo_decklist_snapshots(
                 if index < len(events) - 1 and event_delay_seconds > 0:
                     time.sleep(event_delay_seconds)
             except Exception as exc:  # noqa: BLE001
-                recorder.add(
-                    scope="mtgo-event",
-                    status=STATUS_HARD_FAILURE,
-                    format_name=normalized_format,
-                    message=f"{event_url}: {exc}",
-                )
+                event_id = _mtgo_event_id(event_url)
+                archive_path = _mtgo_event_archive_path(output_root, normalized_format, event_id)
+                if archive_path.exists():
+                    try:
+                        existing = json.loads(archive_path.read_text(encoding="utf-8"))
+                        archived_events.append(
+                            {
+                                "id": event_id,
+                                "url": event_url,
+                                "title": existing.get("event_title", "MTGO Event"),
+                                "publish_date": existing.get("publish_date", generated_at),
+                                "event_type": existing.get("event_type", "unknown"),
+                                "decks_total": existing.get("decks_total", 0),
+                                "decks_cached": existing.get("decks_cached", 0),
+                                "path": relative_posix_path(archive_path, output_root),
+                                "decks": existing.get("decks", []),
+                            }
+                        )
+                        recorder.add(
+                            scope="mtgo-event",
+                            status=STATUS_STALE_FALLBACK,
+                            format_name=normalized_format,
+                            path=relative_posix_path(archive_path, output_root),
+                            message=f"{event_url}: fetch failed, using existing archive. Error: {exc}",
+                        )
+                    except Exception:
+                        recorder.add(
+                            scope="mtgo-event",
+                            status=STATUS_HARD_FAILURE,
+                            format_name=normalized_format,
+                            message=f"{event_url}: {exc}",
+                        )
+                else:
+                    recorder.add(
+                        scope="mtgo-event",
+                        status=STATUS_HARD_FAILURE,
+                        format_name=normalized_format,
+                        message=f"{event_url}: {exc}",
+                    )
 
         if events and not archived_events:
             raise RuntimeError(

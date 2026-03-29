@@ -1,116 +1,20 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-03-29T07:36:47Z",
+  "generated_at": "2026-03-29T08:26:26Z",
   "command": "scrape-mtgo-decklists-vintage",
-  "status": "hard-failure",
+  "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "hard-failure": 2,
-    "success": 12,
     "skipped": 1
   },
   "results": [
     {
-      "scope": "mtgo-event",
-      "status": "hard-failure",
-      "format": "vintage",
-      "message": "https://www.mtgo.com/decklist/vintage-league-2026-03-2910421: Failed to perform, curl: (28) Operation timed out after 30001 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "success",
-      "format": "vintage",
-      "path": "archive/mtgo-decklists/vintage/vintage-challenge-32-2026-03-2812836770.json",
-      "message": "Cached 32/32 decks."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "success",
-      "format": "vintage",
-      "path": "archive/mtgo-decklists/vintage/vintage-league-2026-03-2810421.json",
-      "message": "Cached 3/3 decks."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "success",
-      "format": "vintage",
-      "path": "archive/mtgo-decklists/vintage/vintage-challenge-32-2026-03-2712836758.json",
-      "message": "Cached 32/32 decks."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "success",
-      "format": "vintage",
-      "path": "archive/mtgo-decklists/vintage/vintage-league-2026-03-2710421.json",
-      "message": "Cached 2/2 decks."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "success",
-      "format": "vintage",
-      "path": "archive/mtgo-decklists/vintage/vintage-challenge-32-2026-03-2612836737.json",
-      "message": "Cached 32/32 decks."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "hard-failure",
-      "format": "vintage",
-      "message": "https://www.mtgo.com/decklist/vintage-league-2026-03-2610421: Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "success",
-      "format": "vintage",
-      "path": "archive/mtgo-decklists/vintage/vintage-last-chance-2026-03-2512836045.json",
-      "message": "Cached 21/21 decks."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "success",
-      "format": "vintage",
-      "path": "archive/mtgo-decklists/vintage/vintage-league-2026-03-2510421.json",
-      "message": "Cached 1/1 decks."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "success",
-      "format": "vintage",
-      "path": "archive/mtgo-decklists/vintage/vintage-last-chance-2026-03-2412836042.json",
-      "message": "Cached 32/32 decks."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "success",
-      "format": "vintage",
-      "path": "archive/mtgo-decklists/vintage/vintage-last-chance-2026-03-2412836034.json",
-      "message": "Cached 32/32 decks."
-    },
-    {
-      "scope": "mtgo-event",
+      "scope": "mtgo-decklists",
       "status": "skipped",
       "format": "vintage",
-      "message": "https://www.mtgo.com/decklist/vintage-league-2026-03-2410421: Event returned no decklists."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "success",
-      "format": "vintage",
-      "path": "archive/mtgo-decklists/vintage/vintage-last-chance-2026-03-2312836027.json",
-      "message": "Cached 32/32 decks."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "success",
-      "format": "vintage",
-      "path": "archive/mtgo-decklists/vintage/vintage-league-2026-03-2310421.json",
-      "message": "Cached 2/2 decks."
-    },
-    {
-      "scope": "mtgo-decklists",
-      "status": "success",
-      "format": "vintage",
-      "path": "latest/mtgo-decklists/vintage.json"
+      "path": "latest/mtgo-decklists/vintage.json",
+      "message": "No MTGO events matched the requested window."
     }
   ]
 }

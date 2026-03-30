@@ -850,8 +850,7 @@ jobs:
           echo "One or more publish jobs failed freshness guarantees."
           exit 1
 
-  sync-published-data-to-main:
-    needs: ensure-publish-branch
+  sync-main-to-publish-branch:
     if: ${{ github.event_name == 'schedule' && github.event.schedule == '55 2 * * *' }}
     runs-on: ubuntu-latest
     steps:
@@ -859,29 +858,29 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          ref: ${{ env.PRIMARY_BRANCH }}
+          ref: ${{ env.PUBLISH_BRANCH }}
 
-      - name: Sync publish branch into primary branch
+      - name: Sync latest code from primary branch into publish branch
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           for attempt in 1 2 3; do
             git fetch origin "${PRIMARY_BRANCH}" "${PUBLISH_BRANCH}"
-            git checkout -B sync-target "origin/${PRIMARY_BRANCH}"
+            git checkout -B sync-target "origin/${PUBLISH_BRANCH}"
 
-            if ! git merge --no-edit "origin/${PUBLISH_BRANCH}"; then
+            if ! git merge --no-edit "origin/${PRIMARY_BRANCH}"; then
               git merge --abort || true
-              echo "Failed to merge ${PUBLISH_BRANCH} into ${PRIMARY_BRANCH}."
+              echo "Failed to merge ${PRIMARY_BRANCH} into ${PUBLISH_BRANCH}."
               exit 1
             fi
 
-            if git push origin HEAD:"${PRIMARY_BRANCH}"; then
+            if git push origin HEAD:"${PUBLISH_BRANCH}"; then
               exit 0
             fi
 
             if [ "$attempt" -eq 3 ]; then
-              echo "Failed to push ${PRIMARY_BRANCH} after $attempt attempts."
+              echo "Failed to push ${PUBLISH_BRANCH} after $attempt attempts."
               exit 1
             fi
 

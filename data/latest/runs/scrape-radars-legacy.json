@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-03-29T15:25:52Z",
+  "generated_at": "2026-03-30T11:41:30Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 49,
-    "skipped": 11
+    "success": 50,
+    "skipped": 10
   },
   "results": [
     {
@@ -48,11 +48,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "beseech-storm",
-      "path": "latest/radars/legacy/beseech-storm.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/beseech-storm.json"
     },
     {
       "scope": "archetype-radar",
@@ -63,11 +62,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "blue-cloudpost",
-      "path": "latest/radars/legacy/blue-cloudpost.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/blue-cloudpost.json"
     },
     {
       "scope": "archetype-radar",
@@ -143,17 +141,19 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "dimir-control",
-      "path": "latest/radars/legacy/dimir-control.json"
+      "path": "latest/radars/legacy/dimir-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "dimir-reanimator",
-      "path": "latest/radars/legacy/dimir-reanimator.json"
+      "path": "latest/radars/legacy/dimir-reanimator.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -251,14 +251,6 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "jeskai-tempo",
-      "path": "latest/radars/legacy/jeskai-tempo.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
       "archetype": "jund",
@@ -284,6 +276,13 @@
       "format": "legacy",
       "archetype": "loam-pox",
       "path": "latest/radars/legacy/loam-pox.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "maverick",
+      "path": "latest/radars/legacy/maverick.json"
     },
     {
       "scope": "archetype-radar",

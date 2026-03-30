@@ -4,6 +4,7 @@ on:
   workflow_dispatch:
   schedule:
     - cron: "15 * * * *"
+    - cron: "55 2 * * *"
 
 permissions:
   contents: write
@@ -12,8 +13,38 @@ concurrency:
   group: publish-data-workflow-${{ github.ref }}
   cancel-in-progress: false
 
+env:
+  PUBLISH_BRANCH: data-publish
+  PRIMARY_BRANCH: main
+
 jobs:
+  ensure-publish-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ env.PRIMARY_BRANCH }}
+
+      - name: Ensure publish branch exists and includes latest primary branch changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin "${PRIMARY_BRANCH}" "${PUBLISH_BRANCH}" || true
+
+          if git show-ref --verify --quiet "refs/remotes/origin/${PUBLISH_BRANCH}"; then
+            git switch --create "${PUBLISH_BRANCH}" "origin/${PUBLISH_BRANCH}"
+          else
+            git switch --create "${PUBLISH_BRANCH}" "origin/${PRIMARY_BRANCH}"
+          fi
+
+          git merge --no-edit "origin/${PRIMARY_BRANCH}"
+          git push origin HEAD:"${PUBLISH_BRANCH}"
+
   publish-decklists:
+    needs: ensure-publish-branch
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.schedule == '15 * * * *' }}
     strategy:
       fail-fast: false
       matrix:
@@ -32,6 +63,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: ${{ env.PUBLISH_BRANCH }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -157,6 +189,8 @@ jobs:
           exit 1
 
   fetch-mtgo-index:
+    needs: ensure-publish-branch
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.schedule == '15 * * * *' }}
     runs-on: ubuntu-latest
     env:
       PUBLISH_RETENTION_DAYS: "7"
@@ -167,6 +201,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: ${{ env.PUBLISH_BRANCH }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -196,7 +231,7 @@ jobs:
 
   publish-decklists-mtgo:
     needs: fetch-mtgo-index
-    if: always()
+    if: ${{ always() && (github.event_name == 'workflow_dispatch' || github.event.schedule == '15 * * * *') }}
     strategy:
       fail-fast: false
       matrix:
@@ -216,6 +251,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: ${{ env.PUBLISH_BRANCH }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -347,6 +383,8 @@ jobs:
           exit 1
 
   publish-metagame:
+    needs: ensure-publish-branch
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.schedule == '15 * * * *' }}
     strategy:
       fail-fast: false
       matrix:
@@ -364,6 +402,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: ${{ env.PUBLISH_BRANCH }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -487,7 +526,7 @@ jobs:
 
   publish-radars:
     needs: publish-decklists
-    if: always()
+    if: ${{ always() && (github.event_name == 'workflow_dispatch' || github.event.schedule == '15 * * * *') }}
     strategy:
       fail-fast: false
       matrix:
@@ -505,6 +544,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: ${{ env.PUBLISH_BRANCH }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -638,7 +678,7 @@ jobs:
       - publish-decklists-mtgo
       - publish-metagame
       - publish-radars
-    if: always()
+    if: ${{ always() && (github.event_name == 'workflow_dispatch' || github.event.schedule == '15 * * * *') }}
     runs-on: ubuntu-latest
     env:
       PUBLISH_OUTPUT_ROOT: data
@@ -649,6 +689,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: ${{ env.PUBLISH_BRANCH }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -789,7 +830,7 @@ jobs:
           git commit -m "Publish scrape snapshots"
 
           for attempt in 1 2 3; do
-            if git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin HEAD:"${GITHUB_REF_NAME}"; then
+            if git pull --rebase origin "${PUBLISH_BRANCH}" && git push origin HEAD:"${PUBLISH_BRANCH}"; then
               exit 0
             fi
 
@@ -808,3 +849,42 @@ jobs:
         run: |
           echo "One or more publish jobs failed freshness guarantees."
           exit 1
+
+  sync-published-data-to-main:
+    needs: ensure-publish-branch
+    if: ${{ github.event_name == 'schedule' && github.event.schedule == '55 2 * * *' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ env.PRIMARY_BRANCH }}
+
+      - name: Sync publish branch into primary branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          for attempt in 1 2 3; do
+            git fetch origin "${PRIMARY_BRANCH}" "${PUBLISH_BRANCH}"
+            git checkout -B sync-target "origin/${PRIMARY_BRANCH}"
+
+            if ! git merge --no-edit "origin/${PUBLISH_BRANCH}"; then
+              git merge --abort || true
+              echo "Failed to merge ${PUBLISH_BRANCH} into ${PRIMARY_BRANCH}."
+              exit 1
+            fi
+
+            if git push origin HEAD:"${PRIMARY_BRANCH}"; then
+              exit 0
+            fi
+
+            if [ "$attempt" -eq 3 ]; then
+              echo "Failed to push ${PRIMARY_BRANCH} after $attempt attempts."
+              exit 1
+            fi
+
+            echo "Retrying sync push after remote updates (attempt $attempt failed)."
+            sleep 5
+          done

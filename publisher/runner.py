@@ -65,6 +65,7 @@ except ImportError:  # pragma: no cover - Python 3.10 fallback
     UTC = timezone.utc  # noqa: UP017
 
 STATUS_SUCCESS = "success"
+STATUS_CACHED = "cached"
 STATUS_SKIPPED = "skipped"
 STATUS_STALE_FALLBACK = "stale-fallback"
 STATUS_HARD_FAILURE = "hard-failure"
@@ -277,9 +278,10 @@ class RunRecorder:
             relative_path=relative_posix_path(latest_path, self.output_root),
         )
         logger.info(
-            "Run {} summary: success={}, skipped={}, stale-fallback={}, hard-failure={}",
+            "Run {} summary: success={}, cached={}, skipped={}, stale-fallback={}, hard-failure={}",
             self.command,
             summary[STATUS_SUCCESS],
+            summary[STATUS_CACHED],
             summary[STATUS_SKIPPED],
             summary[STATUS_STALE_FALLBACK],
             summary[STATUS_HARD_FAILURE],
@@ -1111,6 +1113,45 @@ def _write_mtgo_decklist_snapshots(
                 )
                 continue
 
+            event_id = _mtgo_event_id(event_url)
+            archive_path = _mtgo_event_archive_path(output_root, normalized_format, event_id)
+            if archive_path.exists():
+                try:
+                    existing = json.loads(archive_path.read_text(encoding="utf-8"))
+                    decks = existing.get("decks", [])
+                    for deck in decks:
+                        deck_id = str(deck.get("number", "")).strip()
+                        deck_text = deck.get("deck_text", "")
+                        archetype = deck.get("archetype", "Unknown")
+                        if deck_id and deck_text:
+                            deck_cache.set(deck_id, deck_text, source="mtgo")
+                        save_mtgo_deck_metadata(archetype, normalized_format, deck)
+                    relative_archive_path = relative_posix_path(archive_path, output_root)
+                    archived_events.append(
+                        {
+                            "id": event_id,
+                            "url": event_url,
+                            "title": existing.get("event_title", "MTGO Event"),
+                            "publish_date": existing.get("publish_date", generated_at),
+                            "event_type": existing.get("event_type", "unknown"),
+                            "decks_total": existing.get("decks_total", 0),
+                            "decks_cached": existing.get("decks_cached", 0),
+                            "path": relative_archive_path,
+                            "decks": decks,
+                        }
+                    )
+                    recorder.add(
+                        scope="mtgo-event",
+                        status=STATUS_CACHED,
+                        format_name=normalized_format,
+                        path=relative_archive_path,
+                        message=f"Loaded {len(decks)} decks from archive.",
+                    )
+                except Exception as exc:
+                    logger.warning("Failed to load archive for {}: {}; will fetch live.", event_url, exc)
+                else:
+                    continue
+
             try:
                 payload = fetch_event(event_url)
                 raw_decklists = payload.get("decklists", [])
@@ -1164,8 +1205,6 @@ def _write_mtgo_decklist_snapshots(
                     save_mtgo_deck_metadata(archetype, normalized_format, deck_metadata)
                     deck_metadata_rows.append(deck_metadata)
 
-                event_id = _mtgo_event_id(event_url)
-                archive_path = _mtgo_event_archive_path(output_root, normalized_format, event_id)
                 event_snapshot = {
                     "schema_version": "1",
                     "kind": "mtgo_event_decklists",
@@ -1205,8 +1244,6 @@ def _write_mtgo_decklist_snapshots(
                 if index < len(events) - 1 and event_delay_seconds > 0:
                     time.sleep(event_delay_seconds)
             except Exception as exc:  # noqa: BLE001
-                event_id = _mtgo_event_id(event_url)
-                archive_path = _mtgo_event_archive_path(output_root, normalized_format, event_id)
                 if archive_path.exists():
                     try:
                         existing = json.loads(archive_path.read_text(encoding="utf-8"))

@@ -1,20 +1,87 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-03-30T01:55:32Z",
+  "generated_at": "2026-03-30T03:23:07Z",
   "command": "scrape-mtgo-decklists-pauper",
-  "status": "success",
+  "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 1
+    "hard-failure": 11,
+    "stale-fallback": 1
   },
   "results": [
     {
+      "scope": "mtgo-event",
+      "status": "hard-failure",
+      "format": "pauper",
+      "message": "https://www.mtgo.com/decklist/pauper-league-2026-03-3010405: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "hard-failure",
+      "format": "pauper",
+      "message": "https://www.mtgo.com/decklist/pauper-challenge-32-2026-03-2912836784: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "hard-failure",
+      "format": "pauper",
+      "message": "https://www.mtgo.com/decklist/pauper-league-2026-03-2910405: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "hard-failure",
+      "format": "pauper",
+      "message": "https://www.mtgo.com/decklist/pauper-challenge-32-2026-03-2812836765: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "hard-failure",
+      "format": "pauper",
+      "message": "https://www.mtgo.com/decklist/pauper-league-2026-03-2810405: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "hard-failure",
+      "format": "pauper",
+      "message": "https://www.mtgo.com/decklist/pauper-challenge-32-2026-03-2712836750: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "hard-failure",
+      "format": "pauper",
+      "message": "https://www.mtgo.com/decklist/pauper-league-2026-03-2710405: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "hard-failure",
+      "format": "pauper",
+      "message": "https://www.mtgo.com/decklist/pauper-challenge-32-2026-03-2612836740: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "hard-failure",
+      "format": "pauper",
+      "message": "https://www.mtgo.com/decklist/pauper-league-2026-03-2610405: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "hard-failure",
+      "format": "pauper",
+      "message": "https://www.mtgo.com/decklist/pauper-league-2026-03-2510405: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "hard-failure",
+      "format": "pauper",
+      "message": "https://www.mtgo.com/decklist/pauper-league-2026-03-2410405: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    {
       "scope": "mtgo-decklists",
-      "status": "skipped",
+      "status": "stale-fallback",
       "format": "pauper",
       "path": "latest/mtgo-decklists/pauper.json",
-      "message": "No MTGO events matched the requested window."
+      "message": "Failed to persist any MTGO events for this format; see run results for failures."
     }
   ]
 }

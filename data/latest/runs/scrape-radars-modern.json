@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-03-30T01:55:56Z",
+  "generated_at": "2026-03-30T03:24:54Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 48,
-    "skipped": 12
+    "success": 46,
+    "skipped": 14
   },
   "results": [
     {
@@ -91,10 +91,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "dimir-reanimator",
-      "path": "latest/radars/modern/dimir-reanimator.json"
+      "path": "latest/radars/modern/dimir-reanimator.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -305,10 +306,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "mono-green-tron",
-      "path": "latest/radars/modern/mono-green-tron.json"
+      "path": "latest/radars/modern/mono-green-tron.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

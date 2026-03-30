@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-03-30T01:56:01Z",
+  "generated_at": "2026-03-30T03:24:54Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 52,
-    "skipped": 8
+    "success": 50,
+    "skipped": 10
   },
   "results": [
     {
@@ -141,17 +141,19 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "dimir-control",
-      "path": "latest/radars/legacy/dimir-control.json"
+      "path": "latest/radars/legacy/dimir-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "dimir-reanimator",
-      "path": "latest/radars/legacy/dimir-reanimator.json"
+      "path": "latest/radars/legacy/dimir-reanimator.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

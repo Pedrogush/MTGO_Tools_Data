@@ -1,21 +1,22 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-03-30T01:56:03Z",
+  "generated_at": "2026-03-30T03:24:59Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 35,
-    "skipped": 22
+    "skipped": 25,
+    "success": 32
   },
   "results": [
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "4c-control",
-      "path": "latest/radars/standard/4c-control.json"
+      "path": "latest/radars/standard/4c-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -27,10 +28,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "4c-harmonizer-combo",
-      "path": "latest/radars/standard/4c-harmonizer-combo.json"
+      "path": "latest/radars/standard/4c-harmonizer-combo.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -144,10 +146,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "boros-momo",
-      "path": "latest/radars/standard/boros-momo.json"
+      "path": "latest/radars/standard/boros-momo.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

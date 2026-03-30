@@ -1,14 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-03-30T09:47:53Z",
+  "generated_at": "2026-03-30T10:43:03Z",
   "command": "scrape-mtgo-decklists-modern",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "success": 16,
-    "hard-failure": 5,
-    "skipped": 1
+    "success": 11,
+    "hard-failure": 8,
+    "skipped": 3
   },
   "results": [
     {
@@ -23,7 +23,7 @@
       "status": "success",
       "format": "modern",
       "path": "archive/mtgo-decklists/modern/modern-league-2026-03-3010397.json",
-      "message": "Cached 9/9 decks."
+      "message": "Cached 10/10 decks."
     },
     {
       "scope": "mtgo-event",
@@ -55,50 +55,46 @@
     },
     {
       "scope": "mtgo-event",
-      "status": "success",
+      "status": "hard-failure",
       "format": "modern",
-      "path": "archive/mtgo-decklists/modern/modern-showcase-qualifier-2026-03-2812836724.json",
-      "message": "Cached 32/32 decks."
+      "message": "https://www.mtgo.com/decklist/modern-showcase-qualifier-2026-03-2812836724: Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "mtgo-event",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
-      "path": "archive/mtgo-decklists/modern/modern-challenge-32-2026-03-2812836763.json",
-      "message": "Cached 32/32 decks."
+      "message": "https://www.mtgo.com/decklist/modern-challenge-32-2026-03-2812836763: Event returned no decklists."
     },
     {
       "scope": "mtgo-event",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
-      "path": "archive/mtgo-decklists/modern/modern-challenge-32-2026-03-2812836761.json",
-      "message": "Cached 32/32 decks."
+      "message": "https://www.mtgo.com/decklist/modern-challenge-32-2026-03-2812836761: Event returned no decklists."
     },
     {
       "scope": "mtgo-event",
       "status": "hard-failure",
       "format": "modern",
-      "message": "https://www.mtgo.com/decklist/modern-league-2026-03-2810397: Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+      "message": "https://www.mtgo.com/decklist/modern-league-2026-03-2810397: Could not locate deck JSON payload"
     },
     {
       "scope": "mtgo-event",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
-      "path": "archive/mtgo-decklists/modern/modern-challenge-64-2026-03-2712836826.json",
-      "message": "Cached 32/32 decks."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "success",
-      "format": "modern",
-      "path": "archive/mtgo-decklists/modern/modern-league-2026-03-2710397.json",
-      "message": "Cached 51/51 decks."
+      "message": "https://www.mtgo.com/decklist/modern-challenge-64-2026-03-2712836826: Event returned no decklists."
     },
     {
       "scope": "mtgo-event",
       "status": "hard-failure",
       "format": "modern",
-      "message": "https://www.mtgo.com/decklist/modern-challenge-64-2026-03-2612836735: Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+      "message": "https://www.mtgo.com/decklist/modern-league-2026-03-2710397: Could not locate deck JSON payload"
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "success",
+      "format": "modern",
+      "path": "archive/mtgo-decklists/modern/modern-challenge-64-2026-03-2612836735.json",
+      "message": "Cached 32/32 decks."
     },
     {
       "scope": "mtgo-event",
@@ -115,24 +111,21 @@
     },
     {
       "scope": "mtgo-event",
-      "status": "success",
+      "status": "hard-failure",
       "format": "modern",
-      "path": "archive/mtgo-decklists/modern/modern-league-2026-03-2510397.json",
-      "message": "Cached 46/46 decks."
+      "message": "https://www.mtgo.com/decklist/modern-league-2026-03-2510397: Failed to perform, curl: (28) Operation timed out after 30001 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "mtgo-event",
-      "status": "success",
+      "status": "hard-failure",
       "format": "modern",
-      "path": "archive/mtgo-decklists/modern/modern-challenge-64-2026-03-2412836041.json",
-      "message": "Cached 32/32 decks."
+      "message": "https://www.mtgo.com/decklist/modern-challenge-64-2026-03-2412836041: Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "mtgo-event",
-      "status": "success",
+      "status": "hard-failure",
       "format": "modern",
-      "path": "archive/mtgo-decklists/modern/modern-last-chance-2026-03-2412836036.json",
-      "message": "Cached 32/32 decks."
+      "message": "https://www.mtgo.com/decklist/modern-last-chance-2026-03-2412836036: Could not locate deck JSON payload"
     },
     {
       "scope": "mtgo-event",
@@ -142,15 +135,17 @@
     },
     {
       "scope": "mtgo-event",
-      "status": "hard-failure",
+      "status": "success",
       "format": "modern",
-      "message": "https://www.mtgo.com/decklist/modern-last-chance-2026-03-2312836029: Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+      "path": "archive/mtgo-decklists/modern/modern-last-chance-2026-03-2312836029.json",
+      "message": "Cached 32/32 decks."
     },
     {
       "scope": "mtgo-event",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
-      "message": "https://www.mtgo.com/decklist/modern-challenge-32-2026-03-2312836023: Event returned no decklists."
+      "path": "archive/mtgo-decklists/modern/modern-challenge-32-2026-03-2312836023.json",
+      "message": "Cached 32/32 decks."
     },
     {
       "scope": "mtgo-decklists",

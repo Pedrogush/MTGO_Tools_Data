@@ -1,14 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-03-30T08:49:04Z",
+  "generated_at": "2026-03-30T09:47:53Z",
   "command": "scrape-mtgo-decklists-standard",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "success": 11,
-    "hard-failure": 8,
-    "skipped": 1
+    "success": 16,
+    "hard-failure": 4
   },
   "results": [
     {
@@ -20,21 +19,24 @@
     },
     {
       "scope": "mtgo-event",
-      "status": "hard-failure",
+      "status": "success",
       "format": "standard",
-      "message": "https://www.mtgo.com/decklist/standard-challenge-32-2026-03-2912836787: Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+      "path": "archive/mtgo-decklists/standard/standard-challenge-32-2026-03-2912836787.json",
+      "message": "Cached 32/32 decks."
     },
     {
       "scope": "mtgo-event",
-      "status": "hard-failure",
+      "status": "success",
       "format": "standard",
-      "message": "https://www.mtgo.com/decklist/standard-showcase-qualifier-2026-03-2912836725: Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+      "path": "archive/mtgo-decklists/standard/standard-showcase-qualifier-2026-03-2912836725.json",
+      "message": "Cached 32/32 decks."
     },
     {
       "scope": "mtgo-event",
-      "status": "hard-failure",
+      "status": "success",
       "format": "standard",
-      "message": "https://www.mtgo.com/decklist/standard-league-2026-03-2910429: Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+      "path": "archive/mtgo-decklists/standard/standard-league-2026-03-2910429.json",
+      "message": "Cached 10/10 decks."
     },
     {
       "scope": "mtgo-event",
@@ -47,13 +49,14 @@
       "scope": "mtgo-event",
       "status": "hard-failure",
       "format": "standard",
-      "message": "https://www.mtgo.com/decklist/standard-challenge-32-2026-03-2812836762: Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+      "message": "https://www.mtgo.com/decklist/standard-challenge-32-2026-03-2812836762: Failed to perform, curl: (28) Operation timed out after 30003 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "mtgo-event",
-      "status": "hard-failure",
+      "status": "success",
       "format": "standard",
-      "message": "https://www.mtgo.com/decklist/standard-league-2026-03-2810429: Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+      "path": "archive/mtgo-decklists/standard/standard-league-2026-03-2810429.json",
+      "message": "Cached 13/13 decks."
     },
     {
       "scope": "mtgo-event",
@@ -64,9 +67,10 @@
     },
     {
       "scope": "mtgo-event",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
-      "message": "https://www.mtgo.com/decklist/standard-league-2026-03-1210429: Event returned no decklists."
+      "path": "archive/mtgo-decklists/standard/standard-league-2026-03-2710429.json",
+      "message": "Cached 7/7 decks."
     },
     {
       "scope": "mtgo-event",
@@ -76,9 +80,10 @@
     },
     {
       "scope": "mtgo-event",
-      "status": "hard-failure",
+      "status": "success",
       "format": "standard",
-      "message": "https://www.mtgo.com/decklist/standard-league-2026-03-1110429: Failed to perform, curl: (28) Operation timed out after 30001 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+      "path": "archive/mtgo-decklists/standard/standard-league-2026-03-2610429.json",
+      "message": "Cached 2/2 decks."
     },
     {
       "scope": "mtgo-event",
@@ -89,9 +94,10 @@
     },
     {
       "scope": "mtgo-event",
-      "status": "hard-failure",
+      "status": "success",
       "format": "standard",
-      "message": "https://www.mtgo.com/decklist/standard-last-chance-2026-03-1012836044: Could not locate deck JSON payload"
+      "path": "archive/mtgo-decklists/standard/standard-last-chance-2026-03-2512836044.json",
+      "message": "Cached 32/32 decks."
     },
     {
       "scope": "mtgo-event",
@@ -123,17 +129,15 @@
     },
     {
       "scope": "mtgo-event",
-      "status": "success",
+      "status": "hard-failure",
       "format": "standard",
-      "path": "archive/mtgo-decklists/standard/standard-challenge-64-2026-03-2312836028.json",
-      "message": "Cached 32/32 decks."
+      "message": "https://www.mtgo.com/decklist/standard-challenge-64-2026-03-2312836028: Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "mtgo-event",
-      "status": "success",
+      "status": "hard-failure",
       "format": "standard",
-      "path": "archive/mtgo-decklists/standard/standard-last-chance-2026-03-2312836024.json",
-      "message": "Cached 32/32 decks."
+      "message": "https://www.mtgo.com/decklist/standard-last-chance-2026-03-2312836024: Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "mtgo-decklists",

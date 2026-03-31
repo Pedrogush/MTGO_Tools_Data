@@ -78,6 +78,8 @@ def _classify_event(title: str) -> tuple[str | None, str | None]:
         event_type = "challenge"
     elif "preliminary" in title_lower:
         event_type = "preliminary"
+    elif "last chance" in title_lower:
+        event_type = "last_chance"
     elif "super qualifier" in title_lower:
         event_type = "super_qualifier"
     elif "qualifier" in title_lower:

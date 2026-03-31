@@ -158,10 +158,12 @@ def _is_path_fresh(path: Path, *, generated_at: str, max_stale_hours: int) -> bo
     return current_generated_at - existing_generated_at <= timedelta(hours=max_stale_hours)
 
 
-def _filter_recent_decks(decks: list[dict[str, Any]], days: int | None) -> list[dict[str, Any]]:
+def _filter_recent_decks(
+    decks: list[dict[str, Any]], days: int | None, *, reference_time: datetime | None = None
+) -> list[dict[str, Any]]:
     if days is None:
         return decks
-    cutoff = datetime.now() - timedelta(days=days)
+    cutoff = (reference_time or datetime.now(UTC)).replace(tzinfo=None) - timedelta(days=days)
     filtered: list[dict[str, Any]] = []
     for deck in decks:
         parsed = _parse_deck_date(deck.get("date", ""))
@@ -489,7 +491,9 @@ def _write_archetype_deck_snapshots(
                 force_refresh=True,
                 source_filter=source_filter,
             )
-            filtered_decks = _filter_recent_decks(decks, days)
+            filtered_decks = _filter_recent_decks(
+                decks, days, reference_time=_parse_generated_at(generated_at)
+            )
             if decks and days is not None and not filtered_decks:
                 snapshot = build_archetype_deck_snapshot(
                     generated_at=generated_at,

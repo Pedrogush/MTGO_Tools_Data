@@ -185,6 +185,25 @@ def _mtgo_event_id(event_url: str) -> str:
     return normalize_name(token) or "unknown-event"
 
 
+def _parse_deck_text_for_classifier(deck_text: str, mtg_format: str) -> dict:
+    """Parse a deck_text string into the format expected by ArchetypeClassifier."""
+    mainboard: list[dict[str, Any]] = []
+    sideboard: list[dict[str, Any]] = []
+    in_side = False
+    for line in deck_text.splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        if line.lower() == "sideboard":
+            in_side = True
+            continue
+        parts = line.split(" ", 1)
+        if len(parts) == 2 and parts[0].isdigit():
+            zone = sideboard if in_side else mainboard
+            zone.append({"name": parts[1].strip(), "count": int(parts[0])})
+    return {"mainboard": mainboard, "sideboard": sideboard, "format": mtg_format}
+
+
 def _with_deck_text_refs(
     decks: list[dict[str, Any]], *, output_root: Path, format_name: str
 ) -> list[dict[str, Any]]:
@@ -1123,6 +1142,22 @@ def _write_mtgo_decklist_snapshots(
                 try:
                     existing = json.loads(archive_path.read_text(encoding="utf-8"))
                     decks = existing.get("decks", [])
+                    # Re-classify archived decks from deck_text using current vendor data
+                    classifier_decks = [
+                        _parse_deck_text_for_classifier(deck.get("deck_text", ""), normalized_format)
+                        for deck in decks
+                    ]
+                    classifier.assign_archetypes(classifier_decks, normalized_format)
+                    archive_updated = False
+                    for deck, classifier_deck in zip(decks, classifier_decks):
+                        new_archetype = classifier_deck.get("archetype")
+                        if new_archetype and new_archetype != deck.get("archetype"):
+                            deck["archetype"] = new_archetype
+                            deck["name"] = new_archetype
+                            archive_updated = True
+                    if archive_updated:
+                        existing["decks"] = decks
+                        write_json(archive_path, existing)
                     for deck in decks:
                         deck_id = str(deck.get("number", "")).strip()
                         deck_text = deck.get("deck_text", "")

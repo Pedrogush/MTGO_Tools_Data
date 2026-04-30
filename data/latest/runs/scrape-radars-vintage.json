@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-04-30T15:53:23Z",
+  "generated_at": "2026-04-30T16:31:51Z",
   "command": "scrape-radars-vintage",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 11,
-    "hard-failure": 17
+    "hard-failure": 18
   },
   "results": [
     {
@@ -192,6 +192,14 @@
       "format": "vintage",
       "archetype": "prison-shops",
       "path": "latest/radars/vintage/prison-shops.json",
+      "message": "No deck texts were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "hard-failure",
+      "format": "vintage",
+      "archetype": "raker-shops",
+      "path": "latest/radars/vintage/raker-shops.json",
       "message": "No deck texts were available for radar generation."
     },
     {

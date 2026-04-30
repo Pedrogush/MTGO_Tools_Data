@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-04-30T15:53:09Z",
+  "generated_at": "2026-04-30T16:31:50Z",
   "command": "scrape-radars-pauper",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "hard-failure": 41,
-    "stale-fallback": 6,
+    "hard-failure": 44,
+    "stale-fallback": 5,
     "skipped": 12
   },
   "results": [
@@ -17,6 +17,14 @@
       "format": "pauper",
       "archetype": "4c-control",
       "path": "latest/radars/pauper/4c-control.json",
+      "message": "No deck texts were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "hard-failure",
+      "format": "pauper",
+      "archetype": "azorius-ephemerate",
+      "path": "latest/radars/pauper/azorius-ephemerate.json",
       "message": "No deck texts were available for radar generation."
     },
     {
@@ -61,7 +69,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "pauper",
       "archetype": "boros-synthesizer",
       "path": "latest/radars/pauper/boros-synthesizer.json",
@@ -153,6 +161,14 @@
       "format": "pauper",
       "archetype": "ephemerate-tron",
       "path": "latest/radars/pauper/ephemerate-tron.json",
+      "message": "No deck texts were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "hard-failure",
+      "format": "pauper",
+      "archetype": "esper-affinity",
+      "path": "latest/radars/pauper/esper-affinity.json",
       "message": "No deck texts were available for radar generation."
     },
     {

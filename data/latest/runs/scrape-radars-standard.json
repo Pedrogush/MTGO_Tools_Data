@@ -1,14 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-04-30T15:53:20Z",
+  "generated_at": "2026-04-30T16:31:50Z",
   "command": "scrape-radars-standard",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 25,
     "stale-fallback": 11,
-    "hard-failure": 33
+    "hard-failure": 34
   },
   "results": [
     {
@@ -81,6 +81,14 @@
       "format": "standard",
       "archetype": "5c-elementals",
       "path": "latest/radars/standard/5c-elementals.json",
+      "message": "No deck texts were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "hard-failure",
+      "format": "standard",
+      "archetype": "azorius-artifacts",
+      "path": "latest/radars/standard/azorius-artifacts.json",
       "message": "No deck texts were available for radar generation."
     },
     {
@@ -367,6 +375,14 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "standard",
+      "archetype": "mono-black-control",
+      "path": "latest/radars/standard/mono-black-control.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "standard",
       "archetype": "mono-black-midrange",
       "path": "latest/radars/standard/mono-black-midrange.json",
       "message": "No published decks were available for radar generation."
@@ -399,8 +415,8 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "standard",
-      "archetype": "mono-white-enchantments",
-      "path": "latest/radars/standard/mono-white-enchantments.json",
+      "archetype": "mono-white-midrange",
+      "path": "latest/radars/standard/mono-white-midrange.json",
       "message": "No published decks were available for radar generation."
     },
     {
@@ -409,14 +425,6 @@
       "format": "standard",
       "archetype": "mono-white-momo",
       "path": "latest/radars/standard/mono-white-momo.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "standard",
-      "archetype": "orzhov-control",
-      "path": "latest/radars/standard/orzhov-control.json",
       "message": "No published decks were available for radar generation."
     },
     {

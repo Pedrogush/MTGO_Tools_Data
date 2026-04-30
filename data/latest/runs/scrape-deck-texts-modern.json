@@ -1,13 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-04-30T12:51:22Z",
+  "generated_at": "2026-04-30T14:48:19Z",
   "command": "scrape-deck-texts-modern",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "success": 54,
+    "success": 51,
     "skipped": 7,
+    "stale-fallback": 3,
     "hard-failure": 617
   },
   "results": [
@@ -55,10 +56,11 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "modern",
       "archetype": "belcher",
-      "path": "latest/decks/modern/belcher.json"
+      "path": "latest/decks/modern/belcher.json",
+      "message": "Deck scrape returned no rows for Belcher"
     },
     {
       "scope": "archetype-decks",
@@ -161,10 +163,11 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "modern",
       "archetype": "goryo-s-vengeance",
-      "path": "latest/decks/modern/goryo-s-vengeance.json"
+      "path": "latest/decks/modern/goryo-s-vengeance.json",
+      "message": "Deck scrape returned no rows for Goryo's Vengeance"
     },
     {
       "scope": "archetype-decks",
@@ -289,10 +292,11 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "modern",
       "archetype": "living-end",
-      "path": "latest/decks/modern/living-end.json"
+      "path": "latest/decks/modern/living-end.json",
+      "message": "Deck scrape returned no rows for Living End"
     },
     {
       "scope": "archetype-decks",
@@ -650,7 +654,7 @@
       "format": "modern",
       "deck_id": "7749623",
       "path": "archive/deck-texts/modern/7749623.json",
-      "message": "Could not parse deck data for deck 7749623"
+      "message": "Failed to perform, curl: (56) Connection closed abruptly. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -778,7 +782,7 @@
       "format": "modern",
       "deck_id": "7750254",
       "path": "archive/deck-texts/modern/7750254.json",
-      "message": "Could not parse deck data for deck 7750254"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -794,7 +798,7 @@
       "format": "modern",
       "deck_id": "7750309",
       "path": "archive/deck-texts/modern/7750309.json",
-      "message": "Could not parse deck data for deck 7750309"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -818,7 +822,7 @@
       "format": "modern",
       "deck_id": "7750434",
       "path": "archive/deck-texts/modern/7750434.json",
-      "message": "Could not parse deck data for deck 7750434"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -834,7 +838,7 @@
       "format": "modern",
       "deck_id": "7750440",
       "path": "archive/deck-texts/modern/7750440.json",
-      "message": "Could not parse deck data for deck 7750440"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -874,7 +878,7 @@
       "format": "modern",
       "deck_id": "7750446",
       "path": "archive/deck-texts/modern/7750446.json",
-      "message": "Could not parse deck data for deck 7750446"
+      "message": "Failed to perform, curl: (56) Connection closed abruptly. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -986,7 +990,7 @@
       "format": "modern",
       "deck_id": "7750635",
       "path": "archive/deck-texts/modern/7750635.json",
-      "message": "Could not parse deck data for deck 7750635"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -1490,7 +1494,7 @@
       "format": "modern",
       "deck_id": "7752042",
       "path": "archive/deck-texts/modern/7752042.json",
-      "message": "Could not parse deck data for deck 7752042"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -1578,7 +1582,7 @@
       "format": "modern",
       "deck_id": "7752057",
       "path": "archive/deck-texts/modern/7752057.json",
-      "message": "Could not parse deck data for deck 7752057"
+      "message": "Failed to perform, curl: (56) Connection closed abruptly. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -1714,7 +1718,7 @@
       "format": "modern",
       "deck_id": "7752684",
       "path": "archive/deck-texts/modern/7752684.json",
-      "message": "Could not parse deck data for deck 7752684"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -1730,7 +1734,7 @@
       "format": "modern",
       "deck_id": "7752688",
       "path": "archive/deck-texts/modern/7752688.json",
-      "message": "Could not parse deck data for deck 7752688"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -1778,7 +1782,7 @@
       "format": "modern",
       "deck_id": "7752695",
       "path": "archive/deck-texts/modern/7752695.json",
-      "message": "Could not parse deck data for deck 7752695"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -1802,7 +1806,7 @@
       "format": "modern",
       "deck_id": "7752699",
       "path": "archive/deck-texts/modern/7752699.json",
-      "message": "Could not parse deck data for deck 7752699"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -1818,7 +1822,7 @@
       "format": "modern",
       "deck_id": "7752701",
       "path": "archive/deck-texts/modern/7752701.json",
-      "message": "Could not parse deck data for deck 7752701"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -1866,7 +1870,7 @@
       "format": "modern",
       "deck_id": "7752967",
       "path": "archive/deck-texts/modern/7752967.json",
-      "message": "Could not parse deck data for deck 7752967"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -2058,7 +2062,7 @@
       "format": "modern",
       "deck_id": "7753038",
       "path": "archive/deck-texts/modern/7753038.json",
-      "message": "Could not parse deck data for deck 7753038"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -2090,7 +2094,7 @@
       "format": "modern",
       "deck_id": "7753042",
       "path": "archive/deck-texts/modern/7753042.json",
-      "message": "Could not parse deck data for deck 7753042"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -2138,7 +2142,7 @@
       "format": "modern",
       "deck_id": "7753921",
       "path": "archive/deck-texts/modern/7753921.json",
-      "message": "Could not parse deck data for deck 7753921"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -2146,7 +2150,7 @@
       "format": "modern",
       "deck_id": "7753922",
       "path": "archive/deck-texts/modern/7753922.json",
-      "message": "Could not parse deck data for deck 7753922"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -2162,7 +2166,7 @@
       "format": "modern",
       "deck_id": "7754014",
       "path": "archive/deck-texts/modern/7754014.json",
-      "message": "Could not parse deck data for deck 7754014"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -2202,7 +2206,7 @@
       "format": "modern",
       "deck_id": "7754020",
       "path": "archive/deck-texts/modern/7754020.json",
-      "message": "Could not parse deck data for deck 7754020"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -2226,7 +2230,7 @@
       "format": "modern",
       "deck_id": "7754023",
       "path": "archive/deck-texts/modern/7754023.json",
-      "message": "Could not parse deck data for deck 7754023"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -2274,7 +2278,7 @@
       "format": "modern",
       "deck_id": "7754030",
       "path": "archive/deck-texts/modern/7754030.json",
-      "message": "Could not parse deck data for deck 7754030"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -2506,7 +2510,7 @@
       "format": "modern",
       "deck_id": "7754203",
       "path": "archive/deck-texts/modern/7754203.json",
-      "message": "Could not parse deck data for deck 7754203"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -2522,7 +2526,7 @@
       "format": "modern",
       "deck_id": "7754206",
       "path": "archive/deck-texts/modern/7754206.json",
-      "message": "Could not parse deck data for deck 7754206"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -2650,7 +2654,7 @@
       "format": "modern",
       "deck_id": "7754223",
       "path": "archive/deck-texts/modern/7754223.json",
-      "message": "Could not parse deck data for deck 7754223"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -2666,7 +2670,7 @@
       "format": "modern",
       "deck_id": "7754225",
       "path": "archive/deck-texts/modern/7754225.json",
-      "message": "Could not parse deck data for deck 7754225"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -2682,7 +2686,7 @@
       "format": "modern",
       "deck_id": "7754265",
       "path": "archive/deck-texts/modern/7754265.json",
-      "message": "Could not parse deck data for deck 7754265"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30001 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -2698,7 +2702,7 @@
       "format": "modern",
       "deck_id": "7754267",
       "path": "archive/deck-texts/modern/7754267.json",
-      "message": "Could not parse deck data for deck 7754267"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -2754,7 +2758,7 @@
       "format": "modern",
       "deck_id": "7754278",
       "path": "archive/deck-texts/modern/7754278.json",
-      "message": "Could not parse deck data for deck 7754278"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -2842,7 +2846,7 @@
       "format": "modern",
       "deck_id": "7754293",
       "path": "archive/deck-texts/modern/7754293.json",
-      "message": "Could not parse deck data for deck 7754293"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -2962,7 +2966,7 @@
       "format": "modern",
       "deck_id": "7754375",
       "path": "archive/deck-texts/modern/7754375.json",
-      "message": "Could not parse deck data for deck 7754375"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -3050,7 +3054,7 @@
       "format": "modern",
       "deck_id": "7754387",
       "path": "archive/deck-texts/modern/7754387.json",
-      "message": "Could not parse deck data for deck 7754387"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30001 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -3066,7 +3070,7 @@
       "format": "modern",
       "deck_id": "7754389",
       "path": "archive/deck-texts/modern/7754389.json",
-      "message": "Could not parse deck data for deck 7754389"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -3090,7 +3094,7 @@
       "format": "modern",
       "deck_id": "7754393",
       "path": "archive/deck-texts/modern/7754393.json",
-      "message": "Could not parse deck data for deck 7754393"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -3106,7 +3110,7 @@
       "format": "modern",
       "deck_id": "7754396",
       "path": "archive/deck-texts/modern/7754396.json",
-      "message": "Could not parse deck data for deck 7754396"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -3138,7 +3142,7 @@
       "format": "modern",
       "deck_id": "7754400",
       "path": "archive/deck-texts/modern/7754400.json",
-      "message": "Could not parse deck data for deck 7754400"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30001 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -3170,7 +3174,7 @@
       "format": "modern",
       "deck_id": "7754404",
       "path": "archive/deck-texts/modern/7754404.json",
-      "message": "Could not parse deck data for deck 7754404"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -3186,7 +3190,7 @@
       "format": "modern",
       "deck_id": "7754406",
       "path": "archive/deck-texts/modern/7754406.json",
-      "message": "Could not parse deck data for deck 7754406"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -3194,7 +3198,7 @@
       "format": "modern",
       "deck_id": "7754408",
       "path": "archive/deck-texts/modern/7754408.json",
-      "message": "Could not parse deck data for deck 7754408"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -3210,7 +3214,7 @@
       "format": "modern",
       "deck_id": "7754410",
       "path": "archive/deck-texts/modern/7754410.json",
-      "message": "Could not parse deck data for deck 7754410"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -3226,7 +3230,7 @@
       "format": "modern",
       "deck_id": "7754412",
       "path": "archive/deck-texts/modern/7754412.json",
-      "message": "Could not parse deck data for deck 7754412"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -3386,7 +3390,7 @@
       "format": "modern",
       "deck_id": "7755108",
       "path": "archive/deck-texts/modern/7755108.json",
-      "message": "Could not parse deck data for deck 7755108"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -3402,7 +3406,7 @@
       "format": "modern",
       "deck_id": "7755110",
       "path": "archive/deck-texts/modern/7755110.json",
-      "message": "Could not parse deck data for deck 7755110"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -3450,7 +3454,7 @@
       "format": "modern",
       "deck_id": "7755117",
       "path": "archive/deck-texts/modern/7755117.json",
-      "message": "Could not parse deck data for deck 7755117"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -3474,7 +3478,7 @@
       "format": "modern",
       "deck_id": "7755122",
       "path": "archive/deck-texts/modern/7755122.json",
-      "message": "Could not parse deck data for deck 7755122"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -3602,7 +3606,7 @@
       "format": "modern",
       "deck_id": "7755398",
       "path": "archive/deck-texts/modern/7755398.json",
-      "message": "Could not parse deck data for deck 7755398"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -3618,7 +3622,7 @@
       "format": "modern",
       "deck_id": "7755401",
       "path": "archive/deck-texts/modern/7755401.json",
-      "message": "Could not parse deck data for deck 7755401"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -3898,7 +3902,7 @@
       "format": "modern",
       "deck_id": "7755820",
       "path": "archive/deck-texts/modern/7755820.json",
-      "message": "Could not parse deck data for deck 7755820"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -5346,7 +5350,7 @@
       "format": "modern",
       "deck_id": "7759279",
       "path": "archive/deck-texts/modern/7759279.json",
-      "message": "Could not parse deck data for deck 7759279"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",

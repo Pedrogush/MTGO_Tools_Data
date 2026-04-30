@@ -1,14 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-04-30T12:51:17Z",
+  "generated_at": "2026-04-30T14:08:52Z",
   "command": "scrape-deck-texts-pauper",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "success": 49,
-    "skipped": 12,
-    "hard-failure": 475
+    "success": 47,
+    "hard-failure": 476,
+    "skipped": 12
   },
   "results": [
     {
@@ -26,10 +26,11 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "success",
+      "status": "hard-failure",
       "format": "pauper",
       "archetype": "azorius-ephemerate",
-      "path": "latest/decks/pauper/azorius-ephemerate.json"
+      "path": "latest/decks/pauper/azorius-ephemerate.json",
+      "message": "Deck scrape returned no rows for Azorius Ephemerate"
     },
     {
       "scope": "archetype-decks",
@@ -153,10 +154,11 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "success",
+      "status": "hard-failure",
       "format": "pauper",
       "archetype": "esper-affinity",
-      "path": "latest/decks/pauper/esper-affinity.json"
+      "path": "latest/decks/pauper/esper-affinity.json",
+      "message": "Deck scrape returned no rows for Esper Affinity"
     },
     {
       "scope": "archetype-decks",
@@ -453,14 +455,6 @@
       "scope": "deck-text",
       "status": "hard-failure",
       "format": "pauper",
-      "deck_id": "7748640",
-      "path": "archive/deck-texts/pauper/7748640.json",
-      "message": "Could not parse deck data for deck 7748640"
-    },
-    {
-      "scope": "deck-text",
-      "status": "hard-failure",
-      "format": "pauper",
       "deck_id": "7748738",
       "path": "archive/deck-texts/pauper/7748738.json",
       "message": "Could not parse deck data for deck 7748738"
@@ -471,7 +465,7 @@
       "format": "pauper",
       "deck_id": "7748900",
       "path": "archive/deck-texts/pauper/7748900.json",
-      "message": "Could not parse deck data for deck 7748900"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -624,14 +618,6 @@
       "deck_id": "7749813",
       "path": "archive/deck-texts/pauper/7749813.json",
       "message": "Could not parse deck data for deck 7749813"
-    },
-    {
-      "scope": "deck-text",
-      "status": "hard-failure",
-      "format": "pauper",
-      "deck_id": "7749814",
-      "path": "archive/deck-texts/pauper/7749814.json",
-      "message": "Could not parse deck data for deck 7749814"
     },
     {
       "scope": "deck-text",
@@ -1183,7 +1169,7 @@
       "format": "pauper",
       "deck_id": "7750826",
       "path": "archive/deck-texts/pauper/7750826.json",
-      "message": "Could not parse deck data for deck 7750826"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -1215,7 +1201,7 @@
       "format": "pauper",
       "deck_id": "7750830",
       "path": "archive/deck-texts/pauper/7750830.json",
-      "message": "Could not parse deck data for deck 7750830"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -1223,7 +1209,7 @@
       "format": "pauper",
       "deck_id": "7750831",
       "path": "archive/deck-texts/pauper/7750831.json",
-      "message": "Failed to perform, curl: (7) Failed to connect to www.mtggoldfish.com port 443 after 2001 ms: Could not connect to server. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+      "message": "Could not parse deck data for deck 7750831"
     },
     {
       "scope": "deck-text",
@@ -1239,7 +1225,7 @@
       "format": "pauper",
       "deck_id": "7750833",
       "path": "archive/deck-texts/pauper/7750833.json",
-      "message": "Could not parse deck data for deck 7750833"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30001 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -1312,14 +1298,6 @@
       "deck_id": "7750843",
       "path": "archive/deck-texts/pauper/7750843.json",
       "message": "Could not parse deck data for deck 7750843"
-    },
-    {
-      "scope": "deck-text",
-      "status": "hard-failure",
-      "format": "pauper",
-      "deck_id": "7750844",
-      "path": "archive/deck-texts/pauper/7750844.json",
-      "message": "Could not parse deck data for deck 7750844"
     },
     {
       "scope": "deck-text",
@@ -3271,7 +3249,7 @@
       "format": "pauper",
       "deck_id": "7757086",
       "path": "archive/deck-texts/pauper/7757086.json",
-      "message": "Could not parse deck data for deck 7757086"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -4045,14 +4023,6 @@
       "scope": "deck-text",
       "status": "hard-failure",
       "format": "pauper",
-      "deck_id": "7758577",
-      "path": "archive/deck-texts/pauper/7758577.json",
-      "message": "Could not parse deck data for deck 7758577"
-    },
-    {
-      "scope": "deck-text",
-      "status": "hard-failure",
-      "format": "pauper",
       "deck_id": "7758578",
       "path": "archive/deck-texts/pauper/7758578.json",
       "message": "Could not parse deck data for deck 7758578"
@@ -4248,6 +4218,30 @@
       "deck_id": "7759305",
       "path": "archive/deck-texts/pauper/7759305.json",
       "message": "Could not parse deck data for deck 7759305"
+    },
+    {
+      "scope": "deck-text",
+      "status": "hard-failure",
+      "format": "pauper",
+      "deck_id": "7759395",
+      "path": "archive/deck-texts/pauper/7759395.json",
+      "message": "Could not parse deck data for deck 7759395"
+    },
+    {
+      "scope": "deck-text",
+      "status": "hard-failure",
+      "format": "pauper",
+      "deck_id": "7759396",
+      "path": "archive/deck-texts/pauper/7759396.json",
+      "message": "Could not parse deck data for deck 7759396"
+    },
+    {
+      "scope": "deck-text",
+      "status": "hard-failure",
+      "format": "pauper",
+      "deck_id": "7759397",
+      "path": "archive/deck-texts/pauper/7759397.json",
+      "message": "Could not parse deck data for deck 7759397"
     }
   ]
 }

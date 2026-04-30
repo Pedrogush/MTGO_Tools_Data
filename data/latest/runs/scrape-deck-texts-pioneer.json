@@ -1,14 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-04-30T12:51:26Z",
+  "generated_at": "2026-04-30T14:08:53Z",
   "command": "scrape-deck-texts-pioneer",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "success": 24,
+    "success": 23,
     "skipped": 26,
-    "hard-failure": 224
+    "hard-failure": 223
   },
   "results": [
     {
@@ -34,10 +34,11 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "success",
+      "status": "hard-failure",
       "format": "pioneer",
       "archetype": "4c-scapeshift",
-      "path": "latest/decks/pioneer/4c-scapeshift.json"
+      "path": "latest/decks/pioneer/4c-scapeshift.json",
+      "message": "Deck scrape returned no rows for 4c Scapeshift"
     },
     {
       "scope": "archetype-decks",
@@ -702,14 +703,6 @@
       "scope": "deck-text",
       "status": "hard-failure",
       "format": "pioneer",
-      "deck_id": "7751771",
-      "path": "archive/deck-texts/pioneer/7751771.json",
-      "message": "Could not parse deck data for deck 7751771"
-    },
-    {
-      "scope": "deck-text",
-      "status": "hard-failure",
-      "format": "pioneer",
       "deck_id": "7751772",
       "path": "archive/deck-texts/pioneer/7751772.json",
       "message": "Could not parse deck data for deck 7751772"
@@ -934,14 +927,6 @@
       "scope": "deck-text",
       "status": "hard-failure",
       "format": "pioneer",
-      "deck_id": "7753057",
-      "path": "archive/deck-texts/pioneer/7753057.json",
-      "message": "Could not parse deck data for deck 7753057"
-    },
-    {
-      "scope": "deck-text",
-      "status": "hard-failure",
-      "format": "pioneer",
       "deck_id": "7753058",
       "path": "archive/deck-texts/pioneer/7753058.json",
       "message": "Could not parse deck data for deck 7753058"
@@ -1088,7 +1073,7 @@
       "format": "pioneer",
       "deck_id": "7753185",
       "path": "archive/deck-texts/pioneer/7753185.json",
-      "message": "Could not parse deck data for deck 7753185"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",
@@ -1784,7 +1769,7 @@
       "format": "pioneer",
       "deck_id": "7753769",
       "path": "archive/deck-texts/pioneer/7753769.json",
-      "message": "Could not parse deck data for deck 7753769"
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "deck-text",

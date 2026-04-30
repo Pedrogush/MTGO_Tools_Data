@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-04-30T15:57:25Z",
+  "generated_at": "2026-04-30T16:47:49Z",
   "command": "scrape-deck-texts-vintage",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "success": 18,
-    "skipped": 11,
+    "skipped": 12,
     "hard-failure": 159
   },
   "results": [
@@ -72,11 +72,11 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "counter-vine",
       "path": "latest/decks/vintage/counter-vine.json",
-      "message": "Deck scrape returned no rows for Counter Vine"
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
@@ -1495,6 +1495,14 @@
       "deck_id": "7759436",
       "path": "archive/deck-texts/vintage/7759436.json",
       "message": "Could not parse deck data for deck 7759436"
+    },
+    {
+      "scope": "deck-text",
+      "status": "hard-failure",
+      "format": "vintage",
+      "deck_id": "7759581",
+      "path": "archive/deck-texts/vintage/7759581.json",
+      "message": "Could not parse deck data for deck 7759581"
     }
   ]
 }

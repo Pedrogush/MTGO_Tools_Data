@@ -1,12 +1,12 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-04-30T16:31:51Z",
+  "generated_at": "2026-04-30T17:22:35Z",
   "command": "scrape-radars-vintage",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 11,
+    "skipped": 12,
     "hard-failure": 18
   },
   "results": [
@@ -65,6 +65,14 @@
       "archetype": "blue-tinker",
       "path": "latest/radars/vintage/blue-tinker.json",
       "message": "No deck texts were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "vintage",
+      "archetype": "counter-vine",
+      "path": "latest/radars/vintage/counter-vine.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

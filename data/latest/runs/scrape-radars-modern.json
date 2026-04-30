@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-04-30T16:31:58Z",
+  "generated_at": "2026-04-30T17:23:01Z",
   "command": "scrape-radars-modern",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "hard-failure": 54,
-    "skipped": 12,
+    "hard-failure": 53,
+    "skipped": 13,
     "stale-fallback": 5
   },
   "results": [
@@ -191,14 +191,6 @@
       "scope": "archetype-radar",
       "status": "hard-failure",
       "format": "modern",
-      "archetype": "goblins",
-      "path": "latest/radars/modern/goblins.json",
-      "message": "No deck texts were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "hard-failure",
-      "format": "modern",
       "archetype": "goryo-s-vengeance",
       "path": "latest/radars/modern/goryo-s-vengeance.json",
       "message": "No deck texts were available for radar generation."
@@ -258,6 +250,14 @@
       "archetype": "hollow-one",
       "path": "latest/radars/modern/hollow-one.json",
       "message": "No deck texts were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "modern",
+      "archetype": "humans",
+      "path": "latest/radars/modern/humans.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

@@ -1,21 +1,22 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-01T03:26:00Z",
+  "generated_at": "2026-05-01T05:32:14Z",
   "command": "scrape-mtgo-decklists-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 2,
+    "success": 2,
     "cached": 11,
-    "success": 1
+    "skipped": 1
   },
   "results": [
     {
       "scope": "mtgo-event",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
-      "message": "https://www.mtgo.com/decklist/pioneer-challenge-32-2026-04-3012841333: Event returned no decklists."
+      "path": "archive/mtgo-decklists/pioneer/pioneer-challenge-32-2026-04-3012841333.json",
+      "message": "Cached 32/32 decks."
     },
     {
       "scope": "mtgo-event",

@@ -1,14 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-04-30T23:10:33Z",
+  "generated_at": "2026-05-01T00:10:05Z",
   "command": "scrape-radars-legacy",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 5,
-    "hard-failure": 48,
-    "stale-fallback": 7
+    "hard-failure": 53,
+    "stale-fallback": 2
   },
   "results": [
     {
@@ -181,7 +181,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "legacy",
       "archetype": "doomsday",
       "path": "latest/radars/legacy/doomsday.json",
@@ -253,7 +253,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "legacy",
       "archetype": "izzet-delver",
       "path": "latest/radars/legacy/izzet-delver.json",
@@ -421,7 +421,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "legacy",
       "archetype": "red-stompy",
       "path": "latest/radars/legacy/red-stompy.json",
@@ -445,7 +445,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "legacy",
       "archetype": "sneak-and-show",
       "path": "latest/radars/legacy/sneak-and-show.json",
@@ -485,7 +485,7 @@
     },
     {
       "scope": "format-card-pool",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "legacy",
       "path": "latest/card-pools/legacy.json",
       "message": "No deck texts were available for format card-pool generation."

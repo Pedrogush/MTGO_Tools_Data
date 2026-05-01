@@ -1,13 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-01T06:04:45Z",
+  "generated_at": "2026-05-01T07:46:33Z",
   "command": "scrape-radars-standard",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 25,
-    "hard-failure": 45
+    "skipped": 24,
+    "hard-failure": 45,
+    "stale-fallback": 1
   },
   "results": [
     {
@@ -196,11 +197,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "dimir-midrange",
       "path": "latest/radars/standard/dimir-midrange.json",
-      "message": "No published decks were available for radar generation."
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",

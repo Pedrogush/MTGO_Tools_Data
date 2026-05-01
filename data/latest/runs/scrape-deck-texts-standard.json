@@ -1,14 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-01T14:39:07Z",
+  "generated_at": "2026-05-01T15:36:47Z",
   "command": "scrape-deck-texts-standard",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "success": 45,
-    "skipped": 16,
-    "hard-failure": 411
+    "success": 46,
+    "skipped": 15,
+    "hard-failure": 412
   },
   "results": [
     {
@@ -417,11 +417,10 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
       "archetype": "temur-harmonizer-combo",
-      "path": "latest/decks/standard/temur-harmonizer-combo.json",
-      "message": "No decks found within the last 7 days."
+      "path": "latest/decks/standard/temur-harmonizer-combo.json"
     },
     {
       "scope": "archetype-decks",
@@ -3740,6 +3739,14 @@
       "deck_id": "7760356",
       "path": "archive/deck-texts/standard/7760356.json",
       "message": "Could not parse deck data for deck 7760356"
+    },
+    {
+      "scope": "deck-text",
+      "status": "hard-failure",
+      "format": "standard",
+      "deck_id": "7760589",
+      "path": "archive/deck-texts/standard/7760589.json",
+      "message": "Could not parse deck data for deck 7760589"
     }
   ]
 }

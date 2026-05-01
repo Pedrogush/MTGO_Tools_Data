@@ -1,14 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-01T15:13:27Z",
+  "generated_at": "2026-05-01T16:11:21Z",
   "command": "scrape-radars-standard",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 24,
+    "skipped": 23,
     "hard-failure": 45,
-    "stale-fallback": 1
+    "stale-fallback": 2
   },
   "results": [
     {
@@ -525,11 +525,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "temur-harmonizer-combo",
       "path": "latest/radars/standard/temur-harmonizer-combo.json",
-      "message": "No published decks were available for radar generation."
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",

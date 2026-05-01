@@ -1,13 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-01T16:11:19Z",
+  "generated_at": "2026-05-01T17:10:54Z",
   "command": "scrape-radars-legacy",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 5,
-    "hard-failure": 55
+    "skipped": 4,
+    "hard-failure": 55,
+    "stale-fallback": 1
   },
   "results": [
     {
@@ -324,11 +325,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "stale-fallback",
       "format": "legacy",
       "archetype": "mono-black-pox",
       "path": "latest/radars/legacy/mono-black-pox.json",
-      "message": "No published decks were available for radar generation."
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",

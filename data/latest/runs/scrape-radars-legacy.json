@@ -1,14 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-01T01:49:21Z",
+  "generated_at": "2026-05-01T02:35:37Z",
   "command": "scrape-radars-legacy",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 5,
-    "hard-failure": 53,
-    "stale-fallback": 2
+    "hard-failure": 55
   },
   "results": [
     {
@@ -197,7 +196,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "legacy",
       "archetype": "esper-control",
       "path": "latest/radars/legacy/esper-control.json",
@@ -429,7 +428,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "legacy",
       "archetype": "ruby-storm",
       "path": "latest/radars/legacy/ruby-storm.json",

@@ -1,13 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-01T20:19:27Z",
+  "generated_at": "2026-05-01T21:08:50Z",
   "command": "scrape-radars-pauper",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "hard-failure": 47,
-    "skipped": 14
+    "skipped": 13,
+    "stale-fallback": 1
   },
   "results": [
     {
@@ -388,11 +389,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "stale-fallback",
       "format": "pauper",
       "archetype": "mono-white-aggro",
       "path": "latest/radars/pauper/mono-white-aggro.json",
-      "message": "No published decks were available for radar generation."
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",

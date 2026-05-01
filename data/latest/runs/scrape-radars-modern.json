@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-01T17:11:00Z",
+  "generated_at": "2026-05-01T18:12:32Z",
   "command": "scrape-radars-modern",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "hard-failure": 56,
-    "skipped": 15
+    "skipped": 14
   },
   "results": [
     {
@@ -25,6 +25,14 @@
       "archetype": "5c-midrange",
       "path": "latest/radars/modern/5c-midrange.json",
       "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "hard-failure",
+      "format": "modern",
+      "archetype": "8-rack",
+      "path": "latest/radars/modern/8-rack.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -248,14 +256,6 @@
       "format": "modern",
       "archetype": "hollow-one",
       "path": "latest/radars/modern/hollow-one.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "modern",
-      "archetype": "humans",
-      "path": "latest/radars/modern/humans.json",
       "message": "No published decks were available for radar generation."
     },
     {
@@ -536,14 +536,6 @@
       "format": "modern",
       "archetype": "the-rock",
       "path": "latest/radars/modern/the-rock.json",
-      "message": "No deck texts were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "hard-failure",
-      "format": "modern",
-      "archetype": "thopter-combo",
-      "path": "latest/radars/modern/thopter-combo.json",
       "message": "No deck texts were available for radar generation."
     },
     {

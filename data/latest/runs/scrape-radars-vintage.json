@@ -1,14 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-01T21:08:08Z",
+  "generated_at": "2026-05-01T22:09:59Z",
   "command": "scrape-radars-vintage",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 11,
-    "hard-failure": 18,
-    "stale-fallback": 1
+    "hard-failure": 19
   },
   "results": [
     {
@@ -125,7 +124,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "lurrus-drs",
       "path": "latest/radars/vintage/lurrus-drs.json",

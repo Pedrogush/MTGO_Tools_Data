@@ -1,14 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-02T16:06:36Z",
+  "generated_at": "2026-05-02T17:05:47Z",
   "command": "scrape-radars-legacy",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 13,
-    "hard-failure": 45,
-    "stale-fallback": 2
+    "hard-failure": 46,
+    "stale-fallback": 1
   },
   "results": [
     {
@@ -333,7 +333,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "legacy",
       "archetype": "mono-black-pox",
       "path": "latest/radars/legacy/mono-black-pox.json",

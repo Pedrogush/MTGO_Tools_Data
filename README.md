@@ -2,6 +2,13 @@
 
 Headless MTGO and MTGGoldfish scraping surface for scheduled publishing.
 
+This repository was carved out of [Pedrogush/MTGO_Tools](https://github.com/Pedrogush/MTGO_Tools)
+— the original full desktop application — and reduced to its scraper and
+publisher path. Fixes that affect the live scrapers (e.g. MTGGoldfish
+Cloudflare blocks, MTGO.com payload format changes) are typically discovered
+in `MTGO_Tools` first; check that repo's `navigators/` module for the
+authoritative implementation when this one stops collecting data.
+
 ![Version](https://img.shields.io/badge/version-0.2-blue)
 ![Python](https://img.shields.io/badge/python-3.11+-green)
 ![Platform](https://img.shields.io/badge/platform-headless-lightgrey)

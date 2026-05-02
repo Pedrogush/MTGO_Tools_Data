@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-02T21:04:49Z",
+  "generated_at": "2026-05-02T22:04:22Z",
   "command": "scrape-radars-standard",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 23,
-    "hard-failure": 42,
+    "skipped": 20,
+    "hard-failure": 45,
     "stale-fallback": 5
   },
   "results": [
@@ -33,6 +33,14 @@
       "format": "standard",
       "archetype": "4c-elementals",
       "path": "latest/radars/standard/4c-elementals.json",
+      "message": "No deck texts were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "hard-failure",
+      "format": "standard",
+      "archetype": "4c-gearhulk",
+      "path": "latest/radars/standard/4c-gearhulk.json",
       "message": "No deck texts were available for radar generation."
     },
     {
@@ -87,8 +95,8 @@
       "scope": "archetype-radar",
       "status": "hard-failure",
       "format": "standard",
-      "archetype": "azorius-artifacts",
-      "path": "latest/radars/standard/azorius-artifacts.json",
+      "archetype": "azorius-control",
+      "path": "latest/radars/standard/azorius-control.json",
       "message": "No deck texts were available for radar generation."
     },
     {
@@ -121,6 +129,14 @@
       "format": "standard",
       "archetype": "bant-airbending-combo",
       "path": "latest/radars/standard/bant-airbending-combo.json",
+      "message": "No deck texts were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "hard-failure",
+      "format": "standard",
+      "archetype": "bant-omniscience",
+      "path": "latest/radars/standard/bant-omniscience.json",
       "message": "No deck texts were available for radar generation."
     },
     {
@@ -253,6 +269,14 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "hard-failure",
+      "format": "standard",
+      "archetype": "golgari-reanimator",
+      "path": "latest/radars/standard/golgari-reanimator.json",
+      "message": "No deck texts were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
       "status": "skipped",
       "format": "standard",
       "archetype": "gruul-delirium",
@@ -357,14 +381,6 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "hard-failure",
-      "format": "standard",
-      "archetype": "lifegain",
-      "path": "latest/radars/standard/lifegain.json",
-      "message": "No deck texts were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
       "status": "skipped",
       "format": "standard",
       "archetype": "mardu-monument",
@@ -373,18 +389,18 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "standard",
-      "archetype": "mono-black-midrange",
-      "path": "latest/radars/standard/mono-black-midrange.json",
-      "message": "No published decks were available for radar generation."
+      "archetype": "mono-blue-spellementals",
+      "path": "latest/radars/standard/mono-blue-spellementals.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
       "status": "hard-failure",
       "format": "standard",
-      "archetype": "mono-blue-spellementals",
-      "path": "latest/radars/standard/mono-blue-spellementals.json",
+      "archetype": "mono-green-aggro",
+      "path": "latest/radars/standard/mono-green-aggro.json",
       "message": "No deck texts were available for radar generation."
     },
     {
@@ -405,34 +421,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "hard-failure",
-      "format": "standard",
-      "archetype": "mono-white-aggro",
-      "path": "latest/radars/standard/mono-white-aggro.json",
-      "message": "No deck texts were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "standard",
-      "archetype": "mono-white-midrange",
-      "path": "latest/radars/standard/mono-white-midrange.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
       "status": "skipped",
       "format": "standard",
       "archetype": "mono-white-momo",
       "path": "latest/radars/standard/mono-white-momo.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "standard",
-      "archetype": "orzhov-control",
-      "path": "latest/radars/standard/orzhov-control.json",
       "message": "No published decks were available for radar generation."
     },
     {
@@ -457,6 +449,14 @@
       "format": "standard",
       "archetype": "rakdos-monument",
       "path": "latest/radars/standard/rakdos-monument.json",
+      "message": "No deck texts were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "hard-failure",
+      "format": "standard",
+      "archetype": "selesnya-gearhulk",
+      "path": "latest/radars/standard/selesnya-gearhulk.json",
       "message": "No deck texts were available for radar generation."
     },
     {
@@ -509,18 +509,18 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "hard-failure",
-      "format": "standard",
-      "archetype": "sultai-excruciator",
-      "path": "latest/radars/standard/sultai-excruciator.json",
-      "message": "No deck texts were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
       "status": "stale-fallback",
       "format": "standard",
       "archetype": "sultai-reanimator",
       "path": "latest/radars/standard/sultai-reanimator.json",
+      "message": "No deck texts were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "hard-failure",
+      "format": "standard",
+      "archetype": "temur-control",
+      "path": "latest/radars/standard/temur-control.json",
       "message": "No deck texts were available for radar generation."
     },
     {

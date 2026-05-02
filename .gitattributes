@@ -1,1 +1,24 @@
+# Default: treat all files as text and normalize to LF on commit and checkout.
+# This prevents CRLF/LF churn in diffs across Windows / WSL / Linux contributors.
+* text=auto eol=lf
+
+# Shell scripts must always be LF.
 *.sh text eol=lf
+
+# Binary file types — never subject to line-ending normalization.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.zip binary
+*.gz binary
+*.tar binary
+*.pdf binary
+*.db binary
+*.sqlite binary
+*.sqlite3 binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary

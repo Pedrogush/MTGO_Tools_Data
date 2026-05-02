@@ -1,14 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-02T05:51:27Z",
+  "generated_at": "2026-05-02T07:27:46Z",
   "command": "scrape-radars-standard",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 24,
-    "hard-failure": 40,
-    "stale-fallback": 6
+    "hard-failure": 41,
+    "stale-fallback": 5
   },
   "results": [
     {
@@ -197,7 +197,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "dimir-midrange",
       "path": "latest/radars/standard/dimir-midrange.json",

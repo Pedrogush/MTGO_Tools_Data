@@ -1,14 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-02T05:51:23Z",
+  "generated_at": "2026-05-02T07:27:55Z",
   "command": "scrape-radars-legacy",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 14,
+    "skipped": 13,
     "hard-failure": 45,
-    "stale-fallback": 1
+    "stale-fallback": 2
   },
   "results": [
     {
@@ -69,11 +69,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "stale-fallback",
       "format": "legacy",
       "archetype": "beanstalk-control-yorion",
       "path": "latest/radars/legacy/beanstalk-control-yorion.json",
-      "message": "No published decks were available for radar generation."
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",

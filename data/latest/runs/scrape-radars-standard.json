@@ -1,14 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-02T19:08:37Z",
+  "generated_at": "2026-05-02T20:12:06Z",
   "command": "scrape-radars-standard",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 24,
+    "skipped": 23,
     "hard-failure": 42,
-    "stale-fallback": 4
+    "stale-fallback": 5
   },
   "results": [
     {
@@ -517,11 +517,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "sultai-reanimator",
       "path": "latest/radars/standard/sultai-reanimator.json",
-      "message": "No published decks were available for radar generation."
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",

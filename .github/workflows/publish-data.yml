@@ -2,9 +2,6 @@ name: publish-data
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "15 * * * *"
-    - cron: "55 2 * * *"
 
 permissions:
   contents: write

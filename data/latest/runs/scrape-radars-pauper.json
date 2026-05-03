@@ -1,14 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-03T02:29:22Z",
+  "generated_at": "2026-05-03T03:53:53Z",
   "command": "scrape-radars-pauper",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 17,
+    "skipped": 16,
     "hard-failure": 42,
-    "stale-fallback": 2
+    "stale-fallback": 3
   },
   "results": [
     {
@@ -413,11 +413,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "stale-fallback",
       "format": "pauper",
       "archetype": "poison-storm",
       "path": "latest/radars/pauper/poison-storm.json",
-      "message": "No published decks were available for radar generation."
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",

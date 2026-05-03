@@ -1,14 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-03T01:59:49Z",
+  "generated_at": "2026-05-03T03:24:16Z",
   "command": "scrape-deck-texts-pauper",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "success": 44,
-    "skipped": 17,
-    "hard-failure": 333
+    "success": 45,
+    "skipped": 16,
+    "hard-failure": 335
   },
   "results": [
     {
@@ -382,11 +382,10 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "success",
       "format": "pauper",
       "archetype": "poison-storm",
-      "path": "latest/decks/pauper/poison-storm.json",
-      "message": "No decks found within the last 7 days."
+      "path": "latest/decks/pauper/poison-storm.json"
     },
     {
       "scope": "archetype-decks",
@@ -3117,6 +3116,22 @@
       "deck_id": "7763193",
       "path": "archive/deck-texts/pauper/7763193.json",
       "message": "Could not parse deck data for deck 7763193"
+    },
+    {
+      "scope": "deck-text",
+      "status": "hard-failure",
+      "format": "pauper",
+      "deck_id": "7763276",
+      "path": "archive/deck-texts/pauper/7763276.json",
+      "message": "Could not parse deck data for deck 7763276"
+    },
+    {
+      "scope": "deck-text",
+      "status": "hard-failure",
+      "format": "pauper",
+      "deck_id": "7763277",
+      "path": "archive/deck-texts/pauper/7763277.json",
+      "message": "Could not parse deck data for deck 7763277"
     }
   ]
 }

@@ -1,14 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-03T03:54:05Z",
+  "generated_at": "2026-05-03T05:55:42Z",
   "command": "scrape-radars-legacy",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 14,
-    "hard-failure": 41,
-    "stale-fallback": 5
+    "hard-failure": 42,
+    "stale-fallback": 4
   },
   "results": [
     {
@@ -69,7 +69,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "legacy",
       "archetype": "beanstalk-control-yorion",
       "path": "latest/radars/legacy/beanstalk-control-yorion.json",

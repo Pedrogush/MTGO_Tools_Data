@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-03T00:07:39Z",
+  "generated_at": "2026-05-03T01:44:21Z",
   "command": "scrape-radars-pioneer",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "hard-failure": 20,
-    "skipped": 31
+    "hard-failure": 19,
+    "skipped": 32
   },
   "results": [
     {
@@ -52,11 +52,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "hard-failure",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "5c-scapeshift",
       "path": "latest/radars/pioneer/5c-scapeshift.json",
-      "message": "No deck texts were available for radar generation."
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

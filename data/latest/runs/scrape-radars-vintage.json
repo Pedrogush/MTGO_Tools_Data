@@ -1,14 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-03T00:07:32Z",
+  "generated_at": "2026-05-03T01:44:28Z",
   "command": "scrape-radars-vintage",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 13,
-    "hard-failure": 16,
-    "stale-fallback": 1
+    "skipped": 15,
+    "stale-fallback": 1,
+    "hard-failure": 14
   },
   "results": [
     {
@@ -29,11 +29,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "hard-failure",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "azorius-initiative",
       "path": "latest/radars/vintage/azorius-initiative.json",
-      "message": "No deck texts were available for radar generation."
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -61,11 +61,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "hard-failure",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "blue-tinker",
       "path": "latest/radars/vintage/blue-tinker.json",
-      "message": "No deck texts were available for radar generation."
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

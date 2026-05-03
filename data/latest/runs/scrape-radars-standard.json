@@ -1,14 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-02T23:04:13Z",
+  "generated_at": "2026-05-03T00:07:30Z",
   "command": "scrape-radars-standard",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 20,
-    "hard-failure": 45,
-    "stale-fallback": 5
+    "hard-failure": 48,
+    "stale-fallback": 2
   },
   "results": [
     {
@@ -141,7 +141,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "bant-ouroboroid",
       "path": "latest/radars/standard/bant-ouroboroid.json",
@@ -365,7 +365,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "jeskai-elementals",
       "path": "latest/radars/standard/jeskai-elementals.json",
@@ -541,7 +541,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "temur-lessons",
       "path": "latest/radars/standard/temur-lessons.json",

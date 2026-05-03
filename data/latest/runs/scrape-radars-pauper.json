@@ -1,15 +1,23 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-03T17:36:20Z",
+  "generated_at": "2026-05-03T18:38:50Z",
   "command": "scrape-radars-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 16,
-    "success": 45
+    "skipped": 15,
+    "success": 46
   },
   "results": [
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "pauper",
+      "archetype": "4c-affinity",
+      "path": "latest/radars/pauper/4c-affinity.json",
+      "message": "No published decks were available for radar generation."
+    },
     {
       "scope": "archetype-radar",
       "status": "skipped",
@@ -20,10 +28,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
-      "archetype": "azorius-ephemerate",
-      "path": "latest/radars/pauper/azorius-ephemerate.json"
+      "archetype": "4c-synthesizer",
+      "path": "latest/radars/pauper/4c-synthesizer.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -92,14 +101,6 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "pauper",
-      "archetype": "devotion",
-      "path": "latest/radars/pauper/devotion.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "pauper",
       "archetype": "dimir-affinity",
       "path": "latest/radars/pauper/dimir-affinity.json",
       "message": "No published decks were available for radar generation."
@@ -156,14 +157,6 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "pauper",
-      "archetype": "esper-ephemerate",
-      "path": "latest/radars/pauper/esper-ephemerate.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
       "status": "success",
       "format": "pauper",
       "archetype": "familiars",
@@ -175,6 +168,13 @@
       "format": "pauper",
       "archetype": "food-gardens",
       "path": "latest/radars/pauper/food-gardens.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pauper",
+      "archetype": "food-retriever-combo",
+      "path": "latest/radars/pauper/food-retriever-combo.json"
     },
     {
       "scope": "archetype-radar",
@@ -367,6 +367,13 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "success",
+      "format": "pauper",
+      "archetype": "naya-ephemerate",
+      "path": "latest/radars/pauper/naya-ephemerate.json"
+    },
+    {
+      "scope": "archetype-radar",
       "status": "skipped",
       "format": "pauper",
       "archetype": "naya-ramp",
@@ -393,14 +400,6 @@
       "format": "pauper",
       "archetype": "selesnya-ramp",
       "path": "latest/radars/pauper/selesnya-ramp.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "pauper",
-      "archetype": "serpentine-curve",
-      "path": "latest/radars/pauper/serpentine-curve.json",
       "message": "No published decks were available for radar generation."
     },
     {

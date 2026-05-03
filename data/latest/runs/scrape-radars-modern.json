@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-03T17:36:21Z",
+  "generated_at": "2026-05-03T18:38:55Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 17,
-    "success": 52
+    "skipped": 16,
+    "success": 54
   },
   "results": [
     {
@@ -247,6 +247,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
+      "archetype": "izzet-phoenix",
+      "path": "latest/radars/modern/izzet-phoenix.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
       "archetype": "izzet-prowess",
       "path": "latest/radars/modern/izzet-prowess.json"
     },
@@ -294,11 +301,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
-      "archetype": "jund-saga",
-      "path": "latest/radars/modern/jund-saga.json",
-      "message": "No published decks were available for radar generation."
+      "archetype": "jund",
+      "path": "latest/radars/modern/jund.json"
     },
     {
       "scope": "archetype-radar",

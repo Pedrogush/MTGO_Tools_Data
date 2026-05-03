@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-03T17:33:33Z",
+  "generated_at": "2026-05-03T18:35:22Z",
   "command": "scrape-deck-texts-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 42,
-    "skipped": 494
+    "success": 41,
+    "skipped": 495
   },
   "results": [
     {
@@ -191,14 +191,6 @@
       "format": "standard",
       "archetype": "golgari-dragons",
       "path": "latest/decks/standard/golgari-dragons.json",
-      "message": "No decks found within the last 7 days."
-    },
-    {
-      "scope": "archetype-decks",
-      "status": "skipped",
-      "format": "standard",
-      "archetype": "golgari-insidious-roots",
-      "path": "latest/decks/standard/golgari-insidious-roots.json",
       "message": "No decks found within the last 7 days."
     },
     {
@@ -404,6 +396,14 @@
       "format": "standard",
       "archetype": "sultai-control",
       "path": "latest/decks/standard/sultai-control.json",
+      "message": "No decks found within the last 7 days."
+    },
+    {
+      "scope": "archetype-decks",
+      "status": "skipped",
+      "format": "standard",
+      "archetype": "sultai-excruciator",
+      "path": "latest/decks/standard/sultai-excruciator.json",
       "message": "No decks found within the last 7 days."
     },
     {
@@ -4250,10 +4250,11 @@
     },
     {
       "scope": "deck-text",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "deck_id": "7763960",
-      "path": "archive/deck-texts/standard/7763960.json"
+      "path": "archive/deck-texts/standard/7763960.json",
+      "message": "Reused existing published deck-text blob."
     }
   ]
 }

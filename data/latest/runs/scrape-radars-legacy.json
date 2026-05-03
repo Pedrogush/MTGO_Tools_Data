@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-03T17:36:20Z",
+  "generated_at": "2026-05-03T18:38:56Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 14,
-    "success": 46
+    "skipped": 12,
+    "success": 48
   },
   "results": [
     {
@@ -42,11 +42,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "azorius-stoneblade",
-      "path": "latest/radars/legacy/azorius-stoneblade.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/azorius-stoneblade.json"
     },
     {
       "scope": "archetype-radar",
@@ -154,6 +153,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
+      "archetype": "dimir-control",
+      "path": "latest/radars/legacy/dimir-control.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
       "archetype": "dimir-reanimator",
       "path": "latest/radars/legacy/dimir-reanimator.json"
     },
@@ -213,14 +219,6 @@
       "format": "legacy",
       "archetype": "grixis-tempo",
       "path": "latest/radars/legacy/grixis-tempo.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "hogaak",
-      "path": "latest/radars/legacy/hogaak.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

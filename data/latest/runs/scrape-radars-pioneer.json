@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-03T17:36:18Z",
+  "generated_at": "2026-05-03T18:38:52Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 20,
-    "skipped": 31
+    "success": 21,
+    "skipped": 30
   },
   "results": [
     {
@@ -31,6 +31,13 @@
       "format": "pioneer",
       "archetype": "4c-scapeshift",
       "path": "latest/radars/pioneer/4c-scapeshift.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "5c-heroic",
+      "path": "latest/radars/pioneer/5c-heroic.json"
     },
     {
       "scope": "archetype-radar",
@@ -246,14 +253,6 @@
       "format": "pioneer",
       "archetype": "mono-red-prowess",
       "path": "latest/radars/pioneer/mono-red-prowess.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "pioneer",
-      "archetype": "mono-white-humans",
-      "path": "latest/radars/pioneer/mono-white-humans.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

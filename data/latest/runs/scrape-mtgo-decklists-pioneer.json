@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-03T11:31:58Z",
+  "generated_at": "2026-05-03T12:36:12Z",
   "command": "scrape-mtgo-decklists-pioneer",
-  "status": "success",
+  "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "cached": 13,
-    "skipped": 1,
+    "hard-failure": 1,
     "success": 1
   },
   "results": [
@@ -48,9 +48,9 @@
     },
     {
       "scope": "mtgo-event",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "pioneer",
-      "message": "https://www.mtgo.com/decklist/pioneer-league-2026-04-2710644: Event returned no decklists."
+      "message": "https://www.mtgo.com/decklist/pioneer-league-2026-04-2710644: Could not locate deck JSON payload"
     },
     {
       "scope": "mtgo-event",

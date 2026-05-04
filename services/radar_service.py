@@ -221,6 +221,8 @@ class RadarService:
         for raw_line in deck_text.splitlines():
             line = raw_line.strip()
             if not line:
+                if current_zone is mainboard and mainboard:
+                    current_zone = sideboard
                 continue
 
             if line.lower() in _SIDEBOARD_MARKERS:

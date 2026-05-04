@@ -133,6 +133,52 @@ def test_calculate_radar_from_deck_texts_parses_sideboard_and_duplicate_lines():
     assert pyroblast.copy_distribution == {2: 1, 1: 1}
 
 
+def test_parse_deck_text_recognizes_lowercase_sideboard_marker():
+    service = RadarService()
+
+    parsed = service._parse_deck_text(
+        "4 Lightning Bolt\n2 Island\nsideboard\n3 Pyroblast\n1 Red Elemental Blast\n"
+    )
+
+    assert dict(parsed["mainboard_cards"]) == {"Lightning Bolt": 4, "Island": 2}
+    assert dict(parsed["sideboard_cards"]) == {"Pyroblast": 3, "Red Elemental Blast": 1}
+
+
+def test_parse_deck_text_recognizes_blank_line_separator():
+    service = RadarService()
+
+    parsed = service._parse_deck_text(
+        "4 Lightning Bolt\n2 Island\n\n3 Pyroblast\n1 Red Elemental Blast\n"
+    )
+
+    assert dict(parsed["mainboard_cards"]) == {"Lightning Bolt": 4, "Island": 2}
+    assert dict(parsed["sideboard_cards"]) == {"Pyroblast": 3, "Red Elemental Blast": 1}
+
+
+def test_calculate_radar_from_deck_texts_handles_blank_line_sideboard_separator():
+    service = RadarService()
+
+    radar = service.calculate_radar_from_deck_texts(
+        archetype_name="Painter",
+        format_name="legacy",
+        deck_texts=[
+            "4 Goblin Welder\n1 Lotus Petal\n1 Lotus Petal\n\n2 Pyroblast\n",
+            "4 Goblin Welder\n2 Grindstone\n\n1 Pyroblast\n1 Red Elemental Blast\n",
+        ],
+    )
+
+    welder = next(item for item in radar.mainboard_cards if item.card_name == "Goblin Welder")
+    petal = next(item for item in radar.mainboard_cards if item.card_name == "Lotus Petal")
+    pyroblast = next(item for item in radar.sideboard_cards if item.card_name == "Pyroblast")
+
+    assert radar.total_decks_analyzed == 2
+    assert pyroblast.appearances == 2
+    assert pyroblast.total_copies == 3
+    assert welder.expected_copies == 4.0
+    assert petal.total_copies == 2
+    assert all(card.card_name != "Pyroblast" for card in radar.mainboard_cards)
+
+
 def test_export_radar_as_decklist():
     service = RadarService()
     radar = RadarData(

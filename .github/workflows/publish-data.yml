@@ -3,7 +3,7 @@ name: publish-data
 on:
   workflow_dispatch:
   schedule:
-    - cron: "15 * * * *"
+    - cron: "15 */6 * * *"
     - cron: "55 2 * * *"
 
 permissions:
@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
           ref: ${{ env.PRIMARY_BRANCH }}
@@ -44,7 +44,7 @@ jobs:
 
   publish-decklists:
     needs: ensure-publish-branch
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event.schedule == '15 * * * *' }}
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.schedule == '15 */6 * * *' }}
     strategy:
       fail-fast: false
       matrix:
@@ -60,13 +60,13 @@ jobs:
       cancel-in-progress: false
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
           ref: ${{ env.PUBLISH_BRANCH }}
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.11"
 
@@ -132,7 +132,7 @@ jobs:
 
       - name: Upload format artifact
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: publish-data-decklists-${{ matrix.format }}
           path: artifact
@@ -190,7 +190,7 @@ jobs:
 
   fetch-mtgo-index:
     needs: ensure-publish-branch
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event.schedule == '15 * * * *' }}
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.schedule == '15 */6 * * *' }}
     runs-on: ubuntu-latest
     env:
       PUBLISH_RETENTION_DAYS: "7"
@@ -198,13 +198,13 @@ jobs:
       TZ: America/Sao_Paulo
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
           ref: ${{ env.PUBLISH_BRANCH }}
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.11"
 
@@ -223,7 +223,7 @@ jobs:
             --output-file artifact/mtgo-index.json
 
       - name: Upload MTGO index artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: publish-data-mtgo-index
           path: artifact
@@ -231,7 +231,7 @@ jobs:
 
   publish-decklists-mtgo:
     needs: fetch-mtgo-index
-    if: ${{ always() && (github.event_name == 'workflow_dispatch' || github.event.schedule == '15 * * * *') }}
+    if: ${{ always() && (github.event_name == 'workflow_dispatch' || github.event.schedule == '15 */6 * * *') }}
     strategy:
       fail-fast: false
       matrix:
@@ -248,13 +248,13 @@ jobs:
       cancel-in-progress: false
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
           ref: ${{ env.PUBLISH_BRANCH }}
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.11"
 
@@ -264,7 +264,7 @@ jobs:
           pip install -r requirements-dev.txt
 
       - name: Download MTGO index artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v6
         with:
           name: publish-data-mtgo-index
           path: mtgo-index-data
@@ -326,7 +326,7 @@ jobs:
 
       - name: Upload MTGO artifact
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: publish-data-decklists-mtgo-${{ matrix.format }}
           path: artifact
@@ -384,7 +384,7 @@ jobs:
 
   publish-metagame:
     needs: ensure-publish-branch
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event.schedule == '15 * * * *' }}
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.schedule == '15 */6 * * *' }}
     strategy:
       fail-fast: false
       matrix:
@@ -399,13 +399,13 @@ jobs:
       cancel-in-progress: false
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
           ref: ${{ env.PUBLISH_BRANCH }}
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.11"
 
@@ -468,7 +468,7 @@ jobs:
 
       - name: Upload format artifact
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: publish-data-metagame-${{ matrix.format }}
           path: artifact
@@ -526,7 +526,7 @@ jobs:
 
   publish-radars:
     needs: publish-decklists
-    if: ${{ always() && (github.event_name == 'workflow_dispatch' || github.event.schedule == '15 * * * *') }}
+    if: ${{ always() && (github.event_name == 'workflow_dispatch' || github.event.schedule == '15 */6 * * *') }}
     strategy:
       fail-fast: false
       matrix:
@@ -541,13 +541,13 @@ jobs:
       cancel-in-progress: false
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
           ref: ${{ env.PUBLISH_BRANCH }}
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.11"
 
@@ -557,7 +557,7 @@ jobs:
           pip install -r requirements-dev.txt
 
       - name: Download same-format decklist artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v6
         with:
           name: publish-data-decklists-${{ matrix.format }}
           path: ${{ env.PUBLISH_OUTPUT_ROOT }}
@@ -616,7 +616,7 @@ jobs:
 
       - name: Upload format artifact
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: publish-data-radars-${{ matrix.format }}
           path: artifact
@@ -678,7 +678,7 @@ jobs:
       - publish-decklists-mtgo
       - publish-metagame
       - publish-radars
-    if: ${{ always() && (github.event_name == 'workflow_dispatch' || github.event.schedule == '15 * * * *') }}
+    if: ${{ always() && (github.event_name == 'workflow_dispatch' || github.event.schedule == '15 */6 * * *') }}
     runs-on: ubuntu-latest
     env:
       PUBLISH_OUTPUT_ROOT: data
@@ -686,13 +686,13 @@ jobs:
       TZ: America/Sao_Paulo
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
           ref: ${{ env.PUBLISH_BRANCH }}
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.11"
 
@@ -702,21 +702,21 @@ jobs:
           pip install -r requirements-dev.txt
 
       - name: Download decklist artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v6
         with:
           pattern: publish-data-decklists-*
           merge-multiple: true
           path: ${{ env.PUBLISH_OUTPUT_ROOT }}
 
       - name: Download metagame artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v6
         with:
           pattern: publish-data-metagame-*
           merge-multiple: true
           path: ${{ env.PUBLISH_OUTPUT_ROOT }}
 
       - name: Download radar artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v6
         with:
           pattern: publish-data-radars-*
           merge-multiple: true
@@ -855,7 +855,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
           ref: ${{ env.PUBLISH_BRANCH }}

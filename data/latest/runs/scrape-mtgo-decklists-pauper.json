@@ -1,12 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-05T01:09:09Z",
+  "generated_at": "2026-05-05T07:08:38Z",
   "command": "scrape-mtgo-decklists-pauper",
-  "status": "success",
+  "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "cached": 3,
+    "cached": 10,
+    "hard-failure": 1,
     "success": 1
   },
   "results": [
@@ -30,6 +31,61 @@
       "format": "pauper",
       "path": "archive/mtgo-decklists/pauper/pauper-league-2026-04-2910636.json",
       "message": "Loaded 2 decks from archive."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "hard-failure",
+      "format": "pauper",
+      "message": "https://www.mtgo.com/decklist/pauper-league-2026-05-0510636: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "cached",
+      "format": "pauper",
+      "path": "archive/mtgo-decklists/pauper/pauper-league-2026-05-0410636.json",
+      "message": "Loaded 15 decks from archive."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "cached",
+      "format": "pauper",
+      "path": "archive/mtgo-decklists/pauper/pauper-challenge-32-2026-05-0312841375.json",
+      "message": "Loaded 32 decks from archive."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "cached",
+      "format": "pauper",
+      "path": "archive/mtgo-decklists/pauper/pauper-league-2026-05-0310636.json",
+      "message": "Loaded 1 decks from archive."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "cached",
+      "format": "pauper",
+      "path": "archive/mtgo-decklists/pauper/pauper-challenge-32-2026-05-0212841356.json",
+      "message": "Loaded 32 decks from archive."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "cached",
+      "format": "pauper",
+      "path": "archive/mtgo-decklists/pauper/pauper-league-2026-05-0210636.json",
+      "message": "Loaded 2 decks from archive."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "cached",
+      "format": "pauper",
+      "path": "archive/mtgo-decklists/pauper/pauper-challenge-32-2026-05-0112841341.json",
+      "message": "Loaded 32 decks from archive."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "cached",
+      "format": "pauper",
+      "path": "archive/mtgo-decklists/pauper/pauper-league-2026-05-0110636.json",
+      "message": "Loaded 5 decks from archive."
     },
     {
       "scope": "mtgo-decklists",

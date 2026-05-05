@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-05T07:08:38Z",
+  "generated_at": "2026-05-05T12:51:29Z",
   "command": "scrape-mtgo-decklists-pauper",
-  "status": "hard-failure",
+  "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "cached": 10,
-    "hard-failure": 1,
+    "skipped": 1,
     "success": 1
   },
   "results": [
@@ -34,9 +34,9 @@
     },
     {
       "scope": "mtgo-event",
-      "status": "hard-failure",
+      "status": "skipped",
       "format": "pauper",
-      "message": "https://www.mtgo.com/decklist/pauper-league-2026-05-0510636: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+      "message": "https://www.mtgo.com/decklist/pauper-league-2026-05-0510636: Event returned no decklists."
     },
     {
       "scope": "mtgo-event",

@@ -1,14 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-05T07:08:23Z",
+  "generated_at": "2026-05-05T12:51:37Z",
   "command": "scrape-mtgo-decklists-standard",
-  "status": "hard-failure",
+  "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "cached": 14,
-    "hard-failure": 2,
-    "success": 1
+    "success": 2,
+    "skipped": 1
   },
   "results": [
     {
@@ -41,15 +41,16 @@
     },
     {
       "scope": "mtgo-event",
-      "status": "hard-failure",
+      "status": "success",
       "format": "standard",
-      "message": "https://www.mtgo.com/decklist/standard-league-2026-05-0510660: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+      "path": "archive/mtgo-decklists/standard/standard-league-2026-05-0510660.json",
+      "message": "Cached 10/10 decks."
     },
     {
       "scope": "mtgo-event",
-      "status": "hard-failure",
+      "status": "skipped",
       "format": "standard",
-      "message": "https://www.mtgo.com/decklist/standard-challenge-32-2026-05-0412841388: Failed to perform, curl: (28) Connection timed out after 30003 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+      "message": "https://www.mtgo.com/decklist/standard-challenge-32-2026-05-0412841388: Event returned no decklists."
     },
     {
       "scope": "mtgo-event",

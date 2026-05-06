@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-05T18:54:24Z",
+  "generated_at": "2026-05-06T01:13:01Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 14,
-    "success": 56
+    "skipped": 17,
+    "success": 54
   },
   "results": [
     {
@@ -17,6 +17,13 @@
       "archetype": "4-5c-omnath",
       "path": "latest/radars/modern/4-5c-omnath.json",
       "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "4c-genericblink",
+      "path": "latest/radars/modern/4c-genericblink.json"
     },
     {
       "scope": "archetype-radar",
@@ -213,10 +220,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "hammer-time",
-      "path": "latest/radars/modern/hammer-time.json"
+      "path": "latest/radars/modern/hammer-time.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -299,6 +307,14 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "modern",
+      "archetype": "jund-saga",
+      "path": "latest/radars/modern/jund-saga.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
       "archetype": "jund",
@@ -370,13 +386,6 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "mono-green-midrange",
-      "path": "latest/radars/modern/mono-green-midrange.json"
-    },
-    {
-      "scope": "archetype-radar",
       "status": "skipped",
       "format": "modern",
       "archetype": "mono-green-tron",
@@ -416,10 +425,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "rakdos-delirium",
-      "path": "latest/radars/modern/rakdos-delirium.json"
+      "path": "latest/radars/modern/rakdos-delirium.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-06T18:57:50Z",
+  "generated_at": "2026-05-07T01:18:03Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 27,
-    "success": 43
+    "skipped": 29,
+    "success": 41
   },
   "results": [
     {
@@ -363,10 +363,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "mono-green-aggro",
-      "path": "latest/radars/standard/mono-green-aggro.json"
+      "path": "latest/radars/standard/mono-green-aggro.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -381,13 +382,6 @@
       "format": "standard",
       "archetype": "mono-red-aggro",
       "path": "latest/radars/standard/mono-red-aggro.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
-      "archetype": "mono-white-aggro",
-      "path": "latest/radars/standard/mono-white-aggro.json"
     },
     {
       "scope": "archetype-radar",
@@ -439,6 +433,14 @@
       "format": "standard",
       "archetype": "selesnya-ouroboroid",
       "path": "latest/radars/standard/selesnya-ouroboroid.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "standard",
+      "archetype": "simic-landfall",
+      "path": "latest/radars/standard/simic-landfall.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

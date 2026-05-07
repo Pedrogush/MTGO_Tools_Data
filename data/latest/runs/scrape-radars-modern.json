@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-06T18:57:40Z",
+  "generated_at": "2026-05-07T01:16:42Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 17,
-    "success": 54
+    "skipped": 20,
+    "success": 52
   },
   "results": [
     {
@@ -344,10 +344,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "mardu-energy",
-      "path": "latest/radars/modern/mardu-energy.json"
+      "path": "latest/radars/modern/mardu-energy.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -383,6 +384,14 @@
       "format": "modern",
       "archetype": "mono-green-basking-broodscale-combo",
       "path": "latest/radars/modern/mono-green-basking-broodscale-combo.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "modern",
+      "archetype": "mono-green-midrange",
+      "path": "latest/radars/modern/mono-green-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -491,10 +500,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "the-rock",
-      "path": "latest/radars/modern/the-rock.json"
+      "path": "latest/radars/modern/the-rock.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

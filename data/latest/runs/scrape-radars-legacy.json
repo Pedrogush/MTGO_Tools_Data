@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-06T18:57:43Z",
+  "generated_at": "2026-05-07T01:16:44Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 10,
-    "success": 50
+    "skipped": 13,
+    "success": 47
   },
   "results": [
     {
@@ -115,10 +115,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "creative-technique",
-      "path": "latest/radars/legacy/creative-technique.json"
+      "path": "latest/radars/legacy/creative-technique.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -208,14 +209,6 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "infect",
-      "path": "latest/radars/legacy/infect.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
       "archetype": "izzet-delver",
@@ -266,24 +259,34 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "merfolk",
-      "path": "latest/radars/legacy/merfolk.json"
+      "path": "latest/radars/legacy/merfolk.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "mono-black-midrange",
-      "path": "latest/radars/legacy/mono-black-midrange.json"
+      "path": "latest/radars/legacy/mono-black-midrange.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "legacy",
+      "archetype": "mono-black-pox",
+      "path": "latest/radars/legacy/mono-black-pox.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "mono-black-pox",
-      "path": "latest/radars/legacy/mono-black-pox.json"
+      "archetype": "mono-blue-tempo",
+      "path": "latest/radars/legacy/mono-blue-tempo.json"
     },
     {
       "scope": "archetype-radar",

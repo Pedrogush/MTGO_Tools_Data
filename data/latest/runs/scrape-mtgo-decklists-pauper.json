@@ -1,21 +1,28 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-08T01:14:03Z",
+  "generated_at": "2026-05-08T06:59:01Z",
   "command": "scrape-mtgo-decklists-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 1,
-    "cached": 9,
-    "success": 1
+    "success": 3,
+    "cached": 9
   },
   "results": [
     {
       "scope": "mtgo-event",
-      "status": "skipped",
+      "status": "success",
       "format": "pauper",
-      "message": "https://www.mtgo.com/decklist/pauper-league-2026-05-0810636: Event returned no decklists."
+      "path": "archive/mtgo-decklists/pauper/pauper-league-2026-05-0810636.json",
+      "message": "Cached 5/5 decks."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "success",
+      "format": "pauper",
+      "path": "archive/mtgo-decklists/pauper/pauper-challenge-32-2026-05-0712842061.json",
+      "message": "Cached 32/32 decks."
     },
     {
       "scope": "mtgo-event",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-08T12:50:10Z",
+  "generated_at": "2026-05-08T18:49:27Z",
   "command": "scrape-deck-texts-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 20,
-    "skipped": 135
+    "success": 19,
+    "skipped": 138
   },
   "results": [
     {
@@ -105,6 +105,13 @@
       "format": "vintage",
       "archetype": "esper-lurrus-control",
       "path": "latest/decks/vintage/esper-lurrus-control.json"
+    },
+    {
+      "scope": "archetype-decks",
+      "status": "success",
+      "format": "vintage",
+      "archetype": "fastbond-lands",
+      "path": "latest/decks/vintage/fastbond-lands.json"
     },
     {
       "scope": "archetype-decks",
@@ -994,6 +1001,13 @@
     },
     {
       "scope": "deck-text",
+      "status": "success",
+      "format": "vintage",
+      "deck_id": "7769312",
+      "path": "archive/deck-texts/vintage/7769312.json"
+    },
+    {
+      "scope": "deck-text",
       "status": "skipped",
       "format": "vintage",
       "deck_id": "7769313",
@@ -1210,24 +1224,27 @@
     },
     {
       "scope": "deck-text",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "deck_id": "7769864",
-      "path": "archive/deck-texts/vintage/7769864.json"
+      "path": "archive/deck-texts/vintage/7769864.json",
+      "message": "Reused existing published deck-text blob."
     },
     {
       "scope": "deck-text",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "deck_id": "7769925",
-      "path": "archive/deck-texts/vintage/7769925.json"
+      "path": "archive/deck-texts/vintage/7769925.json",
+      "message": "Reused existing published deck-text blob."
     },
     {
       "scope": "deck-text",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "deck_id": "7769986",
-      "path": "archive/deck-texts/vintage/7769986.json"
+      "path": "archive/deck-texts/vintage/7769986.json",
+      "message": "Reused existing published deck-text blob."
     }
   ]
 }

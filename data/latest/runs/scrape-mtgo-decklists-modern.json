@@ -1,20 +1,125 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-09T12:40:59Z",
+  "generated_at": "2026-05-09T18:39:59Z",
   "command": "scrape-mtgo-decklists-modern",
-  "status": "success",
+  "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 1
+    "skipped": 1,
+    "success": 3,
+    "hard-failure": 1,
+    "cached": 11
   },
   "results": [
     {
-      "scope": "mtgo-decklists",
+      "scope": "mtgo-event",
       "status": "skipped",
       "format": "modern",
-      "path": "latest/mtgo-decklists/modern.json",
-      "message": "No MTGO events matched the requested window."
+      "message": "https://www.mtgo.com/decklist/modern-challenge-32-2026-05-0912842084: Event returned no decklists."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "success",
+      "format": "modern",
+      "path": "archive/mtgo-decklists/modern/modern-challenge-32-2026-05-0912842082.json",
+      "message": "Cached 32/32 decks."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "hard-failure",
+      "format": "modern",
+      "message": "https://www.mtgo.com/decklist/modern-league-2026-05-0910628: Could not locate deck JSON payload"
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "success",
+      "format": "modern",
+      "path": "archive/mtgo-decklists/modern/modern-challenge-64-2026-05-0812842073.json",
+      "message": "Cached 32/32 decks."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "cached",
+      "format": "modern",
+      "path": "archive/mtgo-decklists/modern/modern-league-2026-05-0810628.json",
+      "message": "Loaded 4 decks from archive."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "cached",
+      "format": "modern",
+      "path": "archive/mtgo-decklists/modern/modern-league-2026-05-0710628.json",
+      "message": "Loaded 2 decks from archive."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "cached",
+      "format": "modern",
+      "path": "archive/mtgo-decklists/modern/modern-challenge-64-2026-05-0612841409.json",
+      "message": "Loaded 32 decks from archive."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "cached",
+      "format": "modern",
+      "path": "archive/mtgo-decklists/modern/modern-league-2026-05-0610628.json",
+      "message": "Loaded 4 decks from archive."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "cached",
+      "format": "modern",
+      "path": "archive/mtgo-decklists/modern/modern-challenge-64-2026-05-0512841399.json",
+      "message": "Loaded 32 decks from archive."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "cached",
+      "format": "modern",
+      "path": "archive/mtgo-decklists/modern/modern-league-2026-05-0510628.json",
+      "message": "Loaded 12 decks from archive."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "cached",
+      "format": "modern",
+      "path": "archive/mtgo-decklists/modern/modern-challenge-64-2026-05-0412841384.json",
+      "message": "Loaded 32 decks from archive."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "cached",
+      "format": "modern",
+      "path": "archive/mtgo-decklists/modern/modern-league-2026-05-0410628.json",
+      "message": "Loaded 23 decks from archive."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "cached",
+      "format": "modern",
+      "path": "archive/mtgo-decklists/modern/modern-challenge-32-2026-05-0312841370.json",
+      "message": "Loaded 32 decks from archive."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "cached",
+      "format": "modern",
+      "path": "archive/mtgo-decklists/modern/modern-challenge-32-2026-05-0312841366.json",
+      "message": "Loaded 32 decks from archive."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "cached",
+      "format": "modern",
+      "path": "archive/mtgo-decklists/modern/modern-league-2026-05-0310628.json",
+      "message": "Loaded 2 decks from archive."
+    },
+    {
+      "scope": "mtgo-decklists",
+      "status": "success",
+      "format": "modern",
+      "path": "latest/mtgo-decklists/modern.json"
     }
   ]
 }

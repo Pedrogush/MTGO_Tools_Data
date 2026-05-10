@@ -1,7 +1,7 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-09T18:46:07Z",
+  "generated_at": "2026-05-10T01:22:25Z",
   "command": "scrape-radars-vintage",
   "status": "success",
   "max_stale_hours": 24,
@@ -43,18 +43,18 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "vintage",
       "archetype": "blue-control",
-      "path": "latest/radars/vintage/blue-control.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/vintage/blue-control.json"
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "blue-tempo",
-      "path": "latest/radars/vintage/blue-tempo.json"
+      "path": "latest/radars/vintage/blue-tempo.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -181,11 +181,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "vintage",
       "archetype": "paradoxical-outcome",
-      "path": "latest/radars/vintage/paradoxical-outcome.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/vintage/paradoxical-outcome.json"
     },
     {
       "scope": "archetype-radar",
@@ -227,10 +226,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "stiflenought",
-      "path": "latest/radars/vintage/stiflenought.json"
+      "path": "latest/radars/vintage/stiflenought.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-09T18:46:08Z",
+  "generated_at": "2026-05-10T01:23:53Z",
   "command": "scrape-radars-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 8,
-    "success": 53
+    "skipped": 9,
+    "success": 52
   },
   "results": [
     {
@@ -168,10 +168,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "food-retriever-combo",
-      "path": "latest/radars/pauper/food-retriever-combo.json"
+      "path": "latest/radars/pauper/food-retriever-combo.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

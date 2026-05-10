@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-09T18:46:12Z",
+  "generated_at": "2026-05-10T01:22:33Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 12,
-    "success": 48
+    "skipped": 15,
+    "success": 45
   },
   "results": [
     {
@@ -150,10 +150,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "dimir-reanimator",
-      "path": "latest/radars/legacy/dimir-reanimator.json"
+      "path": "latest/radars/legacy/dimir-reanimator.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -288,10 +289,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "mono-blue-tempo",
-      "path": "latest/radars/legacy/mono-blue-tempo.json"
+      "path": "latest/radars/legacy/mono-blue-tempo.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -317,10 +319,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "necrodominance-combo",
-      "path": "latest/radars/legacy/necrodominance-combo.json"
+      "path": "latest/radars/legacy/necrodominance-combo.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

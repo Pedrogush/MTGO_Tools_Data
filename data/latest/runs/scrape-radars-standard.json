@@ -1,7 +1,7 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-09T18:46:16Z",
+  "generated_at": "2026-05-10T01:22:31Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
@@ -109,11 +109,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
       "archetype": "bant-airbending-combo",
-      "path": "latest/radars/standard/bant-airbending-combo.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/standard/bant-airbending-combo.json"
     },
     {
       "scope": "archetype-radar",
@@ -399,10 +398,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "orzhov-midrange",
-      "path": "latest/radars/standard/orzhov-midrange.json"
+      "path": "latest/radars/standard/orzhov-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

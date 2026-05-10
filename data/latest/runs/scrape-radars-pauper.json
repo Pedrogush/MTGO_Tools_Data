@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-10T12:42:55Z",
+  "generated_at": "2026-05-10T19:02:36Z",
   "command": "scrape-radars-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 9,
-    "success": 52
+    "skipped": 10,
+    "success": 51
   },
   "results": [
     {
@@ -234,6 +234,14 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "pauper",
+      "archetype": "izzet-control",
+      "path": "latest/radars/pauper/izzet-control.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "pauper",
       "archetype": "izzet-faeries",
       "path": "latest/radars/pauper/izzet-faeries.json",
       "message": "No published decks were available for radar generation."
@@ -296,13 +304,6 @@
       "format": "pauper",
       "archetype": "madness-burn",
       "path": "latest/radars/pauper/madness-burn.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pauper",
-      "archetype": "mardu-synthesizer",
-      "path": "latest/radars/pauper/mardu-synthesizer.json"
     },
     {
       "scope": "archetype-radar",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-11T13:22:02Z",
+  "generated_at": "2026-05-11T19:00:30Z",
   "command": "scrape-deck-texts-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 20,
-    "skipped": 163
+    "success": 19,
+    "skipped": 159
   },
   "results": [
     {
@@ -15,22 +15,6 @@
       "status": "success",
       "format": "vintage",
       "path": "latest/archetypes/vintage.json"
-    },
-    {
-      "scope": "archetype-decks",
-      "status": "skipped",
-      "format": "vintage",
-      "archetype": "4c-initiative",
-      "path": "latest/decks/vintage/4c-initiative.json",
-      "message": "No decks found within the last 7 days."
-    },
-    {
-      "scope": "archetype-decks",
-      "status": "skipped",
-      "format": "vintage",
-      "archetype": "4c-midrange",
-      "path": "latest/decks/vintage/4c-midrange.json",
-      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
@@ -149,26 +133,10 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
-      "format": "vintage",
-      "archetype": "mono-white-aggro",
-      "path": "latest/decks/vintage/mono-white-aggro.json",
-      "message": "No decks found within the last 7 days."
-    },
-    {
-      "scope": "archetype-decks",
       "status": "success",
       "format": "vintage",
       "archetype": "mono-white-initiative",
       "path": "latest/decks/vintage/mono-white-initiative.json"
-    },
-    {
-      "scope": "archetype-decks",
-      "status": "skipped",
-      "format": "vintage",
-      "archetype": "naya-initiative",
-      "path": "latest/decks/vintage/naya-initiative.json",
-      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
@@ -206,14 +174,6 @@
       "format": "vintage",
       "archetype": "raker-shops",
       "path": "latest/decks/vintage/raker-shops.json"
-    },
-    {
-      "scope": "archetype-decks",
-      "status": "skipped",
-      "format": "vintage",
-      "archetype": "red-prison",
-      "path": "latest/decks/vintage/red-prison.json",
-      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
@@ -1448,10 +1408,11 @@
     },
     {
       "scope": "deck-text",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "deck_id": "7776832",
-      "path": "archive/deck-texts/vintage/7776832.json"
+      "path": "archive/deck-texts/vintage/7776832.json",
+      "message": "Reused existing published deck-text blob."
     }
   ]
 }

@@ -1,7 +1,7 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-11T13:25:51Z",
+  "generated_at": "2026-05-11T19:25:03Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
@@ -68,6 +68,13 @@
       "format": "modern",
       "archetype": "belcher",
       "path": "latest/radars/modern/belcher.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "boros-burn",
+      "path": "latest/radars/modern/boros-burn.json"
     },
     {
       "scope": "archetype-radar",
@@ -241,6 +248,14 @@
       "format": "modern",
       "archetype": "indomitable-creativity",
       "path": "latest/radars/modern/indomitable-creativity.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "modern",
+      "archetype": "infect",
+      "path": "latest/radars/modern/infect.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -469,14 +484,6 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "modern",
-      "archetype": "temur-midrange",
-      "path": "latest/radars/modern/temur-midrange.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
       "archetype": "temur-prowess",
@@ -489,13 +496,6 @@
       "archetype": "temur-steel-cutter",
       "path": "latest/radars/modern/temur-steel-cutter.json",
       "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "the-rock",
-      "path": "latest/radars/modern/the-rock.json"
     },
     {
       "scope": "archetype-radar",

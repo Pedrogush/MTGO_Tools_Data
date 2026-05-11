@@ -1,7 +1,7 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-11T13:25:43Z",
+  "generated_at": "2026-05-11T19:24:56Z",
   "command": "scrape-radars-pauper",
   "status": "success",
   "max_stale_hours": 24,
@@ -154,6 +154,14 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "pauper",
+      "archetype": "esper-ephemerate",
+      "path": "latest/radars/pauper/esper-ephemerate.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
       "status": "success",
       "format": "pauper",
       "archetype": "familiars",
@@ -267,14 +275,6 @@
       "format": "pauper",
       "archetype": "jeskai-ephemerate",
       "path": "latest/radars/pauper/jeskai-ephemerate.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "pauper",
-      "archetype": "jeskai-synthesizer",
-      "path": "latest/radars/pauper/jeskai-synthesizer.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

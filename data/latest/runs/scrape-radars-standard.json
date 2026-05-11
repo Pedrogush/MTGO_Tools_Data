@@ -1,15 +1,22 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-11T13:25:47Z",
+  "generated_at": "2026-05-11T19:25:08Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 46,
-    "skipped": 25
+    "success": 53,
+    "skipped": 18
   },
   "results": [
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "4c-artifacts",
+      "path": "latest/radars/standard/4c-artifacts.json"
+    },
     {
       "scope": "archetype-radar",
       "status": "success",
@@ -48,11 +55,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
       "archetype": "4c-reanimator",
-      "path": "latest/radars/standard/4c-reanimator.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/standard/4c-reanimator.json"
     },
     {
       "scope": "archetype-radar",
@@ -68,13 +74,6 @@
       "format": "standard",
       "archetype": "5c-elementals",
       "path": "latest/radars/standard/5c-elementals.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
-      "archetype": "5c-ouroboroid",
-      "path": "latest/radars/standard/5c-ouroboroid.json"
     },
     {
       "scope": "archetype-radar",
@@ -148,11 +147,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
       "archetype": "boros-leyline-aggro",
-      "path": "latest/radars/standard/boros-leyline-aggro.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/standard/boros-leyline-aggro.json"
     },
     {
       "scope": "archetype-radar",
@@ -203,14 +201,6 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "standard",
-      "archetype": "golgari-dragons",
-      "path": "latest/radars/standard/golgari-dragons.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "standard",
       "archetype": "golgari-landfall",
       "path": "latest/radars/standard/golgari-landfall.json",
       "message": "No published decks were available for radar generation."
@@ -224,11 +214,17 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
       "archetype": "golgari-ouroboroid",
-      "path": "latest/radars/standard/golgari-ouroboroid.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/standard/golgari-ouroboroid.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "golgari-reanimator",
+      "path": "latest/radars/standard/golgari-reanimator.json"
     },
     {
       "scope": "archetype-radar",
@@ -248,11 +244,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
       "archetype": "gruul-leyline-aggro",
-      "path": "latest/radars/standard/gruul-leyline-aggro.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/standard/gruul-leyline-aggro.json"
     },
     {
       "scope": "archetype-radar",
@@ -313,11 +308,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
       "archetype": "jeskai-elementals",
-      "path": "latest/radars/standard/jeskai-elementals.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/standard/jeskai-elementals.json"
     },
     {
       "scope": "archetype-radar",
@@ -402,11 +396,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
       "archetype": "orzhov-midrange",
-      "path": "latest/radars/standard/orzhov-midrange.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/standard/orzhov-midrange.json"
     },
     {
       "scope": "archetype-radar",

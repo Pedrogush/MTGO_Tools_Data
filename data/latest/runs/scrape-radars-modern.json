@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-10T19:02:28Z",
+  "generated_at": "2026-05-11T01:23:46Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 18,
-    "success": 53
+    "skipped": 20,
+    "success": 51
   },
   "results": [
     {
@@ -20,10 +20,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "4c-genericblink",
-      "path": "latest/radars/modern/4c-genericblink.json"
+      "path": "latest/radars/modern/4c-genericblink.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -162,10 +163,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "esper-reanimator",
-      "path": "latest/radars/modern/esper-reanimator.json"
+      "path": "latest/radars/modern/esper-reanimator.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

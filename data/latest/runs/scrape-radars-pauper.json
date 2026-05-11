@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-10T19:02:36Z",
+  "generated_at": "2026-05-11T01:23:49Z",
   "command": "scrape-radars-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 10,
-    "success": 51
+    "skipped": 12,
+    "success": 49
   },
   "results": [
     {
@@ -357,10 +357,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "naya-ephemerate",
-      "path": "latest/radars/pauper/naya-ephemerate.json"
+      "path": "latest/radars/pauper/naya-ephemerate.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -393,10 +394,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "slivers",
-      "path": "latest/radars/pauper/slivers.json"
+      "path": "latest/radars/pauper/slivers.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

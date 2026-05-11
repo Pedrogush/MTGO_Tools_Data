@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-10T19:02:32Z",
+  "generated_at": "2026-05-11T01:23:44Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 11,
-    "success": 49
+    "skipped": 12,
+    "success": 48
   },
   "results": [
     {
@@ -77,10 +77,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "blue-cloudpost",
-      "path": "latest/radars/legacy/blue-cloudpost.json"
+      "path": "latest/radars/legacy/blue-cloudpost.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -99,11 +100,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "coveted-jewel-combo",
-      "path": "latest/radars/legacy/coveted-jewel-combo.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/coveted-jewel-combo.json"
     },
     {
       "scope": "archetype-radar",
@@ -408,10 +408,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "sultai-depths",
-      "path": "latest/radars/legacy/sultai-depths.json"
+      "path": "latest/radars/legacy/sultai-depths.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

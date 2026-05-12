@@ -1,15 +1,22 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-12T13:03:38Z",
+  "generated_at": "2026-05-12T19:02:24Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 16,
-    "success": 45
+    "success": 46,
+    "skipped": 15
   },
   "results": [
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "4c-elementals",
+      "path": "latest/radars/pioneer/4c-elementals.json"
+    },
     {
       "scope": "archetype-radar",
       "status": "skipped",
@@ -17,13 +24,6 @@
       "archetype": "4c-legends",
       "path": "latest/radars/pioneer/4c-legends.json",
       "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pioneer",
-      "archetype": "4c-midrange",
-      "path": "latest/radars/pioneer/4c-midrange.json"
     },
     {
       "scope": "archetype-radar",
@@ -112,11 +112,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
-      "archetype": "boros-hammer-time",
-      "path": "latest/radars/pioneer/boros-hammer-time.json",
-      "message": "No published decks were available for radar generation."
+      "archetype": "boros-heroic",
+      "path": "latest/radars/pioneer/boros-heroic.json"
     },
     {
       "scope": "archetype-radar",
@@ -165,13 +164,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pioneer",
-      "archetype": "dimir-midrange",
-      "path": "latest/radars/pioneer/dimir-midrange.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pioneer",
       "archetype": "dredgeless-dredge",
       "path": "latest/radars/pioneer/dredgeless-dredge.json"
     },
@@ -194,13 +186,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pioneer",
-      "archetype": "golgari-elves",
-      "path": "latest/radars/pioneer/golgari-elves.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pioneer",
       "archetype": "golgari-food",
       "path": "latest/radars/pioneer/golgari-food.json"
     },
@@ -217,6 +202,13 @@
       "format": "pioneer",
       "archetype": "grixis-midrange",
       "path": "latest/radars/pioneer/grixis-midrange.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "gruul-midrange",
+      "path": "latest/radars/pioneer/gruul-midrange.json"
     },
     {
       "scope": "archetype-radar",
@@ -302,6 +294,13 @@
       "format": "pioneer",
       "archetype": "mono-red-aggro",
       "path": "latest/radars/pioneer/mono-red-aggro.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "mono-red-goblins",
+      "path": "latest/radars/pioneer/mono-red-goblins.json"
     },
     {
       "scope": "archetype-radar",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-12T13:03:42Z",
+  "generated_at": "2026-05-12T19:03:13Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 19,
-    "success": 52
+    "skipped": 18,
+    "success": 53
   },
   "results": [
     {
@@ -73,13 +73,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "boros-burn",
-      "path": "latest/radars/modern/boros-burn.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "boros-energy",
       "path": "latest/radars/modern/boros-energy.json"
     },
@@ -97,6 +90,13 @@
       "archetype": "death-s-shadow",
       "path": "latest/radars/modern/death-s-shadow.json",
       "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "devoted-combo",
+      "path": "latest/radars/modern/devoted-combo.json"
     },
     {
       "scope": "archetype-radar",
@@ -178,6 +178,13 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "generic-ragavan",
+      "path": "latest/radars/modern/generic-ragavan.json"
+    },
+    {
+      "scope": "archetype-radar",
       "status": "skipped",
       "format": "modern",
       "archetype": "goblins",
@@ -253,14 +260,6 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "modern",
-      "archetype": "infect",
-      "path": "latest/radars/modern/infect.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "modern",
       "archetype": "izzet-phoenix",
       "path": "latest/radars/modern/izzet-phoenix.json",
       "message": "No published decks were available for radar generation."
@@ -324,10 +323,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
-      "archetype": "jund-saga",
-      "path": "latest/radars/modern/jund-saga.json"
+      "archetype": "jund",
+      "path": "latest/radars/modern/jund.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -491,11 +491,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
-      "archetype": "temur-steel-cutter",
-      "path": "latest/radars/modern/temur-steel-cutter.json",
-      "message": "No published decks were available for radar generation."
+      "archetype": "the-rock",
+      "path": "latest/radars/modern/the-rock.json"
     },
     {
       "scope": "archetype-radar",

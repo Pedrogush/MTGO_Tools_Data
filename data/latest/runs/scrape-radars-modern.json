@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-13T13:07:33Z",
+  "generated_at": "2026-05-13T19:04:06Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 18,
-    "success": 53
+    "skipped": 17,
+    "success": 54
   },
   "results": [
     {
@@ -85,11 +85,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "death-s-shadow",
-      "path": "latest/radars/modern/death-s-shadow.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/death-s-shadow.json"
     },
     {
       "scope": "archetype-radar",
@@ -260,6 +259,14 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "modern",
+      "archetype": "infect",
+      "path": "latest/radars/modern/infect.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "modern",
       "archetype": "izzet-phoenix",
       "path": "latest/radars/modern/izzet-phoenix.json",
       "message": "No published decks were available for radar generation."
@@ -320,14 +327,6 @@
       "format": "modern",
       "archetype": "jeskai-steel-cutter",
       "path": "latest/radars/modern/jeskai-steel-cutter.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "modern",
-      "archetype": "jund",
-      "path": "latest/radars/modern/jund.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

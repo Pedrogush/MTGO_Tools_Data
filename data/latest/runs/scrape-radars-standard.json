@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-13T13:07:44Z",
+  "generated_at": "2026-05-13T19:04:06Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 54,
-    "skipped": 15
+    "success": 55,
+    "skipped": 14
   },
   "results": [
     {
@@ -244,6 +244,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
+      "archetype": "izzet-control",
+      "path": "latest/radars/standard/izzet-control.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
       "archetype": "izzet-lessons",
       "path": "latest/radars/standard/izzet-lessons.json"
     },
@@ -420,14 +427,6 @@
       "format": "standard",
       "archetype": "simic-ouroboroid",
       "path": "latest/radars/standard/simic-ouroboroid.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "standard",
-      "archetype": "simic-ramp",
-      "path": "latest/radars/standard/simic-ramp.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

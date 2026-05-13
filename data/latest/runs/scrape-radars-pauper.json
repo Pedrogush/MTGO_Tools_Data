@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-12T19:02:22Z",
+  "generated_at": "2026-05-13T01:20:03Z",
   "command": "scrape-radars-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 12,
-    "success": 49
+    "skipped": 13,
+    "success": 48
   },
   "results": [
     {
@@ -149,10 +149,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "ephemerate-tron",
-      "path": "latest/radars/pauper/ephemerate-tron.json"
+      "path": "latest/radars/pauper/ephemerate-tron.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

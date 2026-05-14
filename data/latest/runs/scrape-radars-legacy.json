@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-13T19:04:47Z",
+  "generated_at": "2026-05-14T01:22:15Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 49,
-    "skipped": 11
+    "success": 47,
+    "skipped": 13
   },
   "results": [
     {
@@ -114,10 +114,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "creative-technique",
-      "path": "latest/radars/legacy/creative-technique.json"
+      "path": "latest/radars/legacy/creative-technique.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -379,10 +380,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "selesnya-depths",
-      "path": "latest/radars/legacy/selesnya-depths.json"
+      "path": "latest/radars/legacy/selesnya-depths.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-13T19:04:06Z",
+  "generated_at": "2026-05-14T01:22:22Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 17,
-    "success": 54
+    "skipped": 19,
+    "success": 52
   },
   "results": [
     {
@@ -141,10 +141,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "esper-control",
-      "path": "latest/radars/modern/esper-control.json"
+      "path": "latest/radars/modern/esper-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -155,10 +156,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "esper-midrange",
-      "path": "latest/radars/modern/esper-midrange.json"
+      "path": "latest/radars/modern/esper-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

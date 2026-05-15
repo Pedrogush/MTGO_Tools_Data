@@ -1,15 +1,22 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-15T13:01:37Z",
+  "generated_at": "2026-05-15T18:57:06Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 13,
-    "success": 47
+    "success": 50,
+    "skipped": 10
   },
   "results": [
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "4c-depths",
+      "path": "latest/radars/legacy/4c-depths.json"
+    },
     {
       "scope": "archetype-radar",
       "status": "skipped",
@@ -34,11 +41,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "azorius-stoneblade",
-      "path": "latest/radars/legacy/azorius-stoneblade.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/azorius-stoneblade.json"
     },
     {
       "scope": "archetype-radar",
@@ -107,11 +113,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "creative-technique",
-      "path": "latest/radars/legacy/creative-technique.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/creative-technique.json"
     },
     {
       "scope": "archetype-radar",
@@ -223,13 +228,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "jeskai-stoneblade",
-      "path": "latest/radars/legacy/jeskai-stoneblade.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
       "archetype": "jeskai-tempo",
       "path": "latest/radars/legacy/jeskai-tempo.json"
     },
@@ -271,11 +269,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "mono-black-midrange",
-      "path": "latest/radars/legacy/mono-black-midrange.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/mono-black-midrange.json"
     },
     {
       "scope": "archetype-radar",

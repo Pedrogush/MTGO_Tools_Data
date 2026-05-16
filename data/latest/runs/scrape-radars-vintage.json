@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-15T18:57:01Z",
+  "generated_at": "2026-05-16T01:15:35Z",
   "command": "scrape-radars-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 7,
-    "success": 19
+    "skipped": 9,
+    "success": 17
   },
   "results": [
     {
@@ -49,10 +49,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "counter-vine",
-      "path": "latest/radars/vintage/counter-vine.json"
+      "path": "latest/radars/vintage/counter-vine.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -84,10 +85,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "fastbond-lands",
-      "path": "latest/radars/vintage/fastbond-lands.json"
+      "path": "latest/radars/vintage/fastbond-lands.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

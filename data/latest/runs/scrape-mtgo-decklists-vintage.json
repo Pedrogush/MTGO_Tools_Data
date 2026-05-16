@@ -1,21 +1,42 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-16T01:13:01Z",
+  "generated_at": "2026-05-16T07:07:54Z",
   "command": "scrape-mtgo-decklists-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
+    "success": 3,
     "skipped": 1,
-    "cached": 7,
-    "success": 2
+    "cached": 8
   },
   "results": [
     {
       "scope": "mtgo-event",
+      "status": "success",
+      "format": "vintage",
+      "path": "archive/mtgo-decklists/vintage/vintage-league-2026-05-1610668.json",
+      "message": "Cached 2/2 decks."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "success",
+      "format": "vintage",
+      "path": "archive/mtgo-decklists/vintage/vintage-challenge-32-2026-05-1512842482.json",
+      "message": "Cached 32/32 decks."
+    },
+    {
+      "scope": "mtgo-event",
       "status": "skipped",
       "format": "vintage",
-      "message": "https://www.mtgo.com/decklist/vintage-league-2026-05-1610668: Event returned no decklists."
+      "message": "https://www.mtgo.com/decklist/vintage-league-2026-05-1510668: Event returned no decklists."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "cached",
+      "format": "vintage",
+      "path": "archive/mtgo-decklists/vintage/vintage-challenge-32-2026-05-1412842461.json",
+      "message": "Loaded 32 decks from archive."
     },
     {
       "scope": "mtgo-event",
@@ -23,13 +44,6 @@
       "format": "vintage",
       "path": "archive/mtgo-decklists/vintage/vintage-league-2026-05-1410668.json",
       "message": "Loaded 3 decks from archive."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "success",
-      "format": "vintage",
-      "path": "archive/mtgo-decklists/vintage/vintage-challenge-32-2026-05-1412842461.json",
-      "message": "Cached 32/32 decks."
     },
     {
       "scope": "mtgo-event",
@@ -63,8 +77,8 @@
       "scope": "mtgo-event",
       "status": "cached",
       "format": "vintage",
-      "path": "archive/mtgo-decklists/vintage/vintage-league-2026-05-0910668.json",
-      "message": "Loaded 6 decks from archive."
+      "path": "archive/mtgo-decklists/vintage/vintage-league-2026-05-1010668.json",
+      "message": "Loaded 3 decks from archive."
     },
     {
       "scope": "mtgo-event",

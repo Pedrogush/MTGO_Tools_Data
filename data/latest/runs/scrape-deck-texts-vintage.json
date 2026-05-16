@@ -1,12 +1,12 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-16T12:42:02Z",
+  "generated_at": "2026-05-16T18:39:06Z",
   "command": "scrape-deck-texts-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 19,
+    "success": 20,
     "skipped": 135
   },
   "results": [
@@ -175,14 +175,6 @@
       "format": "vintage",
       "archetype": "raker-shops",
       "path": "latest/decks/vintage/raker-shops.json"
-    },
-    {
-      "scope": "archetype-decks",
-      "status": "skipped",
-      "format": "vintage",
-      "archetype": "scam",
-      "path": "latest/decks/vintage/scam.json",
-      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
@@ -1217,10 +1209,25 @@
     },
     {
       "scope": "deck-text",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "deck_id": "7783696",
-      "path": "archive/deck-texts/vintage/7783696.json"
+      "path": "archive/deck-texts/vintage/7783696.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "success",
+      "format": "vintage",
+      "deck_id": "7783846",
+      "path": "archive/deck-texts/vintage/7783846.json"
+    },
+    {
+      "scope": "deck-text",
+      "status": "success",
+      "format": "vintage",
+      "deck_id": "7784721",
+      "path": "archive/deck-texts/vintage/7784721.json"
     }
   ]
 }

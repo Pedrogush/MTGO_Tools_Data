@@ -1,28 +1,28 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-17T01:21:18Z",
+  "generated_at": "2026-05-17T07:20:20Z",
   "command": "scrape-mtgo-decklists-modern",
-  "status": "hard-failure",
+  "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "hard-failure": 1,
     "success": 2,
-    "cached": 17
+    "cached": 18
   },
   "results": [
     {
       "scope": "mtgo-event",
-      "status": "hard-failure",
+      "status": "success",
       "format": "modern",
-      "message": "https://www.mtgo.com/decklist/modern-league-2026-05-1710628: Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+      "path": "archive/mtgo-decklists/modern/modern-league-2026-05-1710628.json",
+      "message": "Cached 16/16 decks."
     },
     {
       "scope": "mtgo-event",
-      "status": "success",
+      "status": "cached",
       "format": "modern",
       "path": "archive/mtgo-decklists/modern/modern-challenge-64-2026-05-1612842492.json",
-      "message": "Cached 32/32 decks."
+      "message": "Loaded 32 decks from archive."
     },
     {
       "scope": "mtgo-event",

@@ -1,7 +1,7 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-17T01:23:52Z",
+  "generated_at": "2026-05-17T07:22:44Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
@@ -22,9 +22,23 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "pioneer",
-      "archetype": "4c-scapeshift",
-      "path": "latest/radars/pioneer/4c-scapeshift.json",
+      "archetype": "4c-legends",
+      "path": "latest/radars/pioneer/4c-legends.json",
       "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "4c-midrange",
+      "path": "latest/radars/pioneer/4c-midrange.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "4c-scapeshift",
+      "path": "latest/radars/pioneer/4c-scapeshift.json"
     },
     {
       "scope": "archetype-radar",
@@ -80,10 +94,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "azorius-flash",
-      "path": "latest/radars/pioneer/azorius-flash.json"
+      "path": "latest/radars/pioneer/azorius-flash.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -232,13 +247,6 @@
       "archetype": "hidden-strings",
       "path": "latest/radars/pioneer/hidden-strings.json",
       "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pioneer",
-      "archetype": "izzet-phoenix",
-      "path": "latest/radars/pioneer/izzet-phoenix.json"
     },
     {
       "scope": "archetype-radar",
@@ -421,14 +429,6 @@
       "format": "pioneer",
       "archetype": "selesnya-company",
       "path": "latest/radars/pioneer/selesnya-company.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "pioneer",
-      "archetype": "simic-scapeshift",
-      "path": "latest/radars/pioneer/simic-scapeshift.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

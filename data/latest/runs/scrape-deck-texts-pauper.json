@@ -1,13 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-17T01:19:56Z",
+  "generated_at": "2026-05-17T07:18:46Z",
   "command": "scrape-deck-texts-pauper",
-  "status": "success",
+  "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "success": 47,
-    "skipped": 381
+    "success": 46,
+    "skipped": 382,
+    "hard-failure": 3
   },
   "results": [
     {
@@ -323,11 +324,11 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "pauper",
       "archetype": "mono-black",
       "path": "latest/decks/pauper/mono-black.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Mono-Black"
     },
     {
       "scope": "archetype-decks",
@@ -383,11 +384,11 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "pauper",
       "archetype": "rakdos-affinity",
       "path": "latest/decks/pauper/rakdos-affinity.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Rakdos Affinity"
     },
     {
       "scope": "archetype-decks",
@@ -398,11 +399,11 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "pauper",
       "archetype": "serpentine-curve",
       "path": "latest/decks/pauper/serpentine-curve.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Serpentine Curve"
     },
     {
       "scope": "archetype-decks",
@@ -3360,31 +3361,56 @@
     },
     {
       "scope": "deck-text",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "deck_id": "7785599",
-      "path": "archive/deck-texts/pauper/7785599.json"
+      "path": "archive/deck-texts/pauper/7785599.json",
+      "message": "Reused existing published deck-text blob."
     },
     {
       "scope": "deck-text",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "deck_id": "7785600",
-      "path": "archive/deck-texts/pauper/7785600.json"
+      "path": "archive/deck-texts/pauper/7785600.json",
+      "message": "Reused existing published deck-text blob."
     },
     {
       "scope": "deck-text",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "deck_id": "7785649",
-      "path": "archive/deck-texts/pauper/7785649.json"
+      "path": "archive/deck-texts/pauper/7785649.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "pauper",
+      "deck_id": "7785650",
+      "path": "archive/deck-texts/pauper/7785650.json",
+      "message": "Reused existing published deck-text blob."
     },
     {
       "scope": "deck-text",
       "status": "success",
       "format": "pauper",
-      "deck_id": "7785650",
-      "path": "archive/deck-texts/pauper/7785650.json"
+      "deck_id": "7785729",
+      "path": "archive/deck-texts/pauper/7785729.json"
+    },
+    {
+      "scope": "deck-text",
+      "status": "success",
+      "format": "pauper",
+      "deck_id": "7785835",
+      "path": "archive/deck-texts/pauper/7785835.json"
+    },
+    {
+      "scope": "deck-text",
+      "status": "success",
+      "format": "pauper",
+      "deck_id": "7785996",
+      "path": "archive/deck-texts/pauper/7785996.json"
     }
   ]
 }

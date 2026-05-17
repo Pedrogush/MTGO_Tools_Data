@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-16T19:11:36Z",
+  "generated_at": "2026-05-17T01:23:53Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 15,
-    "success": 55
+    "skipped": 17,
+    "success": 53
   },
   "results": [
     {
@@ -170,10 +170,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "generic-ragavan",
-      "path": "latest/radars/modern/generic-ragavan.json"
+      "path": "latest/radars/modern/generic-ragavan.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -214,10 +215,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "grixis-murktide",
-      "path": "latest/radars/modern/grixis-murktide.json"
+      "path": "latest/radars/modern/grixis-murktide.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -322,10 +324,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "jeskai-steel-cutter",
-      "path": "latest/radars/modern/jeskai-steel-cutter.json"
+      "path": "latest/radars/modern/jeskai-steel-cutter.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -488,11 +491,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "through-the-breach",
-      "path": "latest/radars/modern/through-the-breach.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/through-the-breach.json"
     },
     {
       "scope": "archetype-radar",

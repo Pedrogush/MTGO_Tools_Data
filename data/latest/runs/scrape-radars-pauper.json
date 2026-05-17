@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-16T19:11:40Z",
+  "generated_at": "2026-05-17T01:23:55Z",
   "command": "scrape-radars-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 45,
-    "skipped": 16
+    "success": 43,
+    "skipped": 18
   },
   "results": [
     {
@@ -63,10 +63,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "boros-bully",
-      "path": "latest/radars/pauper/boros-bully.json"
+      "path": "latest/radars/pauper/boros-bully.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -338,10 +339,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "mono-white-heroic",
-      "path": "latest/radars/pauper/mono-white-heroic.json"
+      "path": "latest/radars/pauper/mono-white-heroic.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

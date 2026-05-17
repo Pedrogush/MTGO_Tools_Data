@@ -1,15 +1,22 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-17T12:44:09Z",
+  "generated_at": "2026-05-17T18:57:23Z",
   "command": "scrape-radars-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 7,
-    "success": 18
+    "success": 26,
+    "skipped": 5
   },
   "results": [
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "vintage",
+      "archetype": "4c-midrange",
+      "path": "latest/radars/vintage/4c-midrange.json"
+    },
     {
       "scope": "archetype-radar",
       "status": "skipped",
@@ -35,11 +42,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "vintage",
       "archetype": "blue-tempo",
-      "path": "latest/radars/vintage/blue-tempo.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/vintage/blue-tempo.json"
     },
     {
       "scope": "archetype-radar",
@@ -80,16 +86,22 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "vintage",
+      "archetype": "eldrazi",
+      "path": "latest/radars/vintage/eldrazi.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "vintage",
       "archetype": "esper-lurrus-control",
       "path": "latest/radars/vintage/esper-lurrus-control.json"
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "vintage",
       "archetype": "fastbond-lands",
-      "path": "latest/radars/vintage/fastbond-lands.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/vintage/fastbond-lands.json"
     },
     {
       "scope": "archetype-radar",
@@ -126,6 +138,13 @@
       "archetype": "lurrus-vault-key",
       "path": "latest/radars/vintage/lurrus-vault-key.json",
       "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "vintage",
+      "archetype": "mono-white-aggro",
+      "path": "latest/radars/vintage/mono-white-aggro.json"
     },
     {
       "scope": "archetype-radar",
@@ -174,6 +193,20 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "vintage",
+      "archetype": "red-prison",
+      "path": "latest/radars/vintage/red-prison.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "vintage",
+      "archetype": "scam",
+      "path": "latest/radars/vintage/scam.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "vintage",
       "archetype": "sphere-shops",
       "path": "latest/radars/vintage/sphere-shops.json"
     },
@@ -184,6 +217,13 @@
       "archetype": "stiflenought",
       "path": "latest/radars/vintage/stiflenought.json",
       "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "vintage",
+      "archetype": "sultai-midrange",
+      "path": "latest/radars/vintage/sultai-midrange.json"
     },
     {
       "scope": "format-card-pool",

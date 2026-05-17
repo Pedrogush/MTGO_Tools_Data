@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-17T07:22:47Z",
+  "generated_at": "2026-05-17T12:43:57Z",
   "command": "scrape-radars-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "success": 43,
-    "skipped": 15
+    "skipped": 18
   },
   "results": [
     {
@@ -296,6 +296,14 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "pauper",
+      "archetype": "mono-black",
+      "path": "latest/radars/pauper/mono-black.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
       "status": "success",
       "format": "pauper",
       "archetype": "mono-blue-faeries",
@@ -369,10 +377,26 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "pauper",
+      "archetype": "rakdos-affinity",
+      "path": "latest/radars/pauper/rakdos-affinity.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
       "status": "success",
       "format": "pauper",
       "archetype": "ruby-storm",
       "path": "latest/radars/pauper/ruby-storm.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "pauper",
+      "archetype": "serpentine-curve",
+      "path": "latest/radars/pauper/serpentine-curve.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

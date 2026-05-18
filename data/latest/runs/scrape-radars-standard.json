@@ -1,21 +1,22 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-17T18:57:21Z",
+  "generated_at": "2026-05-18T01:29:13Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 50,
-    "skipped": 19
+    "skipped": 20,
+    "success": 49
   },
   "results": [
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "4c-artifacts",
-      "path": "latest/radars/standard/4c-artifacts.json"
+      "path": "latest/radars/standard/4c-artifacts.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

@@ -1,21 +1,22 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-17T18:57:24Z",
+  "generated_at": "2026-05-18T01:29:15Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 50,
-    "skipped": 10
+    "skipped": 12,
+    "success": 48
   },
   "results": [
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "4c-depths",
-      "path": "latest/radars/legacy/4c-depths.json"
+      "path": "latest/radars/legacy/4c-depths.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -392,10 +393,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "sultai-depths",
-      "path": "latest/radars/legacy/sultai-depths.json"
+      "path": "latest/radars/legacy/sultai-depths.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

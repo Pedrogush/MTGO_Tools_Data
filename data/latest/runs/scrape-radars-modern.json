@@ -1,7 +1,7 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-19T13:32:46Z",
+  "generated_at": "2026-05-19T19:04:13Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
@@ -16,6 +16,14 @@
       "format": "modern",
       "archetype": "4-5c-omnath",
       "path": "latest/radars/modern/4-5c-omnath.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "modern",
+      "archetype": "4c-genericblink",
+      "path": "latest/radars/modern/4c-genericblink.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -323,14 +331,6 @@
       "format": "modern",
       "archetype": "jeskai-prowess",
       "path": "latest/radars/modern/jeskai-prowess.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "modern",
-      "archetype": "jeskai-steel-cutter",
-      "path": "latest/radars/modern/jeskai-steel-cutter.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

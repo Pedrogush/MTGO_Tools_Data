@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-19T19:01:33Z",
+  "generated_at": "2026-05-20T01:22:05Z",
   "command": "scrape-deck-texts-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 24,
-    "skipped": 289
+    "success": 25,
+    "skipped": 285
   },
   "results": [
     {
@@ -102,11 +102,10 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "azorius-flash",
-      "path": "latest/decks/pioneer/azorius-flash.json",
-      "message": "No decks found within the last 7 days."
+      "path": "latest/decks/pioneer/azorius-flash.json"
     },
     {
       "scope": "archetype-decks",
@@ -457,38 +456,6 @@
       "format": "pioneer",
       "archetype": "sultai-scapeshift",
       "path": "latest/decks/pioneer/sultai-scapeshift.json"
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "pioneer",
-      "deck_id": "7779394",
-      "path": "archive/deck-texts/pioneer/7779394.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "pioneer",
-      "deck_id": "7779565",
-      "path": "archive/deck-texts/pioneer/7779565.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "pioneer",
-      "deck_id": "7779915",
-      "path": "archive/deck-texts/pioneer/7779915.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "pioneer",
-      "deck_id": "7780280",
-      "path": "archive/deck-texts/pioneer/7780280.json",
-      "message": "Reused existing published deck-text blob."
     },
     {
       "scope": "deck-text",
@@ -2484,10 +2451,18 @@
     },
     {
       "scope": "deck-text",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "deck_id": "7792712",
-      "path": "archive/deck-texts/pioneer/7792712.json"
+      "path": "archive/deck-texts/pioneer/7792712.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "success",
+      "format": "pioneer",
+      "deck_id": "7793286",
+      "path": "archive/deck-texts/pioneer/7793286.json"
     }
   ]
 }

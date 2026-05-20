@@ -1,15 +1,22 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-19T19:02:30Z",
+  "generated_at": "2026-05-20T01:23:27Z",
   "command": "scrape-mtgo-decklists-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "cached": 20,
+    "skipped": 1,
+    "cached": 18,
     "success": 1
   },
   "results": [
+    {
+      "scope": "mtgo-event",
+      "status": "skipped",
+      "format": "modern",
+      "message": "https://www.mtgo.com/decklist/modern-league-2026-05-2010628: Event returned no decklists."
+    },
     {
       "scope": "mtgo-event",
       "status": "cached",
@@ -134,20 +141,6 @@
       "status": "cached",
       "format": "modern",
       "path": "archive/mtgo-decklists/modern/modern-challenge-64-2026-05-1312842139.json",
-      "message": "Loaded 32 decks from archive."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "cached",
-      "format": "modern",
-      "path": "archive/mtgo-decklists/modern/modern-league-2026-05-1310628.json",
-      "message": "Loaded 3 decks from archive."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "cached",
-      "format": "modern",
-      "path": "archive/mtgo-decklists/modern/modern-challenge-64-2026-05-1212842129.json",
       "message": "Loaded 32 decks from archive."
     },
     {

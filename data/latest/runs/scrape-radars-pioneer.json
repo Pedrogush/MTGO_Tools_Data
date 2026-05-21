@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-20T19:13:08Z",
+  "generated_at": "2026-05-21T01:27:43Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 37,
-    "success": 24
+    "skipped": 39,
+    "success": 22
   },
   "results": [
     {
@@ -199,10 +199,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "dimir-midrange",
-      "path": "latest/radars/pioneer/dimir-midrange.json"
+      "path": "latest/radars/pioneer/dimir-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -351,10 +352,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "mono-red-aggro",
-      "path": "latest/radars/pioneer/mono-red-aggro.json"
+      "path": "latest/radars/pioneer/mono-red-aggro.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

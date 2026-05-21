@@ -1,27 +1,28 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-21T01:24:12Z",
+  "generated_at": "2026-05-21T07:39:27Z",
   "command": "scrape-mtgo-decklists-vintage",
-  "status": "hard-failure",
+  "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "hard-failure": 2,
-    "cached": 9,
-    "success": 1
+    "success": 3,
+    "cached": 9
   },
   "results": [
     {
       "scope": "mtgo-event",
-      "status": "hard-failure",
+      "status": "success",
       "format": "vintage",
-      "message": "https://www.mtgo.com/decklist/vintage-league-2026-05-2110668: Could not locate deck JSON payload"
+      "path": "archive/mtgo-decklists/vintage/vintage-league-2026-05-2110668.json",
+      "message": "Cached 3/3 decks."
     },
     {
       "scope": "mtgo-event",
-      "status": "hard-failure",
+      "status": "success",
       "format": "vintage",
-      "message": "https://www.mtgo.com/decklist/vintage-league-2026-05-2010668: Could not locate deck JSON payload"
+      "path": "archive/mtgo-decklists/vintage/vintage-league-2026-05-2010668.json",
+      "message": "Cached 2/2 decks."
     },
     {
       "scope": "mtgo-event",

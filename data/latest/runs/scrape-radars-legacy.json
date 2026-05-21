@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-21T13:35:53Z",
+  "generated_at": "2026-05-21T19:07:25Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 8,
-    "success": 52
+    "skipped": 7,
+    "success": 53
   },
   "results": [
     {
@@ -31,6 +31,13 @@
       "format": "legacy",
       "archetype": "aluren",
       "path": "latest/radars/legacy/aluren.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "arclight-phoenix",
+      "path": "latest/radars/legacy/arclight-phoenix.json"
     },
     {
       "scope": "archetype-radar",
@@ -337,14 +344,6 @@
       "format": "legacy",
       "archetype": "omni-tell",
       "path": "latest/radars/legacy/omni-tell.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "orzhov-stoneblade",
-      "path": "latest/radars/legacy/orzhov-stoneblade.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

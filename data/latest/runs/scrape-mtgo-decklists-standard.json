@@ -1,28 +1,28 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-22T07:35:58Z",
+  "generated_at": "2026-05-22T13:15:54Z",
   "command": "scrape-mtgo-decklists-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "cached": 13,
-    "skipped": 1,
-    "success": 1
+    "success": 3,
+    "cached": 13
   },
   "results": [
     {
       "scope": "mtgo-event",
-      "status": "cached",
+      "status": "success",
       "format": "standard",
-      "path": "archive/mtgo-decklists/standard/standard-league-2026-05-2010660.json",
-      "message": "Loaded 7 decks from archive."
+      "path": "archive/mtgo-decklists/standard/standard-league-2026-05-2210660.json",
+      "message": "Cached 10/10 decks."
     },
     {
       "scope": "mtgo-event",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
-      "message": "https://www.mtgo.com/decklist/standard-challenge-32-2026-05-2212842895: Event returned no decklists."
+      "path": "archive/mtgo-decklists/standard/standard-challenge-32-2026-05-2212842895.json",
+      "message": "Cached 32/32 decks."
     },
     {
       "scope": "mtgo-event",
@@ -42,8 +42,8 @@
       "scope": "mtgo-event",
       "status": "cached",
       "format": "standard",
-      "path": "archive/mtgo-decklists/standard/standard-league-2026-05-1810660.json",
-      "message": "Loaded 5 decks from archive."
+      "path": "archive/mtgo-decklists/standard/standard-league-2026-05-2010660.json",
+      "message": "Loaded 7 decks from archive."
     },
     {
       "scope": "mtgo-event",
@@ -65,6 +65,13 @@
       "format": "standard",
       "path": "archive/mtgo-decklists/standard/standard-challenge-32-2026-05-1812842521.json",
       "message": "Loaded 32 decks from archive."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "cached",
+      "format": "standard",
+      "path": "archive/mtgo-decklists/standard/standard-league-2026-05-1810660.json",
+      "message": "Loaded 5 decks from archive."
     },
     {
       "scope": "mtgo-event",

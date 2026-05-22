@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-21T19:07:26Z",
+  "generated_at": "2026-05-22T01:26:56Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 60,
-    "skipped": 9
+    "success": 58,
+    "skipped": 11
   },
   "results": [
     {
@@ -233,10 +233,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "izzet-elementals",
-      "path": "latest/radars/standard/izzet-elementals.json"
+      "path": "latest/radars/standard/izzet-elementals.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -461,10 +462,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "temur-harmonizer-combo",
-      "path": "latest/radars/standard/temur-harmonizer-combo.json"
+      "path": "latest/radars/standard/temur-harmonizer-combo.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

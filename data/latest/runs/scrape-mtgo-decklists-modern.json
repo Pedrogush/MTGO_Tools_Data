@@ -1,28 +1,28 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-22T01:22:40Z",
+  "generated_at": "2026-05-22T07:35:47Z",
   "command": "scrape-mtgo-decklists-modern",
-  "status": "hard-failure",
+  "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 1,
-    "hard-failure": 1,
-    "cached": 18,
-    "success": 1
+    "success": 3,
+    "cached": 18
   },
   "results": [
     {
       "scope": "mtgo-event",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
-      "message": "https://www.mtgo.com/decklist/modern-league-2026-05-2210628: Event returned no decklists."
+      "path": "archive/mtgo-decklists/modern/modern-league-2026-05-2210628.json",
+      "message": "Cached 23/23 decks."
     },
     {
       "scope": "mtgo-event",
-      "status": "hard-failure",
+      "status": "success",
       "format": "modern",
-      "message": "https://www.mtgo.com/decklist/modern-challenge-64-2026-05-2112842886: Could not locate deck JSON payload"
+      "path": "archive/mtgo-decklists/modern/modern-challenge-64-2026-05-2112842886.json",
+      "message": "Cached 32/32 decks."
     },
     {
       "scope": "mtgo-event",

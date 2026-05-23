@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-22T19:05:20Z",
+  "generated_at": "2026-05-23T01:21:39Z",
   "command": "scrape-radars-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 6,
-    "success": 23
+    "skipped": 8,
+    "success": 21
   },
   "results": [
     {
@@ -113,10 +113,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "lurrus-drs",
-      "path": "latest/radars/vintage/lurrus-drs.json"
+      "path": "latest/radars/vintage/lurrus-drs.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -127,11 +128,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "vintage",
       "archetype": "lurrus-vault-key",
-      "path": "latest/radars/vintage/lurrus-vault-key.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/vintage/lurrus-vault-key.json"
     },
     {
       "scope": "archetype-radar",
@@ -178,17 +178,19 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "red-prison",
-      "path": "latest/radars/vintage/red-prison.json"
+      "path": "latest/radars/vintage/red-prison.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "scam",
-      "path": "latest/radars/vintage/scam.json"
+      "path": "latest/radars/vintage/scam.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-23T12:45:07Z",
+  "generated_at": "2026-05-23T18:44:46Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 27,
-    "success": 40
+    "skipped": 28,
+    "success": 39
   },
   "results": [
     {
@@ -340,6 +340,14 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "standard",
+      "archetype": "mono-black-demons",
+      "path": "latest/radars/standard/mono-black-demons.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "standard",
       "archetype": "mono-black-midrange",
       "path": "latest/radars/standard/mono-black-midrange.json",
       "message": "No published decks were available for radar generation."
@@ -387,14 +395,6 @@
       "format": "standard",
       "archetype": "rakdos-discard",
       "path": "latest/radars/standard/rakdos-discard.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "standard",
-      "archetype": "rakdos-monument",
-      "path": "latest/radars/standard/rakdos-monument.json",
       "message": "No published decks were available for radar generation."
     },
     {
@@ -487,10 +487,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "temur-lessons",
-      "path": "latest/radars/standard/temur-lessons.json"
+      "path": "latest/radars/standard/temur-lessons.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

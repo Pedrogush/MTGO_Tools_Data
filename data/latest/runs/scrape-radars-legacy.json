@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-23T12:45:20Z",
+  "generated_at": "2026-05-23T18:44:47Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 13,
-    "success": 47
+    "skipped": 8,
+    "success": 52
   },
   "results": [
     {
@@ -86,6 +86,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
+      "archetype": "blue-cloudpost",
+      "path": "latest/radars/legacy/blue-cloudpost.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
       "archetype": "boros-initiative",
       "path": "latest/radars/legacy/boros-initiative.json"
     },
@@ -93,15 +100,15 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "burn",
-      "path": "latest/radars/legacy/burn.json"
+      "archetype": "cephalid-breakfast",
+      "path": "latest/radars/legacy/cephalid-breakfast.json"
     },
     {
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "cephalid-breakfast",
-      "path": "latest/radars/legacy/cephalid-breakfast.json"
+      "archetype": "coveted-jewel-combo",
+      "path": "latest/radars/legacy/coveted-jewel-combo.json"
     },
     {
       "scope": "archetype-radar",
@@ -232,19 +239,17 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "jeskai-tempo",
-      "path": "latest/radars/legacy/jeskai-tempo.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/jeskai-tempo.json"
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "jund",
-      "path": "latest/radars/legacy/jund.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/jund.json"
     },
     {
       "scope": "archetype-radar",
@@ -266,22 +271,6 @@
       "format": "legacy",
       "archetype": "loam-pox",
       "path": "latest/radars/legacy/loam-pox.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "maverick",
-      "path": "latest/radars/legacy/maverick.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "merfolk",
-      "path": "latest/radars/legacy/merfolk.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -307,11 +296,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "necrodominance-combo",
-      "path": "latest/radars/legacy/necrodominance-combo.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/necrodominance-combo.json"
     },
     {
       "scope": "archetype-radar",
@@ -435,6 +423,13 @@
       "format": "legacy",
       "archetype": "tron",
       "path": "latest/radars/legacy/tron.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "worldgorger-dragon-combo",
+      "path": "latest/radars/legacy/worldgorger-dragon-combo.json"
     },
     {
       "scope": "format-card-pool",

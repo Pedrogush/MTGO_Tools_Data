@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-23T18:44:56Z",
+  "generated_at": "2026-05-24T01:26:52Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 33,
-    "success": 27
+    "skipped": 34,
+    "success": 26
   },
   "results": [
     {
@@ -444,10 +444,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "sultai-midrange",
-      "path": "latest/radars/pioneer/sultai-midrange.json"
+      "path": "latest/radars/pioneer/sultai-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

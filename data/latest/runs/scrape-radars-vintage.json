@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-23T18:44:49Z",
+  "generated_at": "2026-05-24T01:26:43Z",
   "command": "scrape-radars-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 8,
-    "success": 20
+    "skipped": 9,
+    "success": 19
   },
   "results": [
     {
@@ -27,18 +27,18 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "vintage",
       "archetype": "blue-control",
-      "path": "latest/radars/vintage/blue-control.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/vintage/blue-control.json"
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "blue-tempo",
-      "path": "latest/radars/vintage/blue-tempo.json"
+      "path": "latest/radars/vintage/blue-tempo.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -113,11 +113,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "vintage",
       "archetype": "lurrus-drs",
-      "path": "latest/radars/vintage/lurrus-drs.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/vintage/lurrus-drs.json"
     },
     {
       "scope": "archetype-radar",
@@ -142,10 +141,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "oops-all-spells",
-      "path": "latest/radars/vintage/oops-all-spells.json"
+      "path": "latest/radars/vintage/oops-all-spells.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -202,10 +202,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "sultai-midrange",
-      "path": "latest/radars/vintage/sultai-midrange.json"
+      "path": "latest/radars/vintage/sultai-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "format-card-pool",

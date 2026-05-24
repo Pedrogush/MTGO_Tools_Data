@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-24T12:47:16Z",
+  "generated_at": "2026-05-24T19:03:43Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 13,
-    "success": 47
+    "skipped": 11,
+    "success": 49
   },
   "results": [
     {
@@ -43,6 +43,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
+      "archetype": "azorius-control",
+      "path": "latest/radars/legacy/azorius-control.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
       "archetype": "azorius-stoneblade",
       "path": "latest/radars/legacy/azorius-stoneblade.json"
     },
@@ -62,11 +69,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "beanstalk-control-non-yorion",
-      "path": "latest/radars/legacy/beanstalk-control-non-yorion.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/beanstalk-control-non-yorion.json"
     },
     {
       "scope": "archetype-radar",
@@ -81,13 +87,6 @@
       "format": "legacy",
       "archetype": "blue-artifacts",
       "path": "latest/radars/legacy/blue-artifacts.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "blue-cloudpost",
-      "path": "latest/radars/legacy/blue-cloudpost.json"
     },
     {
       "scope": "archetype-radar",
@@ -192,14 +191,6 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "esper-vial",
-      "path": "latest/radars/legacy/esper-vial.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
       "archetype": "goblins",
@@ -278,10 +269,25 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "legacy",
+      "archetype": "maverick",
+      "path": "latest/radars/legacy/maverick.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
       "archetype": "mono-black-midrange",
       "path": "latest/radars/legacy/mono-black-midrange.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "mono-blue-tempo",
+      "path": "latest/radars/legacy/mono-blue-tempo.json"
     },
     {
       "scope": "archetype-radar",
@@ -405,14 +411,6 @@
       "format": "legacy",
       "archetype": "sultai-tempo",
       "path": "latest/radars/legacy/sultai-tempo.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "temur-delver",
-      "path": "latest/radars/legacy/temur-delver.json",
       "message": "No published decks were available for radar generation."
     },
     {

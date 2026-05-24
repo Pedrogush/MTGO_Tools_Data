@@ -1,12 +1,12 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-24T12:43:14Z",
+  "generated_at": "2026-05-24T18:42:27Z",
   "command": "scrape-deck-texts-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 27,
+    "success": 28,
     "skipped": 191
   },
   "results": [
@@ -49,6 +49,13 @@
     },
     {
       "scope": "archetype-decks",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "5c-enigmatic-incarnation",
+      "path": "latest/decks/pioneer/5c-enigmatic-incarnation.json"
+    },
+    {
+      "scope": "archetype-decks",
       "status": "skipped",
       "format": "pioneer",
       "archetype": "5c-heroic",
@@ -61,14 +68,6 @@
       "format": "pioneer",
       "archetype": "5c-indomitable-creativity",
       "path": "latest/decks/pioneer/5c-indomitable-creativity.json",
-      "message": "No decks found within the last 7 days."
-    },
-    {
-      "scope": "archetype-decks",
-      "status": "skipped",
-      "format": "pioneer",
-      "archetype": "5c-legends",
-      "path": "latest/decks/pioneer/5c-legends.json",
       "message": "No decks found within the last 7 days."
     },
     {
@@ -105,6 +104,14 @@
       "format": "pioneer",
       "archetype": "azorius-spirits",
       "path": "latest/decks/pioneer/azorius-spirits.json",
+      "message": "No decks found within the last 7 days."
+    },
+    {
+      "scope": "archetype-decks",
+      "status": "skipped",
+      "format": "pioneer",
+      "archetype": "bant-spirits",
+      "path": "latest/decks/pioneer/bant-spirits.json",
       "message": "No decks found within the last 7 days."
     },
     {
@@ -294,8 +301,8 @@
       "scope": "archetype-decks",
       "status": "skipped",
       "format": "pioneer",
-      "archetype": "metalwork-colossus",
-      "path": "latest/decks/pioneer/metalwork-colossus.json",
+      "archetype": "mardu-transmogrify",
+      "path": "latest/decks/pioneer/mardu-transmogrify.json",
       "message": "No decks found within the last 7 days."
     },
     {
@@ -364,14 +371,6 @@
       "format": "pioneer",
       "archetype": "orzhov-greasefang",
       "path": "latest/decks/pioneer/orzhov-greasefang.json"
-    },
-    {
-      "scope": "archetype-decks",
-      "status": "skipped",
-      "format": "pioneer",
-      "archetype": "orzhov-humans",
-      "path": "latest/decks/pioneer/orzhov-humans.json",
-      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
@@ -1633,6 +1632,13 @@
     },
     {
       "scope": "deck-text",
+      "status": "success",
+      "format": "pioneer",
+      "deck_id": "7799129",
+      "path": "archive/deck-texts/pioneer/7799129.json"
+    },
+    {
+      "scope": "deck-text",
       "status": "skipped",
       "format": "pioneer",
       "deck_id": "7799130",
@@ -1721,10 +1727,11 @@
     },
     {
       "scope": "deck-text",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "deck_id": "7799487",
-      "path": "archive/deck-texts/pioneer/7799487.json"
+      "path": "archive/deck-texts/pioneer/7799487.json",
+      "message": "Reused existing published deck-text blob."
     }
   ]
 }

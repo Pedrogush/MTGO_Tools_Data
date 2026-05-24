@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-24T12:47:10Z",
+  "generated_at": "2026-05-24T19:03:38Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 34,
-    "success": 26
+    "success": 27
   },
   "results": [
     {
@@ -40,6 +40,13 @@
       "format": "pioneer",
       "archetype": "4c-scapeshift",
       "path": "latest/radars/pioneer/4c-scapeshift.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "5c-enigmatic-incarnation",
+      "path": "latest/radars/pioneer/5c-enigmatic-incarnation.json"
     },
     {
       "scope": "archetype-radar",
@@ -99,6 +106,14 @@
       "format": "pioneer",
       "archetype": "azorius-spirits",
       "path": "latest/radars/pioneer/azorius-spirits.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "pioneer",
+      "archetype": "bant-spirits",
+      "path": "latest/radars/pioneer/bant-spirits.json",
       "message": "No published decks were available for radar generation."
     },
     {
@@ -296,8 +311,8 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "pioneer",
-      "archetype": "metalwork-colossus",
-      "path": "latest/radars/pioneer/metalwork-colossus.json",
+      "archetype": "mardu-transmogrify",
+      "path": "latest/radars/pioneer/mardu-transmogrify.json",
       "message": "No published decks were available for radar generation."
     },
     {
@@ -366,14 +381,6 @@
       "format": "pioneer",
       "archetype": "orzhov-greasefang",
       "path": "latest/radars/pioneer/orzhov-greasefang.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "pioneer",
-      "archetype": "orzhov-humans",
-      "path": "latest/radars/pioneer/orzhov-humans.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-24T19:03:43Z",
+  "generated_at": "2026-05-25T01:31:33Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 11,
-    "success": 49
+    "skipped": 10,
+    "success": 50
   },
   "results": [
     {
@@ -43,13 +43,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "azorius-control",
-      "path": "latest/radars/legacy/azorius-control.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
       "archetype": "azorius-stoneblade",
       "path": "latest/radars/legacy/azorius-stoneblade.json"
     },
@@ -59,13 +52,6 @@
       "format": "legacy",
       "archetype": "azorius-tempo",
       "path": "latest/radars/legacy/azorius-tempo.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "bant-control",
-      "path": "latest/radars/legacy/bant-control.json"
     },
     {
       "scope": "archetype-radar",
@@ -92,8 +78,29 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
+      "archetype": "blue-cloudpost",
+      "path": "latest/radars/legacy/blue-cloudpost.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "boros-energy",
+      "path": "latest/radars/legacy/boros-energy.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
       "archetype": "boros-initiative",
       "path": "latest/radars/legacy/boros-initiative.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "burn",
+      "path": "latest/radars/legacy/burn.json"
     },
     {
       "scope": "archetype-radar",
@@ -154,11 +161,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "dimir-reanimator",
-      "path": "latest/radars/legacy/dimir-reanimator.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/dimir-reanimator.json"
     },
     {
       "scope": "archetype-radar",
@@ -191,17 +197,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "goblins",
-      "path": "latest/radars/legacy/goblins.json"
-    },
-    {
-      "scope": "archetype-radar",
       "status": "skipped",
       "format": "legacy",
-      "archetype": "grixis-control",
-      "path": "latest/radars/legacy/grixis-control.json",
+      "archetype": "goblins",
+      "path": "latest/radars/legacy/goblins.json",
       "message": "No published decks were available for radar generation."
     },
     {
@@ -213,10 +212,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "infect",
-      "path": "latest/radars/legacy/infect.json"
+      "path": "latest/radars/legacy/infect.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -266,6 +266,13 @@
       "format": "legacy",
       "archetype": "loam-pox",
       "path": "latest/radars/legacy/loam-pox.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "mardu-energy",
+      "path": "latest/radars/legacy/mardu-energy.json"
     },
     {
       "scope": "archetype-radar",
@@ -348,26 +355,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "orzhov-stoneblade",
-      "path": "latest/radars/legacy/orzhov-stoneblade.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
       "archetype": "painter",
       "path": "latest/radars/legacy/painter.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "rakdos-scam",
-      "path": "latest/radars/legacy/rakdos-scam.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -400,17 +391,25 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "sultai-depths",
-      "path": "latest/radars/legacy/sultai-depths.json"
+      "path": "latest/radars/legacy/sultai-depths.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "sultai-tempo",
+      "path": "latest/radars/legacy/sultai-tempo.json"
     },
     {
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "legacy",
-      "archetype": "sultai-tempo",
-      "path": "latest/radars/legacy/sultai-tempo.json",
+      "archetype": "temur-delver",
+      "path": "latest/radars/legacy/temur-delver.json",
       "message": "No published decks were available for radar generation."
     },
     {

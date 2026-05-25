@@ -1,21 +1,22 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-24T19:03:34Z",
+  "generated_at": "2026-05-25T01:31:21Z",
   "command": "scrape-radars-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 55,
-    "skipped": 6
+    "skipped": 6,
+    "success": 55
   },
   "results": [
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "4c-control",
-      "path": "latest/radars/pauper/4c-control.json"
+      "path": "latest/radars/pauper/4c-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -68,6 +69,13 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "success",
+      "format": "pauper",
+      "archetype": "boros-moxite",
+      "path": "latest/radars/pauper/boros-moxite.json"
+    },
+    {
+      "scope": "archetype-radar",
       "status": "skipped",
       "format": "pauper",
       "archetype": "boros-synthesizer",
@@ -97,17 +105,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "dimir-control",
-      "path": "latest/radars/pauper/dimir-control.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pauper",
-      "archetype": "dimir-delver",
-      "path": "latest/radars/pauper/dimir-delver.json"
+      "path": "latest/radars/pauper/dimir-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -150,14 +152,6 @@
       "format": "pauper",
       "archetype": "esper-affinity",
       "path": "latest/radars/pauper/esper-affinity.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "pauper",
-      "archetype": "esper-control",
-      "path": "latest/radars/pauper/esper-control.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -310,6 +304,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pauper",
+      "archetype": "mono-red-madness",
+      "path": "latest/radars/pauper/mono-red-madness.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pauper",
       "archetype": "mono-red-pingers",
       "path": "latest/radars/pauper/mono-red-pingers.json"
     },
@@ -358,13 +359,6 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
-      "format": "pauper",
-      "archetype": "orzhov-aggro",
-      "path": "latest/radars/pauper/orzhov-aggro.json"
-    },
-    {
-      "scope": "archetype-radar",
       "status": "skipped",
       "format": "pauper",
       "archetype": "orzhov-ephemerate",
@@ -373,26 +367,32 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pauper",
       "archetype": "poison-storm",
-      "path": "latest/radars/pauper/poison-storm.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "pauper",
-      "archetype": "rakdos-affinity",
-      "path": "latest/radars/pauper/rakdos-affinity.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pauper/poison-storm.json"
     },
     {
       "scope": "archetype-radar",
       "status": "success",
       "format": "pauper",
+      "archetype": "rakdos-madness",
+      "path": "latest/radars/pauper/rakdos-madness.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pauper",
+      "archetype": "ruby-storm",
+      "path": "latest/radars/pauper/ruby-storm.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "pauper",
       "archetype": "serpentine-curve",
-      "path": "latest/radars/pauper/serpentine-curve.json"
+      "path": "latest/radars/pauper/serpentine-curve.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

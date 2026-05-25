@@ -1,22 +1,28 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-25T13:34:31Z",
+  "generated_at": "2026-05-25T18:57:28Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 31,
-    "success": 30
+    "success": 36,
+    "skipped": 27
   },
   "results": [
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "4c-auras",
+      "path": "latest/radars/pioneer/4c-auras.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
       "format": "pioneer",
       "archetype": "4c-elementals",
-      "path": "latest/radars/pioneer/4c-elementals.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pioneer/4c-elementals.json"
     },
     {
       "scope": "archetype-radar",
@@ -54,6 +60,14 @@
       "format": "pioneer",
       "archetype": "5c-heroic",
       "path": "latest/radars/pioneer/5c-heroic.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "pioneer",
+      "archetype": "5c-humans",
+      "path": "latest/radars/pioneer/5c-humans.json",
       "message": "No published decks were available for radar generation."
     },
     {
@@ -99,6 +113,13 @@
       "format": "pioneer",
       "archetype": "azorius-flash",
       "path": "latest/radars/pioneer/azorius-flash.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "azorius-heroic",
+      "path": "latest/radars/pioneer/azorius-heroic.json"
     },
     {
       "scope": "archetype-radar",
@@ -202,6 +223,13 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "esper-legends",
+      "path": "latest/radars/pioneer/esper-legends.json"
+    },
+    {
+      "scope": "archetype-radar",
       "status": "skipped",
       "format": "pioneer",
       "archetype": "golgari-elves",
@@ -225,11 +253,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "grixis-midrange",
-      "path": "latest/radars/pioneer/grixis-midrange.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pioneer/grixis-midrange.json"
     },
     {
       "scope": "archetype-radar",
@@ -278,14 +305,6 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "pioneer",
-      "archetype": "jeskai-humans",
-      "path": "latest/radars/pioneer/jeskai-humans.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
       "status": "success",
       "format": "pioneer",
       "archetype": "jund-sacrifice",
@@ -310,8 +329,8 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "pioneer",
-      "archetype": "mardu-transmogrify",
-      "path": "latest/radars/pioneer/mardu-transmogrify.json",
+      "archetype": "metalwork-colossus",
+      "path": "latest/radars/pioneer/metalwork-colossus.json",
       "message": "No published decks were available for radar generation."
     },
     {
@@ -320,14 +339,6 @@
       "format": "pioneer",
       "archetype": "mono-black-midrange",
       "path": "latest/radars/pioneer/mono-black-midrange.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "pioneer",
-      "archetype": "mono-blue-rona-combo",
-      "path": "latest/radars/pioneer/mono-blue-rona-combo.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -427,16 +438,15 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pioneer",
-      "archetype": "simic-scapeshift",
-      "path": "latest/radars/pioneer/simic-scapeshift.json"
+      "archetype": "simic-merfolk",
+      "path": "latest/radars/pioneer/simic-merfolk.json"
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
-      "archetype": "song-of-creation",
-      "path": "latest/radars/pioneer/song-of-creation.json",
-      "message": "No published decks were available for radar generation."
+      "archetype": "simic-scapeshift",
+      "path": "latest/radars/pioneer/simic-scapeshift.json"
     },
     {
       "scope": "archetype-radar",

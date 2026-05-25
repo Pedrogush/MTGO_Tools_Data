@@ -1,7 +1,7 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-25T13:34:05Z",
+  "generated_at": "2026-05-25T18:57:30Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
@@ -43,6 +43,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
+      "archetype": "azorius-control",
+      "path": "latest/radars/legacy/azorius-control.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
       "archetype": "azorius-stoneblade",
       "path": "latest/radars/legacy/azorius-stoneblade.json"
     },
@@ -73,13 +80,6 @@
       "format": "legacy",
       "archetype": "blue-artifacts",
       "path": "latest/radars/legacy/blue-artifacts.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "blue-cloudpost",
-      "path": "latest/radars/legacy/blue-cloudpost.json"
     },
     {
       "scope": "archetype-radar",
@@ -198,6 +198,14 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "legacy",
+      "archetype": "esper-vial",
+      "path": "latest/radars/legacy/esper-vial.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "legacy",
       "archetype": "goblins",
       "path": "latest/radars/legacy/goblins.json",
       "message": "No published decks were available for radar generation."
@@ -208,14 +216,6 @@
       "format": "legacy",
       "archetype": "grixis-tempo",
       "path": "latest/radars/legacy/grixis-tempo.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "infect",
-      "path": "latest/radars/legacy/infect.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -297,14 +297,6 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "mono-white-stax",
-      "path": "latest/radars/legacy/mono-white-stax.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
       "archetype": "naya-initiative",
@@ -354,10 +346,26 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "legacy",
+      "archetype": "orzhov-stoneblade",
+      "path": "latest/radars/legacy/orzhov-stoneblade.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
       "archetype": "painter",
       "path": "latest/radars/legacy/painter.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "legacy",
+      "archetype": "rakdos-scam",
+      "path": "latest/radars/legacy/rakdos-scam.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -379,14 +387,6 @@
       "format": "legacy",
       "archetype": "sneak-and-show",
       "path": "latest/radars/legacy/sneak-and-show.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "stiflenought",
-      "path": "latest/radars/legacy/stiflenought.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

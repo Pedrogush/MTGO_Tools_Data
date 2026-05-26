@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-25T18:57:26Z",
+  "generated_at": "2026-05-26T01:23:52Z",
   "command": "scrape-radars-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 6,
-    "success": 55
+    "skipped": 7,
+    "success": 54
   },
   "results": [
     {
@@ -27,10 +27,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "azorius-ephemerate",
-      "path": "latest/radars/pauper/azorius-ephemerate.json"
+      "path": "latest/radars/pauper/azorius-ephemerate.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

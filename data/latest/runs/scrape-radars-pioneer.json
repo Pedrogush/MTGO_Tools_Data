@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-25T18:57:28Z",
+  "generated_at": "2026-05-26T01:23:47Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 36,
-    "skipped": 27
+    "success": 35,
+    "skipped": 28
   },
   "results": [
     {
@@ -109,10 +109,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "azorius-flash",
-      "path": "latest/radars/pioneer/azorius-flash.json"
+      "path": "latest/radars/pioneer/azorius-flash.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

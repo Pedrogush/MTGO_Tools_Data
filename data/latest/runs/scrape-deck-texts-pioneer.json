@@ -1,12 +1,12 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-26T13:25:11Z",
+  "generated_at": "2026-05-26T19:08:43Z",
   "command": "scrape-deck-texts-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 36,
+    "success": 38,
     "skipped": 262
   },
   "results": [
@@ -15,13 +15,6 @@
       "status": "success",
       "format": "pioneer",
       "path": "latest/archetypes/pioneer.json"
-    },
-    {
-      "scope": "archetype-decks",
-      "status": "success",
-      "format": "pioneer",
-      "archetype": "4c-auras",
-      "path": "latest/decks/pioneer/4c-auras.json"
     },
     {
       "scope": "archetype-decks",
@@ -315,6 +308,13 @@
       "archetype": "metalwork-colossus",
       "path": "latest/decks/pioneer/metalwork-colossus.json",
       "message": "No decks found within the last 7 days."
+    },
+    {
+      "scope": "archetype-decks",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "mono-black-discard",
+      "path": "latest/decks/pioneer/mono-black-discard.json"
     },
     {
       "scope": "archetype-decks",
@@ -1776,6 +1776,13 @@
     },
     {
       "scope": "deck-text",
+      "status": "success",
+      "format": "pioneer",
+      "deck_id": "7801388",
+      "path": "archive/deck-texts/pioneer/7801388.json"
+    },
+    {
+      "scope": "deck-text",
       "status": "skipped",
       "format": "pioneer",
       "deck_id": "7801389",
@@ -2098,14 +2105,6 @@
       "scope": "deck-text",
       "status": "skipped",
       "format": "pioneer",
-      "deck_id": "7802141",
-      "path": "archive/deck-texts/pioneer/7802141.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "pioneer",
       "deck_id": "7802142",
       "path": "archive/deck-texts/pioneer/7802142.json",
       "message": "Reused existing published deck-text blob."
@@ -2240,6 +2239,13 @@
     },
     {
       "scope": "deck-text",
+      "status": "success",
+      "format": "pioneer",
+      "deck_id": "7803073",
+      "path": "archive/deck-texts/pioneer/7803073.json"
+    },
+    {
+      "scope": "deck-text",
       "status": "skipped",
       "format": "pioneer",
       "deck_id": "7803074",
@@ -2352,10 +2358,18 @@
     },
     {
       "scope": "deck-text",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "deck_id": "7803123",
-      "path": "archive/deck-texts/pioneer/7803123.json"
+      "path": "archive/deck-texts/pioneer/7803123.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "success",
+      "format": "pioneer",
+      "deck_id": "7803590",
+      "path": "archive/deck-texts/pioneer/7803590.json"
     }
   ]
 }

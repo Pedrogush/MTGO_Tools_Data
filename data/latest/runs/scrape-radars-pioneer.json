@@ -1,29 +1,28 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-27T13:46:56Z",
+  "generated_at": "2026-05-27T19:11:03Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 35,
-    "skipped": 28
+    "success": 36,
+    "skipped": 27
   },
   "results": [
     {
       "scope": "archetype-radar",
       "status": "success",
       "format": "pioneer",
-      "archetype": "4c-elementals",
-      "path": "latest/radars/pioneer/4c-elementals.json"
+      "archetype": "4c-auras",
+      "path": "latest/radars/pioneer/4c-auras.json"
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
-      "archetype": "4c-legends",
-      "path": "latest/radars/pioneer/4c-legends.json",
-      "message": "No published decks were available for radar generation."
+      "archetype": "4c-elementals",
+      "path": "latest/radars/pioneer/4c-elementals.json"
     },
     {
       "scope": "archetype-radar",
@@ -299,6 +298,14 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "pioneer",
+      "archetype": "jeskai-humans",
+      "path": "latest/radars/pioneer/jeskai-humans.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
       "status": "success",
       "format": "pioneer",
       "archetype": "jund-sacrifice",
@@ -317,6 +324,14 @@
       "format": "pioneer",
       "archetype": "mardu-greasefang",
       "path": "latest/radars/pioneer/mardu-greasefang.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "pioneer",
+      "archetype": "mardu-transmogrify",
+      "path": "latest/radars/pioneer/mardu-transmogrify.json",
       "message": "No published decks were available for radar generation."
     },
     {
@@ -401,14 +416,6 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "pioneer",
-      "archetype": "quintorius-combo",
-      "path": "latest/radars/pioneer/quintorius-combo.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
       "status": "success",
       "format": "pioneer",
       "archetype": "rakdos-midrange",
@@ -448,14 +455,6 @@
       "format": "pioneer",
       "archetype": "simic-scapeshift",
       "path": "latest/radars/pioneer/simic-scapeshift.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "pioneer",
-      "archetype": "soulflayer",
-      "path": "latest/radars/pioneer/soulflayer.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

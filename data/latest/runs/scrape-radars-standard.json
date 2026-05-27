@@ -1,23 +1,15 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-27T13:47:03Z",
+  "generated_at": "2026-05-27T19:11:17Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 24,
-    "success": 43
+    "success": 43,
+    "skipped": 24
   },
   "results": [
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "standard",
-      "archetype": "4c-artifacts",
-      "path": "latest/radars/standard/4c-artifacts.json",
-      "message": "No published decks were available for radar generation."
-    },
     {
       "scope": "archetype-radar",
       "status": "success",
@@ -330,6 +322,14 @@
       "format": "standard",
       "archetype": "lifegain",
       "path": "latest/radars/standard/lifegain.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "standard",
+      "archetype": "mardu-control",
+      "path": "latest/radars/standard/mardu-control.json",
       "message": "No published decks were available for radar generation."
     },
     {

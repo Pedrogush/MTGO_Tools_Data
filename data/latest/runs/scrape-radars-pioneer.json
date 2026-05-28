@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-27T19:11:03Z",
+  "generated_at": "2026-05-28T01:19:30Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 36,
-    "skipped": 27
+    "success": 35,
+    "skipped": 28
   },
   "results": [
     {
@@ -101,11 +101,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "azorius-flash",
-      "path": "latest/radars/pioneer/azorius-flash.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pioneer/azorius-flash.json"
     },
     {
       "scope": "archetype-radar",
@@ -194,10 +193,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "dimir-midrange",
-      "path": "latest/radars/pioneer/dimir-midrange.json"
+      "path": "latest/radars/pioneer/dimir-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -437,10 +437,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "selesnya-midrange",
-      "path": "latest/radars/pioneer/selesnya-midrange.json"
+      "path": "latest/radars/pioneer/selesnya-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

@@ -1,7 +1,7 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-28T13:42:02Z",
+  "generated_at": "2026-05-28T19:21:14Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
@@ -10,13 +10,6 @@
     "skipped": 10
   },
   "results": [
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "4c-depths",
-      "path": "latest/radars/legacy/4c-depths.json"
-    },
     {
       "scope": "archetype-radar",
       "status": "success",
@@ -196,17 +189,18 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
-      "archetype": "esper-vial",
-      "path": "latest/radars/legacy/esper-vial.json"
+      "archetype": "goblins",
+      "path": "latest/radars/legacy/goblins.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "legacy",
-      "archetype": "goblins",
-      "path": "latest/radars/legacy/goblins.json",
+      "archetype": "grixis-control",
+      "path": "latest/radars/legacy/grixis-control.json",
       "message": "No published decks were available for radar generation."
     },
     {
@@ -297,6 +291,13 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "mystic-forge-combo",
+      "path": "latest/radars/legacy/mystic-forge-combo.json"
+    },
+    {
+      "scope": "archetype-radar",
       "status": "skipped",
       "format": "legacy",
       "archetype": "naya-initiative",
@@ -361,14 +362,6 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "rakdos-scam",
-      "path": "latest/radars/legacy/rakdos-scam.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
       "archetype": "red-stompy",
@@ -391,6 +384,21 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "standstill",
+      "path": "latest/radars/legacy/standstill.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "legacy",
+      "archetype": "stiflenought",
+      "path": "latest/radars/legacy/stiflenought.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
       "status": "skipped",
       "format": "legacy",
       "archetype": "sultai-depths",
@@ -403,14 +411,6 @@
       "format": "legacy",
       "archetype": "sultai-tempo",
       "path": "latest/radars/legacy/sultai-tempo.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "temur-delver",
-      "path": "latest/radars/legacy/temur-delver.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

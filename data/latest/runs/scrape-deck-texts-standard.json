@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-28T13:39:18Z",
+  "generated_at": "2026-05-28T19:14:11Z",
   "command": "scrape-deck-texts-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 44,
-    "skipped": 573
+    "success": 47,
+    "skipped": 574
   },
   "results": [
     {
@@ -15,6 +15,14 @@
       "status": "success",
       "format": "standard",
       "path": "latest/archetypes/standard.json"
+    },
+    {
+      "scope": "archetype-decks",
+      "status": "skipped",
+      "format": "standard",
+      "archetype": "4c-artifacts",
+      "path": "latest/decks/standard/4c-artifacts.json",
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
@@ -185,14 +193,6 @@
       "format": "standard",
       "archetype": "gruul-aggro",
       "path": "latest/decks/standard/gruul-aggro.json",
-      "message": "No decks found within the last 7 days."
-    },
-    {
-      "scope": "archetype-decks",
-      "status": "skipped",
-      "format": "standard",
-      "archetype": "gruul-leyline-aggro",
-      "path": "latest/decks/standard/gruul-leyline-aggro.json",
       "message": "No decks found within the last 7 days."
     },
     {
@@ -4896,10 +4896,39 @@
     },
     {
       "scope": "deck-text",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "deck_id": "7805598",
-      "path": "archive/deck-texts/standard/7805598.json"
+      "path": "archive/deck-texts/standard/7805598.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "success",
+      "format": "standard",
+      "deck_id": "7805666",
+      "path": "archive/deck-texts/standard/7805666.json"
+    },
+    {
+      "scope": "deck-text",
+      "status": "success",
+      "format": "standard",
+      "deck_id": "7805703",
+      "path": "archive/deck-texts/standard/7805703.json"
+    },
+    {
+      "scope": "deck-text",
+      "status": "success",
+      "format": "standard",
+      "deck_id": "7805852",
+      "path": "archive/deck-texts/standard/7805852.json"
+    },
+    {
+      "scope": "deck-text",
+      "status": "success",
+      "format": "standard",
+      "deck_id": "7805891",
+      "path": "archive/deck-texts/standard/7805891.json"
     }
   ]
 }

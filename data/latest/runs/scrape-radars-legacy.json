@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-28T19:21:14Z",
+  "generated_at": "2026-05-29T01:27:43Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 50,
-    "skipped": 10
+    "success": 49,
+    "skipped": 11
   },
   "results": [
     {
@@ -82,10 +82,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "boros-initiative",
-      "path": "latest/radars/legacy/boros-initiative.json"
+      "path": "latest/radars/legacy/boros-initiative.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

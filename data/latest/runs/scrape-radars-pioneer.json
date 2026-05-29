@@ -1,22 +1,15 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-29T13:36:09Z",
+  "generated_at": "2026-05-29T19:18:00Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 35,
-    "skipped": 28
+    "success": 36,
+    "skipped": 26
   },
   "results": [
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pioneer",
-      "archetype": "4c-auras",
-      "path": "latest/radars/pioneer/4c-auras.json"
-    },
     {
       "scope": "archetype-radar",
       "status": "success",
@@ -277,6 +270,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pioneer",
+      "archetype": "izzet-indomitable-creativity",
+      "path": "latest/radars/pioneer/izzet-indomitable-creativity.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
       "archetype": "izzet-phoenix",
       "path": "latest/radars/pioneer/izzet-phoenix.json"
     },
@@ -293,14 +293,6 @@
       "format": "pioneer",
       "archetype": "jeskai-ascendancy",
       "path": "latest/radars/pioneer/jeskai-ascendancy.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "pioneer",
-      "archetype": "jeskai-humans",
-      "path": "latest/radars/pioneer/jeskai-humans.json",
       "message": "No published decks were available for radar generation."
     },
     {
@@ -466,11 +458,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "sultai-scapeshift",
-      "path": "latest/radars/pioneer/sultai-scapeshift.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pioneer/sultai-scapeshift.json"
     },
     {
       "scope": "format-card-pool",

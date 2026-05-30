@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-29T19:18:00Z",
+  "generated_at": "2026-05-30T01:24:57Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 36,
-    "skipped": 26
+    "success": 35,
+    "skipped": 27
   },
   "results": [
     {
@@ -223,11 +223,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "golgari-food",
-      "path": "latest/radars/pioneer/golgari-food.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pioneer/golgari-food.json"
     },
     {
       "scope": "archetype-radar",
@@ -304,10 +303,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "jund-storm-herald-combo",
-      "path": "latest/radars/pioneer/jund-storm-herald-combo.json"
+      "path": "latest/radars/pioneer/jund-storm-herald-combo.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -414,10 +414,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "selesnya-angels",
-      "path": "latest/radars/pioneer/selesnya-angels.json"
+      "path": "latest/radars/pioneer/selesnya-angels.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

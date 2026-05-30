@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-29T19:17:53Z",
+  "generated_at": "2026-05-30T01:24:59Z",
   "command": "scrape-radars-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 21,
-    "skipped": 5
+    "success": 20,
+    "skipped": 6
   },
   "results": [
     {
@@ -41,10 +41,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "counter-vine",
-      "path": "latest/radars/vintage/counter-vine.json"
+      "path": "latest/radars/vintage/counter-vine.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

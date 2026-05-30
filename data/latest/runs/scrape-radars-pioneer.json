@@ -1,15 +1,22 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-30T12:50:40Z",
+  "generated_at": "2026-05-30T19:22:16Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 36,
+    "success": 37,
     "skipped": 26
   },
   "results": [
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "4c-auras",
+      "path": "latest/radars/pioneer/4c-auras.json"
+    },
     {
       "scope": "archetype-radar",
       "status": "success",

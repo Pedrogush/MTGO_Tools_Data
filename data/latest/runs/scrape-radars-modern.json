@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-30T12:50:41Z",
+  "generated_at": "2026-05-30T19:22:18Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 17,
-    "success": 51
+    "skipped": 16,
+    "success": 53
   },
   "results": [
     {
@@ -52,14 +52,6 @@
       "format": "modern",
       "archetype": "azorius-genericblink",
       "path": "latest/radars/modern/azorius-genericblink.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "modern",
-      "archetype": "bant-genericblink",
-      "path": "latest/radars/modern/bant-genericblink.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -153,6 +145,14 @@
       "format": "modern",
       "archetype": "eldrazi",
       "path": "latest/radars/modern/eldrazi.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "modern",
+      "archetype": "esper-control",
+      "path": "latest/radars/modern/esper-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -346,11 +346,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "mardu-genericblink",
-      "path": "latest/radars/modern/mardu-genericblink.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/mardu-genericblink.json"
     },
     {
       "scope": "archetype-radar",
@@ -395,6 +394,13 @@
       "archetype": "mono-green-tron",
       "path": "latest/radars/modern/mono-green-tron.json",
       "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "mono-red-burn",
+      "path": "latest/radars/modern/mono-red-burn.json"
     },
     {
       "scope": "archetype-radar",

@@ -1,21 +1,28 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-30T07:22:37Z",
+  "generated_at": "2026-05-30T12:47:09Z",
   "command": "scrape-mtgo-decklists-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 1,
-    "cached": 13,
-    "success": 1
+    "success": 3,
+    "cached": 13
   },
   "results": [
     {
       "scope": "mtgo-event",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
-      "message": "https://www.mtgo.com/decklist/standard-league-2026-05-3010660: Event returned no decklists."
+      "path": "archive/mtgo-decklists/standard/standard-challenge-32-2026-05-3012843404.json",
+      "message": "Cached 32/32 decks."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "success",
+      "format": "standard",
+      "path": "archive/mtgo-decklists/standard/standard-league-2026-05-3010660.json",
+      "message": "Cached 1/1 decks."
     },
     {
       "scope": "mtgo-event",

@@ -1,23 +1,15 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-31T12:54:07Z",
+  "generated_at": "2026-05-31T19:24:37Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 34,
-    "success": 29
+    "skipped": 32,
+    "success": 31
   },
   "results": [
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "pioneer",
-      "archetype": "4c-auras",
-      "path": "latest/radars/pioneer/4c-auras.json",
-      "message": "No published decks were available for radar generation."
-    },
     {
       "scope": "archetype-radar",
       "status": "skipped",
@@ -76,11 +68,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "5c-legends",
-      "path": "latest/radars/pioneer/5c-legends.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pioneer/5c-legends.json"
     },
     {
       "scope": "archetype-radar",
@@ -308,6 +299,13 @@
       "archetype": "jeskai-ascendancy",
       "path": "latest/radars/pioneer/jeskai-ascendancy.json",
       "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "jund-citadel",
+      "path": "latest/radars/pioneer/jund-citadel.json"
     },
     {
       "scope": "archetype-radar",

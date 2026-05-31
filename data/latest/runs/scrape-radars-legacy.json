@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-30T19:22:18Z",
+  "generated_at": "2026-05-31T01:31:40Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 52,
-    "skipped": 8
+    "success": 49,
+    "skipped": 11
   },
   "results": [
     {
@@ -97,17 +97,19 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "burn",
-      "path": "latest/radars/legacy/burn.json"
+      "path": "latest/radars/legacy/burn.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "cephalid-breakfast",
-      "path": "latest/radars/legacy/cephalid-breakfast.json"
+      "path": "latest/radars/legacy/cephalid-breakfast.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -132,10 +134,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "death-and-taxes-yorion-black-white",
-      "path": "latest/radars/legacy/death-and-taxes-yorion-black-white.json"
+      "path": "latest/radars/legacy/death-and-taxes-yorion-black-white.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

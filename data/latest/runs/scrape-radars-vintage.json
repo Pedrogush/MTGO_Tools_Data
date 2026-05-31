@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-05-30T19:22:21Z",
+  "generated_at": "2026-05-31T01:31:41Z",
   "command": "scrape-radars-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 20,
-    "skipped": 6
+    "success": 19,
+    "skipped": 7
   },
   "results": [
     {
@@ -19,10 +19,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "blue-control",
-      "path": "latest/radars/vintage/blue-control.json"
+      "path": "latest/radars/vintage/blue-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

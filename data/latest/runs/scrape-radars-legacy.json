@@ -1,7 +1,7 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-01T14:36:19Z",
+  "generated_at": "2026-06-01T20:45:00Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
@@ -101,13 +101,6 @@
       "format": "legacy",
       "archetype": "cephalid-breakfast",
       "path": "latest/radars/legacy/cephalid-breakfast.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "coveted-jewel-combo",
-      "path": "latest/radars/legacy/coveted-jewel-combo.json"
     },
     {
       "scope": "archetype-radar",
@@ -274,6 +267,14 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "legacy",
+      "archetype": "maverick",
+      "path": "latest/radars/legacy/maverick.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
       "archetype": "mono-black-midrange",
@@ -382,6 +383,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
+      "archetype": "standstill",
+      "path": "latest/radars/legacy/standstill.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
       "archetype": "stiflenought",
       "path": "latest/radars/legacy/stiflenought.json"
     },
@@ -398,14 +406,6 @@
       "format": "legacy",
       "archetype": "sultai-tempo",
       "path": "latest/radars/legacy/sultai-tempo.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "temur-delver",
-      "path": "latest/radars/legacy/temur-delver.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

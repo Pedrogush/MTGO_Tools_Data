@@ -1,15 +1,30 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-02T13:47:03Z",
+  "generated_at": "2026-06-02T19:36:57Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 51,
-    "skipped": 7
+    "skipped": 6,
+    "success": 54
   },
   "results": [
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "legacy",
+      "archetype": "4c-depths",
+      "path": "latest/radars/legacy/4c-depths.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "affinity-stompy",
+      "path": "latest/radars/legacy/affinity-stompy.json"
+    },
     {
       "scope": "archetype-radar",
       "status": "success",
@@ -24,6 +39,13 @@
       "archetype": "arclight-phoenix",
       "path": "latest/radars/legacy/arclight-phoenix.json",
       "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "azorius-control",
+      "path": "latest/radars/legacy/azorius-control.json"
     },
     {
       "scope": "archetype-radar",
@@ -52,6 +74,13 @@
       "format": "legacy",
       "archetype": "beanstalk-control-yorion",
       "path": "latest/radars/legacy/beanstalk-control-yorion.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "beseech-storm",
+      "path": "latest/radars/legacy/beseech-storm.json"
     },
     {
       "scope": "archetype-radar",
@@ -111,11 +140,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "death-s-shadow",
-      "path": "latest/radars/legacy/death-s-shadow.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/death-s-shadow.json"
     },
     {
       "scope": "archetype-radar",
@@ -168,11 +196,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "goblins",
-      "path": "latest/radars/legacy/goblins.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/goblins.json"
     },
     {
       "scope": "archetype-radar",
@@ -270,22 +297,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "mono-blue-tempo",
-      "path": "latest/radars/legacy/mono-blue-tempo.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
       "archetype": "naya-initiative",
       "path": "latest/radars/legacy/naya-initiative.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "necrodominance-combo",
-      "path": "latest/radars/legacy/necrodominance-combo.json"
     },
     {
       "scope": "archetype-radar",

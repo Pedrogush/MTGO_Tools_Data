@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-02T13:43:09Z",
+  "generated_at": "2026-06-02T19:33:27Z",
   "command": "scrape-deck-texts-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "success": 27,
-    "skipped": 308
+    "skipped": 310
   },
   "results": [
     {
@@ -15,6 +15,14 @@
       "status": "success",
       "format": "pioneer",
       "path": "latest/archetypes/pioneer.json"
+    },
+    {
+      "scope": "archetype-decks",
+      "status": "skipped",
+      "format": "pioneer",
+      "archetype": "4c-auras",
+      "path": "latest/decks/pioneer/4c-auras.json",
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
@@ -104,14 +112,6 @@
       "scope": "archetype-decks",
       "status": "skipped",
       "format": "pioneer",
-      "archetype": "azorius-lotus-field",
-      "path": "latest/decks/pioneer/azorius-lotus-field.json",
-      "message": "No decks found within the last 7 days."
-    },
-    {
-      "scope": "archetype-decks",
-      "status": "skipped",
-      "format": "pioneer",
       "archetype": "azorius-spirits",
       "path": "latest/decks/pioneer/azorius-spirits.json",
       "message": "No decks found within the last 7 days."
@@ -136,14 +136,6 @@
       "scope": "archetype-decks",
       "status": "skipped",
       "format": "pioneer",
-      "archetype": "boros-convoke",
-      "path": "latest/decks/pioneer/boros-convoke.json",
-      "message": "No decks found within the last 7 days."
-    },
-    {
-      "scope": "archetype-decks",
-      "status": "skipped",
-      "format": "pioneer",
       "archetype": "boros-heroic",
       "path": "latest/decks/pioneer/boros-heroic.json",
       "message": "No decks found within the last 7 days."
@@ -154,6 +146,14 @@
       "format": "pioneer",
       "archetype": "boros-humans",
       "path": "latest/decks/pioneer/boros-humans.json",
+      "message": "No decks found within the last 7 days."
+    },
+    {
+      "scope": "archetype-decks",
+      "status": "skipped",
+      "format": "pioneer",
+      "archetype": "boros-midrange",
+      "path": "latest/decks/pioneer/boros-midrange.json",
       "message": "No decks found within the last 7 days."
     },
     {
@@ -234,16 +234,16 @@
       "scope": "archetype-decks",
       "status": "skipped",
       "format": "pioneer",
-      "archetype": "grixis-indomitable-creativity",
-      "path": "latest/decks/pioneer/grixis-indomitable-creativity.json",
+      "archetype": "grixis-midrange",
+      "path": "latest/decks/pioneer/grixis-midrange.json",
       "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
       "status": "skipped",
       "format": "pioneer",
-      "archetype": "grixis-midrange",
-      "path": "latest/decks/pioneer/grixis-midrange.json",
+      "archetype": "gruul-midrange",
+      "path": "latest/decks/pioneer/gruul-midrange.json",
       "message": "No decks found within the last 7 days."
     },
     {
@@ -294,8 +294,8 @@
       "scope": "archetype-decks",
       "status": "skipped",
       "format": "pioneer",
-      "archetype": "jund-citadel",
-      "path": "latest/decks/pioneer/jund-citadel.json",
+      "archetype": "jeskai-humans",
+      "path": "latest/decks/pioneer/jeskai-humans.json",
       "message": "No decks found within the last 7 days."
     },
     {
@@ -432,6 +432,14 @@
       "format": "pioneer",
       "archetype": "selesnya-company",
       "path": "latest/decks/pioneer/selesnya-company.json"
+    },
+    {
+      "scope": "archetype-decks",
+      "status": "skipped",
+      "format": "pioneer",
+      "archetype": "selesnya-midrange",
+      "path": "latest/decks/pioneer/selesnya-midrange.json",
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
@@ -2657,10 +2665,18 @@
     },
     {
       "scope": "deck-text",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "deck_id": "7817565",
-      "path": "archive/deck-texts/pioneer/7817565.json"
+      "path": "archive/deck-texts/pioneer/7817565.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "success",
+      "format": "pioneer",
+      "deck_id": "7819526",
+      "path": "archive/deck-texts/pioneer/7819526.json"
     }
   ]
 }

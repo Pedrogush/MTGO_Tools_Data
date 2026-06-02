@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-01T20:45:00Z",
+  "generated_at": "2026-06-02T01:33:53Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 54,
-    "skipped": 6
+    "success": 53,
+    "skipped": 7
   },
   "results": [
     {
@@ -26,10 +26,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "arclight-phoenix",
-      "path": "latest/radars/legacy/arclight-phoenix.json"
+      "path": "latest/radars/legacy/arclight-phoenix.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -79,14 +80,6 @@
       "format": "legacy",
       "archetype": "boros-energy",
       "path": "latest/radars/legacy/boros-energy.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "boros-initiative",
-      "path": "latest/radars/legacy/boros-initiative.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -267,14 +260,6 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "maverick",
-      "path": "latest/radars/legacy/maverick.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
       "archetype": "mono-black-midrange",
@@ -286,6 +271,14 @@
       "format": "legacy",
       "archetype": "mono-black-pox",
       "path": "latest/radars/legacy/mono-black-pox.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "legacy",
+      "archetype": "mono-black-reanimator",
+      "path": "latest/radars/legacy/mono-black-reanimator.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -324,10 +317,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "ocelot-pride-midrange",
-      "path": "latest/radars/legacy/ocelot-pride-midrange.json"
+      "path": "latest/radars/legacy/ocelot-pride-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -362,8 +356,22 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
+      "archetype": "rakdos-reanimator",
+      "path": "latest/radars/legacy/rakdos-reanimator.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
       "archetype": "red-stompy",
       "path": "latest/radars/legacy/red-stompy.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "saga-storm",
+      "path": "latest/radars/legacy/saga-storm.json"
     },
     {
       "scope": "archetype-radar",
@@ -378,13 +386,6 @@
       "format": "legacy",
       "archetype": "sneak-and-show",
       "path": "latest/radars/legacy/sneak-and-show.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "standstill",
-      "path": "latest/radars/legacy/standstill.json"
     },
     {
       "scope": "archetype-radar",

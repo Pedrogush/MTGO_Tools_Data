@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-03T19:43:28Z",
+  "generated_at": "2026-06-04T01:38:53Z",
   "command": "scrape-radars-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 12,
-    "success": 49
+    "skipped": 14,
+    "success": 47
   },
   "results": [
     {
@@ -79,10 +79,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "boros-moxite",
-      "path": "latest/radars/pauper/boros-moxite.json"
+      "path": "latest/radars/pauper/boros-moxite.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -242,10 +243,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "izzet-delver",
-      "path": "latest/radars/pauper/izzet-delver.json"
+      "path": "latest/radars/pauper/izzet-delver.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

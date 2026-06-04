@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-03T19:43:09Z",
+  "generated_at": "2026-06-04T01:38:56Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 53,
-    "skipped": 7
+    "success": 52,
+    "skipped": 8
   },
   "results": [
     {
@@ -195,10 +195,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "grixis-tempo",
-      "path": "latest/radars/legacy/grixis-tempo.json"
+      "path": "latest/radars/legacy/grixis-tempo.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

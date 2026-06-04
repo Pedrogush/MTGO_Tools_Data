@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-03T19:43:11Z",
+  "generated_at": "2026-06-04T01:39:00Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 35,
-    "success": 26
+    "skipped": 38,
+    "success": 23
   },
   "results": [
     {
@@ -190,17 +190,19 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "dimir-midrange",
-      "path": "latest/radars/pioneer/dimir-midrange.json"
+      "path": "latest/radars/pioneer/dimir-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "dredgeless-dredge",
-      "path": "latest/radars/pioneer/dredgeless-dredge.json"
+      "path": "latest/radars/pioneer/dredgeless-dredge.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -386,10 +388,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "niv-to-light",
-      "path": "latest/radars/pioneer/niv-to-light.json"
+      "path": "latest/radars/pioneer/niv-to-light.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

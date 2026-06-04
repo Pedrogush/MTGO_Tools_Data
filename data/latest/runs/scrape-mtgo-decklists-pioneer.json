@@ -1,14 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-03T19:39:33Z",
+  "generated_at": "2026-06-04T01:36:09Z",
   "command": "scrape-mtgo-decklists-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "cached": 13,
+    "cached": 12,
     "skipped": 1,
-    "success": 1
+    "success": 2
   },
   "results": [
     {
@@ -76,16 +76,16 @@
     },
     {
       "scope": "mtgo-event",
-      "status": "cached",
+      "status": "skipped",
       "format": "pioneer",
-      "path": "archive/mtgo-decklists/pioneer/pioneer-league-2026-05-2810644.json",
-      "message": "Loaded 1 decks from archive."
+      "message": "https://www.mtgo.com/decklist/pioneer-league-2026-06-0410644: Event returned no decklists."
     },
     {
       "scope": "mtgo-event",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
-      "message": "https://www.mtgo.com/decklist/pioneer-league-2026-06-0310644: Event returned no decklists."
+      "path": "archive/mtgo-decklists/pioneer/pioneer-league-2026-06-0310644.json",
+      "message": "Cached 4/4 decks."
     },
     {
       "scope": "mtgo-event",

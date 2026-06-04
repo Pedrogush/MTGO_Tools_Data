@@ -1,12 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-03T19:39:34Z",
+  "generated_at": "2026-06-04T01:36:07Z",
   "command": "scrape-mtgo-decklists-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "cached": 10,
+    "cached": 9,
+    "skipped": 1,
     "success": 1
   },
   "results": [
@@ -54,10 +55,9 @@
     },
     {
       "scope": "mtgo-event",
-      "status": "cached",
+      "status": "skipped",
       "format": "vintage",
-      "path": "archive/mtgo-decklists/vintage/vintage-league-2026-05-2810668.json",
-      "message": "Loaded 2 decks from archive."
+      "message": "https://www.mtgo.com/decklist/vintage-league-2026-06-0410668: Event returned no decklists."
     },
     {
       "scope": "mtgo-event",

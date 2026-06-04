@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-04T13:33:31Z",
+  "generated_at": "2026-06-04T19:23:25Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 58,
-    "skipped": 10
+    "success": 59,
+    "skipped": 9
   },
   "results": [
     {
@@ -236,6 +236,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
+      "archetype": "izzet-control",
+      "path": "latest/radars/standard/izzet-control.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
       "archetype": "izzet-elementals",
       "path": "latest/radars/standard/izzet-elementals.json"
     },
@@ -413,13 +420,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
-      "archetype": "simic-landfall",
-      "path": "latest/radars/standard/simic-landfall.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
       "archetype": "simic-ouroboroid",
       "path": "latest/radars/standard/simic-ouroboroid.json"
     },
@@ -476,11 +476,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
       "archetype": "temur-lessons",
-      "path": "latest/radars/standard/temur-lessons.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/standard/temur-lessons.json"
     },
     {
       "scope": "archetype-radar",

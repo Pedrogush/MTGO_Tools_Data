@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-04T13:32:53Z",
+  "generated_at": "2026-06-04T19:23:23Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 52,
-    "skipped": 8
+    "success": 54,
+    "skipped": 6
   },
   "results": [
     {
@@ -66,6 +66,13 @@
       "format": "legacy",
       "archetype": "beanstalk-control-yorion",
       "path": "latest/radars/legacy/beanstalk-control-yorion.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "beseech-storm",
+      "path": "latest/radars/legacy/beseech-storm.json"
     },
     {
       "scope": "archetype-radar",
@@ -195,18 +202,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "grixis-tempo",
-      "path": "latest/radars/legacy/grixis-tempo.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "high-tide",
-      "path": "latest/radars/legacy/high-tide.json"
+      "archetype": "grixis-tempo",
+      "path": "latest/radars/legacy/grixis-tempo.json"
     },
     {
       "scope": "archetype-radar",
@@ -266,14 +265,6 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "maverick",
-      "path": "latest/radars/legacy/maverick.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
       "archetype": "mono-black-midrange",
@@ -293,6 +284,13 @@
       "archetype": "mono-black-reanimator",
       "path": "latest/radars/legacy/mono-black-reanimator.json",
       "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "mystic-forge-combo",
+      "path": "latest/radars/legacy/mystic-forge-combo.json"
     },
     {
       "scope": "archetype-radar",

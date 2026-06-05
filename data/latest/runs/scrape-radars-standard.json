@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-04T19:23:25Z",
+  "generated_at": "2026-06-05T01:30:01Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 59,
-    "skipped": 9
+    "success": 57,
+    "skipped": 11
   },
   "results": [
     {
@@ -97,10 +97,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "azorius-token-control",
-      "path": "latest/radars/standard/azorius-token-control.json"
+      "path": "latest/radars/standard/azorius-token-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -453,10 +454,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "temur-control",
-      "path": "latest/radars/standard/temur-control.json"
+      "path": "latest/radars/standard/temur-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

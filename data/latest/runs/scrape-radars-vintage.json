@@ -1,15 +1,22 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-06T12:53:36Z",
+  "generated_at": "2026-06-06T18:53:02Z",
   "command": "scrape-radars-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 7,
-    "success": 19
+    "success": 20,
+    "skipped": 7
   },
   "results": [
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "vintage",
+      "archetype": "azorius-initiative",
+      "path": "latest/radars/vintage/azorius-initiative.json"
+    },
     {
       "scope": "archetype-radar",
       "status": "skipped",

@@ -1,21 +1,22 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-05T19:03:01Z",
+  "generated_at": "2026-06-06T01:24:26Z",
   "command": "scrape-radars-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 19,
-    "skipped": 7
+    "skipped": 9,
+    "success": 17
   },
   "results": [
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "beseech-storm",
-      "path": "latest/radars/vintage/beseech-storm.json"
+      "path": "latest/radars/vintage/beseech-storm.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -143,10 +144,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "paradoxical-outcome",
-      "path": "latest/radars/vintage/paradoxical-outcome.json"
+      "path": "latest/radars/vintage/paradoxical-outcome.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

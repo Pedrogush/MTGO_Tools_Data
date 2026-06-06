@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-05T19:03:45Z",
+  "generated_at": "2026-06-06T01:24:19Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 56,
-    "skipped": 4
+    "success": 53,
+    "skipped": 7
   },
   "results": [
     {
@@ -187,10 +187,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "grixis-control",
-      "path": "latest/radars/legacy/grixis-control.json"
+      "path": "latest/radars/legacy/grixis-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -201,10 +202,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "high-tide",
-      "path": "latest/radars/legacy/high-tide.json"
+      "path": "latest/radars/legacy/high-tide.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -222,10 +224,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "jeskai-tempo",
-      "path": "latest/radars/legacy/jeskai-tempo.json"
+      "path": "latest/radars/legacy/jeskai-tempo.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

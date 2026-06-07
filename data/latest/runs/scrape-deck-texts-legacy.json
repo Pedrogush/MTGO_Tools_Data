@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-07T01:28:28Z",
+  "generated_at": "2026-06-07T07:43:19Z",
   "command": "scrape-deck-texts-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 53,
-    "skipped": 264
+    "success": 52,
+    "skipped": 267
   },
   "results": [
     {
@@ -305,11 +305,10 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "naya-initiative",
-      "path": "latest/decks/legacy/naya-initiative.json",
-      "message": "No decks found within the last 7 days."
+      "path": "latest/decks/legacy/naya-initiative.json"
     },
     {
       "scope": "archetype-decks",
@@ -2466,31 +2465,49 @@
     },
     {
       "scope": "deck-text",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "deck_id": "7824619",
-      "path": "archive/deck-texts/legacy/7824619.json"
+      "path": "archive/deck-texts/legacy/7824619.json",
+      "message": "Reused existing published deck-text blob."
     },
     {
       "scope": "deck-text",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "deck_id": "7824745",
-      "path": "archive/deck-texts/legacy/7824745.json"
+      "path": "archive/deck-texts/legacy/7824745.json",
+      "message": "Reused existing published deck-text blob."
     },
     {
       "scope": "deck-text",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "deck_id": "7824800",
-      "path": "archive/deck-texts/legacy/7824800.json"
+      "path": "archive/deck-texts/legacy/7824800.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7825010",
+      "path": "archive/deck-texts/legacy/7825010.json",
+      "message": "Reused existing published deck-text blob."
     },
     {
       "scope": "deck-text",
       "status": "success",
       "format": "legacy",
-      "deck_id": "7825010",
-      "path": "archive/deck-texts/legacy/7825010.json"
+      "deck_id": "7825082",
+      "path": "archive/deck-texts/legacy/7825082.json"
+    },
+    {
+      "scope": "deck-text",
+      "status": "success",
+      "format": "legacy",
+      "deck_id": "7825155",
+      "path": "archive/deck-texts/legacy/7825155.json"
     }
   ]
 }

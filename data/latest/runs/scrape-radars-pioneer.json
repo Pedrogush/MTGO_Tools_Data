@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-06T18:53:09Z",
+  "generated_at": "2026-06-07T01:33:08Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 39,
-    "success": 23
+    "skipped": 42,
+    "success": 20
   },
   "results": [
     {
@@ -175,10 +175,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "dimir-control",
-      "path": "latest/radars/pioneer/dimir-control.json"
+      "path": "latest/radars/pioneer/dimir-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -352,10 +353,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "mono-black-midrange",
-      "path": "latest/radars/pioneer/mono-black-midrange.json"
+      "path": "latest/radars/pioneer/mono-black-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -432,10 +434,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "selesnya-company",
-      "path": "latest/radars/pioneer/selesnya-company.json"
+      "path": "latest/radars/pioneer/selesnya-company.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

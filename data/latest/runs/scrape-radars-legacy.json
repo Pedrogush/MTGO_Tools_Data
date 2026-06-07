@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-06T18:53:06Z",
+  "generated_at": "2026-06-07T01:34:05Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 54,
-    "skipped": 6
+    "success": 49,
+    "skipped": 11
   },
   "results": [
     {
@@ -89,10 +89,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "burn",
-      "path": "latest/radars/legacy/burn.json"
+      "path": "latest/radars/legacy/burn.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -180,10 +181,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "esper-vial",
-      "path": "latest/radars/legacy/esper-vial.json"
+      "path": "latest/radars/legacy/esper-vial.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -273,17 +275,19 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "mono-black-midrange",
-      "path": "latest/radars/legacy/mono-black-midrange.json"
+      "path": "latest/radars/legacy/mono-black-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "mono-black-pox",
-      "path": "latest/radars/legacy/mono-black-pox.json"
+      "path": "latest/radars/legacy/mono-black-pox.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -295,10 +299,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "naya-initiative",
-      "path": "latest/radars/legacy/naya-initiative.json"
+      "path": "latest/radars/legacy/naya-initiative.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

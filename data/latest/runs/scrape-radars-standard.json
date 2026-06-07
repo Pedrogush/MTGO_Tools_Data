@@ -1,7 +1,7 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-07T12:56:28Z",
+  "generated_at": "2026-06-07T18:55:21Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
@@ -100,6 +100,14 @@
       "format": "standard",
       "archetype": "azorius-tempo",
       "path": "latest/radars/standard/azorius-tempo.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "standard",
+      "archetype": "azorius-token-control",
+      "path": "latest/radars/standard/azorius-token-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -240,6 +248,14 @@
       "format": "standard",
       "archetype": "izzet-aggro",
       "path": "latest/radars/standard/izzet-aggro.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "standard",
+      "archetype": "izzet-control",
+      "path": "latest/radars/standard/izzet-control.json",
       "message": "No published decks were available for radar generation."
     },
     {
@@ -394,14 +410,6 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "standard",
-      "archetype": "orzhov-aristocrats",
-      "path": "latest/radars/standard/orzhov-aristocrats.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "standard",
       "archetype": "rakdos-discard",
       "path": "latest/radars/standard/rakdos-discard.json",
       "message": "No published decks were available for radar generation."
@@ -426,14 +434,6 @@
       "format": "standard",
       "archetype": "selesnya-ouroboroid",
       "path": "latest/radars/standard/selesnya-ouroboroid.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "standard",
-      "archetype": "simic-landfall",
-      "path": "latest/radars/standard/simic-landfall.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

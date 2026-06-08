@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-08T13:51:51Z",
+  "generated_at": "2026-06-08T19:15:25Z",
   "command": "scrape-radars-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 51,
-    "skipped": 10
+    "success": 50,
+    "skipped": 11
   },
   "results": [
     {
@@ -16,6 +16,14 @@
       "format": "pauper",
       "archetype": "4c-ephemerate",
       "path": "latest/radars/pauper/4c-ephemerate.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "pauper",
+      "archetype": "azorius-ephemerate",
+      "path": "latest/radars/pauper/azorius-ephemerate.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -73,13 +81,6 @@
       "format": "pauper",
       "archetype": "boros-moxite",
       "path": "latest/radars/pauper/boros-moxite.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pauper",
-      "archetype": "boros-synthesizer",
-      "path": "latest/radars/pauper/boros-synthesizer.json"
     },
     {
       "scope": "archetype-radar",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-07T18:55:29Z",
+  "generated_at": "2026-06-08T01:33:26Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 51,
-    "skipped": 9
+    "success": 48,
+    "skipped": 12
   },
   "results": [
     {
@@ -189,10 +189,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "goblins",
-      "path": "latest/radars/legacy/goblins.json"
+      "path": "latest/radars/legacy/goblins.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -275,11 +276,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "mono-black-midrange",
-      "path": "latest/radars/legacy/mono-black-midrange.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/mono-black-midrange.json"
     },
     {
       "scope": "archetype-radar",
@@ -391,24 +391,27 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "stiflenought",
-      "path": "latest/radars/legacy/stiflenought.json"
+      "path": "latest/radars/legacy/stiflenought.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "sultai-depths",
-      "path": "latest/radars/legacy/sultai-depths.json"
+      "path": "latest/radars/legacy/sultai-depths.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "sultai-tempo",
-      "path": "latest/radars/legacy/sultai-tempo.json"
+      "path": "latest/radars/legacy/sultai-tempo.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

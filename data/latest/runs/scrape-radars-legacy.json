@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-09T13:23:08Z",
+  "generated_at": "2026-06-09T19:08:05Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 52,
-    "skipped": 8
+    "success": 53,
+    "skipped": 7
   },
   "results": [
     {
@@ -196,11 +196,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "goblins",
-      "path": "latest/radars/legacy/goblins.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/goblins.json"
     },
     {
       "scope": "archetype-radar",
@@ -218,10 +217,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
-      "archetype": "infect",
-      "path": "latest/radars/legacy/infect.json"
+      "archetype": "high-tide",
+      "path": "latest/radars/legacy/high-tide.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -388,11 +388,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "stiflenought",
-      "path": "latest/radars/legacy/stiflenought.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/stiflenought.json"
     },
     {
       "scope": "archetype-radar",

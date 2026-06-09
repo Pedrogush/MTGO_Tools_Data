@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-08T19:15:24Z",
+  "generated_at": "2026-06-09T01:23:49Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 56,
-    "skipped": 12
+    "success": 54,
+    "skipped": 14
   },
   "results": [
     {
@@ -241,10 +241,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "indomitable-creativity",
-      "path": "latest/radars/modern/indomitable-creativity.json"
+      "path": "latest/radars/modern/indomitable-creativity.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -299,10 +300,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "jeskai-control",
-      "path": "latest/radars/modern/jeskai-control.json"
+      "path": "latest/radars/modern/jeskai-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

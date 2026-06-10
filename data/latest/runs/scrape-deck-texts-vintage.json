@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-10T01:24:05Z",
+  "generated_at": "2026-06-10T07:50:43Z",
   "command": "scrape-deck-texts-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "success": 29,
-    "skipped": 212
+    "skipped": 213
   },
   "results": [
     {
@@ -1903,10 +1903,18 @@
     },
     {
       "scope": "deck-text",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "deck_id": "7828757",
-      "path": "archive/deck-texts/vintage/7828757.json"
+      "path": "archive/deck-texts/vintage/7828757.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "success",
+      "format": "vintage",
+      "deck_id": "7829021",
+      "path": "archive/deck-texts/vintage/7829021.json"
     }
   ]
 }

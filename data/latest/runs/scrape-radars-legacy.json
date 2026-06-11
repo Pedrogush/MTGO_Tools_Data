@@ -1,7 +1,7 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-11T13:47:43Z",
+  "generated_at": "2026-06-11T19:23:07Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
@@ -240,14 +240,6 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "jeskai-tempo",
-      "path": "latest/radars/legacy/jeskai-tempo.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
       "archetype": "jund",
@@ -330,6 +322,14 @@
       "format": "legacy",
       "archetype": "ocelot-pride-midrange",
       "path": "latest/radars/legacy/ocelot-pride-midrange.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "legacy",
+      "archetype": "ocelot-pride-tempo",
+      "path": "latest/radars/legacy/ocelot-pride-tempo.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

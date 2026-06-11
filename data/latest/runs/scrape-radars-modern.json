@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-10T19:22:58Z",
+  "generated_at": "2026-06-11T01:31:50Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 54,
-    "skipped": 14
+    "success": 53,
+    "skipped": 15
   },
   "results": [
     {
@@ -278,10 +278,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "izzetcontrol",
-      "path": "latest/radars/modern/izzetcontrol.json"
+      "path": "latest/radars/modern/izzetcontrol.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

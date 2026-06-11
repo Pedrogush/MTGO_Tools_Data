@@ -1,21 +1,21 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-11T08:06:23Z",
+  "generated_at": "2026-06-11T13:45:54Z",
   "command": "scrape-mtgo-decklists-pauper",
-  "status": "hard-failure",
+  "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "hard-failure": 2,
-    "cached": 8,
-    "success": 1
+    "success": 2,
+    "cached": 10
   },
   "results": [
     {
       "scope": "mtgo-event",
-      "status": "hard-failure",
+      "status": "success",
       "format": "pauper",
-      "message": "https://www.mtgo.com/decklist/pauper-league-2026-06-1110636: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+      "path": "archive/mtgo-decklists/pauper/pauper-league-2026-06-1110636.json",
+      "message": "Cached 16/16 decks."
     },
     {
       "scope": "mtgo-event",
@@ -61,16 +61,24 @@
     },
     {
       "scope": "mtgo-event",
-      "status": "hard-failure",
+      "status": "cached",
       "format": "pauper",
-      "message": "https://www.mtgo.com/decklist/pauper-challenge-32-2026-06-0612843783: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+      "path": "archive/mtgo-decklists/pauper/pauper-league-2026-06-0610636.json",
+      "message": "Loaded 7 decks from archive."
     },
     {
       "scope": "mtgo-event",
       "status": "cached",
       "format": "pauper",
-      "path": "archive/mtgo-decklists/pauper/pauper-league-2026-06-0610636.json",
-      "message": "Loaded 7 decks from archive."
+      "path": "archive/mtgo-decklists/pauper/pauper-challenge-32-2026-06-0512843783.json",
+      "message": "Loaded 32 decks from archive."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "cached",
+      "format": "pauper",
+      "path": "archive/mtgo-decklists/pauper/pauper-league-2026-06-0510636.json",
+      "message": "Loaded 9 decks from archive."
     },
     {
       "scope": "mtgo-event",

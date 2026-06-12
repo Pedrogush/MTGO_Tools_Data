@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-12T13:35:10Z",
+  "generated_at": "2026-06-12T19:05:59Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 51,
-    "skipped": 9
+    "success": 53,
+    "skipped": 7
   },
   "results": [
     {
@@ -52,6 +52,13 @@
       "format": "legacy",
       "archetype": "azorius-tempo",
       "path": "latest/radars/legacy/azorius-tempo.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "bant-control",
+      "path": "latest/radars/legacy/bant-control.json"
     },
     {
       "scope": "archetype-radar",
@@ -218,14 +225,6 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "high-tide",
-      "path": "latest/radars/legacy/high-tide.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
       "archetype": "izzet-delver",
@@ -272,6 +271,14 @@
       "format": "legacy",
       "archetype": "mardu-energy",
       "path": "latest/radars/legacy/mardu-energy.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "legacy",
+      "archetype": "maverick",
+      "path": "latest/radars/legacy/maverick.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -361,11 +368,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "red-stompy",
-      "path": "latest/radars/legacy/red-stompy.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/red-stompy.json"
     },
     {
       "scope": "archetype-radar",
@@ -394,14 +400,6 @@
       "format": "legacy",
       "archetype": "stiflenought",
       "path": "latest/radars/legacy/stiflenought.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "sultai-depths",
-      "path": "latest/radars/legacy/sultai-depths.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

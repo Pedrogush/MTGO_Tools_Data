@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-12T19:05:55Z",
+  "generated_at": "2026-06-13T01:34:12Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 55,
-    "skipped": 13
+    "success": 53,
+    "skipped": 15
   },
   "results": [
     {
@@ -191,10 +191,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "grixis-midrange",
-      "path": "latest/radars/modern/grixis-midrange.json"
+      "path": "latest/radars/modern/grixis-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -212,10 +213,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "gruul-midrange",
-      "path": "latest/radars/modern/gruul-midrange.json"
+      "path": "latest/radars/modern/gruul-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

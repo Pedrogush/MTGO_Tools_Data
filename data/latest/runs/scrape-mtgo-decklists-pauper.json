@@ -1,15 +1,22 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-13T12:58:19Z",
+  "generated_at": "2026-06-13T18:50:43Z",
   "command": "scrape-mtgo-decklists-pauper",
-  "status": "success",
+  "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
+    "hard-failure": 1,
     "cached": 10,
     "success": 1
   },
   "results": [
+    {
+      "scope": "mtgo-event",
+      "status": "hard-failure",
+      "format": "pauper",
+      "message": "https://www.mtgo.com/decklist/pauper-challenge-32-2026-06-1312844320: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
     {
       "scope": "mtgo-event",
       "status": "cached",

@@ -1,7 +1,7 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-13T13:00:48Z",
+  "generated_at": "2026-06-13T18:53:22Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
@@ -28,10 +28,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "4c-midrange",
-      "path": "latest/radars/pioneer/4c-midrange.json"
+      "path": "latest/radars/pioneer/4c-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -275,14 +276,6 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "pioneer",
-      "archetype": "mono-red-aggro",
-      "path": "latest/radars/pioneer/mono-red-aggro.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
       "status": "success",
       "format": "pioneer",
       "archetype": "mono-red-prowess",
@@ -294,6 +287,13 @@
       "format": "pioneer",
       "archetype": "mono-white-humans",
       "path": "latest/radars/pioneer/mono-white-humans.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "mono-white-token-control",
+      "path": "latest/radars/pioneer/mono-white-token-control.json"
     },
     {
       "scope": "archetype-radar",

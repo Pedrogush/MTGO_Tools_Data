@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-14T13:04:48Z",
+  "generated_at": "2026-06-14T19:01:25Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 25,
-    "success": 26
+    "skipped": 24,
+    "success": 27
   },
   "results": [
     {
@@ -70,6 +70,13 @@
       "format": "pioneer",
       "archetype": "5c-scapeshift",
       "path": "latest/radars/pioneer/5c-scapeshift.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "abzan-auras",
+      "path": "latest/radars/pioneer/abzan-auras.json"
     },
     {
       "scope": "archetype-radar",
@@ -189,14 +196,6 @@
       "format": "pioneer",
       "archetype": "grixis-midrange",
       "path": "latest/radars/pioneer/grixis-midrange.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "pioneer",
-      "archetype": "gruul-prowess",
-      "path": "latest/radars/pioneer/gruul-prowess.json",
       "message": "No published decks were available for radar generation."
     },
     {

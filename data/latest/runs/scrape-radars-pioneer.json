@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-13T18:53:22Z",
+  "generated_at": "2026-06-14T01:37:14Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 24,
-    "success": 27
+    "skipped": 26,
+    "success": 25
   },
   "results": [
     {
@@ -171,10 +171,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "golgari-food",
-      "path": "latest/radars/pioneer/golgari-food.json"
+      "path": "latest/radars/pioneer/golgari-food.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -246,10 +247,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "jund-sacrifice",
-      "path": "latest/radars/pioneer/jund-sacrifice.json"
+      "path": "latest/radars/pioneer/jund-sacrifice.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

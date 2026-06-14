@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-13T18:53:33Z",
+  "generated_at": "2026-06-14T01:37:06Z",
   "command": "scrape-radars-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 48,
-    "skipped": 13
+    "success": 47,
+    "skipped": 14
   },
   "results": [
     {
@@ -359,10 +359,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "naya-ponza",
-      "path": "latest/radars/pauper/naya-ponza.json"
+      "path": "latest/radars/pauper/naya-ponza.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

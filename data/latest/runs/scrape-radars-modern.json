@@ -1,22 +1,21 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-16T14:13:20Z",
+  "generated_at": "2026-06-16T19:40:07Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 14,
-    "success": 53
+    "success": 53,
+    "skipped": 14
   },
   "results": [
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
-      "archetype": "5c-midrange",
-      "path": "latest/radars/modern/5c-midrange.json",
-      "message": "No published decks were available for radar generation."
+      "archetype": "4-5c-omnath",
+      "path": "latest/radars/modern/4-5c-omnath.json"
     },
     {
       "scope": "archetype-radar",
@@ -114,13 +113,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "dimir-murktide",
-      "path": "latest/radars/modern/dimir-murktide.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "domain-zoo",
       "path": "latest/radars/modern/domain-zoo.json"
     },
@@ -166,6 +158,13 @@
       "archetype": "esper-reanimator",
       "path": "latest/radars/modern/esper-reanimator.json",
       "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "glimpse-combo",
+      "path": "latest/radars/modern/glimpse-combo.json"
     },
     {
       "scope": "archetype-radar",
@@ -239,13 +238,6 @@
       "format": "modern",
       "archetype": "indomitable-creativity",
       "path": "latest/radars/modern/indomitable-creativity.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "infect",
-      "path": "latest/radars/modern/infect.json"
     },
     {
       "scope": "archetype-radar",
@@ -383,6 +375,14 @@
       "format": "modern",
       "archetype": "mono-green-tron",
       "path": "latest/radars/modern/mono-green-tron.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "modern",
+      "archetype": "mono-red-burn",
+      "path": "latest/radars/modern/mono-red-burn.json",
       "message": "No published decks were available for radar generation."
     },
     {

@@ -1,16 +1,22 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-15T19:37:31Z",
+  "generated_at": "2026-06-16T01:35:43Z",
   "command": "scrape-mtgo-decklists-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "cached": 13,
-    "skipped": 1,
+    "skipped": 2,
+    "cached": 11,
     "success": 1
   },
   "results": [
+    {
+      "scope": "mtgo-event",
+      "status": "skipped",
+      "format": "pioneer",
+      "message": "https://www.mtgo.com/decklist/pioneer-league-2026-06-1610644: Event returned no decklists."
+    },
     {
       "scope": "mtgo-event",
       "status": "cached",
@@ -93,20 +99,6 @@
       "format": "pioneer",
       "path": "archive/mtgo-decklists/pioneer/pioneer-league-2026-06-1010644.json",
       "message": "Loaded 4 decks from archive."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "cached",
-      "format": "pioneer",
-      "path": "archive/mtgo-decklists/pioneer/pioneer-league-2026-06-0910644.json",
-      "message": "Loaded 1 decks from archive."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "cached",
-      "format": "pioneer",
-      "path": "archive/mtgo-decklists/pioneer/pioneer-challenge-32-2026-06-0812843832.json",
-      "message": "Loaded 32 decks from archive."
     },
     {
       "scope": "mtgo-decklists",

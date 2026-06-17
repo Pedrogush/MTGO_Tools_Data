@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-16T19:38:28Z",
+  "generated_at": "2026-06-17T01:36:03Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 53,
-    "skipped": 6
+    "success": 51,
+    "skipped": 8
   },
   "results": [
     {
@@ -68,10 +68,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "beanstalk-control-yorion",
-      "path": "latest/radars/legacy/beanstalk-control-yorion.json"
+      "path": "latest/radars/legacy/beanstalk-control-yorion.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -332,10 +333,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "ocelot-pride-midrange",
-      "path": "latest/radars/legacy/ocelot-pride-midrange.json"
+      "path": "latest/radars/legacy/ocelot-pride-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

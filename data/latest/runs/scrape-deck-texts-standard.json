@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-18T13:31:47Z",
+  "generated_at": "2026-06-18T19:08:03Z",
   "command": "scrape-deck-texts-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 26,
-    "skipped": 293
+    "success": 27,
+    "skipped": 292
   },
   "results": [
     {
@@ -60,6 +60,14 @@
       "format": "standard",
       "archetype": "5c-elementals",
       "path": "latest/decks/standard/5c-elementals.json",
+      "message": "No decks found within the last 7 days."
+    },
+    {
+      "scope": "archetype-decks",
+      "status": "skipped",
+      "format": "standard",
+      "archetype": "5c-kona",
+      "path": "latest/decks/standard/5c-kona.json",
       "message": "No decks found within the last 7 days."
     },
     {
@@ -183,6 +191,14 @@
       "format": "standard",
       "archetype": "dimir-reanimator",
       "path": "latest/decks/standard/dimir-reanimator.json"
+    },
+    {
+      "scope": "archetype-decks",
+      "status": "skipped",
+      "format": "standard",
+      "archetype": "esper-midrange",
+      "path": "latest/decks/standard/esper-midrange.json",
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
@@ -329,14 +345,6 @@
       "scope": "archetype-decks",
       "status": "skipped",
       "format": "standard",
-      "archetype": "mono-black-aggro",
-      "path": "latest/decks/standard/mono-black-aggro.json",
-      "message": "No decks found within the last 7 days."
-    },
-    {
-      "scope": "archetype-decks",
-      "status": "skipped",
-      "format": "standard",
       "archetype": "mono-black-midrange",
       "path": "latest/decks/standard/mono-black-midrange.json",
       "message": "No decks found within the last 7 days."
@@ -370,14 +378,6 @@
       "format": "standard",
       "archetype": "mono-white-momo",
       "path": "latest/decks/standard/mono-white-momo.json",
-      "message": "No decks found within the last 7 days."
-    },
-    {
-      "scope": "archetype-decks",
-      "status": "skipped",
-      "format": "standard",
-      "archetype": "mono-white-token-control",
-      "path": "latest/decks/standard/mono-white-token-control.json",
       "message": "No decks found within the last 7 days."
     },
     {
@@ -509,14 +509,6 @@
       "format": "standard",
       "deck_id": "7831520",
       "path": "archive/deck-texts/standard/7831520.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "standard",
-      "deck_id": "7831522",
-      "path": "archive/deck-texts/standard/7831522.json",
       "message": "Reused existing published deck-text blob."
     },
     {
@@ -2534,6 +2526,13 @@
       "deck_id": "7839663",
       "path": "archive/deck-texts/standard/7839663.json",
       "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "success",
+      "format": "standard",
+      "deck_id": "7839797",
+      "path": "archive/deck-texts/standard/7839797.json"
     }
   ]
 }

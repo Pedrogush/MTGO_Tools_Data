@@ -1,22 +1,22 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-18T08:05:50Z",
+  "generated_at": "2026-06-18T13:33:17Z",
   "command": "scrape-mtgo-decklists-pioneer",
-  "status": "hard-failure",
+  "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "hard-failure": 1,
+    "success": 2,
     "cached": 12,
-    "skipped": 1,
-    "success": 1
+    "skipped": 1
   },
   "results": [
     {
       "scope": "mtgo-event",
-      "status": "hard-failure",
+      "status": "success",
       "format": "pioneer",
-      "message": "https://www.mtgo.com/decklist/pioneer-league-2026-06-1810644: Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+      "path": "archive/mtgo-decklists/pioneer/pioneer-league-2026-06-1810644.json",
+      "message": "Cached 3/3 decks."
     },
     {
       "scope": "mtgo-event",

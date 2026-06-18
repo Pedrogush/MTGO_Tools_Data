@@ -1,15 +1,22 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-17T19:12:44Z",
+  "generated_at": "2026-06-18T01:31:17Z",
   "command": "scrape-mtgo-decklists-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "cached": 11,
-    "success": 1
+    "success": 2,
+    "cached": 10
   },
   "results": [
+    {
+      "scope": "mtgo-event",
+      "status": "success",
+      "format": "vintage",
+      "path": "archive/mtgo-decklists/vintage/vintage-league-2026-06-1810668.json",
+      "message": "Cached 1/1 decks."
+    },
     {
       "scope": "mtgo-event",
       "status": "cached",
@@ -79,13 +86,6 @@
       "format": "vintage",
       "path": "archive/mtgo-decklists/vintage/vintage-challenge-32-2026-06-1112844292.json",
       "message": "Loaded 32 decks from archive."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "cached",
-      "format": "vintage",
-      "path": "archive/mtgo-decklists/vintage/vintage-league-2026-06-1110668.json",
-      "message": "Loaded 1 decks from archive."
     },
     {
       "scope": "mtgo-decklists",

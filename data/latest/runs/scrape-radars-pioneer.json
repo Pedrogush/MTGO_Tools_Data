@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-17T19:22:32Z",
+  "generated_at": "2026-06-18T01:34:14Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 24,
-    "success": 29
+    "skipped": 25,
+    "success": 28
   },
   "results": [
     {
@@ -117,10 +117,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "azorius-spirits",
-      "path": "latest/radars/pioneer/azorius-spirits.json"
+      "path": "latest/radars/pioneer/azorius-spirits.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

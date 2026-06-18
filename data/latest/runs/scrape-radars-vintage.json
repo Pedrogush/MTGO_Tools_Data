@@ -1,7 +1,7 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-17T19:22:10Z",
+  "generated_at": "2026-06-18T01:34:21Z",
   "command": "scrape-radars-vintage",
   "status": "success",
   "max_stale_hours": 24,
@@ -114,11 +114,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "vintage",
       "archetype": "lurrus-drs",
-      "path": "latest/radars/vintage/lurrus-drs.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/vintage/lurrus-drs.json"
     },
     {
       "scope": "archetype-radar",
@@ -203,10 +202,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "stiflenought",
-      "path": "latest/radars/vintage/stiflenought.json"
+      "path": "latest/radars/vintage/stiflenought.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

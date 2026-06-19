@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-19T13:33:04Z",
+  "generated_at": "2026-06-19T19:02:05Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 50,
-    "skipped": 9
+    "success": 52,
+    "skipped": 8
   },
   "results": [
     {
@@ -19,11 +19,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "aluren",
-      "path": "latest/radars/legacy/aluren.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/aluren.json"
     },
     {
       "scope": "archetype-radar",
@@ -235,6 +234,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
+      "archetype": "izzet-tempo",
+      "path": "latest/radars/legacy/izzet-tempo.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
       "archetype": "jeskai-control",
       "path": "latest/radars/legacy/jeskai-control.json"
     },
@@ -297,6 +303,14 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "legacy",
+      "archetype": "mono-black-reanimator",
+      "path": "latest/radars/legacy/mono-black-reanimator.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
       "archetype": "mono-blue-tempo",
@@ -329,14 +343,6 @@
       "format": "legacy",
       "archetype": "ninjas",
       "path": "latest/radars/legacy/ninjas.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "ocelot-pride-midrange",
-      "path": "latest/radars/legacy/ocelot-pride-midrange.json",
       "message": "No published decks were available for radar generation."
     },
     {

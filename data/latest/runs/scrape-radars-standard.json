@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-18T19:11:50Z",
+  "generated_at": "2026-06-19T01:40:48Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 26,
-    "skipped": 43
+    "success": 24,
+    "skipped": 45
   },
   "results": [
     {
@@ -324,10 +324,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "jeskai-artifacts",
-      "path": "latest/radars/standard/jeskai-artifacts.json"
+      "path": "latest/radars/standard/jeskai-artifacts.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -517,10 +518,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "temur-lessons",
-      "path": "latest/radars/standard/temur-lessons.json"
+      "path": "latest/radars/standard/temur-lessons.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

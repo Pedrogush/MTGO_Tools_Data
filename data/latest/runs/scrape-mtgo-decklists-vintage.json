@@ -1,22 +1,28 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-20T01:26:48Z",
+  "generated_at": "2026-06-20T07:41:03Z",
   "command": "scrape-mtgo-decklists-vintage",
-  "status": "hard-failure",
+  "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 1,
-    "cached": 8,
-    "hard-failure": 1,
-    "success": 1
+    "success": 3,
+    "cached": 9
   },
   "results": [
     {
       "scope": "mtgo-event",
-      "status": "skipped",
+      "status": "success",
       "format": "vintage",
-      "message": "https://www.mtgo.com/decklist/vintage-league-2026-06-2010668: Event returned no decklists."
+      "path": "archive/mtgo-decklists/vintage/vintage-league-2026-06-2010668.json",
+      "message": "Cached 1/1 decks."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "success",
+      "format": "vintage",
+      "path": "archive/mtgo-decklists/vintage/vintage-challenge-32-2026-06-1912844849.json",
+      "message": "Cached 32/32 decks."
     },
     {
       "scope": "mtgo-event",
@@ -76,9 +82,10 @@
     },
     {
       "scope": "mtgo-event",
-      "status": "hard-failure",
+      "status": "cached",
       "format": "vintage",
-      "message": "https://www.mtgo.com/decklist/vintage-challenge-32-2026-06-0812844325: Could not locate deck JSON payload"
+      "path": "archive/mtgo-decklists/vintage/vintage-challenge-32-2026-06-1312844325.json",
+      "message": "Loaded 32 decks from archive."
     },
     {
       "scope": "mtgo-decklists",

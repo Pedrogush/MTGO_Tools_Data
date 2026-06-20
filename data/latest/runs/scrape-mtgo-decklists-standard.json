@@ -1,21 +1,35 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-19T18:59:58Z",
+  "generated_at": "2026-06-20T01:26:37Z",
   "command": "scrape-mtgo-decklists-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 2,
-    "cached": 13
+    "skipped": 1,
+    "success": 3,
+    "cached": 12
   },
   "results": [
     {
       "scope": "mtgo-event",
+      "status": "skipped",
+      "format": "standard",
+      "message": "https://www.mtgo.com/decklist/standard-league-2026-06-2010660: Event returned no decklists."
+    },
+    {
+      "scope": "mtgo-event",
       "status": "success",
       "format": "standard",
+      "path": "archive/mtgo-decklists/standard/standard-challenge-32-2026-06-1912844845.json",
+      "message": "Cached 32/32 decks."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "cached",
+      "format": "standard",
       "path": "archive/mtgo-decklists/standard/standard-league-2026-06-1910660.json",
-      "message": "Cached 1/1 decks."
+      "message": "Loaded 1 decks from archive."
     },
     {
       "scope": "mtgo-event",
@@ -89,10 +103,10 @@
     },
     {
       "scope": "mtgo-event",
-      "status": "cached",
+      "status": "success",
       "format": "standard",
-      "path": "archive/mtgo-decklists/standard/standard-challenge-32-2026-06-1312844322.json",
-      "message": "Loaded 32 decks from archive."
+      "path": "archive/mtgo-decklists/standard/standard-challenge-32-2026-06-0812844322.json",
+      "message": "Cached 32/32 decks."
     },
     {
       "scope": "mtgo-event",
@@ -100,13 +114,6 @@
       "format": "standard",
       "path": "archive/mtgo-decklists/standard/standard-challenge-32-2026-06-1312844317.json",
       "message": "Loaded 32 decks from archive."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "cached",
-      "format": "standard",
-      "path": "archive/mtgo-decklists/standard/standard-league-2026-06-1310660.json",
-      "message": "Loaded 1 decks from archive."
     },
     {
       "scope": "mtgo-decklists",

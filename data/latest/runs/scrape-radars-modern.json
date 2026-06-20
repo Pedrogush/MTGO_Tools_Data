@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-19T19:02:00Z",
+  "generated_at": "2026-06-20T01:33:15Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 53,
-    "skipped": 14
+    "success": 50,
+    "skipped": 17
   },
   "results": [
     {
@@ -33,10 +33,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "asmo-food",
-      "path": "latest/radars/modern/asmo-food.json"
+      "path": "latest/radars/modern/asmo-food.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -153,10 +154,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "glimpse-combo",
-      "path": "latest/radars/modern/glimpse-combo.json"
+      "path": "latest/radars/modern/glimpse-combo.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -299,10 +301,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "lantern",
-      "path": "latest/radars/modern/lantern.json"
+      "path": "latest/radars/modern/lantern.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

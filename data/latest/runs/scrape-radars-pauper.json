@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-20T13:02:37Z",
+  "generated_at": "2026-06-20T18:54:17Z",
   "command": "scrape-radars-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 48,
-    "skipped": 13
+    "success": 50,
+    "skipped": 11
   },
   "results": [
     {
@@ -165,6 +165,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pauper",
+      "archetype": "esper-ephemerate",
+      "path": "latest/radars/pauper/esper-ephemerate.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pauper",
       "archetype": "familiars",
       "path": "latest/radars/pauper/familiars.json"
     },
@@ -174,14 +181,6 @@
       "format": "pauper",
       "archetype": "food-gardens",
       "path": "latest/radars/pauper/food-gardens.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "pauper",
-      "archetype": "food-retriever-combo",
-      "path": "latest/radars/pauper/food-retriever-combo.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -309,11 +308,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pauper",
       "archetype": "mono-blue",
-      "path": "latest/radars/pauper/mono-blue.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pauper/mono-blue.json"
     },
     {
       "scope": "archetype-radar",

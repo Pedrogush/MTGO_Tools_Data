@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-20T13:02:39Z",
+  "generated_at": "2026-06-20T18:54:29Z",
   "command": "scrape-radars-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 13,
-    "success": 17
+    "success": 19
   },
   "results": [
     {
@@ -90,6 +90,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "vintage",
+      "archetype": "esper-initiative",
+      "path": "latest/radars/vintage/esper-initiative.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "vintage",
       "archetype": "esper-lurrus-control",
       "path": "latest/radars/vintage/esper-lurrus-control.json"
     },
@@ -128,6 +135,13 @@
       "format": "vintage",
       "archetype": "lurrus-po",
       "path": "latest/radars/vintage/lurrus-po.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "vintage",
+      "archetype": "lurrus-vault-key",
+      "path": "latest/radars/vintage/lurrus-vault-key.json"
     },
     {
       "scope": "archetype-radar",

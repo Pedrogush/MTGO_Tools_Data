@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-20T13:02:39Z",
+  "generated_at": "2026-06-20T18:54:22Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 31,
-    "success": 22
+    "skipped": 30,
+    "success": 24
   },
   "results": [
     {
@@ -256,6 +256,13 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "jeskai-ensoul-artifact",
+      "path": "latest/radars/pioneer/jeskai-ensoul-artifact.json"
+    },
+    {
+      "scope": "archetype-radar",
       "status": "skipped",
       "format": "pioneer",
       "archetype": "jund-citadel",
@@ -292,6 +299,13 @@
       "archetype": "mono-black-midrange",
       "path": "latest/radars/pioneer/mono-black-midrange.json",
       "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "mono-green-midrange",
+      "path": "latest/radars/pioneer/mono-green-midrange.json"
     },
     {
       "scope": "archetype-radar",
@@ -365,14 +379,6 @@
       "format": "pioneer",
       "archetype": "selesnya-company",
       "path": "latest/radars/pioneer/selesnya-company.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "pioneer",
-      "archetype": "selesnya-midrange",
-      "path": "latest/radars/pioneer/selesnya-midrange.json",
       "message": "No published decks were available for radar generation."
     },
     {

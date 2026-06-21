@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-21T13:04:53Z",
+  "generated_at": "2026-06-21T18:55:04Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 47,
-    "skipped": 19
+    "success": 50,
+    "skipped": 18
   },
   "results": [
     {
@@ -140,6 +140,14 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "modern",
+      "archetype": "esper-control",
+      "path": "latest/radars/modern/esper-control.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
       "archetype": "esper-genericblink",
@@ -151,6 +159,13 @@
       "format": "modern",
       "archetype": "esper-midrange",
       "path": "latest/radars/modern/esper-midrange.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "generic-ragavan",
+      "path": "latest/radars/modern/generic-ragavan.json"
     },
     {
       "scope": "archetype-radar",
@@ -323,11 +338,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "merfolk",
-      "path": "latest/radars/modern/merfolk.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/merfolk.json"
     },
     {
       "scope": "archetype-radar",
@@ -376,14 +390,6 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "modern",
-      "archetype": "mono-red-burn",
-      "path": "latest/radars/modern/mono-red-burn.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
       "archetype": "neobrand",
@@ -403,6 +409,13 @@
       "archetype": "orzhov-midrange",
       "path": "latest/radars/modern/orzhov-midrange.json",
       "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "rakdos-aggro",
+      "path": "latest/radars/modern/rakdos-aggro.json"
     },
     {
       "scope": "archetype-radar",

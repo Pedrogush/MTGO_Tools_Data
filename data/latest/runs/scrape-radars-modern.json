@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-20T18:54:18Z",
+  "generated_at": "2026-06-21T01:37:32Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 50,
-    "skipped": 16
+    "success": 47,
+    "skipped": 19
   },
   "results": [
     {
@@ -315,17 +315,19 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "mardu-genericblink",
-      "path": "latest/radars/modern/mardu-genericblink.json"
+      "path": "latest/radars/modern/mardu-genericblink.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "merfolk",
-      "path": "latest/radars/modern/merfolk.json"
+      "path": "latest/radars/modern/merfolk.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -433,10 +435,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "simic-midrange",
-      "path": "latest/radars/modern/simic-midrange.json"
+      "path": "latest/radars/modern/simic-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-20T18:54:22Z",
+  "generated_at": "2026-06-21T01:37:32Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 30,
-    "success": 24
+    "skipped": 32,
+    "success": 22
   },
   "results": [
     {
@@ -28,10 +28,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "4c-greasefang",
-      "path": "latest/radars/pioneer/4c-greasefang.json"
+      "path": "latest/radars/pioneer/4c-greasefang.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -74,10 +75,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "5c-scapeshift",
-      "path": "latest/radars/pioneer/5c-scapeshift.json"
+      "path": "latest/radars/pioneer/5c-scapeshift.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

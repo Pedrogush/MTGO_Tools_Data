@@ -1,19 +1,20 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-22T14:13:57Z",
+  "generated_at": "2026-06-22T19:28:56Z",
   "command": "scrape-metagame-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 1
+    "stale-fallback": 1
   },
   "results": [
     {
       "scope": "metagame",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
-      "path": "latest/metagame/standard.json"
+      "path": "latest/metagame/standard.json",
+      "message": "HTTP Error 429: "
     }
   ]
 }

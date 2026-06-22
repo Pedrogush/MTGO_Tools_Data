@@ -1,19 +1,20 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-22T08:31:55Z",
+  "generated_at": "2026-06-22T14:13:54Z",
   "command": "scrape-metagame-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 1
+    "stale-fallback": 1
   },
   "results": [
     {
       "scope": "metagame",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "legacy",
-      "path": "latest/metagame/legacy.json"
+      "path": "latest/metagame/legacy.json",
+      "message": "HTTP Error 429: "
     }
   ]
 }

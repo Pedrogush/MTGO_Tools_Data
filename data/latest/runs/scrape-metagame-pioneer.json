@@ -1,19 +1,20 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-22T08:31:35Z",
+  "generated_at": "2026-06-22T14:13:57Z",
   "command": "scrape-metagame-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 1
+    "stale-fallback": 1
   },
   "results": [
     {
       "scope": "metagame",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "pioneer",
-      "path": "latest/metagame/pioneer.json"
+      "path": "latest/metagame/pioneer.json",
+      "message": "HTTP Error 429: "
     }
   ]
 }

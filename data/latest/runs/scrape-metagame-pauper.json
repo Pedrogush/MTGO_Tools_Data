@@ -1,19 +1,20 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-22T08:31:33Z",
+  "generated_at": "2026-06-22T14:13:59Z",
   "command": "scrape-metagame-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 1
+    "stale-fallback": 1
   },
   "results": [
     {
       "scope": "metagame",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "pauper",
-      "path": "latest/metagame/pauper.json"
+      "path": "latest/metagame/pauper.json",
+      "message": "HTTP Error 429: "
     }
   ]
 }

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-22T01:40:19Z",
+  "generated_at": "2026-06-22T08:37:02Z",
   "command": "scrape-radars-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 45,
-    "skipped": 14
+    "success": 46,
+    "skipped": 15
   },
   "results": [
     {
@@ -46,6 +46,13 @@
       "format": "pauper",
       "archetype": "blue-terror",
       "path": "latest/radars/pauper/blue-terror.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pauper",
+      "archetype": "bogles",
+      "path": "latest/radars/pauper/bogles.json"
     },
     {
       "scope": "archetype-radar",
@@ -204,6 +211,14 @@
       "format": "pauper",
       "archetype": "grixis-affinity",
       "path": "latest/radars/pauper/grixis-affinity.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "pauper",
+      "archetype": "grixis-control",
+      "path": "latest/radars/pauper/grixis-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

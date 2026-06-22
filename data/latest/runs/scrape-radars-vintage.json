@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-22T01:40:11Z",
+  "generated_at": "2026-06-22T08:37:05Z",
   "command": "scrape-radars-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 11,
-    "success": 19
+    "success": 21
   },
   "results": [
     {
@@ -88,6 +88,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "vintage",
+      "archetype": "esper-initiative",
+      "path": "latest/radars/vintage/esper-initiative.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "vintage",
       "archetype": "esper-lurrus-control",
       "path": "latest/radars/vintage/esper-lurrus-control.json"
     },
@@ -98,6 +105,13 @@
       "archetype": "grixis-lurrus-control",
       "path": "latest/radars/vintage/grixis-lurrus-control.json",
       "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "vintage",
+      "archetype": "jewel-shops",
+      "path": "latest/radars/vintage/jewel-shops.json"
     },
     {
       "scope": "archetype-radar",

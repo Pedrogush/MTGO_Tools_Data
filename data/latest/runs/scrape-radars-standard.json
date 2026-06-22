@@ -1,12 +1,12 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-22T01:40:15Z",
+  "generated_at": "2026-06-22T08:36:58Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 22,
+    "success": 23,
     "skipped": 47
   },
   "results": [
@@ -97,10 +97,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "azorius-tempo",
-      "path": "latest/radars/standard/azorius-tempo.json"
+      "path": "latest/radars/standard/azorius-tempo.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -395,11 +396,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
       "archetype": "mono-red-aggro",
-      "path": "latest/radars/standard/mono-red-aggro.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/standard/mono-red-aggro.json"
     },
     {
       "scope": "archetype-radar",
@@ -447,6 +447,13 @@
       "format": "standard",
       "archetype": "selesnya-aggro",
       "path": "latest/radars/standard/selesnya-aggro.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "selesnya-gearhulk",
+      "path": "latest/radars/standard/selesnya-gearhulk.json"
     },
     {
       "scope": "archetype-radar",

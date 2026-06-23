@@ -1,15 +1,22 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-22T19:30:30Z",
+  "generated_at": "2026-06-23T01:20:20Z",
   "command": "scrape-mtgo-decklists-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "cached": 11,
-    "success": 1
+    "success": 2,
+    "cached": 10
   },
   "results": [
+    {
+      "scope": "mtgo-event",
+      "status": "success",
+      "format": "pauper",
+      "path": "archive/mtgo-decklists/pauper/pauper-league-2026-06-2310636.json",
+      "message": "Cached 5/5 decks."
+    },
     {
       "scope": "mtgo-event",
       "status": "cached",
@@ -79,13 +86,6 @@
       "format": "pauper",
       "path": "archive/mtgo-decklists/pauper/pauper-league-2026-06-1710636.json",
       "message": "Loaded 4 decks from archive."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "cached",
-      "format": "pauper",
-      "path": "archive/mtgo-decklists/pauper/pauper-league-2026-06-1610636.json",
-      "message": "Loaded 6 decks from archive."
     },
     {
       "scope": "mtgo-decklists",

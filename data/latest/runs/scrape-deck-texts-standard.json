@@ -1,15 +1,15 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-22T19:28:54Z",
+  "generated_at": "2026-06-23T01:18:26Z",
   "command": "scrape-deck-texts-standard",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "success": 20,
-    "skipped": 246,
-    "stale-fallback": 6,
-    "hard-failure": 3
+    "hard-failure": 6,
+    "skipped": 225,
+    "stale-fallback": 3
   },
   "results": [
     {
@@ -27,11 +27,11 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "4c-kona",
       "path": "latest/decks/standard/4c-kona.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for 4c Kona"
     },
     {
       "scope": "archetype-decks",
@@ -66,11 +66,11 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "5c-kona",
       "path": "latest/decks/standard/5c-kona.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for 5c Kona"
     },
     {
       "scope": "archetype-decks",
@@ -145,11 +145,11 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "boros-burn",
       "path": "latest/decks/standard/boros-burn.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Boros Burn"
     },
     {
       "scope": "archetype-decks",
@@ -160,11 +160,11 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "stale-fallback",
+      "status": "skipped",
       "format": "standard",
       "archetype": "boros-dragons",
       "path": "latest/decks/standard/boros-dragons.json",
-      "message": "Deck scrape returned no rows for Boros Dragons"
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
@@ -175,11 +175,11 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "stale-fallback",
+      "status": "skipped",
       "format": "standard",
       "archetype": "dimir-control",
       "path": "latest/decks/standard/dimir-control.json",
-      "message": "Deck scrape returned no rows for Dimir Control"
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
@@ -190,11 +190,11 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "stale-fallback",
+      "status": "skipped",
       "format": "standard",
       "archetype": "dimir-midrange",
       "path": "latest/decks/standard/dimir-midrange.json",
-      "message": "Deck scrape returned no rows for Dimir Midrange"
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
@@ -213,11 +213,11 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "golgari-landfall",
       "path": "latest/decks/standard/golgari-landfall.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Golgari Landfall"
     },
     {
       "scope": "archetype-decks",
@@ -273,11 +273,10 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "stale-fallback",
+      "status": "success",
       "format": "standard",
       "archetype": "izzet-spellementals",
-      "path": "latest/decks/standard/izzet-spellementals.json",
-      "message": "Deck scrape returned no rows for Izzet Spellementals"
+      "path": "latest/decks/standard/izzet-spellementals.json"
     },
     {
       "scope": "archetype-decks",
@@ -335,10 +334,11 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "success",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "mardu-discard",
-      "path": "latest/decks/standard/mardu-discard.json"
+      "path": "latest/decks/standard/mardu-discard.json",
+      "message": "Deck scrape returned no rows for Mardu Discard"
     },
     {
       "scope": "archetype-decks",
@@ -365,34 +365,35 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "mono-red-aggro",
-      "path": "latest/decks/standard/mono-red-aggro.json"
-    },
-    {
-      "scope": "archetype-decks",
-      "status": "skipped",
-      "format": "standard",
-      "archetype": "mono-white-token-control",
-      "path": "latest/decks/standard/mono-white-token-control.json",
-      "message": "No decks found within the last 7 days."
-    },
-    {
-      "scope": "archetype-decks",
-      "status": "skipped",
-      "format": "standard",
-      "archetype": "orzhov-aggro",
-      "path": "latest/decks/standard/orzhov-aggro.json",
-      "message": "No decks found within the last 7 days."
+      "path": "latest/decks/standard/mono-red-aggro.json",
+      "message": "Deck scrape returned no rows for Mono-Red Aggro"
     },
     {
       "scope": "archetype-decks",
       "status": "hard-failure",
       "format": "standard",
+      "archetype": "mono-white-token-control",
+      "path": "latest/decks/standard/mono-white-token-control.json",
+      "message": "Deck scrape returned no rows for Mono-White Token Control"
+    },
+    {
+      "scope": "archetype-decks",
+      "status": "hard-failure",
+      "format": "standard",
+      "archetype": "orzhov-aggro",
+      "path": "latest/decks/standard/orzhov-aggro.json",
+      "message": "Deck scrape returned no rows for Orzhov Aggro"
+    },
+    {
+      "scope": "archetype-decks",
+      "status": "skipped",
+      "format": "standard",
       "archetype": "orzhov-aristocrats",
       "path": "latest/decks/standard/orzhov-aristocrats.json",
-      "message": "Deck scrape returned no rows for Orzhov Aristocrats"
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
@@ -417,11 +418,10 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "success",
       "format": "standard",
       "archetype": "selesnya-ouroboroid",
-      "path": "latest/decks/standard/selesnya-ouroboroid.json",
-      "message": "Deck scrape returned no rows for Selesnya Ouroboroid"
+      "path": "latest/decks/standard/selesnya-ouroboroid.json"
     },
     {
       "scope": "archetype-decks",
@@ -433,19 +433,19 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "skipped",
       "format": "standard",
       "archetype": "sultai-ouroboroid",
       "path": "latest/decks/standard/sultai-ouroboroid.json",
-      "message": "Deck scrape returned no rows for Sultai Ouroboroid"
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
-      "status": "stale-fallback",
+      "status": "skipped",
       "format": "standard",
       "archetype": "sultai-reanimator",
       "path": "latest/decks/standard/sultai-reanimator.json",
-      "message": "Deck scrape returned no rows for Sultai Reanimator"
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
@@ -475,248 +475,8 @@
       "scope": "deck-text",
       "status": "skipped",
       "format": "standard",
-      "deck_id": "7837187",
-      "path": "archive/deck-texts/standard/7837187.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "standard",
-      "deck_id": "7838159",
-      "path": "archive/deck-texts/standard/7838159.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "standard",
-      "deck_id": "7838339",
-      "path": "archive/deck-texts/standard/7838339.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "standard",
-      "deck_id": "7838340",
-      "path": "archive/deck-texts/standard/7838340.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "standard",
-      "deck_id": "7838341",
-      "path": "archive/deck-texts/standard/7838341.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "standard",
-      "deck_id": "7838342",
-      "path": "archive/deck-texts/standard/7838342.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "standard",
-      "deck_id": "7838343",
-      "path": "archive/deck-texts/standard/7838343.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "standard",
-      "deck_id": "7838344",
-      "path": "archive/deck-texts/standard/7838344.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "standard",
-      "deck_id": "7838345",
-      "path": "archive/deck-texts/standard/7838345.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "standard",
-      "deck_id": "7838346",
-      "path": "archive/deck-texts/standard/7838346.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "standard",
-      "deck_id": "7838347",
-      "path": "archive/deck-texts/standard/7838347.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "standard",
-      "deck_id": "7838348",
-      "path": "archive/deck-texts/standard/7838348.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "standard",
-      "deck_id": "7838349",
-      "path": "archive/deck-texts/standard/7838349.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "standard",
-      "deck_id": "7838351",
-      "path": "archive/deck-texts/standard/7838351.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "standard",
-      "deck_id": "7838352",
-      "path": "archive/deck-texts/standard/7838352.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "standard",
-      "deck_id": "7838353",
-      "path": "archive/deck-texts/standard/7838353.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "standard",
-      "deck_id": "7838354",
-      "path": "archive/deck-texts/standard/7838354.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "standard",
-      "deck_id": "7838355",
-      "path": "archive/deck-texts/standard/7838355.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "standard",
-      "deck_id": "7838356",
-      "path": "archive/deck-texts/standard/7838356.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "standard",
-      "deck_id": "7838357",
-      "path": "archive/deck-texts/standard/7838357.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "standard",
-      "deck_id": "7838359",
-      "path": "archive/deck-texts/standard/7838359.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "standard",
-      "deck_id": "7838360",
-      "path": "archive/deck-texts/standard/7838360.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "standard",
-      "deck_id": "7838361",
-      "path": "archive/deck-texts/standard/7838361.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "standard",
       "deck_id": "7838362",
       "path": "archive/deck-texts/standard/7838362.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "standard",
-      "deck_id": "7838363",
-      "path": "archive/deck-texts/standard/7838363.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "standard",
-      "deck_id": "7838364",
-      "path": "archive/deck-texts/standard/7838364.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "standard",
-      "deck_id": "7838366",
-      "path": "archive/deck-texts/standard/7838366.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "standard",
-      "deck_id": "7838367",
-      "path": "archive/deck-texts/standard/7838367.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "standard",
-      "deck_id": "7838368",
-      "path": "archive/deck-texts/standard/7838368.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "standard",
-      "deck_id": "7838369",
-      "path": "archive/deck-texts/standard/7838369.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "standard",
-      "deck_id": "7838370",
-      "path": "archive/deck-texts/standard/7838370.json",
       "message": "Reused existing published deck-text blob."
     },
     {
@@ -749,14 +509,6 @@
       "format": "standard",
       "deck_id": "7839618",
       "path": "archive/deck-texts/standard/7839618.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "standard",
-      "deck_id": "7839619",
-      "path": "archive/deck-texts/standard/7839619.json",
       "message": "Reused existing published deck-text blob."
     },
     {
@@ -1035,14 +787,6 @@
       "scope": "deck-text",
       "status": "skipped",
       "format": "standard",
-      "deck_id": "7840664",
-      "path": "archive/deck-texts/standard/7840664.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "standard",
       "deck_id": "7840665",
       "path": "archive/deck-texts/standard/7840665.json",
       "message": "Reused existing published deck-text blob."
@@ -1131,14 +875,6 @@
       "scope": "deck-text",
       "status": "skipped",
       "format": "standard",
-      "deck_id": "7840676",
-      "path": "archive/deck-texts/standard/7840676.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "standard",
       "deck_id": "7840677",
       "path": "archive/deck-texts/standard/7840677.json",
       "message": "Reused existing published deck-text blob."
@@ -1221,6 +957,14 @@
       "format": "standard",
       "deck_id": "7840687",
       "path": "archive/deck-texts/standard/7840687.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "standard",
+      "deck_id": "7840688",
+      "path": "archive/deck-texts/standard/7840688.json",
       "message": "Reused existing published deck-text blob."
     },
     {
@@ -1379,8 +1123,24 @@
       "scope": "deck-text",
       "status": "skipped",
       "format": "standard",
+      "deck_id": "7841469",
+      "path": "archive/deck-texts/standard/7841469.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "standard",
       "deck_id": "7841470",
       "path": "archive/deck-texts/standard/7841470.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "standard",
+      "deck_id": "7841471",
+      "path": "archive/deck-texts/standard/7841471.json",
       "message": "Reused existing published deck-text blob."
     },
     {
@@ -1411,6 +1171,14 @@
       "scope": "deck-text",
       "status": "skipped",
       "format": "standard",
+      "deck_id": "7841475",
+      "path": "archive/deck-texts/standard/7841475.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "standard",
       "deck_id": "7841476",
       "path": "archive/deck-texts/standard/7841476.json",
       "message": "Reused existing published deck-text blob."
@@ -1421,6 +1189,14 @@
       "format": "standard",
       "deck_id": "7841477",
       "path": "archive/deck-texts/standard/7841477.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "standard",
+      "deck_id": "7841478",
+      "path": "archive/deck-texts/standard/7841478.json",
       "message": "Reused existing published deck-text blob."
     },
     {
@@ -1501,14 +1277,6 @@
       "format": "standard",
       "deck_id": "7841862",
       "path": "archive/deck-texts/standard/7841862.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "standard",
-      "deck_id": "7841863",
-      "path": "archive/deck-texts/standard/7841863.json",
       "message": "Reused existing published deck-text blob."
     },
     {
@@ -1835,6 +1603,14 @@
       "scope": "deck-text",
       "status": "skipped",
       "format": "standard",
+      "deck_id": "7842483",
+      "path": "archive/deck-texts/standard/7842483.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "standard",
       "deck_id": "7842484",
       "path": "archive/deck-texts/standard/7842484.json",
       "message": "Reused existing published deck-text blob."
@@ -1939,6 +1715,14 @@
       "scope": "deck-text",
       "status": "skipped",
       "format": "standard",
+      "deck_id": "7842497",
+      "path": "archive/deck-texts/standard/7842497.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "standard",
       "deck_id": "7842498",
       "path": "archive/deck-texts/standard/7842498.json",
       "message": "Reused existing published deck-text blob."
@@ -2019,14 +1803,6 @@
       "scope": "deck-text",
       "status": "skipped",
       "format": "standard",
-      "deck_id": "7844422",
-      "path": "archive/deck-texts/standard/7844422.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "standard",
       "deck_id": "7844423",
       "path": "archive/deck-texts/standard/7844423.json",
       "message": "Reused existing published deck-text blob."
@@ -2061,6 +1837,14 @@
       "format": "standard",
       "deck_id": "7844427",
       "path": "archive/deck-texts/standard/7844427.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "standard",
+      "deck_id": "7844428",
+      "path": "archive/deck-texts/standard/7844428.json",
       "message": "Reused existing published deck-text blob."
     },
     {
@@ -2131,6 +1915,46 @@
       "scope": "deck-text",
       "status": "skipped",
       "format": "standard",
+      "deck_id": "7844437",
+      "path": "archive/deck-texts/standard/7844437.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "standard",
+      "deck_id": "7844438",
+      "path": "archive/deck-texts/standard/7844438.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "standard",
+      "deck_id": "7844439",
+      "path": "archive/deck-texts/standard/7844439.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "standard",
+      "deck_id": "7844440",
+      "path": "archive/deck-texts/standard/7844440.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "standard",
+      "deck_id": "7844441",
+      "path": "archive/deck-texts/standard/7844441.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "standard",
       "deck_id": "7844442",
       "path": "archive/deck-texts/standard/7844442.json",
       "message": "Reused existing published deck-text blob."
@@ -2149,6 +1973,14 @@
       "format": "standard",
       "deck_id": "7844444",
       "path": "archive/deck-texts/standard/7844444.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "standard",
+      "deck_id": "7844445",
+      "path": "archive/deck-texts/standard/7844445.json",
       "message": "Reused existing published deck-text blob."
     },
     {

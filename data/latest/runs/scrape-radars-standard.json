@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-23T01:23:48Z",
+  "generated_at": "2026-06-23T07:38:51Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 22,
-    "skipped": 42
+    "success": 24,
+    "skipped": 46
   },
   "results": [
     {
@@ -16,6 +16,14 @@
       "format": "standard",
       "archetype": "4c-control",
       "path": "latest/radars/standard/4c-control.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "standard",
+      "archetype": "4c-kona",
+      "path": "latest/radars/standard/4c-kona.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -54,6 +62,14 @@
       "format": "standard",
       "archetype": "5c-elementals",
       "path": "latest/radars/standard/5c-elementals.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "standard",
+      "archetype": "5c-kona",
+      "path": "latest/radars/standard/5c-kona.json",
       "message": "No published decks were available for radar generation."
     },
     {
@@ -125,6 +141,14 @@
       "format": "standard",
       "archetype": "boros-aggro",
       "path": "latest/radars/standard/boros-aggro.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "standard",
+      "archetype": "boros-burn",
+      "path": "latest/radars/standard/boros-burn.json",
       "message": "No published decks were available for radar generation."
     },
     {
@@ -244,11 +268,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
       "archetype": "izzet-lessons",
-      "path": "latest/radars/standard/izzet-lessons.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/standard/izzet-lessons.json"
     },
     {
       "scope": "archetype-radar",
@@ -342,6 +365,13 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "mardu-discard",
+      "path": "latest/radars/standard/mardu-discard.json"
+    },
+    {
+      "scope": "archetype-radar",
       "status": "skipped",
       "format": "standard",
       "archetype": "mono-black-midrange",
@@ -376,6 +406,22 @@
       "format": "standard",
       "archetype": "mono-white-momo",
       "path": "latest/radars/standard/mono-white-momo.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "standard",
+      "archetype": "mono-white-token-control",
+      "path": "latest/radars/standard/mono-white-token-control.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "standard",
+      "archetype": "orzhov-aggro",
+      "path": "latest/radars/standard/orzhov-aggro.json",
       "message": "No published decks were available for radar generation."
     },
     {

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-23T01:23:47Z",
+  "generated_at": "2026-06-23T07:38:52Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 40,
-    "skipped": 17
+    "success": 42,
+    "skipped": 18
   },
   "results": [
     {
@@ -211,6 +211,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
+      "archetype": "green-cloudpost",
+      "path": "latest/radars/legacy/green-cloudpost.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
       "archetype": "grixis-control",
       "path": "latest/radars/legacy/grixis-control.json"
     },
@@ -340,6 +347,14 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "legacy",
+      "archetype": "omni-tell",
+      "path": "latest/radars/legacy/omni-tell.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
       "archetype": "oops-all-spells",
@@ -373,6 +388,13 @@
       "archetype": "saga-storm",
       "path": "latest/radars/legacy/saga-storm.json",
       "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "sneak-and-show",
+      "path": "latest/radars/legacy/sneak-and-show.json"
     },
     {
       "scope": "archetype-radar",

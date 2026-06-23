@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-23T13:21:47Z",
+  "generated_at": "2026-06-23T19:05:55Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 36,
-    "skipped": 13
+    "success": 45,
+    "skipped": 15
   },
   "results": [
     {
@@ -26,6 +26,14 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "legacy",
+      "archetype": "arclight-phoenix",
+      "path": "latest/radars/legacy/arclight-phoenix.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
       "archetype": "azorius-control",
@@ -37,6 +45,13 @@
       "format": "legacy",
       "archetype": "azorius-stoneblade",
       "path": "latest/radars/legacy/azorius-stoneblade.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "azorius-tempo",
+      "path": "latest/radars/legacy/azorius-tempo.json"
     },
     {
       "scope": "archetype-radar",
@@ -67,6 +82,27 @@
       "format": "legacy",
       "archetype": "blue-artifacts",
       "path": "latest/radars/legacy/blue-artifacts.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "blue-cloudpost",
+      "path": "latest/radars/legacy/blue-cloudpost.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "blue-dredge",
+      "path": "latest/radars/legacy/blue-dredge.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "boros-energy",
+      "path": "latest/radars/legacy/boros-energy.json"
     },
     {
       "scope": "archetype-radar",
@@ -120,10 +156,25 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "legacy",
+      "archetype": "death-s-shadow",
+      "path": "latest/radars/legacy/death-s-shadow.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
       "archetype": "dimir-control",
       "path": "latest/radars/legacy/dimir-control.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "dimir-reanimator",
+      "path": "latest/radars/legacy/dimir-reanimator.json"
     },
     {
       "scope": "archetype-radar",
@@ -164,11 +215,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
-      "archetype": "goblins",
-      "path": "latest/radars/legacy/goblins.json",
-      "message": "No published decks were available for radar generation."
+      "archetype": "green-cloudpost",
+      "path": "latest/radars/legacy/green-cloudpost.json"
     },
     {
       "scope": "archetype-radar",
@@ -181,8 +231,8 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "legacy",
-      "archetype": "grixis-tempo",
-      "path": "latest/radars/legacy/grixis-tempo.json",
+      "archetype": "high-tide",
+      "path": "latest/radars/legacy/high-tide.json",
       "message": "No published decks were available for radar generation."
     },
     {
@@ -209,6 +259,14 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "legacy",
+      "archetype": "jund",
+      "path": "latest/radars/legacy/jund.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
       "archetype": "lands",
@@ -232,8 +290,23 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
+      "archetype": "mardu-energy",
+      "path": "latest/radars/legacy/mardu-energy.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
       "archetype": "maverick",
       "path": "latest/radars/legacy/maverick.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "legacy",
+      "archetype": "mono-black-midrange",
+      "path": "latest/radars/legacy/mono-black-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -318,6 +391,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
+      "archetype": "selesnya-depths",
+      "path": "latest/radars/legacy/selesnya-depths.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
       "archetype": "sneak-and-show",
       "path": "latest/radars/legacy/sneak-and-show.json"
     },
@@ -333,16 +413,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "sultai-control",
-      "path": "latest/radars/legacy/sultai-control.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
       "archetype": "sultai-depths",
-      "path": "latest/radars/legacy/sultai-depths.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/sultai-depths.json"
     },
     {
       "scope": "archetype-radar",
@@ -358,6 +430,13 @@
       "format": "legacy",
       "archetype": "the-epic-storm",
       "path": "latest/radars/legacy/the-epic-storm.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "tron",
+      "path": "latest/radars/legacy/tron.json"
     },
     {
       "scope": "format-card-pool",

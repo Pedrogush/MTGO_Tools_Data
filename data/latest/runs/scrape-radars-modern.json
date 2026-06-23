@@ -1,15 +1,22 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-23T13:21:48Z",
+  "generated_at": "2026-06-23T19:05:45Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 48,
+    "success": 52,
     "skipped": 16
   },
   "results": [
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "4c-energy",
+      "path": "latest/radars/modern/4c-energy.json"
+    },
     {
       "scope": "archetype-radar",
       "status": "success",
@@ -93,6 +100,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
+      "archetype": "devoted-combo",
+      "path": "latest/radars/modern/devoted-combo.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
       "archetype": "dimir-midrange",
       "path": "latest/radars/modern/dimir-midrange.json"
     },
@@ -123,14 +137,6 @@
       "format": "modern",
       "archetype": "eldrazi",
       "path": "latest/radars/modern/eldrazi.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "modern",
-      "archetype": "esper-control",
-      "path": "latest/radars/modern/esper-control.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -195,6 +201,14 @@
       "format": "modern",
       "archetype": "hammer-time",
       "path": "latest/radars/modern/hammer-time.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "modern",
+      "archetype": "hardened-scales",
+      "path": "latest/radars/modern/hardened-scales.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -362,6 +376,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
+      "archetype": "mono-red-burn",
+      "path": "latest/radars/modern/mono-red-burn.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
       "archetype": "neobrand",
       "path": "latest/radars/modern/neobrand.json"
     },
@@ -407,6 +428,13 @@
       "format": "modern",
       "archetype": "sam-combo",
       "path": "latest/radars/modern/sam-combo.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "selesnya-energy",
+      "path": "latest/radars/modern/selesnya-energy.json"
     },
     {
       "scope": "archetype-radar",

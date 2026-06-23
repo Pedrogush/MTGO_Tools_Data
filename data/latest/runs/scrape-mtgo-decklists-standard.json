@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-23T13:21:53Z",
+  "generated_at": "2026-06-23T19:03:06Z",
   "command": "scrape-mtgo-decklists-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "cached": 14,
-    "skipped": 1,
+    "skipped": 2,
     "success": 1
   },
   "results": [
@@ -17,6 +17,12 @@
       "format": "standard",
       "path": "archive/mtgo-decklists/standard/standard-league-2026-06-2310660.json",
       "message": "Loaded 2 decks from archive."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "skipped",
+      "format": "standard",
+      "message": "https://www.mtgo.com/decklist/standard-league-2026-06-2310879: Event returned no decklists."
     },
     {
       "scope": "mtgo-event",

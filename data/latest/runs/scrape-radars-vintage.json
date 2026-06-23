@@ -1,15 +1,23 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-23T13:21:49Z",
+  "generated_at": "2026-06-23T19:05:38Z",
   "command": "scrape-radars-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 9,
-    "success": 16
+    "skipped": 10,
+    "success": 21
   },
   "results": [
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "vintage",
+      "archetype": "azorius-initiative",
+      "path": "latest/radars/vintage/azorius-initiative.json",
+      "message": "No published decks were available for radar generation."
+    },
     {
       "scope": "archetype-radar",
       "status": "skipped",
@@ -58,8 +66,22 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "vintage",
+      "archetype": "dredge",
+      "path": "latest/radars/vintage/dredge.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "vintage",
       "archetype": "eldrazi",
       "path": "latest/radars/vintage/eldrazi.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "vintage",
+      "archetype": "esper-initiative",
+      "path": "latest/radars/vintage/esper-initiative.json"
     },
     {
       "scope": "archetype-radar",
@@ -123,6 +145,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "vintage",
+      "archetype": "mono-white-initiative",
+      "path": "latest/radars/vintage/mono-white-initiative.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "vintage",
       "archetype": "oath-of-druids",
       "path": "latest/radars/vintage/oath-of-druids.json"
     },
@@ -133,6 +162,13 @@
       "archetype": "other-shops",
       "path": "latest/radars/vintage/other-shops.json",
       "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "vintage",
+      "archetype": "paradoxical-outcome",
+      "path": "latest/radars/vintage/paradoxical-outcome.json"
     },
     {
       "scope": "archetype-radar",
@@ -163,6 +199,13 @@
       "format": "vintage",
       "archetype": "scam",
       "path": "latest/radars/vintage/scam.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "vintage",
+      "archetype": "sphere-shops",
+      "path": "latest/radars/vintage/sphere-shops.json"
     },
     {
       "scope": "archetype-radar",

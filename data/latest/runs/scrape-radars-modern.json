@@ -1,22 +1,15 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-24T19:01:07Z",
+  "generated_at": "2026-06-25T01:27:21Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 50,
-    "skipped": 18
+    "success": 51,
+    "skipped": 16
   },
   "results": [
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "4c-energy",
-      "path": "latest/radars/modern/4c-energy.json"
-    },
     {
       "scope": "archetype-radar",
       "status": "success",
@@ -156,6 +149,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
+      "archetype": "generic-ragavan",
+      "path": "latest/radars/modern/generic-ragavan.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
       "archetype": "goryo-s-vengeance",
       "path": "latest/radars/modern/goryo-s-vengeance.json"
     },
@@ -169,10 +169,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "grixis-midrange",
-      "path": "latest/radars/modern/grixis-midrange.json"
+      "path": "latest/radars/modern/grixis-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -250,11 +251,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "izzetcontrol",
-      "path": "latest/radars/modern/izzetcontrol.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/izzetcontrol.json"
     },
     {
       "scope": "archetype-radar",
@@ -284,13 +284,6 @@
       "format": "modern",
       "archetype": "jeskai-energy",
       "path": "latest/radars/modern/jeskai-energy.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "jeskai-prowess",
-      "path": "latest/radars/modern/jeskai-prowess.json"
     },
     {
       "scope": "archetype-radar",
@@ -330,19 +323,17 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "mill",
-      "path": "latest/radars/modern/mill.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/mill.json"
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "miracles",
-      "path": "latest/radars/modern/miracles.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/miracles.json"
     },
     {
       "scope": "archetype-radar",

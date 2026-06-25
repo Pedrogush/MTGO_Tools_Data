@@ -1,7 +1,7 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-25T13:09:53Z",
+  "generated_at": "2026-06-25T19:04:34Z",
   "command": "scrape-radars-pauper",
   "status": "success",
   "max_stale_hours": 24,
@@ -367,6 +367,14 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "pauper",
+      "archetype": "naya-ramp",
+      "path": "latest/radars/pauper/naya-ramp.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
       "status": "success",
       "format": "pauper",
       "archetype": "poison-storm",
@@ -392,14 +400,6 @@
       "format": "pauper",
       "archetype": "serpentine-curve",
       "path": "latest/radars/pauper/serpentine-curve.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "pauper",
-      "archetype": "simic-delver",
-      "path": "latest/radars/pauper/simic-delver.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

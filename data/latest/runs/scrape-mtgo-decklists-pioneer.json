@@ -1,12 +1,12 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-26T01:25:25Z",
+  "generated_at": "2026-06-26T07:39:49Z",
   "command": "scrape-mtgo-decklists-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 2,
+    "skipped": 3,
     "cached": 12,
     "success": 1
   },
@@ -16,6 +16,12 @@
       "status": "skipped",
       "format": "pioneer",
       "message": "https://www.mtgo.com/decklist/pioneer-league-2026-06-2610863: Event returned no decklists."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "skipped",
+      "format": "pioneer",
+      "message": "https://www.mtgo.com/decklist/pioneer-challenge-32-2026-06-2512845645: Event returned no decklists."
     },
     {
       "scope": "mtgo-event",

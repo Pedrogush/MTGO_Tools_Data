@@ -1,7 +1,7 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-25T19:04:05Z",
+  "generated_at": "2026-06-26T01:28:52Z",
   "command": "scrape-radars-vintage",
   "status": "success",
   "max_stale_hours": 24,
@@ -78,10 +78,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "esper-initiative",
-      "path": "latest/radars/vintage/esper-initiative.json"
+      "path": "latest/radars/vintage/esper-initiative.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -209,11 +210,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "vintage",
       "archetype": "stiflenought",
-      "path": "latest/radars/vintage/stiflenought.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/vintage/stiflenought.json"
     },
     {
       "scope": "archetype-radar",

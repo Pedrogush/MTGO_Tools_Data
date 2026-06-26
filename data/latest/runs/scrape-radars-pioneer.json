@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-25T19:04:27Z",
+  "generated_at": "2026-06-26T01:28:53Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 21,
-    "success": 24
+    "skipped": 23,
+    "success": 22
   },
   "results": [
     {
@@ -28,10 +28,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "4c-scapeshift",
-      "path": "latest/radars/pioneer/4c-scapeshift.json"
+      "path": "latest/radars/pioneer/4c-scapeshift.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -208,10 +209,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "jeskai-ensoul-artifact",
-      "path": "latest/radars/pioneer/jeskai-ensoul-artifact.json"
+      "path": "latest/radars/pioneer/jeskai-ensoul-artifact.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

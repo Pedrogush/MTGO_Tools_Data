@@ -1,12 +1,12 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-26T19:00:22Z",
+  "generated_at": "2026-06-27T01:24:44Z",
   "command": "scrape-radars-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 10,
+    "skipped": 11,
     "success": 21
   },
   "results": [
@@ -129,10 +129,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "lurrus-vault-key",
-      "path": "latest/radars/vintage/lurrus-vault-key.json"
+      "path": "latest/radars/vintage/lurrus-vault-key.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -155,6 +156,13 @@
       "format": "vintage",
       "archetype": "oath-of-druids",
       "path": "latest/radars/vintage/oath-of-druids.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "vintage",
+      "archetype": "oops-all-spells",
+      "path": "latest/radars/vintage/oops-all-spells.json"
     },
     {
       "scope": "archetype-radar",

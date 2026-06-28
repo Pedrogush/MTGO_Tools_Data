@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-27T18:50:18Z",
+  "generated_at": "2026-06-28T01:30:22Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 24,
-    "skipped": 46
+    "success": 25,
+    "skipped": 45
   },
   "results": [
     {
@@ -101,6 +101,14 @@
       "format": "standard",
       "archetype": "azorius-tempo",
       "path": "latest/radars/standard/azorius-tempo.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "standard",
+      "archetype": "azorius-token-control",
+      "path": "latest/radars/standard/azorius-token-control.json",
       "message": "No published decks were available for radar generation."
     },
     {
@@ -245,6 +253,13 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "gruul-delirium",
+      "path": "latest/radars/standard/gruul-delirium.json"
+    },
+    {
+      "scope": "archetype-radar",
       "status": "skipped",
       "format": "standard",
       "archetype": "gruul-landfall",
@@ -351,14 +366,6 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "standard",
-      "archetype": "jeskai-oculus",
-      "path": "latest/radars/standard/jeskai-oculus.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "standard",
       "archetype": "lifegain",
       "path": "latest/radars/standard/lifegain.json",
       "message": "No published decks were available for radar generation."
@@ -414,14 +421,6 @@
       "format": "standard",
       "archetype": "mono-white-momo",
       "path": "latest/radars/standard/mono-white-momo.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "standard",
-      "archetype": "mono-white-token-control",
-      "path": "latest/radars/standard/mono-white-token-control.json",
       "message": "No published decks were available for radar generation."
     },
     {

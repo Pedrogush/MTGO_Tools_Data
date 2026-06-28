@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-27T18:50:14Z",
+  "generated_at": "2026-06-28T01:30:20Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 21,
-    "success": 27
+    "skipped": 22,
+    "success": 32
   },
   "results": [
     {
@@ -74,6 +74,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pioneer",
+      "archetype": "atraxa-neoform",
+      "path": "latest/radars/pioneer/atraxa-neoform.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
       "archetype": "azorius-control",
       "path": "latest/radars/pioneer/azorius-control.json"
     },
@@ -107,6 +114,20 @@
       "format": "pioneer",
       "archetype": "boros-convoke",
       "path": "latest/radars/pioneer/boros-convoke.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "boros-hammer-time",
+      "path": "latest/radars/pioneer/boros-hammer-time.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "boros-heroic",
+      "path": "latest/radars/pioneer/boros-heroic.json"
     },
     {
       "scope": "archetype-radar",
@@ -148,18 +169,18 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "esper-control",
-      "path": "latest/radars/pioneer/esper-control.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pioneer/esper-control.json"
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "golgari-food",
-      "path": "latest/radars/pioneer/golgari-food.json"
+      "path": "latest/radars/pioneer/golgari-food.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -179,8 +200,22 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pioneer",
+      "archetype": "grixis-transmogrify",
+      "path": "latest/radars/pioneer/grixis-transmogrify.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
       "archetype": "hidden-strings",
       "path": "latest/radars/pioneer/hidden-strings.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "izzet-aggro",
+      "path": "latest/radars/pioneer/izzet-aggro.json"
     },
     {
       "scope": "archetype-radar",
@@ -246,6 +281,13 @@
       "format": "pioneer",
       "archetype": "mono-green-midrange",
       "path": "latest/radars/pioneer/mono-green-midrange.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "mono-green-toolbox",
+      "path": "latest/radars/pioneer/mono-green-toolbox.json"
     },
     {
       "scope": "archetype-radar",
@@ -324,10 +366,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "selesnya-auras",
-      "path": "latest/radars/pioneer/selesnya-auras.json"
+      "path": "latest/radars/pioneer/selesnya-auras.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

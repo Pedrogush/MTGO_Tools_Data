@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-27T18:50:17Z",
+  "generated_at": "2026-06-28T01:30:26Z",
   "command": "scrape-radars-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 11,
-    "success": 21
+    "skipped": 12,
+    "success": 19
   },
   "results": [
     {
@@ -16,14 +16,6 @@
       "format": "vintage",
       "archetype": "azorius-initiative",
       "path": "latest/radars/vintage/azorius-initiative.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "vintage",
-      "archetype": "beseech-storm",
-      "path": "latest/radars/vintage/beseech-storm.json",
       "message": "No published decks were available for radar generation."
     },
     {
@@ -71,10 +63,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "eldrazi",
-      "path": "latest/radars/vintage/eldrazi.json"
+      "path": "latest/radars/vintage/eldrazi.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -225,10 +218,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "sultai-midrange",
-      "path": "latest/radars/vintage/sultai-midrange.json"
+      "path": "latest/radars/vintage/sultai-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

@@ -1,21 +1,21 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-28T18:52:34Z",
+  "generated_at": "2026-06-29T01:32:02Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "success": 52,
-    "skipped": 16
+    "skipped": 17
   },
   "results": [
     {
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "5c-midrange",
-      "path": "latest/radars/modern/5c-midrange.json"
+      "archetype": "4c-tameshi-combo",
+      "path": "latest/radars/modern/4c-tameshi-combo.json"
     },
     {
       "scope": "archetype-radar",
@@ -62,10 +62,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "boros-burn",
-      "path": "latest/radars/modern/boros-burn.json"
+      "path": "latest/radars/modern/boros-burn.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -137,6 +138,13 @@
       "format": "modern",
       "archetype": "eldrazi",
       "path": "latest/radars/modern/eldrazi.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "esper-control",
+      "path": "latest/radars/modern/esper-control.json"
     },
     {
       "scope": "archetype-radar",

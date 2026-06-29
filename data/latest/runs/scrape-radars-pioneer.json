@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-28T18:52:28Z",
+  "generated_at": "2026-06-29T01:31:57Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 22,
-    "success": 32
+    "success": 31
   },
   "results": [
     {
@@ -219,14 +219,6 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "pioneer",
-      "archetype": "izzet-indomitable-creativity",
-      "path": "latest/radars/pioneer/izzet-indomitable-creativity.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
       "status": "success",
       "format": "pioneer",
       "archetype": "izzet-midrange",
@@ -277,10 +269,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "mono-green-midrange",
-      "path": "latest/radars/pioneer/mono-green-midrange.json"
+      "path": "latest/radars/pioneer/mono-green-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

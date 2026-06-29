@@ -1,15 +1,22 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-29T13:54:58Z",
+  "generated_at": "2026-06-29T19:09:16Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 50,
-    "skipped": 10
+    "success": 49,
+    "skipped": 11
   },
   "results": [
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "ad-nauseam-tendrils",
+      "path": "latest/radars/legacy/ad-nauseam-tendrils.json"
+    },
     {
       "scope": "archetype-radar",
       "status": "success",
@@ -54,6 +61,14 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "legacy",
+      "archetype": "bant-control",
+      "path": "latest/radars/legacy/bant-control.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
       "archetype": "beanstalk-control-non-yorion",
@@ -65,13 +80,6 @@
       "format": "legacy",
       "archetype": "beanstalk-control-yorion",
       "path": "latest/radars/legacy/beanstalk-control-yorion.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "beseech-storm",
-      "path": "latest/radars/legacy/beseech-storm.json"
     },
     {
       "scope": "archetype-radar",
@@ -93,6 +101,14 @@
       "format": "legacy",
       "archetype": "boros-energy",
       "path": "latest/radars/legacy/boros-energy.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "legacy",
+      "archetype": "boros-initiative",
+      "path": "latest/radars/legacy/boros-initiative.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -198,8 +214,8 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "legacy",
-      "archetype": "esper-vial",
-      "path": "latest/radars/legacy/esper-vial.json",
+      "archetype": "goblins",
+      "path": "latest/radars/legacy/goblins.json",
       "message": "No published decks were available for radar generation."
     },
     {
@@ -208,14 +224,6 @@
       "format": "legacy",
       "archetype": "green-cloudpost",
       "path": "latest/radars/legacy/green-cloudpost.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "grixis-control",
-      "path": "latest/radars/legacy/grixis-control.json",
       "message": "No published decks were available for radar generation."
     },
     {
@@ -270,6 +278,14 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "legacy",
+      "archetype": "loam-pox",
+      "path": "latest/radars/legacy/loam-pox.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
       "archetype": "mardu-energy",
@@ -288,14 +304,6 @@
       "format": "legacy",
       "archetype": "merfolk",
       "path": "latest/radars/legacy/merfolk.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "mono-black-midrange",
-      "path": "latest/radars/legacy/mono-black-midrange.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -383,13 +391,6 @@
       "format": "legacy",
       "archetype": "saga-storm",
       "path": "latest/radars/legacy/saga-storm.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "selesnya-depths",
-      "path": "latest/radars/legacy/selesnya-depths.json"
     },
     {
       "scope": "archetype-radar",

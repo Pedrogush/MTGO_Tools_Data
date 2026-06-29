@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-29T13:55:05Z",
+  "generated_at": "2026-06-29T19:09:16Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 21,
-    "success": 32
+    "success": 36
   },
   "results": [
     {
@@ -240,6 +240,13 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "jeskai-control",
+      "path": "latest/radars/pioneer/jeskai-control.json"
+    },
+    {
+      "scope": "archetype-radar",
       "status": "skipped",
       "format": "pioneer",
       "archetype": "jeskai-ensoul-artifact",
@@ -252,6 +259,13 @@
       "format": "pioneer",
       "archetype": "jund-sacrifice",
       "path": "latest/radars/pioneer/jund-sacrifice.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "metalwork-colossus",
+      "path": "latest/radars/pioneer/metalwork-colossus.json"
     },
     {
       "scope": "archetype-radar",
@@ -376,6 +390,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pioneer",
+      "archetype": "selesnya-midrange",
+      "path": "latest/radars/pioneer/selesnya-midrange.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
       "archetype": "simic-scapeshift",
       "path": "latest/radars/pioneer/simic-scapeshift.json"
     },
@@ -394,6 +415,13 @@
       "archetype": "sultai-scapeshift",
       "path": "latest/radars/pioneer/sultai-scapeshift.json",
       "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "temur-prowess",
+      "path": "latest/radars/pioneer/temur-prowess.json"
     },
     {
       "scope": "format-card-pool",

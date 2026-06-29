@@ -1,15 +1,22 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-29T13:54:46Z",
+  "generated_at": "2026-06-29T19:09:28Z",
   "command": "scrape-radars-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 42,
-    "skipped": 19
+    "success": 43,
+    "skipped": 18
   },
   "results": [
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pauper",
+      "archetype": "4c-control",
+      "path": "latest/radars/pauper/4c-control.json"
+    },
     {
       "scope": "archetype-radar",
       "status": "success",
@@ -389,14 +396,6 @@
       "format": "pauper",
       "archetype": "ruby-storm",
       "path": "latest/radars/pauper/ruby-storm.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "pauper",
-      "archetype": "serpentine-curve",
-      "path": "latest/radars/pauper/serpentine-curve.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

@@ -1,12 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-01T13:21:48Z",
+  "generated_at": "2026-07-01T19:02:56Z",
   "command": "scrape-mtgo-decklists-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "cached": 13,
+    "skipped": 1,
     "success": 1
   },
   "results": [
@@ -93,6 +94,12 @@
       "format": "pauper",
       "path": "archive/mtgo-decklists/pauper/pauper-challenge-32-2026-06-2412845631.json",
       "message": "Loaded 32 decks from archive."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "skipped",
+      "format": "pauper",
+      "message": "https://www.mtgo.com/decklist/pauper-challenge-32-2026-07-0112845719: Event returned no decklists."
     },
     {
       "scope": "mtgo-event",

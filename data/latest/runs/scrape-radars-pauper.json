@@ -1,21 +1,22 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-30T19:01:29Z",
+  "generated_at": "2026-07-01T01:33:35Z",
   "command": "scrape-radars-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 42,
-    "skipped": 19
+    "skipped": 18,
+    "success": 43
   },
   "results": [
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "4c-control",
-      "path": "latest/radars/pauper/4c-control.json"
+      "path": "latest/radars/pauper/4c-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -26,11 +27,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pauper",
       "archetype": "azorius-faeries",
-      "path": "latest/radars/pauper/azorius-faeries.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pauper/azorius-faeries.json"
     },
     {
       "scope": "archetype-radar",
@@ -38,14 +38,6 @@
       "format": "pauper",
       "archetype": "bant-ponza",
       "path": "latest/radars/pauper/bant-ponza.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "pauper",
-      "archetype": "black-burn",
-      "path": "latest/radars/pauper/black-burn.json",
       "message": "No published decks were available for radar generation."
     },
     {
@@ -94,11 +86,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pauper",
       "archetype": "boros-synthesizer",
-      "path": "latest/radars/pauper/boros-synthesizer.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pauper/boros-synthesizer.json"
     },
     {
       "scope": "archetype-radar",
@@ -124,11 +115,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pauper",
       "archetype": "devotion",
-      "path": "latest/radars/pauper/devotion.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pauper/devotion.json"
     },
     {
       "scope": "archetype-radar",
@@ -213,6 +203,14 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "pauper",
+      "archetype": "food-retriever-combo",
+      "path": "latest/radars/pauper/food-retriever-combo.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
       "status": "success",
       "format": "pauper",
       "archetype": "glintblade",
@@ -269,18 +267,18 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pauper",
       "archetype": "izzet-faeries",
-      "path": "latest/radars/pauper/izzet-faeries.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pauper/izzet-faeries.json"
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "izzet-terror",
-      "path": "latest/radars/pauper/izzet-terror.json"
+      "path": "latest/radars/pauper/izzet-terror.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -288,6 +286,14 @@
       "format": "pauper",
       "archetype": "jeskai-ephemerate",
       "path": "latest/radars/pauper/jeskai-ephemerate.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "pauper",
+      "archetype": "jeskai-synthesizer",
+      "path": "latest/radars/pauper/jeskai-synthesizer.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -350,16 +356,9 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "pauper",
-      "archetype": "mono-white-aggro",
-      "path": "latest/radars/pauper/mono-white-aggro.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pauper",
       "archetype": "mono-white-heroic",
-      "path": "latest/radars/pauper/mono-white-heroic.json"
+      "path": "latest/radars/pauper/mono-white-heroic.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

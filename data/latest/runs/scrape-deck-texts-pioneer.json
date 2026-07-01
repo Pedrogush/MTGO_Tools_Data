@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-06-30T18:58:25Z",
+  "generated_at": "2026-07-01T01:26:38Z",
   "command": "scrape-deck-texts-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 37,
-    "skipped": 283
+    "success": 38,
+    "skipped": 284
   },
   "results": [
     {
@@ -164,6 +164,13 @@
       "archetype": "golgari-food",
       "path": "latest/decks/pioneer/golgari-food.json",
       "message": "No decks found within the last 7 days."
+    },
+    {
+      "scope": "archetype-decks",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "golgari-insidious-roots",
+      "path": "latest/decks/pioneer/golgari-insidious-roots.json"
     },
     {
       "scope": "archetype-decks",
@@ -2359,6 +2366,13 @@
     },
     {
       "scope": "deck-text",
+      "status": "success",
+      "format": "pioneer",
+      "deck_id": "7853933",
+      "path": "archive/deck-texts/pioneer/7853933.json"
+    },
+    {
+      "scope": "deck-text",
       "status": "skipped",
       "format": "pioneer",
       "deck_id": "7853934",
@@ -2527,10 +2541,11 @@
     },
     {
       "scope": "deck-text",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "deck_id": "7854395",
-      "path": "archive/deck-texts/pioneer/7854395.json"
+      "path": "archive/deck-texts/pioneer/7854395.json",
+      "message": "Reused existing published deck-text blob."
     }
   ]
 }

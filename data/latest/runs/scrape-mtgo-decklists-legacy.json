@@ -1,14 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-01T07:53:22Z",
+  "generated_at": "2026-07-01T13:18:41Z",
   "command": "scrape-mtgo-decklists-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "cached": 11,
-    "skipped": 1,
-    "success": 1
+    "success": 2
   },
   "results": [
     {
@@ -90,9 +89,10 @@
     },
     {
       "scope": "mtgo-event",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
-      "message": "https://www.mtgo.com/decklist/legacy-league-2026-07-0110831: Event returned no decklists."
+      "path": "archive/mtgo-decklists/legacy/legacy-league-2026-07-0110831.json",
+      "message": "Cached 11/11 decks."
     },
     {
       "scope": "mtgo-decklists",

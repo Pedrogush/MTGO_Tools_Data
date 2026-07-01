@@ -1,14 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-01T07:53:23Z",
+  "generated_at": "2026-07-01T13:19:32Z",
   "command": "scrape-mtgo-decklists-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "cached": 15,
-    "skipped": 1,
-    "success": 1
+    "success": 2
   },
   "results": [
     {
@@ -118,9 +117,10 @@
     },
     {
       "scope": "mtgo-event",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
-      "message": "https://www.mtgo.com/decklist/standard-league-2026-07-0110879: Event returned no decklists."
+      "path": "archive/mtgo-decklists/standard/standard-league-2026-07-0110879.json",
+      "message": "Cached 3/3 decks."
     },
     {
       "scope": "mtgo-decklists",

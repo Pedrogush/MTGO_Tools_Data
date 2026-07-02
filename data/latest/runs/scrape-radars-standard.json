@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-01T19:05:10Z",
+  "generated_at": "2026-07-02T01:26:43Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 31,
-    "skipped": 34
+    "success": 30,
+    "skipped": 35
   },
   "results": [
     {
@@ -119,10 +119,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "boros-control",
-      "path": "latest/radars/standard/boros-control.json"
+      "path": "latest/radars/standard/boros-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-01T19:04:49Z",
+  "generated_at": "2026-07-02T01:27:02Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 21,
-    "success": 37
+    "skipped": 22,
+    "success": 36
   },
   "results": [
     {
@@ -277,10 +277,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "mono-black-discard",
-      "path": "latest/radars/pioneer/mono-black-discard.json"
+      "path": "latest/radars/pioneer/mono-black-discard.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

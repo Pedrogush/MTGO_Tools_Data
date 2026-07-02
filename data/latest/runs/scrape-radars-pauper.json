@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-01T19:04:55Z",
+  "generated_at": "2026-07-02T01:26:33Z",
   "command": "scrape-radars-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 17,
-    "success": 44
+    "skipped": 19,
+    "success": 42
   },
   "results": [
     {
@@ -231,10 +231,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "grixis-control",
-      "path": "latest/radars/pauper/grixis-control.json"
+      "path": "latest/radars/pauper/grixis-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -435,10 +436,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "walls-combo",
-      "path": "latest/radars/pauper/walls-combo.json"
+      "path": "latest/radars/pauper/walls-combo.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

@@ -1,14 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-04T14:03:36Z",
+  "generated_at": "2026-07-04T19:42:40Z",
   "command": "scrape-mtgo-decklists-modern",
-  "status": "hard-failure",
+  "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "cached": 17,
-    "hard-failure": 1,
-    "success": 1
+    "cached": 16,
+    "success": 2
   },
   "results": [
     {
@@ -69,16 +68,10 @@
     },
     {
       "scope": "mtgo-event",
-      "status": "cached",
+      "status": "success",
       "format": "modern",
-      "path": "archive/mtgo-decklists/modern/modern-challenge-64-2026-06-2712845671.json",
-      "message": "Loaded 32 decks from archive."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "hard-failure",
-      "format": "modern",
-      "message": "https://www.mtgo.com/decklist/modern-challenge-32-2026-07-0412846483: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+      "path": "archive/mtgo-decklists/modern/modern-challenge-32-2026-07-0412846483.json",
+      "message": "Cached 32/32 decks."
     },
     {
       "scope": "mtgo-event",

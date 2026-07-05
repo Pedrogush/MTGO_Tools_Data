@@ -1,14 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-05T04:35:25Z",
+  "generated_at": "2026-07-05T09:27:14Z",
   "command": "scrape-mtgo-decklists-legacy",
-  "status": "hard-failure",
+  "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "cached": 9,
-    "hard-failure": 2,
-    "success": 1
+    "success": 3,
+    "skipped": 1
   },
   "results": [
     {
@@ -34,15 +34,23 @@
     },
     {
       "scope": "mtgo-event",
-      "status": "hard-failure",
+      "status": "success",
       "format": "legacy",
-      "message": "https://www.mtgo.com/decklist/legacy-league-2026-07-0510831: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+      "path": "archive/mtgo-decklists/legacy/legacy-challenge-32-2026-07-0512846496.json",
+      "message": "Cached 32/32 decks."
     },
     {
       "scope": "mtgo-event",
-      "status": "hard-failure",
+      "status": "success",
       "format": "legacy",
-      "message": "https://www.mtgo.com/decklist/legacy-showcase-challenge-2026-07-0412846445: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+      "path": "archive/mtgo-decklists/legacy/legacy-league-2026-07-0510831.json",
+      "message": "Cached 12/12 decks."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "skipped",
+      "format": "legacy",
+      "message": "https://www.mtgo.com/decklist/legacy-showcase-challenge-2026-07-0412846445: Event returned no decklists."
     },
     {
       "scope": "mtgo-event",

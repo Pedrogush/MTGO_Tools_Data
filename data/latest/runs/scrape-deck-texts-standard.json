@@ -1,12 +1,12 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-05T09:25:39Z",
+  "generated_at": "2026-07-05T14:12:42Z",
   "command": "scrape-deck-texts-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 28,
+    "success": 29,
     "skipped": 323
   },
   "results": [
@@ -231,11 +231,10 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
       "archetype": "jeskai-artifacts",
-      "path": "latest/decks/standard/jeskai-artifacts.json",
-      "message": "No decks found within the last 7 days."
+      "path": "latest/decks/standard/jeskai-artifacts.json"
     },
     {
       "scope": "archetype-decks",
@@ -2784,10 +2783,18 @@
     },
     {
       "scope": "deck-text",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "deck_id": "7860184",
-      "path": "archive/deck-texts/standard/7860184.json"
+      "path": "archive/deck-texts/standard/7860184.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "success",
+      "format": "standard",
+      "deck_id": "7860382",
+      "path": "archive/deck-texts/standard/7860382.json"
     }
   ]
 }

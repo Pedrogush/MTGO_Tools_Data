@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-05T19:48:02Z",
+  "generated_at": "2026-07-06T04:51:28Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 37,
-    "success": 28
+    "skipped": 39,
+    "success": 26
   },
   "results": [
     {
@@ -217,10 +217,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "gruul-delirium",
-      "path": "latest/radars/standard/gruul-delirium.json"
+      "path": "latest/radars/standard/gruul-delirium.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -232,17 +233,19 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "gruul-midrange",
-      "path": "latest/radars/standard/gruul-midrange.json"
+      "path": "latest/radars/standard/gruul-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "izzet-aggro",
-      "path": "latest/radars/standard/izzet-aggro.json"
+      "path": "latest/radars/standard/izzet-aggro.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -261,11 +264,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
       "archetype": "izzet-maestro",
-      "path": "latest/radars/standard/izzet-maestro.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/standard/izzet-maestro.json"
     },
     {
       "scope": "archetype-radar",

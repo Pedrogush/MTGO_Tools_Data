@@ -1,7 +1,7 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-05T19:48:01Z",
+  "generated_at": "2026-07-06T04:51:29Z",
   "command": "scrape-radars-pauper",
   "status": "success",
   "max_stale_hours": 24,
@@ -27,10 +27,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "azorius-faeries",
-      "path": "latest/radars/pauper/azorius-faeries.json"
+      "path": "latest/radars/pauper/azorius-faeries.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -114,10 +115,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "devotion",
-      "path": "latest/radars/pauper/devotion.json"
+      "path": "latest/radars/pauper/devotion.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -332,11 +334,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pauper",
       "archetype": "mono-red-pingers",
-      "path": "latest/radars/pauper/mono-red-pingers.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pauper/mono-red-pingers.json"
     },
     {
       "scope": "archetype-radar",
@@ -377,11 +378,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pauper",
       "archetype": "poison-storm",
-      "path": "latest/radars/pauper/poison-storm.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pauper/poison-storm.json"
     },
     {
       "scope": "archetype-radar",

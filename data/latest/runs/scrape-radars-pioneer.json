@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-05T19:48:10Z",
+  "generated_at": "2026-07-06T04:51:31Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 35,
-    "success": 23
+    "skipped": 34,
+    "success": 24
   },
   "results": [
     {
@@ -20,11 +20,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "4c-midrange",
-      "path": "latest/radars/pioneer/4c-midrange.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pioneer/4c-midrange.json"
     },
     {
       "scope": "archetype-radar",
@@ -186,10 +185,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "golgari-insidious-roots",
-      "path": "latest/radars/pioneer/golgari-insidious-roots.json"
+      "path": "latest/radars/pioneer/golgari-insidious-roots.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -216,11 +216,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "hidden-strings",
-      "path": "latest/radars/pioneer/hidden-strings.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pioneer/hidden-strings.json"
     },
     {
       "scope": "archetype-radar",

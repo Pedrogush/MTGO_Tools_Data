@@ -1,14 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-06T11:09:18Z",
+  "generated_at": "2026-07-06T15:59:35Z",
   "command": "scrape-mtgo-decklists-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "cached": 13,
-    "skipped": 1,
-    "success": 1
+    "success": 2
   },
   "results": [
     {
@@ -27,9 +26,10 @@
     },
     {
       "scope": "mtgo-event",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
-      "message": "https://www.mtgo.com/decklist/pioneer-league-2026-07-0610863: Event returned no decklists."
+      "path": "archive/mtgo-decklists/pioneer/pioneer-league-2026-07-0610863.json",
+      "message": "Cached 2/2 decks."
     },
     {
       "scope": "mtgo-event",

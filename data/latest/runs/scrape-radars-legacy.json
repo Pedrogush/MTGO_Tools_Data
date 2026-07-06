@@ -1,21 +1,21 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-06T11:09:59Z",
+  "generated_at": "2026-07-06T16:00:19Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 46,
-    "skipped": 13
+    "success": 49,
+    "skipped": 11
   },
   "results": [
     {
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "ad-nauseam-tendrils",
-      "path": "latest/radars/legacy/ad-nauseam-tendrils.json"
+      "archetype": "8-cast",
+      "path": "latest/radars/legacy/8-cast.json"
     },
     {
       "scope": "archetype-radar",
@@ -73,13 +73,6 @@
       "format": "legacy",
       "archetype": "beanstalk-control-non-yorion",
       "path": "latest/radars/legacy/beanstalk-control-non-yorion.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "beanstalk-control-yorion",
-      "path": "latest/radars/legacy/beanstalk-control-yorion.json"
     },
     {
       "scope": "archetype-radar",
@@ -207,11 +200,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
-      "archetype": "goblins",
-      "path": "latest/radars/legacy/goblins.json",
-      "message": "No published decks were available for radar generation."
+      "archetype": "esper-stoneblade",
+      "path": "latest/radars/legacy/esper-stoneblade.json"
     },
     {
       "scope": "archetype-radar",
@@ -219,14 +211,6 @@
       "format": "legacy",
       "archetype": "green-cloudpost",
       "path": "latest/radars/legacy/green-cloudpost.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "grixis-tempo",
-      "path": "latest/radars/legacy/grixis-tempo.json",
       "message": "No published decks were available for radar generation."
     },
     {
@@ -298,6 +282,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
+      "archetype": "mono-black-midrange",
+      "path": "latest/radars/legacy/mono-black-midrange.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
       "archetype": "mono-black-pox",
       "path": "latest/radars/legacy/mono-black-pox.json"
     },
@@ -307,6 +298,28 @@
       "format": "legacy",
       "archetype": "mono-black-reanimator",
       "path": "latest/radars/legacy/mono-black-reanimator.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "legacy",
+      "archetype": "mono-black-stompy",
+      "path": "latest/radars/legacy/mono-black-stompy.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "mono-blue-tempo",
+      "path": "latest/radars/legacy/mono-blue-tempo.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "mystic-forge-combo",
+      "path": "latest/radars/legacy/mystic-forge-combo.json"
     },
     {
       "scope": "archetype-radar",
@@ -336,14 +349,6 @@
       "format": "legacy",
       "archetype": "ninjas",
       "path": "latest/radars/legacy/ninjas.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "ocelot-pride-tempo",
-      "path": "latest/radars/legacy/ocelot-pride-tempo.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

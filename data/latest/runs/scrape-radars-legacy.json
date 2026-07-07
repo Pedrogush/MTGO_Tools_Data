@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-07T04:25:53Z",
+  "generated_at": "2026-07-07T10:06:27Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 50,
-    "skipped": 10
+    "success": 53,
+    "skipped": 7
   },
   "results": [
     {
@@ -73,6 +73,13 @@
       "format": "legacy",
       "archetype": "beanstalk-control-non-yorion",
       "path": "latest/radars/legacy/beanstalk-control-non-yorion.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "beanstalk-control-yorion",
+      "path": "latest/radars/legacy/beanstalk-control-yorion.json"
     },
     {
       "scope": "archetype-radar",
@@ -202,16 +209,22 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
+      "archetype": "elves",
+      "path": "latest/radars/legacy/elves.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
       "archetype": "esper-stoneblade",
       "path": "latest/radars/legacy/esper-stoneblade.json"
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
-      "archetype": "green-cloudpost",
-      "path": "latest/radars/legacy/green-cloudpost.json",
-      "message": "No published decks were available for radar generation."
+      "archetype": "goblins",
+      "path": "latest/radars/legacy/goblins.json"
     },
     {
       "scope": "archetype-radar",
@@ -300,14 +313,6 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "mono-black-stompy",
-      "path": "latest/radars/legacy/mono-black-stompy.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
       "archetype": "mono-blue-tempo",
@@ -319,14 +324,6 @@
       "format": "legacy",
       "archetype": "mystic-forge-combo",
       "path": "latest/radars/legacy/mystic-forge-combo.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "naya-initiative",
-      "path": "latest/radars/legacy/naya-initiative.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

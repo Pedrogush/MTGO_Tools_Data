@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-07T20:21:00Z",
+  "generated_at": "2026-07-08T03:53:25Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 16,
-    "success": 52
+    "skipped": 17,
+    "success": 51
   },
   "results": [
     {
@@ -82,6 +82,13 @@
       "archetype": "boros-midrange",
       "path": "latest/radars/modern/boros-midrange.json",
       "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "boros-ponza",
+      "path": "latest/radars/modern/boros-ponza.json"
     },
     {
       "scope": "archetype-radar",
@@ -182,14 +189,6 @@
       "format": "modern",
       "archetype": "generic-ragavan",
       "path": "latest/radars/modern/generic-ragavan.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "modern",
-      "archetype": "glimpse-combo",
-      "path": "latest/radars/modern/glimpse-combo.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -336,10 +335,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "merfolk",
-      "path": "latest/radars/modern/merfolk.json"
+      "path": "latest/radars/modern/merfolk.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -418,10 +418,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "rakdos-midrange",
-      "path": "latest/radars/modern/rakdos-midrange.json"
+      "path": "latest/radars/modern/rakdos-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

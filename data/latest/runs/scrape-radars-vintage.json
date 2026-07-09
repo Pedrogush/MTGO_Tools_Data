@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-08T20:02:48Z",
+  "generated_at": "2026-07-09T04:23:08Z",
   "command": "scrape-radars-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 21,
-    "skipped": 7
+    "success": 20,
+    "skipped": 8
   },
   "results": [
     {
@@ -159,10 +159,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "painter",
-      "path": "latest/radars/vintage/painter.json"
+      "path": "latest/radars/vintage/painter.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

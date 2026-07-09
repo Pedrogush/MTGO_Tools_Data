@@ -1,15 +1,22 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-08T19:59:56Z",
+  "generated_at": "2026-07-09T04:18:36Z",
   "command": "scrape-mtgo-decklists-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "cached": 15,
+    "skipped": 1,
+    "cached": 13,
     "success": 1
   },
   "results": [
+    {
+      "scope": "mtgo-event",
+      "status": "skipped",
+      "format": "standard",
+      "message": "https://www.mtgo.com/decklist/standard-league-2026-07-0910879: Event returned no decklists."
+    },
     {
       "scope": "mtgo-event",
       "status": "cached",
@@ -91,13 +98,6 @@
       "scope": "mtgo-event",
       "status": "cached",
       "format": "standard",
-      "path": "archive/mtgo-decklists/standard/standard-challenge-32-2026-07-0312846464.json",
-      "message": "Loaded 32 decks from archive."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "cached",
-      "format": "standard",
       "path": "archive/mtgo-decklists/standard/standard-league-2026-07-0310879.json",
       "message": "Loaded 4 decks from archive."
     },
@@ -105,14 +105,7 @@
       "scope": "mtgo-event",
       "status": "cached",
       "format": "standard",
-      "path": "archive/mtgo-decklists/standard/standard-league-2026-07-0210879.json",
-      "message": "Loaded 1 decks from archive."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "cached",
-      "format": "standard",
-      "path": "archive/mtgo-decklists/standard/standard-challenge-32-2026-07-0212846451.json",
+      "path": "archive/mtgo-decklists/standard/standard-challenge-32-2026-07-0312846464.json",
       "message": "Loaded 32 decks from archive."
     },
     {

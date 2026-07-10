@@ -1,21 +1,21 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-10T04:20:14Z",
+  "generated_at": "2026-07-10T09:58:31Z",
   "command": "scrape-mtgo-decklists-legacy",
-  "status": "hard-failure",
+  "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "hard-failure": 1,
-    "cached": 11,
-    "success": 1
+    "success": 2,
+    "cached": 11
   },
   "results": [
     {
       "scope": "mtgo-event",
-      "status": "hard-failure",
+      "status": "success",
       "format": "legacy",
-      "message": "https://www.mtgo.com/decklist/legacy-league-2026-07-1010831: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+      "path": "archive/mtgo-decklists/legacy/legacy-league-2026-07-1010831.json",
+      "message": "Cached 5/5 decks."
     },
     {
       "scope": "mtgo-event",

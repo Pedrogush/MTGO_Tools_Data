@@ -1,7 +1,7 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-11T19:43:35Z",
+  "generated_at": "2026-07-12T04:08:40Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
@@ -91,11 +91,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "crashing-footfalls",
-      "path": "latest/radars/modern/crashing-footfalls.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/crashing-footfalls.json"
     },
     {
       "scope": "archetype-radar",
@@ -476,10 +475,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "through-the-breach",
-      "path": "latest/radars/modern/through-the-breach.json"
+      "path": "latest/radars/modern/through-the-breach.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

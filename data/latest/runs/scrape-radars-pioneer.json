@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-11T19:42:55Z",
+  "generated_at": "2026-07-12T04:08:34Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 31,
-    "success": 31
+    "skipped": 32,
+    "success": 30
   },
   "results": [
     {
@@ -125,17 +125,19 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "boros-heroic",
-      "path": "latest/radars/pioneer/boros-heroic.json"
+      "path": "latest/radars/pioneer/boros-heroic.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "boros-token-control",
-      "path": "latest/radars/pioneer/boros-token-control.json"
+      "path": "latest/radars/pioneer/boros-token-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -266,11 +268,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "jeskai-control",
-      "path": "latest/radars/pioneer/jeskai-control.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pioneer/jeskai-control.json"
     },
     {
       "scope": "archetype-radar",
@@ -289,18 +290,18 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "jund-sacrifice",
-      "path": "latest/radars/pioneer/jund-sacrifice.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pioneer/jund-sacrifice.json"
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "mardu-greasefang",
-      "path": "latest/radars/pioneer/mardu-greasefang.json"
+      "path": "latest/radars/pioneer/mardu-greasefang.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

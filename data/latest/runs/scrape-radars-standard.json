@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-12T19:48:06Z",
+  "generated_at": "2026-07-13T04:11:52Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 43,
-    "success": 28
+    "skipped": 44,
+    "success": 27
   },
   "results": [
     {
@@ -96,11 +96,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
       "archetype": "azorius-control",
-      "path": "latest/radars/standard/azorius-control.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/standard/azorius-control.json"
     },
     {
       "scope": "archetype-radar",
@@ -190,10 +189,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "dimir-reanimator",
-      "path": "latest/radars/standard/dimir-reanimator.json"
+      "path": "latest/radars/standard/dimir-reanimator.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -298,10 +298,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "izzet-maestro",
-      "path": "latest/radars/standard/izzet-maestro.json"
+      "path": "latest/radars/standard/izzet-maestro.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

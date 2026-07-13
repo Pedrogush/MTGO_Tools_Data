@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-12T19:48:09Z",
+  "generated_at": "2026-07-13T04:11:52Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 54,
-    "skipped": 6
+    "success": 53,
+    "skipped": 7
   },
   "results": [
     {
@@ -33,10 +33,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "arclight-phoenix",
-      "path": "latest/radars/legacy/arclight-phoenix.json"
+      "path": "latest/radars/legacy/arclight-phoenix.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -317,11 +318,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "mystic-forge-combo",
-      "path": "latest/radars/legacy/mystic-forge-combo.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/mystic-forge-combo.json"
     },
     {
       "scope": "archetype-radar",
@@ -417,10 +417,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "sultai-depths",
-      "path": "latest/radars/legacy/sultai-depths.json"
+      "path": "latest/radars/legacy/sultai-depths.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

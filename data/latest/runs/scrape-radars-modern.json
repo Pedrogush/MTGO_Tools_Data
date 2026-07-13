@@ -1,15 +1,22 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-13T04:11:47Z",
+  "generated_at": "2026-07-13T10:38:29Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 13,
-    "success": 55
+    "success": 60,
+    "skipped": 11
   },
   "results": [
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "4c-hollowone",
+      "path": "latest/radars/modern/4c-hollowone.json"
+    },
     {
       "scope": "archetype-radar",
       "status": "skipped",
@@ -17,6 +24,13 @@
       "archetype": "4c-tameshi-combo",
       "path": "latest/radars/modern/4c-tameshi-combo.json",
       "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "5c-midrange",
+      "path": "latest/radars/modern/5c-midrange.json"
     },
     {
       "scope": "archetype-radar",
@@ -154,14 +168,6 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "modern",
-      "archetype": "esper-control",
-      "path": "latest/radars/modern/esper-control.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
       "archetype": "esper-genericblink",
@@ -187,6 +193,14 @@
       "format": "modern",
       "archetype": "generic-ragavan",
       "path": "latest/radars/modern/generic-ragavan.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "modern",
+      "archetype": "glimpse-combo",
+      "path": "latest/radars/modern/glimpse-combo.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -384,11 +398,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "orzhov-genericblink",
-      "path": "latest/radars/modern/orzhov-genericblink.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/orzhov-genericblink.json"
     },
     {
       "scope": "archetype-radar",
@@ -400,18 +413,17 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
-      "archetype": "rakdos-aggro",
-      "path": "latest/radars/modern/rakdos-aggro.json",
-      "message": "No published decks were available for radar generation."
+      "archetype": "rakdos-burn",
+      "path": "latest/radars/modern/rakdos-burn.json"
     },
     {
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "rakdos-burn",
-      "path": "latest/radars/modern/rakdos-burn.json"
+      "archetype": "rakdos-hollowone",
+      "path": "latest/radars/modern/rakdos-hollowone.json"
     },
     {
       "scope": "archetype-radar",
@@ -449,6 +461,13 @@
       "format": "modern",
       "archetype": "simic-midrange",
       "path": "latest/radars/modern/simic-midrange.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "song-of-creation",
+      "path": "latest/radars/modern/song-of-creation.json"
     },
     {
       "scope": "archetype-radar",

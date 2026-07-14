@@ -1,27 +1,27 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-14T03:40:17Z",
+  "generated_at": "2026-07-14T08:32:57Z",
   "command": "scrape-mtgo-decklists-modern",
-  "status": "hard-failure",
+  "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "hard-failure": 2,
+    "skipped": 2,
     "cached": 18,
     "success": 1
   },
   "results": [
     {
       "scope": "mtgo-event",
-      "status": "hard-failure",
+      "status": "skipped",
       "format": "modern",
-      "message": "https://www.mtgo.com/decklist/modern-league-2026-07-1410847: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+      "message": "https://www.mtgo.com/decklist/modern-league-2026-07-1410847: Event returned no decklists."
     },
     {
       "scope": "mtgo-event",
-      "status": "hard-failure",
+      "status": "skipped",
       "format": "modern",
-      "message": "https://www.mtgo.com/decklist/modern-challenge-96-2026-07-1312847154: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+      "message": "https://www.mtgo.com/decklist/modern-challenge-96-2026-07-1312847154: Event returned no decklists."
     },
     {
       "scope": "mtgo-event",

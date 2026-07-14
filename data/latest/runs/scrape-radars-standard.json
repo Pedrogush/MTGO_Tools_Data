@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-14T08:34:19Z",
+  "generated_at": "2026-07-14T14:35:06Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 40,
-    "success": 35
+    "skipped": 35,
+    "success": 40
   },
   "results": [
     {
@@ -38,6 +38,13 @@
       "format": "standard",
       "archetype": "4c-kona",
       "path": "latest/radars/standard/4c-kona.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "4c-lessons",
+      "path": "latest/radars/standard/4c-lessons.json"
     },
     {
       "scope": "archetype-radar",
@@ -80,6 +87,13 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "5c-ramp",
+      "path": "latest/radars/standard/5c-ramp.json"
+    },
+    {
+      "scope": "archetype-radar",
       "status": "skipped",
       "format": "standard",
       "archetype": "abzan-midrange",
@@ -109,18 +123,17 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
-      "archetype": "bant-ouroboroid",
-      "path": "latest/radars/standard/bant-ouroboroid.json",
-      "message": "No published decks were available for radar generation."
+      "archetype": "bant-airbending-combo",
+      "path": "latest/radars/standard/bant-airbending-combo.json"
     },
     {
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "standard",
-      "archetype": "boros-burn",
-      "path": "latest/radars/standard/boros-burn.json",
+      "archetype": "bant-ouroboroid",
+      "path": "latest/radars/standard/bant-ouroboroid.json",
       "message": "No published decks were available for radar generation."
     },
     {
@@ -351,18 +364,17 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
-      "archetype": "jund-delirium",
-      "path": "latest/radars/standard/jund-delirium.json",
-      "message": "No published decks were available for radar generation."
+      "archetype": "jeskai-oculus",
+      "path": "latest/radars/standard/jeskai-oculus.json"
     },
     {
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "standard",
-      "archetype": "jund-midrange",
-      "path": "latest/radars/standard/jund-midrange.json",
+      "archetype": "jund-delirium",
+      "path": "latest/radars/standard/jund-delirium.json",
       "message": "No published decks were available for radar generation."
     },
     {
@@ -381,11 +393,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
-      "archetype": "mono-black-aggro",
-      "path": "latest/radars/standard/mono-black-aggro.json",
-      "message": "No published decks were available for radar generation."
+      "archetype": "mono-black-midrange",
+      "path": "latest/radars/standard/mono-black-midrange.json"
     },
     {
       "scope": "archetype-radar",
@@ -507,19 +518,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "standard",
-      "archetype": "sultai-midrange",
-      "path": "latest/radars/standard/sultai-midrange.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
       "archetype": "sultai-reanimator",
-      "path": "latest/radars/standard/sultai-reanimator.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/standard/sultai-reanimator.json"
     },
     {
       "scope": "archetype-radar",
@@ -528,13 +530,6 @@
       "archetype": "temur-battlecrier-combo",
       "path": "latest/radars/standard/temur-battlecrier-combo.json",
       "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
-      "archetype": "temur-floodcaller-combo",
-      "path": "latest/radars/standard/temur-floodcaller-combo.json"
     },
     {
       "scope": "archetype-radar",

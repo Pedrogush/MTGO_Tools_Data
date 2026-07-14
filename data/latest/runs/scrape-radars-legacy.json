@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-14T08:34:06Z",
+  "generated_at": "2026-07-14T14:22:47Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 56,
-    "skipped": 4
+    "success": 57,
+    "skipped": 3
   },
   "results": [
     {
@@ -183,13 +183,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "dimir-control",
-      "path": "latest/radars/legacy/dimir-control.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
       "archetype": "dimir-tempo",
       "path": "latest/radars/legacy/dimir-tempo.json"
     },
@@ -232,8 +225,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "high-tide",
-      "path": "latest/radars/legacy/high-tide.json"
+      "archetype": "hullday-echo-stompy",
+      "path": "latest/radars/legacy/hullday-echo-stompy.json"
     },
     {
       "scope": "archetype-radar",
@@ -409,16 +402,22 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
+      "archetype": "stiflenought",
+      "path": "latest/radars/legacy/stiflenought.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
       "archetype": "sultai-control",
       "path": "latest/radars/legacy/sultai-control.json"
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "sultai-depths",
-      "path": "latest/radars/legacy/sultai-depths.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/sultai-depths.json"
     },
     {
       "scope": "archetype-radar",

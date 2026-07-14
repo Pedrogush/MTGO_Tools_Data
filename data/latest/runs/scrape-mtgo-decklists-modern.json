@@ -1,14 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-14T08:32:57Z",
+  "generated_at": "2026-07-14T14:21:55Z",
   "command": "scrape-mtgo-decklists-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 2,
-    "cached": 18,
-    "success": 1
+    "skipped": 1,
+    "success": 2,
+    "cached": 18
   },
   "results": [
     {
@@ -19,9 +19,10 @@
     },
     {
       "scope": "mtgo-event",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
-      "message": "https://www.mtgo.com/decklist/modern-challenge-96-2026-07-1312847154: Event returned no decklists."
+      "path": "archive/mtgo-decklists/modern/modern-challenge-96-2026-07-1312847154.json",
+      "message": "Cached 32/32 decks."
     },
     {
       "scope": "mtgo-event",

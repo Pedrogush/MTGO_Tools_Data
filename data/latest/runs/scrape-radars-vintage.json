@@ -1,15 +1,22 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-14T08:34:18Z",
+  "generated_at": "2026-07-14T14:22:57Z",
   "command": "scrape-radars-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 8,
-    "success": 20
+    "success": 24,
+    "skipped": 8
   },
   "results": [
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "vintage",
+      "archetype": "abzan-initiative",
+      "path": "latest/radars/vintage/abzan-initiative.json"
+    },
     {
       "scope": "archetype-radar",
       "status": "skipped",
@@ -17,6 +24,13 @@
       "archetype": "beseech-storm",
       "path": "latest/radars/vintage/beseech-storm.json",
       "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "vintage",
+      "archetype": "blue-tempo",
+      "path": "latest/radars/vintage/blue-tempo.json"
     },
     {
       "scope": "archetype-radar",
@@ -76,6 +90,13 @@
       "archetype": "esper-lurrus-control",
       "path": "latest/radars/vintage/esper-lurrus-control.json",
       "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "vintage",
+      "archetype": "fastbond-lands",
+      "path": "latest/radars/vintage/fastbond-lands.json"
     },
     {
       "scope": "archetype-radar",
@@ -178,6 +199,13 @@
       "format": "vintage",
       "archetype": "raker-shops",
       "path": "latest/radars/vintage/raker-shops.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "vintage",
+      "archetype": "red-prison",
+      "path": "latest/radars/vintage/red-prison.json"
     },
     {
       "scope": "archetype-radar",

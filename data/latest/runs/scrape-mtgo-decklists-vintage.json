@@ -1,15 +1,22 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-13T19:54:38Z",
+  "generated_at": "2026-07-14T03:40:19Z",
   "command": "scrape-mtgo-decklists-vintage",
-  "status": "success",
+  "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "cached": 10,
+    "hard-failure": 1,
+    "cached": 9,
     "success": 1
   },
   "results": [
+    {
+      "scope": "mtgo-event",
+      "status": "hard-failure",
+      "format": "vintage",
+      "message": "https://www.mtgo.com/decklist/vintage-league-2026-07-1410887: Could not locate deck JSON payload"
+    },
     {
       "scope": "mtgo-event",
       "status": "cached",
@@ -72,13 +79,6 @@
       "format": "vintage",
       "path": "archive/mtgo-decklists/vintage/vintage-league-2026-07-0810887.json",
       "message": "Loaded 2 decks from archive."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "cached",
-      "format": "vintage",
-      "path": "archive/mtgo-decklists/vintage/vintage-league-2026-07-0710887.json",
-      "message": "Loaded 1 decks from archive."
     },
     {
       "scope": "mtgo-decklists",

@@ -1,15 +1,22 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-13T19:54:46Z",
+  "generated_at": "2026-07-14T03:40:14Z",
   "command": "scrape-mtgo-decklists-legacy",
-  "status": "success",
+  "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "cached": 11,
+    "hard-failure": 1,
+    "cached": 10,
     "success": 1
   },
   "results": [
+    {
+      "scope": "mtgo-event",
+      "status": "hard-failure",
+      "format": "legacy",
+      "message": "https://www.mtgo.com/decklist/legacy-league-2026-07-1410831: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
     {
       "scope": "mtgo-event",
       "status": "cached",
@@ -42,15 +49,15 @@
       "scope": "mtgo-event",
       "status": "cached",
       "format": "legacy",
-      "path": "archive/mtgo-decklists/legacy/legacy-league-2026-07-1110831.json",
-      "message": "Loaded 1 decks from archive."
+      "path": "archive/mtgo-decklists/legacy/legacy-challenge-32-2026-07-1112847123.json",
+      "message": "Loaded 32 decks from archive."
     },
     {
       "scope": "mtgo-event",
       "status": "cached",
       "format": "legacy",
-      "path": "archive/mtgo-decklists/legacy/legacy-challenge-32-2026-07-1112847123.json",
-      "message": "Loaded 32 decks from archive."
+      "path": "archive/mtgo-decklists/legacy/legacy-league-2026-07-1110831.json",
+      "message": "Loaded 1 decks from archive."
     },
     {
       "scope": "mtgo-event",
@@ -78,13 +85,6 @@
       "status": "cached",
       "format": "legacy",
       "path": "archive/mtgo-decklists/legacy/legacy-league-2026-07-0810831.json",
-      "message": "Loaded 5 decks from archive."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "cached",
-      "format": "legacy",
-      "path": "archive/mtgo-decklists/legacy/legacy-league-2026-07-0710831.json",
       "message": "Loaded 5 decks from archive."
     },
     {

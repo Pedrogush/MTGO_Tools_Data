@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-13T19:55:33Z",
+  "generated_at": "2026-07-14T03:44:21Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 57,
-    "skipped": 3
+    "success": 56,
+    "skipped": 4
   },
   "results": [
     {
@@ -265,10 +265,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "led-dredge",
-      "path": "latest/radars/legacy/led-dredge.json"
+      "path": "latest/radars/legacy/led-dredge.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

@@ -1,16 +1,23 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-15T19:42:23Z",
+  "generated_at": "2026-07-16T03:43:01Z",
   "command": "scrape-mtgo-decklists-pioneer",
-  "status": "success",
+  "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
+    "hard-failure": 1,
     "skipped": 1,
-    "cached": 11,
-    "success": 2
+    "cached": 12,
+    "success": 1
   },
   "results": [
+    {
+      "scope": "mtgo-event",
+      "status": "hard-failure",
+      "format": "pioneer",
+      "message": "https://www.mtgo.com/decklist/pioneer-league-2026-07-1610863: Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
     {
       "scope": "mtgo-event",
       "status": "skipped",
@@ -40,10 +47,10 @@
     },
     {
       "scope": "mtgo-event",
-      "status": "success",
+      "status": "cached",
       "format": "pioneer",
-      "path": "archive/mtgo-decklists/pioneer/pioneer-challenge-32-2026-07-1312847147.json",
-      "message": "Cached 32/32 decks."
+      "path": "archive/mtgo-decklists/pioneer/pioneer-challenge-32-2026-07-1212847147.json",
+      "message": "Loaded 32 decks from archive."
     },
     {
       "scope": "mtgo-event",

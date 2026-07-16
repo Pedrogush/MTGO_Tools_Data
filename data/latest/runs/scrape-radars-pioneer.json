@@ -1,21 +1,22 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-15T19:44:37Z",
+  "generated_at": "2026-07-16T03:49:29Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 29,
-    "skipped": 26
+    "skipped": 27,
+    "success": 29
   },
   "results": [
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "4c-legends",
-      "path": "latest/radars/pioneer/4c-legends.json"
+      "path": "latest/radars/pioneer/4c-legends.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -211,6 +212,13 @@
       "format": "pioneer",
       "archetype": "izzet-ensoul-artifact",
       "path": "latest/radars/pioneer/izzet-ensoul-artifact.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "izzet-lessons",
+      "path": "latest/radars/pioneer/izzet-lessons.json"
     },
     {
       "scope": "archetype-radar",

@@ -1,12 +1,12 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-15T19:43:45Z",
+  "generated_at": "2026-07-16T03:49:25Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 35,
+    "skipped": 36,
     "success": 40
   },
   "results": [
@@ -379,6 +379,14 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "standard",
+      "archetype": "jund-midrange",
+      "path": "latest/radars/standard/jund-midrange.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
       "archetype": "lifegain",
@@ -407,6 +415,14 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "standard",
+      "archetype": "mono-green-squirrels",
+      "path": "latest/radars/standard/mono-green-squirrels.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
       "archetype": "mono-red-aggro",
@@ -416,24 +432,8 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "standard",
-      "archetype": "mono-red-burn",
-      "path": "latest/radars/standard/mono-red-burn.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "standard",
       "archetype": "mono-white-momo",
       "path": "latest/radars/standard/mono-white-momo.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "standard",
-      "archetype": "mono-white-token-control",
-      "path": "latest/radars/standard/mono-white-token-control.json",
       "message": "No published decks were available for radar generation."
     },
     {
@@ -518,6 +518,14 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "standard",
+      "archetype": "sultai-midrange",
+      "path": "latest/radars/standard/sultai-midrange.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
       "archetype": "sultai-reanimator",
@@ -527,8 +535,8 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "standard",
-      "archetype": "temur-battlecrier-combo",
-      "path": "latest/radars/standard/temur-battlecrier-combo.json",
+      "archetype": "temur-floodcaller-combo",
+      "path": "latest/radars/standard/temur-floodcaller-combo.json",
       "message": "No published decks were available for radar generation."
     },
     {

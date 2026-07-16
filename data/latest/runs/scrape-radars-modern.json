@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-15T19:43:45Z",
+  "generated_at": "2026-07-16T03:49:43Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 59,
-    "skipped": 13
+    "success": 58,
+    "skipped": 14
   },
   "results": [
     {
@@ -23,6 +23,14 @@
       "format": "modern",
       "archetype": "4c-hollowone",
       "path": "latest/radars/modern/4c-hollowone.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "modern",
+      "archetype": "4c-tameshi-combo",
+      "path": "latest/radars/modern/4c-tameshi-combo.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -234,6 +242,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
+      "archetype": "grixis-prowess",
+      "path": "latest/radars/modern/grixis-prowess.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
       "archetype": "grixis-reanimator",
       "path": "latest/radars/modern/grixis-reanimator.json"
     },
@@ -283,11 +298,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "izzetcontrol",
-      "path": "latest/radars/modern/izzetcontrol.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/izzetcontrol.json"
     },
     {
       "scope": "archetype-radar",
@@ -312,10 +326,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "jeskai-prowess",
-      "path": "latest/radars/modern/jeskai-prowess.json"
+      "path": "latest/radars/modern/jeskai-prowess.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -350,23 +365,9 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "modern",
-      "archetype": "mardu-hollowone",
-      "path": "latest/radars/modern/mardu-hollowone.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "merfolk",
-      "path": "latest/radars/modern/merfolk.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "mill",
-      "path": "latest/radars/modern/mill.json"
+      "path": "latest/radars/modern/mill.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

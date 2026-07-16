@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-15T19:43:48Z",
+  "generated_at": "2026-07-16T03:55:23Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 52,
-    "skipped": 8
+    "success": 51,
+    "skipped": 9
   },
   "results": [
     {
@@ -283,10 +283,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "maverick",
-      "path": "latest/radars/legacy/maverick.json"
+      "path": "latest/radars/legacy/maverick.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

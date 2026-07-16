@@ -1,21 +1,21 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-16T03:43:10Z",
+  "generated_at": "2026-07-16T08:39:09Z",
   "command": "scrape-mtgo-decklists-vintage",
-  "status": "hard-failure",
+  "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "hard-failure": 1,
+    "skipped": 1,
     "cached": 9,
     "success": 1
   },
   "results": [
     {
       "scope": "mtgo-event",
-      "status": "hard-failure",
+      "status": "skipped",
       "format": "vintage",
-      "message": "https://www.mtgo.com/decklist/vintage-league-2026-07-1610887: Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+      "message": "https://www.mtgo.com/decklist/vintage-league-2026-07-1610887: Event returned no decklists."
     },
     {
       "scope": "mtgo-event",

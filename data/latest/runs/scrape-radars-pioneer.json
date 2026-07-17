@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-17T14:10:34Z",
+  "generated_at": "2026-07-17T19:40:55Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 26,
-    "success": 30
+    "skipped": 25,
+    "success": 32
   },
   "results": [
     {
@@ -85,6 +85,13 @@
       "archetype": "azorius-flash",
       "path": "latest/radars/pioneer/azorius-flash.json",
       "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "bant-scapeshift",
+      "path": "latest/radars/pioneer/bant-scapeshift.json"
     },
     {
       "scope": "archetype-radar",
@@ -184,11 +191,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "gruul-prowess",
-      "path": "latest/radars/pioneer/gruul-prowess.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pioneer/gruul-prowess.json"
     },
     {
       "scope": "archetype-radar",

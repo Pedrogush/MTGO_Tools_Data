@@ -1,12 +1,12 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-17T14:10:37Z",
+  "generated_at": "2026-07-17T19:40:37Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 58,
+    "success": 59,
     "skipped": 14
   },
   "results": [
@@ -365,9 +365,16 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "modern",
-      "archetype": "mill",
-      "path": "latest/radars/modern/mill.json",
+      "archetype": "mardu-hollowone",
+      "path": "latest/radars/modern/mardu-hollowone.json",
       "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "mill",
+      "path": "latest/radars/modern/mill.json"
     },
     {
       "scope": "archetype-radar",

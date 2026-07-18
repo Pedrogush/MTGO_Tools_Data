@@ -1,21 +1,22 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-17T19:40:37Z",
+  "generated_at": "2026-07-18T03:40:57Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 59,
-    "skipped": 14
+    "skipped": 15,
+    "success": 58
   },
   "results": [
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "4c-energy",
-      "path": "latest/radars/modern/4c-energy.json"
+      "path": "latest/radars/modern/4c-energy.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -225,11 +226,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "grixis-control",
-      "path": "latest/radars/modern/grixis-control.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/grixis-control.json"
     },
     {
       "scope": "archetype-radar",
@@ -291,10 +291,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "izzet-steel-cutter",
-      "path": "latest/radars/modern/izzet-steel-cutter.json"
+      "path": "latest/radars/modern/izzet-steel-cutter.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

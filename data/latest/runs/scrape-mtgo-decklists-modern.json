@@ -1,29 +1,35 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-19T04:00:16Z",
+  "generated_at": "2026-07-19T08:38:21Z",
   "command": "scrape-mtgo-decklists-modern",
-  "status": "hard-failure",
+  "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 1,
-    "success": 3,
-    "cached": 15,
-    "hard-failure": 1
+    "success": 4,
+    "cached": 17
   },
   "results": [
     {
       "scope": "mtgo-event",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
-      "message": "https://www.mtgo.com/decklist/modern-league-2026-07-1910847: Event returned no decklists."
+      "path": "archive/mtgo-decklists/modern/modern-challenge-64-2026-07-1912847704.json",
+      "message": "Cached 32/32 decks."
     },
     {
       "scope": "mtgo-event",
       "status": "success",
       "format": "modern",
+      "path": "archive/mtgo-decklists/modern/modern-league-2026-07-1910847.json",
+      "message": "Cached 24/24 decks."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "cached",
+      "format": "modern",
       "path": "archive/mtgo-decklists/modern/modern-challenge-64-2026-07-1812847698.json",
-      "message": "Cached 32/32 decks."
+      "message": "Loaded 32 decks from archive."
     },
     {
       "scope": "mtgo-event",
@@ -34,16 +40,17 @@
     },
     {
       "scope": "mtgo-event",
-      "status": "success",
+      "status": "cached",
       "format": "modern",
       "path": "archive/mtgo-decklists/modern/modern-challenge-64-2026-07-1812847691.json",
-      "message": "Cached 32/32 decks."
+      "message": "Loaded 32 decks from archive."
     },
     {
       "scope": "mtgo-event",
-      "status": "hard-failure",
+      "status": "success",
       "format": "modern",
-      "message": "https://www.mtgo.com/decklist/modern-league-2026-07-1810847: Could not locate deck JSON payload"
+      "path": "archive/mtgo-decklists/modern/modern-league-2026-07-1810847.json",
+      "message": "Cached 60/60 decks."
     },
     {
       "scope": "mtgo-event",

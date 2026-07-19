@@ -1,12 +1,12 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-19T13:57:30Z",
+  "generated_at": "2026-07-19T19:36:06Z",
   "command": "scrape-deck-texts-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 25,
+    "success": 26,
     "skipped": 301
   },
   "results": [
@@ -321,11 +321,10 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
       "archetype": "lifegain",
-      "path": "latest/decks/standard/lifegain.json",
-      "message": "No decks found within the last 7 days."
+      "path": "latest/decks/standard/lifegain.json"
     },
     {
       "scope": "archetype-decks",
@@ -2587,10 +2586,18 @@
     },
     {
       "scope": "deck-text",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "deck_id": "7880406",
-      "path": "archive/deck-texts/standard/7880406.json"
+      "path": "archive/deck-texts/standard/7880406.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "success",
+      "format": "standard",
+      "deck_id": "7880650",
+      "path": "archive/deck-texts/standard/7880650.json"
     }
   ]
 }

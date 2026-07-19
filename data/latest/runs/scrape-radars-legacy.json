@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-18T19:41:49Z",
+  "generated_at": "2026-07-19T04:05:20Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 46,
-    "skipped": 14
+    "success": 43,
+    "skipped": 17
   },
   "results": [
     {
@@ -19,10 +19,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "affinity-stompy",
-      "path": "latest/radars/legacy/affinity-stompy.json"
+      "path": "latest/radars/legacy/affinity-stompy.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -106,6 +107,14 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "legacy",
+      "archetype": "burn",
+      "path": "latest/radars/legacy/burn.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
       "archetype": "car-stompy",
@@ -124,14 +133,6 @@
       "format": "legacy",
       "archetype": "cradle-control",
       "path": "latest/radars/legacy/cradle-control.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "creative-technique",
-      "path": "latest/radars/legacy/creative-technique.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -205,6 +206,13 @@
       "format": "legacy",
       "archetype": "esper-stoneblade",
       "path": "latest/radars/legacy/esper-stoneblade.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "esper-tempo",
+      "path": "latest/radars/legacy/esper-tempo.json"
     },
     {
       "scope": "archetype-radar",
@@ -310,17 +318,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "mystic-forge-combo",
-      "path": "latest/radars/legacy/mystic-forge-combo.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "naya-initiative",
-      "path": "latest/radars/legacy/naya-initiative.json"
+      "path": "latest/radars/legacy/mystic-forge-combo.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -332,10 +334,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "nic-fit",
-      "path": "latest/radars/legacy/nic-fit.json"
+      "path": "latest/radars/legacy/nic-fit.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

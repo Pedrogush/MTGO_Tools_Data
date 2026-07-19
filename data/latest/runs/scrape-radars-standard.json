@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-18T19:41:37Z",
+  "generated_at": "2026-07-19T04:05:11Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 48,
-    "success": 26
+    "skipped": 50,
+    "success": 24
   },
   "results": [
     {
@@ -103,10 +103,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "azorius-control",
-      "path": "latest/radars/standard/azorius-control.json"
+      "path": "latest/radars/standard/azorius-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -236,10 +237,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "golgari-midrange",
-      "path": "latest/radars/standard/golgari-midrange.json"
+      "path": "latest/radars/standard/golgari-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -446,18 +448,18 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
       "archetype": "naya-delirium",
-      "path": "latest/radars/standard/naya-delirium.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/standard/naya-delirium.json"
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "orzhov-control",
-      "path": "latest/radars/standard/orzhov-control.json"
+      "path": "latest/radars/standard/orzhov-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

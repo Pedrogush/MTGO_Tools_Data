@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-19T19:42:51Z",
+  "generated_at": "2026-07-20T04:25:25Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 27,
-    "success": 30
+    "success": 33
   },
   "results": [
     {
@@ -257,6 +257,13 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "izzet-rona-combo",
+      "path": "latest/radars/pioneer/izzet-rona-combo.json"
+    },
+    {
+      "scope": "archetype-radar",
       "status": "skipped",
       "format": "pioneer",
       "archetype": "jeskai-control",
@@ -385,6 +392,13 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "selesnya-angels",
+      "path": "latest/radars/pioneer/selesnya-angels.json"
+    },
+    {
+      "scope": "archetype-radar",
       "status": "skipped",
       "format": "pioneer",
       "archetype": "selesnya-auras",
@@ -428,6 +442,13 @@
       "archetype": "temur-prowess",
       "path": "latest/radars/pioneer/temur-prowess.json",
       "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "temur-scapeshift",
+      "path": "latest/radars/pioneer/temur-scapeshift.json"
     },
     {
       "scope": "format-card-pool",

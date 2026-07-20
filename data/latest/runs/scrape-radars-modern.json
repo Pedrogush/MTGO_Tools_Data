@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-19T19:42:10Z",
+  "generated_at": "2026-07-20T04:25:21Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 65,
-    "skipped": 10
+    "success": 64,
+    "skipped": 11
   },
   "results": [
     {
@@ -19,11 +19,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "5c-midrange",
-      "path": "latest/radars/modern/5c-midrange.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/5c-midrange.json"
     },
     {
       "scope": "archetype-radar",
@@ -105,10 +104,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "crashing-footfalls",
-      "path": "latest/radars/modern/crashing-footfalls.json"
+      "path": "latest/radars/modern/crashing-footfalls.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -193,13 +193,6 @@
       "format": "modern",
       "archetype": "esper-murktide",
       "path": "latest/radars/modern/esper-murktide.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "generic-ragavan",
-      "path": "latest/radars/modern/generic-ragavan.json"
     },
     {
       "scope": "archetype-radar",
@@ -304,10 +297,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "jeskai-blink",
-      "path": "latest/radars/modern/jeskai-blink.json"
+      "path": "latest/radars/modern/jeskai-blink.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -358,6 +352,13 @@
       "format": "modern",
       "archetype": "mardu-genericblink",
       "path": "latest/radars/modern/mardu-genericblink.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "merfolk",
+      "path": "latest/radars/modern/merfolk.json"
     },
     {
       "scope": "archetype-radar",

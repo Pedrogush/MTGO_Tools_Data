@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-19T19:41:59Z",
+  "generated_at": "2026-07-20T04:25:18Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 49,
-    "success": 25
+    "success": 26
   },
   "results": [
     {
@@ -41,10 +41,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "4c-lessons",
-      "path": "latest/radars/standard/4c-lessons.json"
+      "path": "latest/radars/standard/4c-lessons.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -105,6 +106,14 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "standard",
+      "archetype": "allies",
+      "path": "latest/radars/standard/allies.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "standard",
       "archetype": "azorius-control",
       "path": "latest/radars/standard/azorius-control.json",
       "message": "No published decks were available for radar generation."
@@ -119,11 +128,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
       "archetype": "azorius-tempo",
-      "path": "latest/radars/standard/azorius-tempo.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/standard/azorius-tempo.json"
     },
     {
       "scope": "archetype-radar",
@@ -140,6 +148,13 @@
       "archetype": "bant-ouroboroid",
       "path": "latest/radars/standard/bant-ouroboroid.json",
       "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "boros-burn",
+      "path": "latest/radars/standard/boros-burn.json"
     },
     {
       "scope": "archetype-radar",
@@ -202,14 +217,6 @@
       "format": "standard",
       "archetype": "dimir-reanimator",
       "path": "latest/radars/standard/dimir-reanimator.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "standard",
-      "archetype": "esper-control",
-      "path": "latest/radars/standard/esper-control.json",
       "message": "No published decks were available for radar generation."
     },
     {
@@ -379,14 +386,6 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "standard",
-      "archetype": "jund-midrange",
-      "path": "latest/radars/standard/jund-midrange.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
       "archetype": "lifegain",
@@ -398,14 +397,6 @@
       "format": "standard",
       "archetype": "mardu-discard",
       "path": "latest/radars/standard/mardu-discard.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "standard",
-      "archetype": "mono-black-aggro",
-      "path": "latest/radars/standard/mono-black-aggro.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -436,6 +427,14 @@
       "format": "standard",
       "archetype": "mono-red-aggro",
       "path": "latest/radars/standard/mono-red-aggro.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "standard",
+      "archetype": "mono-red-burn",
+      "path": "latest/radars/standard/mono-red-burn.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -526,16 +525,16 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "standard",
-      "archetype": "sultai-midrange",
-      "path": "latest/radars/standard/sultai-midrange.json",
+      "archetype": "sultai-reanimator",
+      "path": "latest/radars/standard/sultai-reanimator.json",
       "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "standard",
-      "archetype": "sultai-reanimator",
-      "path": "latest/radars/standard/sultai-reanimator.json",
+      "archetype": "temur-battlecrier-combo",
+      "path": "latest/radars/standard/temur-battlecrier-combo.json",
       "message": "No published decks were available for radar generation."
     },
     {
@@ -560,6 +559,14 @@
       "format": "standard",
       "archetype": "temur-lessons",
       "path": "latest/radars/standard/temur-lessons.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "standard",
+      "archetype": "temur-ouroboroid",
+      "path": "latest/radars/standard/temur-ouroboroid.json",
       "message": "No published decks were available for radar generation."
     },
     {

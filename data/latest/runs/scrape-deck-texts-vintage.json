@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-20T14:36:26Z",
+  "generated_at": "2026-07-20T20:00:27Z",
   "command": "scrape-deck-texts-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 23,
-    "skipped": 292
+    "success": 24,
+    "skipped": 290
   },
   "results": [
     {
@@ -133,13 +133,6 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "success",
-      "format": "vintage",
-      "archetype": "lurrus-vault-key",
-      "path": "latest/decks/vintage/lurrus-vault-key.json"
-    },
-    {
-      "scope": "archetype-decks",
       "status": "skipped",
       "format": "vintage",
       "archetype": "merfolk",
@@ -207,11 +200,10 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "success",
       "format": "vintage",
       "archetype": "scam",
-      "path": "latest/decks/vintage/scam.json",
-      "message": "No decks found within the last 7 days."
+      "path": "latest/decks/vintage/scam.json"
     },
     {
       "scope": "archetype-decks",
@@ -288,14 +280,6 @@
       "format": "vintage",
       "deck_id": "7874928",
       "path": "archive/deck-texts/vintage/7874928.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "vintage",
-      "deck_id": "7875096",
-      "path": "archive/deck-texts/vintage/7875096.json",
       "message": "Reused existing published deck-text blob."
     },
     {
@@ -2505,6 +2489,13 @@
       "deck_id": "7881359",
       "path": "archive/deck-texts/vintage/7881359.json",
       "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "success",
+      "format": "vintage",
+      "deck_id": "7881757",
+      "path": "archive/deck-texts/vintage/7881757.json"
     }
   ]
 }

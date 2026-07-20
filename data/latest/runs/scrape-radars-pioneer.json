@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-20T14:43:20Z",
+  "generated_at": "2026-07-20T20:04:35Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 27,
-    "success": 33
+    "success": 34
   },
   "results": [
     {
@@ -129,6 +129,13 @@
       "archetype": "dimir-aggro",
       "path": "latest/radars/pioneer/dimir-aggro.json",
       "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "dimir-discard",
+      "path": "latest/radars/pioneer/dimir-discard.json"
     },
     {
       "scope": "archetype-radar",

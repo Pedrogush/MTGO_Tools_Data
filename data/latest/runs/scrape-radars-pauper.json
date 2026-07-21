@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-20T20:04:23Z",
+  "generated_at": "2026-07-21T03:54:47Z",
   "command": "scrape-radars-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 44,
-    "skipped": 17
+    "success": 43,
+    "skipped": 18
   },
   "results": [
     {
@@ -200,10 +200,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "grixis-control",
-      "path": "latest/radars/pauper/grixis-control.json"
+      "path": "latest/radars/pauper/grixis-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

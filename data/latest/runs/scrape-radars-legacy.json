@@ -1,15 +1,23 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-21T14:30:56Z",
+  "generated_at": "2026-07-21T20:06:09Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 49,
-    "skipped": 12
+    "skipped": 12,
+    "success": 48
   },
   "results": [
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "legacy",
+      "archetype": "4c-loam",
+      "path": "latest/radars/legacy/4c-loam.json",
+      "message": "No published decks were available for radar generation."
+    },
     {
       "scope": "archetype-radar",
       "status": "success",
@@ -106,14 +114,6 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "burn",
-      "path": "latest/radars/legacy/burn.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
       "archetype": "car-stompy",
@@ -174,13 +174,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "dimir-control",
-      "path": "latest/radars/legacy/dimir-control.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
       "archetype": "dimir-tempo",
       "path": "latest/radars/legacy/dimir-tempo.json"
     },
@@ -218,13 +211,6 @@
       "format": "legacy",
       "archetype": "goblins",
       "path": "latest/radars/legacy/goblins.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "green-cloudpost",
-      "path": "latest/radars/legacy/green-cloudpost.json"
     },
     {
       "scope": "archetype-radar",
@@ -424,9 +410,16 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "legacy",
-      "archetype": "sultai-depths",
-      "path": "latest/radars/legacy/sultai-depths.json",
+      "archetype": "sultai-control",
+      "path": "latest/radars/legacy/sultai-control.json",
       "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "sultai-depths",
+      "path": "latest/radars/legacy/sultai-depths.json"
     },
     {
       "scope": "archetype-radar",

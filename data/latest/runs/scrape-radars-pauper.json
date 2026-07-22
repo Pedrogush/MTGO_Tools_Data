@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-21T20:04:14Z",
+  "generated_at": "2026-07-22T03:57:52Z",
   "command": "scrape-radars-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 45,
-    "skipped": 16
+    "success": 44,
+    "skipped": 17
   },
   "results": [
     {
@@ -296,10 +296,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "mono-blue-delver",
-      "path": "latest/radars/pauper/mono-blue-delver.json"
+      "path": "latest/radars/pauper/mono-blue-delver.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-21T20:06:09Z",
+  "generated_at": "2026-07-22T03:58:10Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 12,
-    "success": 48
+    "skipped": 11,
+    "success": 49
   },
   "results": [
     {
@@ -27,11 +27,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "affinity-stompy",
-      "path": "latest/radars/legacy/affinity-stompy.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/affinity-stompy.json"
     },
     {
       "scope": "archetype-radar",
@@ -150,11 +149,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "death-and-taxes-yorion-mono-white",
-      "path": "latest/radars/legacy/death-and-taxes-yorion-mono-white.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/death-and-taxes-yorion-mono-white.json"
     },
     {
       "scope": "archetype-radar",
@@ -229,10 +227,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "jeskai-control",
-      "path": "latest/radars/legacy/jeskai-control.json"
+      "path": "latest/radars/legacy/jeskai-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

@@ -1,21 +1,21 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-23T08:50:36Z",
+  "generated_at": "2026-07-23T14:38:16Z",
   "command": "scrape-mtgo-decklists-vintage",
-  "status": "hard-failure",
+  "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "hard-failure": 1,
-    "cached": 10,
-    "success": 1
+    "success": 2,
+    "cached": 10
   },
   "results": [
     {
       "scope": "mtgo-event",
-      "status": "hard-failure",
+      "status": "success",
       "format": "vintage",
-      "message": "https://www.mtgo.com/decklist/vintage-league-2026-07-2310887: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+      "path": "archive/mtgo-decklists/vintage/vintage-league-2026-07-2310887.json",
+      "message": "Cached 1/1 decks."
     },
     {
       "scope": "mtgo-event",

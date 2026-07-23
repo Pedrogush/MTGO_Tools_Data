@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-23T14:39:19Z",
+  "generated_at": "2026-07-23T19:55:43Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 48,
-    "skipped": 12
+    "success": 47,
+    "skipped": 13
   },
   "results": [
     {
@@ -102,6 +102,14 @@
       "format": "legacy",
       "archetype": "boros-initiative",
       "path": "latest/radars/legacy/boros-initiative.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "legacy",
+      "archetype": "burn",
+      "path": "latest/radars/legacy/burn.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -204,13 +212,6 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "green-cloudpost",
-      "path": "latest/radars/legacy/green-cloudpost.json"
-    },
-    {
-      "scope": "archetype-radar",
       "status": "skipped",
       "format": "legacy",
       "archetype": "grixis-tempo",
@@ -253,14 +254,6 @@
       "format": "legacy",
       "archetype": "led-dredge",
       "path": "latest/radars/legacy/led-dredge.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "loam-pox",
-      "path": "latest/radars/legacy/loam-pox.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -413,6 +406,14 @@
       "format": "legacy",
       "archetype": "stiflenought",
       "path": "latest/radars/legacy/stiflenought.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "legacy",
+      "archetype": "sultai-control",
+      "path": "latest/radars/legacy/sultai-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

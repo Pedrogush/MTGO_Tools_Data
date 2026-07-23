@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-22T19:57:55Z",
+  "generated_at": "2026-07-23T03:53:55Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 26,
-    "success": 34
+    "skipped": 27,
+    "success": 33
   },
   "results": [
     {
@@ -185,10 +185,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "grixis-indomitable-creativity",
-      "path": "latest/radars/pioneer/grixis-indomitable-creativity.json"
+      "path": "latest/radars/pioneer/grixis-indomitable-creativity.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

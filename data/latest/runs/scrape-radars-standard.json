@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-22T19:57:47Z",
+  "generated_at": "2026-07-23T03:53:44Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 48,
-    "success": 28
+    "skipped": 50,
+    "success": 26
   },
   "results": [
     {
@@ -220,10 +220,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "esper-self-bounce",
-      "path": "latest/radars/standard/esper-self-bounce.json"
+      "path": "latest/radars/standard/esper-self-bounce.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -348,10 +349,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "jeskai-control",
-      "path": "latest/radars/standard/jeskai-control.json"
+      "path": "latest/radars/standard/jeskai-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

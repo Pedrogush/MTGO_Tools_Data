@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-22T19:57:47Z",
+  "generated_at": "2026-07-23T03:53:57Z",
   "command": "scrape-radars-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 23,
-    "skipped": 8
+    "success": 22,
+    "skipped": 9
   },
   "results": [
     {
@@ -92,10 +92,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "hogaak-vine",
-      "path": "latest/radars/vintage/hogaak-vine.json"
+      "path": "latest/radars/vintage/hogaak-vine.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

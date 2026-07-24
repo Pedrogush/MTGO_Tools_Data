@@ -11,7 +11,7 @@ def test_services_mtgo_background_service_imports_without_wx() -> None:
 
     module = importlib.import_module("services.mtgo_background_service")
 
-    assert module.parse_mtgo_deck is not None
+    assert module.fetch_mtgo_events_for_period is not None
     assert "wx" not in sys.modules
 
 

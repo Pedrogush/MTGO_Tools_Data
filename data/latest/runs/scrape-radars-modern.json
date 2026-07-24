@@ -1,15 +1,23 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-24T12:51:33Z",
+  "generated_at": "2026-07-24T13:13:02Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 51,
-    "success": 21
+    "skipped": 54,
+    "success": 20
   },
   "results": [
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "modern",
+      "archetype": "4c-hollowone",
+      "path": "latest/radars/modern/4c-hollowone.json",
+      "message": "No published decks were available for radar generation."
+    },
     {
       "scope": "archetype-radar",
       "status": "skipped",
@@ -218,10 +226,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "goryo-s-vengeance",
-      "path": "latest/radars/modern/goryo-s-vengeance.json"
+      "path": "latest/radars/modern/goryo-s-vengeance.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -417,6 +426,14 @@
       "format": "modern",
       "archetype": "mono-green-basking-broodscale-combo",
       "path": "latest/radars/modern/mono-green-basking-broodscale-combo.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "modern",
+      "archetype": "mono-green-eldrazi",
+      "path": "latest/radars/modern/mono-green-eldrazi.json",
       "message": "No published decks were available for radar generation."
     },
     {

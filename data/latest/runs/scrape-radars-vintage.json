@@ -1,12 +1,12 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-24T12:51:20Z",
+  "generated_at": "2026-07-24T13:12:53Z",
   "command": "scrape-radars-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 28,
+    "skipped": 30,
     "stale-fallback": 1
   },
   "results": [
@@ -190,8 +190,24 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "vintage",
+      "archetype": "painter",
+      "path": "latest/radars/vintage/painter.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "vintage",
       "archetype": "paradoxical-outcome",
       "path": "latest/radars/vintage/paradoxical-outcome.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "vintage",
+      "archetype": "raker-shops",
+      "path": "latest/radars/vintage/raker-shops.json",
       "message": "No published decks were available for radar generation."
     },
     {

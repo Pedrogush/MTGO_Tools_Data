@@ -1,14 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-24T12:49:45Z",
+  "generated_at": "2026-07-24T13:10:54Z",
   "command": "scrape-deck-texts-vintage",
-  "status": "hard-failure",
+  "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "success": 1,
-    "skipped": 29,
-    "hard-failure": 2
+    "skipped": 31
   },
   "results": [
     {
@@ -195,11 +194,11 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "painter",
       "path": "latest/decks/vintage/painter.json",
-      "message": "Deck scrape returned no rows for Painter"
+      "message": "All MTGGoldfish rows were MTGO events; published via mtgo-decklists."
     },
     {
       "scope": "archetype-decks",
@@ -211,11 +210,11 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "raker-shops",
       "path": "latest/decks/vintage/raker-shops.json",
-      "message": "Deck scrape returned no rows for Raker Shops"
+      "message": "All MTGGoldfish rows were MTGO events; published via mtgo-decklists."
     },
     {
       "scope": "archetype-decks",

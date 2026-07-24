@@ -492,7 +492,11 @@ def _write_archetype_deck_snapshots(
             filtered_decks = _filter_recent_decks(
                 decks, days, reference_time=_parse_generated_at(generated_at)
             )
-            if decks and days is not None and not filtered_decks:
+            # An archetype whose MTGGoldfish rows were all MTGO events has no
+            # paper decks to publish here (they land in mtgo-decklists); only a
+            # scrape that returned nothing at all is a failure.
+            had_source_rows = bool(decks) or getattr(repo, "last_goldfish_rows_before_partition", 0) > 0
+            if had_source_rows and not filtered_decks:
                 snapshot = build_archetype_deck_snapshot(
                     generated_at=generated_at,
                     format_name=normalized_format,
@@ -523,7 +527,11 @@ def _write_archetype_deck_snapshots(
                     format_name=normalized_format,
                     archetype=archetype_slug,
                     path=relative_posix_path(latest_path, output_root),
-                    message=f"No decks found within the last {days} days.",
+                    message=(
+                        f"No decks found within the last {days} days."
+                        if decks
+                        else "All MTGGoldfish rows were MTGO events; published via mtgo-decklists."
+                    ),
                 )
                 continue
             recent_decks = sorted(
@@ -1235,16 +1243,19 @@ def _write_mtgo_decklist_snapshots(
                     except Exception:
                         recorder.add(
                             scope="mtgo-event",
-                            status=STATUS_HARD_FAILURE,
+                            status=STATUS_SKIPPED,
                             format_name=normalized_format,
-                            message=f"{event_url}: {exc}",
+                            message=f"{event_url}: fetch failed and archive unreadable; will retry next run. Error: {exc}",
                         )
                 else:
+                    # A single unreachable event is not a freshness violation:
+                    # the snapshot still publishes and the 7-day window retries
+                    # the event on the next scheduled run.
                     recorder.add(
                         scope="mtgo-event",
-                        status=STATUS_HARD_FAILURE,
+                        status=STATUS_SKIPPED,
                         format_name=normalized_format,
-                        message=f"{event_url}: {exc}",
+                        message=f"{event_url}: fetch failed; will retry next run. Error: {exc}",
                     )
 
         if events and not archived_events:

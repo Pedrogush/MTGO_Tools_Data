@@ -27,6 +27,7 @@ from utils.constants import (
     METAGAME_CACHE_TTL_SECONDS,
     MTGO_DECKLISTS_ENABLED,
 )
+from utils.mtgo_events import is_mtgo_event_name
 
 _USE_DEFAULT_MAX_AGE: Final = object()
 
@@ -138,7 +139,7 @@ class MetagameRepository:
             cached = self._load_cached_decks(archetype_href)
             if cached is not None:
                 logger.debug(f"Using cached decks for {archetype_name}")
-                mtggoldfish_decks = self._filter_decks_by_source(cached, source_filter)
+                mtggoldfish_decks = self._filter_decks_by_source(self._drop_mtgo_events(cached), source_filter)
                 mtgo_decks = self._get_mtgo_decks_from_db(archetype_name, source_filter)
                 return self._merge_and_sort_decks(mtggoldfish_decks, mtgo_decks)
 
@@ -149,7 +150,7 @@ class MetagameRepository:
             decks = get_archetype_decks(archetype_href)
             # Cache the results
             self._save_cached_decks(archetype_href, decks)
-            mtggoldfish_decks = self._filter_decks_by_source(decks, source_filter)
+            mtggoldfish_decks = self._filter_decks_by_source(self._drop_mtgo_events(decks), source_filter)
             mtgo_decks = self._get_mtgo_decks_from_db(archetype_name, source_filter)
             return self._merge_and_sort_decks(mtggoldfish_decks, mtgo_decks)
         except Exception as exc:
@@ -158,7 +159,7 @@ class MetagameRepository:
             cached = self._load_cached_decks(archetype_href, max_age=None)
             if cached:
                 logger.warning(f"Returning stale cached decks for {archetype_name}")
-                mtggoldfish_decks = self._filter_decks_by_source(cached, source_filter)
+                mtggoldfish_decks = self._filter_decks_by_source(self._drop_mtgo_events(cached), source_filter)
                 mtgo_decks = self._get_mtgo_decks_from_db(archetype_name, source_filter)
                 return self._merge_and_sort_decks(mtggoldfish_decks, mtgo_decks)
             raise
@@ -326,6 +327,18 @@ class MetagameRepository:
                 logger.debug(f"Cached {len(items)} decks for archetype")
             except (OSError, json.JSONDecodeError) as exc:
                 logger.warning(f"Failed to cache decks: {exc}")
+
+    def _drop_mtgo_events(self, decks: list[dict[str, Any]]) -> list[dict[str, Any]]:
+        """Drop MTGGoldfish rows for MTGO events.
+
+        MTGO decks come from the Videre API; keeping MTGGoldfish's copy of the
+        same published decklists would double-count them in the merged output.
+        """
+        kept = [deck for deck in decks if not is_mtgo_event_name(deck.get("event"))]
+        dropped = len(decks) - len(kept)
+        if dropped:
+            logger.debug(f"Dropped {dropped} MTGGoldfish rows for MTGO events")
+        return kept
 
     def _filter_decks_by_source(
         self, decks: list[dict[str, Any]], source_filter: str | None

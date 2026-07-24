@@ -1,26 +1,24 @@
-"""Headless MTGO decklist scraping helpers."""
+"""Headless MTGO event data helpers backed by the Videre API."""
 
 from __future__ import annotations
 
 from typing import Any
 
-from navigators.mtgo_decklists import (
-    fetch_deck_event as _fetch_deck_event,
+from navigators.videre import (
+    fetch_event_payload as _fetch_event_payload,
 )
-from navigators.mtgo_decklists import (
-    fetch_decklist_index as _fetch_decklist_index,
+from navigators.videre import (
+    fetch_events as _fetch_events,
 )
-from services.mtgo_background_service import parse_mtgo_deck
 
 
-def fetch_event_index(year: int, month: int) -> list[dict[str, Any]]:
-    return _fetch_decklist_index(year, month)
+def fetch_event_index(format_name: str, *, min_date: str, max_date: str) -> list[dict[str, Any]]:
+    return _fetch_events(format_name, min_date=min_date, max_date=max_date)
 
 
-def fetch_event(event_url: str) -> dict[str, Any]:
-    return _fetch_deck_event(event_url)
+def fetch_event(event: dict[str, Any]) -> dict[str, Any]:
+    return _fetch_event_payload(event)
 
 
 def parse_event_decks(event_payload: dict[str, Any]) -> list[dict[str, Any]]:
-    raw_decks = event_payload.get("decklists", [])
-    return [parse_mtgo_deck(raw_deck) for raw_deck in raw_decks]
+    return event_payload.get("decks", [])

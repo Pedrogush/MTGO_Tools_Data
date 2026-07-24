@@ -71,16 +71,33 @@ Their metagame data and tournament coverage provide the foundation for
 competitive deck research. Please support them by visiting their site and
 considering their premium services.
 
-### mtgo.com Decklists
+### Videre Project API
 
-**Website:** https://www.mtgo.com/decklists
+**Website:** https://api.videreproject.com
+
+**Repository:** https://github.com/videre-project (api-services, MTGOBot)
+
+**Author:** Videre Project
+
+**License:** Apache-2.0 (their client and server code); the API itself is a
+free community service with no published data-usage terms
 
 **What we use:**
-- Published event decklists (Top 32 of scheduled events and the curated
-  league 5-0 selection Daybreak publishes)
+- MTGO event index, decklists, and standings served by their public REST
+  API. The underlying decklist coverage is what mtgo.com publishes (Top 32
+  of scheduled events plus the curated league 5-0 selection Daybreak
+  Games releases), collected by their MTGOBot.
 
 **Files influenced:**
-- `navigators/mtgo_decklists.py` - MTGO.com decklist parser
+- `navigators/videre.py` - Videre API client
+- `services/mtgo_background_service.py` - MTGO event fetch window
+- `publisher/runner.py` - MTGO decklist snapshot publishing
+
+**Credit:**
+The Videre Project maintains the community's most complete open MTGO
+dataset and serves it for free. This repo previously scraped mtgo.com
+directly; their API replaced that scraper entirely. Please support them at
+https://github.com/videre-project.
 
 ---
 
@@ -114,6 +131,8 @@ ensured compatibility with all dependencies:
 - **MTGOArchetypeParser**: MIT License ✅ Compatible
 - **MTGOFormatData**: No published license — vendored content is factual
   game data; flagged upstream for clarification
+- **Videre Project**: Apache-2.0 code ✅ Compatible; we consume their public
+  API as a data source and do not redistribute their code
 - **Python libraries**: OSI-approved permissive licenses ✅ Compatible
 
 ---
@@ -126,7 +145,7 @@ If you believe we have:
 3. Violated any license terms
 
 Please open an issue at
-https://github.com/Pedrogush/MTGO_Scrapes_Repository/issues and we will
+https://github.com/Pedrogush/MTGO_Tools_Data/issues and we will
 address it promptly.
 
 ---

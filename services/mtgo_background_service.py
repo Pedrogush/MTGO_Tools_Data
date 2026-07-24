@@ -1,25 +1,12 @@
-"""Background service for fetching MTGO data."""
+"""MTGO event data helpers backed by the Videre Project API."""
 
-import time
-from datetime import datetime, timedelta, timezone
-
-try:
-    from datetime import UTC
-except ImportError:  # pragma: no cover - Python 3.10 fallback
-    UTC = timezone.utc  # noqa: UP017
+from datetime import datetime
 
 from loguru import logger
 
-from navigators.mtgo_decklists import fetch_deck_event, fetch_decklist_index
-from utils.archetype_classifier import ArchetypeClassifier
+from navigators.videre import fetch_events
 from utils.atomic_io import atomic_write_json, locked_path
-from utils.constants import (
-    MTGO_BACKGROUND_FETCH_DAYS,
-    MTGO_BACKGROUND_FETCH_DELAY_SECONDS,
-    MTGO_DECKLISTS_ENABLED,
-    MTGO_METADATA_CACHE_FILE,
-)
-from utils.deck_text_cache import get_deck_cache
+from utils.constants import MTGO_DECKLISTS_ENABLED, MTGO_METADATA_CACHE_FILE
 from utils.json_io import fast_load
 
 MTGO_METADATA_CACHE = MTGO_METADATA_CACHE_FILE
@@ -32,103 +19,29 @@ def _mtgo_feature_disabled(message: str) -> bool:
     return False
 
 
-def _normalize_format_token(value: str | None) -> str:
-    return "".join(ch for ch in (value or "").lower() if ch.isalnum())
+def fetch_mtgo_events_for_period(
+    start_date: datetime,
+    end_date: datetime,
+    mtg_format: str = "modern",
+):
+    """
+    Fetch MTGO events between start_date and end_date from the Videre API.
 
+    Returns event rows with id, name, date, format, kind, rounds, players.
+    """
+    if _mtgo_feature_disabled("skipping fetch_mtgo_events_for_period"):
+        return []
 
-def _normalize_login_id(value: object) -> str | None:
-    if value is None:
-        return None
-    text = str(value).strip()
-    return text or None
-
-
-def _normalize_result_token(value: object) -> str:
-    if value is None:
-        return "?"
-    text = str(value).strip()
-    return text if text else "?"
-
-
-def _format_result(wins: str, losses: str) -> str:
-    if wins == "?" and losses == "?":
-        return "?"
-    return f"{wins}-{losses}"
-
-
-def build_mtgo_result_lookup(payload: dict) -> dict[str, tuple[str, str]]:
-    """Build login-id keyed win/loss records from an MTGO event payload."""
-    lookup: dict[str, tuple[str, str]] = {}
-
-    for row in payload.get("winloss", []):
-        if not isinstance(row, dict):
-            continue
-        login_id = _normalize_login_id(row.get("loginid"))
-        if not login_id:
-            continue
-        wins = _normalize_result_token(row.get("wins"))
-        losses = _normalize_result_token(row.get("losses"))
-        lookup[login_id] = (wins, losses)
-
-    for row in payload.get("decklists", []):
-        if not isinstance(row, dict):
-            continue
-        login_id = _normalize_login_id(row.get("loginid"))
-        if not login_id:
-            continue
-        wins_data = row.get("wins", {})
-        if isinstance(wins_data, dict):
-            wins = _normalize_result_token(wins_data.get("wins"))
-            losses = _normalize_result_token(wins_data.get("losses"))
-            if wins != "?" or losses != "?":
-                lookup[login_id] = (wins, losses)
-
-    return lookup
-
-
-def parse_mtgo_deck(raw_deck: dict, *, result_lookup: dict[str, tuple[str, str]] | None = None) -> dict:
-    """Parse raw MTGO deck into clean simplified format."""
-    deck_id = raw_deck.get("loginplayeventcourseid") or raw_deck.get("decktournamentid")
-    player = raw_deck.get("player") or raw_deck.get("pilot") or "Unknown"
-    login_id = _normalize_login_id(raw_deck.get("loginid"))
-
-    if login_id and result_lookup and login_id in result_lookup:
-        wins, losses = result_lookup[login_id]
-    else:
-        wins_data = raw_deck.get("wins", {})
-        if isinstance(wins_data, dict):
-            wins = _normalize_result_token(wins_data.get("wins"))
-            losses = _normalize_result_token(wins_data.get("losses"))
-        else:
-            wins = "?"
-            losses = "?"
-
-    mainboard = []
-    for card in raw_deck.get("main_deck", []):
-        if card.get("sideboard") == "false":
-            card_name = card.get("card_attributes", {}).get("card_name", "")
-            if card_name:
-                mainboard.append(
-                    {"card_name": card_name, "qty": int(card.get("qty", "1")), "sideboard": "false"}
-                )
-
-    sideboard = []
-    for card in raw_deck.get("sideboard_deck", []):
-        card_name = card.get("card_attributes", {}).get("card_name", "")
-        if card_name:
-            sideboard.append(
-                {"card_name": card_name, "qty": int(card.get("qty", "1")), "sideboard": "true"}
-            )
-
-    return {
-        "deck_id": deck_id,
-        "login_id": login_id,
-        "player": player,
-        "wins": wins,
-        "losses": losses,
-        "mainboard": mainboard,
-        "sideboard": sideboard,
-    }
+    logger.info(
+        f"Fetching MTGO events for {mtg_format} from {start_date.date()} to {end_date.date()}"
+    )
+    events = fetch_events(
+        mtg_format,
+        min_date=start_date.date().isoformat(),
+        max_date=end_date.date().isoformat(),
+    )
+    logger.info(f"Total events found: {len(events)}")
+    return events
 
 
 def convert_deck_to_classifier_format(clean_deck: dict, mtg_format: str = "modern") -> dict:
@@ -230,258 +143,3 @@ def load_mtgo_deck_metadata(archetype: str, mtg_format: str) -> list[dict]:
     except Exception as exc:
         logger.warning(f"Failed to load MTGO deck metadata: {exc}")
         return []
-
-
-def _filter_entries_for_format_and_period(
-    entries: list[dict],
-    *,
-    start_date: datetime,
-    end_date: datetime,
-    mtg_format: str,
-) -> list[dict]:
-    events = []
-    for entry in entries:
-        if not entry.get("format"):
-            continue
-        if _normalize_format_token(entry["format"]) != _normalize_format_token(mtg_format):
-            continue
-        try:
-            publish_date_str = entry.get("publish_date", "")
-            if publish_date_str:
-                publish_date = datetime.fromisoformat(publish_date_str.replace("Z", "+00:00"))
-                if start_date <= publish_date <= end_date:
-                    events.append(
-                        {
-                            "url": entry["url"],
-                            "title": entry["title"],
-                            "date": entry["publish_date"],
-                            "event_type": entry.get("event_type", "unknown"),
-                        }
-                    )
-        except (ValueError, AttributeError):
-            pass
-    return events
-
-
-def fetch_mtgo_events_for_period(
-    start_date: datetime,
-    end_date: datetime,
-    mtg_format: str = "modern",
-    preloaded_entries: list[dict] | None = None,
-):
-    """
-    Fetch MTGO events between start_date and end_date.
-
-    If preloaded_entries is provided, uses those instead of fetching from the network.
-    Returns list of event dicts with url, title, date, event_type.
-    """
-    if _mtgo_feature_disabled("skipping fetch_mtgo_events_for_period"):
-        return []
-
-    logger.info(
-        f"Fetching MTGO events for {mtg_format} from {start_date.date()} to {end_date.date()}"
-    )
-
-    if preloaded_entries is not None:
-        events = _filter_entries_for_format_and_period(
-            preloaded_entries,
-            start_date=start_date,
-            end_date=end_date,
-            mtg_format=mtg_format,
-        )
-        logger.info(f"Total events found (preloaded index): {len(events)}")
-        return events
-
-    events = []
-    current_date = start_date
-
-    logger.info(
-        f"Starting loop: current_date={current_date.date()}, end_date={end_date.date()}, condition={current_date <= end_date}"
-    )
-    while current_date <= end_date:
-        logger.info(f"Loop iteration for {current_date.year}-{current_date.month:02d}")
-        try:
-            logger.info(f"Calling fetch_decklist_index({current_date.year}, {current_date.month})")
-            entries = fetch_decklist_index(current_date.year, current_date.month)
-            logger.info(
-                f"fetch_decklist_index returned {len(entries)} total entries for {current_date.year}-{current_date.month:02d}"
-            )
-
-            matching = _filter_entries_for_format_and_period(
-                entries,
-                start_date=start_date,
-                end_date=end_date,
-                mtg_format=mtg_format,
-            )
-            events.extend(matching)
-            logger.info(
-                f"Found {len(matching)} {mtg_format} events in date range for {current_date.year}-{current_date.month:02d}"
-            )
-
-            # Move to next month if needed
-            if current_date.month == 12:
-                current_date = datetime(current_date.year + 1, 1, 1, tzinfo=UTC)
-            else:
-                current_date = datetime(current_date.year, current_date.month + 1, 1, tzinfo=UTC)
-
-        except Exception as exc:
-            logger.error(
-                f"Failed to fetch events for {current_date.year}-{current_date.month}: {exc}",
-                exc_info=True,
-            )
-            if current_date.month == 12:
-                current_date = datetime(current_date.year + 1, 1, 1, tzinfo=UTC)
-            else:
-                current_date = datetime(current_date.year, current_date.month + 1, 1, tzinfo=UTC)
-
-    logger.info(f"Total events found: {len(events)}")
-    return events
-
-
-def process_mtgo_event(
-    event_url: str,
-    mtg_format: str = "modern",
-    delay: float = MTGO_BACKGROUND_FETCH_DELAY_SECONDS,
-):
-    """
-    Fetch and process a single MTGO event.
-
-    Args:
-        event_url: URL of the MTGO event
-        mtg_format: Format for archetype classification (default: "modern")
-        delay: Delay in seconds between requests (default: 2.0)
-    """
-    if _mtgo_feature_disabled("skipping process_mtgo_event"):
-        return 0
-
-    try:
-        logger.info(f"Fetching MTGO event: {event_url}")
-
-        payload = fetch_deck_event(event_url)
-        event_date = payload.get("publish_date", datetime.now(UTC).isoformat()[:10])
-        event_title = payload.get("title", "MTGO Event")
-
-        raw_decklists = payload.get("decklists", [])
-        if not raw_decklists:
-            logger.warning(f"No decklists found in event {event_url}")
-            return 0
-
-        classifier = ArchetypeClassifier()
-        deck_cache = get_deck_cache()
-        result_lookup = build_mtgo_result_lookup(payload)
-
-        clean_decks = [parse_mtgo_deck(raw_deck, result_lookup=result_lookup) for raw_deck in raw_decklists]
-        classifier_decks = [
-            convert_deck_to_classifier_format(deck, mtg_format=mtg_format) for deck in clean_decks
-        ]
-
-        classifier.assign_archetypes(classifier_decks, mtg_format)
-
-        cached_count = 0
-        for idx, (clean_deck, classifier_deck) in enumerate(zip(clean_decks, classifier_decks), 1):
-            deck_id = clean_deck["deck_id"]
-            if not deck_id:
-                logger.warning(f"Deck {idx} has no deck_id, skipping")
-                continue
-
-            deck_text = deck_to_text(clean_deck)
-            success = deck_cache.set(deck_id, deck_text, source="mtgo")
-            if success:
-                cached_count += 1
-            else:
-                logger.warning(f"Failed to cache deck {deck_id}")
-                continue
-
-            archetype = classifier_deck.get("archetype", "Unknown")
-            player = clean_deck.get("player", "Unknown")
-            wins = _normalize_result_token(clean_deck.get("wins"))
-            losses = _normalize_result_token(clean_deck.get("losses"))
-            result = _format_result(wins, losses)
-
-            deck_metadata = {
-                "number": deck_id,
-                "date": event_date,
-                "event": event_title,
-                "result": result,
-                "player": player,
-                "archetype": archetype,
-                "name": archetype,
-                "source": "mtgo",
-                "format": mtg_format,
-            }
-
-            try:
-                save_mtgo_deck_metadata(archetype, mtg_format, deck_metadata)
-            except Exception as meta_exc:
-                logger.warning(f"Failed to save MTGO deck metadata for {deck_id}: {meta_exc}")
-
-        logger.info(f"Cached {cached_count}/{len(clean_decks)} decks from {event_url}")
-
-        # Polite delay between events
-        time.sleep(delay)
-
-        return cached_count
-
-    except Exception as exc:
-        logger.error(f"Failed to process MTGO event {event_url}: {exc}", exc_info=True)
-        return 0
-
-
-def fetch_mtgo_data_background(
-    days: int = MTGO_BACKGROUND_FETCH_DAYS,
-    mtg_format: str = "modern",
-    delay: float = MTGO_BACKGROUND_FETCH_DELAY_SECONDS,
-):
-    """
-    Background task to fetch MTGO data for the past N days.
-
-    Args:
-        days: Number of days to fetch (default: 7)
-        mtg_format: Format to fetch (default: "modern")
-        delay: Delay between requests in seconds (default: 2.0)
-
-    Returns:
-        Dict with stats about the fetch operation
-    """
-    if _mtgo_feature_disabled("skipping background fetch"):
-        return {
-            "events_found": 0,
-            "events_processed": 0,
-            "total_decks_cached": 0,
-            "elapsed_seconds": 0,
-        }
-
-    logger.info(f"Starting MTGO background fetch for past {days} days")
-
-    start_time = time.time()
-    end_date = datetime.now(UTC)
-    start_date = end_date - timedelta(days=days)
-
-    # Fetch event list
-    events = fetch_mtgo_events_for_period(start_date, end_date, mtg_format)
-    logger.info(f"Found {len(events)} MTGO events in the past {days} days")
-
-    # Process each event
-    total_decks = 0
-    successful_events = 0
-
-    for idx, event in enumerate(events, 1):
-        logger.info(f"Processing event {idx}/{len(events)}: {event['title']}")
-
-        decks_cached = process_mtgo_event(event["url"], mtg_format=mtg_format, delay=delay)
-
-        if decks_cached > 0:
-            successful_events += 1
-            total_decks += decks_cached
-
-    elapsed = time.time() - start_time
-
-    stats = {
-        "events_found": len(events),
-        "events_processed": successful_events,
-        "total_decks_cached": total_decks,
-        "elapsed_seconds": elapsed,
-    }
-
-    logger.info(f"MTGO background fetch complete: {stats}")
-    return stats

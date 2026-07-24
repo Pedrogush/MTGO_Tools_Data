@@ -740,6 +740,9 @@ jobs:
           for path in sorted((output_root / "latest" / "metagame").glob("*.json")):
               append_entry("metagame_daily", path)
 
+          for path in sorted((output_root / "latest" / "mtgo-decklists").glob("*.json")):
+              append_entry("mtgo_decklists", path)
+
           for path in sorted((output_root / "archive" / "deck-texts").rglob("*.json")):
               payload = load_payload(path)
               append_entry(

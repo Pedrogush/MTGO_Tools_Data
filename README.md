@@ -1,21 +1,21 @@
-# MTGO Scrapes Repository
+# MTGO_Tools_Data
 
-Headless MTGO and MTGGoldfish scraping surface for scheduled publishing.
+Metagame data feed for the [MTGO_Tools](https://github.com/Pedrogush/MTGO_Tools)
+client: MTGGoldfish paper tournament results plus MTGO results from the
+[Videre Project API](https://api.videreproject.com), published on a schedule
+to the `data-publish` branch (including the single-request
+`client-bundle.tar.gz`).
 
-This repository was carved out of [Pedrogush/MTGO_Tools](https://github.com/Pedrogush/MTGO_Tools)
-— the original full desktop application — and reduced to its scraper and
-publisher path. Fixes that affect the live scrapers (e.g. MTGGoldfish
-Cloudflare blocks, MTGO.com payload format changes) are typically discovered
-in `MTGO_Tools` first; check that repo's `navigators/` module for the
-authoritative implementation when this one stops collecting data.
+This repository was carved out of MTGO_Tools — the original full desktop
+application — and reduced to its scraper and publisher path. Fixes that
+affect the live MTGGoldfish scraper are typically discovered in `MTGO_Tools`
+first; check that repo's `navigators/` module for the authoritative
+implementation when this one stops collecting data.
 
 ![Version](https://img.shields.io/badge/version-0.2-blue)
 ![Python](https://img.shields.io/badge/python-3.11+-green)
 ![Platform](https://img.shields.io/badge/platform-headless-lightgrey)
 ![License](https://img.shields.io/badge/license-MIT-orange)
-
-This repository is being reduced from a desktop application clone to a scrape
-publisher. The supported surface is the scraper and publisher path only.
 
 ## Installation
 
@@ -26,8 +26,8 @@ publisher. The supported surface is the scraper and publisher path only.
 
 2. **Clone the repository**:
    ```bash
-   git clone https://github.com/Pedrogush/MTGO_Scrapes_Repository.git
-   cd MTGO_Scrapes_Repository
+   git clone https://github.com/Pedrogush/MTGO_Tools_Data.git
+   cd MTGO_Tools_Data
    ```
 
 3. **Install Python dependencies**:
@@ -153,13 +153,13 @@ Configuration is in `pyproject.toml`.
 ## Project Structure
 
 ```
-MTGO_Scrapes_Repository/
+MTGO_Tools_Data/
 ├── scraping/               # Headless scrape facade
 ├── services/               # MTGO event processing
 ├── repositories/           # Metagame repository
 ├── navigators/             # External API integrations
 │   ├── mtggoldfish.py      # MTGGoldfish scraper
-│   └── mtgo_decklists.py   # MTGO.com parser
+│   └── videre.py           # Videre API client (MTGO events)
 ├── utils/                  # Utility modules
 │   ├── archetype_classifier.py
 │   ├── deck_text_cache.py
@@ -181,15 +181,21 @@ Contributions are welcome! Please:
 ## Data Sources
 
 - **Metagame Data**: [MTGGoldfish](https://www.mtggoldfish.com/)
-- **MTGO Decklists**: [mtgo.com](https://www.mtgo.com/decklists) published decklist pages
+- **MTGO Decklists**: [Videre Project API](https://api.videreproject.com) —
+  community REST API over MTGO event data ([videre-project](https://github.com/videre-project)).
+  MTGGoldfish rows for MTGO events are dropped to avoid double-counting; only
+  paper tournament rows are kept from MTGGoldfish.
 - **Archetype Rules**: vendored from [Badaro/MTGOFormatData](https://github.com/Badaro/MTGOFormatData)
 
 ## Known Limitations
 
-- Scrapers depend on MTGGoldfish and mtgo.com page structure; upstream markup
+- The MTGGoldfish scraper depends on their page structure; upstream markup
   changes can break collection until the parsers are updated
-- mtgo.com publishes only Top 32 decklists for scheduled events and a curated
-  selection of league 5-0s, so coverage is bounded by what is published
+- MTGO decklist coverage is bounded by what Daybreak publishes (Top 32 of
+  scheduled events plus a curated selection of league 5-0s), regardless of
+  the API serving it
+- The Videre API is a community service with no SLA; MTGO publishing falls
+  back to the last published snapshots when it is unreachable
 
 ## Troubleshooting
 
@@ -206,11 +212,12 @@ MIT License - see LICENSE file for details
 ## Acknowledgments
 
 - **MTGGoldfish**: For metagame statistics and decklists
+- **Videre Project**: For the community MTGO data API this repo consumes
 - **Badaro**: For the MTGOFormatData archetype definitions this repo vendors
 
 ## Support
 
-- **Issues**: [GitHub Issues](https://github.com/Pedrogush/MTGO_Scrapes_Repository/issues)
+- **Issues**: [GitHub Issues](https://github.com/Pedrogush/MTGO_Tools_Data/issues)
 - **Discussions**: Use GitHub Discussions for questions and ideas
 
 ---

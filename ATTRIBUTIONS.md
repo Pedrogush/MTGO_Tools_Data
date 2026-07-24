@@ -145,7 +145,7 @@ If you believe we have:
 3. Violated any license terms
 
 Please open an issue at
-https://github.com/Pedrogush/MTGO_Scrapes_Repository/issues and we will
+https://github.com/Pedrogush/MTGO_Tools_Data/issues and we will
 address it promptly.
 
 ---

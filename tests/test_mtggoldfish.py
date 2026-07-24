@@ -509,3 +509,26 @@ class TestDownloadDeck:
         assert temp_curr_deck_file.exists()
         assert temp_curr_deck_file.read_text() == deck_text
         mock_fetch.assert_called_once_with("123456", source_filter=None)
+
+
+def test_goldfish_requests_send_identifying_user_agent(monkeypatch):
+    from navigators.mtggoldfish import _goldfish_get
+
+    seen = {}
+
+    class _Resp:
+        status_code = 200
+        text = ""
+
+        def raise_for_status(self):
+            pass
+
+    def _fake_get(url, impersonate=None, headers=None, timeout=None):
+        seen.update(impersonate=impersonate, headers=headers)
+        return _Resp()
+
+    monkeypatch.setattr("navigators.mtggoldfish.requests.get", _fake_get)
+
+    _goldfish_get("https://www.mtggoldfish.com/metagame/modern/full")
+    assert seen["impersonate"] == "chrome"
+    assert "MTGO_Tools_Data" in seen["headers"]["User-Agent"]

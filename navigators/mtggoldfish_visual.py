@@ -14,10 +14,9 @@ from __future__ import annotations
 from collections import OrderedDict
 
 import bs4
-from curl_cffi import requests
 from loguru import logger
 
-from utils.constants import MTGGOLDFISH_REQUEST_TIMEOUT_SECONDS
+from navigators.mtggoldfish import _goldfish_get
 
 _MAIN_SELECTOR = ".deck-visual-playmat-maindeck"
 _SIDE_SELECTOR = ".deck-visual-playmat-sideboard"
@@ -58,6 +57,6 @@ def fetch_deck_text_from_visual_page(deck_num: str) -> str:
     """Fallback fetcher: pull the deck text from the unprotected visual view."""
     url = f"https://www.mtggoldfish.com/deck/visual/{deck_num}"
     logger.info(f"Fetching deck {deck_num} from MTGGoldfish visual")
-    page = requests.get(url, impersonate="chrome", timeout=MTGGOLDFISH_REQUEST_TIMEOUT_SECONDS)
+    page = _goldfish_get(url)
     page.raise_for_status()
     return parse_visual_page(page.text)

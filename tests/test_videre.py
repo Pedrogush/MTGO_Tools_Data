@@ -143,3 +143,40 @@ def test_get_does_not_retry_client_errors(monkeypatch):
     with pytest.raises(RuntimeError, match="HTTP 404"):
         fetch_event_decks(1)
     assert len(calls) == 1
+
+
+def test_get_sends_identifying_user_agent(monkeypatch):
+    from navigators.videre import fetch_event_decks
+
+    seen = {}
+
+    def _fake_get(url, params=None, timeout=None, headers=None):
+        seen["headers"] = headers
+        return _FakeResponse(200, {"data": [], "meta": {"has_more": False}})
+
+    monkeypatch.setattr("navigators.videre.requests.get", _fake_get)
+
+    fetch_event_decks(1)
+    assert "MTGO_Tools_Data" in seen["headers"]["User-Agent"]
+    assert "github.com/Pedrogush/MTGO_Tools_Data" in seen["headers"]["User-Agent"]
+
+
+def test_league_payload_skips_standings_and_synthesizes_five_zero(monkeypatch):
+    from navigators.videre import fetch_event_payload
+
+    monkeypatch.setattr(
+        "navigators.videre.fetch_event_decks",
+        lambda event_id: [{"id": 1, "player": "Based", "mainboard": [], "sideboard": []}],
+    )
+
+    def _no_standings(event_id):
+        raise AssertionError("standings must not be fetched for leagues")
+
+    monkeypatch.setattr("navigators.videre.fetch_event_standings", _no_standings)
+
+    payload = fetch_event_payload(
+        {"id": -1, "name": "Modern League", "date": "2026-07-23", "kind": "League"}
+    )
+
+    deck = payload["decks"][0]
+    assert (deck["wins"], deck["losses"]) == ("5", "0")

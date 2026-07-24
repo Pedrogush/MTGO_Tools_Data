@@ -74,6 +74,10 @@ class MetagameRepository:
         self.cache_ttl = cache_ttl
         self.archetype_list_cache_file = Path(archetype_list_cache_file)
         self.archetype_decks_cache_file = Path(archetype_decks_cache_file)
+        # Row count of the last MTGGoldfish fetch before the MTGO-event
+        # partition, so callers can tell "all rows were MTGO events" (fine)
+        # apart from "the scrape returned nothing" (a failure).
+        self.last_goldfish_rows_before_partition = 0
 
     # ============= Archetype Operations =============
 
@@ -334,6 +338,7 @@ class MetagameRepository:
         MTGO decks come from the Videre API; keeping MTGGoldfish's copy of the
         same published decklists would double-count them in the merged output.
         """
+        self.last_goldfish_rows_before_partition = len(decks)
         kept = [deck for deck in decks if not is_mtgo_event_name(deck.get("event"))]
         dropped = len(decks) - len(kept)
         if dropped:

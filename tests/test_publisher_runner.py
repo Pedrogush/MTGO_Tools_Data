@@ -769,3 +769,90 @@ def test_scrape_mtgo_decklists_single_event_failure_is_skipped(monkeypatch, tmp_
         (tmp_path / "latest" / "mtgo-decklists" / "modern.json").read_text(encoding="utf-8")
     )
     assert [e["id"] for e in snapshot["events"]] == ["111"]
+
+
+def test_recent_league_refetches_despite_archive(monkeypatch, tmp_path):
+    # TIMESTAMP is 2026-03-23T12:00:00Z; the league ran the day before.
+    events = [
+        {"id": -7, "name": "Modern League", "date": "2026-03-22", "kind": "League"},
+        {"id": 8, "name": "Modern Challenge 64", "date": "2026-03-22", "kind": "Challenge"},
+    ]
+    monkeypatch.setattr("publisher.runner.fetch_mtgo_events_for_period", lambda **kwargs: events)
+
+    for archive_id, title in (("n7", "Modern League 2026-03-22"), ("8", "Modern Challenge 64 2026-03-22")):
+        path = tmp_path / "archive" / "mtgo-decklists" / "modern" / f"{archive_id}.json"
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(
+            json.dumps(
+                {
+                    "event_title": title,
+                    "publish_date": "2026-03-22",
+                    "event_type": "league",
+                    "decks_total": 2,
+                    "decks_cached": 2,
+                    "decks": [],
+                }
+            ),
+            encoding="utf-8",
+        )
+
+    fetched = []
+
+    def _fetch_event(event):
+        fetched.append(event["id"])
+        return {
+            "event_id": str(event["id"]),
+            "title": "Modern League 2026-03-22",
+            "publish_date": "2026-03-22",
+            "event_type": "league",
+            "decks": [
+                {
+                    "deck_id": "77",
+                    "login_id": None,
+                    "player": "Alice",
+                    "wins": "5",
+                    "losses": "0",
+                    "mainboard": [{"card_name": "Lightning Bolt", "qty": 4, "sideboard": "false"}],
+                    "sideboard": [],
+                }
+            ],
+        }
+
+    monkeypatch.setattr("publisher.runner.fetch_event", _fetch_event)
+
+    class _FakeDeckCache:
+        def set(self, deck_id, deck_text, source):
+            return True
+
+    class _FakeClassifier:
+        def assign_archetypes(self, decks, fmt):
+            for deck in decks:
+                deck["archetype"] = "Burn"
+
+    monkeypatch.setattr("publisher.runner.get_deck_cache", lambda: _FakeDeckCache())
+    monkeypatch.setattr("publisher.runner.ArchetypeClassifier", lambda: _FakeClassifier())
+    monkeypatch.setattr("publisher.runner.save_mtgo_deck_metadata", lambda *args, **kwargs: None)
+
+    exit_code = main(
+        [
+            "--output-root",
+            str(tmp_path),
+            "--timestamp",
+            TIMESTAMP,
+            "scrape-mtgo-decklists",
+            "--format",
+            "Modern",
+            "--days",
+            "7",
+            "--event-delay-seconds",
+            "0",
+        ]
+    )
+
+    assert exit_code == 0
+    # Recent league re-fetched despite its archive; archived challenge untouched.
+    assert fetched == [-7]
+    archive = json.loads(
+        (tmp_path / "archive" / "mtgo-decklists" / "modern" / "n7.json").read_text(encoding="utf-8")
+    )
+    assert archive["decks"][0]["number"] == "77"

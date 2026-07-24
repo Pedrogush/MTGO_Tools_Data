@@ -48,6 +48,11 @@ def _is_empty_result(response: Any) -> bool:
         return False
 
 
+# Identify ourselves to the API operators instead of showing up as
+# anonymous curl traffic; lets them contact or allowlist this consumer.
+_USER_AGENT = "MTGO_Tools_Data/0.2 (+https://github.com/Pedrogush/MTGO_Tools_Data)"
+
+
 def _get(path: str, params: dict[str, Any]) -> dict[str, Any]:
     url = f"{VIDERE_API_BASE_URL}{path}"
     delays = (0, *MTGO_DECKLISTS_FETCH_RETRY_DELAYS_SECONDS)
@@ -59,7 +64,12 @@ def _get(path: str, params: dict[str, Any]) -> dict[str, Any]:
             )
             time.sleep(delay)
         try:
-            response = requests.get(url, params=params, timeout=VIDERE_REQUEST_TIMEOUT_SECONDS)
+            response = requests.get(
+                url,
+                params=params,
+                timeout=VIDERE_REQUEST_TIMEOUT_SECONDS,
+                headers={"User-Agent": _USER_AGENT},
+            )
         except Exception as exc:  # noqa: BLE001 - transport errors are retryable
             last_error = exc
             continue
@@ -136,11 +146,16 @@ def _record_to_wins_losses(record: str | None) -> tuple[str, str]:
     return "?", "?"
 
 
-def _clean_deck(deck_row: dict[str, Any], standings: dict[str, dict[str, Any]]) -> dict[str, Any]:
+def _clean_deck(
+    deck_row: dict[str, Any],
+    standings: dict[str, dict[str, Any]],
+    *,
+    default_record: str | None = None,
+) -> dict[str, Any]:
     """Convert a Videre deck row to the pipeline's clean deck shape."""
     player = str(deck_row.get("player") or "Unknown")
     standing = standings.get(player.casefold(), {})
-    wins, losses = _record_to_wins_losses(standing.get("record"))
+    wins, losses = _record_to_wins_losses(standing.get("record") or default_record)
 
     def _board(entries: list[str] | None, sideboard: str) -> list[dict[str, Any]]:
         cards: dict[str, int] = {}
@@ -171,8 +186,15 @@ def fetch_event_payload(event: dict[str, Any]) -> dict[str, Any]:
     """
     event_id = event["id"]
     date = str(event.get("date") or "")[:10]
-    standings = fetch_event_standings(event_id)
-    decks = [_clean_deck(row, standings) for row in fetch_event_decks(event_id)]
+    # League dumps only ever contain 5-0 decks, so the standings request adds
+    # nothing — skip it to spare the API's workers.
+    is_league = str(event.get("kind") or "").lower() == "league"
+    standings = {} if is_league else fetch_event_standings(event_id)
+    default_record = "5-0-0" if is_league else None
+    decks = [
+        _clean_deck(row, standings, default_record=default_record)
+        for row in fetch_event_decks(event_id)
+    ]
     name = str(event.get("name") or "MTGO Event")
     # mtgo.com-style display title: event name plus the ISO event day.
     title = name if date and date in name else f"{name} {date}".strip()

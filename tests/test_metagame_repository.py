@@ -412,3 +412,56 @@ def test_repository_custom_ttl():
     """Test repository with custom TTL."""
     repo = MetagameRepository(cache_ttl=7200)
     assert repo.cache_ttl == 7200
+
+
+# ============= MTGO Event Partition Tests =============
+
+
+def test_get_decks_for_archetype_drops_mtggoldfish_mtgo_events(
+    metagame_repo, archetype_deck_cache_file, monkeypatch
+):
+    """MTGGoldfish rows for MTGO events are dropped; MTGO decks come from Videre."""
+    cache_data = {
+        "modern-boros-energy": {
+            "timestamp": time.time(),
+            "items": [
+                {
+                    "date": "2026-07-24",
+                    "number": "1",
+                    "player": "Based",
+                    "event": "Modern League 2026-07-24",
+                    "result": "5-0",
+                    "name": "Boros Energy",
+                    "source": "mtggoldfish",
+                },
+                {
+                    "date": "2026-07-23",
+                    "number": "2",
+                    "player": "Sarlanga",
+                    "event": "Modern Challenge 64 2026-07-23 (1)",
+                    "result": "19th",
+                    "name": "Boros Energy",
+                    "source": "mtggoldfish",
+                },
+                {
+                    "date": "2026-07-20",
+                    "number": "3",
+                    "player": "r_dvl",
+                    "event": "Store Qualifier CAMS 13 | MODERN | The Raccoon House",
+                    "result": "8th",
+                    "name": "Boros Energy",
+                    "source": "mtggoldfish",
+                },
+            ],
+        }
+    }
+    _write_cache(archetype_deck_cache_file, cache_data)
+    monkeypatch.setattr(
+        MetagameRepository, "_get_mtgo_decks_from_db", lambda self, name, source_filter: []
+    )
+
+    decks = metagame_repo.get_decks_for_archetype(
+        {"href": "modern-boros-energy", "name": "Boros Energy"}
+    )
+
+    assert [deck["number"] for deck in decks] == ["3"]

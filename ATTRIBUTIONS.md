@@ -1,106 +1,46 @@
 # Attributions
 
-This project incorporates ideas, techniques, and code patterns from various open-source projects and community resources. We gratefully acknowledge the following:
+This project incorporates ideas, techniques, and data from various open-source
+projects and community resources. We gratefully acknowledge the following:
 
 ---
 
-## Code Adaptations
+## Vendored Data and Adapted Code
 
-### cderickson/MTGO-Tracker
+### Badaro/MTGOFormatData
 
-**Repository:** https://github.com/cderickson/MTGO-Tracker
+**Repository:** https://github.com/Badaro/MTGOFormatData
 
-**Author:** Chris Erickson (cderickson)
+**Author:** Badaro
 
-**License:** Not explicitly stated (assumed open source)
+**License:** None published (no `LICENSE` file in the upstream repo). The
+vendored content is factual archetype definitions and card color data for a
+third-party game, refreshed via `scripts/update_vendor_data.py`.
 
 **What we use:**
-- GameLog parsing logic from `modo.py`
-- Player name extraction patterns
-- Match winner determination algorithms
-- Log file format understanding
+- Archetype definition files vendored under `vendor/mtgo_format_data/`
+- `card_colors.json` for card color identity lookups
 
 **Files influenced:**
-- `utils/gamelog_parser.py` - Core parsing logic adapted from `modo.py`
+- `utils/archetype_classifier.py` - Consumes the vendored datasets
+- `scripts/update_vendor_data.py` - Refreshes the vendored copies
 
-**Key modifications:**
-- Simplified for opponent extraction focus (removed deck analysis, play-by-play tracking)
-- Integrated with MTGOSDK for log file location
-- Refactored for Python 3.11+ with type hints
-- Adapted for MongoDB storage instead of SQLite
+### Badaro/MTGOArchetypeParser
 
-**Credit:**
-The MTGO log file format is complex and undocumented. Chris Erickson's MTGO-Tracker project provided invaluable insights into parsing these files correctly. The pattern matching logic, player name normalization, and winner detection algorithms are directly adapted from his work.
+**Repository:** https://github.com/Badaro/MTGOArchetypeParser
 
----
-
-### videre-project/MTGOSDK
-
-**Repository:** https://github.com/videre-project/MTGOSDK
-
-**Author:** Videre Project
+**Author:** Badaro
 
 **License:** MIT
 
 **What we use:**
-- MTGOSDK library for MTGO client interaction
-- `HistoryManager.GetGameHistoryFiles()` for log file location
-- `CollectionManager` for collection export
-- `EventManager` for challenge timer tracking
-- API documentation and examples
-
-**Files influenced:**
-- `dotnet/MTGOBridge/Program.cs` - MTGOSDK integration
-- `utils/mtgo_bridge_client.py` - Bridge client for SDK communication
-- `scripts/mtgosdk_repl.py` - REPL for exploring SDK API
+- The archetype rules format and matching semantics that
+  `utils/archetype_classifier.py` reimplements in Python
 
 **Credit:**
-MTGOSDK provides the foundation for interacting with MTGO programmatically. Their comprehensive API and documentation enabled us to build features that would otherwise require complex reverse engineering. Special thanks for maintaining detailed API references and responding to community issues.
-
-**Note on HistoricalMatch.Opponents bug:**
-We identified a bug in `HistoricalMatch.Opponents` where string-to-User conversion fails. This led us to adopt the log file parsing approach. We've documented this issue for the maintainers.
-
----
-
-### videre-project/Tracker
-
-**Repository:** https://github.com/videre-project/Tracker
-
-**Author:** Videre Project
-
-**License:** MIT
-
-**What we use:**
-- Architecture patterns for MTGOSDK integration
-- Event-driven match tracking concepts
-- Database model structures (inspiration)
-
-**Files influenced:**
-- `dotnet/MTGOBridge/Program.cs` - Structure influenced by Tracker's service architecture
-- Overall project architecture decisions
-
-**Credit:**
-The Tracker application provided excellent examples of how to structure an MTGOSDK-based application. Their approach to real-time event tracking and database persistence informed our design decisions.
-
----
-
-## Libraries and Dependencies
-
-### Python Libraries
-
-- **BeautifulSoup4** - HTML parsing for MTGGoldfish scraping
-- **requests** - HTTP client for web scraping
-- **pymongo** - MongoDB driver
-- **pytesseract** - OCR for opponent name detection
-- **Pillow (PIL)** - Image processing for OCR
-- **pyautogui** - Screen capture (read-only)
-- **tkinter / wxPython** - GUI frameworks
-
-### .NET Libraries
-
-- **MTGOSDK** (videre-project) - MTGO client interaction
-- **System.Text.Json** - JSON serialization
-- **Entity Framework Core** (referenced in architecture research)
+Badaro's MTGOFormatData and MTGOArchetypeParser projects are the community
+standard for MTGO archetype classification. This repo's classifier is a
+Python reimplementation of that rules engine over the vendored datasets.
 
 ---
 
@@ -117,51 +57,65 @@ The Tracker application provided excellent examples of how to structure an MTGOS
 - Player names and standings
 
 **Usage:**
-We scrape MTGGoldfish in compliance with their `robots.txt` file. Our scraping is rate-limited and respects their terms of service. We do not republish or redistribute their data commercially.
+We scrape MTGGoldfish in compliance with their `robots.txt` file. Our scraping
+is rate-limited and respects their terms of service. We do not republish or
+redistribute their data commercially.
 
 **Files influenced:**
 - `navigators/mtggoldfish.py` - Web scraping implementation
-- `widgets/deck_selector.py` - Deck browser using scraped data
+- `navigators/mtggoldfish_visual.py` - Visual decklist page parser
 
 **Credit:**
-MTGGoldfish is an invaluable resource for the Magic: The Gathering community. Their metagame data and tournament coverage provide the foundation for competitive deck research. Please support them by visiting their site and considering their premium services.
+MTGGoldfish is an invaluable resource for the Magic: The Gathering community.
+Their metagame data and tournament coverage provide the foundation for
+competitive deck research. Please support them by visiting their site and
+considering their premium services.
+
+### Videre Project API
+
+**Website:** https://api.videreproject.com
+
+**Repository:** https://github.com/videre-project (api-services, MTGOBot)
+
+**Author:** Videre Project
+
+**License:** Apache-2.0 (their client and server code); the API itself is a
+free community service with no published data-usage terms
+
+**What we use:**
+- MTGO event index, decklists, and standings served by their public REST
+  API. The underlying decklist coverage is what mtgo.com publishes (Top 32
+  of scheduled events plus the curated league 5-0 selection Daybreak
+  Games releases), collected by their MTGOBot.
+
+**Files influenced:**
+- `navigators/videre.py` - Videre API client
+- `services/mtgo_background_service.py` - MTGO event fetch window
+- `publisher/runner.py` - MTGO decklist snapshot publishing
+
+**Credit:**
+The Videre Project maintains the community's most complete open MTGO
+dataset and serves it for free. This repo previously scraped mtgo.com
+directly; their API replaced that scraper entirely. Please support them at
+https://github.com/videre-project.
 
 ---
 
-## Conceptual Inspiration
+## Libraries and Dependencies
 
-### General MTGO Tracking Tools
+### Python Libraries
 
-Several MTGO tracking and analysis tools informed our feature set:
-
-- **17Lands** (https://www.17lands.com/) - Draft analysis concepts
-- **MTGATracker** (https://github.com/mtgatracker) - Deck tracking patterns
-- **Untapped.gg** - Overlay UI design concepts
-
-While we did not use code from these projects, they demonstrated what features are valuable to the competitive Magic community.
-
----
-
-## Documentation and Resources
-
-### MTGO Community
-
-- **MTGO Discord servers** - Community support and feature discussions
-- **Reddit r/MTGO** - User feedback and bug reports
-- **Wizards of the Coast** - MTGO game client (obviously!)
-
-### Technical Resources
-
-- **Stack Overflow** - Various programming solutions
-- **Python documentation** - Language reference
-- **.NET documentation** - C# and framework references
-- **MongoDB documentation** - Database usage
+- **msgspec** - Fast JSON serialization
+- **loguru** - Logging
+- **BeautifulSoup4 + lxml** - HTML parsing
+- **curl-cffi** - HTTP client for web scraping
 
 ---
 
 ## AI Assistance
 
-This project was developed with assistance from **Claude** (Anthropic), an AI assistant that helped with:
+This project was developed with assistance from **Claude** (Anthropic), an AI
+assistant that helped with:
 - Code review and debugging
 - Architecture decisions
 - Documentation writing
@@ -171,11 +125,15 @@ This project was developed with assistance from **Claude** (Anthropic), an AI as
 
 ## License Compatibility
 
-This project is released under [LICENSE NAME TBD]. We have ensured compatibility with all dependencies:
+This project is released under the MIT License (see `LICENSE`). We have
+ensured compatibility with all dependencies:
 
-- **MTGOSDK**: MIT License ✅ Compatible
-- **Python libraries**: Various OSI-approved licenses ✅ Compatible
-- **Adapted code**: Properly attributed and modified ✅ Compliant
+- **MTGOArchetypeParser**: MIT License ✅ Compatible
+- **MTGOFormatData**: No published license — vendored content is factual
+  game data; flagged upstream for clarification
+- **Videre Project**: Apache-2.0 code ✅ Compatible; we consume their public
+  API as a data source and do not redistribute their code
+- **Python libraries**: OSI-approved permissive licenses ✅ Compatible
 
 ---
 
@@ -186,7 +144,9 @@ If you believe we have:
 2. Misrepresented the extent of code reuse
 3. Violated any license terms
 
-Please open an issue at [repository URL] and we will address it promptly.
+Please open an issue at
+https://github.com/Pedrogush/MTGO_Tools_Data/issues and we will
+address it promptly.
 
 ---
 
@@ -195,17 +155,19 @@ Please open an issue at [repository URL] and we will address it promptly.
 This project is **not affiliated with or endorsed by:**
 - Wizards of the Coast
 - Hasbro
+- Daybreak Games
 - MTGGoldfish
 - Any of the attributed projects above
 
 Magic: The Gathering and MTGO are trademarks of Wizards of the Coast LLC.
 
-This is a fan-made tool for personal use and metagame research. We respect all intellectual property rights and terms of service.
+This is a fan-made tool for personal use and metagame research. We respect all
+intellectual property rights and terms of service.
 
 ---
 
-**Last Updated:** 2025-01-15
+**Last Updated:** 2026-07-24
 
-**Maintained By:** Pedro (https://github.com/Pedro)
+**Maintained By:** Pedro (https://github.com/Pedrogush)
 
 If you notice any attributions are missing or incorrect, please let us know!

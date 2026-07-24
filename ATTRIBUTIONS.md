@@ -46,31 +46,6 @@ Python reimplementation of that rules engine over the vendored datasets.
 
 ## Data Sources
 
-### MTGGoldfish
-
-**Website:** https://www.mtggoldfish.com/
-
-**What we use:**
-- Metagame deck lists
-- Tournament results
-- Archetype categorization
-- Player names and standings
-
-**Usage:**
-We scrape MTGGoldfish in compliance with their `robots.txt` file. Our scraping
-is rate-limited and respects their terms of service. We do not republish or
-redistribute their data commercially.
-
-**Files influenced:**
-- `navigators/mtggoldfish.py` - Web scraping implementation
-- `navigators/mtggoldfish_visual.py` - Visual decklist page parser
-
-**Credit:**
-MTGGoldfish is an invaluable resource for the Magic: The Gathering community.
-Their metagame data and tournament coverage provide the foundation for
-competitive deck research. Please support them by visiting their site and
-considering their premium services.
-
 ### Videre Project API
 
 **Website:** https://api.videreproject.com
@@ -107,8 +82,7 @@ https://github.com/videre-project.
 
 - **msgspec** - Fast JSON serialization
 - **loguru** - Logging
-- **BeautifulSoup4 + lxml** - HTML parsing
-- **curl-cffi** - HTTP client for web scraping
+- **curl-cffi** - HTTP client for the Videre API
 
 ---
 
@@ -156,7 +130,6 @@ This project is **not affiliated with or endorsed by:**
 - Wizards of the Coast
 - Hasbro
 - Daybreak Games
-- MTGGoldfish
 - Any of the attributed projects above
 
 Magic: The Gathering and MTGO are trademarks of Wizards of the Coast LLC.

@@ -13,7 +13,6 @@ from typing import Any
 
 from loguru import logger
 
-from navigators.mtggoldfish import get_archetype_stats
 from publisher.contracts import (
     build_archetype_deck_snapshot,
     build_archetype_list_snapshot,
@@ -43,7 +42,7 @@ from publisher.layout import (
     update_latest_manifest,
     write_json,
 )
-from scraping import ScrapingMetagameRepository, fetch_archetypes
+from publisher.mtgo_archive import MtgoArchiveRepository
 from scraping.mtgo import fetch_event
 from services.mtgo_background_service import (
     convert_deck_to_classifier_format,
@@ -53,7 +52,7 @@ from services.mtgo_background_service import (
 )
 from services.radar_service import RadarService
 from utils.archetype_classifier import ArchetypeClassifier
-from utils.constants import MTGO_BACKGROUND_FETCH_DAYS
+from utils.constants import METAGAME_STATS_LOOKBACK_DAYS, MTGO_BACKGROUND_FETCH_DAYS
 from utils.deck_text_cache import get_deck_cache
 
 try:
@@ -301,15 +300,17 @@ def _selected_archetypes(
     latest_path = output_root / "latest" / "archetypes" / f"{normalized_format}.json"
     try:
         archetypes = sorted(
-            fetch_archetypes(format_name, allow_stale=True),
+            MtgoArchiveRepository(
+        output_root, format_name, reference_time=_parse_generated_at(generated_at)
+    ).get_archetypes(),
             key=lambda item: (item.get("name", "").lower(), item.get("href", "").lower()),
         )
         if not archetypes:
-            raise RuntimeError(f"Archetype scrape returned no rows for {format_name}")
+            raise RuntimeError(f"No archived MTGO decks yield archetypes for {format_name}")
         snapshot = build_archetype_list_snapshot(
             generated_at=generated_at,
             format_name=normalized_format,
-            source="mtggoldfish",
+            source="videre-api",
             archetypes=archetypes,
         )
         validate_archetype_list_snapshot(snapshot)
@@ -381,26 +382,22 @@ def _write_metagame_snapshot(
     normalized_format = normalize_name(format_name)
     latest_path = output_root / "latest" / "metagame" / f"{normalized_format}.json"
     try:
-        raw_stats = get_archetype_stats(format_name)
-        format_stats = raw_stats.get(format_name) or raw_stats.get(normalized_format, {})
-        if not format_stats:
-            raise RuntimeError(f"Metagame scrape returned no stats for {format_name}")
-        stats_rows = []
-        for archetype, payload in sorted(format_stats.items()):
-            if archetype == "timestamp":
-                continue
-            daily_counts = payload.get("results", {})
-            stats_rows.append(
-                {
-                    "archetype": archetype,
-                    "deck_count": len(payload.get("decks", [])),
-                    "daily_counts": {key: daily_counts[key] for key in sorted(daily_counts)},
-                }
-            )
+        day_anchor = datetime.strptime(generated_for_day, "%Y-%m-%d")
+        lookback_dates = [
+            (day_anchor - timedelta(days=offset)).strftime("%Y-%m-%d")
+            for offset in range(METAGAME_STATS_LOOKBACK_DAYS)
+        ]
+        stats_rows = MtgoArchiveRepository(
+        output_root, format_name, reference_time=_parse_generated_at(generated_at)
+    ).get_archetype_stats(
+            lookback_dates=lookback_dates
+        )
+        if not stats_rows:
+            raise RuntimeError(f"No archived MTGO decks yield metagame stats for {format_name}")
         snapshot = build_metagame_snapshot(
             generated_at=generated_at,
             format_name=normalized_format,
-            source="mtggoldfish",
+            source="videre-api",
             generated_for_day=generated_for_day,
             stats=stats_rows,
         )
@@ -456,8 +453,10 @@ def _write_archetype_deck_snapshots(
     days: int | None,
     source_filter: str | None,
 ) -> list[dict[str, Any]]:
-    repo = ScrapingMetagameRepository()
     normalized_format = normalize_name(format_name)
+    repo = MtgoArchiveRepository(
+        output_root, format_name, reference_time=_parse_generated_at(generated_at)
+    )
     archetypes = _filter_requested_archetypes(
         _selected_archetypes(
             output_root=output_root,
@@ -492,11 +491,7 @@ def _write_archetype_deck_snapshots(
             filtered_decks = _filter_recent_decks(
                 decks, days, reference_time=_parse_generated_at(generated_at)
             )
-            # An archetype whose MTGGoldfish rows were all MTGO events has no
-            # paper decks to publish here (they land in mtgo-decklists); only a
-            # scrape that returned nothing at all is a failure.
-            had_source_rows = bool(decks) or getattr(repo, "last_goldfish_rows_before_partition", 0) > 0
-            if had_source_rows and not filtered_decks:
+            if decks and not filtered_decks:
                 snapshot = build_archetype_deck_snapshot(
                     generated_at=generated_at,
                     format_name=normalized_format,
@@ -527,11 +522,7 @@ def _write_archetype_deck_snapshots(
                     format_name=normalized_format,
                     archetype=archetype_slug,
                     path=relative_posix_path(latest_path, output_root),
-                    message=(
-                        f"No decks found within the last {days} days."
-                        if decks
-                        else "All MTGGoldfish rows were MTGO events; published via mtgo-decklists."
-                    ),
+                    message=f"No decks found within the last {days} days.",
                 )
                 continue
             recent_decks = sorted(
@@ -619,8 +610,10 @@ def _write_deck_text_blobs(
     source_filter: str | None,
     deck_download_delay_seconds: float,
 ) -> None:
-    repo = ScrapingMetagameRepository()
     normalized_format = normalize_name(format_name)
+    repo = MtgoArchiveRepository(
+        output_root, format_name, reference_time=_parse_generated_at(generated_at)
+    )
     decks = _write_archetype_deck_snapshots(
         output_root=output_root,
         generated_at=generated_at,
@@ -672,7 +665,11 @@ def _write_deck_text_blobs(
                     message="Reused existing published deck-text blob.",
                 )
                 continue
-            if index > 0 and deck_download_delay_seconds > 0:
+            if (
+                index > 0
+                and deck_download_delay_seconds > 0
+                and getattr(repo, "download_requires_network", True)
+            ):
                 logger.info(
                     "Sleeping {} seconds before downloading deck {}",
                     deck_download_delay_seconds,
@@ -684,7 +681,7 @@ def _write_deck_text_blobs(
                 generated_at=generated_at,
                 format_name=normalized_format,
                 deck_id=deck_id,
-                source=deck.get("source", source_filter or "mtggoldfish"),
+                source=deck.get("source", source_filter or "mtgo"),
                 deck_name=deck.get("name", deck_id),
                 deck_text=deck_text,
             )
@@ -733,7 +730,7 @@ def _load_radar_source_texts(
     output_root: Path,
     format_name: str,
     decks: list[dict[str, Any]],
-    repo: ScrapingMetagameRepository,
+    repo: MtgoArchiveRepository,
 ) -> tuple[list[dict[str, str]], int]:
     loaded_decks: list[dict[str, str]] = []
     failed_decks = 0
@@ -895,7 +892,9 @@ def _write_archetype_radar_snapshots(
         )
         return
 
-    repo = ScrapingMetagameRepository()
+    repo = MtgoArchiveRepository(
+        output_root, format_name, reference_time=_parse_generated_at(generated_at)
+    )
     radar_service = RadarService()
     format_card_pool_decks: dict[str, dict[str, str]] = {}
     format_card_pool_failed_decks = 0

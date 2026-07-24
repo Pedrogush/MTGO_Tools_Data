@@ -10,7 +10,6 @@ from typing import Any
 
 from loguru import logger
 
-from repositories.metagame_repository import MetagameRepository, get_metagame_repository
 from utils.constants import (
     RADAR_AVG_COPIES_ROUND_DIGITS,
     RADAR_EXPECTED_COPIES_ROUND_DIGITS,
@@ -73,10 +72,12 @@ class RadarService:
 
     def __init__(
         self,
-        metagame_repository: MetagameRepository | None = None,
+        metagame_repository: Any | None = None,
         deck_service: Any | None = None,
     ) -> None:
-        self.metagame_repo = metagame_repository or get_metagame_repository()
+        # Deck repository is injected by callers that use calculate_radar();
+        # the publisher path builds radars from already-published deck texts.
+        self.metagame_repo = metagame_repository
         self.deck_service = deck_service
 
     def calculate_radar(
@@ -92,6 +93,8 @@ class RadarService:
         archetype_name = archetype.get("name", "Unknown")
         logger.info("Calculating radar for {} in {}", archetype_name, format_name)
 
+        if self.metagame_repo is None:
+            raise ValueError("calculate_radar requires a deck repository; none was injected")
         decks = self.metagame_repo.get_decks_for_archetype(archetype, source_filter=source_filter)
         if not decks:
             logger.warning("No decks found for {}", archetype_name)

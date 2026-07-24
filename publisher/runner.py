@@ -10,7 +10,6 @@ from dataclasses import asdict
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
-from urllib.parse import urlparse
 
 from loguru import logger
 
@@ -45,16 +44,14 @@ from publisher.layout import (
     write_json,
 )
 from scraping import ScrapingMetagameRepository, fetch_archetypes
-from scraping.mtgo import fetch_event, fetch_event_index
-from services.radar_service import RadarService
+from scraping.mtgo import fetch_event
 from services.mtgo_background_service import (
-    build_mtgo_result_lookup,
     convert_deck_to_classifier_format,
     deck_to_text,
     fetch_mtgo_events_for_period,
-    parse_mtgo_deck,
     save_mtgo_deck_metadata,
 )
+from services.radar_service import RadarService
 from utils.archetype_classifier import ArchetypeClassifier
 from utils.constants import MTGO_BACKGROUND_FETCH_DAYS
 from utils.deck_text_cache import get_deck_cache
@@ -71,7 +68,7 @@ STATUS_STALE_FALLBACK = "stale-fallback"
 STATUS_HARD_FAILURE = "hard-failure"
 HARD_FAILURE_STATES = {STATUS_HARD_FAILURE}
 DEFAULT_DECK_DOWNLOAD_DELAY_SECONDS = 0.0
-DEFAULT_MTGO_EVENT_DELAY_SECONDS = 3.0
+DEFAULT_MTGO_EVENT_DELAY_SECONDS = 1.0
 
 
 def _utc_now() -> str:
@@ -180,9 +177,10 @@ def _mtgo_event_archive_path(output_root: Path, format_name: str, event_id: str)
     return output_root / "archive" / "mtgo-decklists" / format_name / f"{event_id}.json"
 
 
-def _mtgo_event_id(event_url: str) -> str:
-    token = Path(urlparse(event_url).path).name or "unknown-event"
-    return normalize_name(token) or "unknown-event"
+def _mtgo_event_id(event: dict[str, Any]) -> str:
+    """Filesystem-safe archive id for a Videre event row (league ids are negative)."""
+    raw = str(event.get("id", "")).strip()
+    return raw.replace("-", "n", 1) if raw.startswith("-") else (raw or "unknown-event")
 
 
 def _with_deck_text_refs(
@@ -1048,29 +1046,6 @@ def _write_archetype_radar_snapshots(
     )
 
 
-def _fetch_mtgo_index(*, days: int, output_file: Path) -> None:
-    """Fetch MTGO decklist index pages for the given period and write combined entries to a file."""
-    end_date = datetime.now(UTC)
-    start_date = end_date - timedelta(days=days)
-    all_entries: list[dict[str, Any]] = []
-    seen_urls: set[str] = set()
-    current_date = start_date
-    while current_date <= end_date:
-        entries = fetch_event_index(current_date.year, current_date.month)
-        for entry in entries:
-            url = entry.get("url", "")
-            if url and url not in seen_urls:
-                seen_urls.add(url)
-                all_entries.append(entry)
-        if current_date.month == 12:
-            current_date = datetime(current_date.year + 1, 1, 1, tzinfo=UTC)
-        else:
-            current_date = datetime(current_date.year, current_date.month + 1, 1, tzinfo=UTC)
-    output_file.parent.mkdir(parents=True, exist_ok=True)
-    write_json(output_file, all_entries)
-    logger.info("Wrote MTGO index with {} entries to {}", len(all_entries), output_file)
-
-
 def _write_mtgo_decklist_snapshots(
     *,
     output_root: Path,
@@ -1080,7 +1055,6 @@ def _write_mtgo_decklist_snapshots(
     format_name: str,
     days: int,
     event_delay_seconds: float,
-    index_file: Path | None = None,
 ) -> None:
     normalized_format = normalize_name(format_name)
     latest_path = output_root / "latest" / "mtgo-decklists" / f"{normalized_format}.json"
@@ -1090,34 +1064,25 @@ def _write_mtgo_decklist_snapshots(
     start_date = end_date - timedelta(days=days)
 
     try:
-        preloaded_entries: list[dict[str, Any]] | None = None
-        if index_file is not None:
-            if index_file.exists():
-                preloaded_entries = json.loads(index_file.read_text(encoding="utf-8"))
-                logger.info("Using pre-fetched MTGO index with {} entries from {}", len(preloaded_entries), index_file)
-            else:
-                logger.warning("MTGO index file not found: {}; will fetch live.", index_file)
-
         events = fetch_mtgo_events_for_period(
             start_date=start_date,
             end_date=end_date,
             mtg_format=normalized_format,
-            preloaded_entries=preloaded_entries,
         )
         archived_events: list[dict[str, Any]] = []
 
         for index, event in enumerate(events):
-            event_url = str(event.get("url", "")).strip()
-            if not event_url:
+            if not str(event.get("id", "")).strip():
                 recorder.add(
                     scope="mtgo-event",
                     status=STATUS_HARD_FAILURE,
                     format_name=normalized_format,
-                    message="Encountered MTGO event entry without URL.",
+                    message="Encountered MTGO event entry without an id.",
                 )
                 continue
 
-            event_id = _mtgo_event_id(event_url)
+            event_id = _mtgo_event_id(event)
+            event_url = f"https://api.videreproject.com/decks?event_id={event['id']}"
             archive_path = _mtgo_event_archive_path(output_root, normalized_format, event_id)
             if archive_path.exists():
                 try:
@@ -1157,9 +1122,9 @@ def _write_mtgo_decklist_snapshots(
                     continue
 
             try:
-                payload = fetch_event(event_url)
-                raw_decklists = payload.get("decklists", [])
-                if not raw_decklists:
+                payload = fetch_event(event)
+                clean_decks = payload.get("decks", [])
+                if not clean_decks:
                     logger.warning("Event {} returned no decklists, skipping.", event_url)
                     recorder.add(
                         scope="mtgo-event",
@@ -1168,18 +1133,14 @@ def _write_mtgo_decklist_snapshots(
                         message=f"{event_url}: Event returned no decklists.",
                     )
                     continue
-                result_lookup = build_mtgo_result_lookup(payload)
-                clean_decks = [
-                    parse_mtgo_deck(raw_deck, result_lookup=result_lookup) for raw_deck in raw_decklists
-                ]
                 classifier_decks = [
                     convert_deck_to_classifier_format(deck, mtg_format=normalized_format)
                     for deck in clean_decks
                 ]
                 classifier.assign_archetypes(classifier_decks, normalized_format)
 
-                event_date = payload.get("publish_date") or event.get("date") or generated_at
-                event_title = payload.get("title") or event.get("title") or "MTGO Event"
+                event_date = payload.get("publish_date") or str(event.get("date", ""))[:10] or generated_at
+                event_title = payload.get("title") or event.get("name") or "MTGO Event"
                 decks_cached = 0
                 deck_metadata_rows: list[dict[str, Any]] = []
 
@@ -1218,7 +1179,7 @@ def _write_mtgo_decklist_snapshots(
                     "event_url": event_url,
                     "event_title": event_title,
                     "publish_date": event_date,
-                    "event_type": event.get("event_type", "unknown"),
+                    "event_type": payload.get("event_type", "unknown"),
                     "decks_total": len(clean_decks),
                     "decks_cached": decks_cached,
                     "decks": deck_metadata_rows,
@@ -1238,7 +1199,7 @@ def _write_mtgo_decklist_snapshots(
                         "url": event_url,
                         "title": event_title,
                         "publish_date": event_date,
-                        "event_type": event.get("event_type", "unknown"),
+                        "event_type": payload.get("event_type", "unknown"),
                         "decks_total": len(clean_decks),
                         "decks_cached": decks_cached,
                         "path": relative_archive_path,
@@ -1294,7 +1255,7 @@ def _write_mtgo_decklist_snapshots(
         snapshot = build_mtgo_decklists_snapshot(
             generated_at=generated_at,
             format_name=normalized_format,
-            source="mtgo.com",
+            source="videre-api",
             days=days,
             events=archived_events,
         )
@@ -1391,11 +1352,6 @@ def build_parser() -> argparse.ArgumentParser:
         type=float,
         default=DEFAULT_MTGO_EVENT_DELAY_SECONDS,
     )
-    mtgo_decklists.add_argument("--index-file", type=Path, default=None)
-
-    mtgo_index = subparsers.add_parser("scrape-mtgo-index")
-    mtgo_index.add_argument("--days", type=int, default=MTGO_BACKGROUND_FETCH_DAYS)
-    mtgo_index.add_argument("--output-file", required=True)
 
     return parser
 
@@ -1480,14 +1436,7 @@ def main(argv: list[str] | None = None) -> int:
                 format_name=format_name,
                 days=args.days,
                 event_delay_seconds=args.event_delay_seconds,
-                index_file=args.index_file,
             )
-    elif args.command == "scrape-mtgo-index":
-        _fetch_mtgo_index(
-            days=args.days,
-            output_file=Path(args.output_file),
-        )
-        recorder.add(scope="mtgo-index", status=STATUS_SUCCESS, message=f"Wrote {args.output_file}")
     else:  # pragma: no cover
         parser.error(f"Unknown command: {args.command}")
 

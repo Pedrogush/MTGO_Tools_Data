@@ -566,31 +566,32 @@ def test_scrape_mtgo_decklists_writes_archived_event_snapshots(monkeypatch, tmp_
         "publisher.runner.fetch_mtgo_events_for_period",
         lambda **kwargs: [
             {
-                "url": "https://www.mtgo.com/decklist/modern-challenge-64-2026-03-2612836735",
-                "title": "Modern Challenge 64",
-                "date": "2026-03-26T12:00:00Z",
-                "event_type": "challenge",
+                "id": -12836735,
+                "name": "Modern Challenge 64",
+                "date": "2026-03-26T00:00:00.000Z",
+                "format": "Modern",
+                "kind": "Challenge",
             }
         ],
     )
     monkeypatch.setattr(
         "publisher.runner.fetch_event",
-        lambda _url: {
-            "title": "Modern Challenge 64",
+        lambda _event: {
+            "event_id": "-12836735",
+            "title": "Modern Challenge 64 2026-03-26",
             "publish_date": "2026-03-26",
-            "decklists": [
+            "event_type": "challenge",
+            "decks": [
                 {
-                    "loginplayeventcourseid": "123",
+                    "deck_id": "123",
+                    "login_id": None,
                     "player": "Alice",
-                    "wins": {"wins": "5", "losses": "2"},
-                    "main_deck": [
-                        {
-                            "sideboard": "false",
-                            "qty": "4",
-                            "card_attributes": {"card_name": "Lightning Bolt"},
-                        }
+                    "wins": "5",
+                    "losses": "2",
+                    "mainboard": [
+                        {"card_name": "Lightning Bolt", "qty": 4, "sideboard": "false"}
                     ],
-                    "sideboard_deck": [],
+                    "sideboard": [],
                 }
             ],
         },
@@ -632,13 +633,7 @@ def test_scrape_mtgo_decklists_writes_archived_event_snapshots(monkeypatch, tmp_
 
     assert exit_code == 0
     latest_path = tmp_path / "latest" / "mtgo-decklists" / "modern.json"
-    event_path = (
-        tmp_path
-        / "archive"
-        / "mtgo-decklists"
-        / "modern"
-        / "modern-challenge-64-2026-03-2612836735.json"
-    )
+    event_path = tmp_path / "archive" / "mtgo-decklists" / "modern" / "n12836735.json"
     run_path = tmp_path / "latest" / "runs" / "scrape-mtgo-decklists-modern.json"
     manifest_path = tmp_path / "latest" / "latest.json"
 
@@ -650,6 +645,7 @@ def test_scrape_mtgo_decklists_writes_archived_event_snapshots(monkeypatch, tmp_
     event_snapshot = json.loads(event_path.read_text(encoding="utf-8"))
     latest_manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
 
-    assert latest_snapshot["events"][0]["id"] == "modern-challenge-64-2026-03-2612836735"
+    assert latest_snapshot["events"][0]["id"] == "n12836735"
+    assert latest_snapshot["source"] == "videre-api"
     assert event_snapshot["decks"][0]["archetype"] == "Mono Red Prowess"
     assert latest_manifest["latest"]["mtgo_decklists"][0]["path"] == "latest/mtgo-decklists/modern.json"

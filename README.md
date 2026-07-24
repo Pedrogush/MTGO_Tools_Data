@@ -1,16 +1,13 @@
 # MTGO_Tools_Data
 
 Metagame data feed for the [MTGO_Tools](https://github.com/Pedrogush/MTGO_Tools)
-client: MTGGoldfish paper tournament results plus MTGO results from the
+client: MTGO tournament results from the
 [Videre Project API](https://api.videreproject.com), published on a schedule
 to the `data-publish` branch (including the single-request
 `client-bundle.tar.gz`).
 
 This repository was carved out of MTGO_Tools — the original full desktop
-application — and reduced to its scraper and publisher path. Fixes that
-affect the live MTGGoldfish scraper are typically discovered in `MTGO_Tools`
-first; check that repo's `navigators/` module for the authoritative
-implementation when this one stops collecting data.
+application — and reduced to its publisher path.
 
 ![Version](https://img.shields.io/badge/version-0.2-blue)
 ![Python](https://img.shields.io/badge/python-3.11+-green)
@@ -37,7 +34,7 @@ implementation when this one stops collecting data.
 
 4. **Run the scraper tests**:
    ```bash
-   python -m pytest tests/test_mtggoldfish.py tests/test_metagame_repository.py tests/test_metagame_stats.py tests/test_scraping_surface.py
+   python -m pytest
    ```
 
 ## Architecture
@@ -156,9 +153,7 @@ Configuration is in `pyproject.toml`.
 MTGO_Tools_Data/
 ├── scraping/               # Headless scrape facade
 ├── services/               # MTGO event processing
-├── repositories/           # Metagame repository
 ├── navigators/             # External API integrations
-│   ├── mtggoldfish.py      # MTGGoldfish scraper
 │   └── videre.py           # Videre API client (MTGO events)
 ├── utils/                  # Utility modules
 │   ├── archetype_classifier.py
@@ -180,17 +175,14 @@ Contributions are welcome! Please:
 
 ## Data Sources
 
-- **Metagame Data**: [MTGGoldfish](https://www.mtggoldfish.com/)
 - **MTGO Decklists**: [Videre Project API](https://api.videreproject.com) —
-  community REST API over MTGO event data ([videre-project](https://github.com/videre-project)).
-  MTGGoldfish rows for MTGO events are dropped to avoid double-counting; only
-  paper tournament rows are kept from MTGGoldfish.
+  community REST API over MTGO event data ([videre-project](https://github.com/videre-project))
 - **Archetype Rules**: vendored from [Badaro/MTGOFormatData](https://github.com/Badaro/MTGOFormatData)
 
 ## Known Limitations
 
-- The MTGGoldfish scraper depends on their page structure; upstream markup
-  changes can break collection until the parsers are updated
+- Paper tournament results are not collected (the MTGGoldfish source was
+  removed); the feed is MTGO-only
 - MTGO decklist coverage is bounded by what Daybreak publishes (Top 32 of
   scheduled events plus a curated selection of league 5-0s), regardless of
   the API serving it
@@ -199,11 +191,11 @@ Contributions are welcome! Please:
 
 ## Troubleshooting
 
-### Scrapers not collecting data
+### Publisher not collecting data
 - Ensure Python 3.11+ is installed
 - Check all dependencies are installed: `pip install -r requirements-dev.txt`
-- Fixes usually land in [MTGO_Tools](https://github.com/Pedrogush/MTGO_Tools)
-  first; check that repo's `navigators/` module for the authoritative parsers
+- Check https://api.videreproject.com/events?limit=1 responds; the publisher
+  falls back to the last published snapshots when the API is unreachable
 
 ## License
 
@@ -211,7 +203,6 @@ MIT License - see LICENSE file for details
 
 ## Acknowledgments
 
-- **MTGGoldfish**: For metagame statistics and decklists
 - **Videre Project**: For the community MTGO data API this repo consumes
 - **Badaro**: For the MTGOFormatData archetype definitions this repo vendors
 

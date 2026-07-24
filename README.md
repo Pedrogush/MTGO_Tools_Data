@@ -17,10 +17,6 @@ authoritative implementation when this one stops collecting data.
 This repository is being reduced from a desktop application clone to a scrape
 publisher. The supported surface is the scraper and publisher path only.
 
-## Screenshots
-
-*(Coming soon)*
-
 ## Installation
 
 ### Quick Start
@@ -157,7 +153,7 @@ Configuration is in `pyproject.toml`.
 ## Project Structure
 
 ```
-magic_online_metagame_crawler/
+MTGO_Scrapes_Repository/
 ├── scraping/               # Headless scrape facade
 ├── services/               # MTGO event processing
 ├── repositories/           # Metagame repository
@@ -185,37 +181,23 @@ Contributions are welcome! Please:
 ## Data Sources
 
 - **Metagame Data**: [MTGGoldfish](https://www.mtggoldfish.com/)
-- **Card Data**: [Scryfall API](https://scryfall.com/docs/api)
-- **Card Images**: Scryfall bulk data
-- **MTGO Data**: [MTGOSDK](https://github.com/videre-project/MTGOSDK)
+- **MTGO Decklists**: [mtgo.com](https://www.mtgo.com/decklists) published decklist pages
+- **Archetype Rules**: vendored from [Badaro/MTGOFormatData](https://github.com/Badaro/MTGOFormatData)
 
 ## Known Limitations
 
-- Windows only (due to wxPython and MTGO dependencies)
-- MTGO Bridge requires Magic Online to be installed
-- Collection import requires MTGO to be running
-- Some features require internet connection for metagame data
+- Scrapers depend on MTGGoldfish and mtgo.com page structure; upstream markup
+  changes can break collection until the parsers are updated
+- mtgo.com publishes only Top 32 decklists for scheduled events and a curated
+  selection of league 5-0s, so coverage is bounded by what is published
 
 ## Troubleshooting
 
-### Application won't start
+### Scrapers not collecting data
 - Ensure Python 3.11+ is installed
 - Check all dependencies are installed: `pip install -r requirements-dev.txt`
-- Verify wxPython is properly installed for Windows
-
-### Card images not loading
-- Run `python -m scripts.fetch_mana_assets` to download mana symbols
-- Check internet connection for Scryfall API access
-- Use "Download Missing Images" from the Collection menu
-
-### MTGO Bridge not working
-- Ensure .NET 9.0 SDK is installed
-- Build the bridge: `cd dotnet/MTGOBridge && dotnet build`
-- MTGO must be running when using the bridge
-
-### Tests failing on Windows
-- Ensure pytest is installed
-- Some UI tests require a display (run locally, not over SSH)
+- Fixes usually land in [MTGO_Tools](https://github.com/Pedrogush/MTGO_Tools)
+  first; check that repo's `navigators/` module for the authoritative parsers
 
 ## License
 
@@ -223,14 +205,12 @@ MIT License - see LICENSE file for details
 
 ## Acknowledgments
 
-- **MTGOSDK**: For providing MTGO integration capabilities
-- **Scryfall**: For comprehensive card data and images
 - **MTGGoldfish**: For metagame statistics and decklists
-- **wxPython**: For the GUI framework
+- **Badaro**: For the MTGOFormatData archetype definitions this repo vendors
 
 ## Support
 
-- **Issues**: [GitHub Issues](https://github.com/Pedrogush/MTGO_Tools/issues)
+- **Issues**: [GitHub Issues](https://github.com/Pedrogush/MTGO_Scrapes_Repository/issues)
 - **Discussions**: Use GitHub Discussions for questions and ideas
 
 ---

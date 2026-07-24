@@ -17,6 +17,10 @@ MTGO_DECKLISTS_REQUEST_TIMEOUT_SECONDS = 30
 # MTGO decklists fetch retry configuration (exponential backoff delays between attempts)
 MTGO_DECKLISTS_FETCH_RETRY_DELAYS_SECONDS = (2, 5, 10)
 
+# League 5-0 dumps grow during the day, so an archived league snapshot can be
+# partial; re-fetch leagues younger than this window even when archived.
+MTGO_LEAGUE_REFRESH_WINDOW_DAYS = 2
+
 # MTGGoldfish cache ages
 MTGGOLDFISH_STALE_CACHE_DAYS = 7
 MTGGOLDFISH_STALE_CACHE_SECONDS = ONE_DAY_SECONDS * MTGGOLDFISH_STALE_CACHE_DAYS

@@ -53,7 +53,7 @@ from services.mtgo_background_service import (
 )
 from services.radar_service import RadarService
 from utils.archetype_classifier import ArchetypeClassifier
-from utils.constants import MTGO_BACKGROUND_FETCH_DAYS
+from utils.constants import MTGO_BACKGROUND_FETCH_DAYS, MTGO_LEAGUE_REFRESH_WINDOW_DAYS
 from utils.deck_text_cache import get_deck_cache
 
 try:
@@ -181,6 +181,19 @@ def _mtgo_event_id(event: dict[str, Any]) -> str:
     """Filesystem-safe archive id for a Videre event row (league ids are negative)."""
     raw = str(event.get("id", "")).strip()
     return raw.replace("-", "n", 1) if raw.startswith("-") else (raw or "unknown-event")
+
+
+def _is_recent_league_event(event: dict[str, Any], generated_at: str) -> bool:
+    """League dumps grow during the day, so a fresh archive can be partial."""
+    if str(event.get("kind") or "").lower() != "league":
+        return False
+    event_date = _parse_deck_date(str(event.get("date", ""))[:10])
+    reference = _parse_generated_at(generated_at)
+    if event_date is None or reference is None:
+        return True
+    return reference.replace(tzinfo=None) - event_date <= timedelta(
+        days=MTGO_LEAGUE_REFRESH_WINDOW_DAYS
+    )
 
 
 def _with_deck_text_refs(
@@ -1092,7 +1105,7 @@ def _write_mtgo_decklist_snapshots(
             event_id = _mtgo_event_id(event)
             event_url = f"https://api.videreproject.com/decks?event_id={event['id']}"
             archive_path = _mtgo_event_archive_path(output_root, normalized_format, event_id)
-            if archive_path.exists():
+            if archive_path.exists() and not _is_recent_league_event(event, generated_at):
                 try:
                     existing = json.loads(archive_path.read_text(encoding="utf-8"))
                     decks = existing.get("decks", [])

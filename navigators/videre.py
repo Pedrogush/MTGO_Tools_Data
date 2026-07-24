@@ -10,32 +10,67 @@ publishes (Top 32 of scheduled events plus the curated league 5-0s).
 from __future__ import annotations
 
 import re
+import time
 from typing import Any
 
 from curl_cffi import requests
 from loguru import logger
 
-from utils.constants import VIDERE_API_BASE_URL, VIDERE_REQUEST_TIMEOUT_SECONDS
+from utils.constants import (
+    MTGO_DECKLISTS_FETCH_RETRY_DELAYS_SECONDS,
+    VIDERE_API_BASE_URL,
+    VIDERE_REQUEST_TIMEOUT_SECONDS,
+)
 
 # Page size for paginated endpoints; the API caps rows per response.
 _PAGE_LIMIT = 100
 # Hard stop for pagination loops so a server bug cannot spin forever.
 _MAX_PAGES = 50
 
+# The API's Cloudflare Worker sheds load with 408s when a query trips its
+# runtime guardrail; the same request typically succeeds moments later.
+_RETRYABLE_STATUSES = {408, 429, 500, 502, 503, 504}
+
 # Card entries arrive as Postgres composite row literals:
 #   (18115,"Birchlore Rangers",4)  or  (129825,Forest,2)
 # Names containing commas/spaces are double-quoted; embedded quotes double.
 _CARD_ENTRY_PATTERN = re.compile(r'^\((\d+),(?:"((?:[^"]|"")*)"|([^,]*)),(\d+)\)$')
 
+_EMPTY_PAYLOAD: dict[str, Any] = {"data": [], "meta": {"has_more": False}}
+
+
+def _is_empty_result(response: Any) -> bool:
+    # The API answers 400 with message "No results found." for events whose
+    # decklists have not been imported yet; that is an empty list, not an error.
+    try:
+        return response.json().get("message") == "No results found."
+    except Exception:
+        return False
+
 
 def _get(path: str, params: dict[str, Any]) -> dict[str, Any]:
-    response = requests.get(
-        f"{VIDERE_API_BASE_URL}{path}",
-        params=params,
-        timeout=VIDERE_REQUEST_TIMEOUT_SECONDS,
-    )
-    response.raise_for_status()
-    return response.json()
+    url = f"{VIDERE_API_BASE_URL}{path}"
+    delays = (0, *MTGO_DECKLISTS_FETCH_RETRY_DELAYS_SECONDS)
+    last_error: Exception = RuntimeError(f"No request attempted for {url}")
+    for attempt, delay in enumerate(delays, start=1):
+        if delay:
+            logger.warning(
+                "Retrying {} in {}s (attempt {}/{}): {}", path, delay, attempt, len(delays), last_error
+            )
+            time.sleep(delay)
+        try:
+            response = requests.get(url, params=params, timeout=VIDERE_REQUEST_TIMEOUT_SECONDS)
+        except Exception as exc:  # noqa: BLE001 - transport errors are retryable
+            last_error = exc
+            continue
+        if response.status_code == 400 and _is_empty_result(response):
+            return _EMPTY_PAYLOAD
+        if response.status_code in _RETRYABLE_STATUSES:
+            last_error = RuntimeError(f"HTTP {response.status_code} from {url}")
+            continue
+        response.raise_for_status()
+        return response.json()
+    raise last_error
 
 
 def _paginate(path: str, params: dict[str, Any]) -> list[dict[str, Any]]:

@@ -649,3 +649,123 @@ def test_scrape_mtgo_decklists_writes_archived_event_snapshots(monkeypatch, tmp_
     assert latest_snapshot["source"] == "videre-api"
     assert event_snapshot["decks"][0]["archetype"] == "Mono Red Prowess"
     assert latest_manifest["latest"]["mtgo_decklists"][0]["path"] == "latest/mtgo-decklists/modern.json"
+
+
+def test_scrape_decks_mtgo_only_archetype_writes_empty_snapshot(monkeypatch, tmp_path):
+    monkeypatch.setattr(
+        "publisher.runner.fetch_archetypes",
+        lambda *args, **kwargs: [{"name": "Raker Shops", "href": "vintage-raker-shops"}],
+    )
+
+    class _MtgoOnlyRepo(_FakeRepo):
+        last_goldfish_rows_before_partition = 3
+
+        def get_decks_for_archetype(self, archetype, force_refresh=False, source_filter=None):
+            return []
+
+    monkeypatch.setattr("publisher.runner.ScrapingMetagameRepository", _MtgoOnlyRepo)
+
+    exit_code = main(
+        [
+            "--output-root",
+            str(tmp_path),
+            "--timestamp",
+            TIMESTAMP,
+            "scrape-decks",
+            "--format",
+            "Vintage",
+            "--days",
+            "7",
+        ]
+    )
+
+    assert exit_code == 0
+    snapshot = json.loads(
+        (tmp_path / "latest" / "decks" / "vintage" / "raker-shops.json").read_text(encoding="utf-8")
+    )
+    run_manifest = json.loads(
+        (tmp_path / "latest" / "runs" / "scrape-decks-vintage.json").read_text(encoding="utf-8")
+    )
+
+    assert snapshot["decks"] == []
+    assert run_manifest["status"] == "success"
+    skip = [r for r in run_manifest["results"] if r["scope"] == "archetype-decks"][0]
+    assert skip["status"] == "skipped"
+    assert "MTGO events" in skip["message"]
+
+
+def test_scrape_mtgo_decklists_single_event_failure_is_skipped(monkeypatch, tmp_path):
+    monkeypatch.setattr(
+        "publisher.runner.fetch_mtgo_events_for_period",
+        lambda **kwargs: [
+            {"id": 111, "name": "Modern Challenge 64", "date": "2026-03-26", "kind": "Challenge"},
+            {"id": 222, "name": "Modern League", "date": "2026-03-26", "kind": "League"},
+        ],
+    )
+
+    def _fetch_event(event):
+        if event["id"] == 222:
+            raise RuntimeError("HTTP 408 from https://api.videreproject.com/decks?event_id=222")
+        return {
+            "event_id": "111",
+            "title": "Modern Challenge 64 2026-03-26",
+            "publish_date": "2026-03-26",
+            "event_type": "challenge",
+            "decks": [
+                {
+                    "deck_id": "9",
+                    "login_id": None,
+                    "player": "Alice",
+                    "wins": "5",
+                    "losses": "2",
+                    "mainboard": [{"card_name": "Lightning Bolt", "qty": 4, "sideboard": "false"}],
+                    "sideboard": [],
+                }
+            ],
+        }
+
+    monkeypatch.setattr("publisher.runner.fetch_event", _fetch_event)
+
+    class _FakeDeckCache:
+        def set(self, deck_id, deck_text, source):
+            return True
+
+    class _FakeClassifier:
+        def assign_archetypes(self, decks, fmt):
+            for deck in decks:
+                deck["archetype"] = "Burn"
+
+    monkeypatch.setattr("publisher.runner.get_deck_cache", lambda: _FakeDeckCache())
+    monkeypatch.setattr("publisher.runner.ArchetypeClassifier", lambda: _FakeClassifier())
+    monkeypatch.setattr("publisher.runner.save_mtgo_deck_metadata", lambda *args, **kwargs: None)
+
+    exit_code = main(
+        [
+            "--output-root",
+            str(tmp_path),
+            "--timestamp",
+            TIMESTAMP,
+            "scrape-mtgo-decklists",
+            "--format",
+            "Modern",
+            "--days",
+            "7",
+            "--event-delay-seconds",
+            "0",
+        ]
+    )
+
+    assert exit_code == 0
+    run_manifest = json.loads(
+        (tmp_path / "latest" / "runs" / "scrape-mtgo-decklists-modern.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    assert run_manifest["status"] == "success"
+    event_results = [r for r in run_manifest["results"] if r["scope"] == "mtgo-event"]
+    assert sorted(r["status"] for r in event_results) == ["skipped", "success"]
+
+    snapshot = json.loads(
+        (tmp_path / "latest" / "mtgo-decklists" / "modern.json").read_text(encoding="utf-8")
+    )
+    assert [e["id"] for e in snapshot["events"]] == ["111"]

@@ -40,7 +40,8 @@ The MTGO log file format is complex and undocumented. Chris Erickson's MTGO-Trac
 
 **Author:** Videre Project
 
-**License:** MIT
+**License:** Apache-2.0 (upstream also ships a `NOTICE` file that must be
+preserved when redistributing the SDK or its binaries)
 
 **What we use:**
 - MTGOSDK library for MTGO client interaction
@@ -68,7 +69,7 @@ We identified a bug in `HistoricalMatch.Opponents` where string-to-User conversi
 
 **Author:** Videre Project
 
-**License:** MIT
+**License:** Apache-2.0
 
 **What we use:**
 - Architecture patterns for MTGOSDK integration
@@ -171,9 +172,9 @@ This project was developed with assistance from **Claude** (Anthropic), an AI as
 
 ## License Compatibility
 
-This project is released under [LICENSE NAME TBD]. We have ensured compatibility with all dependencies:
+This project is released under the MIT License (see `LICENSE`). We have ensured compatibility with all dependencies:
 
-- **MTGOSDK**: MIT License ✅ Compatible
+- **MTGOSDK**: Apache-2.0 License ✅ Compatible (one-way: our code stays MIT, the SDK stays Apache-2.0; its `LICENSE` and `NOTICE` must accompany any redistribution of SDK binaries)
 - **Python libraries**: Various OSI-approved licenses ✅ Compatible
 - **Adapted code**: Properly attributed and modified ✅ Compliant
 

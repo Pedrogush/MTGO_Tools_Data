@@ -1,6 +1,11 @@
 import json
 
-from publisher.contracts import build_archetype_deck_snapshot, build_deck_text_blob
+from publisher.contracts import (
+    build_archetype_deck_snapshot,
+    build_archetype_list_snapshot,
+    build_deck_text_blob,
+    build_mtgo_decklists_snapshot,
+)
 from publisher.runner import main
 
 TIMESTAMP = "2026-03-23T12:00:00Z"
@@ -495,6 +500,370 @@ def test_scrape_radars_writes_snapshots_from_published_deck_texts(tmp_path):
     assert run_manifest["summary"]["success"] == 2
 
 
+def _write_mtgo_decklists_fixture(tmp_path, decks):
+    snapshot = build_mtgo_decklists_snapshot(
+        generated_at=TIMESTAMP,
+        format_name="modern",
+        source="videre-api",
+        days=7,
+        events=[
+            {
+                "id": "12345",
+                "url": "https://api.videreproject.com/decks?event_id=12345",
+                "title": "Modern League",
+                "publish_date": "2026-03-22",
+                "event_type": "league",
+                "decks_total": len(decks),
+                "decks_cached": len(decks),
+                "path": "archive/mtgo-decklists/modern/12345.json",
+                "decks": decks,
+            }
+        ],
+    )
+    path = tmp_path / "latest" / "mtgo-decklists" / "modern.json"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(snapshot, indent=2), encoding="utf-8")
+
+
+def test_scrape_radars_merges_mtgo_decklists_into_radars_and_card_pool(tmp_path):
+    deck_snapshot_path = tmp_path / "latest" / "decks" / "modern" / "temur-rhinos.json"
+    deck_snapshot_path.parent.mkdir(parents=True, exist_ok=True)
+    deck_snapshot_path.write_text(
+        json.dumps(
+            build_archetype_deck_snapshot(
+                generated_at=TIMESTAMP,
+                format_name="modern",
+                source="both",
+                archetype={"name": "Temur Rhinos", "href": "modern-temur-rhinos"},
+                decks=[
+                    {
+                        "name": "Temur Rhinos",
+                        "number": "123",
+                        "date": "2026-03-22",
+                        "player": "Alice",
+                        "event": "Modern Challenge",
+                        "source": "mtggoldfish",
+                        "deck_text_path": "archive/deck-texts/modern/123.json",
+                    }
+                ],
+            ),
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
+    blob_path = tmp_path / "archive" / "deck-texts" / "modern" / "123.json"
+    blob_path.parent.mkdir(parents=True, exist_ok=True)
+    blob_path.write_text(
+        json.dumps(
+            build_deck_text_blob(
+                generated_at=TIMESTAMP,
+                format_name="modern",
+                source="mtggoldfish",
+                deck_id="123",
+                deck_name="Temur Rhinos",
+                deck_text="4 Crashing Footfalls\n",
+            ),
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
+    _write_mtgo_decklists_fixture(
+        tmp_path,
+        [
+            {
+                "number": "999",
+                "archetype": "Temur Rhinos",
+                "name": "Temur Rhinos",
+                "source": "mtgo",
+                "deck_text": "4 Crashing Footfalls\n4 Bonecrusher Giant\n",
+            },
+            {
+                "number": "888",
+                "archetype": "Izzet Murktide",
+                "name": "Izzet Murktide",
+                "source": "mtgo",
+                "deck_text": "4 Murktide Regent\n",
+            },
+            {
+                "number": "777",
+                "archetype": "Unknown",
+                "name": "Unknown",
+                "source": "mtgo",
+                "deck_text": "4 Island\n",
+            },
+        ],
+    )
+
+    exit_code = main(
+        [
+            "--output-root",
+            str(tmp_path),
+            "--timestamp",
+            TIMESTAMP,
+            "scrape-radars",
+            "--format",
+            "Modern",
+        ]
+    )
+
+    assert exit_code == 0
+    rhinos_radar = json.loads(
+        (tmp_path / "latest" / "radars" / "modern" / "temur-rhinos.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    assert rhinos_radar["total_decks_analyzed"] == 2
+
+    murktide_radar = json.loads(
+        (tmp_path / "latest" / "radars" / "modern" / "izzet-murktide.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    assert murktide_radar["archetype"] == {
+        "name": "Izzet Murktide",
+        "href": "modern-izzet-murktide",
+    }
+    assert murktide_radar["total_decks_analyzed"] == 1
+
+    assert not (tmp_path / "latest" / "radars" / "modern" / "unknown.json").exists()
+
+    card_pool = json.loads(
+        (tmp_path / "latest" / "card-pools" / "modern.json").read_text(encoding="utf-8")
+    )
+    assert card_pool["total_decks_analyzed"] == 4
+    assert {"Crashing Footfalls", "Bonecrusher Giant", "Murktide Regent", "Island"} <= set(
+        card_pool["cards"]
+    )
+
+
+def test_scrape_radars_succeeds_when_goldfish_has_no_decks(tmp_path):
+    deck_snapshot_path = tmp_path / "latest" / "decks" / "modern" / "temur-rhinos.json"
+    deck_snapshot_path.parent.mkdir(parents=True, exist_ok=True)
+    deck_snapshot_path.write_text(
+        json.dumps(
+            build_archetype_deck_snapshot(
+                generated_at=TIMESTAMP,
+                format_name="modern",
+                source="both",
+                archetype={"name": "Temur Rhinos", "href": "modern-temur-rhinos"},
+                decks=[],
+            ),
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
+    _write_mtgo_decklists_fixture(
+        tmp_path,
+        [
+            {
+                "number": "999",
+                "archetype": "Temur Rhinos",
+                "name": "Temur Rhinos",
+                "source": "mtgo",
+                "deck_text": "4 Crashing Footfalls\n",
+            }
+        ],
+    )
+
+    exit_code = main(
+        [
+            "--output-root",
+            str(tmp_path),
+            "--timestamp",
+            TIMESTAMP,
+            "scrape-radars",
+            "--format",
+            "Modern",
+        ]
+    )
+
+    assert exit_code == 0
+    radar = json.loads(
+        (tmp_path / "latest" / "radars" / "modern" / "temur-rhinos.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    assert radar["total_decks_analyzed"] == 1
+    card_pool = json.loads(
+        (tmp_path / "latest" / "card-pools" / "modern.json").read_text(encoding="utf-8")
+    )
+    assert card_pool["total_decks_analyzed"] == 1
+    assert card_pool["cards"] == ["Crashing Footfalls"]
+    run_manifest = json.loads(
+        (tmp_path / "latest" / "runs" / "scrape-radars-modern.json").read_text(encoding="utf-8")
+    )
+    assert run_manifest["status"] == "success"
+    assert not any(result["status"] == "hard-failure" for result in run_manifest["results"])
+
+
+def test_scrape_radars_merges_mtgo_decks_under_canonical_archetype_name(tmp_path):
+    archetypes_path = tmp_path / "latest" / "archetypes" / "modern.json"
+    archetypes_path.parent.mkdir(parents=True, exist_ok=True)
+    archetypes_path.write_text(
+        json.dumps(
+            build_archetype_list_snapshot(
+                generated_at=TIMESTAMP,
+                format_name="modern",
+                source="mtggoldfish",
+                archetypes=[{"name": "Counter Vine", "href": "modern-counter-vine"}],
+            ),
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
+    deck_snapshot_path = tmp_path / "latest" / "decks" / "modern" / "counter-vine.json"
+    deck_snapshot_path.parent.mkdir(parents=True, exist_ok=True)
+    deck_snapshot_path.write_text(
+        json.dumps(
+            build_archetype_deck_snapshot(
+                generated_at=TIMESTAMP,
+                format_name="modern",
+                source="both",
+                archetype={"name": "Counter Vine", "href": "modern-counter-vine"},
+                decks=[],
+            ),
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
+    _write_mtgo_decklists_fixture(
+        tmp_path,
+        [
+            {
+                "number": "999",
+                "archetype": "Countervine",
+                "name": "Countervine",
+                "source": "mtgo",
+                "deck_text": "4 Vengevine\n",
+            }
+        ],
+    )
+
+    exit_code = main(
+        [
+            "--output-root",
+            str(tmp_path),
+            "--timestamp",
+            TIMESTAMP,
+            "scrape-radars",
+            "--format",
+            "Modern",
+        ]
+    )
+
+    assert exit_code == 0
+    radar = json.loads(
+        (tmp_path / "latest" / "radars" / "modern" / "counter-vine.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    assert radar["total_decks_analyzed"] == 1
+    assert radar["archetype"] == {"name": "Counter Vine", "href": "modern-counter-vine"}
+    assert not (tmp_path / "latest" / "radars" / "modern" / "countervine.json").exists()
+
+
+def test_scrape_archetypes_unions_mtgo_only_archetypes(monkeypatch, tmp_path):
+    _write_mtgo_decklists_fixture(
+        tmp_path,
+        [
+            {
+                "number": "1",
+                "archetype": "Temur Rhinos",
+                "name": "Temur Rhinos",
+                "source": "mtgo",
+                "deck_text": "4 Crashing Footfalls\n",
+            },
+            {
+                "number": "2",
+                "archetype": "Broodscale",
+                "name": "Broodscale",
+                "source": "mtgo",
+                "deck_text": "4 Basking Broodscale\n",
+            },
+            {
+                "number": "3",
+                "archetype": "Unknown",
+                "name": "Unknown",
+                "source": "mtgo",
+                "deck_text": "4 Island\n",
+            },
+        ],
+    )
+    monkeypatch.setattr(
+        "publisher.runner.fetch_archetypes",
+        lambda *args, **kwargs: [{"name": "Temur Rhinos", "href": "modern-temur-rhinos"}],
+    )
+
+    exit_code = main(
+        [
+            "--output-root",
+            str(tmp_path),
+            "--timestamp",
+            TIMESTAMP,
+            "scrape-archetypes",
+            "--format",
+            "Modern",
+        ]
+    )
+
+    assert exit_code == 0
+    snapshot = json.loads(
+        (tmp_path / "latest" / "archetypes" / "modern.json").read_text(encoding="utf-8")
+    )
+    by_name = {entry["name"]: entry for entry in snapshot["archetypes"]}
+    assert by_name["Broodscale"] == {
+        "name": "Broodscale",
+        "href": "modern-broodscale",
+        "source": "mtgo",
+    }
+    assert "source" not in by_name["Temur Rhinos"]
+    assert "Unknown" not in by_name
+
+
+def test_scrape_decks_skips_mtgo_union_archetypes(monkeypatch, tmp_path):
+    _write_mtgo_decklists_fixture(
+        tmp_path,
+        [
+            {
+                "number": "2",
+                "archetype": "Broodscale",
+                "name": "Broodscale",
+                "source": "mtgo",
+                "deck_text": "4 Basking Broodscale\n",
+            }
+        ],
+    )
+    monkeypatch.setattr(
+        "publisher.runner.fetch_archetypes",
+        lambda *args, **kwargs: [{"name": "Temur Rhinos", "href": "modern-temur-rhinos"}],
+    )
+
+    class _GoldfishOnlyRepo(_FakeRepo):
+        def get_decks_for_archetype(self, archetype, force_refresh=False, source_filter=None):
+            assert archetype.get("source") != "mtgo"
+            return super().get_decks_for_archetype(
+                archetype, force_refresh=force_refresh, source_filter=source_filter
+            )
+
+    monkeypatch.setattr("publisher.runner.ScrapingMetagameRepository", _GoldfishOnlyRepo)
+
+    exit_code = main(
+        [
+            "--output-root",
+            str(tmp_path),
+            "--timestamp",
+            TIMESTAMP,
+            "scrape-decks",
+            "--format",
+            "Modern",
+        ]
+    )
+
+    assert exit_code == 0
+    assert (tmp_path / "latest" / "decks" / "modern" / "temur-rhinos.json").exists()
+    assert not (tmp_path / "latest" / "decks" / "modern" / "broodscale.json").exists()
+
+
 def test_scrape_radars_skips_format_card_pool_for_filtered_runs(tmp_path):
     deck_snapshot_path = tmp_path / "latest" / "decks" / "modern" / "temur-rhinos.json"
     deck_snapshot_path.parent.mkdir(parents=True, exist_ok=True)
@@ -648,6 +1017,8 @@ def test_scrape_mtgo_decklists_writes_archived_event_snapshots(monkeypatch, tmp_
     assert latest_snapshot["events"][0]["id"] == "n12836735"
     assert latest_snapshot["source"] == "videre-api"
     assert event_snapshot["decks"][0]["archetype"] == "Mono Red Prowess"
+    assert event_snapshot["decks"][0]["archetype_href"] == "modern-mono-red-prowess"
+    assert latest_snapshot["events"][0]["decks"][0]["archetype_href"] == "modern-mono-red-prowess"
     assert latest_manifest["latest"]["mtgo_decklists"][0]["path"] == "latest/mtgo-decklists/modern.json"
 
 

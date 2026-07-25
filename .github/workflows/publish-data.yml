@@ -477,7 +477,9 @@ jobs:
           exit 1
 
   publish-radars:
-    needs: publish-decklists
+    needs:
+      - publish-decklists
+      - publish-decklists-mtgo
     if: ${{ always() && (github.event_name == 'workflow_dispatch' || github.event.schedule == '15 */6 * * *') }}
     strategy:
       fail-fast: false
@@ -512,6 +514,16 @@ jobs:
         uses: actions/download-artifact@v6
         with:
           name: publish-data-decklists-${{ matrix.format }}
+          path: ${{ env.PUBLISH_OUTPUT_ROOT }}
+
+      # Radars and card pools merge MTGGoldfish paper decks with MTGO decks
+      # from the Videre pipeline; a missing MTGO artifact degrades to
+      # Goldfish-only data instead of blocking the radar publish.
+      - name: Download same-format MTGO decklist artifact
+        continue-on-error: true
+        uses: actions/download-artifact@v6
+        with:
+          name: publish-data-decklists-mtgo-${{ matrix.format }}
           path: ${{ env.PUBLISH_OUTPUT_ROOT }}
 
       - name: Publish archetype radar and format card-pool snapshots

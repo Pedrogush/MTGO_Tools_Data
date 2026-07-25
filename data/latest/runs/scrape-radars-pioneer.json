@@ -1,15 +1,23 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-25T14:07:14Z",
+  "generated_at": "2026-07-25T19:40:23Z",
   "command": "scrape-radars-pioneer",
-  "status": "hard-failure",
+  "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 58,
-    "hard-failure": 1
+    "skipped": 53,
+    "success": 7
   },
   "results": [
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "pioneer",
+      "archetype": "4c-elementals",
+      "path": "latest/radars/pioneer/4c-elementals.json",
+      "message": "No published decks were available for radar generation."
+    },
     {
       "scope": "archetype-radar",
       "status": "skipped",
@@ -88,6 +96,14 @@
       "format": "pioneer",
       "archetype": "azorius-flash",
       "path": "latest/radars/pioneer/azorius-flash.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "pioneer",
+      "archetype": "bant-company",
+      "path": "latest/radars/pioneer/bant-company.json",
       "message": "No published decks were available for radar generation."
     },
     {
@@ -204,11 +220,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "grixis-midrange",
-      "path": "latest/radars/pioneer/grixis-midrange.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pioneer/grixis-midrange.json"
     },
     {
       "scope": "archetype-radar",
@@ -228,11 +243,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "hidden-strings",
-      "path": "latest/radars/pioneer/hidden-strings.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pioneer/hidden-strings.json"
     },
     {
       "scope": "archetype-radar",
@@ -276,11 +290,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "izzet-prowess",
-      "path": "latest/radars/pioneer/izzet-prowess.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pioneer/izzet-prowess.json"
     },
     {
       "scope": "archetype-radar",
@@ -340,19 +353,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "pioneer",
-      "archetype": "mono-black-discard",
-      "path": "latest/radars/pioneer/mono-black-discard.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "mono-black-midrange",
-      "path": "latest/radars/pioneer/mono-black-midrange.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pioneer/mono-black-midrange.json"
     },
     {
       "scope": "archetype-radar",
@@ -396,11 +400,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "quintorius-combo",
-      "path": "latest/radars/pioneer/quintorius-combo.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pioneer/quintorius-combo.json"
     },
     {
       "scope": "archetype-radar",
@@ -412,11 +415,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "rakdos-midrange",
-      "path": "latest/radars/pioneer/rakdos-midrange.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pioneer/rakdos-midrange.json"
     },
     {
       "scope": "archetype-radar",
@@ -476,10 +478,9 @@
     },
     {
       "scope": "format-card-pool",
-      "status": "hard-failure",
+      "status": "success",
       "format": "pioneer",
-      "path": "latest/card-pools/pioneer.json",
-      "message": "No deck texts were available for format card-pool generation."
+      "path": "latest/card-pools/pioneer.json"
     }
   ]
 }

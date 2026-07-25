@@ -1,7 +1,7 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-25T14:07:11Z",
+  "generated_at": "2026-07-25T19:40:27Z",
   "command": "scrape-radars-vintage",
   "status": "hard-failure",
   "max_stale_hours": 24,
@@ -10,6 +10,14 @@
     "hard-failure": 1
   },
   "results": [
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "vintage",
+      "archetype": "8-cast",
+      "path": "latest/radars/vintage/8-cast.json",
+      "message": "No published decks were available for radar generation."
+    },
     {
       "scope": "archetype-radar",
       "status": "skipped",
@@ -168,14 +176,6 @@
       "format": "vintage",
       "archetype": "oath-of-druids",
       "path": "latest/radars/vintage/oath-of-druids.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "vintage",
-      "archetype": "oops-all-spells",
-      "path": "latest/radars/vintage/oops-all-spells.json",
       "message": "No published decks were available for radar generation."
     },
     {

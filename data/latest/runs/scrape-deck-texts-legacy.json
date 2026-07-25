@@ -1,12 +1,12 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-25T08:26:47Z",
+  "generated_at": "2026-07-25T14:05:32Z",
   "command": "scrape-deck-texts-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 20,
+    "success": 19,
     "skipped": 60
   },
   "results": [
@@ -189,10 +189,11 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "dimir-tempo",
-      "path": "latest/decks/legacy/dimir-tempo.json"
+      "path": "latest/decks/legacy/dimir-tempo.json",
+      "message": "All MTGGoldfish rows were MTGO events; published via mtgo-decklists."
     },
     {
       "scope": "archetype-decks",
@@ -475,14 +476,6 @@
       "format": "legacy",
       "deck_id": "7883219",
       "path": "archive/deck-texts/legacy/7883219.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "legacy",
-      "deck_id": "7883220",
-      "path": "archive/deck-texts/legacy/7883220.json",
       "message": "Reused existing published deck-text blob."
     },
     {

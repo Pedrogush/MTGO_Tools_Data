@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-25T08:28:39Z",
+  "generated_at": "2026-07-25T14:07:14Z",
   "command": "scrape-radars-pioneer",
-  "status": "success",
+  "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 58,
-    "stale-fallback": 1
+    "hard-failure": 1
   },
   "results": [
     {
@@ -476,7 +476,7 @@
     },
     {
       "scope": "format-card-pool",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "pioneer",
       "path": "latest/card-pools/pioneer.json",
       "message": "No deck texts were available for format card-pool generation."

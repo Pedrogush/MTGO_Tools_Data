@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-25T08:28:39Z",
+  "generated_at": "2026-07-25T14:07:11Z",
   "command": "scrape-radars-vintage",
-  "status": "success",
+  "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 30,
-    "stale-fallback": 1
+    "hard-failure": 1
   },
   "results": [
     {
@@ -252,7 +252,7 @@
     },
     {
       "scope": "format-card-pool",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "vintage",
       "path": "latest/card-pools/vintage.json",
       "message": "No deck texts were available for format card-pool generation."

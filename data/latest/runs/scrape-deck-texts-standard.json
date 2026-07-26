@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-25T23:54:52Z",
+  "generated_at": "2026-07-26T03:59:21Z",
   "command": "scrape-deck-texts-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 2,
-    "skipped": 60
+    "success": 1,
+    "skipped": 61
   },
   "results": [
     {
@@ -26,10 +26,11 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "4c-control",
-      "path": "latest/decks/standard/4c-control.json"
+      "path": "latest/decks/standard/4c-control.json",
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
@@ -499,9 +500,7 @@
       "scope": "deck-text",
       "status": "skipped",
       "format": "standard",
-      "deck_id": "7880771",
-      "path": "archive/deck-texts/standard/7880771.json",
-      "message": "Reused existing published deck-text blob."
+      "message": "No deck IDs were available for deck-text publishing."
     }
   ]
 }

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-25T23:56:39Z",
+  "generated_at": "2026-07-26T04:09:11Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 60,
-    "success": 30
+    "skipped": 61,
+    "success": 28
   },
   "results": [
     {
@@ -20,10 +20,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "4c-control",
-      "path": "latest/radars/standard/4c-control.json"
+      "path": "latest/radars/standard/4c-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -657,13 +658,6 @@
       "format": "standard",
       "archetype": "mardu-blade",
       "path": "latest/radars/standard/mardu-blade.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
-      "archetype": "mono-white-control",
-      "path": "latest/radars/standard/mono-white-control.json"
     },
     {
       "scope": "archetype-radar",

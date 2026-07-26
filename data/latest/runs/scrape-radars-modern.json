@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-25T23:56:43Z",
+  "generated_at": "2026-07-26T04:09:11Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 36,
-    "success": 76
+    "skipped": 37,
+    "success": 73
   },
   "results": [
     {
@@ -380,10 +380,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "merfolk",
-      "path": "latest/radars/modern/merfolk.json"
+      "path": "latest/radars/modern/merfolk.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -556,13 +557,6 @@
       "format": "modern",
       "archetype": "yawgmoth",
       "path": "latest/radars/modern/yawgmoth.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "5-color-creativity",
-      "path": "latest/radars/modern/5-color-creativity.json"
     },
     {
       "scope": "archetype-radar",
@@ -773,13 +767,6 @@
       "format": "modern",
       "archetype": "simic-ritual",
       "path": "latest/radars/modern/simic-ritual.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "soultrader-combo",
-      "path": "latest/radars/modern/soultrader-combo.json"
     },
     {
       "scope": "archetype-radar",

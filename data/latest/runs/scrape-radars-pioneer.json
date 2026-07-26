@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-26T14:03:04Z",
+  "generated_at": "2026-07-26T19:49:21Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 38,
-    "success": 33
+    "skipped": 37,
+    "success": 35
   },
   "results": [
     {
@@ -173,6 +173,13 @@
       "format": "pioneer",
       "archetype": "dimir-self-bounce",
       "path": "latest/radars/pioneer/dimir-self-bounce.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "eldrazi",
+      "path": "latest/radars/pioneer/eldrazi.json"
     },
     {
       "scope": "archetype-radar",
@@ -353,14 +360,6 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "pioneer",
-      "archetype": "mono-green-toolbox",
-      "path": "latest/radars/pioneer/mono-green-toolbox.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "pioneer",
       "archetype": "mono-red-prowess",
       "path": "latest/radars/pioneer/mono-red-prowess.json",
       "message": "No published decks were available for radar generation."
@@ -407,6 +406,13 @@
       "format": "pioneer",
       "archetype": "rakdos-midrange",
       "path": "latest/radars/pioneer/rakdos-midrange.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "rakdos-prowess",
+      "path": "latest/radars/pioneer/rakdos-prowess.json"
     },
     {
       "scope": "archetype-radar",

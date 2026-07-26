@@ -49,3 +49,35 @@ def test_unmatched_name_gets_synthesized_href():
 def test_empty_name_falls_back_to_unknown():
     name, href = _resolver().canonicalize("")
     assert (name, href) == ("Unknown", "vintage-unknown")
+
+
+def test_alias_overrides_wrong_token_match():
+    # Without the alias, "PO" would token-match "Lurrus PO" instead of
+    # "Paradoxical Outcome".
+    resolver = _ArchetypeHrefResolver(
+        [
+            {"name": "Lurrus PO", "href": "vintage-lurrus-po"},
+            {"name": "Paradoxical Outcome", "href": "vintage-paradoxical-outcome"},
+        ],
+        "vintage",
+    )
+    name, href = resolver.canonicalize("PO")
+    assert (name, href) == ("Paradoxical Outcome", "vintage-paradoxical-outcome")
+
+
+def test_alias_bridges_rename():
+    resolver = _ArchetypeHrefResolver(
+        [{"name": "Goryo's Vengeance", "href": "modern-goryo-s-vengeance"}],
+        "modern",
+    )
+    name, href = resolver.canonicalize("Goryo Reanimator")
+    assert (name, href) == ("Goryo's Vengeance", "modern-goryo-s-vengeance")
+
+
+def test_alias_falls_through_when_target_missing():
+    resolver = _ArchetypeHrefResolver(
+        [{"name": "Counter Vine", "href": "vintage-counter-vine"}],
+        "vintage",
+    )
+    name, href = resolver.canonicalize("Breach")
+    assert (name, href) == ("Breach", "vintage-breach")

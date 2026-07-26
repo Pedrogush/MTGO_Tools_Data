@@ -14,6 +14,7 @@ from typing import Any
 from loguru import logger
 
 from navigators.mtggoldfish import get_archetype_stats
+from publisher.archetype_aliases import ARCHETYPE_ALIASES
 from publisher.contracts import (
     build_archetype_deck_snapshot,
     build_archetype_list_snapshot,
@@ -150,14 +151,15 @@ class _ArchetypeHrefResolver:
     The MTGO classifier uses the MTGOFormatData taxonomy while the archetype
     list uses MTGGoldfish's; names for the same archetype frequently differ
     ("Countervine" vs "Counter Vine"). Matching is deliberately conservative:
-    exact slug, then dash-insensitive slug, then a token-subset match that only
-    applies when a single candidate qualifies. Unmatched names keep their
-    display string and get a synthesized "{format}-{slug}" href, the same
-    scheme MTGGoldfish hrefs follow.
+    curated alias, then exact slug, then dash-insensitive slug, then a
+    token-subset match that only applies when a single candidate qualifies.
+    Unmatched names keep their display string and get a synthesized
+    "{format}-{slug}" href, the same scheme MTGGoldfish hrefs follow.
     """
 
     def __init__(self, archetypes: list[dict[str, Any]], normalized_format: str) -> None:
         self.normalized_format = normalized_format
+        self._aliases = ARCHETYPE_ALIASES.get(normalized_format, {})
         self._by_slug: dict[str, dict[str, Any]] = {}
         self._by_compact: dict[str, list[dict[str, Any]]] = {}
         self._token_entries: list[tuple[frozenset[str], dict[str, Any]]] = []
@@ -175,6 +177,11 @@ class _ArchetypeHrefResolver:
         slug = normalize_name(archetype_name)
         if not slug:
             return None
+        alias_target = self._aliases.get(slug)
+        if alias_target:
+            aliased = self._by_slug.get(normalize_name(alias_target))
+            if aliased is not None:
+                return aliased
         match = self._by_slug.get(slug)
         if match is not None:
             return match

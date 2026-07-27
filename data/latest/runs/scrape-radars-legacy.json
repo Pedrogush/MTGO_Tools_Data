@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-26T19:49:26Z",
+  "generated_at": "2026-07-27T04:09:36Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 22,
-    "success": 64
+    "skipped": 24,
+    "success": 60
   },
   "results": [
     {
@@ -101,11 +101,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "boros-initiative",
-      "path": "latest/radars/legacy/boros-initiative.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/boros-initiative.json"
     },
     {
       "scope": "archetype-radar",
@@ -168,10 +167,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "dimir-car",
-      "path": "latest/radars/legacy/dimir-car.json"
+      "path": "latest/radars/legacy/dimir-car.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -368,10 +368,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "painter",
-      "path": "latest/radars/legacy/painter.json"
+      "path": "latest/radars/legacy/painter.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -425,10 +426,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "sultai-depths",
-      "path": "latest/radars/legacy/sultai-depths.json"
+      "path": "latest/radars/legacy/sultai-depths.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -449,15 +451,15 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "azorius-midrange",
-      "path": "latest/radars/legacy/azorius-midrange.json"
+      "archetype": "azorius-mentor",
+      "path": "latest/radars/legacy/azorius-mentor.json"
     },
     {
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "charbelcher",
-      "path": "latest/radars/legacy/charbelcher.json"
+      "archetype": "azorius-midrange",
+      "path": "latest/radars/legacy/azorius-midrange.json"
     },
     {
       "scope": "archetype-radar",
@@ -491,22 +493,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "elves",
-      "path": "latest/radars/legacy/elves.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
       "archetype": "energy",
       "path": "latest/radars/legacy/energy.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "esper-delver",
-      "path": "latest/radars/legacy/esper-delver.json"
     },
     {
       "scope": "archetype-radar",

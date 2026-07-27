@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-26T19:49:19Z",
+  "generated_at": "2026-07-27T04:09:40Z",
   "command": "scrape-radars-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 17,
-    "success": 53
+    "skipped": 19,
+    "success": 50
   },
   "results": [
     {
@@ -28,10 +28,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "azorius-faeries",
-      "path": "latest/radars/pauper/azorius-faeries.json"
+      "path": "latest/radars/pauper/azorius-faeries.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -108,10 +109,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "devotion",
-      "path": "latest/radars/pauper/devotion.json"
+      "path": "latest/radars/pauper/devotion.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -474,13 +476,6 @@
       "format": "pauper",
       "archetype": "golgari-garden",
       "path": "latest/radars/pauper/golgari-garden.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pauper",
-      "archetype": "izzet-control",
-      "path": "latest/radars/pauper/izzet-control.json"
     },
     {
       "scope": "archetype-radar",

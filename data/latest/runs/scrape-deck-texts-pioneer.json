@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-26T19:37:58Z",
+  "generated_at": "2026-07-27T04:05:48Z",
   "command": "scrape-deck-texts-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 11,
-    "skipped": 57
+    "success": 9,
+    "skipped": 59
   },
   "results": [
     {
@@ -361,7 +361,7 @@
       "format": "pioneer",
       "archetype": "mono-red-prowess",
       "path": "latest/decks/pioneer/mono-red-prowess.json",
-      "message": "No decks found within the last 7 days."
+      "message": "All MTGGoldfish rows were MTGO events; published via mtgo-decklists."
     },
     {
       "scope": "archetype-decks",
@@ -490,10 +490,11 @@
     },
     {
       "scope": "deck-text",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "deck_id": "7887819",
-      "path": "archive/deck-texts/pioneer/7887819.json"
+      "path": "archive/deck-texts/pioneer/7887819.json",
+      "message": "Reused existing published deck-text blob."
     },
     {
       "scope": "deck-text",
@@ -529,10 +530,11 @@
     },
     {
       "scope": "deck-text",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "deck_id": "7887825",
-      "path": "archive/deck-texts/pioneer/7887825.json"
+      "path": "archive/deck-texts/pioneer/7887825.json",
+      "message": "Reused existing published deck-text blob."
     },
     {
       "scope": "deck-text",

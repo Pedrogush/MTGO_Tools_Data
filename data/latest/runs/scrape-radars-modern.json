@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-26T19:49:21Z",
+  "generated_at": "2026-07-27T04:09:36Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 94,
-    "skipped": 18
+    "success": 89,
+    "skipped": 20
   },
   "results": [
     {
@@ -190,10 +190,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "esper-midrange",
-      "path": "latest/radars/modern/esper-midrange.json"
+      "path": "latest/radars/modern/esper-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -227,10 +228,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "grixis-control",
-      "path": "latest/radars/modern/grixis-control.json"
+      "path": "latest/radars/modern/grixis-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -753,13 +755,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "scapeshift",
-      "path": "latest/radars/modern/scapeshift.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "simic-ritual",
       "path": "latest/radars/modern/simic-ritual.json"
     },
@@ -788,22 +783,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "wubg-blink",
-      "path": "latest/radars/modern/wubg-blink.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "wubr-control",
       "path": "latest/radars/modern/wubr-control.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "wurg-control",
-      "path": "latest/radars/modern/wurg-control.json"
     },
     {
       "scope": "format-card-pool",

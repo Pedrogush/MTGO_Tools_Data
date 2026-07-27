@@ -1,12 +1,12 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-26T19:49:11Z",
+  "generated_at": "2026-07-27T04:09:49Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 49,
+    "skipped": 48,
     "success": 41
   },
   "results": [
@@ -211,11 +211,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
       "archetype": "dimir-midrange",
-      "path": "latest/radars/standard/dimir-midrange.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/standard/dimir-midrange.json"
     },
     {
       "scope": "archetype-radar",
@@ -588,13 +587,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
-      "archetype": "azorius-aggro",
-      "path": "latest/radars/standard/azorius-aggro.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
       "archetype": "azorius-artifacts",
       "path": "latest/radars/standard/azorius-artifacts.json"
     },
@@ -611,13 +603,6 @@
       "format": "standard",
       "archetype": "bant-cub",
       "path": "latest/radars/standard/bant-cub.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
-      "archetype": "bant-midrange",
-      "path": "latest/radars/standard/bant-midrange.json"
     },
     {
       "scope": "archetype-radar",
@@ -653,6 +638,13 @@
       "format": "standard",
       "archetype": "mardu-blade",
       "path": "latest/radars/standard/mardu-blade.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "mono-green-cub",
+      "path": "latest/radars/standard/mono-green-cub.json"
     },
     {
       "scope": "archetype-radar",

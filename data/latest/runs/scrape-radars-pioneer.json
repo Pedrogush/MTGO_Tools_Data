@@ -1,15 +1,22 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-27T15:22:11Z",
+  "generated_at": "2026-07-27T20:06:12Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 37,
-    "success": 35
+    "success": 40,
+    "skipped": 32
   },
   "results": [
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "4c-auras",
+      "path": "latest/radars/pioneer/4c-auras.json"
+    },
     {
       "scope": "archetype-radar",
       "status": "skipped",
@@ -28,11 +35,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "4c-midrange",
-      "path": "latest/radars/pioneer/4c-midrange.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pioneer/4c-midrange.json"
     },
     {
       "scope": "archetype-radar",
@@ -161,11 +167,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "dimir-midrange",
-      "path": "latest/radars/pioneer/dimir-midrange.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pioneer/dimir-midrange.json"
     },
     {
       "scope": "archetype-radar",
@@ -228,11 +233,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
-      "archetype": "grixis-transmogrify",
-      "path": "latest/radars/pioneer/grixis-transmogrify.json",
-      "message": "No published decks were available for radar generation."
+      "archetype": "gruul-aggro",
+      "path": "latest/radars/pioneer/gruul-aggro.json"
     },
     {
       "scope": "archetype-radar",
@@ -253,25 +257,16 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "pioneer",
-      "archetype": "izzet-aggro",
-      "path": "latest/radars/pioneer/izzet-aggro.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "pioneer",
       "archetype": "izzet-ensoul-artifact",
       "path": "latest/radars/pioneer/izzet-ensoul-artifact.json",
       "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "izzet-lessons",
-      "path": "latest/radars/pioneer/izzet-lessons.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pioneer/izzet-lessons.json"
     },
     {
       "scope": "archetype-radar",

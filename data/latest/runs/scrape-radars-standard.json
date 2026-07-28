@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-27T20:06:16Z",
+  "generated_at": "2026-07-28T03:46:57Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 41,
-    "skipped": 48
+    "success": 40,
+    "skipped": 50
   },
   "results": [
     {
@@ -151,10 +151,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "boros-burn",
-      "path": "latest/radars/standard/boros-burn.json"
+      "path": "latest/radars/standard/boros-burn.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -469,10 +470,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "naya-yuna",
-      "path": "latest/radars/standard/naya-yuna.json"
+      "path": "latest/radars/standard/naya-yuna.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -638,6 +640,13 @@
       "format": "standard",
       "archetype": "mardu-blade",
       "path": "latest/radars/standard/mardu-blade.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "mono-blue-midrange",
+      "path": "latest/radars/standard/mono-blue-midrange.json"
     },
     {
       "scope": "archetype-radar",

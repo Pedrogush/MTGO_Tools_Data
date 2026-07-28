@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-27T20:06:15Z",
+  "generated_at": "2026-07-28T03:46:59Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 25,
-    "success": 60
+    "skipped": 26,
+    "success": 58
   },
   "results": [
     {
@@ -325,10 +325,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "nic-fit",
-      "path": "latest/radars/legacy/nic-fit.json"
+      "path": "latest/radars/legacy/nic-fit.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -494,6 +495,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
+      "archetype": "dredge",
+      "path": "latest/radars/legacy/dredge.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
       "archetype": "energy",
       "path": "latest/radars/legacy/energy.json"
     },
@@ -557,13 +565,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "mono-blue-delver",
-      "path": "latest/radars/legacy/mono-blue-delver.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
       "archetype": "mono-red-prison",
       "path": "latest/radars/legacy/mono-red-prison.json"
     },
@@ -587,13 +588,6 @@
       "format": "legacy",
       "archetype": "necro-storm",
       "path": "latest/radars/legacy/necro-storm.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "post",
-      "path": "latest/radars/legacy/post.json"
     },
     {
       "scope": "archetype-radar",

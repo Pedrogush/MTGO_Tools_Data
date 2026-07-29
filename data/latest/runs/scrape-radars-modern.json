@@ -1,7 +1,7 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-29T14:42:56Z",
+  "generated_at": "2026-07-29T19:51:37Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
@@ -380,11 +380,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "mono-blue-tron",
-      "path": "latest/radars/modern/mono-blue-tron.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/mono-blue-tron.json"
     },
     {
       "scope": "archetype-radar",
@@ -418,10 +417,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "orzhov-genericblink",
-      "path": "latest/radars/modern/orzhov-genericblink.json"
+      "path": "latest/radars/modern/orzhov-genericblink.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

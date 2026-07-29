@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-29T14:37:41Z",
+  "generated_at": "2026-07-29T19:52:06Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 40,
-    "skipped": 51
+    "success": 41,
+    "skipped": 50
   },
   "results": [
     {
@@ -161,6 +161,14 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "standard",
+      "archetype": "boros-control",
+      "path": "latest/radars/standard/boros-control.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "standard",
       "archetype": "boros-dragons",
       "path": "latest/radars/standard/boros-dragons.json",
       "message": "No published decks were available for radar generation."
@@ -275,14 +283,6 @@
       "format": "standard",
       "archetype": "gruul-landfall",
       "path": "latest/radars/standard/gruul-landfall.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "standard",
-      "archetype": "gruul-midrange",
-      "path": "latest/radars/standard/gruul-midrange.json",
       "message": "No published decks were available for radar generation."
     },
     {
@@ -410,14 +410,6 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "standard",
-      "archetype": "mono-black-midrange",
-      "path": "latest/radars/standard/mono-black-midrange.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "standard",
       "archetype": "mono-green-landfall",
       "path": "latest/radars/standard/mono-green-landfall.json",
       "message": "No published decks were available for radar generation."
@@ -475,6 +467,13 @@
       "archetype": "naya-yuna",
       "path": "latest/radars/standard/naya-yuna.json",
       "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "orzhov-aristocrats",
+      "path": "latest/radars/standard/orzhov-aristocrats.json"
     },
     {
       "scope": "archetype-radar",

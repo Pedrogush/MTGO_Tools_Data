@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-28T20:02:19Z",
+  "generated_at": "2026-07-29T03:47:09Z",
   "command": "scrape-radars-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 14,
-    "success": 55
+    "skipped": 16,
+    "success": 53
   },
   "results": [
     {
@@ -235,10 +235,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "inside-out-combo",
-      "path": "latest/radars/pauper/inside-out-combo.json"
+      "path": "latest/radars/pauper/inside-out-combo.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -338,10 +339,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "mono-white-heroic",
-      "path": "latest/radars/pauper/mono-white-heroic.json"
+      "path": "latest/radars/pauper/mono-white-heroic.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

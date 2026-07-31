@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-30T19:59:19Z",
+  "generated_at": "2026-07-31T03:56:34Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 43,
-    "skipped": 27
+    "success": 42,
+    "skipped": 28
   },
   "results": [
     {
@@ -297,10 +297,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "izzet-rona-combo",
-      "path": "latest/radars/pioneer/izzet-rona-combo.json"
+      "path": "latest/radars/pioneer/izzet-rona-combo.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

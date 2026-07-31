@@ -1,16 +1,36 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-30T19:56:08Z",
+  "generated_at": "2026-07-31T03:54:35Z",
   "command": "scrape-mtgo-decklists-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 3,
-    "cached": 19,
-    "skipped": 3
+    "success": 4,
+    "skipped": 3,
+    "cached": 18
   },
   "results": [
+    {
+      "scope": "mtgo-event",
+      "status": "success",
+      "format": "modern",
+      "path": "archive/mtgo-decklists/modern/n1521282172.json",
+      "message": "Cached 8/8 decks."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "skipped",
+      "format": "modern",
+      "message": "https://api.videreproject.com/decks?event_id=12849440: Event returned no decklists."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "success",
+      "format": "modern",
+      "path": "archive/mtgo-decklists/modern/12849434.json",
+      "message": "Cached 32/32 decks."
+    },
     {
       "scope": "mtgo-event",
       "status": "success",
@@ -27,10 +47,10 @@
     },
     {
       "scope": "mtgo-event",
-      "status": "success",
+      "status": "cached",
       "format": "modern",
       "path": "archive/mtgo-decklists/modern/n1848755051.json",
-      "message": "Cached 13/13 decks."
+      "message": "Loaded 13 decks from archive."
     },
     {
       "scope": "mtgo-event",
@@ -155,26 +175,6 @@
       "format": "modern",
       "path": "archive/mtgo-decklists/modern/n659026550.json",
       "message": "Loaded 8 decks from archive."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "skipped",
-      "format": "modern",
-      "message": "https://api.videreproject.com/decks?event_id=12848183: Event returned no decklists."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "cached",
-      "format": "modern",
-      "path": "archive/mtgo-decklists/modern/12848173.json",
-      "message": "Loaded 32 decks from archive."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "cached",
-      "format": "modern",
-      "path": "archive/mtgo-decklists/modern/n521715179.json",
-      "message": "Loaded 57 decks from archive."
     },
     {
       "scope": "mtgo-decklists",

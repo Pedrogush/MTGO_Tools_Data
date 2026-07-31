@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-31T14:42:34Z",
+  "generated_at": "2026-07-31T20:00:19Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 27,
-    "success": 55
+    "skipped": 25,
+    "success": 57
   },
   "results": [
     {
@@ -82,6 +82,14 @@
       "format": "legacy",
       "archetype": "blue-cloudpost",
       "path": "latest/radars/legacy/blue-cloudpost.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "legacy",
+      "archetype": "blue-dredge",
+      "path": "latest/radars/legacy/blue-dredge.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -235,11 +243,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "jeskai-control",
-      "path": "latest/radars/legacy/jeskai-control.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/jeskai-control.json"
     },
     {
       "scope": "archetype-radar",
@@ -262,6 +269,14 @@
       "format": "legacy",
       "archetype": "led-dredge",
       "path": "latest/radars/legacy/led-dredge.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "legacy",
+      "archetype": "loam-pox",
+      "path": "latest/radars/legacy/loam-pox.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -333,19 +348,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "ninjas",
-      "path": "latest/radars/legacy/ninjas.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "ocelot-pride-midrange",
-      "path": "latest/radars/legacy/ocelot-pride-midrange.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/ninjas.json"
     },
     {
       "scope": "archetype-radar",
@@ -393,11 +399,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "red-stompy",
-      "path": "latest/radars/legacy/red-stompy.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/red-stompy.json"
     },
     {
       "scope": "archetype-radar",
@@ -406,13 +411,6 @@
       "archetype": "saga-storm",
       "path": "latest/radars/legacy/saga-storm.json",
       "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "selesnya-depths",
-      "path": "latest/radars/legacy/selesnya-depths.json"
     },
     {
       "scope": "archetype-radar",

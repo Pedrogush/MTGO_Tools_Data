@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-31T14:41:55Z",
+  "generated_at": "2026-07-31T20:00:13Z",
   "command": "scrape-radars-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 17,
-    "success": 52
+    "skipped": 15,
+    "success": 53
   },
   "results": [
     {
@@ -217,6 +217,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pauper",
+      "archetype": "grixis-control",
+      "path": "latest/radars/pauper/grixis-control.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pauper",
       "archetype": "gruul-ponza",
       "path": "latest/radars/pauper/gruul-ponza.json"
     },
@@ -251,14 +258,6 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "pauper",
-      "archetype": "izzet-faeries",
-      "path": "latest/radars/pauper/izzet-faeries.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
       "status": "success",
       "format": "pauper",
       "archetype": "izzet-terror",
@@ -287,11 +286,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pauper",
       "archetype": "mardu-synthesizer",
-      "path": "latest/radars/pauper/mardu-synthesizer.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pauper/mardu-synthesizer.json"
     },
     {
       "scope": "archetype-radar",
@@ -474,13 +472,6 @@
       "format": "pauper",
       "archetype": "golgari-garden",
       "path": "latest/radars/pauper/golgari-garden.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pauper",
-      "archetype": "grixis-control",
-      "path": "latest/radars/pauper/grixis-control.json"
     },
     {
       "scope": "archetype-radar",

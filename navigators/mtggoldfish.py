@@ -29,6 +29,20 @@ from utils.json_io import fast_load
 EMPTY_ARCHETYPE_DECK_RETRY_DELAYS_SECONDS = (2, 5, 10)
 
 
+# Identify our traffic to MTGGoldfish operators (see ATTRIBUTIONS.md). Chrome
+# impersonation is kept for the TLS fingerprint their bot protection expects.
+GOLDFISH_USER_AGENT = "MTGO_Tools_Data/0.2 (+https://github.com/Pedrogush/MTGO_Tools_Data)"
+
+
+def _goldfish_get(url: str):
+    return requests.get(
+        url,
+        impersonate="chrome",
+        headers={"User-Agent": GOLDFISH_USER_AGENT},
+        timeout=MTGGOLDFISH_REQUEST_TIMEOUT_SECONDS,
+    )
+
+
 def _load_cached_archetypes(mtg_format: str, max_age: int = METAGAME_CACHE_TTL_SECONDS):
     if not ARCHETYPE_LIST_CACHE_FILE.exists():
         return None
@@ -67,11 +81,9 @@ def get_archetypes(
 
     logger.debug(f"Fetching archetypes for {mtg_format} from MTGGoldfish")
     try:
-        page = requests.get(
+        page = _goldfish_get(
             f"https://www.mtggoldfish.com/metagame/{mtg_format}/full",
-            impersonate="chrome",
-            timeout=MTGGOLDFISH_REQUEST_TIMEOUT_SECONDS,
-        )
+            )
         page.raise_for_status()
     except Exception as exc:
         logger.error(f"Failed to fetch archetype page: {exc}")
@@ -194,11 +206,9 @@ def get_archetype_decks(archetype: str):
             )
             time.sleep(delay_seconds)
         try:
-            page = requests.get(
+            page = _goldfish_get(
                 f"https://www.mtggoldfish.com/archetype/{archetype}/decks",
-                impersonate="chrome",
-                timeout=MTGGOLDFISH_REQUEST_TIMEOUT_SECONDS,
-            )
+                )
             page.raise_for_status()
         except Exception as exc:
             logger.error(f"Failed to fetch decks for archetype {archetype}: {exc}")
@@ -253,11 +263,9 @@ def get_archetype_stats(mtg_format: str):
 
 def get_daily_decks(mtg_format: str):
     try:
-        page = requests.get(
+        page = _goldfish_get(
             f"https://www.mtggoldfish.com/metagame/{mtg_format}",
-            impersonate="chrome",
-            timeout=MTGGOLDFISH_REQUEST_TIMEOUT_SECONDS,
-        )
+            )
         page.raise_for_status()
     except Exception as exc:
         logger.error(f"Failed to fetch daily decks for {mtg_format}: {exc}")

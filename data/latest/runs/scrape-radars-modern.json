@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-31T20:00:16Z",
+  "generated_at": "2026-08-01T03:56:11Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 88,
-    "skipped": 14
+    "success": 83,
+    "skipped": 16
   },
   "results": [
     {
@@ -255,10 +255,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "hollow-one",
-      "path": "latest/radars/modern/hollow-one.json"
+      "path": "latest/radars/modern/hollow-one.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -321,10 +322,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "lantern",
-      "path": "latest/radars/modern/lantern.json"
+      "path": "latest/radars/modern/lantern.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -532,22 +534,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "abzan-blink",
-      "path": "latest/radars/modern/abzan-blink.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "azorius-blink",
       "path": "latest/radars/modern/azorius-blink.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "bogles",
-      "path": "latest/radars/modern/bogles.json"
     },
     {
       "scope": "archetype-radar",
@@ -646,13 +634,6 @@
       "format": "modern",
       "archetype": "mardu-aggro",
       "path": "latest/radars/modern/mardu-aggro.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "mono-blue-control",
-      "path": "latest/radars/modern/mono-blue-control.json"
     },
     {
       "scope": "archetype-radar",

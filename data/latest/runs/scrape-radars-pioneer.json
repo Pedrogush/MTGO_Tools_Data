@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-31T20:00:24Z",
+  "generated_at": "2026-08-01T03:56:12Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 44,
-    "skipped": 30
+    "success": 35,
+    "skipped": 37
   },
   "results": [
     {
@@ -126,10 +126,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "boros-convoke",
-      "path": "latest/radars/pioneer/boros-convoke.json"
+      "path": "latest/radars/pioneer/boros-convoke.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -194,10 +195,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "eldrazi",
-      "path": "latest/radars/pioneer/eldrazi.json"
+      "path": "latest/radars/pioneer/eldrazi.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -231,10 +233,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "grixis-midrange",
-      "path": "latest/radars/pioneer/grixis-midrange.json"
+      "path": "latest/radars/pioneer/grixis-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -253,10 +256,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "hidden-strings",
-      "path": "latest/radars/pioneer/hidden-strings.json"
+      "path": "latest/radars/pioneer/hidden-strings.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -395,24 +399,27 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "rakdos-midrange",
-      "path": "latest/radars/pioneer/rakdos-midrange.json"
+      "path": "latest/radars/pioneer/rakdos-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "rakdos-prowess",
-      "path": "latest/radars/pioneer/rakdos-prowess.json"
+      "path": "latest/radars/pioneer/rakdos-prowess.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "selesnya-angels",
-      "path": "latest/radars/pioneer/selesnya-angels.json"
+      "path": "latest/radars/pioneer/selesnya-angels.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -471,13 +478,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pioneer",
-      "archetype": "bant-stompy",
-      "path": "latest/radars/pioneer/bant-stompy.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pioneer",
       "archetype": "boros-aggro",
       "path": "latest/radars/pioneer/boros-aggro.json"
     },
@@ -515,13 +515,6 @@
       "format": "pioneer",
       "archetype": "mono-red-aggro",
       "path": "latest/radars/pioneer/mono-red-aggro.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pioneer",
-      "archetype": "selesnya-elemental",
-      "path": "latest/radars/pioneer/selesnya-elemental.json"
     },
     {
       "scope": "archetype-radar",

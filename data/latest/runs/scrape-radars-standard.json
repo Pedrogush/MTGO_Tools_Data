@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-07-31T20:00:45Z",
+  "generated_at": "2026-08-01T03:56:03Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 42,
-    "skipped": 51
+    "success": 41,
+    "skipped": 52
   },
   "results": [
     {
@@ -257,10 +257,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "gruul-delirium",
-      "path": "latest/radars/standard/gruul-delirium.json"
+      "path": "latest/radars/standard/gruul-delirium.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -611,13 +612,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
-      "archetype": "bant-cub",
-      "path": "latest/radars/standard/bant-cub.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
       "archetype": "golgari-control",
       "path": "latest/radars/standard/golgari-control.json"
     },
@@ -704,6 +698,13 @@
       "format": "standard",
       "archetype": "simic-midrange",
       "path": "latest/radars/standard/simic-midrange.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "temur-omniscience",
+      "path": "latest/radars/standard/temur-omniscience.json"
     },
     {
       "scope": "format-card-pool",

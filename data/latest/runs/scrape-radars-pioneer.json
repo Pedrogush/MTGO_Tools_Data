@@ -1,21 +1,22 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-01T19:40:26Z",
+  "generated_at": "2026-08-02T03:59:11Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 35,
-    "skipped": 37
+    "skipped": 39,
+    "success": 34
   },
   "results": [
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "4c-auras",
-      "path": "latest/radars/pioneer/4c-auras.json"
+      "path": "latest/radars/pioneer/4c-auras.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -35,10 +36,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "4c-midrange",
-      "path": "latest/radars/pioneer/4c-midrange.json"
+      "path": "latest/radars/pioneer/4c-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -241,10 +243,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "gruul-aggro",
-      "path": "latest/radars/pioneer/gruul-aggro.json"
+      "path": "latest/radars/pioneer/gruul-aggro.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -399,11 +402,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "rakdos-midrange",
-      "path": "latest/radars/pioneer/rakdos-midrange.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pioneer/rakdos-midrange.json"
     },
     {
       "scope": "archetype-radar",
@@ -515,6 +517,13 @@
       "format": "pioneer",
       "archetype": "mono-red-aggro",
       "path": "latest/radars/pioneer/mono-red-aggro.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "niv-to-light",
+      "path": "latest/radars/pioneer/niv-to-light.json"
     },
     {
       "scope": "archetype-radar",

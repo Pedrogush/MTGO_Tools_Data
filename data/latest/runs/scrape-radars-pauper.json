@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-01T19:40:31Z",
+  "generated_at": "2026-08-02T03:59:12Z",
   "command": "scrape-radars-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 17,
-    "success": 52
+    "skipped": 19,
+    "success": 49
   },
   "results": [
     {
@@ -181,10 +181,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "food-gardens",
-      "path": "latest/radars/pauper/food-gardens.json"
+      "path": "latest/radars/pauper/food-gardens.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -195,10 +196,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "goblins",
-      "path": "latest/radars/pauper/goblins.json"
+      "path": "latest/radars/pauper/goblins.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -446,13 +448,6 @@
       "format": "pauper",
       "archetype": "white-aggro",
       "path": "latest/radars/pauper/white-aggro.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pauper",
-      "archetype": "caw-gates",
-      "path": "latest/radars/pauper/caw-gates.json"
     },
     {
       "scope": "archetype-radar",

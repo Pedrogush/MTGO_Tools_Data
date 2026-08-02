@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-01T19:40:20Z",
+  "generated_at": "2026-08-02T03:59:09Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 26,
-    "success": 56
+    "skipped": 28,
+    "success": 50
   },
   "results": [
     {
@@ -146,10 +146,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "death-s-shadow",
-      "path": "latest/radars/legacy/death-s-shadow.json"
+      "path": "latest/radars/legacy/death-s-shadow.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -371,10 +372,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "oops-all-spells",
-      "path": "latest/radars/legacy/oops-all-spells.json"
+      "path": "latest/radars/legacy/oops-all-spells.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -474,13 +476,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "creative-combo",
-      "path": "latest/radars/legacy/creative-combo.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
       "archetype": "death-taxes",
       "path": "latest/radars/legacy/death-taxes.json"
     },
@@ -558,20 +553,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "naya-stompy",
-      "path": "latest/radars/legacy/naya-stompy.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "necro-storm",
-      "path": "latest/radars/legacy/necro-storm.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
       "archetype": "show-and-tell",
       "path": "latest/radars/legacy/show-and-tell.json"
     },
@@ -595,13 +576,6 @@
       "format": "legacy",
       "archetype": "the-epic-gamble",
       "path": "latest/radars/legacy/the-epic-gamble.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "white-beanstalk",
-      "path": "latest/radars/legacy/white-beanstalk.json"
     },
     {
       "scope": "format-card-pool",

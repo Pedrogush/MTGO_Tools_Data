@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-02T19:42:50Z",
+  "generated_at": "2026-08-03T04:00:17Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 65,
-    "success": 28
+    "success": 29
   },
   "results": [
     {
@@ -249,10 +249,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "esper-self-bounce",
-      "path": "latest/radars/standard/esper-self-bounce.json"
+      "path": "latest/radars/standard/esper-self-bounce.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -452,11 +453,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
       "archetype": "mono-red-aggro",
-      "path": "latest/radars/standard/mono-red-aggro.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/standard/mono-red-aggro.json"
     },
     {
       "scope": "archetype-radar",
@@ -669,6 +669,13 @@
       "format": "standard",
       "archetype": "mardu-blade",
       "path": "latest/radars/standard/mardu-blade.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "mono-black-aggro",
+      "path": "latest/radars/standard/mono-black-aggro.json"
     },
     {
       "scope": "archetype-radar",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-02T19:42:53Z",
+  "generated_at": "2026-08-03T04:00:17Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 28,
-    "success": 52
+    "skipped": 33,
+    "success": 48
   },
   "results": [
     {
@@ -42,10 +42,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "azorius-stoneblade",
-      "path": "latest/radars/legacy/azorius-stoneblade.json"
+      "path": "latest/radars/legacy/azorius-stoneblade.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -79,10 +80,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "blue-cloudpost",
-      "path": "latest/radars/legacy/blue-cloudpost.json"
+      "path": "latest/radars/legacy/blue-cloudpost.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -94,10 +96,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "boros-initiative",
-      "path": "latest/radars/legacy/boros-initiative.json"
+      "path": "latest/radars/legacy/boros-initiative.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -125,10 +128,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "cradle-control",
-      "path": "latest/radars/legacy/cradle-control.json"
+      "path": "latest/radars/legacy/cradle-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -372,19 +376,17 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "oops-all-spells",
-      "path": "latest/radars/legacy/oops-all-spells.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/oops-all-spells.json"
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "painter",
-      "path": "latest/radars/legacy/painter.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/painter.json"
     },
     {
       "scope": "archetype-radar",
@@ -417,10 +419,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "sneak-and-show",
-      "path": "latest/radars/legacy/sneak-and-show.json"
+      "path": "latest/radars/legacy/sneak-and-show.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -431,17 +434,19 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "sultai-depths",
-      "path": "latest/radars/legacy/sultai-depths.json"
+      "path": "latest/radars/legacy/sultai-depths.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "the-epic-storm",
-      "path": "latest/radars/legacy/the-epic-storm.json"
+      "path": "latest/radars/legacy/the-epic-storm.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -590,6 +595,13 @@
       "format": "legacy",
       "archetype": "the-epic-gamble",
       "path": "latest/radars/legacy/the-epic-gamble.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "white-beanstalk",
+      "path": "latest/radars/legacy/white-beanstalk.json"
     },
     {
       "scope": "format-card-pool",

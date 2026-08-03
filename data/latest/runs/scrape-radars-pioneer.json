@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-02T19:42:55Z",
+  "generated_at": "2026-08-03T04:00:22Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 37,
-    "success": 38
+    "skipped": 39,
+    "success": 37
   },
   "results": [
     {
@@ -175,10 +175,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "dimir-midrange",
-      "path": "latest/radars/pioneer/dimir-midrange.json"
+      "path": "latest/radars/pioneer/dimir-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -401,10 +402,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "quintorius-combo",
-      "path": "latest/radars/pioneer/quintorius-combo.json"
+      "path": "latest/radars/pioneer/quintorius-combo.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -508,6 +510,13 @@
       "format": "pioneer",
       "archetype": "golgari-stompy",
       "path": "latest/radars/pioneer/golgari-stompy.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "lotus-strings",
+      "path": "latest/radars/pioneer/lotus-strings.json"
     },
     {
       "scope": "archetype-radar",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-04T14:50:23Z",
+  "generated_at": "2026-08-04T20:13:15Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 53,
-    "skipped": 27
+    "success": 56,
+    "skipped": 26
   },
   "results": [
     {
@@ -181,6 +181,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
+      "archetype": "dimir-reanimator",
+      "path": "latest/radars/legacy/dimir-reanimator.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
       "archetype": "dimir-tempo",
       "path": "latest/radars/legacy/dimir-tempo.json"
     },
@@ -269,15 +276,15 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "led-dredge",
-      "path": "latest/radars/legacy/led-dredge.json"
+      "archetype": "mardu-energy",
+      "path": "latest/radars/legacy/mardu-energy.json"
     },
     {
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "mardu-energy",
-      "path": "latest/radars/legacy/mardu-energy.json"
+      "archetype": "merfolk",
+      "path": "latest/radars/legacy/merfolk.json"
     },
     {
       "scope": "archetype-radar",
@@ -308,13 +315,6 @@
       "format": "legacy",
       "archetype": "mono-white-initiative",
       "path": "latest/radars/legacy/mono-white-initiative.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "mystic-forge-combo",
-      "path": "latest/radars/legacy/mystic-forge-combo.json"
     },
     {
       "scope": "archetype-radar",
@@ -429,11 +429,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "sultai-depths",
-      "path": "latest/radars/legacy/sultai-depths.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/sultai-depths.json"
     },
     {
       "scope": "archetype-radar",
@@ -538,8 +537,22 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
+      "archetype": "led-dredge",
+      "path": "latest/radars/legacy/led-dredge.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
       "archetype": "mono-black-stompy",
       "path": "latest/radars/legacy/mono-black-stompy.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "mystic-forge-combo",
+      "path": "latest/radars/legacy/mystic-forge-combo.json"
     },
     {
       "scope": "archetype-radar",

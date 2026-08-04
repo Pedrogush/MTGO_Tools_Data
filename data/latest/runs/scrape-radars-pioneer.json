@@ -1,7 +1,7 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-04T14:50:13Z",
+  "generated_at": "2026-08-04T20:08:45Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
@@ -82,6 +82,14 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "pioneer",
+      "archetype": "atraxa-neoform",
+      "path": "latest/radars/pioneer/atraxa-neoform.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
       "status": "success",
       "format": "pioneer",
       "archetype": "azorius-control",
@@ -140,6 +148,13 @@
       "archetype": "boros-heroic",
       "path": "latest/radars/pioneer/boros-heroic.json",
       "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "boros-midrange",
+      "path": "latest/radars/pioneer/boros-midrange.json"
     },
     {
       "scope": "archetype-radar",
@@ -336,14 +351,6 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "pioneer",
-      "archetype": "mardu-greasefang",
-      "path": "latest/radars/pioneer/mardu-greasefang.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "pioneer",
       "archetype": "mono-black-devotion",
       "path": "latest/radars/pioneer/mono-black-devotion.json",
       "message": "No published decks were available for radar generation."
@@ -490,13 +497,6 @@
       "format": "pioneer",
       "archetype": "boros-aggro",
       "path": "latest/radars/pioneer/boros-aggro.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pioneer",
-      "archetype": "boros-midrange",
-      "path": "latest/radars/pioneer/boros-midrange.json"
     },
     {
       "scope": "archetype-radar",

@@ -1,16 +1,29 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-03T20:01:39Z",
+  "generated_at": "2026-08-04T03:41:49Z",
   "command": "scrape-mtgo-decklists-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "cached": 18,
     "skipped": 4,
-    "success": 2
+    "success": 2,
+    "cached": 17
   },
   "results": [
+    {
+      "scope": "mtgo-event",
+      "status": "skipped",
+      "format": "modern",
+      "message": "https://api.videreproject.com/decks?event_id=12849497: Event returned no decklists."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "success",
+      "format": "modern",
+      "path": "archive/mtgo-decklists/modern/12849492.json",
+      "message": "Cached 32/32 decks."
+    },
     {
       "scope": "mtgo-event",
       "status": "cached",
@@ -33,10 +46,10 @@
     },
     {
       "scope": "mtgo-event",
-      "status": "success",
+      "status": "cached",
       "format": "modern",
       "path": "archive/mtgo-decklists/modern/n568707949.json",
-      "message": "Cached 5/5 decks."
+      "message": "Loaded 5 decks from archive."
     },
     {
       "scope": "mtgo-event",
@@ -146,26 +159,6 @@
       "status": "cached",
       "format": "modern",
       "path": "archive/mtgo-decklists/modern/n2143494608.json",
-      "message": "Loaded 6 decks from archive."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "skipped",
-      "format": "modern",
-      "message": "https://api.videreproject.com/decks?event_id=12848236: Event returned no decklists."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "cached",
-      "format": "modern",
-      "path": "archive/mtgo-decklists/modern/12848231.json",
-      "message": "Loaded 32 decks from archive."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "cached",
-      "format": "modern",
-      "path": "archive/mtgo-decklists/modern/n794031381.json",
       "message": "Loaded 6 decks from archive."
     },
     {

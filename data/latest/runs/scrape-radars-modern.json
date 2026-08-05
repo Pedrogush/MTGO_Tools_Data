@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-04T20:09:30Z",
+  "generated_at": "2026-08-05T03:40:47Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 24,
-    "success": 85
+    "skipped": 26,
+    "success": 80
   },
   "results": [
     {
@@ -128,10 +128,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "dimir-midrange",
-      "path": "latest/radars/modern/dimir-midrange.json"
+      "path": "latest/radars/modern/dimir-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -281,10 +282,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "izzet-steel-cutter",
-      "path": "latest/radars/modern/izzet-steel-cutter.json"
+      "path": "latest/radars/modern/izzet-steel-cutter.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -745,20 +747,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "rakdos-graveyard",
-      "path": "latest/radars/modern/rakdos-graveyard.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "rakdos-shadow",
-      "path": "latest/radars/modern/rakdos-shadow.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "ramp-eldrazi",
       "path": "latest/radars/modern/ramp-eldrazi.json"
     },
@@ -782,13 +770,6 @@
       "format": "modern",
       "archetype": "soultrader-combo",
       "path": "latest/radars/modern/soultrader-combo.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "the-rack",
-      "path": "latest/radars/modern/the-rack.json"
     },
     {
       "scope": "format-card-pool",

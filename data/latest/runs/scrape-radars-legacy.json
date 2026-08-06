@@ -1,12 +1,12 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-06T03:44:54Z",
+  "generated_at": "2026-08-06T09:20:30Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 50,
+    "success": 52,
     "skipped": 27
   },
   "results": [
@@ -489,6 +489,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
+      "archetype": "elves",
+      "path": "latest/radars/legacy/elves.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
       "archetype": "energy",
       "path": "latest/radars/legacy/energy.json"
     },
@@ -526,6 +533,13 @@
       "format": "legacy",
       "archetype": "mono-black-stompy",
       "path": "latest/radars/legacy/mono-black-stompy.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "mono-red-prison",
+      "path": "latest/radars/legacy/mono-red-prison.json"
     },
     {
       "scope": "archetype-radar",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-06T03:44:46Z",
+  "generated_at": "2026-08-06T09:20:25Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 25,
-    "success": 80
+    "skipped": 26,
+    "success": 81
   },
   "results": [
     {
@@ -46,6 +46,13 @@
       "format": "modern",
       "archetype": "asmo-food",
       "path": "latest/radars/modern/asmo-food.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "azorius-blink",
+      "path": "latest/radars/modern/azorius-blink.json"
     },
     {
       "scope": "archetype-radar",
@@ -169,6 +176,13 @@
       "format": "modern",
       "archetype": "eldrazi",
       "path": "latest/radars/modern/eldrazi.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "esper-blink",
+      "path": "latest/radars/modern/esper-blink.json"
     },
     {
       "scope": "archetype-radar",
@@ -418,6 +432,14 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "modern",
+      "archetype": "orzhov-blink",
+      "path": "latest/radars/modern/orzhov-blink.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "modern",
       "archetype": "orzhov-genericblink",
       "path": "latest/radars/modern/orzhov-genericblink.json",
       "message": "No published decks were available for radar generation."
@@ -550,13 +572,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "azorius-blink",
-      "path": "latest/radars/modern/azorius-blink.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "boros-aggro",
       "path": "latest/radars/modern/boros-aggro.json"
     },
@@ -620,13 +635,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "esper-blink",
-      "path": "latest/radars/modern/esper-blink.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "esper-scam",
       "path": "latest/radars/modern/esper-scam.json"
     },
@@ -678,6 +686,13 @@
       "format": "modern",
       "archetype": "jund-burn",
       "path": "latest/radars/modern/jund-burn.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "mardu-blink",
+      "path": "latest/radars/modern/mardu-blink.json"
     },
     {
       "scope": "archetype-radar",

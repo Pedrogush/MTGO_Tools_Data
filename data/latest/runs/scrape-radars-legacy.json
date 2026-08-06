@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-05T20:12:17Z",
+  "generated_at": "2026-08-06T03:44:54Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 55,
-    "skipped": 26
+    "success": 50,
+    "skipped": 27
   },
   "results": [
     {
@@ -342,10 +342,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "ninjas",
-      "path": "latest/radars/legacy/ninjas.json"
+      "path": "latest/radars/legacy/ninjas.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -481,13 +482,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "dimir-delver",
-      "path": "latest/radars/legacy/dimir-delver.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
       "archetype": "dimir-midrange",
       "path": "latest/radars/legacy/dimir-midrange.json"
     },
@@ -516,13 +510,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "grixis-delver",
-      "path": "latest/radars/legacy/grixis-delver.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
       "archetype": "izzet-midrange",
       "path": "latest/radars/legacy/izzet-midrange.json"
     },
@@ -532,13 +519,6 @@
       "format": "legacy",
       "archetype": "jeskai-midrange",
       "path": "latest/radars/legacy/jeskai-midrange.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "led-dredge",
-      "path": "latest/radars/legacy/led-dredge.json"
     },
     {
       "scope": "archetype-radar",
@@ -581,13 +561,6 @@
       "format": "legacy",
       "archetype": "tes",
       "path": "latest/radars/legacy/tes.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "the-epic-gamble",
-      "path": "latest/radars/legacy/the-epic-gamble.json"
     },
     {
       "scope": "archetype-radar",

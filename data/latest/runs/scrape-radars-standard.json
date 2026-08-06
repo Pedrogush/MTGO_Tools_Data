@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-05T20:12:20Z",
+  "generated_at": "2026-08-06T03:44:38Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 62,
-    "success": 28
+    "skipped": 63,
+    "success": 25
   },
   "results": [
     {
@@ -288,10 +288,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "izzet-lessons",
-      "path": "latest/radars/standard/izzet-lessons.json"
+      "path": "latest/radars/standard/izzet-lessons.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -601,13 +602,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
-      "archetype": "azorius-midrange",
-      "path": "latest/radars/standard/azorius-midrange.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
       "archetype": "dimir-elementals",
       "path": "latest/radars/standard/dimir-elementals.json"
     },
@@ -645,13 +639,6 @@
       "format": "standard",
       "archetype": "landfall",
       "path": "latest/radars/standard/landfall.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
-      "archetype": "mardu-blade",
-      "path": "latest/radars/standard/mardu-blade.json"
     },
     {
       "scope": "archetype-radar",

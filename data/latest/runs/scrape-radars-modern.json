@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-06T14:40:52Z",
+  "generated_at": "2026-08-07T00:25:57Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 26,
-    "success": 81
+    "skipped": 25,
+    "success": 82
   },
   "results": [
     {
@@ -143,11 +143,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "dimir-murktide",
-      "path": "latest/radars/modern/dimir-murktide.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/dimir-murktide.json"
     },
     {
       "scope": "archetype-radar",
@@ -371,10 +370,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "mill",
-      "path": "latest/radars/modern/mill.json"
+      "path": "latest/radars/modern/mill.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -462,11 +462,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "rakdos-hollowone",
-      "path": "latest/radars/modern/rakdos-hollowone.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/rakdos-hollowone.json"
     },
     {
       "scope": "archetype-radar",

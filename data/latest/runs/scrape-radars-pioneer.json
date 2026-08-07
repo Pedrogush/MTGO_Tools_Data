@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-06T14:41:00Z",
+  "generated_at": "2026-08-07T00:24:47Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 45,
-    "success": 29
+    "skipped": 46,
+    "success": 28
   },
   "results": [
     {
@@ -399,10 +399,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "rakdos-goblins",
-      "path": "latest/radars/pioneer/rakdos-goblins.json"
+      "path": "latest/radars/pioneer/rakdos-goblins.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

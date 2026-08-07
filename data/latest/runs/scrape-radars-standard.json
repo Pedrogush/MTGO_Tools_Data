@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-06T14:40:49Z",
+  "generated_at": "2026-08-07T00:25:01Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 62,
-    "success": 28
+    "skipped": 63,
+    "success": 26
   },
   "results": [
     {
@@ -405,6 +405,14 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "standard",
+      "archetype": "mardu-manufacturing",
+      "path": "latest/radars/standard/mardu-manufacturing.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
       "archetype": "mono-black-aggro",
@@ -594,13 +602,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
-      "archetype": "azorius-artifacts",
-      "path": "latest/radars/standard/azorius-artifacts.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
       "archetype": "azorius-midrange",
       "path": "latest/radars/standard/azorius-midrange.json"
     },
@@ -666,13 +667,6 @@
       "format": "standard",
       "archetype": "mono-green-cub",
       "path": "latest/radars/standard/mono-green-cub.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
-      "archetype": "rakdos-control",
-      "path": "latest/radars/standard/rakdos-control.json"
     },
     {
       "scope": "archetype-radar",

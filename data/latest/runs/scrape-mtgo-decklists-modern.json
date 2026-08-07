@@ -1,22 +1,35 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-07T00:18:57Z",
+  "generated_at": "2026-08-07T07:45:21Z",
   "command": "scrape-mtgo-decklists-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "success": 3,
-    "skipped": 4,
-    "cached": 17
+    "cached": 18,
+    "skipped": 5
   },
   "results": [
     {
       "scope": "mtgo-event",
       "status": "success",
       "format": "modern",
+      "path": "archive/mtgo-decklists/modern/n2110928062.json",
+      "message": "Cached 2/2 decks."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "cached",
+      "format": "modern",
       "path": "archive/mtgo-decklists/modern/12850868.json",
-      "message": "Cached 32/32 decks."
+      "message": "Loaded 32 decks from archive."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "skipped",
+      "format": "modern",
+      "message": "https://api.videreproject.com/decks?event_id=12850806: Event returned no decklists."
     },
     {
       "scope": "mtgo-event",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-07T13:45:56Z",
+  "generated_at": "2026-08-07T19:24:34Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 52,
-    "skipped": 27
+    "success": 55,
+    "skipped": 24
   },
   "results": [
     {
@@ -230,11 +230,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "goblins",
-      "path": "latest/radars/legacy/goblins.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/goblins.json"
     },
     {
       "scope": "archetype-radar",
@@ -271,6 +270,13 @@
       "format": "legacy",
       "archetype": "lands",
       "path": "latest/radars/legacy/lands.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "led-dredge",
+      "path": "latest/radars/legacy/led-dredge.json"
     },
     {
       "scope": "archetype-radar",
@@ -342,19 +348,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "ninjas",
-      "path": "latest/radars/legacy/ninjas.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "ocelot-pride-midrange",
-      "path": "latest/radars/legacy/ocelot-pride-midrange.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/ninjas.json"
     },
     {
       "scope": "archetype-radar",

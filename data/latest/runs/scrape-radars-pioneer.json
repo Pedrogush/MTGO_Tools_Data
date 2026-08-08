@@ -1,12 +1,12 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-07T19:24:28Z",
+  "generated_at": "2026-08-08T02:26:46Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 46,
+    "skipped": 47,
     "success": 29
   },
   "results": [
@@ -215,10 +215,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "golgari-food",
-      "path": "latest/radars/pioneer/golgari-food.json"
+      "path": "latest/radars/pioneer/golgari-food.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -501,6 +502,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pioneer",
+      "archetype": "bring-to-light",
+      "path": "latest/radars/pioneer/bring-to-light.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
       "archetype": "dimir-ninjas",
       "path": "latest/radars/pioneer/dimir-ninjas.json"
     },
@@ -522,13 +530,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pioneer",
-      "archetype": "mono-green-devotion",
-      "path": "latest/radars/pioneer/mono-green-devotion.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pioneer",
       "archetype": "mono-green-stompy",
       "path": "latest/radars/pioneer/mono-green-stompy.json"
     },
@@ -543,6 +544,20 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pioneer",
+      "archetype": "opus",
+      "path": "latest/radars/pioneer/opus.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "selesnya-elemental",
+      "path": "latest/radars/pioneer/selesnya-elemental.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
       "archetype": "selesnya-midrange",
       "path": "latest/radars/pioneer/selesnya-midrange.json"
     },
@@ -552,13 +567,6 @@
       "format": "pioneer",
       "archetype": "selesnya-stompy",
       "path": "latest/radars/pioneer/selesnya-stompy.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pioneer",
-      "archetype": "simic-tempo",
-      "path": "latest/radars/pioneer/simic-tempo.json"
     },
     {
       "scope": "archetype-radar",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-07T19:24:34Z",
+  "generated_at": "2026-08-08T02:26:46Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 55,
-    "skipped": 24
+    "success": 53,
+    "skipped": 26
   },
   "results": [
     {
@@ -142,17 +142,19 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "death-and-taxes-yorion-black-white",
-      "path": "latest/radars/legacy/death-and-taxes-yorion-black-white.json"
+      "path": "latest/radars/legacy/death-and-taxes-yorion-black-white.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "death-and-taxes-yorion-mono-white",
-      "path": "latest/radars/legacy/death-and-taxes-yorion-mono-white.json"
+      "path": "latest/radars/legacy/death-and-taxes-yorion-mono-white.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -500,15 +502,15 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "esper-midrange",
-      "path": "latest/radars/legacy/esper-midrange.json"
+      "archetype": "golgari-landfall",
+      "path": "latest/radars/legacy/golgari-landfall.json"
     },
     {
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "golgari-landfall",
-      "path": "latest/radars/legacy/golgari-landfall.json"
+      "archetype": "grixis-midrange",
+      "path": "latest/radars/legacy/grixis-midrange.json"
     },
     {
       "scope": "archetype-radar",

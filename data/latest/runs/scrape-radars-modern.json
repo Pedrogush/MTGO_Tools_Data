@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-09T13:23:43Z",
+  "generated_at": "2026-08-09T19:07:30Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 74,
-    "skipped": 30
+    "success": 75,
+    "skipped": 29
   },
   "results": [
     {
@@ -372,6 +372,13 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "merfolk",
+      "path": "latest/radars/modern/merfolk.json"
+    },
+    {
+      "scope": "archetype-radar",
       "status": "skipped",
       "format": "modern",
       "archetype": "mill",
@@ -429,14 +436,6 @@
       "format": "modern",
       "archetype": "neobrand",
       "path": "latest/radars/modern/neobrand.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "modern",
-      "archetype": "orzhov-blink",
-      "path": "latest/radars/modern/orzhov-blink.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-09T07:22:24Z",
+  "generated_at": "2026-08-09T13:22:06Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 23,
-    "success": 55
+    "skipped": 22,
+    "success": 57
   },
   "results": [
     {
@@ -34,11 +34,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "azorius-control",
-      "path": "latest/radars/legacy/azorius-control.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/azorius-control.json"
     },
     {
       "scope": "archetype-radar",
@@ -529,6 +528,13 @@
       "format": "legacy",
       "archetype": "mystic-forge-combo",
       "path": "latest/radars/legacy/mystic-forge-combo.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "post",
+      "path": "latest/radars/legacy/post.json"
     },
     {
       "scope": "archetype-radar",

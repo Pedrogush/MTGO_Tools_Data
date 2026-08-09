@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-08T19:08:05Z",
+  "generated_at": "2026-08-09T02:34:58Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 78,
-    "skipped": 27
+    "success": 72,
+    "skipped": 31
   },
   "results": [
     {
@@ -207,10 +207,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "esper-reanimator",
-      "path": "latest/radars/modern/esper-reanimator.json"
+      "path": "latest/radars/modern/esper-reanimator.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -513,10 +514,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "sultai-midrange",
-      "path": "latest/radars/modern/sultai-midrange.json"
+      "path": "latest/radars/modern/sultai-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -536,10 +538,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "through-the-breach",
-      "path": "latest/radars/modern/through-the-breach.json"
+      "path": "latest/radars/modern/through-the-breach.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -550,10 +553,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "yawgmoth",
-      "path": "latest/radars/modern/yawgmoth.json"
+      "path": "latest/radars/modern/yawgmoth.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -603,13 +607,6 @@
       "format": "modern",
       "archetype": "cosmo-fling",
       "path": "latest/radars/modern/cosmo-fling.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "dimir-control",
-      "path": "latest/radars/modern/dimir-control.json"
     },
     {
       "scope": "archetype-radar",
@@ -699,6 +696,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
+      "archetype": "mardu-midrange",
+      "path": "latest/radars/modern/mardu-midrange.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
       "archetype": "mono-red-aggro",
       "path": "latest/radars/modern/mono-red-aggro.json"
     },
@@ -715,13 +719,6 @@
       "format": "modern",
       "archetype": "omnath-control",
       "path": "latest/radars/modern/omnath-control.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "orzhov-energy",
-      "path": "latest/radars/modern/orzhov-energy.json"
     },
     {
       "scope": "archetype-radar",
@@ -757,13 +754,6 @@
       "format": "modern",
       "archetype": "simic-ritual",
       "path": "latest/radars/modern/simic-ritual.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "soultrader-combo",
-      "path": "latest/radars/modern/soultrader-combo.json"
     },
     {
       "scope": "format-card-pool",

@@ -1,21 +1,22 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-08T19:07:46Z",
+  "generated_at": "2026-08-09T02:34:56Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 61,
-    "skipped": 19
+    "skipped": 24,
+    "success": 54
   },
   "results": [
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "8-cast",
-      "path": "latest/radars/legacy/8-cast.json"
+      "path": "latest/radars/legacy/8-cast.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -55,10 +56,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "beanstalk-control-non-yorion",
-      "path": "latest/radars/legacy/beanstalk-control-non-yorion.json"
+      "path": "latest/radars/legacy/beanstalk-control-non-yorion.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -167,10 +169,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "dimir-control",
-      "path": "latest/radars/legacy/dimir-control.json"
+      "path": "latest/radars/legacy/dimir-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -232,10 +235,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "grixis-tempo",
-      "path": "latest/radars/legacy/grixis-tempo.json"
+      "path": "latest/radars/legacy/grixis-tempo.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -358,10 +362,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "omni-tell",
-      "path": "latest/radars/legacy/omni-tell.json"
+      "path": "latest/radars/legacy/omni-tell.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -516,13 +521,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "jeskai-midrange",
-      "path": "latest/radars/legacy/jeskai-midrange.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
       "archetype": "mono-red-prison",
       "path": "latest/radars/legacy/mono-red-prison.json"
     },
@@ -532,13 +530,6 @@
       "format": "legacy",
       "archetype": "mystic-forge-combo",
       "path": "latest/radars/legacy/mystic-forge-combo.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "naya-stompy",
-      "path": "latest/radars/legacy/naya-stompy.json"
     },
     {
       "scope": "archetype-radar",

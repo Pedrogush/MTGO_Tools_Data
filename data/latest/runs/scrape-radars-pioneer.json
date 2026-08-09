@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-08T19:08:17Z",
+  "generated_at": "2026-08-09T02:34:56Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 45,
-    "success": 32
+    "skipped": 47,
+    "success": 29
   },
   "results": [
     {
@@ -345,10 +345,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "mono-black-midrange",
-      "path": "latest/radars/pioneer/mono-black-midrange.json"
+      "path": "latest/radars/pioneer/mono-black-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -368,10 +369,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "niv-to-light",
-      "path": "latest/radars/pioneer/niv-to-light.json"
+      "path": "latest/radars/pioneer/niv-to-light.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -572,13 +574,6 @@
       "format": "pioneer",
       "archetype": "selesnya-stompy",
       "path": "latest/radars/pioneer/selesnya-stompy.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pioneer",
-      "archetype": "spirits",
-      "path": "latest/radars/pioneer/spirits.json"
     },
     {
       "scope": "archetype-radar",

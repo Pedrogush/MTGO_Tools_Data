@@ -1,20 +1,19 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-10T08:07:44Z",
+  "generated_at": "2026-08-10T13:48:23Z",
   "command": "scrape-metagame-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "stale-fallback": 1
+    "success": 1
   },
   "results": [
     {
       "scope": "metagame",
-      "status": "stale-fallback",
+      "status": "success",
       "format": "pioneer",
-      "path": "latest/metagame/pioneer.json",
-      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+      "path": "latest/metagame/pioneer.json"
     }
   ]
 }

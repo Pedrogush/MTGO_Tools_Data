@@ -1,500 +1,940 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-10T08:08:03Z",
+  "generated_at": "2026-08-10T13:49:01Z",
   "command": "scrape-deck-texts-legacy",
-  "status": "hard-failure",
+  "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "stale-fallback": 1,
-    "hard-failure": 59,
-    "skipped": 1
+    "success": 33,
+    "skipped": 87
   },
   "results": [
     {
       "scope": "archetype-list",
-      "status": "stale-fallback",
+      "status": "success",
       "format": "legacy",
-      "path": "latest/archetypes/legacy.json",
-      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+      "path": "latest/archetypes/legacy.json"
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "8-cast",
       "path": "latest/decks/legacy/8-cast.json",
-      "message": "Deck scrape returned no rows for 8-Cast"
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "success",
       "format": "legacy",
       "archetype": "affinity-stompy",
-      "path": "latest/decks/legacy/affinity-stompy.json",
-      "message": "Deck scrape returned no rows for Affinity Stompy"
+      "path": "latest/decks/legacy/affinity-stompy.json"
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "success",
       "format": "legacy",
       "archetype": "aluren",
-      "path": "latest/decks/legacy/aluren.json",
-      "message": "Deck scrape returned no rows for Aluren"
+      "path": "latest/decks/legacy/aluren.json"
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "azorius-control",
       "path": "latest/decks/legacy/azorius-control.json",
-      "message": "Deck scrape returned no rows for Azorius Control"
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "success",
       "format": "legacy",
       "archetype": "azorius-stoneblade",
-      "path": "latest/decks/legacy/azorius-stoneblade.json",
-      "message": "Deck scrape returned no rows for Azorius Stoneblade"
+      "path": "latest/decks/legacy/azorius-stoneblade.json"
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "azorius-tempo",
       "path": "latest/decks/legacy/azorius-tempo.json",
-      "message": "Deck scrape returned no rows for Azorius Tempo"
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "beanstalk-control-non-yorion",
       "path": "latest/decks/legacy/beanstalk-control-non-yorion.json",
-      "message": "Deck scrape returned no rows for Beanstalk Control (Non-Yorion)"
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "beseech-storm",
       "path": "latest/decks/legacy/beseech-storm.json",
-      "message": "Deck scrape returned no rows for Beseech Storm"
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "success",
       "format": "legacy",
       "archetype": "blue-artifacts",
-      "path": "latest/decks/legacy/blue-artifacts.json",
-      "message": "Deck scrape returned no rows for Blue Artifacts"
+      "path": "latest/decks/legacy/blue-artifacts.json"
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "blue-cloudpost",
       "path": "latest/decks/legacy/blue-cloudpost.json",
-      "message": "Deck scrape returned no rows for Blue Cloudpost"
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "success",
       "format": "legacy",
       "archetype": "boros-energy",
-      "path": "latest/decks/legacy/boros-energy.json",
-      "message": "Deck scrape returned no rows for Boros Energy"
+      "path": "latest/decks/legacy/boros-energy.json"
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "success",
       "format": "legacy",
       "archetype": "boros-initiative",
-      "path": "latest/decks/legacy/boros-initiative.json",
-      "message": "Deck scrape returned no rows for Boros Initiative"
+      "path": "latest/decks/legacy/boros-initiative.json"
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "success",
       "format": "legacy",
       "archetype": "burn",
-      "path": "latest/decks/legacy/burn.json",
-      "message": "Deck scrape returned no rows for Burn"
+      "path": "latest/decks/legacy/burn.json"
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "car-stompy",
       "path": "latest/decks/legacy/car-stompy.json",
-      "message": "Deck scrape returned no rows for Car Stompy"
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "success",
       "format": "legacy",
       "archetype": "cephalid-breakfast",
-      "path": "latest/decks/legacy/cephalid-breakfast.json",
-      "message": "Deck scrape returned no rows for Cephalid Breakfast"
+      "path": "latest/decks/legacy/cephalid-breakfast.json"
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "success",
       "format": "legacy",
       "archetype": "cradle-control",
-      "path": "latest/decks/legacy/cradle-control.json",
-      "message": "Deck scrape returned no rows for Cradle Control"
+      "path": "latest/decks/legacy/cradle-control.json"
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "success",
       "format": "legacy",
       "archetype": "death-and-taxes-yorion-black-white",
-      "path": "latest/decks/legacy/death-and-taxes-yorion-black-white.json",
-      "message": "Deck scrape returned no rows for Death and Taxes (Yorion) - Black/White"
+      "path": "latest/decks/legacy/death-and-taxes-yorion-black-white.json"
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "success",
       "format": "legacy",
       "archetype": "death-and-taxes-yorion-mono-white",
-      "path": "latest/decks/legacy/death-and-taxes-yorion-mono-white.json",
-      "message": "Deck scrape returned no rows for Death and Taxes (Yorion) - Mono White"
+      "path": "latest/decks/legacy/death-and-taxes-yorion-mono-white.json"
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "success",
       "format": "legacy",
       "archetype": "death-s-shadow",
-      "path": "latest/decks/legacy/death-s-shadow.json",
-      "message": "Deck scrape returned no rows for Death's Shadow"
+      "path": "latest/decks/legacy/death-s-shadow.json"
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "success",
       "format": "legacy",
       "archetype": "dimir-car",
-      "path": "latest/decks/legacy/dimir-car.json",
-      "message": "Deck scrape returned no rows for Dimir Car"
+      "path": "latest/decks/legacy/dimir-car.json"
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "dimir-control",
       "path": "latest/decks/legacy/dimir-control.json",
-      "message": "Deck scrape returned no rows for Dimir Control"
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "success",
       "format": "legacy",
       "archetype": "dimir-reanimator",
-      "path": "latest/decks/legacy/dimir-reanimator.json",
-      "message": "Deck scrape returned no rows for Dimir Reanimator"
+      "path": "latest/decks/legacy/dimir-reanimator.json"
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "success",
       "format": "legacy",
       "archetype": "dimir-tempo",
-      "path": "latest/decks/legacy/dimir-tempo.json",
-      "message": "Deck scrape returned no rows for Dimir Tempo"
+      "path": "latest/decks/legacy/dimir-tempo.json"
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "success",
       "format": "legacy",
       "archetype": "doomsday",
-      "path": "latest/decks/legacy/doomsday.json",
-      "message": "Deck scrape returned no rows for Doomsday"
+      "path": "latest/decks/legacy/doomsday.json"
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "success",
       "format": "legacy",
       "archetype": "eldrazi",
-      "path": "latest/decks/legacy/eldrazi.json",
-      "message": "Deck scrape returned no rows for Eldrazi"
+      "path": "latest/decks/legacy/eldrazi.json"
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "esper-control",
       "path": "latest/decks/legacy/esper-control.json",
-      "message": "Deck scrape returned no rows for Esper Control"
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "esper-stoneblade",
       "path": "latest/decks/legacy/esper-stoneblade.json",
-      "message": "Deck scrape returned no rows for Esper Stoneblade"
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "esper-tempo",
       "path": "latest/decks/legacy/esper-tempo.json",
-      "message": "Deck scrape returned no rows for Esper Tempo"
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "success",
       "format": "legacy",
       "archetype": "goblins",
-      "path": "latest/decks/legacy/goblins.json",
-      "message": "Deck scrape returned no rows for Goblins"
+      "path": "latest/decks/legacy/goblins.json"
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "grixis-tempo",
       "path": "latest/decks/legacy/grixis-tempo.json",
-      "message": "Deck scrape returned no rows for Grixis Tempo"
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "success",
       "format": "legacy",
       "archetype": "izzet-delver",
-      "path": "latest/decks/legacy/izzet-delver.json",
-      "message": "Deck scrape returned no rows for Izzet Delver"
+      "path": "latest/decks/legacy/izzet-delver.json"
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "success",
       "format": "legacy",
       "archetype": "jeskai-control",
-      "path": "latest/decks/legacy/jeskai-control.json",
-      "message": "Deck scrape returned no rows for Jeskai Control"
+      "path": "latest/decks/legacy/jeskai-control.json"
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "jund",
       "path": "latest/decks/legacy/jund.json",
-      "message": "Deck scrape returned no rows for Jund"
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "success",
       "format": "legacy",
       "archetype": "lands",
-      "path": "latest/decks/legacy/lands.json",
-      "message": "Deck scrape returned no rows for Lands"
+      "path": "latest/decks/legacy/lands.json"
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "success",
       "format": "legacy",
       "archetype": "led-dredge",
-      "path": "latest/decks/legacy/led-dredge.json",
-      "message": "Deck scrape returned no rows for LED Dredge"
+      "path": "latest/decks/legacy/led-dredge.json"
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "success",
       "format": "legacy",
       "archetype": "mardu-energy",
-      "path": "latest/decks/legacy/mardu-energy.json",
-      "message": "Deck scrape returned no rows for Mardu Energy"
+      "path": "latest/decks/legacy/mardu-energy.json"
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "mono-black-midrange",
       "path": "latest/decks/legacy/mono-black-midrange.json",
-      "message": "Deck scrape returned no rows for Mono Black Midrange"
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "mono-black-reanimator",
       "path": "latest/decks/legacy/mono-black-reanimator.json",
-      "message": "Deck scrape returned no rows for Mono Black Reanimator"
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "mono-black-stompy",
       "path": "latest/decks/legacy/mono-black-stompy.json",
-      "message": "Deck scrape returned no rows for Mono Black Stompy"
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "mono-blue-tempo",
       "path": "latest/decks/legacy/mono-blue-tempo.json",
-      "message": "Deck scrape returned no rows for Mono-Blue Tempo"
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "success",
       "format": "legacy",
       "archetype": "mono-white-initiative",
-      "path": "latest/decks/legacy/mono-white-initiative.json",
-      "message": "Deck scrape returned no rows for Mono-White Initiative"
+      "path": "latest/decks/legacy/mono-white-initiative.json"
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "success",
       "format": "legacy",
       "archetype": "mystic-forge-combo",
-      "path": "latest/decks/legacy/mystic-forge-combo.json",
-      "message": "Deck scrape returned no rows for Mystic Forge Combo"
+      "path": "latest/decks/legacy/mystic-forge-combo.json"
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "naya-initiative",
       "path": "latest/decks/legacy/naya-initiative.json",
-      "message": "Deck scrape returned no rows for Naya Initiative"
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "necrodominance-combo",
       "path": "latest/decks/legacy/necrodominance-combo.json",
-      "message": "Deck scrape returned no rows for Necrodominance Combo"
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "nic-fit",
       "path": "latest/decks/legacy/nic-fit.json",
-      "message": "Deck scrape returned no rows for Nic Fit"
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "success",
       "format": "legacy",
       "archetype": "ninjas",
-      "path": "latest/decks/legacy/ninjas.json",
-      "message": "Deck scrape returned no rows for Ninjas"
+      "path": "latest/decks/legacy/ninjas.json"
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "ocelot-pride-tempo",
       "path": "latest/decks/legacy/ocelot-pride-tempo.json",
-      "message": "Deck scrape returned no rows for Ocelot Pride Tempo"
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "success",
       "format": "legacy",
       "archetype": "omni-tell",
-      "path": "latest/decks/legacy/omni-tell.json",
-      "message": "Deck scrape returned no rows for Omni-Tell"
+      "path": "latest/decks/legacy/omni-tell.json"
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "oops-all-spells",
       "path": "latest/decks/legacy/oops-all-spells.json",
-      "message": "Deck scrape returned no rows for Oops! All Spells"
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "painter",
       "path": "latest/decks/legacy/painter.json",
-      "message": "Deck scrape returned no rows for Painter"
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "rakdos-reanimator",
       "path": "latest/decks/legacy/rakdos-reanimator.json",
-      "message": "Deck scrape returned no rows for Rakdos Reanimator"
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "reanimator",
       "path": "latest/decks/legacy/reanimator.json",
-      "message": "Deck scrape returned no rows for Reanimator"
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "success",
       "format": "legacy",
       "archetype": "red-stompy",
-      "path": "latest/decks/legacy/red-stompy.json",
-      "message": "Deck scrape returned no rows for Red Stompy"
+      "path": "latest/decks/legacy/red-stompy.json"
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "saga-storm",
       "path": "latest/decks/legacy/saga-storm.json",
-      "message": "Deck scrape returned no rows for Saga Storm"
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "success",
       "format": "legacy",
       "archetype": "sneak-and-show",
-      "path": "latest/decks/legacy/sneak-and-show.json",
-      "message": "Deck scrape returned no rows for Sneak and Show"
+      "path": "latest/decks/legacy/sneak-and-show.json"
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "success",
       "format": "legacy",
       "archetype": "stiflenought",
-      "path": "latest/decks/legacy/stiflenought.json",
-      "message": "Deck scrape returned no rows for Stiflenought"
+      "path": "latest/decks/legacy/stiflenought.json"
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "sultai-depths",
       "path": "latest/decks/legacy/sultai-depths.json",
-      "message": "Deck scrape returned no rows for Sultai Depths"
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "success",
       "format": "legacy",
       "archetype": "the-epic-storm",
-      "path": "latest/decks/legacy/the-epic-storm.json",
-      "message": "Deck scrape returned no rows for The EPIC Storm"
+      "path": "latest/decks/legacy/the-epic-storm.json"
     },
     {
       "scope": "archetype-decks",
-      "status": "hard-failure",
+      "status": "success",
       "format": "legacy",
       "archetype": "tron",
-      "path": "latest/decks/legacy/tron.json",
-      "message": "Deck scrape returned no rows for Tron"
+      "path": "latest/decks/legacy/tron.json"
     },
     {
       "scope": "deck-text",
       "status": "skipped",
       "format": "legacy",
-      "message": "No deck IDs were available for deck-text publishing."
+      "deck_id": "7903511",
+      "path": "archive/deck-texts/legacy/7903511.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7903513",
+      "path": "archive/deck-texts/legacy/7903513.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7903514",
+      "path": "archive/deck-texts/legacy/7903514.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7903515",
+      "path": "archive/deck-texts/legacy/7903515.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7903518",
+      "path": "archive/deck-texts/legacy/7903518.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7903519",
+      "path": "archive/deck-texts/legacy/7903519.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7903520",
+      "path": "archive/deck-texts/legacy/7903520.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7903521",
+      "path": "archive/deck-texts/legacy/7903521.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7903522",
+      "path": "archive/deck-texts/legacy/7903522.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7903523",
+      "path": "archive/deck-texts/legacy/7903523.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7903524",
+      "path": "archive/deck-texts/legacy/7903524.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7903525",
+      "path": "archive/deck-texts/legacy/7903525.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7903526",
+      "path": "archive/deck-texts/legacy/7903526.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7904771",
+      "path": "archive/deck-texts/legacy/7904771.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7904772",
+      "path": "archive/deck-texts/legacy/7904772.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7904773",
+      "path": "archive/deck-texts/legacy/7904773.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7904774",
+      "path": "archive/deck-texts/legacy/7904774.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7904775",
+      "path": "archive/deck-texts/legacy/7904775.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7904776",
+      "path": "archive/deck-texts/legacy/7904776.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7904777",
+      "path": "archive/deck-texts/legacy/7904777.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7904778",
+      "path": "archive/deck-texts/legacy/7904778.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7904779",
+      "path": "archive/deck-texts/legacy/7904779.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7904780",
+      "path": "archive/deck-texts/legacy/7904780.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7904781",
+      "path": "archive/deck-texts/legacy/7904781.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7904782",
+      "path": "archive/deck-texts/legacy/7904782.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7904783",
+      "path": "archive/deck-texts/legacy/7904783.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7904785",
+      "path": "archive/deck-texts/legacy/7904785.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7904786",
+      "path": "archive/deck-texts/legacy/7904786.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7904787",
+      "path": "archive/deck-texts/legacy/7904787.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7904789",
+      "path": "archive/deck-texts/legacy/7904789.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7904790",
+      "path": "archive/deck-texts/legacy/7904790.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7904791",
+      "path": "archive/deck-texts/legacy/7904791.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7904792",
+      "path": "archive/deck-texts/legacy/7904792.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7904796",
+      "path": "archive/deck-texts/legacy/7904796.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7904797",
+      "path": "archive/deck-texts/legacy/7904797.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7904799",
+      "path": "archive/deck-texts/legacy/7904799.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7904801",
+      "path": "archive/deck-texts/legacy/7904801.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7904802",
+      "path": "archive/deck-texts/legacy/7904802.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7904805",
+      "path": "archive/deck-texts/legacy/7904805.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7904806",
+      "path": "archive/deck-texts/legacy/7904806.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7904807",
+      "path": "archive/deck-texts/legacy/7904807.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7904808",
+      "path": "archive/deck-texts/legacy/7904808.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7904809",
+      "path": "archive/deck-texts/legacy/7904809.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7905954",
+      "path": "archive/deck-texts/legacy/7905954.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7905955",
+      "path": "archive/deck-texts/legacy/7905955.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7905956",
+      "path": "archive/deck-texts/legacy/7905956.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7905957",
+      "path": "archive/deck-texts/legacy/7905957.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7905958",
+      "path": "archive/deck-texts/legacy/7905958.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7905959",
+      "path": "archive/deck-texts/legacy/7905959.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7905960",
+      "path": "archive/deck-texts/legacy/7905960.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7905961",
+      "path": "archive/deck-texts/legacy/7905961.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7905962",
+      "path": "archive/deck-texts/legacy/7905962.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7905963",
+      "path": "archive/deck-texts/legacy/7905963.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7905964",
+      "path": "archive/deck-texts/legacy/7905964.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7905965",
+      "path": "archive/deck-texts/legacy/7905965.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7905966",
+      "path": "archive/deck-texts/legacy/7905966.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7905967",
+      "path": "archive/deck-texts/legacy/7905967.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7905968",
+      "path": "archive/deck-texts/legacy/7905968.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7905969",
+      "path": "archive/deck-texts/legacy/7905969.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7905970",
+      "path": "archive/deck-texts/legacy/7905970.json",
+      "message": "Reused existing published deck-text blob."
     }
   ]
 }

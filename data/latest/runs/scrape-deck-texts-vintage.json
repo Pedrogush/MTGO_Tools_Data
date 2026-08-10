@@ -1,276 +1,278 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-10T02:37:45Z",
+  "generated_at": "2026-08-10T08:07:58Z",
   "command": "scrape-deck-texts-vintage",
-  "status": "success",
+  "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "success": 1,
-    "skipped": 33
+    "stale-fallback": 1,
+    "hard-failure": 32,
+    "skipped": 1
   },
   "results": [
     {
       "scope": "archetype-list",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "vintage",
-      "path": "latest/archetypes/vintage.json"
+      "path": "latest/archetypes/vintage.json",
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "8-cast",
       "path": "latest/decks/vintage/8-cast.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for 8-Cast"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "blue-tinker",
       "path": "latest/decks/vintage/blue-tinker.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Blue Tinker"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "counter-vine",
       "path": "latest/decks/vintage/counter-vine.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Counter Vine"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "dimir-lurrus-control",
       "path": "latest/decks/vintage/dimir-lurrus-control.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Dimir Lurrus Control"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "dimir-psychic-frog",
       "path": "latest/decks/vintage/dimir-psychic-frog.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Dimir Psychic Frog"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "doomsday",
       "path": "latest/decks/vintage/doomsday.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Doomsday"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "dredge",
       "path": "latest/decks/vintage/dredge.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Dredge"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "eldrazi",
       "path": "latest/decks/vintage/eldrazi.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Eldrazi"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "esper-lurrus-control",
       "path": "latest/decks/vintage/esper-lurrus-control.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Esper Lurrus Control"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "esper-psychic-frog",
       "path": "latest/decks/vintage/esper-psychic-frog.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Esper Psychic Frog"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "goblins",
       "path": "latest/decks/vintage/goblins.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Goblins"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "grixis-lurrus-control",
       "path": "latest/decks/vintage/grixis-lurrus-control.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Grixis Lurrus Control"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "hogaak-vine",
       "path": "latest/decks/vintage/hogaak-vine.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Hogaak Vine"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "jewel-shops",
       "path": "latest/decks/vintage/jewel-shops.json",
-      "message": "All MTGGoldfish rows were MTGO events; published via mtgo-decklists."
+      "message": "Deck scrape returned no rows for Jewel Shops"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "lurrus-breach",
       "path": "latest/decks/vintage/lurrus-breach.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Lurrus Breach"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "lurrus-drs",
       "path": "latest/decks/vintage/lurrus-drs.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Lurrus DRS"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "lurrus-po",
       "path": "latest/decks/vintage/lurrus-po.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Lurrus PO"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "lurrus-vault-key",
       "path": "latest/decks/vintage/lurrus-vault-key.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Lurrus Vault Key"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "merfolk",
       "path": "latest/decks/vintage/merfolk.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Merfolk"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "mono-white-aggro",
       "path": "latest/decks/vintage/mono-white-aggro.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Mono-White Aggro"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "mono-white-initiative",
       "path": "latest/decks/vintage/mono-white-initiative.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Mono-White Initiative"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "oath-of-druids",
       "path": "latest/decks/vintage/oath-of-druids.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Oath of Druids"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "oops-all-spells",
       "path": "latest/decks/vintage/oops-all-spells.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Oops! All Spells"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "other-shops",
       "path": "latest/decks/vintage/other-shops.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Other Shops"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "painter",
       "path": "latest/decks/vintage/painter.json",
-      "message": "All MTGGoldfish rows were MTGO events; published via mtgo-decklists."
+      "message": "Deck scrape returned no rows for Painter"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "paradoxical-outcome",
       "path": "latest/decks/vintage/paradoxical-outcome.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Paradoxical Outcome"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "raker-shops",
       "path": "latest/decks/vintage/raker-shops.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Raker Shops"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "red-prison",
       "path": "latest/decks/vintage/red-prison.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Red Prison"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "scam",
       "path": "latest/decks/vintage/scam.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Scam"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "sphere-shops",
       "path": "latest/decks/vintage/sphere-shops.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Sphere Shops"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "sultai-psychic-frog",
       "path": "latest/decks/vintage/sultai-psychic-frog.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Sultai Psychic Frog"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "underworld-breach",
       "path": "latest/decks/vintage/underworld-breach.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Underworld Breach"
     },
     {
       "scope": "deck-text",

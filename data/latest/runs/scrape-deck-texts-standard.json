@@ -1,408 +1,414 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-10T02:37:46Z",
+  "generated_at": "2026-08-10T08:07:56Z",
   "command": "scrape-deck-texts-standard",
-  "status": "success",
+  "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "success": 5,
-    "skipped": 62
+    "stale-fallback": 18,
+    "hard-failure": 33,
+    "skipped": 14
   },
   "results": [
     {
       "scope": "archetype-list",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
-      "path": "latest/archetypes/standard.json"
+      "path": "latest/archetypes/standard.json",
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "archetype-decks",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "4c-control",
-      "path": "latest/decks/standard/4c-control.json"
+      "path": "latest/decks/standard/4c-control.json",
+      "message": "Deck scrape returned no rows for 4c Control"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "4c-gearhulk",
       "path": "latest/decks/standard/4c-gearhulk.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for 4c Gearhulk"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "4c-kona",
       "path": "latest/decks/standard/4c-kona.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for 4c Kona"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "4c-legends",
       "path": "latest/decks/standard/4c-legends.json",
-      "message": "All MTGGoldfish rows were MTGO events; published via mtgo-decklists."
+      "message": "Deck scrape returned no rows for 4c Legends"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "4c-lessons",
       "path": "latest/decks/standard/4c-lessons.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for 4c Lessons"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "4c-reanimator",
       "path": "latest/decks/standard/4c-reanimator.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for 4c Reanimator"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "5c-ramp",
       "path": "latest/decks/standard/5c-ramp.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for 5c Ramp"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "azorius-control",
       "path": "latest/decks/standard/azorius-control.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Azorius Control"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "azorius-momo",
       "path": "latest/decks/standard/azorius-momo.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Azorius Momo"
     },
     {
       "scope": "archetype-decks",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "azorius-tempo",
-      "path": "latest/decks/standard/azorius-tempo.json"
+      "path": "latest/decks/standard/azorius-tempo.json",
+      "message": "Deck scrape returned no rows for Azorius Tempo"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "bant-airbending-combo",
       "path": "latest/decks/standard/bant-airbending-combo.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Bant Airbending Combo"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "bant-ouroboroid",
       "path": "latest/decks/standard/bant-ouroboroid.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Bant Ouroboroid"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "boros-aggro",
       "path": "latest/decks/standard/boros-aggro.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Boros Aggro"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "boros-burn",
       "path": "latest/decks/standard/boros-burn.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Boros Burn"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "boros-manufacturing",
       "path": "latest/decks/standard/boros-manufacturing.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Boros Manufacturing"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "boros-tokens",
       "path": "latest/decks/standard/boros-tokens.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Boros Tokens"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "dimir-excruciator",
       "path": "latest/decks/standard/dimir-excruciator.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Dimir Excruciator"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "dimir-midrange",
       "path": "latest/decks/standard/dimir-midrange.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Dimir Midrange"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "dimir-reanimator",
       "path": "latest/decks/standard/dimir-reanimator.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Dimir Reanimator"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "esper-control",
       "path": "latest/decks/standard/esper-control.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Esper Control"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "esper-reanimator",
       "path": "latest/decks/standard/esper-reanimator.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Esper Reanimator"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "esper-self-bounce",
       "path": "latest/decks/standard/esper-self-bounce.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Esper Self-Bounce"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "golgari-midrange",
       "path": "latest/decks/standard/golgari-midrange.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Golgari Midrange"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "gruul-delirium",
       "path": "latest/decks/standard/gruul-delirium.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Gruul Delirium"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "gruul-landfall",
       "path": "latest/decks/standard/gruul-landfall.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Gruul Landfall"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "izzet-aggro",
       "path": "latest/decks/standard/izzet-aggro.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Izzet Aggro"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "izzet-control",
       "path": "latest/decks/standard/izzet-control.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Izzet Control"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "izzet-lessons",
       "path": "latest/decks/standard/izzet-lessons.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Izzet Lessons"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "izzet-maestro",
       "path": "latest/decks/standard/izzet-maestro.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Izzet Maestro"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "izzet-prowess",
       "path": "latest/decks/standard/izzet-prowess.json",
-      "message": "All MTGGoldfish rows were MTGO events; published via mtgo-decklists."
+      "message": "Deck scrape returned no rows for Izzet Prowess"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "izzet-self-bounce",
       "path": "latest/decks/standard/izzet-self-bounce.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Izzet Self-Bounce"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "izzet-spellementals",
       "path": "latest/decks/standard/izzet-spellementals.json",
-      "message": "All MTGGoldfish rows were MTGO events; published via mtgo-decklists."
+      "message": "Deck scrape returned no rows for Izzet Spellementals"
     },
     {
       "scope": "archetype-decks",
-      "status": "success",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "izzet-spells",
-      "path": "latest/decks/standard/izzet-spells.json"
+      "path": "latest/decks/standard/izzet-spells.json",
+      "message": "Deck scrape returned no rows for Izzet Spells"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "jeskai-artifacts",
       "path": "latest/decks/standard/jeskai-artifacts.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Jeskai Artifacts"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "jeskai-control",
       "path": "latest/decks/standard/jeskai-control.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Jeskai Control"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "jeskai-lessons",
       "path": "latest/decks/standard/jeskai-lessons.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Jeskai Lessons"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "jeskai-manufacturing",
       "path": "latest/decks/standard/jeskai-manufacturing.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Jeskai Manufacturing"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "jeskai-oculus",
       "path": "latest/decks/standard/jeskai-oculus.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Jeskai Oculus"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "lifegain",
       "path": "latest/decks/standard/lifegain.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Lifegain"
     },
     {
       "scope": "archetype-decks",
-      "status": "success",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "mardu-discard",
-      "path": "latest/decks/standard/mardu-discard.json"
+      "path": "latest/decks/standard/mardu-discard.json",
+      "message": "Deck scrape returned no rows for Mardu Discard"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "mardu-manufacturing",
       "path": "latest/decks/standard/mardu-manufacturing.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Mardu Manufacturing"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "mono-black-aggro",
       "path": "latest/decks/standard/mono-black-aggro.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Mono-Black Aggro"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "mono-black-midrange",
       "path": "latest/decks/standard/mono-black-midrange.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Mono-Black Midrange"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "mono-green-landfall",
       "path": "latest/decks/standard/mono-green-landfall.json",
-      "message": "All MTGGoldfish rows were MTGO events; published via mtgo-decklists."
+      "message": "Deck scrape returned no rows for Mono-Green Landfall"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "mono-green-ouroboroid",
       "path": "latest/decks/standard/mono-green-ouroboroid.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Mono-Green Ouroboroid"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "mono-red-aggro",
       "path": "latest/decks/standard/mono-red-aggro.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Mono-Red Aggro"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "naya-delirium",
       "path": "latest/decks/standard/naya-delirium.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Naya Delirium"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "naya-yuna",
       "path": "latest/decks/standard/naya-yuna.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Naya Yuna"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "orzhov-aristocrats",
       "path": "latest/decks/standard/orzhov-aristocrats.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Orzhov Aristocrats"
     },
     {
       "scope": "archetype-decks",
@@ -422,11 +428,11 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "selesnya-landfall",
       "path": "latest/decks/standard/selesnya-landfall.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Selesnya Landfall"
     },
     {
       "scope": "archetype-decks",
@@ -434,7 +440,7 @@
       "format": "standard",
       "archetype": "selesnya-ouroboroid",
       "path": "latest/decks/standard/selesnya-ouroboroid.json",
-      "message": "No decks found within the last 7 days."
+      "message": "All MTGGoldfish rows were MTGO events; published via mtgo-decklists."
     },
     {
       "scope": "archetype-decks",
@@ -504,14 +510,6 @@
       "scope": "deck-text",
       "status": "skipped",
       "format": "standard",
-      "deck_id": "7905972",
-      "path": "archive/deck-texts/standard/7905972.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "standard",
       "deck_id": "7905973",
       "path": "archive/deck-texts/standard/7905973.json",
       "message": "Reused existing published deck-text blob."
@@ -522,14 +520,6 @@
       "format": "standard",
       "deck_id": "7905975",
       "path": "archive/deck-texts/standard/7905975.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "standard",
-      "deck_id": "7905976",
-      "path": "archive/deck-texts/standard/7905976.json",
       "message": "Reused existing published deck-text blob."
     },
     {

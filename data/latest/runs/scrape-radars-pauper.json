@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-10T13:54:19Z",
+  "generated_at": "2026-08-10T19:24:51Z",
   "command": "scrape-radars-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 15,
-    "success": 53
+    "skipped": 16,
+    "success": 54
   },
   "results": [
     {
@@ -22,16 +22,31 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pauper",
-      "archetype": "azorius-gates",
-      "path": "latest/radars/pauper/azorius-gates.json"
+      "archetype": "azorius-affinity",
+      "path": "latest/radars/pauper/azorius-affinity.json"
     },
     {
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "pauper",
-      "archetype": "black-burn",
-      "path": "latest/radars/pauper/black-burn.json",
+      "archetype": "azorius-ephemerate",
+      "path": "latest/radars/pauper/azorius-ephemerate.json",
       "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "pauper",
+      "archetype": "azorius-faeries",
+      "path": "latest/radars/pauper/azorius-faeries.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pauper",
+      "archetype": "azorius-gates",
+      "path": "latest/radars/pauper/azorius-gates.json"
     },
     {
       "scope": "archetype-radar",
@@ -67,14 +82,6 @@
       "format": "pauper",
       "archetype": "boros-moxite",
       "path": "latest/radars/pauper/boros-moxite.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "pauper",
-      "archetype": "boros-synthesizer",
-      "path": "latest/radars/pauper/boros-synthesizer.json",
       "message": "No published decks were available for radar generation."
     },
     {
@@ -199,6 +206,14 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "pauper",
+      "archetype": "grixis-control",
+      "path": "latest/radars/pauper/grixis-control.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
       "status": "success",
       "format": "pauper",
       "archetype": "gruul-ponza",
@@ -230,8 +245,8 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "pauper",
-      "archetype": "izzet-affinity",
-      "path": "latest/radars/pauper/izzet-affinity.json",
+      "archetype": "izzet-delver",
+      "path": "latest/radars/pauper/izzet-delver.json",
       "message": "No published decks were available for radar generation."
     },
     {
@@ -282,21 +297,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pauper",
-      "archetype": "mono-black",
-      "path": "latest/radars/pauper/mono-black.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "pauper",
-      "archetype": "mono-blue-delver",
-      "path": "latest/radars/pauper/mono-blue-delver.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pauper",
       "archetype": "mono-blue-faeries",
       "path": "latest/radars/pauper/mono-blue-faeries.json"
     },
@@ -324,18 +324,18 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "pauper",
-      "archetype": "mono-white-aggro",
-      "path": "latest/radars/pauper/mono-white-aggro.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
       "status": "success",
       "format": "pauper",
       "archetype": "mono-white-heroic",
       "path": "latest/radars/pauper/mono-white-heroic.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "pauper",
+      "archetype": "naya-ramp",
+      "path": "latest/radars/pauper/naya-ramp.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -372,6 +372,14 @@
       "format": "pauper",
       "archetype": "serpentine-curve",
       "path": "latest/radars/pauper/serpentine-curve.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "pauper",
+      "archetype": "simic-delver",
+      "path": "latest/radars/pauper/simic-delver.json",
       "message": "No published decks were available for radar generation."
     },
     {
@@ -479,6 +487,13 @@
       "format": "pauper",
       "archetype": "jund-midrange",
       "path": "latest/radars/pauper/jund-midrange.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pauper",
+      "archetype": "mono-black",
+      "path": "latest/radars/pauper/mono-black.json"
     },
     {
       "scope": "archetype-radar",

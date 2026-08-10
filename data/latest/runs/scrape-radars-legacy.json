@@ -1,7 +1,7 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-10T13:54:41Z",
+  "generated_at": "2026-08-10T19:25:00Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
@@ -64,6 +64,13 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "beanstalk-control-yorion",
+      "path": "latest/radars/legacy/beanstalk-control-yorion.json"
+    },
+    {
+      "scope": "archetype-radar",
       "status": "skipped",
       "format": "legacy",
       "archetype": "beseech-storm",
@@ -87,6 +94,14 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "legacy",
+      "archetype": "blue-dredge",
+      "path": "latest/radars/legacy/blue-dredge.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
       "archetype": "boros-energy",
@@ -98,13 +113,6 @@
       "format": "legacy",
       "archetype": "boros-initiative",
       "path": "latest/radars/legacy/boros-initiative.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "burn",
-      "path": "latest/radars/legacy/burn.json"
     },
     {
       "scope": "archetype-radar",
@@ -127,6 +135,14 @@
       "format": "legacy",
       "archetype": "cradle-control",
       "path": "latest/radars/legacy/cradle-control.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "legacy",
+      "archetype": "creative-technique",
+      "path": "latest/radars/legacy/creative-technique.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -202,14 +218,6 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "esper-stoneblade",
-      "path": "latest/radars/legacy/esper-stoneblade.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
       "archetype": "esper-tempo",
@@ -224,18 +232,18 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "grixis-tempo",
-      "path": "latest/radars/legacy/grixis-tempo.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
       "archetype": "izzet-delver",
       "path": "latest/radars/legacy/izzet-delver.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "legacy",
+      "archetype": "izzet-tempo",
+      "path": "latest/radars/legacy/izzet-tempo.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -327,22 +335,6 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "necrodominance-combo",
-      "path": "latest/radars/legacy/necrodominance-combo.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "nic-fit",
-      "path": "latest/radars/legacy/nic-fit.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
       "archetype": "ninjas",
@@ -429,6 +421,14 @@
       "format": "legacy",
       "archetype": "sultai-depths",
       "path": "latest/radars/legacy/sultai-depths.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "legacy",
+      "archetype": "sultai-tempo",
+      "path": "latest/radars/legacy/sultai-tempo.json",
       "message": "No published decks were available for radar generation."
     },
     {

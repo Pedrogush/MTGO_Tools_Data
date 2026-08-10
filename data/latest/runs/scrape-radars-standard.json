@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-09T19:07:36Z",
+  "generated_at": "2026-08-10T02:40:16Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 30,
-    "skipped": 57
+    "success": 29,
+    "skipped": 58
   },
   "results": [
     {
@@ -408,10 +408,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "mono-black-aggro",
-      "path": "latest/radars/standard/mono-black-aggro.json"
+      "path": "latest/radars/standard/mono-black-aggro.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-09T19:07:36Z",
+  "generated_at": "2026-08-10T02:40:26Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 47,
-    "success": 29
+    "success": 28
   },
   "results": [
     {
@@ -331,10 +331,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "jund-midrange",
-      "path": "latest/radars/pioneer/jund-midrange.json"
+      "path": "latest/radars/pioneer/jund-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -369,11 +370,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "niv-to-light",
-      "path": "latest/radars/pioneer/niv-to-light.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pioneer/niv-to-light.json"
     },
     {
       "scope": "archetype-radar",
@@ -495,6 +495,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pioneer",
+      "archetype": "azorius-humans",
+      "path": "latest/radars/pioneer/azorius-humans.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
       "archetype": "boros-aggro",
       "path": "latest/radars/pioneer/boros-aggro.json"
     },
@@ -537,13 +544,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pioneer",
-      "archetype": "mono-green-stompy",
-      "path": "latest/radars/pioneer/mono-green-stompy.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pioneer",
       "archetype": "mono-red-aggro",
       "path": "latest/radars/pioneer/mono-red-aggro.json"
     },
@@ -560,13 +560,6 @@
       "format": "pioneer",
       "archetype": "selesnya-elemental",
       "path": "latest/radars/pioneer/selesnya-elemental.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pioneer",
-      "archetype": "selesnya-midrange",
-      "path": "latest/radars/pioneer/selesnya-midrange.json"
     },
     {
       "scope": "archetype-radar",

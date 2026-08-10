@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-09T19:07:53Z",
+  "generated_at": "2026-08-10T02:40:20Z",
   "command": "scrape-radars-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 18,
-    "success": 19
+    "skipped": 19,
+    "success": 18
   },
   "results": [
     {
@@ -72,10 +72,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "esper-lurrus-control",
-      "path": "latest/radars/vintage/esper-lurrus-control.json"
+      "path": "latest/radars/vintage/esper-lurrus-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

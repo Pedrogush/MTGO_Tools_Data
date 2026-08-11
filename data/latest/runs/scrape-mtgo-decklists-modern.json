@@ -1,16 +1,22 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-11T07:41:17Z",
+  "generated_at": "2026-08-11T13:45:59Z",
   "command": "scrape-mtgo-decklists-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
+    "skipped": 6,
     "success": 3,
-    "skipped": 5,
     "cached": 17
   },
   "results": [
+    {
+      "scope": "mtgo-event",
+      "status": "skipped",
+      "format": "modern",
+      "message": "https://api.videreproject.com/decks?event_id=12851133: Event returned no decklists."
+    },
     {
       "scope": "mtgo-event",
       "status": "success",

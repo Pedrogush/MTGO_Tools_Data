@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-10T19:30:08Z",
+  "generated_at": "2026-08-11T02:35:08Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 77,
-    "skipped": 25
+    "success": 73,
+    "skipped": 27
   },
   "results": [
     {
@@ -229,10 +229,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "grixis-midrange",
-      "path": "latest/radars/modern/grixis-midrange.json"
+      "path": "latest/radars/modern/grixis-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -384,10 +385,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "mono-black-midrange",
-      "path": "latest/radars/modern/mono-black-midrange.json"
+      "path": "latest/radars/modern/mono-black-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -655,8 +657,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "hardened-scales",
-      "path": "latest/radars/modern/hardened-scales.json"
+      "archetype": "izzet-saga",
+      "path": "latest/radars/modern/izzet-saga.json"
     },
     {
       "scope": "archetype-radar",
@@ -664,13 +666,6 @@
       "format": "modern",
       "archetype": "izzet-wizards",
       "path": "latest/radars/modern/izzet-wizards.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "jeskai-wizards",
-      "path": "latest/radars/modern/jeskai-wizards.json"
     },
     {
       "scope": "archetype-radar",
@@ -692,13 +687,6 @@
       "format": "modern",
       "archetype": "mardu-midrange",
       "path": "latest/radars/modern/mardu-midrange.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "mono-red-aggro",
-      "path": "latest/radars/modern/mono-red-aggro.json"
     },
     {
       "scope": "archetype-radar",

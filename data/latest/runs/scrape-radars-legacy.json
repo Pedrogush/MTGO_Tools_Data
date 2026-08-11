@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-10T19:25:00Z",
+  "generated_at": "2026-08-11T02:35:12Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 22,
-    "success": 56
+    "skipped": 21,
+    "success": 57
   },
   "results": [
     {
@@ -90,14 +90,6 @@
       "format": "legacy",
       "archetype": "blue-cloudpost",
       "path": "latest/radars/legacy/blue-cloudpost.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "blue-dredge",
-      "path": "latest/radars/legacy/blue-dredge.json",
       "message": "No published decks were available for radar generation."
     },
     {
@@ -232,18 +224,26 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
-      "archetype": "izzet-delver",
-      "path": "latest/radars/legacy/izzet-delver.json"
+      "archetype": "gruul-initiative",
+      "path": "latest/radars/legacy/gruul-initiative.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "legacy",
-      "archetype": "izzet-tempo",
-      "path": "latest/radars/legacy/izzet-tempo.json",
+      "archetype": "hogaak-moonshadow",
+      "path": "latest/radars/legacy/hogaak-moonshadow.json",
       "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "izzet-delver",
+      "path": "latest/radars/legacy/izzet-delver.json"
     },
     {
       "scope": "archetype-radar",
@@ -405,6 +405,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
+      "archetype": "sewer-cam-combo",
+      "path": "latest/radars/legacy/sewer-cam-combo.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
       "archetype": "sneak-and-show",
       "path": "latest/radars/legacy/sneak-and-show.json"
     },
@@ -421,14 +428,6 @@
       "format": "legacy",
       "archetype": "sultai-depths",
       "path": "latest/radars/legacy/sultai-depths.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "sultai-tempo",
-      "path": "latest/radars/legacy/sultai-tempo.json",
       "message": "No published decks were available for radar generation."
     },
     {

@@ -1,7 +1,7 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-10T19:21:04Z",
+  "generated_at": "2026-08-11T02:31:16Z",
   "command": "scrape-deck-texts-legacy",
   "status": "success",
   "max_stale_hours": 24,
@@ -97,14 +97,6 @@
       "format": "legacy",
       "archetype": "blue-cloudpost",
       "path": "latest/decks/legacy/blue-cloudpost.json",
-      "message": "No decks found within the last 7 days."
-    },
-    {
-      "scope": "archetype-decks",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "blue-dredge",
-      "path": "latest/decks/legacy/blue-dredge.json",
       "message": "No decks found within the last 7 days."
     },
     {
@@ -240,18 +232,26 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
-      "archetype": "izzet-delver",
-      "path": "latest/decks/legacy/izzet-delver.json"
+      "archetype": "gruul-initiative",
+      "path": "latest/decks/legacy/gruul-initiative.json",
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
       "status": "skipped",
       "format": "legacy",
-      "archetype": "izzet-tempo",
-      "path": "latest/decks/legacy/izzet-tempo.json",
+      "archetype": "hogaak-moonshadow",
+      "path": "latest/decks/legacy/hogaak-moonshadow.json",
       "message": "No decks found within the last 7 days."
+    },
+    {
+      "scope": "archetype-decks",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "izzet-delver",
+      "path": "latest/decks/legacy/izzet-delver.json"
     },
     {
       "scope": "archetype-decks",
@@ -416,6 +416,13 @@
       "scope": "archetype-decks",
       "status": "success",
       "format": "legacy",
+      "archetype": "sewer-cam-combo",
+      "path": "latest/decks/legacy/sewer-cam-combo.json"
+    },
+    {
+      "scope": "archetype-decks",
+      "status": "success",
+      "format": "legacy",
       "archetype": "sneak-and-show",
       "path": "latest/decks/legacy/sneak-and-show.json"
     },
@@ -432,14 +439,6 @@
       "format": "legacy",
       "archetype": "sultai-depths",
       "path": "latest/decks/legacy/sultai-depths.json",
-      "message": "No decks found within the last 7 days."
-    },
-    {
-      "scope": "archetype-decks",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "sultai-tempo",
-      "path": "latest/decks/legacy/sultai-tempo.json",
       "message": "No decks found within the last 7 days."
     },
     {
@@ -690,10 +689,11 @@
     },
     {
       "scope": "deck-text",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "deck_id": "7904788",
-      "path": "archive/deck-texts/legacy/7904788.json"
+      "path": "archive/deck-texts/legacy/7904788.json",
+      "message": "Reused existing published deck-text blob."
     },
     {
       "scope": "deck-text",

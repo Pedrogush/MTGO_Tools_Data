@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-11T19:34:38Z",
+  "generated_at": "2026-08-12T02:51:11Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 73,
-    "skipped": 27
+    "success": 70,
+    "skipped": 28
   },
   "results": [
     {
@@ -461,10 +461,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "rakdos-hollowone",
-      "path": "latest/radars/modern/rakdos-hollowone.json"
+      "path": "latest/radars/modern/rakdos-hollowone.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -643,13 +644,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "golgari-midrange",
-      "path": "latest/radars/modern/golgari-midrange.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "goryo-reanimator",
       "path": "latest/radars/modern/goryo-reanimator.json"
     },
@@ -722,13 +716,6 @@
       "format": "modern",
       "archetype": "samwise",
       "path": "latest/radars/modern/samwise.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "simic-ritual",
-      "path": "latest/radars/modern/simic-ritual.json"
     },
     {
       "scope": "format-card-pool",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-12T02:51:11Z",
+  "generated_at": "2026-08-12T07:59:37Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 70,
-    "skipped": 28
+    "success": 72,
+    "skipped": 27
   },
   "results": [
     {
@@ -385,11 +385,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "mono-black-midrange",
-      "path": "latest/radars/modern/mono-black-midrange.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/mono-black-midrange.json"
     },
     {
       "scope": "archetype-radar",
@@ -639,6 +638,13 @@
       "format": "modern",
       "archetype": "esper-scam",
       "path": "latest/radars/modern/esper-scam.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "footfalls",
+      "path": "latest/radars/modern/footfalls.json"
     },
     {
       "scope": "archetype-radar",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-13T14:00:04Z",
+  "generated_at": "2026-08-13T19:38:19Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 53,
-    "skipped": 40
+    "success": 50,
+    "skipped": 36
   },
   "results": [
     {
@@ -16,14 +16,6 @@
       "format": "standard",
       "archetype": "4c-control",
       "path": "latest/radars/standard/4c-control.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "standard",
-      "archetype": "4c-gearhulk",
-      "path": "latest/radars/standard/4c-gearhulk.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -78,14 +70,6 @@
       "format": "standard",
       "archetype": "5c-elementals",
       "path": "latest/radars/standard/5c-elementals.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "standard",
-      "archetype": "abzan-ouroboroid",
-      "path": "latest/radars/standard/abzan-ouroboroid.json",
       "message": "No published decks were available for radar generation."
     },
     {
@@ -267,6 +251,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
+      "archetype": "gruul-leyline-aggro",
+      "path": "latest/radars/standard/gruul-leyline-aggro.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
       "archetype": "izzet-aggro",
       "path": "latest/radars/standard/izzet-aggro.json"
     },
@@ -346,13 +337,6 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
-      "archetype": "jeskai-lessons",
-      "path": "latest/radars/standard/jeskai-lessons.json"
-    },
-    {
-      "scope": "archetype-radar",
       "status": "skipped",
       "format": "standard",
       "archetype": "jeskai-manufacturing",
@@ -361,10 +345,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
-      "archetype": "jeskai-prowess",
-      "path": "latest/radars/standard/jeskai-prowess.json"
+      "archetype": "jeskai-momo",
+      "path": "latest/radars/standard/jeskai-momo.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -417,14 +402,6 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "standard",
-      "archetype": "mono-green-ouroboroid",
-      "path": "latest/radars/standard/mono-green-ouroboroid.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
       "archetype": "mono-red-aggro",
@@ -473,30 +450,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
-      "archetype": "selesnya-aggro",
-      "path": "latest/radars/standard/selesnya-aggro.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "standard",
-      "archetype": "selesnya-gearhulk",
-      "path": "latest/radars/standard/selesnya-gearhulk.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
       "archetype": "selesnya-landfall",
       "path": "latest/radars/standard/selesnya-landfall.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
-      "archetype": "selesnya-ouroboroid",
-      "path": "latest/radars/standard/selesnya-ouroboroid.json"
     },
     {
       "scope": "archetype-radar",
@@ -549,14 +504,6 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "standard",
-      "archetype": "temur-leyline-aggro",
-      "path": "latest/radars/standard/temur-leyline-aggro.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "standard",
       "archetype": "temur-prowess",
       "path": "latest/radars/standard/temur-prowess.json",
       "message": "No published decks were available for radar generation."
@@ -581,13 +528,6 @@
       "format": "standard",
       "archetype": "dimir-oculus",
       "path": "latest/radars/standard/dimir-oculus.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
-      "archetype": "gruul-aggro",
-      "path": "latest/radars/standard/gruul-aggro.json"
     },
     {
       "scope": "archetype-radar",
@@ -644,6 +584,13 @@
       "format": "standard",
       "archetype": "reanimator",
       "path": "latest/radars/standard/reanimator.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "selesnya-aggro",
+      "path": "latest/radars/standard/selesnya-aggro.json"
     },
     {
       "scope": "archetype-radar",

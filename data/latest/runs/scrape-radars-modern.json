@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-12T19:34:49Z",
+  "generated_at": "2026-08-13T02:52:48Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "success": 72,
-    "skipped": 28
+    "skipped": 29
   },
   "results": [
     {
@@ -312,10 +312,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "jeskai-blink",
-      "path": "latest/radars/modern/jeskai-blink.json"
+      "path": "latest/radars/modern/jeskai-blink.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -665,6 +666,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
+      "archetype": "grixis-frog",
+      "path": "latest/radars/modern/grixis-frog.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
       "archetype": "izzet-saga",
       "path": "latest/radars/modern/izzet-saga.json"
     },
@@ -686,15 +694,15 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "mardu-blink",
-      "path": "latest/radars/modern/mardu-blink.json"
+      "archetype": "mardu-midrange",
+      "path": "latest/radars/modern/mardu-midrange.json"
     },
     {
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "mardu-midrange",
-      "path": "latest/radars/modern/mardu-midrange.json"
+      "archetype": "mono-blue-control",
+      "path": "latest/radars/modern/mono-blue-control.json"
     },
     {
       "scope": "archetype-radar",

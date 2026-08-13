@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-12T19:34:38Z",
+  "generated_at": "2026-08-13T02:53:08Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 47,
-    "skipped": 39
+    "success": 46,
+    "skipped": 41
   },
   "results": [
     {
@@ -120,10 +120,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "boros-aggro",
-      "path": "latest/radars/standard/boros-aggro.json"
+      "path": "latest/radars/standard/boros-aggro.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -249,10 +250,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "gruul-delirium",
-      "path": "latest/radars/standard/gruul-delirium.json"
+      "path": "latest/radars/standard/gruul-delirium.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -599,13 +601,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
-      "archetype": "mardu-blade",
-      "path": "latest/radars/standard/mardu-blade.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
       "archetype": "mono-black-demons",
       "path": "latest/radars/standard/mono-black-demons.json"
     },
@@ -634,8 +629,22 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
+      "archetype": "temur-control",
+      "path": "latest/radars/standard/temur-control.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
       "archetype": "temur-midrange",
       "path": "latest/radars/standard/temur-midrange.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "temur-omniscience",
+      "path": "latest/radars/standard/temur-omniscience.json"
     },
     {
       "scope": "archetype-radar",

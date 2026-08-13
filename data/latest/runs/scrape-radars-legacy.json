@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-12T19:34:38Z",
+  "generated_at": "2026-08-13T02:53:08Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 19,
-    "success": 59
+    "skipped": 23,
+    "success": 54
   },
   "results": [
     {
@@ -20,10 +20,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "affinity-stompy",
-      "path": "latest/radars/legacy/affinity-stompy.json"
+      "path": "latest/radars/legacy/affinity-stompy.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -223,10 +224,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "goblins",
-      "path": "latest/radars/legacy/goblins.json"
+      "path": "latest/radars/legacy/goblins.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -253,10 +255,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "jeskai-control",
-      "path": "latest/radars/legacy/jeskai-control.json"
+      "path": "latest/radars/legacy/jeskai-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -282,10 +285,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "mardu-energy",
-      "path": "latest/radars/legacy/mardu-energy.json"
+      "path": "latest/radars/legacy/mardu-energy.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -469,13 +473,6 @@
       "format": "legacy",
       "archetype": "dimir-midrange",
       "path": "latest/radars/legacy/dimir-midrange.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "elves",
-      "path": "latest/radars/legacy/elves.json"
     },
     {
       "scope": "archetype-radar",

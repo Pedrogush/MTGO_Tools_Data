@@ -1,12 +1,12 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-14T13:50:43Z",
+  "generated_at": "2026-08-14T19:20:18Z",
   "command": "scrape-radars-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 13,
+    "skipped": 14,
     "success": 19
   },
   "results": [
@@ -150,6 +150,14 @@
       "format": "vintage",
       "archetype": "oath-of-druids",
       "path": "latest/radars/vintage/oath-of-druids.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "vintage",
+      "archetype": "orzhov-initiative",
+      "path": "latest/radars/vintage/orzhov-initiative.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-14T13:49:50Z",
+  "generated_at": "2026-08-14T19:20:31Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 34,
-    "success": 68
+    "skipped": 35,
+    "success": 67
   },
   "results": [
     {
@@ -504,6 +504,14 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "modern",
+      "archetype": "selective-oracle",
+      "path": "latest/radars/modern/selective-oracle.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
       "archetype": "simic-midrange",
@@ -589,13 +597,6 @@
       "format": "modern",
       "archetype": "boros-scam",
       "path": "latest/radars/modern/boros-scam.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "broodscale",
-      "path": "latest/radars/modern/broodscale.json"
     },
     {
       "scope": "archetype-radar",

@@ -1,16 +1,30 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-13T19:29:21Z",
+  "generated_at": "2026-08-14T02:49:28Z",
   "command": "scrape-mtgo-decklists-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 6,
-    "success": 3,
-    "cached": 18
+    "success": 4,
+    "skipped": 4,
+    "cached": 17
   },
   "results": [
+    {
+      "scope": "mtgo-event",
+      "status": "success",
+      "format": "modern",
+      "path": "archive/mtgo-decklists/modern/n2019355557.json",
+      "message": "Cached 11/11 decks."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "success",
+      "format": "modern",
+      "path": "archive/mtgo-decklists/modern/12851632.json",
+      "message": "Cached 32/32 decks."
+    },
     {
       "scope": "mtgo-event",
       "status": "skipped",
@@ -22,7 +36,7 @@
       "status": "success",
       "format": "modern",
       "path": "archive/mtgo-decklists/modern/n100953360.json",
-      "message": "Cached 14/14 decks."
+      "message": "Cached 56/56 decks."
     },
     {
       "scope": "mtgo-event",
@@ -33,10 +47,10 @@
     },
     {
       "scope": "mtgo-event",
-      "status": "success",
+      "status": "cached",
       "format": "modern",
       "path": "archive/mtgo-decklists/modern/n1596722369.json",
-      "message": "Cached 4/4 decks."
+      "message": "Loaded 4 decks from archive."
     },
     {
       "scope": "mtgo-event",
@@ -160,32 +174,6 @@
       "format": "modern",
       "path": "archive/mtgo-decklists/modern/n2110928062.json",
       "message": "Loaded 2 decks from archive."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "cached",
-      "format": "modern",
-      "path": "archive/mtgo-decklists/modern/12850868.json",
-      "message": "Loaded 32 decks from archive."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "skipped",
-      "format": "modern",
-      "message": "https://api.videreproject.com/decks?event_id=12850806: Event returned no decklists."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "skipped",
-      "format": "modern",
-      "message": "https://api.videreproject.com/decks?event_id=12850802: Event returned no decklists."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "cached",
-      "format": "modern",
-      "path": "archive/mtgo-decklists/modern/n1117756681.json",
-      "message": "Loaded 18 decks from archive."
     },
     {
       "scope": "mtgo-decklists",

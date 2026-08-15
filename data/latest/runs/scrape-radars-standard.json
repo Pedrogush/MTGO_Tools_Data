@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-14T19:20:23Z",
+  "generated_at": "2026-08-15T01:56:45Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 52,
-    "skipped": 37
+    "success": 47,
+    "skipped": 38
   },
   "results": [
     {
@@ -417,10 +417,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "naya-delirium",
-      "path": "latest/radars/standard/naya-delirium.json"
+      "path": "latest/radars/standard/naya-delirium.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -541,13 +542,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
-      "archetype": "gruul-midrange",
-      "path": "latest/radars/standard/gruul-midrange.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
       "archetype": "izzet-elementals",
       "path": "latest/radars/standard/izzet-elementals.json"
     },
@@ -578,13 +572,6 @@
       "format": "standard",
       "archetype": "mardu-aggro",
       "path": "latest/radars/standard/mardu-aggro.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
-      "archetype": "mono-black-demons",
-      "path": "latest/radars/standard/mono-black-demons.json"
     },
     {
       "scope": "archetype-radar",
@@ -625,13 +612,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
-      "archetype": "sultai-elementals",
-      "path": "latest/radars/standard/sultai-elementals.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
       "archetype": "temur-control",
       "path": "latest/radars/standard/temur-control.json"
     },
@@ -641,13 +621,6 @@
       "format": "standard",
       "archetype": "temur-elementals",
       "path": "latest/radars/standard/temur-elementals.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
-      "archetype": "temur-midrange",
-      "path": "latest/radars/standard/temur-midrange.json"
     },
     {
       "scope": "archetype-radar",

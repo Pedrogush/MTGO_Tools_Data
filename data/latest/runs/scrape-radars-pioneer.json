@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-14T19:20:20Z",
+  "generated_at": "2026-08-15T01:56:30Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 45,
-    "success": 33
+    "skipped": 46,
+    "success": 27
   },
   "results": [
     {
@@ -122,10 +122,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "boros-convoke",
-      "path": "latest/radars/pioneer/boros-convoke.json"
+      "path": "latest/radars/pioneer/boros-convoke.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -528,20 +529,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pioneer",
-      "archetype": "izzet-control",
-      "path": "latest/radars/pioneer/izzet-control.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pioneer",
-      "archetype": "lotus-strings",
-      "path": "latest/radars/pioneer/lotus-strings.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pioneer",
       "archetype": "mono-green-devotion",
       "path": "latest/radars/pioneer/mono-green-devotion.json"
     },
@@ -551,20 +538,6 @@
       "format": "pioneer",
       "archetype": "mono-red-aggro",
       "path": "latest/radars/pioneer/mono-red-aggro.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pioneer",
-      "archetype": "opus",
-      "path": "latest/radars/pioneer/opus.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pioneer",
-      "archetype": "selesnya-elemental",
-      "path": "latest/radars/pioneer/selesnya-elemental.json"
     },
     {
       "scope": "archetype-radar",
@@ -586,13 +559,6 @@
       "format": "pioneer",
       "archetype": "spirits",
       "path": "latest/radars/pioneer/spirits.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pioneer",
-      "archetype": "sultai-midrange",
-      "path": "latest/radars/pioneer/sultai-midrange.json"
     },
     {
       "scope": "format-card-pool",

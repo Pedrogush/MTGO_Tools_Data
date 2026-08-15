@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-15T13:05:18Z",
+  "generated_at": "2026-08-15T18:55:53Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "success": 47,
-    "skipped": 38
+    "skipped": 39
   },
   "results": [
     {
@@ -235,6 +235,14 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "standard",
+      "archetype": "grixis-control",
+      "path": "latest/radars/standard/grixis-control.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "standard",
       "archetype": "gruul-delirium",
       "path": "latest/radars/standard/gruul-delirium.json",
       "message": "No published decks were available for radar generation."
@@ -451,6 +459,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
+      "archetype": "selesnya-aggro",
+      "path": "latest/radars/standard/selesnya-aggro.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
       "archetype": "selesnya-landfall",
       "path": "latest/radars/standard/selesnya-landfall.json"
     },
@@ -586,13 +601,6 @@
       "format": "standard",
       "archetype": "reanimator",
       "path": "latest/radars/standard/reanimator.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
-      "archetype": "selesnya-aggro",
-      "path": "latest/radars/standard/selesnya-aggro.json"
     },
     {
       "scope": "archetype-radar",

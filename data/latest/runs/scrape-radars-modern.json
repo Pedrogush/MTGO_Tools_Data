@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-15T13:05:17Z",
+  "generated_at": "2026-08-15T18:54:26Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 38,
-    "success": 64
+    "success": 63
   },
   "results": [
     {
@@ -230,10 +230,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "goryo-s-vengeance",
-      "path": "latest/radars/modern/goryo-s-vengeance.json"
+      "path": "latest/radars/modern/goryo-s-vengeance.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -504,14 +505,6 @@
       "format": "modern",
       "archetype": "sam-combo",
       "path": "latest/radars/modern/sam-combo.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "modern",
-      "archetype": "selective-oracle",
-      "path": "latest/radars/modern/selective-oracle.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

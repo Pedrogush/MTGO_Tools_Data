@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-15T18:54:28Z",
+  "generated_at": "2026-08-16T02:04:09Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 45,
-    "success": 27
+    "skipped": 46,
+    "success": 25
   },
   "results": [
     {
@@ -293,10 +293,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "izzet-rona-combo",
-      "path": "latest/radars/pioneer/izzet-rona-combo.json"
+      "path": "latest/radars/pioneer/izzet-rona-combo.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -502,13 +503,6 @@
       "format": "pioneer",
       "archetype": "bring-to-light",
       "path": "latest/radars/pioneer/bring-to-light.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pioneer",
-      "archetype": "dimir-ninjas",
-      "path": "latest/radars/pioneer/dimir-ninjas.json"
     },
     {
       "scope": "archetype-radar",

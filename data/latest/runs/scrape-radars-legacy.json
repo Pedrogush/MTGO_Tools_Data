@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-15T18:54:50Z",
+  "generated_at": "2026-08-16T02:04:07Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 24,
-    "success": 51
+    "skipped": 31,
+    "success": 43
   },
   "results": [
     {
@@ -35,10 +35,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "azorius-control",
-      "path": "latest/radars/legacy/azorius-control.json"
+      "path": "latest/radars/legacy/azorius-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -74,24 +75,17 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "legacy",
-      "archetype": "blue-cloudpost",
-      "path": "latest/radars/legacy/blue-cloudpost.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
       "archetype": "blue-dredge",
       "path": "latest/radars/legacy/blue-dredge.json",
       "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "bomberman",
-      "path": "latest/radars/legacy/bomberman.json"
+      "path": "latest/radars/legacy/bomberman.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -110,10 +104,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "cephalid-breakfast",
-      "path": "latest/radars/legacy/cephalid-breakfast.json"
+      "path": "latest/radars/legacy/cephalid-breakfast.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -198,10 +193,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "esper-tempo",
-      "path": "latest/radars/legacy/esper-tempo.json"
+      "path": "latest/radars/legacy/esper-tempo.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -281,6 +277,14 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "legacy",
+      "archetype": "merfolk",
+      "path": "latest/radars/legacy/merfolk.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "legacy",
       "archetype": "mono-black-midrange",
       "path": "latest/radars/legacy/mono-black-midrange.json",
       "message": "No published decks were available for radar generation."
@@ -295,10 +299,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "mono-black-stompy",
-      "path": "latest/radars/legacy/mono-black-stompy.json"
+      "path": "latest/radars/legacy/mono-black-stompy.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -331,18 +336,18 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "legacy",
+      "archetype": "necrodominance-combo",
+      "path": "latest/radars/legacy/necrodominance-combo.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
       "archetype": "ninjas",
       "path": "latest/radars/legacy/ninjas.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "ocelot-pride-midrange",
-      "path": "latest/radars/legacy/ocelot-pride-midrange.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -354,10 +359,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "omni-tell",
-      "path": "latest/radars/legacy/omni-tell.json"
+      "path": "latest/radars/legacy/omni-tell.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -442,10 +448,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "tron",
-      "path": "latest/radars/legacy/tron.json"
+      "path": "latest/radars/legacy/tron.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -523,13 +530,6 @@
       "format": "legacy",
       "archetype": "naya-stompy",
       "path": "latest/radars/legacy/naya-stompy.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "post",
-      "path": "latest/radars/legacy/post.json"
     },
     {
       "scope": "archetype-radar",

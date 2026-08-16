@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-15T18:54:26Z",
+  "generated_at": "2026-08-16T02:04:08Z",
   "command": "scrape-radars-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 14,
-    "success": 19
+    "success": 18
   },
   "results": [
     {
@@ -27,10 +27,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "counter-vine",
-      "path": "latest/radars/vintage/counter-vine.json"
+      "path": "latest/radars/vintage/counter-vine.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -83,14 +84,6 @@
       "format": "vintage",
       "archetype": "grixis-lurrus-control",
       "path": "latest/radars/vintage/grixis-lurrus-control.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "vintage",
-      "archetype": "hogaak-vine",
-      "path": "latest/radars/vintage/hogaak-vine.json",
       "message": "No published decks were available for radar generation."
     },
     {

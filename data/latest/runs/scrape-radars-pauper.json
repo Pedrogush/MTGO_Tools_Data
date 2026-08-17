@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-16T18:59:54Z",
+  "generated_at": "2026-08-17T02:00:58Z",
   "command": "scrape-radars-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 53,
-    "skipped": 16
+    "success": 49,
+    "skipped": 19
   },
   "results": [
     {
@@ -203,10 +203,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "golgari-gardens",
-      "path": "latest/radars/pauper/golgari-gardens.json"
+      "path": "latest/radars/pauper/golgari-gardens.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -361,10 +362,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "selesnya-gates",
-      "path": "latest/radars/pauper/selesnya-gates.json"
+      "path": "latest/radars/pauper/selesnya-gates.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -376,10 +378,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "slivers",
-      "path": "latest/radars/pauper/slivers.json"
+      "path": "latest/radars/pauper/slivers.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -466,13 +469,6 @@
       "format": "pauper",
       "archetype": "golgari-garden",
       "path": "latest/radars/pauper/golgari-garden.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pauper",
-      "archetype": "jund-garden",
-      "path": "latest/radars/pauper/jund-garden.json"
     },
     {
       "scope": "archetype-radar",

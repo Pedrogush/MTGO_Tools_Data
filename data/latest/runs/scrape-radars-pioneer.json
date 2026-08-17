@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-16T19:00:12Z",
+  "generated_at": "2026-08-17T02:00:53Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 44,
-    "success": 25
+    "skipped": 46,
+    "success": 20
   },
   "results": [
     {
@@ -130,10 +130,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "boros-midrange",
-      "path": "latest/radars/pioneer/boros-midrange.json"
+      "path": "latest/radars/pioneer/boros-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -332,10 +333,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "niv-to-light",
-      "path": "latest/radars/pioneer/niv-to-light.json"
+      "path": "latest/radars/pioneer/niv-to-light.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -450,20 +452,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pioneer",
-      "archetype": "5-color-gyruda",
-      "path": "latest/radars/pioneer/5-color-gyruda.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pioneer",
-      "archetype": "azorius-humans",
-      "path": "latest/radars/pioneer/azorius-humans.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pioneer",
       "archetype": "azorius-midrange",
       "path": "latest/radars/pioneer/azorius-midrange.json"
     },
@@ -473,13 +461,6 @@
       "format": "pioneer",
       "archetype": "black-demons",
       "path": "latest/radars/pioneer/black-demons.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pioneer",
-      "archetype": "boros-aggro",
-      "path": "latest/radars/pioneer/boros-aggro.json"
     },
     {
       "scope": "archetype-radar",

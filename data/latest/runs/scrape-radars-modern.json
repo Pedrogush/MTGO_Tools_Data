@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-16T18:59:55Z",
+  "generated_at": "2026-08-17T02:01:03Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 71,
-    "skipped": 27
+    "success": 68,
+    "skipped": 28
   },
   "results": [
     {
@@ -453,10 +453,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "rakdos-burn",
-      "path": "latest/radars/modern/rakdos-burn.json"
+      "path": "latest/radars/modern/rakdos-burn.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -573,13 +574,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "boros-scam",
-      "path": "latest/radars/modern/boros-scam.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "cosmo-fling",
       "path": "latest/radars/modern/cosmo-fling.json"
     },
@@ -666,13 +660,6 @@
       "format": "modern",
       "archetype": "jund-burn",
       "path": "latest/radars/modern/jund-burn.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "mardu-midrange",
-      "path": "latest/radars/modern/mardu-midrange.json"
     },
     {
       "scope": "archetype-radar",

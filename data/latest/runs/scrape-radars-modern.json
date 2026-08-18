@@ -1,7 +1,7 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-18T13:18:10Z",
+  "generated_at": "2026-08-18T19:21:24Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
@@ -16,6 +16,13 @@
       "format": "modern",
       "archetype": "4c-hollowone",
       "path": "latest/radars/modern/4c-hollowone.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "5c-blink",
+      "path": "latest/radars/modern/5c-blink.json"
     },
     {
       "scope": "archetype-radar",
@@ -491,16 +498,9 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "modern",
-      "archetype": "selective-oracle",
-      "path": "latest/radars/modern/selective-oracle.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "simic-midrange",
-      "path": "latest/radars/modern/simic-midrange.json"
+      "path": "latest/radars/modern/simic-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

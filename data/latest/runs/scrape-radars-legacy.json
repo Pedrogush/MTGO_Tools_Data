@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-17T19:09:43Z",
+  "generated_at": "2026-08-18T01:58:00Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 36,
-    "success": 36
+    "skipped": 34,
+    "success": 41
   },
   "results": [
     {
@@ -73,6 +73,13 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "blue-artifacts",
+      "path": "latest/radars/legacy/blue-artifacts.json"
+    },
+    {
+      "scope": "archetype-radar",
       "status": "skipped",
       "format": "legacy",
       "archetype": "blue-cloudpost",
@@ -109,6 +116,14 @@
       "format": "legacy",
       "archetype": "boros-initiative",
       "path": "latest/radars/legacy/boros-initiative.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "legacy",
+      "archetype": "burn",
+      "path": "latest/radars/legacy/burn.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -211,8 +226,8 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "legacy",
-      "archetype": "goblins",
-      "path": "latest/radars/legacy/goblins.json",
+      "archetype": "grixis-tempo",
+      "path": "latest/radars/legacy/grixis-tempo.json",
       "message": "No published decks were available for radar generation."
     },
     {
@@ -256,14 +271,6 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "legacy",
-      "archetype": "jeskai-stoneblade",
-      "path": "latest/radars/legacy/jeskai-stoneblade.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
       "archetype": "jund",
       "path": "latest/radars/legacy/jund.json",
       "message": "No published decks were available for radar generation."
@@ -301,24 +308,8 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "legacy",
-      "archetype": "mono-black-reanimator",
-      "path": "latest/radars/legacy/mono-black-reanimator.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
       "archetype": "mono-black-stompy",
       "path": "latest/radars/legacy/mono-black-stompy.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "mono-blue-tempo",
-      "path": "latest/radars/legacy/mono-blue-tempo.json",
       "message": "No published decks were available for radar generation."
     },
     {
@@ -345,6 +336,14 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "legacy",
+      "archetype": "necrodominance-combo",
+      "path": "latest/radars/legacy/necrodominance-combo.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
       "archetype": "ninjas",
@@ -354,8 +353,8 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "legacy",
-      "archetype": "ocelot-pride-tempo",
-      "path": "latest/radars/legacy/ocelot-pride-tempo.json",
+      "archetype": "ocelot-pride-midrange",
+      "path": "latest/radars/legacy/ocelot-pride-midrange.json",
       "message": "No published decks were available for radar generation."
     },
     {
@@ -368,11 +367,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "oops-all-spells",
-      "path": "latest/radars/legacy/oops-all-spells.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/oops-all-spells.json"
     },
     {
       "scope": "archetype-radar",
@@ -470,13 +468,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "blue-artifacts",
-      "path": "latest/radars/legacy/blue-artifacts.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
       "archetype": "death-taxes",
       "path": "latest/radars/legacy/death-taxes.json"
     },
@@ -486,6 +477,13 @@
       "format": "legacy",
       "archetype": "dimir-midrange",
       "path": "latest/radars/legacy/dimir-midrange.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "elves",
+      "path": "latest/radars/legacy/elves.json"
     },
     {
       "scope": "archetype-radar",
@@ -507,6 +505,20 @@
       "format": "legacy",
       "archetype": "grixis-midrange",
       "path": "latest/radars/legacy/grixis-midrange.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "izzet-midrange",
+      "path": "latest/radars/legacy/izzet-midrange.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "jeskai-midrange",
+      "path": "latest/radars/legacy/jeskai-midrange.json"
     },
     {
       "scope": "archetype-radar",
@@ -535,6 +547,13 @@
       "format": "legacy",
       "archetype": "show-and-tell",
       "path": "latest/radars/legacy/show-and-tell.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "tes",
+      "path": "latest/radars/legacy/tes.json"
     },
     {
       "scope": "archetype-radar",

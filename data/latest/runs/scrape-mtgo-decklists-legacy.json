@@ -1,15 +1,22 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-19T01:57:36Z",
+  "generated_at": "2026-08-19T07:15:02Z",
   "command": "scrape-mtgo-decklists-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "success": 3,
-    "cached": 5
+    "cached": 6
   },
   "results": [
+    {
+      "scope": "mtgo-event",
+      "status": "success",
+      "format": "legacy",
+      "path": "archive/mtgo-decklists/legacy/n355479786.json",
+      "message": "Cached 2/2 decks."
+    },
     {
       "scope": "mtgo-event",
       "status": "success",
@@ -26,10 +33,10 @@
     },
     {
       "scope": "mtgo-event",
-      "status": "success",
+      "status": "cached",
       "format": "legacy",
       "path": "archive/mtgo-decklists/legacy/n1568946084.json",
-      "message": "Cached 22/22 decks."
+      "message": "Loaded 22 decks from archive."
     },
     {
       "scope": "mtgo-event",

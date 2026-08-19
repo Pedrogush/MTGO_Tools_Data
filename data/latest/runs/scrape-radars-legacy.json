@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-18T19:22:27Z",
+  "generated_at": "2026-08-19T02:01:41Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 30,
-    "success": 46
+    "skipped": 29,
+    "success": 48
   },
   "results": [
     {
@@ -112,11 +112,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "cephalid-breakfast",
-      "path": "latest/radars/legacy/cephalid-breakfast.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/cephalid-breakfast.json"
     },
     {
       "scope": "archetype-radar",
@@ -543,6 +542,13 @@
       "format": "legacy",
       "archetype": "naya-stompy",
       "path": "latest/radars/legacy/naya-stompy.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "post",
+      "path": "latest/radars/legacy/post.json"
     },
     {
       "scope": "archetype-radar",

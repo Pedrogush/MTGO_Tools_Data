@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-18T19:20:29Z",
+  "generated_at": "2026-08-19T02:01:41Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 52,
-    "success": 34
+    "skipped": 54,
+    "success": 31
   },
   "results": [
     {
@@ -284,10 +284,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "izzet-control",
-      "path": "latest/radars/standard/izzet-control.json"
+      "path": "latest/radars/standard/izzet-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -399,10 +400,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "mono-black-aggro",
-      "path": "latest/radars/standard/mono-black-aggro.json"
+      "path": "latest/radars/standard/mono-black-aggro.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -649,13 +651,6 @@
       "format": "standard",
       "archetype": "temur-omniscience",
       "path": "latest/radars/standard/temur-omniscience.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
-      "archetype": "temur-temur-battlecrier",
-      "path": "latest/radars/standard/temur-temur-battlecrier.json"
     },
     {
       "scope": "format-card-pool",

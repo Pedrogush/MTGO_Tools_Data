@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-21T07:14:09Z",
+  "generated_at": "2026-08-21T13:16:01Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 46,
-    "success": 32
+    "skipped": 45,
+    "success": 34
   },
   "results": [
     {
@@ -105,11 +105,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
       "archetype": "boros-aggro",
-      "path": "latest/radars/standard/boros-aggro.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/standard/boros-aggro.json"
     },
     {
       "scope": "archetype-radar",
@@ -524,6 +523,13 @@
       "archetype": "temur-stormsplitter",
       "path": "latest/radars/standard/temur-stormsplitter.json",
       "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "azorius-midrange",
+      "path": "latest/radars/standard/azorius-midrange.json"
     },
     {
       "scope": "archetype-radar",

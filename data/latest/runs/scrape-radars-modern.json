@@ -1,12 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-21T07:13:36Z",
+  "generated_at": "2026-08-21T13:15:56Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 83,
+    "success": 81,
+    "stale-fallback": 2,
     "skipped": 23
   },
   "results": [
@@ -40,10 +41,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "modern",
       "archetype": "asmo-food",
-      "path": "latest/radars/modern/asmo-food.json"
+      "path": "latest/radars/modern/asmo-food.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -69,10 +71,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "modern",
       "archetype": "azorius-genericblink",
-      "path": "latest/radars/modern/azorius-genericblink.json"
+      "path": "latest/radars/modern/azorius-genericblink.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",

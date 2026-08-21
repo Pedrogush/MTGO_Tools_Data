@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-20T19:15:03Z",
+  "generated_at": "2026-08-21T02:05:43Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 37,
-    "success": 32
+    "skipped": 38,
+    "success": 24
   },
   "results": [
     {
@@ -365,10 +365,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "rakdos-midrange",
-      "path": "latest/radars/pioneer/rakdos-midrange.json"
+      "path": "latest/radars/pioneer/rakdos-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -443,27 +444,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pioneer",
-      "archetype": "azorius-midrange",
-      "path": "latest/radars/pioneer/azorius-midrange.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pioneer",
-      "archetype": "black-demons",
-      "path": "latest/radars/pioneer/black-demons.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pioneer",
-      "archetype": "bring-to-light",
-      "path": "latest/radars/pioneer/bring-to-light.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pioneer",
       "archetype": "dimir-ninjas",
       "path": "latest/radars/pioneer/dimir-ninjas.json"
     },
@@ -471,22 +451,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pioneer",
-      "archetype": "golgari-stompy",
-      "path": "latest/radars/pioneer/golgari-stompy.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pioneer",
       "archetype": "jeskai-control",
       "path": "latest/radars/pioneer/jeskai-control.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pioneer",
-      "archetype": "mono-green-devotion",
-      "path": "latest/radars/pioneer/mono-green-devotion.json"
     },
     {
       "scope": "archetype-radar",
@@ -501,20 +467,6 @@
       "format": "pioneer",
       "archetype": "selesnya-stompy",
       "path": "latest/radars/pioneer/selesnya-stompy.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pioneer",
-      "archetype": "simic-stompy",
-      "path": "latest/radars/pioneer/simic-stompy.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pioneer",
-      "archetype": "spirits",
-      "path": "latest/radars/pioneer/spirits.json"
     },
     {
       "scope": "archetype-radar",

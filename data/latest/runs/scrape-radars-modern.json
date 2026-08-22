@@ -1,15 +1,29 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-22T07:11:14Z",
+  "generated_at": "2026-08-22T13:08:37Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 78,
+    "success": 83,
     "skipped": 24
   },
   "results": [
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "4c-hollowone",
+      "path": "latest/radars/modern/4c-hollowone.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "5c-blink",
+      "path": "latest/radars/modern/5c-blink.json"
+    },
     {
       "scope": "archetype-radar",
       "status": "success",
@@ -35,8 +49,23 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
+      "archetype": "azorius-blink",
+      "path": "latest/radars/modern/azorius-blink.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
       "archetype": "azorius-control",
       "path": "latest/radars/modern/azorius-control.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "modern",
+      "archetype": "azorius-energy",
+      "path": "latest/radars/modern/azorius-energy.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -44,6 +73,14 @@
       "format": "modern",
       "archetype": "azorius-genericblink",
       "path": "latest/radars/modern/azorius-genericblink.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "modern",
+      "archetype": "bant-blink",
+      "path": "latest/radars/modern/bant-blink.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -236,11 +273,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "hollow-one",
-      "path": "latest/radars/modern/hollow-one.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/hollow-one.json"
     },
     {
       "scope": "archetype-radar",
@@ -274,11 +310,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "jeskai-blink",
-      "path": "latest/radars/modern/jeskai-blink.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/jeskai-blink.json"
     },
     {
       "scope": "archetype-radar",
@@ -528,13 +563,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "azorius-blink",
-      "path": "latest/radars/modern/azorius-blink.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "azorius-scam",
       "path": "latest/radars/modern/azorius-scam.json"
     },
@@ -726,6 +754,13 @@
       "format": "modern",
       "archetype": "temur-aggro",
       "path": "latest/radars/modern/temur-aggro.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "thopter-combo",
+      "path": "latest/radars/modern/thopter-combo.json"
     },
     {
       "scope": "archetype-radar",

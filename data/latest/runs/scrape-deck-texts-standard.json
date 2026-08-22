@@ -1,99 +1,103 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-22T01:53:18Z",
+  "generated_at": "2026-08-22T07:02:52Z",
   "command": "scrape-deck-texts-standard",
-  "status": "success",
+  "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "success": 5,
-    "skipped": 52
+    "stale-fallback": 7,
+    "hard-failure": 4,
+    "skipped": 43,
+    "success": 3
   },
   "results": [
     {
       "scope": "archetype-list",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
-      "path": "latest/archetypes/standard.json"
+      "path": "latest/archetypes/standard.json",
+      "message": "HTTP Error 502: "
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "4c-control",
       "path": "latest/decks/standard/4c-control.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for 4c Control"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "4c-kona",
       "path": "latest/decks/standard/4c-kona.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for 4c Kona"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "4c-legends",
       "path": "latest/decks/standard/4c-legends.json",
-      "message": "All MTGGoldfish rows were MTGO events; published via mtgo-decklists."
+      "message": "Deck scrape returned no rows for 4c Legends"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "4c-omniscience",
       "path": "latest/decks/standard/4c-omniscience.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for 4c Omniscience"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "5c-control",
       "path": "latest/decks/standard/5c-control.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for 5c Control"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "5c-elementals",
       "path": "latest/decks/standard/5c-elementals.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for 5c Elementals"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "azorius-control",
       "path": "latest/decks/standard/azorius-control.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Azorius Control"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "azorius-momo",
       "path": "latest/decks/standard/azorius-momo.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Azorius Momo"
     },
     {
       "scope": "archetype-decks",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "azorius-tempo",
-      "path": "latest/decks/standard/azorius-tempo.json"
+      "path": "latest/decks/standard/azorius-tempo.json",
+      "message": "Deck scrape returned no rows for Azorius Tempo"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "bant-airbending-combo",
       "path": "latest/decks/standard/bant-airbending-combo.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Bant Airbending Combo"
     },
     {
       "scope": "archetype-decks",

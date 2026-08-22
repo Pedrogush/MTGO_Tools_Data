@@ -1,95 +1,103 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-22T01:53:16Z",
+  "generated_at": "2026-08-22T07:03:14Z",
   "command": "scrape-deck-texts-legacy",
-  "status": "success",
+  "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "success": 18,
-    "skipped": 62
+    "stale-fallback": 1,
+    "hard-failure": 10,
+    "skipped": 52,
+    "success": 11
   },
   "results": [
     {
       "scope": "archetype-list",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "legacy",
-      "path": "latest/archetypes/legacy.json"
+      "path": "latest/archetypes/legacy.json",
+      "message": "HTTP Error 502: "
     },
     {
       "scope": "archetype-decks",
-      "status": "success",
+      "status": "hard-failure",
       "format": "legacy",
       "archetype": "8-cast",
-      "path": "latest/decks/legacy/8-cast.json"
+      "path": "latest/decks/legacy/8-cast.json",
+      "message": "Deck scrape returned no rows for 8-Cast"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "legacy",
       "archetype": "affinity-stompy",
       "path": "latest/decks/legacy/affinity-stompy.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Affinity Stompy"
     },
     {
       "scope": "archetype-decks",
-      "status": "success",
+      "status": "hard-failure",
       "format": "legacy",
       "archetype": "aluren",
-      "path": "latest/decks/legacy/aluren.json"
+      "path": "latest/decks/legacy/aluren.json",
+      "message": "Deck scrape returned no rows for Aluren"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "legacy",
       "archetype": "azorius-control",
       "path": "latest/decks/legacy/azorius-control.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Azorius Control"
     },
     {
       "scope": "archetype-decks",
-      "status": "success",
+      "status": "hard-failure",
       "format": "legacy",
       "archetype": "azorius-stoneblade",
-      "path": "latest/decks/legacy/azorius-stoneblade.json"
+      "path": "latest/decks/legacy/azorius-stoneblade.json",
+      "message": "Deck scrape returned no rows for Azorius Stoneblade"
     },
     {
       "scope": "archetype-decks",
-      "status": "success",
+      "status": "hard-failure",
       "format": "legacy",
       "archetype": "azorius-tempo",
-      "path": "latest/decks/legacy/azorius-tempo.json"
+      "path": "latest/decks/legacy/azorius-tempo.json",
+      "message": "Deck scrape returned no rows for Azorius Tempo"
     },
     {
       "scope": "archetype-decks",
-      "status": "success",
+      "status": "hard-failure",
       "format": "legacy",
       "archetype": "beanstalk-control-non-yorion",
-      "path": "latest/decks/legacy/beanstalk-control-non-yorion.json"
+      "path": "latest/decks/legacy/beanstalk-control-non-yorion.json",
+      "message": "Deck scrape returned no rows for Beanstalk Control (Non-Yorion)"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "legacy",
       "archetype": "beanstalk-control-yorion",
       "path": "latest/decks/legacy/beanstalk-control-yorion.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Beanstalk Control (Yorion)"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "legacy",
       "archetype": "blue-artifacts",
       "path": "latest/decks/legacy/blue-artifacts.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Blue Artifacts"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "legacy",
       "archetype": "blue-cloudpost",
       "path": "latest/decks/legacy/blue-cloudpost.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Blue Cloudpost"
     },
     {
       "scope": "archetype-decks",
@@ -484,30 +492,6 @@
       "scope": "deck-text",
       "status": "skipped",
       "format": "legacy",
-      "deck_id": "7917107",
-      "path": "archive/deck-texts/legacy/7917107.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "legacy",
-      "deck_id": "7917108",
-      "path": "archive/deck-texts/legacy/7917108.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "legacy",
-      "deck_id": "7917109",
-      "path": "archive/deck-texts/legacy/7917109.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "legacy",
       "deck_id": "7917110",
       "path": "archive/deck-texts/legacy/7917110.json",
       "message": "Reused existing published deck-text blob."
@@ -564,14 +548,6 @@
       "scope": "deck-text",
       "status": "skipped",
       "format": "legacy",
-      "deck_id": "7921143",
-      "path": "archive/deck-texts/legacy/7921143.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "legacy",
       "deck_id": "7921144",
       "path": "archive/deck-texts/legacy/7921144.json",
       "message": "Reused existing published deck-text blob."
@@ -582,14 +558,6 @@
       "format": "legacy",
       "deck_id": "7921145",
       "path": "archive/deck-texts/legacy/7921145.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "legacy",
-      "deck_id": "7921146",
-      "path": "archive/deck-texts/legacy/7921146.json",
       "message": "Reused existing published deck-text blob."
     },
     {
@@ -607,13 +575,6 @@
       "deck_id": "7921148",
       "path": "archive/deck-texts/legacy/7921148.json",
       "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "success",
-      "format": "legacy",
-      "deck_id": "7921150",
-      "path": "archive/deck-texts/legacy/7921150.json"
     },
     {
       "scope": "deck-text",

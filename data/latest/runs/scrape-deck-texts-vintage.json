@@ -1,92 +1,94 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-22T01:53:14Z",
+  "generated_at": "2026-08-22T07:02:49Z",
   "command": "scrape-deck-texts-vintage",
-  "status": "success",
+  "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "success": 1,
-    "skipped": 27
+    "stale-fallback": 1,
+    "hard-failure": 9,
+    "skipped": 18
   },
   "results": [
     {
       "scope": "archetype-list",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "vintage",
-      "path": "latest/archetypes/vintage.json"
+      "path": "latest/archetypes/vintage.json",
+      "message": "Failed to perform, curl: (28) Operation timed out after 30002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "8-cast",
       "path": "latest/decks/vintage/8-cast.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for 8-Cast"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "blue-tinker",
       "path": "latest/decks/vintage/blue-tinker.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Blue Tinker"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "counter-vine",
       "path": "latest/decks/vintage/counter-vine.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Counter Vine"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "dimir-lurrus-control",
       "path": "latest/decks/vintage/dimir-lurrus-control.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Dimir Lurrus Control"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "dimir-psychic-frog",
       "path": "latest/decks/vintage/dimir-psychic-frog.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Dimir Psychic Frog"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "doomsday",
       "path": "latest/decks/vintage/doomsday.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Doomsday"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "dredge",
       "path": "latest/decks/vintage/dredge.json",
-      "message": "All MTGGoldfish rows were MTGO events; published via mtgo-decklists."
+      "message": "Deck scrape returned no rows for Dredge"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "eldrazi",
       "path": "latest/decks/vintage/eldrazi.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Eldrazi"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "esper-lurrus-control",
       "path": "latest/decks/vintage/esper-lurrus-control.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Esper Lurrus Control"
     },
     {
       "scope": "archetype-decks",

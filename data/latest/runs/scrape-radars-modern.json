@@ -1,29 +1,15 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-22T01:55:44Z",
+  "generated_at": "2026-08-22T07:11:14Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 79,
-    "skipped": 27
+    "success": 78,
+    "skipped": 24
   },
   "results": [
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "4c-hollowone",
-      "path": "latest/radars/modern/4c-hollowone.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "5c-blink",
-      "path": "latest/radars/modern/5c-blink.json"
-    },
     {
       "scope": "archetype-radar",
       "status": "success",
@@ -49,23 +35,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "azorius-blink",
-      "path": "latest/radars/modern/azorius-blink.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "azorius-control",
       "path": "latest/radars/modern/azorius-control.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "modern",
-      "archetype": "azorius-energy",
-      "path": "latest/radars/modern/azorius-energy.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -73,14 +44,6 @@
       "format": "modern",
       "archetype": "azorius-genericblink",
       "path": "latest/radars/modern/azorius-genericblink.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "modern",
-      "archetype": "bant-blink",
-      "path": "latest/radars/modern/bant-blink.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -266,11 +229,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "hammer-time",
-      "path": "latest/radars/modern/hammer-time.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/hammer-time.json"
     },
     {
       "scope": "archetype-radar",
@@ -561,6 +523,13 @@
       "format": "modern",
       "archetype": "abzan-midrange",
       "path": "latest/radars/modern/abzan-midrange.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "azorius-blink",
+      "path": "latest/radars/modern/azorius-blink.json"
     },
     {
       "scope": "archetype-radar",

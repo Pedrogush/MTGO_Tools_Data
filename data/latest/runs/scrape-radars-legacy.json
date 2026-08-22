@@ -1,15 +1,22 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-21T19:07:16Z",
+  "generated_at": "2026-08-22T01:55:44Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 29,
-    "success": 57
+    "success": 53,
+    "skipped": 32
   },
   "results": [
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "8-cast",
+      "path": "latest/radars/legacy/8-cast.json"
+    },
     {
       "scope": "archetype-radar",
       "status": "skipped",
@@ -24,14 +31,6 @@
       "format": "legacy",
       "archetype": "aluren",
       "path": "latest/radars/legacy/aluren.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "arclight-phoenix",
-      "path": "latest/radars/legacy/arclight-phoenix.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -72,6 +71,13 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "blue-artifacts",
+      "path": "latest/radars/legacy/blue-artifacts.json"
+    },
+    {
+      "scope": "archetype-radar",
       "status": "skipped",
       "format": "legacy",
       "archetype": "blue-cloudpost",
@@ -104,10 +110,19 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "boros-initiative",
-      "path": "latest/radars/legacy/boros-initiative.json"
+      "path": "latest/radars/legacy/boros-initiative.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "legacy",
+      "archetype": "burn",
+      "path": "latest/radars/legacy/burn.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -132,10 +147,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "death-and-taxes-yorion-black-white",
-      "path": "latest/radars/legacy/death-and-taxes-yorion-black-white.json"
+      "path": "latest/radars/legacy/death-and-taxes-yorion-black-white.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -163,10 +179,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "dimir-reanimator",
-      "path": "latest/radars/legacy/dimir-reanimator.json"
+      "path": "latest/radars/legacy/dimir-reanimator.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -209,24 +226,17 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "legacy",
-      "archetype": "grixis-tempo",
-      "path": "latest/radars/legacy/grixis-tempo.json",
+      "archetype": "hogaak-moonshadow",
+      "path": "latest/radars/legacy/hogaak-moonshadow.json",
       "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "legacy",
-      "archetype": "gruul-initiative",
-      "path": "latest/radars/legacy/gruul-initiative.json",
+      "archetype": "infect",
+      "path": "latest/radars/legacy/infect.json",
       "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "hogaak-moonshadow",
-      "path": "latest/radars/legacy/hogaak-moonshadow.json"
     },
     {
       "scope": "archetype-radar",
@@ -345,14 +355,6 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "legacy",
-      "archetype": "ocelot-pride-midrange",
-      "path": "latest/radars/legacy/ocelot-pride-midrange.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
       "archetype": "omni-tell",
       "path": "latest/radars/legacy/omni-tell.json",
       "message": "No published decks were available for radar generation."
@@ -373,10 +375,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "rakdos-reanimator",
-      "path": "latest/radars/legacy/rakdos-reanimator.json"
+      "path": "latest/radars/legacy/rakdos-reanimator.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -465,13 +468,6 @@
       "format": "legacy",
       "archetype": "azorius-midrange",
       "path": "latest/radars/legacy/azorius-midrange.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "blue-artifacts",
-      "path": "latest/radars/legacy/blue-artifacts.json"
     },
     {
       "scope": "archetype-radar",

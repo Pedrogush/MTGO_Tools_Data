@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-21T19:07:27Z",
+  "generated_at": "2026-08-22T01:56:07Z",
   "command": "scrape-radars-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 16,
-    "success": 15
+    "skipped": 17,
+    "success": 14
   },
   "results": [
     {
@@ -52,10 +52,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "doomsday",
-      "path": "latest/radars/vintage/doomsday.json"
+      "path": "latest/radars/vintage/doomsday.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

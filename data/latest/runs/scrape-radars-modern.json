@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-21T19:07:10Z",
+  "generated_at": "2026-08-22T01:55:44Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 83,
-    "skipped": 23
+    "success": 79,
+    "skipped": 27
   },
   "results": [
     {
@@ -199,6 +199,14 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "modern",
+      "archetype": "esper-midrange",
+      "path": "latest/radars/modern/esper-midrange.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
       "archetype": "esper-reanimator",
@@ -206,10 +214,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "generic-ragavan",
-      "path": "latest/radars/modern/generic-ragavan.json"
+      "path": "latest/radars/modern/generic-ragavan.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -235,10 +244,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "grixis-prowess",
-      "path": "latest/radars/modern/grixis-prowess.json"
+      "path": "latest/radars/modern/grixis-prowess.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -256,10 +266,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "hammer-time",
-      "path": "latest/radars/modern/hammer-time.json"
+      "path": "latest/radars/modern/hammer-time.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -271,10 +282,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "indomitable-creativity",
-      "path": "latest/radars/modern/indomitable-creativity.json"
+      "path": "latest/radars/modern/indomitable-creativity.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -364,14 +376,6 @@
       "format": "modern",
       "archetype": "mill",
       "path": "latest/radars/modern/mill.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "modern",
-      "archetype": "miracles",
-      "path": "latest/radars/modern/miracles.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

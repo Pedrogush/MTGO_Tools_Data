@@ -1,23 +1,15 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-23T13:10:08Z",
+  "generated_at": "2026-08-23T18:58:15Z",
   "command": "scrape-radars-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 12,
-    "success": 20
+    "success": 20,
+    "skipped": 12
   },
   "results": [
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "vintage",
-      "archetype": "8-cast",
-      "path": "latest/radars/vintage/8-cast.json",
-      "message": "No published decks were available for radar generation."
-    },
     {
       "scope": "archetype-radar",
       "status": "success",
@@ -75,6 +67,14 @@
       "format": "vintage",
       "archetype": "esper-lurrus-control",
       "path": "latest/radars/vintage/esper-lurrus-control.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "vintage",
+      "archetype": "esper-psychic-frog",
+      "path": "latest/radars/vintage/esper-psychic-frog.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

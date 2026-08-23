@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-23T13:08:29Z",
+  "generated_at": "2026-08-23T18:58:19Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "success": 54,
-    "skipped": 33
+    "skipped": 32
   },
   "results": [
     {
@@ -31,6 +31,14 @@
       "format": "legacy",
       "archetype": "aluren",
       "path": "latest/radars/legacy/aluren.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "legacy",
+      "archetype": "arclight-phoenix",
+      "path": "latest/radars/legacy/arclight-phoenix.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -60,14 +68,6 @@
       "format": "legacy",
       "archetype": "beanstalk-control-non-yorion",
       "path": "latest/radars/legacy/beanstalk-control-non-yorion.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "beanstalk-control-yorion",
-      "path": "latest/radars/legacy/beanstalk-control-yorion.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -201,6 +201,13 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "elves",
+      "path": "latest/radars/legacy/elves.json"
+    },
+    {
+      "scope": "archetype-radar",
       "status": "skipped",
       "format": "legacy",
       "archetype": "esper-control",
@@ -227,16 +234,16 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "legacy",
-      "archetype": "hogaak-moonshadow",
-      "path": "latest/radars/legacy/hogaak-moonshadow.json",
+      "archetype": "gruul-initiative",
+      "path": "latest/radars/legacy/gruul-initiative.json",
       "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "legacy",
-      "archetype": "infect",
-      "path": "latest/radars/legacy/infect.json",
+      "archetype": "hogaak-moonshadow",
+      "path": "latest/radars/legacy/hogaak-moonshadow.json",
       "message": "No published decks were available for radar generation."
     },
     {
@@ -245,14 +252,6 @@
       "format": "legacy",
       "archetype": "izzet-delver",
       "path": "latest/radars/legacy/izzet-delver.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "izzet-tempo",
-      "path": "latest/radars/legacy/izzet-tempo.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -518,13 +517,6 @@
       "format": "legacy",
       "archetype": "dredge",
       "path": "latest/radars/legacy/dredge.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "elves",
-      "path": "latest/radars/legacy/elves.json"
     },
     {
       "scope": "archetype-radar",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-22T18:54:40Z",
+  "generated_at": "2026-08-23T02:04:19Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 83,
-    "skipped": 24
+    "success": 77,
+    "skipped": 30
   },
   "results": [
     {
@@ -19,10 +19,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "5c-blink",
-      "path": "latest/radars/modern/5c-blink.json"
+      "path": "latest/radars/modern/5c-blink.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -135,10 +136,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "dimir-midrange",
-      "path": "latest/radars/modern/dimir-midrange.json"
+      "path": "latest/radars/modern/dimir-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -156,10 +158,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "eldrazi-ramp",
-      "path": "latest/radars/modern/eldrazi-ramp.json"
+      "path": "latest/radars/modern/eldrazi-ramp.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -288,10 +291,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "izzet-prowess",
-      "path": "latest/radars/modern/izzet-prowess.json"
+      "path": "latest/radars/modern/izzet-prowess.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -329,6 +333,14 @@
       "format": "modern",
       "archetype": "jeskai-energy",
       "path": "latest/radars/modern/jeskai-energy.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "modern",
+      "archetype": "jeskai-prowess",
+      "path": "latest/radars/modern/jeskai-prowess.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -399,10 +411,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "mono-green-eldrazi",
-      "path": "latest/radars/modern/mono-green-eldrazi.json"
+      "path": "latest/radars/modern/mono-green-eldrazi.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -451,10 +464,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "rakdos-hollowone",
-      "path": "latest/radars/modern/rakdos-hollowone.json"
+      "path": "latest/radars/modern/rakdos-hollowone.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -476,14 +490,6 @@
       "format": "modern",
       "archetype": "sam-combo",
       "path": "latest/radars/modern/sam-combo.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "modern",
-      "archetype": "selective-oracle",
-      "path": "latest/radars/modern/selective-oracle.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

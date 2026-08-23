@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-22T18:54:28Z",
+  "generated_at": "2026-08-23T02:05:00Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 45,
-    "success": 35
+    "skipped": 47,
+    "success": 36
   },
   "results": [
     {
@@ -68,6 +68,14 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "standard",
+      "archetype": "5c-legends",
+      "path": "latest/radars/standard/5c-legends.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
       "archetype": "azorius-control",
@@ -87,6 +95,14 @@
       "format": "standard",
       "archetype": "azorius-tempo",
       "path": "latest/radars/standard/azorius-tempo.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "standard",
+      "archetype": "bant-aggro",
+      "path": "latest/radars/standard/bant-aggro.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -530,6 +546,13 @@
       "format": "standard",
       "archetype": "azorius-midrange",
       "path": "latest/radars/standard/azorius-midrange.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "azorius-oculus",
+      "path": "latest/radars/standard/azorius-oculus.json"
     },
     {
       "scope": "archetype-radar",

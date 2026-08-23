@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-22T18:54:37Z",
+  "generated_at": "2026-08-23T02:04:54Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "success": 54,
-    "skipped": 32
+    "skipped": 33
   },
   "results": [
     {
@@ -68,13 +68,6 @@
       "archetype": "beanstalk-control-yorion",
       "path": "latest/radars/legacy/beanstalk-control-yorion.json",
       "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "blue-artifacts",
-      "path": "latest/radars/legacy/blue-artifacts.json"
     },
     {
       "scope": "archetype-radar",
@@ -220,6 +213,14 @@
       "format": "legacy",
       "archetype": "esper-tempo",
       "path": "latest/radars/legacy/esper-tempo.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "legacy",
+      "archetype": "goblins",
+      "path": "latest/radars/legacy/goblins.json",
       "message": "No published decks were available for radar generation."
     },
     {
@@ -468,6 +469,13 @@
       "format": "legacy",
       "archetype": "azorius-midrange",
       "path": "latest/radars/legacy/azorius-midrange.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "blue-artifacts",
+      "path": "latest/radars/legacy/blue-artifacts.json"
     },
     {
       "scope": "archetype-radar",

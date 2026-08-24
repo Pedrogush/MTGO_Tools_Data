@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-24T13:19:30Z",
+  "generated_at": "2026-08-24T19:28:57Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "success": 90,
-    "skipped": 23
+    "skipped": 24
   },
   "results": [
     {
@@ -16,6 +16,14 @@
       "format": "modern",
       "archetype": "4c-hollowone",
       "path": "latest/radars/modern/4c-hollowone.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "modern",
+      "archetype": "5c-blink",
+      "path": "latest/radars/modern/5c-blink.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -281,6 +289,14 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "modern",
+      "archetype": "izzet-phoenix",
+      "path": "latest/radars/modern/izzet-phoenix.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
       "archetype": "izzet-prowess",
@@ -378,14 +394,6 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "modern",
-      "archetype": "miracles",
-      "path": "latest/radars/modern/miracles.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "modern",
       "archetype": "mono-black-midrange",
       "path": "latest/radars/modern/mono-black-midrange.json",
       "message": "No published decks were available for radar generation."
@@ -426,6 +434,13 @@
       "format": "modern",
       "archetype": "neobrand",
       "path": "latest/radars/modern/neobrand.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "orzhov-blink",
+      "path": "latest/radars/modern/orzhov-blink.json"
     },
     {
       "scope": "archetype-radar",
@@ -725,13 +740,6 @@
       "format": "modern",
       "archetype": "omnath-control",
       "path": "latest/radars/modern/omnath-control.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "orzhov-blink",
-      "path": "latest/radars/modern/orzhov-blink.json"
     },
     {
       "scope": "archetype-radar",

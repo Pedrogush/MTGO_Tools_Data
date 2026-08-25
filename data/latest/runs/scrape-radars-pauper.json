@@ -1,12 +1,12 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-25T13:19:44Z",
+  "generated_at": "2026-08-25T19:19:20Z",
   "command": "scrape-radars-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 16,
+    "skipped": 17,
     "success": 57
   },
   "results": [
@@ -333,13 +333,6 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
-      "format": "pauper",
-      "archetype": "naya-ramp",
-      "path": "latest/radars/pauper/naya-ramp.json"
-    },
-    {
-      "scope": "archetype-radar",
       "status": "skipped",
       "format": "pauper",
       "archetype": "orzhov-ephemerate",
@@ -373,6 +366,14 @@
       "format": "pauper",
       "archetype": "selesnya-gates",
       "path": "latest/radars/pauper/selesnya-gates.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "pauper",
+      "archetype": "simic-ponza",
+      "path": "latest/radars/pauper/simic-ponza.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -480,6 +481,13 @@
       "format": "pauper",
       "archetype": "mono-black-sacrifice",
       "path": "latest/radars/pauper/mono-black-sacrifice.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pauper",
+      "archetype": "naya-ramp",
+      "path": "latest/radars/pauper/naya-ramp.json"
     },
     {
       "scope": "archetype-radar",

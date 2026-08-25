@@ -1,15 +1,22 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-25T13:19:08Z",
+  "generated_at": "2026-08-25T19:19:14Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 38,
-    "success": 48
+    "success": 50,
+    "skipped": 35
   },
   "results": [
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "8-cast",
+      "path": "latest/radars/legacy/8-cast.json"
+    },
     {
       "scope": "archetype-radar",
       "status": "skipped",
@@ -24,6 +31,14 @@
       "format": "legacy",
       "archetype": "aluren",
       "path": "latest/radars/legacy/aluren.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "legacy",
+      "archetype": "arclight-phoenix",
+      "path": "latest/radars/legacy/arclight-phoenix.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -69,14 +84,6 @@
       "format": "legacy",
       "archetype": "blue-cloudpost",
       "path": "latest/radars/legacy/blue-cloudpost.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "blue-dredge",
-      "path": "latest/radars/legacy/blue-dredge.json",
       "message": "No published decks were available for radar generation."
     },
     {
@@ -145,14 +152,6 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "legacy",
-      "archetype": "death-s-shadow",
-      "path": "latest/radars/legacy/death-s-shadow.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
       "archetype": "dimir-control",
       "path": "latest/radars/legacy/dimir-control.json",
       "message": "No published decks were available for radar generation."
@@ -197,16 +196,16 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "legacy",
-      "archetype": "esper-control",
-      "path": "latest/radars/legacy/esper-control.json",
+      "archetype": "esper-tempo",
+      "path": "latest/radars/legacy/esper-tempo.json",
       "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "legacy",
-      "archetype": "esper-tempo",
-      "path": "latest/radars/legacy/esper-tempo.json",
+      "archetype": "goblins",
+      "path": "latest/radars/legacy/goblins.json",
       "message": "No published decks were available for radar generation."
     },
     {
@@ -236,6 +235,14 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "legacy",
+      "archetype": "izzet-tempo",
+      "path": "latest/radars/legacy/izzet-tempo.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "legacy",
       "archetype": "jeskai-control",
       "path": "latest/radars/legacy/jeskai-control.json",
       "message": "No published decks were available for radar generation."
@@ -257,11 +264,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "led-dredge",
-      "path": "latest/radars/legacy/led-dredge.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/led-dredge.json"
     },
     {
       "scope": "archetype-radar",
@@ -289,6 +295,14 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "legacy",
+      "archetype": "merfolk",
+      "path": "latest/radars/legacy/merfolk.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "legacy",
       "archetype": "mono-black-midrange",
       "path": "latest/radars/legacy/mono-black-midrange.json",
       "message": "No published decks were available for radar generation."
@@ -299,14 +313,6 @@
       "format": "legacy",
       "archetype": "mono-black-pox",
       "path": "latest/radars/legacy/mono-black-pox.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "mono-black-reanimator",
-      "path": "latest/radars/legacy/mono-black-reanimator.json",
       "message": "No published decks were available for radar generation."
     },
     {
@@ -336,14 +342,6 @@
       "format": "legacy",
       "archetype": "naya-initiative",
       "path": "latest/radars/legacy/naya-initiative.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "necrodominance-combo",
-      "path": "latest/radars/legacy/necrodominance-combo.json",
       "message": "No published decks were available for radar generation."
     },
     {
@@ -397,14 +395,6 @@
       "format": "legacy",
       "archetype": "red-stompy",
       "path": "latest/radars/legacy/red-stompy.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "saga-storm",
-      "path": "latest/radars/legacy/saga-storm.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -521,13 +511,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "dredge",
-      "path": "latest/radars/legacy/dredge.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
       "archetype": "energy",
       "path": "latest/radars/legacy/energy.json"
     },
@@ -614,6 +597,13 @@
       "format": "legacy",
       "archetype": "rakdos-prison",
       "path": "latest/radars/legacy/rakdos-prison.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "rakdos-stompy",
+      "path": "latest/radars/legacy/rakdos-stompy.json"
     },
     {
       "scope": "archetype-radar",

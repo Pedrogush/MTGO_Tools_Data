@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-25T13:14:46Z",
+  "generated_at": "2026-08-25T19:00:50Z",
   "command": "scrape-deck-texts-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 8,
-    "skipped": 60
+    "success": 9,
+    "skipped": 59
   },
   "results": [
     {
@@ -15,6 +15,13 @@
       "status": "success",
       "format": "legacy",
       "path": "latest/archetypes/legacy.json"
+    },
+    {
+      "scope": "archetype-decks",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "8-cast",
+      "path": "latest/decks/legacy/8-cast.json"
     },
     {
       "scope": "archetype-decks",
@@ -30,6 +37,14 @@
       "format": "legacy",
       "archetype": "aluren",
       "path": "latest/decks/legacy/aluren.json"
+    },
+    {
+      "scope": "archetype-decks",
+      "status": "skipped",
+      "format": "legacy",
+      "archetype": "arclight-phoenix",
+      "path": "latest/decks/legacy/arclight-phoenix.json",
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
@@ -76,14 +91,6 @@
       "format": "legacy",
       "archetype": "blue-cloudpost",
       "path": "latest/decks/legacy/blue-cloudpost.json",
-      "message": "No decks found within the last 7 days."
-    },
-    {
-      "scope": "archetype-decks",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "blue-dredge",
-      "path": "latest/decks/legacy/blue-dredge.json",
       "message": "No decks found within the last 7 days."
     },
     {
@@ -154,14 +161,6 @@
       "scope": "archetype-decks",
       "status": "skipped",
       "format": "legacy",
-      "archetype": "death-s-shadow",
-      "path": "latest/decks/legacy/death-s-shadow.json",
-      "message": "No decks found within the last 7 days."
-    },
-    {
-      "scope": "archetype-decks",
-      "status": "skipped",
-      "format": "legacy",
       "archetype": "dimir-control",
       "path": "latest/decks/legacy/dimir-control.json",
       "message": "No decks found within the last 7 days."
@@ -209,16 +208,16 @@
       "scope": "archetype-decks",
       "status": "skipped",
       "format": "legacy",
-      "archetype": "esper-control",
-      "path": "latest/decks/legacy/esper-control.json",
+      "archetype": "esper-tempo",
+      "path": "latest/decks/legacy/esper-tempo.json",
       "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
       "status": "skipped",
       "format": "legacy",
-      "archetype": "esper-tempo",
-      "path": "latest/decks/legacy/esper-tempo.json",
+      "archetype": "goblins",
+      "path": "latest/decks/legacy/goblins.json",
       "message": "No decks found within the last 7 days."
     },
     {
@@ -243,6 +242,14 @@
       "format": "legacy",
       "archetype": "izzet-delver",
       "path": "latest/decks/legacy/izzet-delver.json",
+      "message": "No decks found within the last 7 days."
+    },
+    {
+      "scope": "archetype-decks",
+      "status": "skipped",
+      "format": "legacy",
+      "archetype": "izzet-tempo",
+      "path": "latest/decks/legacy/izzet-tempo.json",
       "message": "No decks found within the last 7 days."
     },
     {
@@ -303,16 +310,16 @@
       "scope": "archetype-decks",
       "status": "skipped",
       "format": "legacy",
-      "archetype": "mono-black-midrange",
-      "path": "latest/decks/legacy/mono-black-midrange.json",
+      "archetype": "merfolk",
+      "path": "latest/decks/legacy/merfolk.json",
       "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
       "status": "skipped",
       "format": "legacy",
-      "archetype": "mono-black-reanimator",
-      "path": "latest/decks/legacy/mono-black-reanimator.json",
+      "archetype": "mono-black-midrange",
+      "path": "latest/decks/legacy/mono-black-midrange.json",
       "message": "No decks found within the last 7 days."
     },
     {
@@ -353,14 +360,6 @@
       "format": "legacy",
       "archetype": "naya-initiative",
       "path": "latest/decks/legacy/naya-initiative.json",
-      "message": "No decks found within the last 7 days."
-    },
-    {
-      "scope": "archetype-decks",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "necrodominance-combo",
-      "path": "latest/decks/legacy/necrodominance-combo.json",
       "message": "No decks found within the last 7 days."
     },
     {
@@ -416,14 +415,6 @@
       "format": "legacy",
       "archetype": "red-stompy",
       "path": "latest/decks/legacy/red-stompy.json"
-    },
-    {
-      "scope": "archetype-decks",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "saga-storm",
-      "path": "latest/decks/legacy/saga-storm.json",
-      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
@@ -535,6 +526,14 @@
       "format": "legacy",
       "deck_id": "7921148",
       "path": "archive/deck-texts/legacy/7921148.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
+      "deck_id": "7921150",
+      "path": "archive/deck-texts/legacy/7921150.json",
       "message": "Reused existing published deck-text blob."
     },
     {

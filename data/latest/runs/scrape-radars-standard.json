@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-24T19:24:24Z",
+  "generated_at": "2026-08-25T01:58:06Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 43,
-    "success": 41
+    "skipped": 44,
+    "success": 38
   },
   "results": [
     {
@@ -401,10 +401,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "mono-black-midrange",
-      "path": "latest/radars/standard/mono-black-midrange.json"
+      "path": "latest/radars/standard/mono-black-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -603,13 +604,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
-      "archetype": "mono-red-dragons",
-      "path": "latest/radars/standard/mono-red-dragons.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
       "archetype": "reanimator",
       "path": "latest/radars/standard/reanimator.json"
     },
@@ -619,13 +613,6 @@
       "format": "standard",
       "archetype": "selesnya-midrange",
       "path": "latest/radars/standard/selesnya-midrange.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
-      "archetype": "temur-elementals",
-      "path": "latest/radars/standard/temur-elementals.json"
     },
     {
       "scope": "archetype-radar",

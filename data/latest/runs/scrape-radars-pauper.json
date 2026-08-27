@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-27T09:58:38Z",
+  "generated_at": "2026-08-27T22:26:52Z",
   "command": "scrape-radars-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 17,
-    "success": 57
+    "skipped": 16,
+    "success": 58
   },
   "results": [
     {
@@ -38,9 +38,16 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "pauper",
-      "archetype": "black-burn",
-      "path": "latest/radars/pauper/black-burn.json",
+      "archetype": "bant-control",
+      "path": "latest/radars/pauper/bant-control.json",
       "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pauper",
+      "archetype": "black-burn",
+      "path": "latest/radars/pauper/black-burn.json"
     },
     {
       "scope": "archetype-radar",
@@ -131,11 +138,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pauper",
       "archetype": "dredge",
-      "path": "latest/radars/pauper/dredge.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pauper/dredge.json"
     },
     {
       "scope": "archetype-radar",
@@ -191,13 +197,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pauper",
-      "archetype": "golgari-ponza",
-      "path": "latest/radars/pauper/golgari-ponza.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pauper",
       "archetype": "grixis-affinity",
       "path": "latest/radars/pauper/grixis-affinity.json"
     },
@@ -244,14 +243,6 @@
       "format": "pauper",
       "archetype": "izzet-terror",
       "path": "latest/radars/pauper/izzet-terror.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "pauper",
-      "archetype": "jeskai-affinity",
-      "path": "latest/radars/pauper/jeskai-affinity.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -374,6 +365,14 @@
       "format": "pauper",
       "archetype": "selesnya-gates",
       "path": "latest/radars/pauper/selesnya-gates.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "pauper",
+      "archetype": "simic-ponza",
+      "path": "latest/radars/pauper/simic-ponza.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

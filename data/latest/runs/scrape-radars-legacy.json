@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-27T09:59:28Z",
+  "generated_at": "2026-08-27T22:26:57Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 40,
-    "success": 47
+    "success": 48
   },
   "results": [
     {
@@ -198,6 +198,14 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "legacy",
+      "archetype": "goblins",
+      "path": "latest/radars/legacy/goblins.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "legacy",
       "archetype": "grixis-control",
       "path": "latest/radars/legacy/grixis-control.json",
       "message": "No published decks were available for radar generation."
@@ -224,14 +232,6 @@
       "format": "legacy",
       "archetype": "izzet-delver",
       "path": "latest/radars/legacy/izzet-delver.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "izzet-tempo",
-      "path": "latest/radars/legacy/izzet-tempo.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -644,6 +644,13 @@
       "format": "legacy",
       "archetype": "white-beanstalk",
       "path": "latest/radars/legacy/white-beanstalk.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "wither-bloom",
+      "path": "latest/radars/legacy/wither-bloom.json"
     },
     {
       "scope": "archetype-radar",

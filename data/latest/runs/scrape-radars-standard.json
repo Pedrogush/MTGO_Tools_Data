@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-27T09:58:45Z",
+  "generated_at": "2026-08-27T22:26:58Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 37,
-    "skipped": 45
+    "success": 39,
+    "skipped": 48
   },
   "results": [
     {
@@ -204,14 +204,6 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "standard",
-      "archetype": "esper-control",
-      "path": "latest/radars/standard/esper-control.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "standard",
       "archetype": "esper-reanimator",
       "path": "latest/radars/standard/esper-reanimator.json",
       "message": "No published decks were available for radar generation."
@@ -293,6 +285,14 @@
       "format": "standard",
       "archetype": "izzet-lessons",
       "path": "latest/radars/standard/izzet-lessons.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "standard",
+      "archetype": "izzet-leyline-aggro",
+      "path": "latest/radars/standard/izzet-leyline-aggro.json",
       "message": "No published decks were available for radar generation."
     },
     {
@@ -410,10 +410,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "mono-green-landfall",
-      "path": "latest/radars/standard/mono-green-landfall.json"
+      "path": "latest/radars/standard/mono-green-landfall.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -421,6 +422,14 @@
       "format": "standard",
       "archetype": "mono-red-aggro",
       "path": "latest/radars/standard/mono-red-aggro.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "standard",
+      "archetype": "mono-red-leyline-aggro",
+      "path": "latest/radars/standard/mono-red-leyline-aggro.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -474,6 +483,14 @@
       "format": "standard",
       "archetype": "sultai-control",
       "path": "latest/radars/standard/sultai-control.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "standard",
+      "archetype": "sultai-excruciator",
+      "path": "latest/radars/standard/sultai-excruciator.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -549,6 +566,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
+      "archetype": "azorius-artifacts",
+      "path": "latest/radars/standard/azorius-artifacts.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
       "archetype": "azorius-midrange",
       "path": "latest/radars/standard/azorius-midrange.json"
     },
@@ -572,6 +596,13 @@
       "format": "standard",
       "archetype": "bant-omniscience",
       "path": "latest/radars/standard/bant-omniscience.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "dimir-aristocrats",
+      "path": "latest/radars/standard/dimir-aristocrats.json"
     },
     {
       "scope": "archetype-radar",
@@ -607,6 +638,13 @@
       "format": "standard",
       "archetype": "mardu-aggro",
       "path": "latest/radars/standard/mardu-aggro.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "rakdos-aggro",
+      "path": "latest/radars/standard/rakdos-aggro.json"
     },
     {
       "scope": "archetype-radar",

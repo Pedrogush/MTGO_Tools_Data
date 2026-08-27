@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-26T20:23:17Z",
+  "generated_at": "2026-08-27T09:58:45Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 39,
-    "skipped": 44
+    "success": 37,
+    "skipped": 45
   },
   "results": [
     {
@@ -432,10 +432,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "naya-delirium",
-      "path": "latest/radars/standard/naya-delirium.json"
+      "path": "latest/radars/standard/naya-delirium.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -613,13 +614,6 @@
       "format": "standard",
       "archetype": "reanimator",
       "path": "latest/radars/standard/reanimator.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
-      "archetype": "selesnya-midrange",
-      "path": "latest/radars/standard/selesnya-midrange.json"
     },
     {
       "scope": "archetype-radar",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-27T22:27:12Z",
+  "generated_at": "2026-08-28T11:31:20Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 35,
-    "success": 30
+    "skipped": 34,
+    "success": 32
   },
   "results": [
     {
@@ -266,10 +266,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "mono-black-midrange",
-      "path": "latest/radars/pioneer/mono-black-midrange.json"
+      "path": "latest/radars/pioneer/mono-black-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -295,11 +296,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "niv-to-light",
-      "path": "latest/radars/pioneer/niv-to-light.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pioneer/niv-to-light.json"
     },
     {
       "scope": "archetype-radar",
@@ -349,11 +349,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "selesnya-angels",
-      "path": "latest/radars/pioneer/selesnya-angels.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pioneer/selesnya-angels.json"
     },
     {
       "scope": "archetype-radar",
@@ -450,6 +449,13 @@
       "format": "pioneer",
       "archetype": "jeskai-control",
       "path": "latest/radars/pioneer/jeskai-control.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "mardu-self-bounce",
+      "path": "latest/radars/pioneer/mardu-self-bounce.json"
     },
     {
       "scope": "archetype-radar",

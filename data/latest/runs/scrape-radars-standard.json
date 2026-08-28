@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-27T22:26:58Z",
+  "generated_at": "2026-08-28T11:31:18Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 39,
-    "skipped": 48
+    "success": 36,
+    "skipped": 49
   },
   "results": [
     {
@@ -479,10 +479,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "sultai-control",
-      "path": "latest/radars/standard/sultai-control.json"
+      "path": "latest/radars/standard/sultai-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -573,13 +574,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
-      "archetype": "azorius-midrange",
-      "path": "latest/radars/standard/azorius-midrange.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
       "archetype": "azorius-oculus",
       "path": "latest/radars/standard/azorius-oculus.json"
     },
@@ -617,13 +611,6 @@
       "format": "standard",
       "archetype": "izzet-elementals",
       "path": "latest/radars/standard/izzet-elementals.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
-      "archetype": "jeskai-midrange",
-      "path": "latest/radars/standard/jeskai-midrange.json"
     },
     {
       "scope": "archetype-radar",

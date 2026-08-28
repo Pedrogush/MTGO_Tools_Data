@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-27T22:27:45Z",
+  "generated_at": "2026-08-28T11:31:26Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 89,
-    "skipped": 27
+    "success": 87,
+    "skipped": 28
   },
   "results": [
     {
@@ -143,10 +143,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "dimir-murktide",
-      "path": "latest/radars/modern/dimir-murktide.json"
+      "path": "latest/radars/modern/dimir-murktide.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -834,13 +835,6 @@
       "format": "modern",
       "archetype": "thopter-combo",
       "path": "latest/radars/modern/thopter-combo.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "wbrg-energy",
-      "path": "latest/radars/modern/wbrg-energy.json"
     },
     {
       "scope": "format-card-pool",

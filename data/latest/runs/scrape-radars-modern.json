@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-29T21:01:28Z",
+  "generated_at": "2026-08-30T05:31:10Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 34,
-    "success": 76
+    "skipped": 35,
+    "success": 74
   },
   "results": [
     {
@@ -272,10 +272,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "hollow-one",
-      "path": "latest/radars/modern/hollow-one.json"
+      "path": "latest/radars/modern/hollow-one.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -799,13 +800,6 @@
       "format": "modern",
       "archetype": "temur-saga",
       "path": "latest/radars/modern/temur-saga.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "thopter-combo",
-      "path": "latest/radars/modern/thopter-combo.json"
     },
     {
       "scope": "format-card-pool",

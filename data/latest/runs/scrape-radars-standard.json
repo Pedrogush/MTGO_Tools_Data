@@ -1,21 +1,22 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-30T21:15:06Z",
+  "generated_at": "2026-08-31T05:43:39Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 33,
-    "skipped": 50
+    "skipped": 51,
+    "success": 32
   },
   "results": [
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "4c-control",
-      "path": "latest/radars/standard/4c-control.json"
+      "path": "latest/radars/standard/4c-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -196,10 +197,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "dimir-self-bounce",
-      "path": "latest/radars/standard/dimir-self-bounce.json"
+      "path": "latest/radars/standard/dimir-self-bounce.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -259,11 +261,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
       "archetype": "gruul-leyline-aggro",
-      "path": "latest/radars/standard/gruul-leyline-aggro.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/standard/gruul-leyline-aggro.json"
     },
     {
       "scope": "archetype-radar",

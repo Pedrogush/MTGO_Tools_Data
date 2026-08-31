@@ -1,12 +1,12 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-30T21:14:20Z",
+  "generated_at": "2026-08-31T05:43:51Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 73,
+    "success": 72,
     "skipped": 17
   },
   "results": [
@@ -187,11 +187,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "goblins",
-      "path": "latest/radars/legacy/goblins.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/goblins.json"
     },
     {
       "scope": "archetype-radar",
@@ -342,10 +341,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "oops-all-spells",
-      "path": "latest/radars/legacy/oops-all-spells.json"
+      "path": "latest/radars/legacy/oops-all-spells.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -472,13 +472,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "dimir-delver",
-      "path": "latest/radars/legacy/dimir-delver.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
       "archetype": "dimir-hogaak",
       "path": "latest/radars/legacy/dimir-hogaak.json"
     },
@@ -502,13 +495,6 @@
       "format": "legacy",
       "archetype": "esper-midrange",
       "path": "latest/radars/legacy/esper-midrange.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "golgari-landfall",
-      "path": "latest/radars/legacy/golgari-landfall.json"
     },
     {
       "scope": "archetype-radar",
@@ -549,6 +535,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
+      "archetype": "mardu-midrange",
+      "path": "latest/radars/legacy/mardu-midrange.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
       "archetype": "mono-green-zoo",
       "path": "latest/radars/legacy/mono-green-zoo.json"
     },
@@ -570,6 +563,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
+      "archetype": "necro-storm",
+      "path": "latest/radars/legacy/necro-storm.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
       "archetype": "orzhov-midrange",
       "path": "latest/radars/legacy/orzhov-midrange.json"
     },
@@ -579,13 +579,6 @@
       "format": "legacy",
       "archetype": "post",
       "path": "latest/radars/legacy/post.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "rakdos-prison",
-      "path": "latest/radars/legacy/rakdos-prison.json"
     },
     {
       "scope": "archetype-radar",

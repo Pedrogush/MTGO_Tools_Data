@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-31T13:58:55Z",
+  "generated_at": "2026-08-31T22:56:17Z",
   "command": "scrape-deck-texts-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 1,
-    "skipped": 47
+    "success": 14,
+    "skipped": 44
   },
   "results": [
     {
@@ -15,6 +15,13 @@
       "status": "success",
       "format": "pioneer",
       "path": "latest/archetypes/pioneer.json"
+    },
+    {
+      "scope": "archetype-decks",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "4c-auras",
+      "path": "latest/decks/pioneer/4c-auras.json"
     },
     {
       "scope": "archetype-decks",
@@ -36,9 +43,16 @@
       "scope": "archetype-decks",
       "status": "skipped",
       "format": "pioneer",
+      "archetype": "5c-legends",
+      "path": "latest/decks/pioneer/5c-legends.json",
+      "message": "No decks found within the last 7 days."
+    },
+    {
+      "scope": "archetype-decks",
+      "status": "success",
+      "format": "pioneer",
       "archetype": "abzan-greasefang",
-      "path": "latest/decks/pioneer/abzan-greasefang.json",
-      "message": "All MTGGoldfish rows were MTGO events; published via mtgo-decklists."
+      "path": "latest/decks/pioneer/abzan-greasefang.json"
     },
     {
       "scope": "archetype-decks",
@@ -108,17 +122,31 @@
       "scope": "archetype-decks",
       "status": "skipped",
       "format": "pioneer",
+      "archetype": "dimir-rona-combo",
+      "path": "latest/decks/pioneer/dimir-rona-combo.json",
+      "message": "No decks found within the last 7 days."
+    },
+    {
+      "scope": "archetype-decks",
+      "status": "skipped",
+      "format": "pioneer",
       "archetype": "dimir-self-bounce",
       "path": "latest/decks/pioneer/dimir-self-bounce.json",
       "message": "All MTGGoldfish rows were MTGO events; published via mtgo-decklists."
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "ensoul-artifact",
+      "path": "latest/decks/pioneer/ensoul-artifact.json"
+    },
+    {
+      "scope": "archetype-decks",
+      "status": "success",
       "format": "pioneer",
       "archetype": "golgari-food",
-      "path": "latest/decks/pioneer/golgari-food.json",
-      "message": "No decks found within the last 7 days."
+      "path": "latest/decks/pioneer/golgari-food.json"
     },
     {
       "scope": "archetype-decks",
@@ -202,11 +230,10 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "jeskai-lessons",
-      "path": "latest/decks/pioneer/jeskai-lessons.json",
-      "message": "All MTGGoldfish rows were MTGO events; published via mtgo-decklists."
+      "path": "latest/decks/pioneer/jeskai-lessons.json"
     },
     {
       "scope": "archetype-decks",
@@ -258,11 +285,10 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "mono-white-humans",
-      "path": "latest/decks/pioneer/mono-white-humans.json",
-      "message": "No decks found within the last 7 days."
+      "path": "latest/decks/pioneer/mono-white-humans.json"
     },
     {
       "scope": "archetype-decks",
@@ -386,9 +412,52 @@
     },
     {
       "scope": "deck-text",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
-      "message": "No deck IDs were available for deck-text publishing."
+      "deck_id": "7934527",
+      "path": "archive/deck-texts/pioneer/7934527.json"
+    },
+    {
+      "scope": "deck-text",
+      "status": "success",
+      "format": "pioneer",
+      "deck_id": "7934528",
+      "path": "archive/deck-texts/pioneer/7934528.json"
+    },
+    {
+      "scope": "deck-text",
+      "status": "success",
+      "format": "pioneer",
+      "deck_id": "7934531",
+      "path": "archive/deck-texts/pioneer/7934531.json"
+    },
+    {
+      "scope": "deck-text",
+      "status": "success",
+      "format": "pioneer",
+      "deck_id": "7934532",
+      "path": "archive/deck-texts/pioneer/7934532.json"
+    },
+    {
+      "scope": "deck-text",
+      "status": "success",
+      "format": "pioneer",
+      "deck_id": "7934533",
+      "path": "archive/deck-texts/pioneer/7934533.json"
+    },
+    {
+      "scope": "deck-text",
+      "status": "success",
+      "format": "pioneer",
+      "deck_id": "7934534",
+      "path": "archive/deck-texts/pioneer/7934534.json"
+    },
+    {
+      "scope": "deck-text",
+      "status": "success",
+      "format": "pioneer",
+      "deck_id": "7934536",
+      "path": "archive/deck-texts/pioneer/7934536.json"
     }
   ]
 }

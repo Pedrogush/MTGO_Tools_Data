@@ -1,12 +1,12 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-31T14:03:52Z",
+  "generated_at": "2026-08-31T22:59:41Z",
   "command": "scrape-radars-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 16,
+    "skipped": 15,
     "success": 57
   },
   "results": [
@@ -225,6 +225,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pauper",
+      "archetype": "infect",
+      "path": "latest/radars/pauper/infect.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pauper",
       "archetype": "inside-out-combo",
       "path": "latest/radars/pauper/inside-out-combo.json"
     },
@@ -242,14 +249,6 @@
       "format": "pauper",
       "archetype": "izzet-terror",
       "path": "latest/radars/pauper/izzet-terror.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "pauper",
-      "archetype": "jeskai-affinity",
-      "path": "latest/radars/pauper/jeskai-affinity.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -473,13 +472,6 @@
       "format": "pauper",
       "archetype": "golgari-garden",
       "path": "latest/radars/pauper/golgari-garden.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pauper",
-      "archetype": "infect",
-      "path": "latest/radars/pauper/infect.json"
     },
     {
       "scope": "archetype-radar",

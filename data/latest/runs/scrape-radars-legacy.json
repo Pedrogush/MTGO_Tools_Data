@@ -1,15 +1,23 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-31T14:03:55Z",
+  "generated_at": "2026-08-31T22:59:46Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 74,
-    "skipped": 17
+    "skipped": 15,
+    "success": 77
   },
   "results": [
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "legacy",
+      "archetype": "8-cast",
+      "path": "latest/radars/legacy/8-cast.json",
+      "message": "No published decks were available for radar generation."
+    },
     {
       "scope": "archetype-radar",
       "status": "success",
@@ -69,14 +77,6 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "bomberman",
-      "path": "latest/radars/legacy/bomberman.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
       "archetype": "boros-energy",
@@ -120,11 +120,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "death-and-taxes-yorion-mono-white",
-      "path": "latest/radars/legacy/death-and-taxes-yorion-mono-white.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/death-and-taxes-yorion-mono-white.json"
     },
     {
       "scope": "archetype-radar",
@@ -187,13 +186,6 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "goblins",
-      "path": "latest/radars/legacy/goblins.json"
-    },
-    {
-      "scope": "archetype-radar",
       "status": "skipped",
       "format": "legacy",
       "archetype": "grixis-control",
@@ -217,14 +209,6 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "izzet-tempo",
-      "path": "latest/radars/legacy/izzet-tempo.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
       "archetype": "jeskai-control",
@@ -232,11 +216,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "jund",
-      "path": "latest/radars/legacy/jund.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/jund.json"
     },
     {
       "scope": "archetype-radar",
@@ -285,6 +268,14 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "legacy",
+      "archetype": "mono-black-midrange",
+      "path": "latest/radars/legacy/mono-black-midrange.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "legacy",
       "archetype": "mono-black-pox",
       "path": "latest/radars/legacy/mono-black-pox.json",
       "message": "No published decks were available for radar generation."
@@ -319,6 +310,14 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "legacy",
+      "archetype": "necrodominance-combo",
+      "path": "latest/radars/legacy/necrodominance-combo.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
       "archetype": "ninjas",
@@ -328,16 +327,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "ocelot-pride-midrange",
-      "path": "latest/radars/legacy/ocelot-pride-midrange.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
       "archetype": "omni-tell",
-      "path": "latest/radars/legacy/omni-tell.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/omni-tell.json"
     },
     {
       "scope": "archetype-radar",
@@ -381,6 +372,13 @@
       "format": "legacy",
       "archetype": "saga-storm",
       "path": "latest/radars/legacy/saga-storm.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "selesnya-depths",
+      "path": "latest/radars/legacy/selesnya-depths.json"
     },
     {
       "scope": "archetype-radar",
@@ -472,6 +470,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
+      "archetype": "depths",
+      "path": "latest/radars/legacy/depths.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
       "archetype": "dimir-hogaak",
       "path": "latest/radars/legacy/dimir-hogaak.json"
     },
@@ -495,6 +500,13 @@
       "format": "legacy",
       "archetype": "esper-midrange",
       "path": "latest/radars/legacy/esper-midrange.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "goblins",
+      "path": "latest/radars/legacy/goblins.json"
     },
     {
       "scope": "archetype-radar",
@@ -600,13 +612,6 @@
       "format": "legacy",
       "archetype": "rea-show",
       "path": "latest/radars/legacy/rea-show.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "selesnya-depths",
-      "path": "latest/radars/legacy/selesnya-depths.json"
     },
     {
       "scope": "archetype-radar",

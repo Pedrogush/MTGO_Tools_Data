@@ -1,15 +1,22 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-31T14:04:10Z",
+  "generated_at": "2026-08-31T23:00:18Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 33,
-    "success": 34
+    "success": 38,
+    "skipped": 32
   },
   "results": [
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "4c-auras",
+      "path": "latest/radars/pioneer/4c-auras.json"
+    },
     {
       "scope": "archetype-radar",
       "status": "skipped",
@@ -128,10 +135,25 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "pioneer",
+      "archetype": "dimir-rona-combo",
+      "path": "latest/radars/pioneer/dimir-rona-combo.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
       "status": "success",
       "format": "pioneer",
       "archetype": "dimir-self-bounce",
       "path": "latest/radars/pioneer/dimir-self-bounce.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "ensoul-artifact",
+      "path": "latest/radars/pioneer/ensoul-artifact.json"
     },
     {
       "scope": "archetype-radar",
@@ -143,11 +165,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "golgari-food",
-      "path": "latest/radars/pioneer/golgari-food.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pioneer/golgari-food.json"
     },
     {
       "scope": "archetype-radar",
@@ -228,11 +249,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "jeskai-lessons",
-      "path": "latest/radars/pioneer/jeskai-lessons.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pioneer/jeskai-lessons.json"
     },
     {
       "scope": "archetype-radar",

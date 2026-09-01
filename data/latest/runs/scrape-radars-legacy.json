@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-08-31T22:59:46Z",
+  "generated_at": "2026-09-01T05:18:02Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 15,
-    "success": 77
+    "skipped": 16,
+    "success": 75
   },
   "results": [
     {
@@ -289,10 +289,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "mono-white-initiative",
-      "path": "latest/radars/legacy/mono-white-initiative.json"
+      "path": "latest/radars/legacy/mono-white-initiative.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -514,13 +515,6 @@
       "format": "legacy",
       "archetype": "golgari-landfall",
       "path": "latest/radars/legacy/golgari-landfall.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "grixis-delver",
-      "path": "latest/radars/legacy/grixis-delver.json"
     },
     {
       "scope": "archetype-radar",

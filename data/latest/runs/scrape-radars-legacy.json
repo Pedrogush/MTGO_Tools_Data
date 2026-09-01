@@ -1,23 +1,15 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-01T11:46:36Z",
+  "generated_at": "2026-09-01T16:49:46Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 16,
-    "success": 75
+    "success": 75,
+    "skipped": 15
   },
   "results": [
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "8-cast",
-      "path": "latest/radars/legacy/8-cast.json",
-      "message": "No published decks were available for radar generation."
-    },
     {
       "scope": "archetype-radar",
       "status": "success",
@@ -191,6 +183,13 @@
       "archetype": "grixis-control",
       "path": "latest/radars/legacy/grixis-control.json",
       "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "high-tide",
+      "path": "latest/radars/legacy/high-tide.json"
     },
     {
       "scope": "archetype-radar",
@@ -522,13 +521,6 @@
       "format": "legacy",
       "archetype": "grixis-midrange",
       "path": "latest/radars/legacy/grixis-midrange.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "high-tide",
-      "path": "latest/radars/legacy/high-tide.json"
     },
     {
       "scope": "archetype-radar",

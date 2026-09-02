@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-02T04:43:07Z",
+  "generated_at": "2026-09-02T11:26:15Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 85,
-    "skipped": 21
+    "success": 84,
+    "skipped": 22
   },
   "results": [
     {
@@ -295,10 +295,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "izzet-prowess",
-      "path": "latest/radars/modern/izzet-prowess.json"
+      "path": "latest/radars/modern/izzet-prowess.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

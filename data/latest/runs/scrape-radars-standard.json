@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-02T11:26:19Z",
+  "generated_at": "2026-09-02T16:42:55Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 46,
-    "success": 35
+    "skipped": 45,
+    "success": 37
   },
   "results": [
     {
@@ -258,11 +258,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
       "archetype": "izzet-control",
-      "path": "latest/radars/standard/izzet-control.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/standard/izzet-control.json"
     },
     {
       "scope": "archetype-radar",
@@ -587,6 +586,13 @@
       "format": "standard",
       "archetype": "mardu-aggro",
       "path": "latest/radars/standard/mardu-aggro.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "mono-black-control",
+      "path": "latest/radars/standard/mono-black-control.json"
     },
     {
       "scope": "archetype-radar",

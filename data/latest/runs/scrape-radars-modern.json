@@ -1,12 +1,12 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-02T11:26:15Z",
+  "generated_at": "2026-09-02T16:43:07Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 84,
+    "success": 85,
     "skipped": 22
   },
   "results": [
@@ -766,6 +766,13 @@
       "format": "modern",
       "archetype": "wurg-control",
       "path": "latest/radars/modern/wurg-control.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "wurg-scam",
+      "path": "latest/radars/modern/wurg-scam.json"
     },
     {
       "scope": "format-card-pool",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-01T21:27:18Z",
+  "generated_at": "2026-09-02T04:43:07Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 92,
-    "skipped": 19
+    "success": 85,
+    "skipped": 21
   },
   "results": [
     {
@@ -220,10 +220,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "grixis-control",
-      "path": "latest/radars/modern/grixis-control.json"
+      "path": "latest/radars/modern/grixis-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -433,10 +434,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "orzhov-midrange",
-      "path": "latest/radars/modern/orzhov-midrange.json"
+      "path": "latest/radars/modern/orzhov-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -635,13 +637,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "esper-frog",
-      "path": "latest/radars/modern/esper-frog.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "esper-scam",
       "path": "latest/radars/modern/esper-scam.json"
     },
@@ -656,13 +651,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "gruul-midrange",
-      "path": "latest/radars/modern/gruul-midrange.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "izzet-saga",
       "path": "latest/radars/modern/izzet-saga.json"
     },
@@ -672,20 +660,6 @@
       "format": "modern",
       "archetype": "jeskai-cutter",
       "path": "latest/radars/modern/jeskai-cutter.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "jeskai-scam",
-      "path": "latest/radars/modern/jeskai-scam.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "jund-creativity",
-      "path": "latest/radars/modern/jund-creativity.json"
     },
     {
       "scope": "archetype-radar",
@@ -728,13 +702,6 @@
       "format": "modern",
       "archetype": "prowess",
       "path": "latest/radars/modern/prowess.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "rakdos-graveyard",
-      "path": "latest/radars/modern/rakdos-graveyard.json"
     },
     {
       "scope": "archetype-radar",

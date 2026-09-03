@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-02T21:12:47Z",
+  "generated_at": "2026-09-03T04:41:40Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 76,
-    "skipped": 13
+    "success": 78,
+    "skipped": 15
   },
   "results": [
     {
@@ -119,10 +119,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "death-s-shadow",
-      "path": "latest/radars/legacy/death-s-shadow.json"
+      "path": "latest/radars/legacy/death-s-shadow.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -303,10 +304,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "naya-initiative",
-      "path": "latest/radars/legacy/naya-initiative.json"
+      "path": "latest/radars/legacy/naya-initiative.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -475,13 +477,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "dimir-hogaak",
-      "path": "latest/radars/legacy/dimir-hogaak.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
       "archetype": "dimir-midrange",
       "path": "latest/radars/legacy/dimir-midrange.json"
     },
@@ -510,6 +505,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
+      "archetype": "golgari-hogaak",
+      "path": "latest/radars/legacy/golgari-hogaak.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
       "archetype": "golgari-landfall",
       "path": "latest/radars/legacy/golgari-landfall.json"
     },
@@ -526,6 +528,20 @@
       "format": "legacy",
       "archetype": "izzet-midrange",
       "path": "latest/radars/legacy/izzet-midrange.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "jeskai-midrange",
+      "path": "latest/radars/legacy/jeskai-midrange.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "jeskai-stoneblade",
+      "path": "latest/radars/legacy/jeskai-stoneblade.json"
     },
     {
       "scope": "archetype-radar",
@@ -608,8 +624,29 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
+      "archetype": "sultai-beanstalk",
+      "path": "latest/radars/legacy/sultai-beanstalk.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "temur-cascade-rhinos",
+      "path": "latest/radars/legacy/temur-cascade-rhinos.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
       "archetype": "tes",
       "path": "latest/radars/legacy/tes.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "the-epic-gamble",
+      "path": "latest/radars/legacy/the-epic-gamble.json"
     },
     {
       "scope": "archetype-radar",
@@ -624,13 +661,6 @@
       "format": "legacy",
       "archetype": "white-beanstalk",
       "path": "latest/radars/legacy/white-beanstalk.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "wither-bloom",
-      "path": "latest/radars/legacy/wither-bloom.json"
     },
     {
       "scope": "archetype-radar",

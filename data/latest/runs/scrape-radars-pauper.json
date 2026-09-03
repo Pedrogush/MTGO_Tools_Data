@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-02T21:13:08Z",
+  "generated_at": "2026-09-03T04:41:33Z",
   "command": "scrape-radars-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 15,
-    "success": 57
+    "skipped": 16,
+    "success": 54
   },
   "results": [
     {
@@ -375,10 +375,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "selesnya-gates",
-      "path": "latest/radars/pauper/selesnya-gates.json"
+      "path": "latest/radars/pauper/selesnya-gates.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -444,20 +445,6 @@
       "format": "pauper",
       "archetype": "5-color-ephemerate",
       "path": "latest/radars/pauper/5-color-ephemerate.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pauper",
-      "archetype": "dimir-midrange",
-      "path": "latest/radars/pauper/dimir-midrange.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pauper",
-      "archetype": "esper-ephemerate",
-      "path": "latest/radars/pauper/esper-ephemerate.json"
     },
     {
       "scope": "archetype-radar",

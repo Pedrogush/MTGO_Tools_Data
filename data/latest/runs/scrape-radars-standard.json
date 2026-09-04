@@ -1,7 +1,7 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-04T16:32:56Z",
+  "generated_at": "2026-09-04T20:53:21Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
@@ -64,6 +64,14 @@
       "format": "standard",
       "archetype": "5c-elementals",
       "path": "latest/radars/standard/5c-elementals.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "standard",
+      "archetype": "5c-kona",
+      "path": "latest/radars/standard/5c-kona.json",
       "message": "No published decks were available for radar generation."
     },
     {
@@ -223,14 +231,6 @@
       "format": "standard",
       "archetype": "golgari-midrange",
       "path": "latest/radars/standard/golgari-midrange.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "standard",
-      "archetype": "grixis-control",
-      "path": "latest/radars/standard/grixis-control.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

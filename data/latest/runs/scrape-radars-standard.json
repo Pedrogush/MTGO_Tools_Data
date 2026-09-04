@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-03T21:11:56Z",
+  "generated_at": "2026-09-04T04:43:29Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 45,
-    "success": 41
+    "skipped": 46,
+    "success": 38
   },
   "results": [
     {
@@ -468,10 +468,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "selesnya-aggro",
-      "path": "latest/radars/standard/selesnya-aggro.json"
+      "path": "latest/radars/standard/selesnya-aggro.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -577,13 +578,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
-      "archetype": "dimir-aristocrats",
-      "path": "latest/radars/standard/dimir-aristocrats.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
       "archetype": "dimir-oculus",
       "path": "latest/radars/standard/dimir-oculus.json"
     },
@@ -621,13 +615,6 @@
       "format": "standard",
       "archetype": "mono-black-control",
       "path": "latest/radars/standard/mono-black-control.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
-      "archetype": "rakdos-aggro",
-      "path": "latest/radars/standard/rakdos-aggro.json"
     },
     {
       "scope": "archetype-radar",

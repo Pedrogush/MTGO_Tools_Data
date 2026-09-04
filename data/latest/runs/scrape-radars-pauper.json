@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-03T21:12:47Z",
+  "generated_at": "2026-09-04T04:42:54Z",
   "command": "scrape-radars-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 10,
-    "success": 60
+    "skipped": 13,
+    "success": 59
   },
   "results": [
     {
@@ -255,10 +255,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "jund-gardens",
-      "path": "latest/radars/pauper/jund-gardens.json"
+      "path": "latest/radars/pauper/jund-gardens.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -276,10 +277,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "mardu-synthesizer",
-      "path": "latest/radars/pauper/mardu-synthesizer.json"
+      "path": "latest/radars/pauper/mardu-synthesizer.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -363,10 +365,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "rakdos-madness",
-      "path": "latest/radars/pauper/rakdos-madness.json"
+      "path": "latest/radars/pauper/rakdos-madness.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -444,6 +447,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pauper",
+      "archetype": "cat-altar",
+      "path": "latest/radars/pauper/cat-altar.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pauper",
       "archetype": "gates",
       "path": "latest/radars/pauper/gates.json"
     },
@@ -453,6 +463,13 @@
       "format": "pauper",
       "archetype": "golgari-garden",
       "path": "latest/radars/pauper/golgari-garden.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pauper",
+      "archetype": "jeskai-synthesizer",
+      "path": "latest/radars/pauper/jeskai-synthesizer.json"
     },
     {
       "scope": "archetype-radar",

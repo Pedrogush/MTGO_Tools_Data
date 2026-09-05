@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-04T20:53:21Z",
+  "generated_at": "2026-09-05T04:39:39Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 46,
-    "success": 39
+    "skipped": 49,
+    "success": 36
   },
   "results": [
     {
@@ -167,10 +167,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "boros-tokens",
-      "path": "latest/radars/standard/boros-tokens.json"
+      "path": "latest/radars/standard/boros-tokens.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -363,10 +364,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "mardu-discard",
-      "path": "latest/radars/standard/mardu-discard.json"
+      "path": "latest/radars/standard/mardu-discard.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -401,10 +403,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "mono-green-landfall",
-      "path": "latest/radars/standard/mono-green-landfall.json"
+      "path": "latest/radars/standard/mono-green-landfall.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

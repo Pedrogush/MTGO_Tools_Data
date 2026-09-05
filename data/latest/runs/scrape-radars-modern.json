@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-04T20:53:23Z",
+  "generated_at": "2026-09-05T04:38:43Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 31,
-    "success": 77
+    "skipped": 34,
+    "success": 73
   },
   "results": [
     {
@@ -338,10 +338,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "jeskai-blink",
-      "path": "latest/radars/modern/jeskai-blink.json"
+      "path": "latest/radars/modern/jeskai-blink.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -360,10 +361,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "kethis-combo",
-      "path": "latest/radars/modern/kethis-combo.json"
+      "path": "latest/radars/modern/kethis-combo.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -381,10 +383,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "mardu-energy",
-      "path": "latest/radars/modern/mardu-energy.json"
+      "path": "latest/radars/modern/mardu-energy.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -726,13 +729,6 @@
       "format": "modern",
       "archetype": "ramp-eldrazi",
       "path": "latest/radars/modern/ramp-eldrazi.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "samwise",
-      "path": "latest/radars/modern/samwise.json"
     },
     {
       "scope": "archetype-radar",

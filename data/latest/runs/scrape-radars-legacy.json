@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-04T20:53:37Z",
+  "generated_at": "2026-09-05T04:39:10Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 81,
-    "skipped": 14
+    "success": 77,
+    "skipped": 17
   },
   "results": [
     {
@@ -26,10 +26,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "azorius-control",
-      "path": "latest/radars/legacy/azorius-control.json"
+      "path": "latest/radars/legacy/azorius-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -69,10 +70,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "boros-energy",
-      "path": "latest/radars/legacy/boros-energy.json"
+      "path": "latest/radars/legacy/boros-energy.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -209,10 +211,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "jeskai-control",
-      "path": "latest/radars/legacy/jeskai-control.json"
+      "path": "latest/radars/legacy/jeskai-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -555,13 +558,6 @@
       "format": "legacy",
       "archetype": "mono-black-delver",
       "path": "latest/radars/legacy/mono-black-delver.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "mono-green-zoo",
-      "path": "latest/radars/legacy/mono-green-zoo.json"
     },
     {
       "scope": "archetype-radar",

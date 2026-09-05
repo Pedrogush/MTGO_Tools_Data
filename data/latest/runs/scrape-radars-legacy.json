@@ -1,15 +1,22 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-05T15:22:11Z",
+  "generated_at": "2026-09-05T20:36:39Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 77,
-    "skipped": 17
+    "success": 79,
+    "skipped": 15
   },
   "results": [
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "ad-nauseam-tendrils",
+      "path": "latest/radars/legacy/ad-nauseam-tendrils.json"
+    },
     {
       "scope": "archetype-radar",
       "status": "success",
@@ -175,14 +182,6 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "legacy",
-      "archetype": "esper-tempo",
-      "path": "latest/radars/legacy/esper-tempo.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
       "archetype": "grixis-control",
       "path": "latest/radars/legacy/grixis-control.json",
       "message": "No published decks were available for radar generation."
@@ -196,11 +195,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "hogaak-moonshadow",
-      "path": "latest/radars/legacy/hogaak-moonshadow.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/hogaak-moonshadow.json"
     },
     {
       "scope": "archetype-radar",
@@ -213,8 +211,24 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "legacy",
+      "archetype": "izzet-tempo",
+      "path": "latest/radars/legacy/izzet-tempo.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "legacy",
       "archetype": "jeskai-control",
       "path": "latest/radars/legacy/jeskai-control.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "legacy",
+      "archetype": "jeskai-tempo",
+      "path": "latest/radars/legacy/jeskai-tempo.json",
       "message": "No published decks were available for radar generation."
     },
     {
@@ -266,14 +280,6 @@
       "format": "legacy",
       "archetype": "merfolk",
       "path": "latest/radars/legacy/merfolk.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "mono-black-midrange",
-      "path": "latest/radars/legacy/mono-black-midrange.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -413,14 +419,6 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "sultai-tempo",
-      "path": "latest/radars/legacy/sultai-tempo.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
       "archetype": "temur-delver",
@@ -439,13 +437,6 @@
       "format": "legacy",
       "archetype": "tron",
       "path": "latest/radars/legacy/tron.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "ad-nauseam-tendrils",
-      "path": "latest/radars/legacy/ad-nauseam-tendrils.json"
     },
     {
       "scope": "archetype-radar",
@@ -642,6 +633,13 @@
       "format": "legacy",
       "archetype": "temur-cascade-rhinos",
       "path": "latest/radars/legacy/temur-cascade-rhinos.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "temur-stompy",
+      "path": "latest/radars/legacy/temur-stompy.json"
     },
     {
       "scope": "archetype-radar",

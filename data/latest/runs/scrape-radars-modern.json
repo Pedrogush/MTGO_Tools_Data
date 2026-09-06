@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-05T20:36:39Z",
+  "generated_at": "2026-09-06T04:50:06Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 90,
-    "skipped": 21
+    "success": 85,
+    "skipped": 24
   },
   "results": [
     {
@@ -61,10 +61,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "azorius-energy",
-      "path": "latest/radars/modern/azorius-energy.json"
+      "path": "latest/radars/modern/azorius-energy.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -449,10 +450,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "rakdos-aggro",
-      "path": "latest/radars/modern/rakdos-aggro.json"
+      "path": "latest/radars/modern/rakdos-aggro.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -508,10 +510,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "temur-prowess",
-      "path": "latest/radars/modern/temur-prowess.json"
+      "path": "latest/radars/modern/temur-prowess.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -777,22 +780,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "temur-saga",
-      "path": "latest/radars/modern/temur-saga.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "wbrg-energy",
       "path": "latest/radars/modern/wbrg-energy.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "wurg-control",
-      "path": "latest/radars/modern/wurg-control.json"
     },
     {
       "scope": "archetype-radar",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-05T20:36:46Z",
+  "generated_at": "2026-09-06T04:49:56Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 55,
-    "skipped": 32
+    "success": 54,
+    "skipped": 33
   },
   "results": [
     {
@@ -413,10 +413,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "naya-delirium",
-      "path": "latest/radars/standard/naya-delirium.json"
+      "path": "latest/radars/standard/naya-delirium.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -620,15 +621,15 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
-      "archetype": "simic-omniscience",
-      "path": "latest/radars/standard/simic-omniscience.json"
+      "archetype": "reanimator",
+      "path": "latest/radars/standard/reanimator.json"
     },
     {
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
-      "archetype": "temur-elementals",
-      "path": "latest/radars/standard/temur-elementals.json"
+      "archetype": "simic-omniscience",
+      "path": "latest/radars/standard/simic-omniscience.json"
     },
     {
       "scope": "archetype-radar",

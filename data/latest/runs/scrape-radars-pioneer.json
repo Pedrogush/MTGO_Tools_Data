@@ -1,21 +1,22 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-05T20:36:46Z",
+  "generated_at": "2026-09-06T04:50:16Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 38,
-    "skipped": 30
+    "skipped": 34,
+    "success": 32
   },
   "results": [
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "4c-auras",
-      "path": "latest/radars/pioneer/4c-auras.json"
+      "path": "latest/radars/pioneer/4c-auras.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -150,10 +151,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "ensoul-artifact",
-      "path": "latest/radars/pioneer/ensoul-artifact.json"
+      "path": "latest/radars/pioneer/ensoul-artifact.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -249,10 +251,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "jeskai-lessons",
-      "path": "latest/radars/pioneer/jeskai-lessons.json"
+      "path": "latest/radars/pioneer/jeskai-lessons.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -330,10 +333,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "rakdos-aggro",
-      "path": "latest/radars/pioneer/rakdos-aggro.json"
+      "path": "latest/radars/pioneer/rakdos-aggro.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -410,20 +414,6 @@
       "archetype": "temur-lessons",
       "path": "latest/radars/pioneer/temur-lessons.json",
       "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pioneer",
-      "archetype": "abzan-midrange",
-      "path": "latest/radars/pioneer/abzan-midrange.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pioneer",
-      "archetype": "bring-to-light",
-      "path": "latest/radars/pioneer/bring-to-light.json"
     },
     {
       "scope": "archetype-radar",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-05T20:36:39Z",
+  "generated_at": "2026-09-06T04:49:58Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 79,
-    "skipped": 15
+    "success": 65,
+    "skipped": 26
   },
   "results": [
     {
@@ -55,10 +55,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "beanstalk-control-non-yorion",
-      "path": "latest/radars/legacy/beanstalk-control-non-yorion.json"
+      "path": "latest/radars/legacy/beanstalk-control-non-yorion.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -114,17 +115,19 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "death-and-taxes-yorion-black-white",
-      "path": "latest/radars/legacy/death-and-taxes-yorion-black-white.json"
+      "path": "latest/radars/legacy/death-and-taxes-yorion-black-white.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "death-and-taxes-yorion-mono-white",
-      "path": "latest/radars/legacy/death-and-taxes-yorion-mono-white.json"
+      "path": "latest/radars/legacy/death-and-taxes-yorion-mono-white.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -188,10 +191,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "high-tide",
-      "path": "latest/radars/legacy/high-tide.json"
+      "path": "latest/radars/legacy/high-tide.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -233,10 +237,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "jund",
-      "path": "latest/radars/legacy/jund.json"
+      "path": "latest/radars/legacy/jund.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -276,10 +281,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "merfolk",
-      "path": "latest/radars/legacy/merfolk.json"
+      "path": "latest/radars/legacy/merfolk.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -356,10 +362,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "rakdos-reanimator",
-      "path": "latest/radars/legacy/rakdos-reanimator.json"
+      "path": "latest/radars/legacy/rakdos-reanimator.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -370,17 +377,19 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "red-stompy",
-      "path": "latest/radars/legacy/red-stompy.json"
+      "path": "latest/radars/legacy/red-stompy.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "saga-storm",
-      "path": "latest/radars/legacy/saga-storm.json"
+      "path": "latest/radars/legacy/saga-storm.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -419,10 +428,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "temur-delver",
-      "path": "latest/radars/legacy/temur-delver.json"
+      "path": "latest/radars/legacy/temur-delver.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -433,10 +443,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "tron",
-      "path": "latest/radars/legacy/tron.json"
+      "path": "latest/radars/legacy/tron.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -617,13 +628,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "smallpox",
-      "path": "latest/radars/legacy/smallpox.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
       "archetype": "sultai-beanstalk",
       "path": "latest/radars/legacy/sultai-beanstalk.json"
     },
@@ -659,22 +663,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "wbrg-scam",
-      "path": "latest/radars/legacy/wbrg-scam.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
       "archetype": "white-beanstalk",
       "path": "latest/radars/legacy/white-beanstalk.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "wubr-midrange",
-      "path": "latest/radars/legacy/wubr-midrange.json"
     },
     {
       "scope": "format-card-pool",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-06T15:34:20Z",
+  "generated_at": "2026-09-06T20:32:31Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 89,
-    "skipped": 24
+    "success": 91,
+    "skipped": 22
   },
   "results": [
     {
@@ -73,14 +73,6 @@
       "format": "modern",
       "archetype": "azorius-genericblink",
       "path": "latest/radars/modern/azorius-genericblink.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "modern",
-      "archetype": "bant-blink",
-      "path": "latest/radars/modern/bant-blink.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -326,6 +318,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
+      "archetype": "jeskai-ascendancy-combo",
+      "path": "latest/radars/modern/jeskai-ascendancy-combo.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
       "archetype": "jeskai-blink",
       "path": "latest/radars/modern/jeskai-blink.json"
     },
@@ -458,11 +457,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "rakdos-hollowone",
-      "path": "latest/radars/modern/rakdos-hollowone.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/rakdos-hollowone.json"
     },
     {
       "scope": "archetype-radar",

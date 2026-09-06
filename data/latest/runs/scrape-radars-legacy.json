@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-06T15:34:17Z",
+  "generated_at": "2026-09-06T20:32:40Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "success": 67,
-    "skipped": 26
+    "skipped": 27
   },
   "results": [
     {
@@ -180,6 +180,14 @@
       "format": "legacy",
       "archetype": "elves",
       "path": "latest/radars/legacy/elves.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "legacy",
+      "archetype": "esper-tempo",
+      "path": "latest/radars/legacy/esper-tempo.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

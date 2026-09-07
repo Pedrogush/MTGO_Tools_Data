@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-06T20:32:31Z",
+  "generated_at": "2026-09-07T04:52:35Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 91,
-    "skipped": 22
+    "success": 89,
+    "skipped": 24
   },
   "results": [
     {
@@ -176,10 +176,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "esper-control",
-      "path": "latest/radars/modern/esper-control.json"
+      "path": "latest/radars/modern/esper-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -345,10 +346,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "lantern",
-      "path": "latest/radars/modern/lantern.json"
+      "path": "latest/radars/modern/lantern.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -388,10 +390,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "mono-black-midrange",
-      "path": "latest/radars/modern/mono-black-midrange.json"
+      "path": "latest/radars/modern/mono-black-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -464,11 +467,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "rakdos-midrange",
-      "path": "latest/radars/modern/rakdos-midrange.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/rakdos-midrange.json"
     },
     {
       "scope": "archetype-radar",
@@ -547,13 +549,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "5-color-creativity",
-      "path": "latest/radars/modern/5-color-creativity.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "5-color-midrange",
       "path": "latest/radars/modern/5-color-midrange.json"
     },
@@ -603,6 +598,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
+      "archetype": "burn",
+      "path": "latest/radars/modern/burn.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
       "archetype": "cosmo-fling",
       "path": "latest/radars/modern/cosmo-fling.json"
     },
@@ -619,6 +621,13 @@
       "format": "modern",
       "archetype": "dimir-frog",
       "path": "latest/radars/modern/dimir-frog.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "dimir-reanimator",
+      "path": "latest/radars/modern/dimir-reanimator.json"
     },
     {
       "scope": "archetype-radar",
@@ -680,15 +689,15 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "jeskai-cutter",
-      "path": "latest/radars/modern/jeskai-cutter.json"
+      "archetype": "jund-burn",
+      "path": "latest/radars/modern/jund-burn.json"
     },
     {
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "jund-burn",
-      "path": "latest/radars/modern/jund-burn.json"
+      "archetype": "jund-midrange",
+      "path": "latest/radars/modern/jund-midrange.json"
     },
     {
       "scope": "archetype-radar",
@@ -773,13 +782,6 @@
       "format": "modern",
       "archetype": "samwise",
       "path": "latest/radars/modern/samwise.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "selesnya-ritual",
-      "path": "latest/radars/modern/selesnya-ritual.json"
     },
     {
       "scope": "archetype-radar",

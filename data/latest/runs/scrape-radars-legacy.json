@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-06T20:32:40Z",
+  "generated_at": "2026-09-07T04:51:34Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 67,
-    "skipped": 27
+    "success": 63,
+    "skipped": 30
   },
   "results": [
     {
@@ -108,10 +108,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "creative-technique",
-      "path": "latest/radars/legacy/creative-technique.json"
+      "path": "latest/radars/legacy/creative-technique.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -305,10 +306,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "mono-black-stompy",
-      "path": "latest/radars/legacy/mono-black-stompy.json"
+      "path": "latest/radars/legacy/mono-black-stompy.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -429,10 +431,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "sultai-depths",
-      "path": "latest/radars/legacy/sultai-depths.json"
+      "path": "latest/radars/legacy/sultai-depths.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -566,15 +569,22 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "mardu-midrange",
-      "path": "latest/radars/legacy/mardu-midrange.json"
+      "archetype": "mono-black-delver",
+      "path": "latest/radars/legacy/mono-black-delver.json"
     },
     {
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "mono-black-delver",
-      "path": "latest/radars/legacy/mono-black-delver.json"
+      "archetype": "mono-blue-midrange",
+      "path": "latest/radars/legacy/mono-blue-midrange.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "mono-red-initiative",
+      "path": "latest/radars/legacy/mono-red-initiative.json"
     },
     {
       "scope": "archetype-radar",
@@ -589,20 +599,6 @@
       "format": "legacy",
       "archetype": "mono-white-human",
       "path": "latest/radars/legacy/mono-white-human.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "necro-storm",
-      "path": "latest/radars/legacy/necro-storm.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "orzhov-midrange",
-      "path": "latest/radars/legacy/orzhov-midrange.json"
     },
     {
       "scope": "archetype-radar",

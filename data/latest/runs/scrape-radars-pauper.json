@@ -1,12 +1,12 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-06T20:33:09Z",
+  "generated_at": "2026-09-07T04:51:30Z",
   "command": "scrape-radars-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 10,
+    "skipped": 11,
     "success": 64
   },
   "results": [
@@ -291,10 +291,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "mono-blue-affinity",
-      "path": "latest/radars/pauper/mono-blue-affinity.json"
+      "path": "latest/radars/pauper/mono-blue-affinity.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -474,6 +475,13 @@
       "format": "pauper",
       "archetype": "golgari-garden",
       "path": "latest/radars/pauper/golgari-garden.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pauper",
+      "archetype": "grixis-control",
+      "path": "latest/radars/pauper/grixis-control.json"
     },
     {
       "scope": "archetype-radar",

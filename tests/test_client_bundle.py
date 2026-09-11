@@ -55,7 +55,7 @@ def test_build_client_bundle_includes_expected_paths(tmp_path):
     bundle_path = tmp_path / "latest" / "client-bundle.tar.gz"
 
     assert summary["bundle_path"] == bundle_path.as_posix()
-    assert summary["file_count"] == 9
+    assert summary["file_count"] == 8
     assert summary["counts"] == {
         "archetype_decks": 1,
         "archetype_lists": 1,
@@ -64,7 +64,7 @@ def test_build_client_bundle_includes_expected_paths(tmp_path):
         "format_card_pools": 1,
         "latest_manifest": 1,
         "metagame_daily": 1,
-        "mtgo_decklists": 2,
+        "mtgo_decklists": 1,
     }
 
     with tarfile.open(bundle_path, "r:gz") as tar_fh:
@@ -78,12 +78,31 @@ def test_build_client_bundle_includes_expected_paths(tmp_path):
             "latest/metagame/modern.json",
             "latest/mtgo-decklists/modern.json",
             "archive/deck-texts/modern/123.json",
-            "archive/mtgo-decklists/modern/event-1.json",
         ]
         payload = json.loads(
             tar_fh.extractfile("archive/deck-texts/modern/123.json").read().decode("utf-8")
         )
         assert payload["kind"] == "deck_text_blob"
+
+
+def test_build_client_bundle_excludes_the_mtgo_event_archive(tmp_path):
+    """The client discards these members, and they were 86% of the bundle."""
+    _write_json(tmp_path / "latest" / "latest.json", {"kind": "latest_manifest"})
+    _write_json(
+        tmp_path / "latest" / "mtgo-decklists" / "modern.json",
+        {"kind": "mtgo_decklists_latest"},
+    )
+    _write_json(
+        tmp_path / "archive" / "mtgo-decklists" / "modern" / "event-1.json",
+        {"kind": "mtgo_decklists_archive"},
+    )
+
+    client_bundle.build_client_bundle(tmp_path)
+
+    with tarfile.open(tmp_path / "latest" / "client-bundle.tar.gz", "r:gz") as tar_fh:
+        names = tar_fh.getnames()
+    assert "latest/mtgo-decklists/modern.json" in names
+    assert not any(name.startswith("archive/mtgo-decklists/") for name in names)
 
 
 def test_build_client_bundle_is_deterministic(tmp_path):

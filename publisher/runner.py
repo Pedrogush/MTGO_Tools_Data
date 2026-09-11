@@ -324,6 +324,22 @@ def _mtgo_event_archive_path(output_root: Path, format_name: str, event_id: str)
     return output_root / "archive" / "mtgo-decklists" / format_name / f"{event_id}.json"
 
 
+def _remove_legacy_event_archives(output_root: Path, format_name: str, event_id: str) -> None:
+    """Drop pre-rename copies of an event archive.
+
+    Archives were once named ``<slug><event_id>.json`` and recorded that same
+    slug form as their payload ``event_id``. Both copies are still read by
+    everything that walks the archive - ``client_bundle.collect_bundle_sources``
+    included - so the event's decks get counted twice. Re-archiving an event is
+    the natural moment to retire its old copy; see
+    ``scripts/dedupe_mtgo_archive.py`` for the one-off backfill.
+    """
+    canonical = _mtgo_event_archive_path(output_root, format_name, event_id)
+    for path in canonical.parent.glob(f"*{event_id}.json"):
+        if path != canonical:
+            path.unlink(missing_ok=True)
+
+
 def _mtgo_event_id(event: dict[str, Any]) -> str:
     """Filesystem-safe archive id for a Videre event row (league ids are negative)."""
     raw = str(event.get("id", "")).strip()
@@ -1463,6 +1479,7 @@ def _write_mtgo_decklist_snapshots(
                     "decks": deck_metadata_rows,
                 }
                 write_json(archive_path, event_snapshot)
+                _remove_legacy_event_archives(output_root, normalized_format, event_id)
                 relative_archive_path = relative_posix_path(archive_path, output_root)
                 recorder.add(
                     scope="mtgo-event",

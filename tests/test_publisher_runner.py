@@ -1227,3 +1227,35 @@ def test_recent_league_refetches_despite_archive(monkeypatch, tmp_path):
         (tmp_path / "archive" / "mtgo-decklists" / "modern" / "n7.json").read_text(encoding="utf-8")
     )
     assert archive["decks"][0]["number"] == "77"
+
+
+def test_remove_legacy_event_archives_drops_slug_named_copies(tmp_path):
+    """Re-archiving an event retires the pre-rename ``<slug><id>.json`` copy."""
+    from publisher.runner import _remove_legacy_event_archives
+
+    directory = tmp_path / "archive" / "mtgo-decklists" / "vintage"
+    directory.mkdir(parents=True)
+    canonical = directory / "12848175.json"
+    legacy = directory / "vintage-challenge-32-2026-07-2312848175.json"
+    unrelated = directory / "12847688.json"
+    for path in (canonical, legacy, unrelated):
+        path.write_text("{}", encoding="utf-8")
+
+    _remove_legacy_event_archives(tmp_path, "vintage", "12848175")
+
+    assert canonical.exists()
+    assert unrelated.exists()
+    assert not legacy.exists()
+
+
+def test_remove_legacy_event_archives_is_a_noop_without_legacy_copies(tmp_path):
+    from publisher.runner import _remove_legacy_event_archives
+
+    directory = tmp_path / "archive" / "mtgo-decklists" / "vintage"
+    directory.mkdir(parents=True)
+    canonical = directory / "12848175.json"
+    canonical.write_text("{}", encoding="utf-8")
+
+    _remove_legacy_event_archives(tmp_path, "vintage", "12848175")
+
+    assert canonical.exists()

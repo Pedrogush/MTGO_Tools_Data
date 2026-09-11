@@ -16,6 +16,7 @@ concurrency:
 env:
   PUBLISH_BRANCH: data-publish
   PRIMARY_BRANCH: main
+  BUNDLE_RELEASE_TAG: client-bundle
 
 jobs:
   ensure-publish-branch:
@@ -781,6 +782,27 @@ jobs:
       - name: Show bundle size
         run: |
           ls -lh "$PUBLISH_OUTPUT_ROOT/latest/client-bundle.tar.gz"
+
+      # The bundle is also committed below, which is what grew this repository to
+      # ~4 GB: it is a gzipped tarball, so git cannot delta it and every run adds
+      # a fresh multi-MB blob. It cannot simply stop being committed, because
+      # shipped MTGO_Tools clients fetch it from
+      # raw.githubusercontent.com/.../data-publish/data/latest/client-bundle.tar.gz
+      # at startup and treat a 404 as a hard failure. This release asset gives the
+      # client a path to migrate to; once released clients read from here, the
+      # committed copy can be dropped.
+      - name: Mirror client bundle to the rolling release asset
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if ! gh release view "$BUNDLE_RELEASE_TAG" >/dev/null 2>&1; then
+            gh release create "$BUNDLE_RELEASE_TAG" \
+              --target "$PRIMARY_BRANCH" \
+              --title "Client data bundle" \
+              --notes "Rolling client bundle, rebuilt by publish-data. The asset always reflects the newest ${PUBLISH_BRANCH} snapshot; the tag is only an anchor."
+          fi
+          gh release upload "$BUNDLE_RELEASE_TAG" \
+            "$PUBLISH_OUTPUT_ROOT/latest/client-bundle.tar.gz" --clobber
 
       - name: Commit changed published data
         run: |

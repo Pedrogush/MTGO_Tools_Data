@@ -1,38 +1,43 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-03-30T15:45:40Z",
+  "generated_at": "2026-09-11T11:30:13Z",
   "command": "scrape-radars-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 21,
-    "success": 40
+    "success": 57,
+    "skipped": 18
   },
   "results": [
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
+      "format": "pauper",
+      "archetype": "4c-affinity",
+      "path": "latest/radars/pauper/4c-affinity.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
       "format": "pauper",
       "archetype": "4c-ephemerate",
-      "path": "latest/radars/pauper/4c-ephemerate.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pauper/4c-ephemerate.json"
     },
     {
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "pauper",
-      "archetype": "4c-reanimator",
-      "path": "latest/radars/pauper/4c-reanimator.json",
+      "archetype": "5c-ephemerate",
+      "path": "latest/radars/pauper/5c-ephemerate.json",
       "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pauper",
-      "archetype": "azorius-faeries",
-      "path": "latest/radars/pauper/azorius-faeries.json",
-      "message": "No published decks were available for radar generation."
+      "archetype": "azorius-gates",
+      "path": "latest/radars/pauper/azorius-gates.json"
     },
     {
       "scope": "archetype-radar",
@@ -72,10 +77,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "boros-moxite",
-      "path": "latest/radars/pauper/boros-moxite.json"
+      "path": "latest/radars/pauper/boros-moxite.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -86,48 +92,40 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pauper",
       "archetype": "burn",
-      "path": "latest/radars/pauper/burn.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pauper/burn.json"
     },
     {
       "scope": "archetype-radar",
       "status": "success",
-      "format": "pauper",
-      "archetype": "caw-gates",
-      "path": "latest/radars/pauper/caw-gates.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
       "format": "pauper",
       "archetype": "cycle-storm",
-      "path": "latest/radars/pauper/cycle-storm.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pauper",
-      "archetype": "devotion",
-      "path": "latest/radars/pauper/devotion.json"
+      "path": "latest/radars/pauper/cycle-storm.json"
     },
     {
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "pauper",
-      "archetype": "dimir-affinity",
-      "path": "latest/radars/pauper/dimir-affinity.json",
+      "archetype": "devotion",
+      "path": "latest/radars/pauper/devotion.json",
       "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
       "status": "success",
       "format": "pauper",
+      "archetype": "dimir-affinity",
+      "path": "latest/radars/pauper/dimir-affinity.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "pauper",
       "archetype": "dimir-control",
-      "path": "latest/radars/pauper/dimir-control.json"
+      "path": "latest/radars/pauper/dimir-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -145,10 +143,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "dredge",
-      "path": "latest/radars/pauper/dredge.json"
+      "path": "latest/radars/pauper/dredge.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -173,14 +172,6 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "pauper",
-      "archetype": "esper-ephemerate",
-      "path": "latest/radars/pauper/esper-ephemerate.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
       "status": "success",
       "format": "pauper",
       "archetype": "familiars",
@@ -192,14 +183,6 @@
       "format": "pauper",
       "archetype": "food-gardens",
       "path": "latest/radars/pauper/food-gardens.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "pauper",
-      "archetype": "food-retriever-combo",
-      "path": "latest/radars/pauper/food-retriever-combo.json",
-      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -218,10 +201,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "golgari-gardens",
-      "path": "latest/radars/pauper/golgari-gardens.json"
+      "path": "latest/radars/pauper/golgari-gardens.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -246,18 +230,25 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pauper",
       "archetype": "infect",
-      "path": "latest/radars/pauper/infect.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pauper/infect.json"
     },
     {
       "scope": "archetype-radar",
       "status": "success",
       "format": "pauper",
+      "archetype": "inside-out-combo",
+      "path": "latest/radars/pauper/inside-out-combo.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "pauper",
       "archetype": "izzet-faeries",
-      "path": "latest/radars/pauper/izzet-faeries.json"
+      "path": "latest/radars/pauper/izzet-faeries.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -268,10 +259,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "jeskai-affinity",
-      "path": "latest/radars/pauper/jeskai-affinity.json"
+      "path": "latest/radars/pauper/jeskai-affinity.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -282,19 +274,17 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pauper",
-      "archetype": "jeskai-synthesizer",
-      "path": "latest/radars/pauper/jeskai-synthesizer.json",
-      "message": "No published decks were available for radar generation."
+      "archetype": "jund-gardens",
+      "path": "latest/radars/pauper/jund-gardens.json"
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pauper",
-      "archetype": "jund-gardens",
-      "path": "latest/radars/pauper/jund-gardens.json",
-      "message": "No published decks were available for radar generation."
+      "archetype": "jund-ramp",
+      "path": "latest/radars/pauper/jund-ramp.json"
     },
     {
       "scope": "archetype-radar",
@@ -312,17 +302,26 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
-      "archetype": "madness-burn",
-      "path": "latest/radars/pauper/madness-burn.json"
+      "archetype": "mardu-synthesizer",
+      "path": "latest/radars/pauper/mardu-synthesizer.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "pauper",
-      "archetype": "mardu-synthesizer",
-      "path": "latest/radars/pauper/mardu-synthesizer.json",
+      "archetype": "mono-black",
+      "path": "latest/radars/pauper/mono-black.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "pauper",
+      "archetype": "mono-blue-delver",
+      "path": "latest/radars/pauper/mono-blue-delver.json",
       "message": "No published decks were available for radar generation."
     },
     {
@@ -365,22 +364,6 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "pauper",
-      "archetype": "naya-ephemerate",
-      "path": "latest/radars/pauper/naya-ephemerate.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "pauper",
-      "archetype": "orzhov-ephemerate",
-      "path": "latest/radars/pauper/orzhov-ephemerate.json",
-      "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "pauper",
       "archetype": "poison-storm",
       "path": "latest/radars/pauper/poison-storm.json",
       "message": "No published decks were available for radar generation."
@@ -389,32 +372,38 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pauper",
+      "archetype": "rakdos-madness",
+      "path": "latest/radars/pauper/rakdos-madness.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "pauper",
       "archetype": "ruby-storm",
-      "path": "latest/radars/pauper/ruby-storm.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "skipped",
-      "format": "pauper",
-      "archetype": "selesnya-ramp",
-      "path": "latest/radars/pauper/selesnya-ramp.json",
+      "path": "latest/radars/pauper/ruby-storm.json",
       "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "pauper",
-      "archetype": "serpentine-curve",
-      "path": "latest/radars/pauper/serpentine-curve.json",
+      "archetype": "selesnya-gates",
+      "path": "latest/radars/pauper/selesnya-gates.json",
       "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pauper",
       "archetype": "slivers",
-      "path": "latest/radars/pauper/slivers.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pauper/slivers.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pauper",
+      "archetype": "snacker-gates",
+      "path": "latest/radars/pauper/snacker-gates.json"
     },
     {
       "scope": "archetype-radar",
@@ -439,6 +428,14 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "pauper",
+      "archetype": "walls-cascade",
+      "path": "latest/radars/pauper/walls-cascade.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
       "status": "success",
       "format": "pauper",
       "archetype": "walls-combo",
@@ -450,6 +447,104 @@
       "format": "pauper",
       "archetype": "white-aggro",
       "path": "latest/radars/pauper/white-aggro.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pauper",
+      "archetype": "5-color-ephemerate",
+      "path": "latest/radars/pauper/5-color-ephemerate.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pauper",
+      "archetype": "cat-altar",
+      "path": "latest/radars/pauper/cat-altar.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pauper",
+      "archetype": "gates",
+      "path": "latest/radars/pauper/gates.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pauper",
+      "archetype": "golgari-garden",
+      "path": "latest/radars/pauper/golgari-garden.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pauper",
+      "archetype": "grixis-control",
+      "path": "latest/radars/pauper/grixis-control.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pauper",
+      "archetype": "jeskai-synthesizer",
+      "path": "latest/radars/pauper/jeskai-synthesizer.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pauper",
+      "archetype": "jund-midrange",
+      "path": "latest/radars/pauper/jund-midrange.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pauper",
+      "archetype": "mardu-midrange",
+      "path": "latest/radars/pauper/mardu-midrange.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pauper",
+      "archetype": "mono-black-sacrifice",
+      "path": "latest/radars/pauper/mono-black-sacrifice.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pauper",
+      "archetype": "mono-red-graveyard",
+      "path": "latest/radars/pauper/mono-red-graveyard.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pauper",
+      "archetype": "orzhov-midrange",
+      "path": "latest/radars/pauper/orzhov-midrange.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pauper",
+      "archetype": "temur-control",
+      "path": "latest/radars/pauper/temur-control.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pauper",
+      "archetype": "tireless-tribe",
+      "path": "latest/radars/pauper/tireless-tribe.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pauper",
+      "archetype": "wubr-affinity",
+      "path": "latest/radars/pauper/wubr-affinity.json"
     },
     {
       "scope": "format-card-pool",

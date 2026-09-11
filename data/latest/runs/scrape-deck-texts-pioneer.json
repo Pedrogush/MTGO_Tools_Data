@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-11T16:31:01Z",
+  "generated_at": "2026-09-11T20:59:32Z",
   "command": "scrape-deck-texts-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "success": 1,
-    "skipped": 47
+    "skipped": 48
   },
   "results": [
     {
@@ -15,6 +15,14 @@
       "status": "success",
       "format": "pioneer",
       "path": "latest/archetypes/pioneer.json"
+    },
+    {
+      "scope": "archetype-decks",
+      "status": "skipped",
+      "format": "pioneer",
+      "archetype": "4c-artifact-sacrifice",
+      "path": "latest/decks/pioneer/4c-artifact-sacrifice.json",
+      "message": "All MTGGoldfish rows were MTGO events; published via mtgo-decklists."
     },
     {
       "scope": "archetype-decks",

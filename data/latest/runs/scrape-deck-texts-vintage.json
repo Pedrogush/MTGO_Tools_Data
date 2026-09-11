@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-11T16:31:07Z",
+  "generated_at": "2026-09-11T20:59:34Z",
   "command": "scrape-deck-texts-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "success": 1,
-    "skipped": 22
+    "skipped": 24
   },
   "results": [
     {
@@ -15,6 +15,14 @@
       "status": "success",
       "format": "vintage",
       "path": "latest/archetypes/vintage.json"
+    },
+    {
+      "scope": "archetype-decks",
+      "status": "skipped",
+      "format": "vintage",
+      "archetype": "azorius-initiative",
+      "path": "latest/decks/vintage/azorius-initiative.json",
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
@@ -175,6 +183,14 @@
       "archetype": "sphere-shops",
       "path": "latest/decks/vintage/sphere-shops.json",
       "message": "All MTGGoldfish rows were MTGO events; published via mtgo-decklists."
+    },
+    {
+      "scope": "archetype-decks",
+      "status": "skipped",
+      "format": "vintage",
+      "archetype": "stiflenought",
+      "path": "latest/decks/vintage/stiflenought.json",
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",

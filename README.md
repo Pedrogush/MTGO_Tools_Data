@@ -4,7 +4,8 @@ Metagame data feed for the [MTGO_Tools](https://github.com/Pedrogush/MTGO_Tools)
 client: MTGGoldfish paper tournament results plus MTGO results from the
 [Videre Project API](https://api.videreproject.com), published on a schedule
 to the `data-publish` branch (including the single-request
-`client-bundle.tar.gz`).
+`client-bundle.tar.gz`, which is also mirrored to the rolling `client-bundle`
+release).
 
 This repository was carved out of MTGO_Tools — the original full desktop
 application — and reduced to its scraper and publisher path. Fixes that
@@ -51,7 +52,13 @@ Publisher outputs are written under `data/`:
 - `data/latest/` for stable consumer-facing pointers.
 - `data/latest/client-bundle.tar.gz` for single-request client bootstrap. The
   bundle contains the stable `latest/` deck, radar, format card-pool, and
-  metagame snapshots plus the referenced `archive/deck-texts/` blobs.
+  metagame snapshots plus the referenced `archive/deck-texts/` blobs. The same
+  file is mirrored to the rolling `client-bundle` release asset, which new
+  consumers should prefer:
+  <https://github.com/Pedrogush/MTGO_Tools_Data/releases/download/client-bundle/client-bundle.tar.gz>.
+  The committed copy is a gzipped tarball that git cannot delta, so one blob per
+  publish run is what grew this repository to ~4 GB; it stays only until shipped
+  MTGO_Tools clients read the release asset instead.
 - `data/latest/radars/<format>/<archetype>.json` for published archetype radar
   snapshots derived from published deck-text blobs.
 - `data/latest/card-pools/<format>.json` for the format-wide card pool built
@@ -106,7 +113,8 @@ workflow behavior. In short:
   the same-run decklist artifacts instead of waiting on a separate workflow.
 - A single final merge job downloads every format artifact, prunes retention,
   rebuilds `data/latest/latest.json`, rebuilds
-  `data/latest/client-bundle.tar.gz`, and commits `data/` once.
+  `data/latest/client-bundle.tar.gz` and mirrors it to the `client-bundle`
+  release, and commits `data/` once.
 - Each format job keeps its own concurrency key, but only the final merge job
   pushes, so the publish stages stay in sync on one workflow run.
 

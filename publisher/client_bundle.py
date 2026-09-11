@@ -52,7 +52,14 @@ def collect_bundle_sources(output_root: Path) -> list[BundleSource]:
         ("metagame_daily", "latest/metagame/*.json"),
         ("mtgo_decklists", "latest/mtgo-decklists/*.json"),
         ("deck_text_blobs", "archive/deck-texts/**/*.json"),
-        ("mtgo_decklists", "archive/mtgo-decklists/**/*.json"),
+        # archive/mtgo-decklists/** is deliberately absent. The client dispatches
+        # bundle members on "latest/mtgo-decklists/", "archive/deck-texts/",
+        # "/archetypes/", "/card-pools/", "/radars/", "/decks/" and "latest.json";
+        # archive rows match none of those, so it gunzipped and json-parsed ~45 MB
+        # per bundle only to drop it. Excluding it leaves the client's parsed
+        # output byte-identical while cutting the bundle 6.6 MB -> 0.9 MB, which
+        # matters because each bundle is committed and git cannot delta a tarball.
+        # Consumers that want the raw event archive should read the branch.
     )
     for category, pattern in grouped_patterns:
         for path in _sorted_glob(output_root, pattern):

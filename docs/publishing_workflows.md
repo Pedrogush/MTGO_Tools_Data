@@ -20,8 +20,14 @@ It has four phases:
    as artifacts.
 4. A single final merge job downloads every artifact set, prunes `data/` with
    `python -m publisher.retention`, rebuilds `data/latest/latest.json`, rebuilds
-   `data/latest/client-bundle.tar.gz`, and commits `data/` once for the whole
-   workflow.
+   `data/latest/client-bundle.tar.gz` and mirrors it to the rolling
+   `client-bundle` release asset, and commits `data/` once for the whole
+   workflow. The bundle is a gzipped tarball, so git cannot delta it and each
+   run adds a fresh multi-MB blob; 1392 of them grew this repository to ~4 GB,
+   96% of its size. It is still committed because shipped MTGO_Tools clients
+   fetch it from the raw `data-publish` path at startup and treat a 404 as a
+   hard failure. The release asset exists so they can migrate, after which the
+   committed copy should be dropped.
 
 Each format job has its own concurrency group, so a new `Modern` run can block
 or wait on another `Modern` run without cancelling unrelated formats. For the

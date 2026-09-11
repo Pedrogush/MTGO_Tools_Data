@@ -18,7 +18,7 @@ vendored content is factual archetype definitions and card color data for a
 third-party game, refreshed via `scripts/update_vendor_data.py`.
 
 **What we use:**
-- Archetype definition files vendored under `vendor/mtgo_format_data/`
+- Archetype definition files vendored under `resources/vendored_mtgo_format_data/`
 - `card_colors.json` for card color identity lookups
 
 **Files influenced:**

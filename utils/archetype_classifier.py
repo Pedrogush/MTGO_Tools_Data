@@ -12,7 +12,7 @@ from typing import NamedTuple
 
 from loguru import logger
 
-VENDOR_ROOT = Path("vendor/mtgo_format_data")
+VENDOR_ROOT = Path("resources/vendored_mtgo_format_data")
 COLOR_ORDER = ("W", "U", "B", "R", "G")
 COLOR_PREFIX = {
     "W": "MonoWhite",
@@ -267,7 +267,11 @@ def normalize(text: str) -> str:
 
 
 class FormatLoader:
-    FALLBACK_VENDOR_ROOT = Path(__file__).resolve().parent.parent / "resources" / "mtgo_format_data"
+    # Absolute, so the datasets resolve when the process runs from anywhere
+    # other than the repository root; VENDOR_ROOT above is relative to cwd.
+    FALLBACK_VENDOR_ROOT = (
+        Path(__file__).resolve().parent.parent / "resources" / "vendored_mtgo_format_data"
+    )
 
     def __init__(self, vendor_root: Path) -> None:
         if vendor_root.exists():

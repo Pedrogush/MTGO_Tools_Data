@@ -12,7 +12,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 VENDOR_DIR = ROOT / "vendor"
-FORMAT_TARGET = VENDOR_DIR / "mtgo_format_data"
+RESOURCES_DIR = ROOT / "resources"
+FORMAT_TARGET = RESOURCES_DIR / "vendored_mtgo_format_data"
 FORMAT_CARD_FILE = "card_colors.json"
 PARSER_TARGET = VENDOR_DIR / "mtgo_archetype_parser" / "LICENSE"
 METADATA_FILE = VENDOR_DIR / "vendor_sources.json"

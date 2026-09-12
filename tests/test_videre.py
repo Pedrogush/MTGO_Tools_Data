@@ -30,6 +30,8 @@ def test_fetch_event_payload_builds_clean_decks(monkeypatch):
                 "id": 37217704,
                 "event_id": -521715179,
                 "player": "Based",
+                "archetype": "Boros Energy",
+                "archetype_id": 29992,
                 "mainboard": ['(18115,"Guide of Souls",4)', "(129825,Plains,20)"],
                 "sideboard": ['(12345,"Wear/Tear",2)'],
             }
@@ -52,6 +54,8 @@ def test_fetch_event_payload_builds_clean_decks(monkeypatch):
     assert deck["deck_id"] == "37217704"
     assert deck["player"] == "Based"
     assert (deck["wins"], deck["losses"]) == ("5", "0")
+    assert deck["archetype"] == "Boros Energy"
+    assert deck["archetype_id"] == 29992
     assert {"card_name": "Guide of Souls", "qty": 4, "sideboard": "false"} in deck["mainboard"]
     assert deck["sideboard"] == [{"card_name": "Wear // Tear", "qty": 2, "sideboard": "true"}]
 
@@ -67,6 +71,28 @@ def test_fetch_event_payload_unknown_player_record(monkeypatch):
 
     deck = payload["decks"][0]
     assert (deck["wins"], deck["losses"]) == ("?", "?")
+
+
+def test_fetch_event_payload_keeps_unclassified_archetype_empty(monkeypatch):
+    """Decks the API cannot place carry no archetype rather than a stale guess."""
+    monkeypatch.setattr(
+        "navigators.videre.fetch_event_decks",
+        lambda event_id: [
+            # A bare colour code with a null id is the API's "unclassified".
+            {"id": 1, "player": "A", "archetype": "BG", "archetype_id": None,
+             "mainboard": [], "sideboard": []},
+            {"id": 2, "player": "B", "archetype": None, "archetype_id": None,
+             "mainboard": [], "sideboard": []},
+        ],
+    )
+    monkeypatch.setattr("navigators.videre.fetch_event_standings", lambda event_id: {})
+
+    decks = fetch_event_payload(
+        {"id": 1, "name": "Modern Challenge 64", "date": "2026-07-23", "kind": "Challenge"}
+    )["decks"]
+
+    assert (decks[0]["archetype"], decks[0]["archetype_id"]) == ("BG", None)
+    assert (decks[1]["archetype"], decks[1]["archetype_id"]) == (None, None)
 
 
 class _FakeResponse:

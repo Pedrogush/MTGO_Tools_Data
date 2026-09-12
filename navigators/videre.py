@@ -101,7 +101,7 @@ def normalize_card_name(name: str) -> str:
     """Match the published deck-text convention for split cards.
 
     The Videre catalog stores split cards as "Wear/Tear" while MTGGoldfish
-    deck texts and the vendored archetype data use "Wear // Tear".
+    deck texts use "Wear // Tear".
     """
     if "/" in name and "//" not in name:
         return name.replace("/", " // ")
@@ -173,6 +173,12 @@ def _clean_deck(
         "player": player,
         "wins": wins,
         "losses": losses,
+        # The API classifies every deck against the same MTGOFormatData
+        # taxonomy we used to vendor, so we take its verdict instead of
+        # re-deriving one. Decks it cannot place come back either with a bare
+        # colour code and a null archetype_id, or with no archetype at all.
+        "archetype": str(deck_row.get("archetype") or "").strip() or None,
+        "archetype_id": deck_row.get("archetype_id"),
         "mainboard": _board(deck_row.get("mainboard"), "false"),
         "sideboard": _board(deck_row.get("sideboard"), "true"),
     }

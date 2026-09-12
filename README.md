@@ -169,7 +169,6 @@ MTGO_Tools_Data/
 │   ├── mtggoldfish.py      # MTGGoldfish scraper
 │   └── videre.py           # Videre API client (MTGO events)
 ├── utils/                  # Utility modules
-│   ├── archetype_classifier.py
 │   ├── deck_text_cache.py
 │   └── metagame_stats.py
 ├── tests/                  # Test suite
@@ -193,7 +192,9 @@ Contributions are welcome! Please:
   community REST API over MTGO event data ([videre-project](https://github.com/videre-project)).
   MTGGoldfish rows for MTGO events are dropped to avoid double-counting; only
   paper tournament rows are kept from MTGGoldfish.
-- **Archetype Rules**: vendored from [Badaro/MTGOFormatData](https://github.com/Badaro/MTGOFormatData)
+- **MTGO Archetypes**: published by the same Videre API alongside each deck.
+  Their labels come from the [Badaro/MTGOFormatData](https://github.com/Badaro/MTGOFormatData)
+  taxonomy, so this repo no longer vendors those rules or classifies locally.
 
 ## Known Limitations
 
@@ -221,7 +222,8 @@ MIT License - see LICENSE file for details
 
 - **MTGGoldfish**: For metagame statistics and decklists
 - **Videre Project**: For the community MTGO data API this repo consumes
-- **Badaro**: For the MTGOFormatData archetype definitions this repo vendors
+- **Badaro**: For the MTGOFormatData archetype taxonomy behind the Videre
+  API's classifications
 
 ## Support
 

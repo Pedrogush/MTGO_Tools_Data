@@ -44,18 +44,6 @@ def fetch_mtgo_events_for_period(
     return events
 
 
-def convert_deck_to_classifier_format(clean_deck: dict, mtg_format: str = "modern") -> dict:
-    """Convert clean deck format to ArchetypeClassifier format."""
-    mainboard = [
-        {"name": card["card_name"], "count": card["qty"]} for card in clean_deck["mainboard"]
-    ]
-    sideboard = [
-        {"name": card["card_name"], "count": card["qty"]} for card in clean_deck["sideboard"]
-    ]
-
-    return {"mainboard": mainboard, "sideboard": sideboard, "format": mtg_format}
-
-
 def deck_to_text(clean_deck: dict) -> str:
     """Convert clean deck format to text format."""
     lines = []

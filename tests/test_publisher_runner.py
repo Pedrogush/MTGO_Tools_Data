@@ -957,6 +957,8 @@ def test_scrape_mtgo_decklists_writes_archived_event_snapshots(monkeypatch, tmp_
                     "player": "Alice",
                     "wins": "5",
                     "losses": "2",
+                    "archetype": "Mono Red Prowess",
+                    "archetype_id": 4242,
                     "mainboard": [
                         {"card_name": "Lightning Bolt", "qty": 4, "sideboard": "false"}
                     ],
@@ -973,15 +975,7 @@ def test_scrape_mtgo_decklists_writes_archived_event_snapshots(monkeypatch, tmp_
             assert source == "mtgo"
             return True
 
-    class _FakeClassifier:
-        def assign_archetypes(self, decks, fmt):
-            for deck in decks:
-                deck["archetype"] = "Mono Red Prowess"
-                deck["archetype_score"] = 1.0
-            assert fmt == "modern"
-
     monkeypatch.setattr("publisher.runner.get_deck_cache", lambda: _FakeDeckCache())
-    monkeypatch.setattr("publisher.runner.ArchetypeClassifier", lambda: _FakeClassifier())
     monkeypatch.setattr("publisher.runner.save_mtgo_deck_metadata", lambda *args, **kwargs: None)
 
     exit_code = main(
@@ -1089,6 +1083,8 @@ def test_scrape_mtgo_decklists_single_event_failure_is_skipped(monkeypatch, tmp_
                     "player": "Alice",
                     "wins": "5",
                     "losses": "2",
+                    "archetype": "Burn",
+                    "archetype_id": 1,
                     "mainboard": [{"card_name": "Lightning Bolt", "qty": 4, "sideboard": "false"}],
                     "sideboard": [],
                 }
@@ -1101,13 +1097,7 @@ def test_scrape_mtgo_decklists_single_event_failure_is_skipped(monkeypatch, tmp_
         def set(self, deck_id, deck_text, source):
             return True
 
-    class _FakeClassifier:
-        def assign_archetypes(self, decks, fmt):
-            for deck in decks:
-                deck["archetype"] = "Burn"
-
     monkeypatch.setattr("publisher.runner.get_deck_cache", lambda: _FakeDeckCache())
-    monkeypatch.setattr("publisher.runner.ArchetypeClassifier", lambda: _FakeClassifier())
     monkeypatch.setattr("publisher.runner.save_mtgo_deck_metadata", lambda *args, **kwargs: None)
 
     exit_code = main(
@@ -1183,6 +1173,8 @@ def test_recent_league_refetches_despite_archive(monkeypatch, tmp_path):
                     "player": "Alice",
                     "wins": "5",
                     "losses": "0",
+                    "archetype": "Burn",
+                    "archetype_id": 1,
                     "mainboard": [{"card_name": "Lightning Bolt", "qty": 4, "sideboard": "false"}],
                     "sideboard": [],
                 }
@@ -1195,13 +1187,7 @@ def test_recent_league_refetches_despite_archive(monkeypatch, tmp_path):
         def set(self, deck_id, deck_text, source):
             return True
 
-    class _FakeClassifier:
-        def assign_archetypes(self, decks, fmt):
-            for deck in decks:
-                deck["archetype"] = "Burn"
-
     monkeypatch.setattr("publisher.runner.get_deck_cache", lambda: _FakeDeckCache())
-    monkeypatch.setattr("publisher.runner.ArchetypeClassifier", lambda: _FakeClassifier())
     monkeypatch.setattr("publisher.runner.save_mtgo_deck_metadata", lambda *args, **kwargs: None)
 
     exit_code = main(

@@ -5,45 +5,6 @@ projects and community resources. We gratefully acknowledge the following:
 
 ---
 
-## Vendored Data and Adapted Code
-
-### Badaro/MTGOFormatData
-
-**Repository:** https://github.com/Badaro/MTGOFormatData
-
-**Author:** Badaro
-
-**License:** None published (no `LICENSE` file in the upstream repo). The
-vendored content is factual archetype definitions and card color data for a
-third-party game, refreshed via `scripts/update_vendor_data.py`.
-
-**What we use:**
-- Archetype definition files vendored under `vendor/mtgo_format_data/`
-- `card_colors.json` for card color identity lookups
-
-**Files influenced:**
-- `utils/archetype_classifier.py` - Consumes the vendored datasets
-- `scripts/update_vendor_data.py` - Refreshes the vendored copies
-
-### Badaro/MTGOArchetypeParser
-
-**Repository:** https://github.com/Badaro/MTGOArchetypeParser
-
-**Author:** Badaro
-
-**License:** MIT
-
-**What we use:**
-- The archetype rules format and matching semantics that
-  `utils/archetype_classifier.py` reimplements in Python
-
-**Credit:**
-Badaro's MTGOFormatData and MTGOArchetypeParser projects are the community
-standard for MTGO archetype classification. This repo's classifier is a
-Python reimplementation of that rules engine over the vendored datasets.
-
----
-
 ## Data Sources
 
 ### MTGGoldfish
@@ -83,10 +44,13 @@ considering their premium services.
 free community service with no published data-usage terms
 
 **What we use:**
-- MTGO event index, decklists, and standings served by their public REST
-  API. The underlying decklist coverage is what mtgo.com publishes (Top 32
-  of scheduled events plus the curated league 5-0 selection Daybreak
-  Games releases), collected by their MTGOBot.
+- MTGO event index, decklists, standings, and archetype classifications
+  served by their public REST API. The underlying decklist coverage is what
+  mtgo.com publishes (Top 32 of scheduled events plus the curated league 5-0
+  selection Daybreak Games releases), collected by their MTGOBot. Their
+  archetype labels follow Badaro's MTGOFormatData taxonomy
+  (https://github.com/Badaro/MTGOFormatData), which this repo used to vendor
+  and re-derive locally before taking the API's labels directly.
 
 **Files influenced:**
 - `navigators/videre.py` - Videre API client
@@ -128,9 +92,8 @@ assistant that helped with:
 This project is released under the MIT License (see `LICENSE`). We have
 ensured compatibility with all dependencies:
 
-- **MTGOArchetypeParser**: MIT License ✅ Compatible
-- **MTGOFormatData**: No published license — vendored content is factual
-  game data; flagged upstream for clarification
+- **MTGOFormatData / MTGOArchetypeParser**: no longer vendored or
+  reimplemented — archetype labels now reach us as Videre API output
 - **Videre Project**: Apache-2.0 code ✅ Compatible; we consume their public
   API as a data source and do not redistribute their code
 - **Python libraries**: OSI-approved permissive licenses ✅ Compatible
@@ -166,7 +129,7 @@ intellectual property rights and terms of service.
 
 ---
 
-**Last Updated:** 2026-07-24
+**Last Updated:** 2026-09-11
 
 **Maintained By:** Pedro (https://github.com/Pedrogush)
 

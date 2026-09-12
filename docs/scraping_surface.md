@@ -12,7 +12,6 @@ Keep these modules in the scrape/publish path:
 - `repositories/metagame_repository.py`
 - `services/mtgo_background_service.py`
 - `utils/metagame_stats.py`
-- `utils/archetype_classifier.py`
 - `utils/deck_text_cache.py`
 - `utils/atomic_io.py`
 - `utils/json_io.py`

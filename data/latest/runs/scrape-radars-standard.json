@@ -1,12 +1,12 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-12T15:35:13Z",
+  "generated_at": "2026-09-12T20:51:21Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 44,
+    "success": 45,
     "skipped": 42
   },
   "results": [
@@ -35,11 +35,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
       "archetype": "4c-omniscience",
-      "path": "latest/radars/standard/4c-omniscience.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/standard/4c-omniscience.json"
     },
     {
       "scope": "archetype-radar",
@@ -70,6 +69,14 @@
       "format": "standard",
       "archetype": "5c-elementals",
       "path": "latest/radars/standard/5c-elementals.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "standard",
+      "archetype": "5c-kona",
+      "path": "latest/radars/standard/5c-kona.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

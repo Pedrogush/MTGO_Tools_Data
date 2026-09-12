@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-12T00:44:40Z",
+  "generated_at": "2026-09-12T04:39:16Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 28,
-    "success": 63
+    "skipped": 27,
+    "success": 65
   },
   "results": [
     {
@@ -49,11 +49,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "azorius-tempo",
-      "path": "latest/radars/legacy/azorius-tempo.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/azorius-tempo.json"
     },
     {
       "scope": "archetype-radar",
@@ -457,6 +456,13 @@
       "format": "legacy",
       "archetype": "tron",
       "path": "latest/radars/legacy/tron.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "abzan",
+      "path": "latest/radars/legacy/abzan.json"
     },
     {
       "scope": "archetype-radar",

@@ -46,13 +46,11 @@ from publisher.layout import (
 from scraping import ScrapingMetagameRepository, fetch_archetypes
 from scraping.mtgo import fetch_event
 from services.mtgo_background_service import (
-    convert_deck_to_classifier_format,
     deck_to_text,
     fetch_mtgo_events_for_period,
     save_mtgo_deck_metadata,
 )
 from services.radar_service import RadarService
-from utils.archetype_classifier import ArchetypeClassifier
 from utils.constants import MTGO_BACKGROUND_FETCH_DAYS, MTGO_LEAGUE_REFRESH_WINDOW_DAYS
 from utils.deck_text_cache import get_deck_cache
 
@@ -1348,7 +1346,6 @@ def _write_mtgo_decklist_snapshots(
 ) -> None:
     normalized_format = normalize_name(format_name)
     latest_path = output_root / "latest" / "mtgo-decklists" / f"{normalized_format}.json"
-    classifier = ArchetypeClassifier()
     href_resolver = _load_archetype_href_resolver(output_root, normalized_format)
     deck_cache = get_deck_cache()
     end_date = datetime.now(UTC)
@@ -1424,18 +1421,12 @@ def _write_mtgo_decklist_snapshots(
                         message=f"{event_url}: Event returned no decklists.",
                     )
                     continue
-                classifier_decks = [
-                    convert_deck_to_classifier_format(deck, mtg_format=normalized_format)
-                    for deck in clean_decks
-                ]
-                classifier.assign_archetypes(classifier_decks, normalized_format)
-
                 event_date = payload.get("publish_date") or str(event.get("date", ""))[:10] or generated_at
                 event_title = payload.get("title") or event.get("name") or "MTGO Event"
                 decks_cached = 0
                 deck_metadata_rows: list[dict[str, Any]] = []
 
-                for clean_deck, classifier_deck in zip(clean_decks, classifier_decks):
+                for clean_deck in clean_decks:
                     deck_id = str(clean_deck.get("deck_id") or "").strip()
                     if not deck_id:
                         continue
@@ -1446,7 +1437,7 @@ def _write_mtgo_decklist_snapshots(
                     wins = str(clean_deck.get("wins", "?")).strip() or "?"
                     losses = str(clean_deck.get("losses", "?")).strip() or "?"
                     archetype, archetype_href = href_resolver.canonicalize(
-                        str(classifier_deck.get("archetype", "Unknown"))
+                        str(clean_deck.get("archetype") or "Unknown")
                     )
                     deck_metadata = {
                         "number": deck_id,
@@ -1456,6 +1447,7 @@ def _write_mtgo_decklist_snapshots(
                         "player": clean_deck.get("player", "Unknown"),
                         "archetype": archetype,
                         "archetype_href": archetype_href,
+                        "archetype_id": clean_deck.get("archetype_id"),
                         "name": archetype,
                         "source": "mtgo",
                         "format": normalized_format,

@@ -1,21 +1,22 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-11T21:04:40Z",
+  "generated_at": "2026-09-12T00:44:40Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 66,
-    "skipped": 25
+    "skipped": 28,
+    "success": 63
   },
   "results": [
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "ad-nauseam-tendrils",
-      "path": "latest/radars/legacy/ad-nauseam-tendrils.json"
+      "path": "latest/radars/legacy/ad-nauseam-tendrils.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -48,10 +49,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "azorius-tempo",
-      "path": "latest/radars/legacy/azorius-tempo.json"
+      "path": "latest/radars/legacy/azorius-tempo.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -93,11 +95,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "boros-energy",
-      "path": "latest/radars/legacy/boros-energy.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/boros-energy.json"
     },
     {
       "scope": "archetype-radar",
@@ -146,11 +147,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "dimir-reanimator",
-      "path": "latest/radars/legacy/dimir-reanimator.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/dimir-reanimator.json"
     },
     {
       "scope": "archetype-radar",
@@ -206,10 +206,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "hogaak-moonshadow",
-      "path": "latest/radars/legacy/hogaak-moonshadow.json"
+      "path": "latest/radars/legacy/hogaak-moonshadow.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -342,10 +343,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "omni-tell",
-      "path": "latest/radars/legacy/omni-tell.json"
+      "path": "latest/radars/legacy/omni-tell.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -407,10 +409,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "sneak-and-show",
-      "path": "latest/radars/legacy/sneak-and-show.json"
+      "path": "latest/radars/legacy/sneak-and-show.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -571,6 +574,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
+      "archetype": "mono-black-midrange",
+      "path": "latest/radars/legacy/mono-black-midrange.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
       "archetype": "mono-blue-midrange",
       "path": "latest/radars/legacy/mono-blue-midrange.json"
     },
@@ -615,13 +625,6 @@
       "format": "legacy",
       "archetype": "orzhov-hogaak",
       "path": "latest/radars/legacy/orzhov-hogaak.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "riddlesmith-combo",
-      "path": "latest/radars/legacy/riddlesmith-combo.json"
     },
     {
       "scope": "archetype-radar",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-11T21:04:39Z",
+  "generated_at": "2026-09-12T00:44:48Z",
   "command": "scrape-radars-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 9,
-    "success": 21
+    "skipped": 8,
+    "success": 24
   },
   "results": [
     {
@@ -122,11 +122,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "vintage",
       "archetype": "mono-white-initiative",
-      "path": "latest/radars/vintage/mono-white-initiative.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/vintage/mono-white-initiative.json"
     },
     {
       "scope": "archetype-radar",
@@ -198,6 +197,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "vintage",
+      "archetype": "grixis-lurrus-control",
+      "path": "latest/radars/vintage/grixis-lurrus-control.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "vintage",
       "archetype": "initiative",
       "path": "latest/radars/vintage/initiative.json"
     },
@@ -221,6 +227,13 @@
       "format": "vintage",
       "archetype": "ub-lurrus-control",
       "path": "latest/radars/vintage/ub-lurrus-control.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "vintage",
+      "archetype": "wubr",
+      "path": "latest/radars/vintage/wubr.json"
     },
     {
       "scope": "format-card-pool",

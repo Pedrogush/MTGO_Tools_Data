@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-12T20:51:21Z",
+  "generated_at": "2026-09-13T04:52:39Z",
   "command": "scrape-radars-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 7,
-    "success": 25
+    "success": 27
   },
   "results": [
     {
@@ -231,8 +231,22 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "vintage",
+      "archetype": "wu",
+      "path": "latest/radars/vintage/wu.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "vintage",
       "archetype": "wubr",
       "path": "latest/radars/vintage/wubr.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "vintage",
+      "archetype": "wur",
+      "path": "latest/radars/vintage/wur.json"
     },
     {
       "scope": "format-card-pool",

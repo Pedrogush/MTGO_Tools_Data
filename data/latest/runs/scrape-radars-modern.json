@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-12T20:51:21Z",
+  "generated_at": "2026-09-13T04:52:36Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 108,
-    "skipped": 13
+    "success": 107,
+    "skipped": 15
   },
   "results": [
     {
@@ -492,10 +492,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "sam-combo",
-      "path": "latest/radars/modern/sam-combo.json"
+      "path": "latest/radars/modern/sam-combo.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -514,10 +515,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "sultai-midrange",
-      "path": "latest/radars/modern/sultai-midrange.json"
+      "path": "latest/radars/modern/sultai-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -559,8 +561,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "5-color-midrange",
-      "path": "latest/radars/modern/5-color-midrange.json"
+      "archetype": "4c-blink",
+      "path": "latest/radars/modern/4c-blink.json"
     },
     {
       "scope": "archetype-radar",
@@ -664,6 +666,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
+      "archetype": "esper-energy",
+      "path": "latest/radars/modern/esper-energy.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
       "archetype": "esper-scam",
       "path": "latest/radars/modern/esper-scam.json"
     },
@@ -692,13 +701,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "grixis-saga",
-      "path": "latest/radars/modern/grixis-saga.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "grixis-scam",
       "path": "latest/radars/modern/grixis-scam.json"
     },
@@ -708,6 +710,13 @@
       "format": "modern",
       "archetype": "grixis-wizards",
       "path": "latest/radars/modern/grixis-wizards.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "izzet-murktide",
+      "path": "latest/radars/modern/izzet-murktide.json"
     },
     {
       "scope": "archetype-radar",
@@ -804,6 +813,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
+      "archetype": "ubrg",
+      "path": "latest/radars/modern/ubrg.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
       "archetype": "ur",
       "path": "latest/radars/modern/ur.json"
     },
@@ -813,13 +829,6 @@
       "format": "modern",
       "archetype": "wbg",
       "path": "latest/radars/modern/wbg.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "wbrg-energy",
-      "path": "latest/radars/modern/wbrg-energy.json"
     },
     {
       "scope": "archetype-radar",

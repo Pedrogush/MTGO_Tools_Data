@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-12T20:51:18Z",
+  "generated_at": "2026-09-13T04:52:38Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 20,
-    "success": 77
+    "skipped": 21,
+    "success": 71
   },
   "results": [
     {
@@ -42,10 +42,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "azorius-stoneblade",
-      "path": "latest/radars/legacy/azorius-stoneblade.json"
+      "path": "latest/radars/legacy/azorius-stoneblade.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -510,20 +511,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "esper-midrange",
-      "path": "latest/radars/legacy/esper-midrange.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "goblins",
-      "path": "latest/radars/legacy/goblins.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
       "archetype": "golgari-landfall",
       "path": "latest/radars/legacy/golgari-landfall.json"
     },
@@ -533,13 +520,6 @@
       "format": "legacy",
       "archetype": "golgari-zenith",
       "path": "latest/radars/legacy/golgari-zenith.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "grixis-delver",
-      "path": "latest/radars/legacy/grixis-delver.json"
     },
     {
       "scope": "archetype-radar",
@@ -573,13 +553,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "mono-black-delver",
-      "path": "latest/radars/legacy/mono-black-delver.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
       "archetype": "mono-black-midrange",
       "path": "latest/radars/legacy/mono-black-midrange.json"
     },
@@ -603,13 +576,6 @@
       "format": "legacy",
       "archetype": "mono-red-prison",
       "path": "latest/radars/legacy/mono-red-prison.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "mono-white-human",
-      "path": "latest/radars/legacy/mono-white-human.json"
     },
     {
       "scope": "archetype-radar",
@@ -657,13 +623,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "temur-stompy",
-      "path": "latest/radars/legacy/temur-stompy.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
       "archetype": "tes",
       "path": "latest/radars/legacy/tes.json"
     },
@@ -673,6 +632,13 @@
       "format": "legacy",
       "archetype": "ug",
       "path": "latest/radars/legacy/ug.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "ur",
+      "path": "latest/radars/legacy/ur.json"
     },
     {
       "scope": "archetype-radar",

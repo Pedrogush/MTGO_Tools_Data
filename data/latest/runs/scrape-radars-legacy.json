@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-13T11:56:44Z",
+  "generated_at": "2026-09-13T16:20:56Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 18,
-    "success": 76
+    "success": 78
   },
   "results": [
     {
@@ -503,6 +503,20 @@
       "format": "legacy",
       "archetype": "energy",
       "path": "latest/radars/legacy/energy.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "esper-control",
+      "path": "latest/radars/legacy/esper-control.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "goblins",
+      "path": "latest/radars/legacy/goblins.json"
     },
     {
       "scope": "archetype-radar",

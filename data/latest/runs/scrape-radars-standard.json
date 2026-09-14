@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-13T21:00:49Z",
+  "generated_at": "2026-09-14T05:00:39Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 51,
-    "skipped": 40
+    "success": 54,
+    "skipped": 38
   },
   "results": [
     {
@@ -211,11 +211,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
       "archetype": "dimir-self-bounce",
-      "path": "latest/radars/standard/dimir-self-bounce.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/standard/dimir-self-bounce.json"
     },
     {
       "scope": "archetype-radar",
@@ -458,11 +457,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
       "archetype": "orzhov-midrange",
-      "path": "latest/radars/standard/orzhov-midrange.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/standard/orzhov-midrange.json"
     },
     {
       "scope": "archetype-radar",
@@ -679,6 +677,13 @@
       "format": "standard",
       "archetype": "temur-elementals",
       "path": "latest/radars/standard/temur-elementals.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "wur",
+      "path": "latest/radars/standard/wur.json"
     },
     {
       "scope": "format-card-pool",

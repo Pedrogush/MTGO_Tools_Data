@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-13T21:00:52Z",
+  "generated_at": "2026-09-14T05:00:59Z",
   "command": "scrape-radars-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 7,
-    "success": 27
+    "success": 25
   },
   "results": [
     {
@@ -27,10 +27,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "counter-vine",
-      "path": "latest/radars/vintage/counter-vine.json"
+      "path": "latest/radars/vintage/counter-vine.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -63,10 +64,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "eldrazi",
-      "path": "latest/radars/vintage/eldrazi.json"
+      "path": "latest/radars/vintage/eldrazi.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -120,11 +122,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "vintage",
       "archetype": "lurrus-vault-key",
-      "path": "latest/radars/vintage/lurrus-vault-key.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/vintage/lurrus-vault-key.json"
     },
     {
       "scope": "archetype-radar",
@@ -150,11 +151,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "vintage",
       "archetype": "paradoxical-outcome",
-      "path": "latest/radars/vintage/paradoxical-outcome.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/vintage/paradoxical-outcome.json"
     },
     {
       "scope": "archetype-radar",
@@ -189,13 +189,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "vintage",
-      "archetype": "beseech-storm",
-      "path": "latest/radars/vintage/beseech-storm.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "vintage",
       "archetype": "blue-control",
       "path": "latest/radars/vintage/blue-control.json"
     },
@@ -212,13 +205,6 @@
       "format": "vintage",
       "archetype": "other-lurrus",
       "path": "latest/radars/vintage/other-lurrus.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "vintage",
-      "archetype": "other-shops",
-      "path": "latest/radars/vintage/other-shops.json"
     },
     {
       "scope": "archetype-radar",

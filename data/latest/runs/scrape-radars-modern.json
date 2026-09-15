@@ -1,12 +1,12 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-15T11:48:05Z",
+  "generated_at": "2026-09-15T17:03:15Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 114,
+    "success": 115,
     "skipped": 10
   },
   "results": [
@@ -677,6 +677,13 @@
       "format": "modern",
       "archetype": "esper-energy",
       "path": "latest/radars/modern/esper-energy.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "g",
+      "path": "latest/radars/modern/g.json"
     },
     {
       "scope": "archetype-radar",

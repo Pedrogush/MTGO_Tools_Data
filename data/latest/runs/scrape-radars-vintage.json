@@ -1,12 +1,12 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-14T22:14:39Z",
+  "generated_at": "2026-09-15T04:58:40Z",
   "command": "scrape-radars-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 7,
+    "skipped": 6,
     "success": 25
   },
   "results": [
@@ -27,11 +27,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "vintage",
       "archetype": "counter-vine",
-      "path": "latest/radars/vintage/counter-vine.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/vintage/counter-vine.json"
     },
     {
       "scope": "archetype-radar",
@@ -205,13 +204,6 @@
       "format": "vintage",
       "archetype": "other-lurrus",
       "path": "latest/radars/vintage/other-lurrus.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "vintage",
-      "archetype": "ub-lurrus-control",
-      "path": "latest/radars/vintage/ub-lurrus-control.json"
     },
     {
       "scope": "archetype-radar",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-14T22:14:08Z",
+  "generated_at": "2026-09-15T04:58:40Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 116,
-    "skipped": 9
+    "success": 113,
+    "skipped": 10
   },
   "results": [
     {
@@ -324,10 +324,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "jeskai-control",
-      "path": "latest/radars/modern/jeskai-control.json"
+      "path": "latest/radars/modern/jeskai-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -730,13 +731,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "jund-midrange",
-      "path": "latest/radars/modern/jund-midrange.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "mono-black-coffers",
       "path": "latest/radars/modern/mono-black-coffers.json"
     },
@@ -767,13 +761,6 @@
       "format": "modern",
       "archetype": "prowess",
       "path": "latest/radars/modern/prowess.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "rakdos-graveyard",
-      "path": "latest/radars/modern/rakdos-graveyard.json"
     },
     {
       "scope": "archetype-radar",

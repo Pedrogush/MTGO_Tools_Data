@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-15T21:30:58Z",
+  "generated_at": "2026-09-16T04:53:54Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 115,
-    "skipped": 10
+    "success": 110,
+    "skipped": 11
   },
   "results": [
     {
@@ -483,10 +483,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "rakdos-midrange",
-      "path": "latest/radars/modern/rakdos-midrange.json"
+      "path": "latest/radars/modern/rakdos-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -654,27 +655,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "dimir-shadow",
-      "path": "latest/radars/modern/dimir-shadow.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "elementals",
-      "path": "latest/radars/modern/elementals.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "esper-control",
-      "path": "latest/radars/modern/esper-control.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "esper-energy",
       "path": "latest/radars/modern/esper-energy.json"
     },
@@ -740,13 +720,6 @@
       "format": "modern",
       "archetype": "mono-black-coffers",
       "path": "latest/radars/modern/mono-black-coffers.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "necrodominance",
-      "path": "latest/radars/modern/necrodominance.json"
     },
     {
       "scope": "archetype-radar",
@@ -822,6 +795,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
+      "archetype": "wbrg",
+      "path": "latest/radars/modern/wbrg.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
       "archetype": "wg",
       "path": "latest/radars/modern/wg.json"
     },
@@ -873,13 +853,6 @@
       "format": "modern",
       "archetype": "wurg",
       "path": "latest/radars/modern/wurg.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "wurg-creativity",
-      "path": "latest/radars/modern/wurg-creativity.json"
     },
     {
       "scope": "archetype-radar",

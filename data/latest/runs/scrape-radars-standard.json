@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-16T11:39:53Z",
+  "generated_at": "2026-09-16T17:01:19Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 64,
-    "skipped": 35
+    "success": 65,
+    "skipped": 36
   },
   "results": [
     {
@@ -161,6 +161,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
+      "archetype": "boros-control",
+      "path": "latest/radars/standard/boros-control.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
       "archetype": "boros-dragons",
       "path": "latest/radars/standard/boros-dragons.json"
     },
@@ -233,6 +240,14 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "standard",
+      "archetype": "esper-reanimator",
+      "path": "latest/radars/standard/esper-reanimator.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "standard",
       "archetype": "esper-self-bounce",
       "path": "latest/radars/standard/esper-self-bounce.json",
       "message": "No published decks were available for radar generation."
@@ -295,6 +310,13 @@
       "format": "standard",
       "archetype": "izzet-aggro",
       "path": "latest/radars/standard/izzet-aggro.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "izzet-burn",
+      "path": "latest/radars/standard/izzet-burn.json"
     },
     {
       "scope": "archetype-radar",
@@ -385,6 +407,13 @@
       "archetype": "jeskai-momo",
       "path": "latest/radars/standard/jeskai-momo.json",
       "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "jund-sacrifice",
+      "path": "latest/radars/standard/jund-sacrifice.json"
     },
     {
       "scope": "archetype-radar",
@@ -637,13 +666,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
-      "archetype": "boros-control",
-      "path": "latest/radars/standard/boros-control.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
       "archetype": "brg",
       "path": "latest/radars/standard/brg.json"
     },
@@ -660,13 +682,6 @@
       "format": "standard",
       "archetype": "esper-control",
       "path": "latest/radars/standard/esper-control.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
-      "archetype": "izzet-burn",
-      "path": "latest/radars/standard/izzet-burn.json"
     },
     {
       "scope": "archetype-radar",

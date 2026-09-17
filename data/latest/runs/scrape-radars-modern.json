@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-16T21:50:07Z",
+  "generated_at": "2026-09-17T04:56:58Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 113,
-    "skipped": 9
+    "success": 107,
+    "skipped": 10
   },
   "results": [
     {
@@ -265,10 +265,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "hollow-one",
-      "path": "latest/radars/modern/hollow-one.json"
+      "path": "latest/radars/modern/hollow-one.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -695,22 +696,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "grixis-wizards",
-      "path": "latest/radars/modern/grixis-wizards.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "gruul-midrange",
       "path": "latest/radars/modern/gruul-midrange.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "izzet-wizards",
-      "path": "latest/radars/modern/izzet-wizards.json"
     },
     {
       "scope": "archetype-radar",
@@ -753,13 +740,6 @@
       "format": "modern",
       "archetype": "ramp-eldrazi",
       "path": "latest/radars/modern/ramp-eldrazi.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "simic-ritual",
-      "path": "latest/radars/modern/simic-ritual.json"
     },
     {
       "scope": "archetype-radar",
@@ -835,13 +815,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "wubr-aggro",
-      "path": "latest/radars/modern/wubr-aggro.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "wubrg",
       "path": "latest/radars/modern/wubrg.json"
     },
@@ -858,13 +831,6 @@
       "format": "modern",
       "archetype": "wurg",
       "path": "latest/radars/modern/wurg.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "wurg-scam",
-      "path": "latest/radars/modern/wurg-scam.json"
     },
     {
       "scope": "format-card-pool",

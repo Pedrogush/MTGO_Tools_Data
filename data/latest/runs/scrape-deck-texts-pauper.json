@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-17T11:45:24Z",
+  "generated_at": "2026-09-17T17:01:58Z",
   "command": "scrape-deck-texts-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 41,
-    "skipped": 199
+    "success": 43,
+    "skipped": 198
   },
   "results": [
     {
@@ -240,6 +240,13 @@
       "scope": "archetype-decks",
       "status": "success",
       "format": "pauper",
+      "archetype": "grixis-control",
+      "path": "latest/decks/pauper/grixis-control.json"
+    },
+    {
+      "scope": "archetype-decks",
+      "status": "success",
+      "format": "pauper",
       "archetype": "gruul-ponza",
       "path": "latest/decks/pauper/gruul-ponza.json"
     },
@@ -433,14 +440,6 @@
       "format": "pauper",
       "archetype": "turbo-fog",
       "path": "latest/decks/pauper/turbo-fog.json"
-    },
-    {
-      "scope": "archetype-decks",
-      "status": "skipped",
-      "format": "pauper",
-      "archetype": "walls-cascade",
-      "path": "latest/decks/pauper/walls-cascade.json",
-      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
@@ -1703,6 +1702,13 @@
       "deck_id": "7957565",
       "path": "archive/deck-texts/pauper/7957565.json",
       "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "success",
+      "format": "pauper",
+      "deck_id": "7957566",
+      "path": "archive/deck-texts/pauper/7957566.json"
     },
     {
       "scope": "deck-text",

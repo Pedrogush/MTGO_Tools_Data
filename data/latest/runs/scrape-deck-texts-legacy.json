@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-17T11:45:24Z",
+  "generated_at": "2026-09-17T17:01:59Z",
   "command": "scrape-deck-texts-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 38,
-    "skipped": 103
+    "success": 36,
+    "skipped": 102
   },
   "results": [
     {
@@ -247,10 +247,11 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "jeskai-control",
-      "path": "latest/decks/legacy/jeskai-control.json"
+      "path": "latest/decks/legacy/jeskai-control.json",
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
@@ -310,6 +311,14 @@
       "format": "legacy",
       "archetype": "merfolk",
       "path": "latest/decks/legacy/merfolk.json",
+      "message": "No decks found within the last 7 days."
+    },
+    {
+      "scope": "archetype-decks",
+      "status": "skipped",
+      "format": "legacy",
+      "archetype": "mono-black-midrange",
+      "path": "latest/decks/legacy/mono-black-midrange.json",
       "message": "No decks found within the last 7 days."
     },
     {
@@ -427,13 +436,6 @@
       "scope": "archetype-decks",
       "status": "success",
       "format": "legacy",
-      "archetype": "sultai-depths",
-      "path": "latest/decks/legacy/sultai-depths.json"
-    },
-    {
-      "scope": "archetype-decks",
-      "status": "success",
-      "format": "legacy",
       "archetype": "temur-delver",
       "path": "latest/decks/legacy/temur-delver.json"
     },
@@ -457,14 +459,6 @@
       "format": "legacy",
       "deck_id": "7952785",
       "path": "archive/deck-texts/legacy/7952785.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "legacy",
-      "deck_id": "7952786",
-      "path": "archive/deck-texts/legacy/7952786.json",
       "message": "Reused existing published deck-text blob."
     },
     {
@@ -1007,14 +1001,6 @@
       "scope": "deck-text",
       "status": "skipped",
       "format": "legacy",
-      "deck_id": "7954934",
-      "path": "archive/deck-texts/legacy/7954934.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "legacy",
       "deck_id": "7954935",
       "path": "archive/deck-texts/legacy/7954935.json",
       "message": "Reused existing published deck-text blob."
@@ -1081,14 +1067,6 @@
       "format": "legacy",
       "deck_id": "7956110",
       "path": "archive/deck-texts/legacy/7956110.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "legacy",
-      "deck_id": "7956111",
-      "path": "archive/deck-texts/legacy/7956111.json",
       "message": "Reused existing published deck-text blob."
     },
     {

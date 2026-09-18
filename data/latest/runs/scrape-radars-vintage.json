@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-17T21:26:23Z",
+  "generated_at": "2026-09-18T04:48:09Z",
   "command": "scrape-radars-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 6,
-    "success": 24
+    "skipped": 7,
+    "success": 21
   },
   "results": [
     {
@@ -171,10 +171,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "stiflenought",
-      "path": "latest/radars/vintage/stiflenought.json"
+      "path": "latest/radars/vintage/stiflenought.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -183,20 +184,6 @@
       "archetype": "underworld-breach",
       "path": "latest/radars/vintage/underworld-breach.json",
       "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "vintage",
-      "archetype": "blue-control",
-      "path": "latest/radars/vintage/blue-control.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "vintage",
-      "archetype": "initiative",
-      "path": "latest/radars/vintage/initiative.json"
     },
     {
       "scope": "archetype-radar",

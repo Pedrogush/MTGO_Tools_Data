@@ -1,12 +1,12 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-18T11:19:51Z",
+  "generated_at": "2026-09-18T16:27:37Z",
   "command": "scrape-radars-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 7,
+    "skipped": 8,
     "success": 21
   },
   "results": [
@@ -90,6 +90,14 @@
       "format": "vintage",
       "archetype": "grixis-lurrus-control",
       "path": "latest/radars/vintage/grixis-lurrus-control.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "vintage",
+      "archetype": "jeskai-lurrus",
+      "path": "latest/radars/vintage/jeskai-lurrus.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

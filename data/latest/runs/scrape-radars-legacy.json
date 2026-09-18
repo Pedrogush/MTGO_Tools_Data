@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-18T16:27:38Z",
+  "generated_at": "2026-09-18T21:01:08Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 9,
-    "success": 77
+    "skipped": 8,
+    "success": 79
   },
   "results": [
     {
@@ -20,11 +20,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "affinity-stompy",
-      "path": "latest/radars/legacy/affinity-stompy.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/affinity-stompy.json"
     },
     {
       "scope": "archetype-radar",
@@ -341,6 +340,13 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "nic-fit",
+      "path": "latest/radars/legacy/nic-fit.json"
+    },
+    {
+      "scope": "archetype-radar",
       "status": "skipped",
       "format": "legacy",
       "archetype": "ninjas",
@@ -520,13 +526,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "nic-fit",
-      "path": "latest/radars/legacy/nic-fit.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
       "archetype": "ocelot-pride-tempo",
       "path": "latest/radars/legacy/ocelot-pride-tempo.json"
     },
@@ -592,6 +591,13 @@
       "format": "legacy",
       "archetype": "wb",
       "path": "latest/radars/legacy/wb.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "wbg",
+      "path": "latest/radars/legacy/wbg.json"
     },
     {
       "scope": "archetype-radar",

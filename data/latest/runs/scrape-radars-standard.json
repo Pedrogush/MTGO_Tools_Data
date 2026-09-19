@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-18T21:01:22Z",
+  "generated_at": "2026-09-19T04:41:34Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 58,
-    "skipped": 38
+    "success": 56,
+    "skipped": 41
   },
   "results": [
     {
@@ -100,10 +100,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "azorius-merfolk",
-      "path": "latest/radars/standard/azorius-merfolk.json"
+      "path": "latest/radars/standard/azorius-merfolk.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -255,10 +256,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "golgari-elves",
-      "path": "latest/radars/standard/golgari-elves.json"
+      "path": "latest/radars/standard/golgari-elves.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -439,10 +441,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "mono-black-midrange",
-      "path": "latest/radars/standard/mono-black-midrange.json"
+      "path": "latest/radars/standard/mono-black-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -698,6 +701,13 @@
       "format": "standard",
       "archetype": "ub",
       "path": "latest/radars/standard/ub.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "ur",
+      "path": "latest/radars/standard/ur.json"
     },
     {
       "scope": "archetype-radar",

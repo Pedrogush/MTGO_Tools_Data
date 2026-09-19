@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-18T21:01:10Z",
+  "generated_at": "2026-09-19T04:42:07Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 99,
-    "skipped": 10
+    "success": 89,
+    "skipped": 14
   },
   "results": [
     {
@@ -223,10 +223,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "grixis-control",
-      "path": "latest/radars/modern/grixis-control.json"
+      "path": "latest/radars/modern/grixis-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -288,10 +289,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "infect",
-      "path": "latest/radars/modern/infect.json"
+      "path": "latest/radars/modern/infect.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -346,10 +348,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "jeskai-prowess",
-      "path": "latest/radars/modern/jeskai-prowess.json"
+      "path": "latest/radars/modern/jeskai-prowess.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -505,10 +508,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "sam-combo",
-      "path": "latest/radars/modern/sam-combo.json"
+      "path": "latest/radars/modern/sam-combo.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -584,22 +588,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "abzan-midrange",
-      "path": "latest/radars/modern/abzan-midrange.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "bant-blink",
       "path": "latest/radars/modern/bant-blink.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "bg",
-      "path": "latest/radars/modern/bg.json"
     },
     {
       "scope": "archetype-radar",
@@ -647,13 +637,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "goblins",
-      "path": "latest/radars/modern/goblins.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "gruul-midrange",
       "path": "latest/radars/modern/gruul-midrange.json"
     },
@@ -668,6 +651,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
+      "archetype": "mardu-zombies",
+      "path": "latest/radars/modern/mardu-zombies.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
       "archetype": "mono-black-coffers",
       "path": "latest/radars/modern/mono-black-coffers.json"
     },
@@ -677,20 +667,6 @@
       "format": "modern",
       "archetype": "orzhov-blink",
       "path": "latest/radars/modern/orzhov-blink.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "phoenix",
-      "path": "latest/radars/modern/phoenix.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "ubr",
-      "path": "latest/radars/modern/ubr.json"
     },
     {
       "scope": "archetype-radar",
@@ -731,13 +707,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "wg",
-      "path": "latest/radars/modern/wg.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "wrg",
       "path": "latest/radars/modern/wrg.json"
     },
@@ -747,13 +716,6 @@
       "format": "modern",
       "archetype": "wu",
       "path": "latest/radars/modern/wu.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "wub",
-      "path": "latest/radars/modern/wub.json"
     },
     {
       "scope": "archetype-radar",

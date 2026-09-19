@@ -1,12 +1,12 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-18T20:56:16Z",
+  "generated_at": "2026-09-19T04:40:41Z",
   "command": "scrape-deck-texts-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 5,
+    "success": 1,
     "skipped": 44
   },
   "results": [
@@ -50,10 +50,11 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "5c-midrange",
-      "path": "latest/decks/pioneer/5c-midrange.json"
+      "path": "latest/decks/pioneer/5c-midrange.json",
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
@@ -161,10 +162,11 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "golgari-midrange",
-      "path": "latest/decks/pioneer/golgari-midrange.json"
+      "path": "latest/decks/pioneer/golgari-midrange.json",
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
@@ -232,10 +234,11 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "mono-black-midrange",
-      "path": "latest/decks/pioneer/mono-black-midrange.json"
+      "path": "latest/decks/pioneer/mono-black-midrange.json",
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
@@ -327,10 +330,11 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "sultai-midrange",
-      "path": "latest/decks/pioneer/sultai-midrange.json"
+      "path": "latest/decks/pioneer/sultai-midrange.json",
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
@@ -360,41 +364,7 @@
       "scope": "deck-text",
       "status": "skipped",
       "format": "pioneer",
-      "deck_id": "7951236",
-      "path": "archive/deck-texts/pioneer/7951236.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "pioneer",
-      "deck_id": "7951237",
-      "path": "archive/deck-texts/pioneer/7951237.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "pioneer",
-      "deck_id": "7951239",
-      "path": "archive/deck-texts/pioneer/7951239.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "pioneer",
-      "deck_id": "7951241",
-      "path": "archive/deck-texts/pioneer/7951241.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "pioneer",
-      "deck_id": "7951243",
-      "path": "archive/deck-texts/pioneer/7951243.json",
-      "message": "Reused existing published deck-text blob."
+      "message": "No deck IDs were available for deck-text publishing."
     }
   ]
 }

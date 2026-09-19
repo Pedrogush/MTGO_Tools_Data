@@ -1,12 +1,12 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-19T15:55:52Z",
+  "generated_at": "2026-09-19T20:45:04Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 56,
+    "success": 59,
     "skipped": 41
   },
   "results": [
@@ -240,6 +240,13 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "esper-control",
+      "path": "latest/radars/standard/esper-control.json"
+    },
+    {
+      "scope": "archetype-radar",
       "status": "skipped",
       "format": "standard",
       "archetype": "esper-reanimator",
@@ -283,6 +290,13 @@
       "format": "standard",
       "archetype": "grixis-monument",
       "path": "latest/radars/standard/grixis-monument.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "grixis-reanimator",
+      "path": "latest/radars/standard/grixis-reanimator.json"
     },
     {
       "scope": "archetype-radar",
@@ -532,11 +546,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
       "archetype": "selesnya-aggro",
-      "path": "latest/radars/standard/selesnya-aggro.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/standard/selesnya-aggro.json"
     },
     {
       "scope": "archetype-radar",
@@ -596,15 +609,23 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
-      "archetype": "sultai-reanimator",
-      "path": "latest/radars/standard/sultai-reanimator.json"
+      "archetype": "sultai-midrange",
+      "path": "latest/radars/standard/sultai-midrange.json"
     },
     {
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
+      "archetype": "sultai-reanimator",
+      "path": "latest/radars/standard/sultai-reanimator.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "standard",
       "archetype": "temur-battlecrier-combo",
-      "path": "latest/radars/standard/temur-battlecrier-combo.json"
+      "path": "latest/radars/standard/temur-battlecrier-combo.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -671,8 +692,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
-      "archetype": "esper-control",
-      "path": "latest/radars/standard/esper-control.json"
+      "archetype": "jeskai-equipments",
+      "path": "latest/radars/standard/jeskai-equipments.json"
     },
     {
       "scope": "archetype-radar",

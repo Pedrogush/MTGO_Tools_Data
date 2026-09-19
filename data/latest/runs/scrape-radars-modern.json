@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-19T15:56:23Z",
+  "generated_at": "2026-09-19T20:44:55Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 93,
-    "skipped": 14
+    "success": 96,
+    "skipped": 13
   },
   "results": [
     {
@@ -23,6 +23,13 @@
       "format": "modern",
       "archetype": "4c-midrange",
       "path": "latest/radars/modern/4c-midrange.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "5c-midrange",
+      "path": "latest/radars/modern/5c-midrange.json"
     },
     {
       "scope": "archetype-radar",
@@ -348,11 +355,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "jeskai-prowess",
-      "path": "latest/radars/modern/jeskai-prowess.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/jeskai-prowess.json"
     },
     {
       "scope": "archetype-radar",
@@ -581,13 +587,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "5c-midrange",
-      "path": "latest/radars/modern/5c-midrange.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "bant-blink",
       "path": "latest/radars/modern/bant-blink.json"
     },
@@ -597,6 +596,13 @@
       "format": "modern",
       "archetype": "br",
       "path": "latest/radars/modern/br.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "brg",
+      "path": "latest/radars/modern/brg.json"
     },
     {
       "scope": "archetype-radar",
@@ -639,6 +645,13 @@
       "format": "modern",
       "archetype": "g",
       "path": "latest/radars/modern/g.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "grixis-murktide",
+      "path": "latest/radars/modern/grixis-murktide.json"
     },
     {
       "scope": "archetype-radar",

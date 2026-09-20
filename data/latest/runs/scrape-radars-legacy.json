@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-20T16:10:58Z",
+  "generated_at": "2026-09-20T20:54:59Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 13,
-    "success": 71
+    "skipped": 12,
+    "success": 73
   },
   "results": [
     {
@@ -300,11 +300,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "merfolk",
-      "path": "latest/radars/legacy/merfolk.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/merfolk.json"
     },
     {
       "scope": "archetype-radar",
@@ -484,6 +483,13 @@
       "format": "legacy",
       "archetype": "abzan",
       "path": "latest/radars/legacy/abzan.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "boros-initiative",
+      "path": "latest/radars/legacy/boros-initiative.json"
     },
     {
       "scope": "archetype-radar",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-20T11:28:46Z",
+  "generated_at": "2026-09-20T16:11:02Z",
   "command": "scrape-radars-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 7,
-    "success": 20
+    "skipped": 6,
+    "success": 22
   },
   "results": [
     {
@@ -178,11 +178,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "vintage",
       "archetype": "stiflenought",
-      "path": "latest/radars/vintage/stiflenought.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/vintage/stiflenought.json"
     },
     {
       "scope": "archetype-radar",
@@ -198,6 +197,13 @@
       "format": "vintage",
       "archetype": "wu",
       "path": "latest/radars/vintage/wu.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "vintage",
+      "archetype": "wur",
+      "path": "latest/radars/vintage/wur.json"
     },
     {
       "scope": "format-card-pool",

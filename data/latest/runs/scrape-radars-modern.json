@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-19T20:44:55Z",
+  "generated_at": "2026-09-20T04:57:34Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 96,
-    "skipped": 13
+    "success": 91,
+    "skipped": 17
   },
   "results": [
     {
@@ -146,10 +146,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "dimir-murktide",
-      "path": "latest/radars/modern/dimir-murktide.json"
+      "path": "latest/radars/modern/dimir-murktide.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -195,10 +196,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "esper-midrange",
-      "path": "latest/radars/modern/esper-midrange.json"
+      "path": "latest/radars/modern/esper-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -455,10 +457,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "mono-red-burn",
-      "path": "latest/radars/modern/mono-red-burn.json"
+      "path": "latest/radars/modern/mono-red-burn.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -536,10 +539,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "sultai-midrange",
-      "path": "latest/radars/modern/sultai-midrange.json"
+      "path": "latest/radars/modern/sultai-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -575,13 +579,6 @@
       "format": "modern",
       "archetype": "yawgmoth",
       "path": "latest/radars/modern/yawgmoth.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "4c-blink",
-      "path": "latest/radars/modern/4c-blink.json"
     },
     {
       "scope": "archetype-radar",
@@ -671,6 +668,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
+      "archetype": "jund",
+      "path": "latest/radars/modern/jund.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
       "archetype": "mardu-zombies",
       "path": "latest/radars/modern/mardu-zombies.json"
     },
@@ -701,13 +705,6 @@
       "format": "modern",
       "archetype": "ubr",
       "path": "latest/radars/modern/ubr.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "ubrg",
-      "path": "latest/radars/modern/ubrg.json"
     },
     {
       "scope": "archetype-radar",

@@ -1,21 +1,22 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-19T20:45:01Z",
+  "generated_at": "2026-09-20T04:57:31Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 35,
-    "skipped": 29
+    "skipped": 30,
+    "success": 34
   },
   "results": [
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "4c-artifact-sacrifice",
-      "path": "latest/radars/pioneer/4c-artifact-sacrifice.json"
+      "path": "latest/radars/pioneer/4c-artifact-sacrifice.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

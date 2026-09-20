@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-19T20:44:55Z",
+  "generated_at": "2026-09-20T04:58:07Z",
   "command": "scrape-radars-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 60,
-    "skipped": 18
+    "success": 57,
+    "skipped": 19
   },
   "results": [
     {
@@ -286,10 +286,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "jeskai-affinity",
-      "path": "latest/radars/pauper/jeskai-affinity.json"
+      "path": "latest/radars/pauper/jeskai-affinity.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -517,20 +518,6 @@
       "format": "pauper",
       "archetype": "rg",
       "path": "latest/radars/pauper/rg.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pauper",
-      "archetype": "simic-terror",
-      "path": "latest/radars/pauper/simic-terror.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pauper",
-      "archetype": "ubrg",
-      "path": "latest/radars/pauper/ubrg.json"
     },
     {
       "scope": "archetype-radar",

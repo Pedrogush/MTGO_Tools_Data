@@ -1,12 +1,12 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-20T20:54:59Z",
+  "generated_at": "2026-09-21T05:00:24Z",
   "command": "scrape-radars-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 57,
+    "success": 56,
     "skipped": 19
   },
   "results": [
@@ -115,10 +115,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "devotion",
-      "path": "latest/radars/pauper/devotion.json"
+      "path": "latest/radars/pauper/devotion.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -331,11 +332,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pauper",
       "archetype": "mardu-synthesizer",
-      "path": "latest/radars/pauper/mardu-synthesizer.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pauper/mardu-synthesizer.json"
     },
     {
       "scope": "archetype-radar",
@@ -546,13 +546,6 @@
       "format": "pauper",
       "archetype": "wg",
       "path": "latest/radars/pauper/wg.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pauper",
-      "archetype": "wrg",
-      "path": "latest/radars/pauper/wrg.json"
     },
     {
       "scope": "format-card-pool",

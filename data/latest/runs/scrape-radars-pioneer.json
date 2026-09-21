@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-20T20:54:59Z",
+  "generated_at": "2026-09-21T05:00:30Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 28,
-    "success": 39
+    "success": 40
   },
   "results": [
     {
@@ -28,10 +28,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "4c-scapeshift",
-      "path": "latest/radars/pioneer/4c-scapeshift.json"
+      "path": "latest/radars/pioneer/4c-scapeshift.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -51,10 +52,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "5c-midrange",
-      "path": "latest/radars/pioneer/5c-midrange.json"
+      "path": "latest/radars/pioneer/5c-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -274,11 +276,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "jund-sacrifice",
-      "path": "latest/radars/pioneer/jund-sacrifice.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pioneer/jund-sacrifice.json"
     },
     {
       "scope": "archetype-radar",
@@ -417,11 +418,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "temur-indomitable-creativity",
-      "path": "latest/radars/pioneer/temur-indomitable-creativity.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pioneer/temur-indomitable-creativity.json"
     },
     {
       "scope": "archetype-radar",
@@ -450,6 +450,13 @@
       "format": "pioneer",
       "archetype": "orzhov-midrange",
       "path": "latest/radars/pioneer/orzhov-midrange.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "ub",
+      "path": "latest/radars/pioneer/ub.json"
     },
     {
       "scope": "archetype-radar",

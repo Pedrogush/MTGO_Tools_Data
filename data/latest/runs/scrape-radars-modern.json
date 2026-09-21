@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-20T20:54:56Z",
+  "generated_at": "2026-09-21T05:00:32Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 94,
-    "skipped": 15
+    "success": 89,
+    "skipped": 17
   },
   "results": [
     {
@@ -267,10 +267,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "hammer-time",
-      "path": "latest/radars/modern/hammer-time.json"
+      "path": "latest/radars/modern/hammer-time.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -523,10 +524,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "simic-midrange",
-      "path": "latest/radars/modern/simic-midrange.json"
+      "path": "latest/radars/modern/simic-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -596,13 +598,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "br",
-      "path": "latest/radars/modern/br.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "brg",
       "path": "latest/radars/modern/brg.json"
     },
@@ -610,8 +605,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "dimir-control",
-      "path": "latest/radars/modern/dimir-control.json"
+      "archetype": "calibrated-blast",
+      "path": "latest/radars/modern/calibrated-blast.json"
     },
     {
       "scope": "archetype-radar",
@@ -626,13 +621,6 @@
       "format": "modern",
       "archetype": "esper-control",
       "path": "latest/radars/modern/esper-control.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "esper-energy",
-      "path": "latest/radars/modern/esper-energy.json"
     },
     {
       "scope": "archetype-radar",
@@ -682,13 +670,6 @@
       "format": "modern",
       "archetype": "mardu-zombies",
       "path": "latest/radars/modern/mardu-zombies.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "mono-black-coffers",
-      "path": "latest/radars/modern/mono-black-coffers.json"
     },
     {
       "scope": "archetype-radar",

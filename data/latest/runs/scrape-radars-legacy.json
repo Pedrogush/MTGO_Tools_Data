@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-21T12:53:57Z",
+  "generated_at": "2026-09-21T22:05:50Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 15,
-    "success": 72
+    "skipped": 16,
+    "success": 71
   },
   "results": [
     {
@@ -106,11 +106,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "cradle-control",
-      "path": "latest/radars/legacy/cradle-control.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/cradle-control.json"
     },
     {
       "scope": "archetype-radar",
@@ -121,10 +120,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "death-and-taxes-60-card",
-      "path": "latest/radars/legacy/death-and-taxes-60-card.json"
+      "path": "latest/radars/legacy/death-and-taxes-60-card.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -181,6 +181,13 @@
       "format": "legacy",
       "archetype": "elves",
       "path": "latest/radars/legacy/elves.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "esper-vial",
+      "path": "latest/radars/legacy/esper-vial.json"
     },
     {
       "scope": "archetype-radar",
@@ -439,10 +446,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "sultai-depths",
-      "path": "latest/radars/legacy/sultai-depths.json"
+      "path": "latest/radars/legacy/sultai-depths.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -514,13 +522,6 @@
       "format": "legacy",
       "archetype": "esper-tempo",
       "path": "latest/radars/legacy/esper-tempo.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "esper-vial",
-      "path": "latest/radars/legacy/esper-vial.json"
     },
     {
       "scope": "archetype-radar",

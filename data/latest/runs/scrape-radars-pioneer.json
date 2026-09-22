@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-22T05:01:12Z",
+  "generated_at": "2026-09-22T11:43:27Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 24,
-    "success": 47
+    "success": 49
   },
   "results": [
     {
@@ -458,6 +458,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pioneer",
+      "archetype": "br",
+      "path": "latest/radars/pioneer/br.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
       "archetype": "g",
       "path": "latest/radars/pioneer/g.json"
     },
@@ -516,6 +523,13 @@
       "format": "pioneer",
       "archetype": "wub",
       "path": "latest/radars/pioneer/wub.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "wubg",
+      "path": "latest/radars/pioneer/wubg.json"
     },
     {
       "scope": "archetype-radar",

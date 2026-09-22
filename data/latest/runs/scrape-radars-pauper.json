@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-21T22:05:44Z",
+  "generated_at": "2026-09-22T05:01:11Z",
   "command": "scrape-radars-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 61,
-    "skipped": 14
+    "success": 57,
+    "skipped": 16
   },
   "results": [
     {
@@ -191,10 +191,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "food-gardens",
-      "path": "latest/radars/pauper/food-gardens.json"
+      "path": "latest/radars/pauper/food-gardens.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -227,10 +228,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "grixis-control",
-      "path": "latest/radars/pauper/grixis-control.json"
+      "path": "latest/radars/pauper/grixis-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -506,20 +508,6 @@
       "format": "pauper",
       "archetype": "naya-bully",
       "path": "latest/radars/pauper/naya-bully.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pauper",
-      "archetype": "rg",
-      "path": "latest/radars/pauper/rg.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pauper",
-      "archetype": "ug",
-      "path": "latest/radars/pauper/ug.json"
     },
     {
       "scope": "archetype-radar",

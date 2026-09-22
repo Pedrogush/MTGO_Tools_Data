@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-21T22:05:51Z",
+  "generated_at": "2026-09-22T05:01:12Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 92,
-    "skipped": 17
+    "success": 90,
+    "skipped": 18
   },
   "results": [
     {
@@ -68,10 +68,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "azorius-energy",
-      "path": "latest/radars/modern/azorius-energy.json"
+      "path": "latest/radars/modern/azorius-energy.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -488,10 +489,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "rakdos-aggro",
-      "path": "latest/radars/modern/rakdos-aggro.json"
+      "path": "latest/radars/modern/rakdos-aggro.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -539,11 +541,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "sultai-midrange",
-      "path": "latest/radars/modern/sultai-midrange.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/sultai-midrange.json"
     },
     {
       "scope": "archetype-radar",
@@ -740,13 +741,6 @@
       "format": "modern",
       "archetype": "wg",
       "path": "latest/radars/modern/wg.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "wrg",
-      "path": "latest/radars/modern/wrg.json"
     },
     {
       "scope": "archetype-radar",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-22T11:44:03Z",
+  "generated_at": "2026-09-22T17:00:29Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 18,
-    "success": 68
+    "success": 69
   },
   "results": [
     {
@@ -524,6 +524,13 @@
       "format": "legacy",
       "archetype": "esper-tempo",
       "path": "latest/radars/legacy/esper-tempo.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "hullday-echo-stompy",
+      "path": "latest/radars/legacy/hullday-echo-stompy.json"
     },
     {
       "scope": "archetype-radar",

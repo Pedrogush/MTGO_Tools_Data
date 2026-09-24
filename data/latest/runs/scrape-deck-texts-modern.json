@@ -1,12 +1,12 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-24T04:55:31Z",
+  "generated_at": "2026-09-24T11:49:47Z",
   "command": "scrape-deck-texts-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 25,
+    "success": 24,
     "skipped": 86
   },
   "results": [
@@ -154,10 +154,11 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "eldrazi",
-      "path": "latest/decks/modern/eldrazi.json"
+      "path": "latest/decks/modern/eldrazi.json",
+      "message": "All MTGGoldfish rows were MTGO events; published via mtgo-decklists."
     },
     {
       "scope": "archetype-decks",
@@ -558,14 +559,6 @@
       "format": "modern",
       "deck_id": "7964971",
       "path": "archive/deck-texts/modern/7964971.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "modern",
-      "deck_id": "7964972",
-      "path": "archive/deck-texts/modern/7964972.json",
       "message": "Reused existing published deck-text blob."
     },
     {

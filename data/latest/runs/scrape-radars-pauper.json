@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-23T21:32:34Z",
+  "generated_at": "2026-09-24T04:56:11Z",
   "command": "scrape-radars-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 59,
-    "skipped": 13
+    "success": 56,
+    "skipped": 15
   },
   "results": [
     {
@@ -121,10 +121,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "dimir-affinity",
-      "path": "latest/radars/pauper/dimir-affinity.json"
+      "path": "latest/radars/pauper/dimir-affinity.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -451,10 +452,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "storm",
-      "path": "latest/radars/pauper/storm.json"
+      "path": "latest/radars/pauper/storm.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -491,13 +493,6 @@
       "format": "pauper",
       "archetype": "white-aggro",
       "path": "latest/radars/pauper/white-aggro.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pauper",
-      "archetype": "mono-black-sacrifice",
-      "path": "latest/radars/pauper/mono-black-sacrifice.json"
     },
     {
       "scope": "archetype-radar",

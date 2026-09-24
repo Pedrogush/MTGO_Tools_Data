@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-23T21:32:43Z",
+  "generated_at": "2026-09-24T04:56:10Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 93,
-    "skipped": 18
+    "success": 92,
+    "skipped": 19
   },
   "results": [
     {
@@ -61,10 +61,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "azorius-control",
-      "path": "latest/radars/modern/azorius-control.json"
+      "path": "latest/radars/modern/azorius-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -329,18 +330,18 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "izzetcontrol",
-      "path": "latest/radars/modern/izzetcontrol.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/izzetcontrol.json"
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "jeskai-blink",
-      "path": "latest/radars/modern/jeskai-blink.json"
+      "path": "latest/radars/modern/jeskai-blink.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

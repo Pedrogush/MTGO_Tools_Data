@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-24T21:33:51Z",
+  "generated_at": "2026-09-25T05:01:54Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 25,
-    "success": 49
+    "skipped": 28,
+    "success": 44
   },
   "results": [
     {
@@ -198,10 +198,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "golgari-food",
-      "path": "latest/radars/pioneer/golgari-food.json"
+      "path": "latest/radars/pioneer/golgari-food.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -212,10 +213,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "gruul-prowess",
-      "path": "latest/radars/pioneer/gruul-prowess.json"
+      "path": "latest/radars/pioneer/gruul-prowess.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -450,10 +452,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "temur-lessons",
-      "path": "latest/radars/pioneer/temur-lessons.json"
+      "path": "latest/radars/pioneer/temur-lessons.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -508,13 +511,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pioneer",
-      "archetype": "wb",
-      "path": "latest/radars/pioneer/wb.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pioneer",
       "archetype": "wg",
       "path": "latest/radars/pioneer/wg.json"
     },
@@ -538,13 +534,6 @@
       "format": "pioneer",
       "archetype": "wubg",
       "path": "latest/radars/pioneer/wubg.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pioneer",
-      "archetype": "wubrg",
-      "path": "latest/radars/pioneer/wubrg.json"
     },
     {
       "scope": "format-card-pool",

@@ -1,12 +1,12 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-25T17:16:07Z",
+  "generated_at": "2026-09-25T21:41:05Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 42,
+    "success": 43,
     "skipped": 58
   },
   "results": [
@@ -187,6 +187,13 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "boros-manufacturing",
+      "path": "latest/radars/standard/boros-manufacturing.json"
+    },
+    {
+      "scope": "archetype-radar",
       "status": "skipped",
       "format": "standard",
       "archetype": "boros-momo",
@@ -199,6 +206,13 @@
       "format": "standard",
       "archetype": "boros-tokens",
       "path": "latest/radars/standard/boros-tokens.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "dimir-aggro",
+      "path": "latest/radars/standard/dimir-aggro.json"
     },
     {
       "scope": "archetype-radar",
@@ -732,13 +746,6 @@
       "format": "standard",
       "archetype": "brg",
       "path": "latest/radars/standard/brg.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
-      "archetype": "dimir-aggro",
-      "path": "latest/radars/standard/dimir-aggro.json"
     },
     {
       "scope": "archetype-radar",

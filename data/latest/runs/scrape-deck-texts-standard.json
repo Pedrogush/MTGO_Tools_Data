@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-25T17:15:26Z",
+  "generated_at": "2026-09-25T21:37:19Z",
   "command": "scrape-deck-texts-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 10,
-    "skipped": 62
+    "success": 12,
+    "skipped": 61
   },
   "results": [
     {
@@ -128,11 +128,26 @@
     },
     {
       "scope": "archetype-decks",
+      "status": "success",
+      "format": "standard",
+      "archetype": "boros-manufacturing",
+      "path": "latest/decks/standard/boros-manufacturing.json"
+    },
+    {
+      "scope": "archetype-decks",
       "status": "skipped",
       "format": "standard",
       "archetype": "boros-tokens",
       "path": "latest/decks/standard/boros-tokens.json",
       "message": "No decks found within the last 7 days."
+    },
+    {
+      "scope": "archetype-decks",
+      "status": "skipped",
+      "format": "standard",
+      "archetype": "dimir-aggro",
+      "path": "latest/decks/standard/dimir-aggro.json",
+      "message": "All MTGGoldfish rows were MTGO events; published via mtgo-decklists."
     },
     {
       "scope": "archetype-decks",
@@ -348,14 +363,6 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
-      "format": "standard",
-      "archetype": "mono-black-midrange",
-      "path": "latest/decks/standard/mono-black-midrange.json",
-      "message": "No decks found within the last 7 days."
-    },
-    {
-      "scope": "archetype-decks",
       "status": "success",
       "format": "standard",
       "archetype": "mono-green-landfall",
@@ -453,14 +460,6 @@
       "scope": "archetype-decks",
       "status": "skipped",
       "format": "standard",
-      "archetype": "sultai-midrange",
-      "path": "latest/decks/standard/sultai-midrange.json",
-      "message": "No decks found within the last 7 days."
-    },
-    {
-      "scope": "archetype-decks",
-      "status": "skipped",
-      "format": "standard",
       "archetype": "sultai-reanimator",
       "path": "latest/decks/standard/sultai-reanimator.json",
       "message": "No decks found within the last 7 days."
@@ -550,6 +549,13 @@
       "deck_id": "7966552",
       "path": "archive/deck-texts/standard/7966552.json",
       "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "success",
+      "format": "standard",
+      "deck_id": "7966553",
+      "path": "archive/deck-texts/standard/7966553.json"
     },
     {
       "scope": "deck-text",

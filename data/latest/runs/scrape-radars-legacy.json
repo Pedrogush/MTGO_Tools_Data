@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-25T17:16:09Z",
+  "generated_at": "2026-09-25T21:41:04Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 20,
-    "success": 68
+    "skipped": 19,
+    "success": 70
   },
   "results": [
     {
@@ -191,6 +191,13 @@
       "format": "legacy",
       "archetype": "elves",
       "path": "latest/radars/legacy/elves.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "esper-control",
+      "path": "latest/radars/legacy/esper-control.json"
     },
     {
       "scope": "archetype-radar",
@@ -464,11 +471,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "sultai-tempo",
-      "path": "latest/radars/legacy/sultai-tempo.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/sultai-tempo.json"
     },
     {
       "scope": "archetype-radar",
@@ -503,6 +509,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
+      "archetype": "b",
+      "path": "latest/radars/legacy/b.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
       "archetype": "boros-initiative",
       "path": "latest/radars/legacy/boros-initiative.json"
     },
@@ -526,13 +539,6 @@
       "format": "legacy",
       "archetype": "colorless",
       "path": "latest/radars/legacy/colorless.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "esper-control",
-      "path": "latest/radars/legacy/esper-control.json"
     },
     {
       "scope": "archetype-radar",

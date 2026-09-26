@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-25T21:41:04Z",
+  "generated_at": "2026-09-26T05:03:07Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 19,
-    "success": 70
+    "skipped": 22,
+    "success": 65
   },
   "results": [
     {
@@ -57,10 +57,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "bant-stoneblade",
-      "path": "latest/radars/legacy/bant-stoneblade.json"
+      "path": "latest/radars/legacy/bant-stoneblade.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -86,10 +87,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "blue-cloudpost",
-      "path": "latest/radars/legacy/blue-cloudpost.json"
+      "path": "latest/radars/legacy/blue-cloudpost.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -325,10 +327,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "merfolk",
-      "path": "latest/radars/legacy/merfolk.json"
+      "path": "latest/radars/legacy/merfolk.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -586,13 +589,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "ubg",
-      "path": "latest/radars/legacy/ubg.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
       "archetype": "ubrg",
       "path": "latest/radars/legacy/ubrg.json"
     },
@@ -616,13 +612,6 @@
       "format": "legacy",
       "archetype": "wb",
       "path": "latest/radars/legacy/wb.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "wbg",
-      "path": "latest/radars/legacy/wbg.json"
     },
     {
       "scope": "archetype-radar",

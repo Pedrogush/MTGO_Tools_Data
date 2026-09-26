@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-25T21:41:05Z",
+  "generated_at": "2026-09-26T05:03:09Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 43,
-    "skipped": 58
+    "success": 42,
+    "skipped": 59
   },
   "results": [
     {
@@ -262,10 +262,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "esper-control",
-      "path": "latest/radars/standard/esper-control.json"
+      "path": "latest/radars/standard/esper-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -495,11 +496,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
       "archetype": "mono-black-aggro",
-      "path": "latest/radars/standard/mono-black-aggro.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/standard/mono-black-aggro.json"
     },
     {
       "scope": "archetype-radar",
@@ -518,10 +518,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "mono-red-aggro",
-      "path": "latest/radars/standard/mono-red-aggro.json"
+      "path": "latest/radars/standard/mono-red-aggro.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -758,8 +759,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
-      "archetype": "ur",
-      "path": "latest/radars/standard/ur.json"
+      "archetype": "selesnya-ouroboroid",
+      "path": "latest/radars/standard/selesnya-ouroboroid.json"
     },
     {
       "scope": "archetype-radar",

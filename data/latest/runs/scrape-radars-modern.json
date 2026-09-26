@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-25T21:41:02Z",
+  "generated_at": "2026-09-26T05:03:08Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 96,
-    "skipped": 15
+    "success": 91,
+    "skipped": 18
   },
   "results": [
     {
@@ -54,10 +54,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "azorius-blink",
-      "path": "latest/radars/modern/azorius-blink.json"
+      "path": "latest/radars/modern/azorius-blink.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -260,18 +261,18 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "gruul-basking-broodscale-combo",
-      "path": "latest/radars/modern/gruul-basking-broodscale-combo.json"
+      "path": "latest/radars/modern/gruul-basking-broodscale-combo.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "hammer-time",
-      "path": "latest/radars/modern/hammer-time.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/hammer-time.json"
     },
     {
       "scope": "archetype-radar",
@@ -531,10 +532,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "song-of-creation",
-      "path": "latest/radars/modern/song-of-creation.json"
+      "path": "latest/radars/modern/song-of-creation.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -559,10 +561,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "through-the-breach",
-      "path": "latest/radars/modern/through-the-breach.json"
+      "path": "latest/radars/modern/through-the-breach.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -673,6 +676,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
+      "archetype": "jeskai-ascendancy-combo",
+      "path": "latest/radars/modern/jeskai-ascendancy-combo.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
       "archetype": "jund",
       "path": "latest/radars/modern/jund.json"
     },
@@ -687,8 +697,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "mardu-zombies",
-      "path": "latest/radars/modern/mardu-zombies.json"
+      "archetype": "naya-burn",
+      "path": "latest/radars/modern/naya-burn.json"
     },
     {
       "scope": "archetype-radar",
@@ -701,22 +711,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "orzhov-blink",
-      "path": "latest/radars/modern/orzhov-blink.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "slivers",
       "path": "latest/radars/modern/slivers.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "ubr",
-      "path": "latest/radars/modern/ubr.json"
     },
     {
       "scope": "archetype-radar",
@@ -773,13 +769,6 @@
       "format": "modern",
       "archetype": "wubr",
       "path": "latest/radars/modern/wubr.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "wug",
-      "path": "latest/radars/modern/wug.json"
     },
     {
       "scope": "archetype-radar",

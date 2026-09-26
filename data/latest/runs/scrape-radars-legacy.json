@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-26T11:29:31Z",
+  "generated_at": "2026-09-26T16:27:06Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 21,
-    "success": 67
+    "success": 68
   },
   "results": [
     {
@@ -611,6 +611,13 @@
       "format": "legacy",
       "archetype": "ur",
       "path": "latest/radars/legacy/ur.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "w",
+      "path": "latest/radars/legacy/w.json"
     },
     {
       "scope": "archetype-radar",

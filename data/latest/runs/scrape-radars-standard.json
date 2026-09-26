@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-26T16:27:08Z",
+  "generated_at": "2026-09-26T21:14:40Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 42,
-    "skipped": 59
+    "success": 45,
+    "skipped": 58
   },
   "results": [
     {
@@ -277,11 +277,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
       "archetype": "esper-reanimator",
-      "path": "latest/radars/standard/esper-reanimator.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/standard/esper-reanimator.json"
     },
     {
       "scope": "archetype-radar",
@@ -766,8 +765,22 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
+      "archetype": "wb",
+      "path": "latest/radars/standard/wb.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
       "archetype": "wu",
       "path": "latest/radars/standard/wu.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "wur",
+      "path": "latest/radars/standard/wur.json"
     },
     {
       "scope": "format-card-pool",

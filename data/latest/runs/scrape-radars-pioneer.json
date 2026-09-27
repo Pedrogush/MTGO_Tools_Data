@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-27T17:00:51Z",
+  "generated_at": "2026-09-27T21:24:57Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 35,
-    "success": 37
+    "skipped": 34,
+    "success": 39
   },
   "results": [
     {
@@ -310,6 +310,13 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "mardu-fires-of-invention",
+      "path": "latest/radars/pioneer/mardu-fires-of-invention.json"
+    },
+    {
+      "scope": "archetype-radar",
       "status": "skipped",
       "format": "pioneer",
       "archetype": "mono-black-midrange",
@@ -370,11 +377,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "quintorius-combo",
-      "path": "latest/radars/pioneer/quintorius-combo.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pioneer/quintorius-combo.json"
     },
     {
       "scope": "archetype-radar",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-26T21:14:42Z",
+  "generated_at": "2026-09-27T05:22:26Z",
   "command": "scrape-radars-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 63,
-    "skipped": 16
+    "success": 61,
+    "skipped": 19
   },
   "results": [
     {
@@ -34,10 +34,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "azorius-gates",
-      "path": "latest/radars/pauper/azorius-gates.json"
+      "path": "latest/radars/pauper/azorius-gates.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -114,10 +115,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "devotion",
-      "path": "latest/radars/pauper/devotion.json"
+      "path": "latest/radars/pauper/devotion.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -433,10 +435,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "slivers",
-      "path": "latest/radars/pauper/slivers.json"
+      "path": "latest/radars/pauper/slivers.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -529,6 +532,13 @@
       "format": "pauper",
       "archetype": "naya-bully",
       "path": "latest/radars/pauper/naya-bully.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pauper",
+      "archetype": "ubr",
+      "path": "latest/radars/pauper/ubr.json"
     },
     {
       "scope": "archetype-radar",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-26T21:14:45Z",
+  "generated_at": "2026-09-27T05:22:25Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 93,
-    "skipped": 17
+    "success": 85,
+    "skipped": 19
   },
   "results": [
     {
@@ -357,10 +357,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "jeskai-prowess",
-      "path": "latest/radars/modern/jeskai-prowess.json"
+      "path": "latest/radars/modern/jeskai-prowess.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -399,10 +400,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "merfolk",
-      "path": "latest/radars/modern/merfolk.json"
+      "path": "latest/radars/modern/merfolk.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -633,29 +635,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "dimir-reanimator",
-      "path": "latest/radars/modern/dimir-reanimator.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "esper-control",
-      "path": "latest/radars/modern/esper-control.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "esper-murktide",
       "path": "latest/radars/modern/esper-murktide.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "grixis-murktide",
-      "path": "latest/radars/modern/grixis-murktide.json"
     },
     {
       "scope": "archetype-radar",
@@ -682,13 +663,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "jund",
-      "path": "latest/radars/modern/jund.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "mardu-blink",
       "path": "latest/radars/modern/mardu-blink.json"
     },
@@ -703,8 +677,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "naya-scapeshift",
-      "path": "latest/radars/modern/naya-scapeshift.json"
+      "archetype": "rakdos-burn",
+      "path": "latest/radars/modern/rakdos-burn.json"
     },
     {
       "scope": "archetype-radar",
@@ -733,13 +707,6 @@
       "format": "modern",
       "archetype": "ur",
       "path": "latest/radars/modern/ur.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "urg",
-      "path": "latest/radars/modern/urg.json"
     },
     {
       "scope": "archetype-radar",
@@ -775,13 +742,6 @@
       "format": "modern",
       "archetype": "wubr",
       "path": "latest/radars/modern/wubr.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "wur",
-      "path": "latest/radars/modern/wur.json"
     },
     {
       "scope": "archetype-radar",

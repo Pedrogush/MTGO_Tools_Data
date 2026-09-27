@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-27T05:23:02Z",
+  "generated_at": "2026-09-27T12:07:04Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 21,
-    "success": 68
+    "skipped": 20,
+    "success": 71
   },
   "results": [
     {
@@ -365,11 +365,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "naya-initiative",
-      "path": "latest/radars/legacy/naya-initiative.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/naya-initiative.json"
     },
     {
       "scope": "archetype-radar",
@@ -511,6 +510,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
+      "archetype": "8-cast",
+      "path": "latest/radars/legacy/8-cast.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
       "archetype": "abzan",
       "path": "latest/radars/legacy/abzan.json"
     },
@@ -639,6 +645,13 @@
       "format": "legacy",
       "archetype": "wu",
       "path": "latest/radars/legacy/wu.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "wubg",
+      "path": "latest/radars/legacy/wubg.json"
     },
     {
       "scope": "archetype-radar",

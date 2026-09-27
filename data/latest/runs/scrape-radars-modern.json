@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-27T12:07:05Z",
+  "generated_at": "2026-09-27T17:00:45Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 86,
-    "skipped": 18
+    "success": 88,
+    "skipped": 17
   },
   "results": [
     {
@@ -561,11 +561,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "through-the-breach",
-      "path": "latest/radars/modern/through-the-breach.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/through-the-breach.json"
     },
     {
       "scope": "archetype-radar",
@@ -671,6 +670,13 @@
       "format": "modern",
       "archetype": "naya-burn",
       "path": "latest/radars/modern/naya-burn.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "orzhov-blink",
+      "path": "latest/radars/modern/orzhov-blink.json"
     },
     {
       "scope": "archetype-radar",

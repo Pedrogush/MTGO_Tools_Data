@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-27T21:24:59Z",
+  "generated_at": "2026-09-28T05:28:32Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 43,
-    "skipped": 62
+    "success": 42,
+    "skipped": 63
   },
   "results": [
     {
@@ -208,10 +208,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "dimir-aggro",
-      "path": "latest/radars/standard/dimir-aggro.json"
+      "path": "latest/radars/standard/dimir-aggro.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

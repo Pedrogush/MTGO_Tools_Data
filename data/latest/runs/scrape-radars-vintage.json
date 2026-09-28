@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-27T21:25:03Z",
+  "generated_at": "2026-09-28T05:28:37Z",
   "command": "scrape-radars-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 38,
-    "skipped": 4
+    "success": 37,
+    "skipped": 5
   },
   "results": [
     {
@@ -62,10 +62,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "dimir-psychic-frog",
-      "path": "latest/radars/vintage/dimir-psychic-frog.json"
+      "path": "latest/radars/vintage/dimir-psychic-frog.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -277,8 +278,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "vintage",
-      "archetype": "ubrg",
-      "path": "latest/radars/vintage/ubrg.json"
+      "archetype": "wr",
+      "path": "latest/radars/vintage/wr.json"
     },
     {
       "scope": "archetype-radar",

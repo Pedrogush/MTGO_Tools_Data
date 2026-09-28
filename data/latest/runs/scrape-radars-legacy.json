@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-27T21:25:34Z",
+  "generated_at": "2026-09-28T05:28:35Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 21,
-    "success": 70
+    "skipped": 23,
+    "success": 65
   },
   "results": [
     {
@@ -35,11 +35,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "azorius-control",
-      "path": "latest/radars/legacy/azorius-control.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/azorius-control.json"
     },
     {
       "scope": "archetype-radar",
@@ -72,10 +71,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "beseech-storm",
-      "path": "latest/radars/legacy/beseech-storm.json"
+      "path": "latest/radars/legacy/beseech-storm.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -210,17 +210,19 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "esper-vial",
-      "path": "latest/radars/legacy/esper-vial.json"
+      "path": "latest/radars/legacy/esper-vial.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "goblins",
-      "path": "latest/radars/legacy/goblins.json"
+      "path": "latest/radars/legacy/goblins.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -291,10 +293,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "jund",
-      "path": "latest/radars/legacy/jund.json"
+      "path": "latest/radars/legacy/jund.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -342,11 +345,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "mono-black-midrange",
-      "path": "latest/radars/legacy/mono-black-midrange.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/mono-black-midrange.json"
     },
     {
       "scope": "archetype-radar",
@@ -539,13 +541,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "br",
-      "path": "latest/radars/legacy/br.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
       "archetype": "brg",
       "path": "latest/radars/legacy/brg.json"
     },
@@ -569,20 +564,6 @@
       "format": "legacy",
       "archetype": "hullday-echo-stompy",
       "path": "latest/radars/legacy/hullday-echo-stompy.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "mono-green-cloudpost",
-      "path": "latest/radars/legacy/mono-green-cloudpost.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "paradoxical-outcome",
-      "path": "latest/radars/legacy/paradoxical-outcome.json"
     },
     {
       "scope": "archetype-radar",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-27T21:24:55Z",
+  "generated_at": "2026-09-28T05:28:39Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 89,
-    "skipped": 16
+    "success": 82,
+    "skipped": 20
   },
   "results": [
     {
@@ -19,17 +19,19 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "4c-midrange",
-      "path": "latest/radars/modern/4c-midrange.json"
+      "path": "latest/radars/modern/4c-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "5c-midrange",
-      "path": "latest/radars/modern/5c-midrange.json"
+      "path": "latest/radars/modern/5c-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -233,17 +235,19 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "grixis-control",
-      "path": "latest/radars/modern/grixis-control.json"
+      "path": "latest/radars/modern/grixis-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "grixis-midrange",
-      "path": "latest/radars/modern/grixis-midrange.json"
+      "path": "latest/radars/modern/grixis-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -583,13 +587,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "4c-control",
-      "path": "latest/radars/modern/4c-control.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "abzan-midrange",
       "path": "latest/radars/modern/abzan-midrange.json"
     },
@@ -613,13 +610,6 @@
       "format": "modern",
       "archetype": "brg",
       "path": "latest/radars/modern/brg.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "calibrated-blast",
-      "path": "latest/radars/modern/calibrated-blast.json"
     },
     {
       "scope": "archetype-radar",
@@ -697,13 +687,6 @@
       "format": "modern",
       "archetype": "slivers",
       "path": "latest/radars/modern/slivers.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "ug",
-      "path": "latest/radars/modern/ug.json"
     },
     {
       "scope": "archetype-radar",

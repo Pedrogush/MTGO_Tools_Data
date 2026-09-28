@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-27T21:24:57Z",
+  "generated_at": "2026-09-28T05:28:34Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 34,
-    "success": 39
+    "skipped": 37,
+    "success": 34
   },
   "results": [
     {
@@ -414,17 +414,19 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "selesnya-angels",
-      "path": "latest/radars/pioneer/selesnya-angels.json"
+      "path": "latest/radars/pioneer/selesnya-angels.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "selesnya-company",
-      "path": "latest/radars/pioneer/selesnya-company.json"
+      "path": "latest/radars/pioneer/selesnya-company.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -459,10 +461,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "temur-indomitable-creativity",
-      "path": "latest/radars/pioneer/temur-indomitable-creativity.json"
+      "path": "latest/radars/pioneer/temur-indomitable-creativity.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -470,13 +473,6 @@
       "format": "pioneer",
       "archetype": "temur-lessons",
       "path": "latest/radars/pioneer/temur-lessons.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pioneer",
-      "archetype": "bg",
-      "path": "latest/radars/pioneer/bg.json"
     },
     {
       "scope": "archetype-radar",
@@ -491,13 +487,6 @@
       "format": "pioneer",
       "archetype": "esper-humans",
       "path": "latest/radars/pioneer/esper-humans.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pioneer",
-      "archetype": "g",
-      "path": "latest/radars/pioneer/g.json"
     },
     {
       "scope": "archetype-radar",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-29T12:56:51Z",
+  "generated_at": "2026-09-29T22:18:20Z",
   "command": "scrape-deck-texts-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "success": 22,
-    "skipped": 67
+    "skipped": 66
   },
   "results": [
     {
@@ -126,6 +126,13 @@
       "scope": "archetype-decks",
       "status": "success",
       "format": "standard",
+      "archetype": "boros-mice",
+      "path": "latest/decks/standard/boros-mice.json"
+    },
+    {
+      "scope": "archetype-decks",
+      "status": "success",
+      "format": "standard",
       "archetype": "boros-tokens",
       "path": "latest/decks/standard/boros-tokens.json"
     },
@@ -154,6 +161,14 @@
     },
     {
       "scope": "archetype-decks",
+      "status": "skipped",
+      "format": "standard",
+      "archetype": "dimir-faeries",
+      "path": "latest/decks/standard/dimir-faeries.json",
+      "message": "No decks found within the last 7 days."
+    },
+    {
+      "scope": "archetype-decks",
       "status": "success",
       "format": "standard",
       "archetype": "dimir-midrange",
@@ -173,6 +188,14 @@
       "format": "standard",
       "archetype": "esper-control",
       "path": "latest/decks/standard/esper-control.json",
+      "message": "No decks found within the last 7 days."
+    },
+    {
+      "scope": "archetype-decks",
+      "status": "skipped",
+      "format": "standard",
+      "archetype": "esper-midrange",
+      "path": "latest/decks/standard/esper-midrange.json",
       "message": "No decks found within the last 7 days."
     },
     {
@@ -201,25 +224,10 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "success",
-      "format": "standard",
-      "archetype": "grixis-discard",
-      "path": "latest/decks/standard/grixis-discard.json"
-    },
-    {
-      "scope": "archetype-decks",
       "status": "skipped",
       "format": "standard",
       "archetype": "gruul-landfall",
       "path": "latest/decks/standard/gruul-landfall.json",
-      "message": "No decks found within the last 7 days."
-    },
-    {
-      "scope": "archetype-decks",
-      "status": "skipped",
-      "format": "standard",
-      "archetype": "gruul-leyline-aggro",
-      "path": "latest/decks/standard/gruul-leyline-aggro.json",
       "message": "No decks found within the last 7 days."
     },
     {
@@ -332,13 +340,6 @@
       "scope": "archetype-decks",
       "status": "success",
       "format": "standard",
-      "archetype": "mardu-burn",
-      "path": "latest/decks/standard/mardu-burn.json"
-    },
-    {
-      "scope": "archetype-decks",
-      "status": "success",
-      "format": "standard",
       "archetype": "mardu-discard",
       "path": "latest/decks/standard/mardu-discard.json"
     },
@@ -348,6 +349,14 @@
       "format": "standard",
       "archetype": "mono-black-aggro",
       "path": "latest/decks/standard/mono-black-aggro.json",
+      "message": "No decks found within the last 7 days."
+    },
+    {
+      "scope": "archetype-decks",
+      "status": "skipped",
+      "format": "standard",
+      "archetype": "mono-black-midrange",
+      "path": "latest/decks/standard/mono-black-midrange.json",
       "message": "No decks found within the last 7 days."
     },
     {
@@ -371,14 +380,6 @@
       "format": "standard",
       "archetype": "mono-red-leyline-aggro",
       "path": "latest/decks/standard/mono-red-leyline-aggro.json",
-      "message": "No decks found within the last 7 days."
-    },
-    {
-      "scope": "archetype-decks",
-      "status": "skipped",
-      "format": "standard",
-      "archetype": "mono-white-momo",
-      "path": "latest/decks/standard/mono-white-momo.json",
       "message": "No decks found within the last 7 days."
     },
     {
@@ -623,14 +624,6 @@
       "scope": "deck-text",
       "status": "skipped",
       "format": "standard",
-      "deck_id": "7974190",
-      "path": "archive/deck-texts/standard/7974190.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "standard",
       "deck_id": "7974191",
       "path": "archive/deck-texts/standard/7974191.json",
       "message": "Reused existing published deck-text blob."
@@ -687,17 +680,16 @@
       "scope": "deck-text",
       "status": "skipped",
       "format": "standard",
-      "deck_id": "7974227",
-      "path": "archive/deck-texts/standard/7974227.json",
+      "deck_id": "7974228",
+      "path": "archive/deck-texts/standard/7974228.json",
       "message": "Reused existing published deck-text blob."
     },
     {
       "scope": "deck-text",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
-      "deck_id": "7974228",
-      "path": "archive/deck-texts/standard/7974228.json",
-      "message": "Reused existing published deck-text blob."
+      "deck_id": "7974229",
+      "path": "archive/deck-texts/standard/7974229.json"
     }
   ]
 }

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-29T12:57:36Z",
+  "generated_at": "2026-09-29T22:20:31Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 20,
-    "success": 69
+    "skipped": 17,
+    "success": 72
   },
   "results": [
     {
@@ -104,6 +104,13 @@
       "format": "legacy",
       "archetype": "boros-energy",
       "path": "latest/radars/legacy/boros-energy.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "boros-initiative",
+      "path": "latest/radars/legacy/boros-initiative.json"
     },
     {
       "scope": "archetype-radar",
@@ -290,11 +297,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "jund",
-      "path": "latest/radars/legacy/jund.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/jund.json"
     },
     {
       "scope": "archetype-radar",
@@ -386,11 +392,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "ninjas",
-      "path": "latest/radars/legacy/ninjas.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/ninjas.json"
     },
     {
       "scope": "archetype-radar",
@@ -436,11 +441,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "saga-storm",
-      "path": "latest/radars/legacy/saga-storm.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/saga-storm.json"
     },
     {
       "scope": "archetype-radar",
@@ -526,13 +530,6 @@
       "format": "legacy",
       "archetype": "b",
       "path": "latest/radars/legacy/b.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "boros-initiative",
-      "path": "latest/radars/legacy/boros-initiative.json"
     },
     {
       "scope": "archetype-radar",

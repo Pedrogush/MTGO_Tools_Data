@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-29T12:57:40Z",
+  "generated_at": "2026-09-29T22:20:29Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 46,
-    "skipped": 61
+    "success": 48,
+    "skipped": 60
   },
   "results": [
     {
@@ -133,11 +133,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
       "archetype": "bant-airbending-combo",
-      "path": "latest/radars/standard/bant-airbending-combo.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/standard/bant-airbending-combo.json"
     },
     {
       "scope": "archetype-radar",
@@ -190,6 +189,13 @@
       "format": "standard",
       "archetype": "boros-manufacturing",
       "path": "latest/radars/standard/boros-manufacturing.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "boros-mice",
+      "path": "latest/radars/standard/boros-mice.json"
     },
     {
       "scope": "archetype-radar",

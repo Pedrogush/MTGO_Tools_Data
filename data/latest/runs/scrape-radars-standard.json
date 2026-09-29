@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-28T23:25:49Z",
+  "generated_at": "2026-09-29T05:48:07Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 44,
-    "skipped": 62
+    "success": 46,
+    "skipped": 61
   },
   "results": [
     {
@@ -354,11 +354,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
       "archetype": "gruul-leyline-aggro",
-      "path": "latest/radars/standard/gruul-leyline-aggro.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/standard/gruul-leyline-aggro.json"
     },
     {
       "scope": "archetype-radar",
@@ -785,6 +784,13 @@
       "format": "standard",
       "archetype": "brg",
       "path": "latest/radars/standard/brg.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "orzhov-aristocrats",
+      "path": "latest/radars/standard/orzhov-aristocrats.json"
     },
     {
       "scope": "archetype-radar",

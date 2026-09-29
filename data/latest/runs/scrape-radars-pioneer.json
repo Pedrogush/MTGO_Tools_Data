@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-28T23:25:53Z",
+  "generated_at": "2026-09-29T05:48:09Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 37,
-    "success": 34
+    "success": 33
   },
   "results": [
     {
@@ -280,18 +280,18 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "jeskai-lessons",
-      "path": "latest/radars/pioneer/jeskai-lessons.json"
+      "path": "latest/radars/pioneer/jeskai-lessons.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "jund-artifact-sacrifice",
-      "path": "latest/radars/pioneer/jund-artifact-sacrifice.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pioneer/jund-artifact-sacrifice.json"
     },
     {
       "scope": "archetype-radar",
@@ -303,10 +303,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "jund-sacrifice",
-      "path": "latest/radars/pioneer/jund-sacrifice.json"
+      "path": "latest/radars/pioneer/jund-sacrifice.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -317,11 +318,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "mono-black-midrange",
-      "path": "latest/radars/pioneer/mono-black-midrange.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pioneer/mono-black-midrange.json"
     },
     {
       "scope": "archetype-radar",
@@ -400,10 +400,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "rakdos-midrange",
-      "path": "latest/radars/pioneer/rakdos-midrange.json"
+      "path": "latest/radars/pioneer/rakdos-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -422,11 +423,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "selesnya-company",
-      "path": "latest/radars/pioneer/selesnya-company.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pioneer/selesnya-company.json"
     },
     {
       "scope": "archetype-radar",
@@ -492,15 +492,15 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pioneer",
-      "archetype": "ub",
-      "path": "latest/radars/pioneer/ub.json"
+      "archetype": "mono-red-aggro",
+      "path": "latest/radars/pioneer/mono-red-aggro.json"
     },
     {
       "scope": "archetype-radar",
       "status": "success",
       "format": "pioneer",
-      "archetype": "ug",
-      "path": "latest/radars/pioneer/ug.json"
+      "archetype": "ub",
+      "path": "latest/radars/pioneer/ub.json"
     },
     {
       "scope": "archetype-radar",
@@ -527,15 +527,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pioneer",
-      "archetype": "wub",
-      "path": "latest/radars/pioneer/wub.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pioneer",
-      "archetype": "wubg",
-      "path": "latest/radars/pioneer/wubg.json"
+      "archetype": "wubr",
+      "path": "latest/radars/pioneer/wubr.json"
     },
     {
       "scope": "format-card-pool",

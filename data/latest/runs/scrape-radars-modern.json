@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-28T23:25:54Z",
+  "generated_at": "2026-09-29T05:48:00Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 90,
-    "skipped": 17
+    "success": 84,
+    "skipped": 19
   },
   "results": [
     {
@@ -468,10 +468,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "mono-red-burn",
-      "path": "latest/radars/modern/mono-red-burn.json"
+      "path": "latest/radars/modern/mono-red-burn.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -490,10 +491,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "orzhov-midrange",
-      "path": "latest/radars/modern/orzhov-midrange.json"
+      "path": "latest/radars/modern/orzhov-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -626,20 +628,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "esper-murktide",
-      "path": "latest/radars/modern/esper-murktide.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "g",
-      "path": "latest/radars/modern/g.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "gruul-aggro",
       "path": "latest/radars/modern/gruul-aggro.json"
     },
@@ -689,13 +677,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "slivers",
-      "path": "latest/radars/modern/slivers.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "ubrg",
       "path": "latest/radars/modern/ubrg.json"
     },
@@ -705,13 +686,6 @@
       "format": "modern",
       "archetype": "ur",
       "path": "latest/radars/modern/ur.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "urg",
-      "path": "latest/radars/modern/urg.json"
     },
     {
       "scope": "archetype-radar",

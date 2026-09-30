@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-29T22:20:31Z",
+  "generated_at": "2026-09-30T05:36:48Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 17,
-    "success": 72
+    "skipped": 19,
+    "success": 68
   },
   "results": [
     {
@@ -164,10 +164,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "dimir-control",
-      "path": "latest/radars/legacy/dimir-control.json"
+      "path": "latest/radars/legacy/dimir-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -230,10 +231,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "grixis-control",
-      "path": "latest/radars/legacy/grixis-control.json"
+      "path": "latest/radars/legacy/grixis-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -521,13 +523,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "abzan",
-      "path": "latest/radars/legacy/abzan.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
       "archetype": "b",
       "path": "latest/radars/legacy/b.json"
     },
@@ -579,13 +574,6 @@
       "format": "legacy",
       "archetype": "ub",
       "path": "latest/radars/legacy/ub.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "ubrg",
-      "path": "latest/radars/legacy/ubrg.json"
     },
     {
       "scope": "archetype-radar",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-29T22:20:27Z",
+  "generated_at": "2026-09-30T05:36:45Z",
   "command": "scrape-radars-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 37,
-    "skipped": 5
+    "success": 36,
+    "skipped": 6
   },
   "results": [
     {
@@ -184,10 +184,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "orzhov-initiative",
-      "path": "latest/radars/vintage/orzhov-initiative.json"
+      "path": "latest/radars/vintage/orzhov-initiative.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

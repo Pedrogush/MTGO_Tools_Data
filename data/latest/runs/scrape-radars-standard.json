@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-29T22:20:29Z",
+  "generated_at": "2026-09-30T05:36:51Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "success": 48,
-    "skipped": 60
+    "skipped": 62
   },
   "results": [
     {
@@ -148,10 +148,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "boros-aggro",
-      "path": "latest/radars/standard/boros-aggro.json"
+      "path": "latest/radars/standard/boros-aggro.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -315,10 +316,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "golgari-midrange",
-      "path": "latest/radars/standard/golgari-midrange.json"
+      "path": "latest/radars/standard/golgari-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -774,8 +776,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
-      "archetype": "4c-artifacts",
-      "path": "latest/radars/standard/4c-artifacts.json"
+      "archetype": "b",
+      "path": "latest/radars/standard/b.json"
     },
     {
       "scope": "archetype-radar",
@@ -783,6 +785,13 @@
       "format": "standard",
       "archetype": "bant-control",
       "path": "latest/radars/standard/bant-control.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "bg",
+      "path": "latest/radars/standard/bg.json"
     },
     {
       "scope": "archetype-radar",
@@ -802,15 +811,22 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
-      "archetype": "wb",
-      "path": "latest/radars/standard/wb.json"
+      "archetype": "rakdos-lizards",
+      "path": "latest/radars/standard/rakdos-lizards.json"
     },
     {
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
-      "archetype": "wu",
-      "path": "latest/radars/standard/wu.json"
+      "archetype": "ur",
+      "path": "latest/radars/standard/ur.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "wb",
+      "path": "latest/radars/standard/wb.json"
     },
     {
       "scope": "archetype-radar",

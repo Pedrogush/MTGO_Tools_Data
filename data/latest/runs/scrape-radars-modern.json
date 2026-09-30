@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-29T22:20:36Z",
+  "generated_at": "2026-09-30T05:36:46Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 85,
-    "skipped": 18
+    "success": 79,
+    "skipped": 20
   },
   "results": [
     {
@@ -206,17 +206,19 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "esper-reanimator",
-      "path": "latest/radars/modern/esper-reanimator.json"
+      "path": "latest/radars/modern/esper-reanimator.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "generic-ragavan",
-      "path": "latest/radars/modern/generic-ragavan.json"
+      "path": "latest/radars/modern/generic-ragavan.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -592,13 +594,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "abzan-midrange",
-      "path": "latest/radars/modern/abzan-midrange.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "bant-blink",
       "path": "latest/radars/modern/bant-blink.json"
     },
@@ -606,22 +601,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "bg",
-      "path": "latest/radars/modern/bg.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "brg",
       "path": "latest/radars/modern/brg.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "crashing-footfalls",
-      "path": "latest/radars/modern/crashing-footfalls.json"
     },
     {
       "scope": "archetype-radar",
@@ -720,13 +701,6 @@
       "format": "modern",
       "archetype": "wu",
       "path": "latest/radars/modern/wu.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "wubr",
-      "path": "latest/radars/modern/wubr.json"
     },
     {
       "scope": "archetype-radar",

@@ -1,7 +1,7 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-30T12:38:50Z",
+  "generated_at": "2026-09-30T22:18:38Z",
   "command": "scrape-deck-texts-legacy",
   "status": "success",
   "max_stale_hours": 24,
@@ -18,6 +18,14 @@
     },
     {
       "scope": "archetype-decks",
+      "status": "skipped",
+      "format": "legacy",
+      "archetype": "8-cast",
+      "path": "latest/decks/legacy/8-cast.json",
+      "message": "No decks found within the last 7 days."
+    },
+    {
+      "scope": "archetype-decks",
       "status": "success",
       "format": "legacy",
       "archetype": "affinity-stompy",
@@ -29,14 +37,6 @@
       "format": "legacy",
       "archetype": "aluren",
       "path": "latest/decks/legacy/aluren.json"
-    },
-    {
-      "scope": "archetype-decks",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "azorius-control",
-      "path": "latest/decks/legacy/azorius-control.json",
-      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",

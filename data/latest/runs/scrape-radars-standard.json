@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-09-30T12:39:43Z",
+  "generated_at": "2026-09-30T22:19:31Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "success": 48,
-    "skipped": 62
+    "skipped": 63
   },
   "results": [
     {
@@ -346,6 +346,13 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "gruul-aggro",
+      "path": "latest/radars/standard/gruul-aggro.json"
+    },
+    {
+      "scope": "archetype-radar",
       "status": "skipped",
       "format": "standard",
       "archetype": "gruul-delirium",
@@ -362,10 +369,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "gruul-leyline-aggro",
-      "path": "latest/radars/standard/gruul-leyline-aggro.json"
+      "path": "latest/radars/standard/gruul-leyline-aggro.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-01T13:21:05Z",
+  "generated_at": "2026-10-01T22:43:22Z",
   "command": "scrape-deck-texts-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "success": 33,
-    "skipped": 93
+    "skipped": 92
   },
   "results": [
     {
@@ -15,14 +15,6 @@
       "status": "success",
       "format": "legacy",
       "path": "latest/archetypes/legacy.json"
-    },
-    {
-      "scope": "archetype-decks",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "8-cast",
-      "path": "latest/decks/legacy/8-cast.json",
-      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
@@ -37,6 +29,14 @@
       "format": "legacy",
       "archetype": "aluren",
       "path": "latest/decks/legacy/aluren.json"
+    },
+    {
+      "scope": "archetype-decks",
+      "status": "skipped",
+      "format": "legacy",
+      "archetype": "azorius-control",
+      "path": "latest/decks/legacy/azorius-control.json",
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
@@ -221,8 +221,8 @@
       "scope": "archetype-decks",
       "status": "skipped",
       "format": "legacy",
-      "archetype": "grixis-tempo",
-      "path": "latest/decks/legacy/grixis-tempo.json",
+      "archetype": "grixis-control",
+      "path": "latest/decks/legacy/grixis-control.json",
       "message": "No decks found within the last 7 days."
     },
     {
@@ -253,6 +253,14 @@
       "format": "legacy",
       "archetype": "jeskai-control",
       "path": "latest/decks/legacy/jeskai-control.json"
+    },
+    {
+      "scope": "archetype-decks",
+      "status": "skipped",
+      "format": "legacy",
+      "archetype": "jeskai-stoneblade",
+      "path": "latest/decks/legacy/jeskai-stoneblade.json",
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
@@ -325,18 +333,10 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "nic-fit",
-      "path": "latest/decks/legacy/nic-fit.json",
-      "message": "No decks found within the last 7 days."
-    },
-    {
-      "scope": "archetype-decks",
       "status": "success",
       "format": "legacy",
-      "archetype": "ninjas",
-      "path": "latest/decks/legacy/ninjas.json"
+      "archetype": "necrodominance-combo",
+      "path": "latest/decks/legacy/necrodominance-combo.json"
     },
     {
       "scope": "archetype-decks",
@@ -500,6 +500,14 @@
       "scope": "deck-text",
       "status": "skipped",
       "format": "legacy",
+      "deck_id": "7972968",
+      "path": "archive/deck-texts/legacy/7972968.json",
+      "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "skipped",
+      "format": "legacy",
       "deck_id": "7972969",
       "path": "archive/deck-texts/legacy/7972969.json",
       "message": "Reused existing published deck-text blob."
@@ -518,14 +526,6 @@
       "format": "legacy",
       "deck_id": "7972972",
       "path": "archive/deck-texts/legacy/7972972.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "legacy",
-      "deck_id": "7972976",
-      "path": "archive/deck-texts/legacy/7972976.json",
       "message": "Reused existing published deck-text blob."
     },
     {
@@ -726,14 +726,6 @@
       "format": "legacy",
       "deck_id": "7974202",
       "path": "archive/deck-texts/legacy/7974202.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "legacy",
-      "deck_id": "7974203",
-      "path": "archive/deck-texts/legacy/7974203.json",
       "message": "Reused existing published deck-text blob."
     },
     {

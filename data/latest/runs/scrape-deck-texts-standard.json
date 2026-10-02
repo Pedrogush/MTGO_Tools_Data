@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-02T12:39:50Z",
+  "generated_at": "2026-10-02T22:16:43Z",
   "command": "scrape-deck-texts-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 22,
-    "skipped": 67
+    "success": 23,
+    "skipped": 66
   },
   "results": [
     {
@@ -45,6 +45,14 @@
       "format": "standard",
       "archetype": "4c-reanimator",
       "path": "latest/decks/standard/4c-reanimator.json",
+      "message": "No decks found within the last 7 days."
+    },
+    {
+      "scope": "archetype-decks",
+      "status": "skipped",
+      "format": "standard",
+      "archetype": "5c-control",
+      "path": "latest/decks/standard/5c-control.json",
       "message": "No decks found within the last 7 days."
     },
     {
@@ -121,13 +129,6 @@
       "archetype": "boros-dwarves",
       "path": "latest/decks/standard/boros-dwarves.json",
       "message": "No decks found within the last 7 days."
-    },
-    {
-      "scope": "archetype-decks",
-      "status": "success",
-      "format": "standard",
-      "archetype": "boros-mice",
-      "path": "latest/decks/standard/boros-mice.json"
     },
     {
       "scope": "archetype-decks",
@@ -217,8 +218,8 @@
       "scope": "archetype-decks",
       "status": "skipped",
       "format": "standard",
-      "archetype": "gruul-aggro",
-      "path": "latest/decks/standard/gruul-aggro.json",
+      "archetype": "gruul-delirium",
+      "path": "latest/decks/standard/gruul-delirium.json",
       "message": "No decks found within the last 7 days."
     },
     {
@@ -383,6 +384,13 @@
     },
     {
       "scope": "archetype-decks",
+      "status": "success",
+      "format": "standard",
+      "archetype": "orzhov-control",
+      "path": "latest/decks/standard/orzhov-control.json"
+    },
+    {
+      "scope": "archetype-decks",
       "status": "skipped",
       "format": "standard",
       "archetype": "orzhov-midrange",
@@ -439,14 +447,6 @@
       "scope": "archetype-decks",
       "status": "skipped",
       "format": "standard",
-      "archetype": "selesnya-rabbits",
-      "path": "latest/decks/standard/selesnya-rabbits.json",
-      "message": "No decks found within the last 7 days."
-    },
-    {
-      "scope": "archetype-decks",
-      "status": "skipped",
-      "format": "standard",
       "archetype": "simic-landfall",
       "path": "latest/decks/standard/simic-landfall.json",
       "message": "No decks found within the last 7 days."
@@ -498,6 +498,13 @@
       "deck_id": "7974171",
       "path": "archive/deck-texts/standard/7974171.json",
       "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "success",
+      "format": "standard",
+      "deck_id": "7974172",
+      "path": "archive/deck-texts/standard/7974172.json"
     },
     {
       "scope": "deck-text",
@@ -689,14 +696,6 @@
       "format": "standard",
       "deck_id": "7974228",
       "path": "archive/deck-texts/standard/7974228.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "standard",
-      "deck_id": "7974229",
-      "path": "archive/deck-texts/standard/7974229.json",
       "message": "Reused existing published deck-text blob."
     }
   ]

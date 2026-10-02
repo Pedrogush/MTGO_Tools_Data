@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-02T12:40:43Z",
+  "generated_at": "2026-10-02T22:22:44Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 32,
-    "success": 40
+    "success": 41
   },
   "results": [
     {
@@ -482,6 +482,13 @@
       "format": "pioneer",
       "archetype": "brg",
       "path": "latest/radars/pioneer/brg.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "dimir-control",
+      "path": "latest/radars/pioneer/dimir-control.json"
     },
     {
       "scope": "archetype-radar",

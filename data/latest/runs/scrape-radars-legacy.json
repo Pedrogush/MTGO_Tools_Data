@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-01T22:45:01Z",
+  "generated_at": "2026-10-02T05:42:47Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "success": 64,
-    "skipped": 20
+    "skipped": 19
   },
   "results": [
     {
@@ -492,11 +492,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "sultai-tempo",
-      "path": "latest/radars/legacy/sultai-tempo.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/sultai-tempo.json"
     },
     {
       "scope": "archetype-radar",
@@ -575,13 +574,6 @@
       "format": "legacy",
       "archetype": "w",
       "path": "latest/radars/legacy/w.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "wb",
-      "path": "latest/radars/legacy/wb.json"
     },
     {
       "scope": "archetype-radar",

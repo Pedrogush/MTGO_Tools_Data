@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-01T22:45:07Z",
+  "generated_at": "2026-10-02T05:42:45Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "success": 82,
-    "skipped": 20
+    "skipped": 21
   },
   "results": [
     {
@@ -251,10 +251,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "grixis-prowess",
-      "path": "latest/radars/modern/grixis-prowess.json"
+      "path": "latest/radars/modern/grixis-prowess.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -589,6 +590,13 @@
       "format": "modern",
       "archetype": "yawgmoth",
       "path": "latest/radars/modern/yawgmoth.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "b",
+      "path": "latest/radars/modern/b.json"
     },
     {
       "scope": "archetype-radar",

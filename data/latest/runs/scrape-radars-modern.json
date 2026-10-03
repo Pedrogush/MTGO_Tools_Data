@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-02T22:22:53Z",
+  "generated_at": "2026-10-03T05:22:41Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 83,
-    "skipped": 21
+    "success": 78,
+    "skipped": 22
   },
   "results": [
     {
@@ -55,11 +55,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "azorius-blink",
-      "path": "latest/radars/modern/azorius-blink.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/azorius-blink.json"
     },
     {
       "scope": "archetype-radar",
@@ -341,17 +340,19 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "jeskai-ascendancy-combo",
-      "path": "latest/radars/modern/jeskai-ascendancy-combo.json"
+      "path": "latest/radars/modern/jeskai-ascendancy-combo.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "jeskai-blink",
-      "path": "latest/radars/modern/jeskai-blink.json"
+      "path": "latest/radars/modern/jeskai-blink.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -630,13 +631,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "gruul-aggro",
-      "path": "latest/radars/modern/gruul-aggro.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "izzet",
       "path": "latest/radars/modern/izzet.json"
     },
@@ -651,13 +645,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "naya-burn",
-      "path": "latest/radars/modern/naya-burn.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "orzhov-blink",
       "path": "latest/radars/modern/orzhov-blink.json"
     },
@@ -667,13 +654,6 @@
       "format": "modern",
       "archetype": "rakdos-burn",
       "path": "latest/radars/modern/rakdos-burn.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "rakdos-delirium",
-      "path": "latest/radars/modern/rakdos-delirium.json"
     },
     {
       "scope": "archetype-radar",
@@ -721,13 +701,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "wg",
-      "path": "latest/radars/modern/wg.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "wr",
       "path": "latest/radars/modern/wr.json"
     },
@@ -742,15 +715,15 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "wug",
-      "path": "latest/radars/modern/wug.json"
+      "archetype": "wub",
+      "path": "latest/radars/modern/wub.json"
     },
     {
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "wurg",
-      "path": "latest/radars/modern/wurg.json"
+      "archetype": "wug",
+      "path": "latest/radars/modern/wug.json"
     },
     {
       "scope": "format-card-pool",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-02T22:22:42Z",
+  "generated_at": "2026-10-03T05:22:46Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 52,
-    "skipped": 62
+    "success": 54,
+    "skipped": 61
   },
   "results": [
     {
@@ -119,10 +119,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "azorius-tempo",
-      "path": "latest/radars/standard/azorius-tempo.json"
+      "path": "latest/radars/standard/azorius-tempo.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -317,11 +318,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
       "archetype": "golgari-midrange",
-      "path": "latest/radars/standard/golgari-midrange.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/standard/golgari-midrange.json"
     },
     {
       "scope": "archetype-radar",
@@ -392,11 +392,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
       "archetype": "izzet-control",
-      "path": "latest/radars/standard/izzet-control.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/standard/izzet-control.json"
     },
     {
       "scope": "archetype-radar",
@@ -511,10 +510,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "mardu-burn",
-      "path": "latest/radars/standard/mardu-burn.json"
+      "path": "latest/radars/standard/mardu-burn.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -724,11 +724,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
       "archetype": "sultai-reanimator",
-      "path": "latest/radars/standard/sultai-reanimator.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/standard/sultai-reanimator.json"
     },
     {
       "scope": "archetype-radar",
@@ -820,6 +819,13 @@
       "format": "standard",
       "archetype": "brg",
       "path": "latest/radars/standard/brg.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "golgari-self-mill",
+      "path": "latest/radars/standard/golgari-self-mill.json"
     },
     {
       "scope": "archetype-radar",

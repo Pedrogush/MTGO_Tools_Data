@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-03T05:22:41Z",
+  "generated_at": "2026-10-03T11:43:46Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 78,
-    "skipped": 22
+    "success": 80,
+    "skipped": 21
   },
   "results": [
     {
@@ -19,11 +19,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "4c-midrange",
-      "path": "latest/radars/modern/4c-midrange.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/4c-midrange.json"
     },
     {
       "scope": "archetype-radar",
@@ -668,6 +667,13 @@
       "format": "modern",
       "archetype": "titan-shift",
       "path": "latest/radars/modern/titan-shift.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "ub",
+      "path": "latest/radars/modern/ub.json"
     },
     {
       "scope": "archetype-radar",

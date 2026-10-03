@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-03T16:20:52Z",
+  "generated_at": "2026-10-03T21:21:29Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 54,
-    "skipped": 61
+    "success": 52,
+    "skipped": 63
   },
   "results": [
     {
@@ -188,17 +188,19 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "boros-manufacturing",
-      "path": "latest/radars/standard/boros-manufacturing.json"
+      "path": "latest/radars/standard/boros-manufacturing.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "boros-mice",
-      "path": "latest/radars/standard/boros-mice.json"
+      "path": "latest/radars/standard/boros-mice.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

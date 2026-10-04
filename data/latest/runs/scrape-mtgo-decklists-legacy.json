@@ -1,125 +1,20 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-04T12:25:20Z",
+  "generated_at": "2026-10-04T21:30:03Z",
   "command": "scrape-mtgo-decklists-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 4,
-    "cached": 12
+    "stale-fallback": 1
   },
   "results": [
     {
-      "scope": "mtgo-event",
-      "status": "success",
-      "format": "legacy",
-      "path": "archive/mtgo-decklists/legacy/n666375798.json",
-      "message": "Cached 9/9 decks."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "success",
-      "format": "legacy",
-      "path": "archive/mtgo-decklists/legacy/12855487.json",
-      "message": "Cached 30/30 decks."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "cached",
-      "format": "legacy",
-      "path": "archive/mtgo-decklists/legacy/12855477.json",
-      "message": "Loaded 32 decks from archive."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "success",
-      "format": "legacy",
-      "path": "archive/mtgo-decklists/legacy/n1869521263.json",
-      "message": "Cached 27/27 decks."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "cached",
-      "format": "legacy",
-      "path": "archive/mtgo-decklists/legacy/12855473.json",
-      "message": "Loaded 32 decks from archive."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "cached",
-      "format": "legacy",
-      "path": "archive/mtgo-decklists/legacy/n2109342946.json",
-      "message": "Loaded 20 decks from archive."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "cached",
-      "format": "legacy",
-      "path": "archive/mtgo-decklists/legacy/n285504205.json",
-      "message": "Loaded 22 decks from archive."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "cached",
-      "format": "legacy",
-      "path": "archive/mtgo-decklists/legacy/12855455.json",
-      "message": "Loaded 32 decks from archive."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "cached",
-      "format": "legacy",
-      "path": "archive/mtgo-decklists/legacy/n929578933.json",
-      "message": "Loaded 13 decks from archive."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "cached",
-      "format": "legacy",
-      "path": "archive/mtgo-decklists/legacy/12854952.json",
-      "message": "Loaded 32 decks from archive."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "cached",
-      "format": "legacy",
-      "path": "archive/mtgo-decklists/legacy/n276051848.json",
-      "message": "Loaded 20 decks from archive."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "cached",
-      "format": "legacy",
-      "path": "archive/mtgo-decklists/legacy/n1116006381.json",
-      "message": "Loaded 4 decks from archive."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "cached",
-      "format": "legacy",
-      "path": "archive/mtgo-decklists/legacy/n2142737679.json",
-      "message": "Loaded 16 decks from archive."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "cached",
-      "format": "legacy",
-      "path": "archive/mtgo-decklists/legacy/12854934.json",
-      "message": "Loaded 32 decks from archive."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "cached",
-      "format": "legacy",
-      "path": "archive/mtgo-decklists/legacy/n1822343016.json",
-      "message": "Loaded 23 decks from archive."
-    },
-    {
       "scope": "mtgo-decklists",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "legacy",
-      "path": "latest/mtgo-decklists/legacy.json"
+      "path": "latest/mtgo-decklists/legacy.json",
+      "message": "HTTP 500 from https://api.videreproject.com/events"
     }
   ]
 }

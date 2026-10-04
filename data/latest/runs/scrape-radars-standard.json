@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-04T12:26:05Z",
+  "generated_at": "2026-10-04T21:55:27Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 50,
-    "skipped": 65
+    "success": 49,
+    "skipped": 67
   },
   "results": [
     {
@@ -329,8 +329,16 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
+      "archetype": "golgari-self-mill",
+      "path": "latest/radars/standard/golgari-self-mill.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "standard",
       "archetype": "grixis-discard",
-      "path": "latest/radars/standard/grixis-discard.json"
+      "path": "latest/radars/standard/grixis-discard.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -539,6 +547,14 @@
       "format": "standard",
       "archetype": "mono-black-midrange",
       "path": "latest/radars/standard/mono-black-midrange.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "standard",
+      "archetype": "mono-green-aggro",
+      "path": "latest/radars/standard/mono-green-aggro.json",
       "message": "No published decks were available for radar generation."
     },
     {
@@ -823,13 +839,6 @@
       "format": "standard",
       "archetype": "brg",
       "path": "latest/radars/standard/brg.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
-      "archetype": "golgari-self-mill",
-      "path": "latest/radars/standard/golgari-self-mill.json"
     },
     {
       "scope": "archetype-radar",

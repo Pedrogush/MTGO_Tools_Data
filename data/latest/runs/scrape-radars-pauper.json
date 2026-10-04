@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-03T21:21:32Z",
+  "generated_at": "2026-10-04T05:58:35Z",
   "command": "scrape-radars-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 62,
-    "skipped": 22
+    "success": 58,
+    "skipped": 24
   },
   "results": [
     {
@@ -19,10 +19,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "4c-ephemerate",
-      "path": "latest/radars/pauper/4c-ephemerate.json"
+      "path": "latest/radars/pauper/4c-ephemerate.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -345,10 +346,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "kiln-fiend",
-      "path": "latest/radars/pauper/kiln-fiend.json"
+      "path": "latest/radars/pauper/kiln-fiend.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -540,22 +542,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pauper",
-      "archetype": "grixis-faeries",
-      "path": "latest/radars/pauper/grixis-faeries.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pauper",
       "archetype": "ub",
       "path": "latest/radars/pauper/ub.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pauper",
-      "archetype": "ubr",
-      "path": "latest/radars/pauper/ubr.json"
     },
     {
       "scope": "archetype-radar",

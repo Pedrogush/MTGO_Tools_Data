@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-03T21:21:32Z",
+  "generated_at": "2026-10-04T05:58:44Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 66,
-    "skipped": 19
+    "success": 62,
+    "skipped": 23
   },
   "results": [
     {
@@ -92,10 +92,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "blue-cloudpost",
-      "path": "latest/radars/legacy/blue-cloudpost.json"
+      "path": "latest/radars/legacy/blue-cloudpost.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -114,10 +115,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "boros-initiative",
-      "path": "latest/radars/legacy/boros-initiative.json"
+      "path": "latest/radars/legacy/boros-initiative.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -150,10 +152,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "death-and-taxes-60-card",
-      "path": "latest/radars/legacy/death-and-taxes-60-card.json"
+      "path": "latest/radars/legacy/death-and-taxes-60-card.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -401,10 +404,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "ninjas",
-      "path": "latest/radars/legacy/ninjas.json"
+      "path": "latest/radars/legacy/ninjas.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -586,8 +590,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "wg",
-      "path": "latest/radars/legacy/wg.json"
+      "archetype": "wb",
+      "path": "latest/radars/legacy/wb.json"
     },
     {
       "scope": "archetype-radar",
@@ -607,8 +611,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "wubg",
-      "path": "latest/radars/legacy/wubg.json"
+      "archetype": "wubrg",
+      "path": "latest/radars/legacy/wubrg.json"
     },
     {
       "scope": "archetype-radar",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-03T21:21:27Z",
+  "generated_at": "2026-10-04T05:58:37Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 81,
-    "skipped": 20
+    "success": 82,
+    "skipped": 19
   },
   "results": [
     {
@@ -204,11 +204,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "esper-reanimator",
-      "path": "latest/radars/modern/esper-reanimator.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/esper-reanimator.json"
     },
     {
       "scope": "archetype-radar",
@@ -636,13 +635,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "mardu-blink",
-      "path": "latest/radars/modern/mardu-blink.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "orzhov-blink",
       "path": "latest/radars/modern/orzhov-blink.json"
     },
@@ -687,6 +679,13 @@
       "format": "modern",
       "archetype": "ur",
       "path": "latest/radars/modern/ur.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "wb",
+      "path": "latest/radars/modern/wb.json"
     },
     {
       "scope": "archetype-radar",

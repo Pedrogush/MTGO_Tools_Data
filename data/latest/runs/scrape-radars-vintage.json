@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-03T21:21:29Z",
+  "generated_at": "2026-10-04T05:58:40Z",
   "command": "scrape-radars-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 14,
-    "success": 27
+    "success": 28
   },
   "results": [
     {
@@ -73,11 +73,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "vintage",
       "archetype": "doomsday",
-      "path": "latest/radars/vintage/doomsday.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/vintage/doomsday.json"
     },
     {
       "scope": "archetype-radar",
@@ -169,10 +168,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "lurrus-vault-key",
-      "path": "latest/radars/vintage/lurrus-vault-key.json"
+      "path": "latest/radars/vintage/lurrus-vault-key.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -273,6 +273,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "vintage",
+      "archetype": "grixis-tinker",
+      "path": "latest/radars/vintage/grixis-tinker.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "vintage",
       "archetype": "sultai-psychic-frog",
       "path": "latest/radars/vintage/sultai-psychic-frog.json"
     },
@@ -280,8 +287,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "vintage",
-      "archetype": "ub",
-      "path": "latest/radars/vintage/ub.json"
+      "archetype": "ubr",
+      "path": "latest/radars/vintage/ubr.json"
     },
     {
       "scope": "archetype-radar",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-04T21:55:27Z",
+  "generated_at": "2026-10-05T05:46:19Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 39,
-    "success": 31
+    "skipped": 37,
+    "success": 36
   },
   "results": [
     {
@@ -174,10 +174,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "dimir-rona-combo",
-      "path": "latest/radars/pioneer/dimir-rona-combo.json"
+      "path": "latest/radars/pioneer/dimir-rona-combo.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -241,11 +242,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "izzet-ensoul-artifact",
-      "path": "latest/radars/pioneer/izzet-ensoul-artifact.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pioneer/izzet-ensoul-artifact.json"
     },
     {
       "scope": "archetype-radar",
@@ -339,11 +339,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "mono-white-humans",
-      "path": "latest/radars/pioneer/mono-white-humans.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pioneer/mono-white-humans.json"
     },
     {
       "scope": "archetype-radar",
@@ -462,11 +461,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "temur-indomitable-creativity",
-      "path": "latest/radars/pioneer/temur-indomitable-creativity.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pioneer/temur-indomitable-creativity.json"
     },
     {
       "scope": "archetype-radar",
@@ -501,6 +499,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pioneer",
+      "archetype": "g",
+      "path": "latest/radars/pioneer/g.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
       "archetype": "ub",
       "path": "latest/radars/pioneer/ub.json"
     },
@@ -508,8 +513,22 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pioneer",
+      "archetype": "ubrg",
+      "path": "latest/radars/pioneer/ubrg.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
       "archetype": "ur",
       "path": "latest/radars/pioneer/ur.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "wg",
+      "path": "latest/radars/pioneer/wg.json"
     },
     {
       "scope": "archetype-radar",

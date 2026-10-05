@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-04T21:55:30Z",
+  "generated_at": "2026-10-05T05:46:23Z",
   "command": "scrape-radars-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 62,
-    "skipped": 20
+    "success": 63,
+    "skipped": 21
   },
   "results": [
     {
@@ -34,10 +34,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "4c-synthesizer",
-      "path": "latest/radars/pauper/4c-synthesizer.json"
+      "path": "latest/radars/pauper/4c-synthesizer.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -531,6 +532,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pauper",
+      "archetype": "bg",
+      "path": "latest/radars/pauper/bg.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pauper",
       "archetype": "golgari-sacrifice",
       "path": "latest/radars/pauper/golgari-sacrifice.json"
     },
@@ -589,6 +597,13 @@
       "format": "pauper",
       "archetype": "wubr",
       "path": "latest/radars/pauper/wubr.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pauper",
+      "archetype": "wubrg",
+      "path": "latest/radars/pauper/wubrg.json"
     },
     {
       "scope": "archetype-radar",

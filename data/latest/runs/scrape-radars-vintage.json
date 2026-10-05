@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-04T21:55:35Z",
+  "generated_at": "2026-10-05T05:46:20Z",
   "command": "scrape-radars-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 14,
-    "success": 28
+    "skipped": 15,
+    "success": 26
   },
   "results": [
     {
@@ -126,10 +126,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "grixis-lurrus-control",
-      "path": "latest/radars/vintage/grixis-lurrus-control.json"
+      "path": "latest/radars/vintage/grixis-lurrus-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -198,10 +199,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "other-shops",
-      "path": "latest/radars/vintage/other-shops.json"
+      "path": "latest/radars/vintage/other-shops.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -227,11 +229,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "vintage",
       "archetype": "scam",
-      "path": "latest/radars/vintage/scam.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/vintage/scam.json"
     },
     {
       "scope": "archetype-radar",
@@ -266,13 +267,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "vintage",
-      "archetype": "colorless",
-      "path": "latest/radars/vintage/colorless.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "vintage",
       "archetype": "esper-tinker",
       "path": "latest/radars/vintage/esper-tinker.json"
     },
@@ -301,8 +295,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "vintage",
-      "archetype": "wubr",
-      "path": "latest/radars/vintage/wubr.json"
+      "archetype": "wu",
+      "path": "latest/radars/vintage/wu.json"
     },
     {
       "scope": "archetype-radar",

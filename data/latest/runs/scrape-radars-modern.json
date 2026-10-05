@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-04T21:55:29Z",
+  "generated_at": "2026-10-05T05:46:29Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "success": 84,
-    "skipped": 17
+    "skipped": 16
   },
   "results": [
     {
@@ -239,11 +239,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "grixis-midrange",
-      "path": "latest/radars/modern/grixis-midrange.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/grixis-midrange.json"
     },
     {
       "scope": "archetype-radar",
@@ -344,11 +343,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "jeskai-blink",
-      "path": "latest/radars/modern/jeskai-blink.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/jeskai-blink.json"
     },
     {
       "scope": "archetype-radar",
@@ -497,10 +495,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "rakdos-aggro",
-      "path": "latest/radars/modern/rakdos-aggro.json"
+      "path": "latest/radars/modern/rakdos-aggro.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -605,8 +604,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "bant-blink",
-      "path": "latest/radars/modern/bant-blink.json"
+      "archetype": "bg",
+      "path": "latest/radars/modern/bg.json"
     },
     {
       "scope": "archetype-radar",
@@ -642,13 +641,6 @@
       "format": "modern",
       "archetype": "orzhov-blink",
       "path": "latest/radars/modern/orzhov-blink.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "rakdos-burn",
-      "path": "latest/radars/modern/rakdos-burn.json"
     },
     {
       "scope": "archetype-radar",

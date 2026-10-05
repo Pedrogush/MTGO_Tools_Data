@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-05T05:46:29Z",
+  "generated_at": "2026-10-05T14:46:15Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 84,
-    "skipped": 16
+    "success": 86,
+    "skipped": 15
   },
   "results": [
     {
@@ -495,11 +495,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "rakdos-aggro",
-      "path": "latest/radars/modern/rakdos-aggro.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/rakdos-aggro.json"
     },
     {
       "scope": "archetype-radar",
@@ -592,6 +591,13 @@
       "format": "modern",
       "archetype": "yawgmoth",
       "path": "latest/radars/modern/yawgmoth.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "4c-energy",
+      "path": "latest/radars/modern/4c-energy.json"
     },
     {
       "scope": "archetype-radar",

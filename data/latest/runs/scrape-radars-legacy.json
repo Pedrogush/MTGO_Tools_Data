@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-05T14:46:18Z",
+  "generated_at": "2026-10-06T00:29:19Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "success": 65,
-    "skipped": 24
+    "skipped": 25
   },
   "results": [
     {
@@ -41,10 +41,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "azorius-control",
-      "path": "latest/radars/legacy/azorius-control.json"
+      "path": "latest/radars/legacy/azorius-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -530,6 +531,13 @@
       "format": "legacy",
       "archetype": "b",
       "path": "latest/radars/legacy/b.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "bant-depths",
+      "path": "latest/radars/legacy/bant-depths.json"
     },
     {
       "scope": "archetype-radar",

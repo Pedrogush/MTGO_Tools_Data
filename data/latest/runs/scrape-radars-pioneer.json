@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-05T14:46:12Z",
+  "generated_at": "2026-10-06T00:29:21Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 37,
-    "success": 36
+    "skipped": 40,
+    "success": 30
   },
   "results": [
     {
@@ -169,6 +169,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pioneer",
+      "archetype": "dimir-control",
+      "path": "latest/radars/pioneer/dimir-control.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
       "archetype": "dimir-midrange",
       "path": "latest/radars/pioneer/dimir-midrange.json"
     },
@@ -182,10 +189,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "dimir-self-bounce",
-      "path": "latest/radars/pioneer/dimir-self-bounce.json"
+      "path": "latest/radars/pioneer/dimir-self-bounce.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -317,10 +325,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "mono-black-midrange",
-      "path": "latest/radars/pioneer/mono-black-midrange.json"
+      "path": "latest/radars/pioneer/mono-black-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -362,10 +371,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "nykthos-ramp",
-      "path": "latest/radars/pioneer/nykthos-ramp.json"
+      "path": "latest/radars/pioneer/nykthos-ramp.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -478,22 +488,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pioneer",
-      "archetype": "br",
-      "path": "latest/radars/pioneer/br.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pioneer",
       "archetype": "brg",
       "path": "latest/radars/pioneer/brg.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pioneer",
-      "archetype": "dimir-control",
-      "path": "latest/radars/pioneer/dimir-control.json"
     },
     {
       "scope": "archetype-radar",
@@ -529,20 +525,6 @@
       "format": "pioneer",
       "archetype": "wg",
       "path": "latest/radars/pioneer/wg.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pioneer",
-      "archetype": "wr",
-      "path": "latest/radars/pioneer/wr.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pioneer",
-      "archetype": "wubr",
-      "path": "latest/radars/pioneer/wubr.json"
     },
     {
       "scope": "archetype-radar",

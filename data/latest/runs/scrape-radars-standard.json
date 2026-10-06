@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-05T14:46:05Z",
+  "generated_at": "2026-10-06T00:29:19Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 47,
-    "skipped": 68
+    "success": 43,
+    "skipped": 72
   },
   "results": [
     {
@@ -66,10 +66,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "5c-elementals",
-      "path": "latest/radars/standard/5c-elementals.json"
+      "path": "latest/radars/standard/5c-elementals.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -139,6 +140,14 @@
       "format": "standard",
       "archetype": "bant-airbending-combo",
       "path": "latest/radars/standard/bant-airbending-combo.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "standard",
+      "archetype": "bant-control",
+      "path": "latest/radars/standard/bant-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -357,10 +366,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "gruul-aggro",
-      "path": "latest/radars/standard/gruul-aggro.json"
+      "path": "latest/radars/standard/gruul-aggro.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -622,10 +632,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "orzhov-control",
-      "path": "latest/radars/standard/orzhov-control.json"
+      "path": "latest/radars/standard/orzhov-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -833,13 +844,6 @@
       "format": "standard",
       "archetype": "brg",
       "path": "latest/radars/standard/brg.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
-      "archetype": "orzhov-aristocrats",
-      "path": "latest/radars/standard/orzhov-aristocrats.json"
     },
     {
       "scope": "archetype-radar",

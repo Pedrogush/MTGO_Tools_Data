@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-06T06:25:49Z",
+  "generated_at": "2026-10-06T18:32:22Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 66,
-    "skipped": 24
+    "success": 73,
+    "skipped": 19
   },
   "results": [
     {
@@ -81,6 +81,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
+      "archetype": "beanstalk-control-yorion",
+      "path": "latest/radars/legacy/beanstalk-control-yorion.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
       "archetype": "beseech-storm",
       "path": "latest/radars/legacy/beseech-storm.json"
     },
@@ -124,11 +131,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "burn",
-      "path": "latest/radars/legacy/burn.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/burn.json"
     },
     {
       "scope": "archetype-radar",
@@ -169,19 +175,17 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "death-and-taxes-yorion-mono-white",
-      "path": "latest/radars/legacy/death-and-taxes-yorion-mono-white.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/death-and-taxes-yorion-mono-white.json"
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "dimir-control",
-      "path": "latest/radars/legacy/dimir-control.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/dimir-control.json"
     },
     {
       "scope": "archetype-radar",
@@ -236,11 +240,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "goblins",
-      "path": "latest/radars/legacy/goblins.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/goblins.json"
     },
     {
       "scope": "archetype-radar",
@@ -352,11 +355,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "merfolk",
-      "path": "latest/radars/legacy/merfolk.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/merfolk.json"
     },
     {
       "scope": "archetype-radar",
@@ -486,6 +488,13 @@
       "format": "legacy",
       "archetype": "stiflenought",
       "path": "latest/radars/legacy/stiflenought.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "sultai-control",
+      "path": "latest/radars/legacy/sultai-control.json"
     },
     {
       "scope": "archetype-radar",

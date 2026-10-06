@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-06T06:25:50Z",
+  "generated_at": "2026-10-06T18:32:33Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 45,
-    "skipped": 71
+    "success": 44,
+    "skipped": 72
   },
   "results": [
     {
@@ -350,10 +350,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "grixis-monument",
-      "path": "latest/radars/standard/grixis-monument.json"
+      "path": "latest/radars/standard/grixis-monument.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

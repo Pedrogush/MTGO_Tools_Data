@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-06T00:29:19Z",
+  "generated_at": "2026-10-06T06:25:50Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 43,
-    "skipped": 72
+    "success": 45,
+    "skipped": 71
   },
   "results": [
     {
@@ -266,11 +266,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
       "archetype": "dimir-reanimator",
-      "path": "latest/radars/standard/dimir-reanimator.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/standard/dimir-reanimator.json"
     },
     {
       "scope": "archetype-radar",
@@ -872,6 +871,13 @@
       "format": "standard",
       "archetype": "wb",
       "path": "latest/radars/standard/wb.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "wr",
+      "path": "latest/radars/standard/wr.json"
     },
     {
       "scope": "archetype-radar",

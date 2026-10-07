@@ -1,21 +1,22 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-06T18:32:22Z",
+  "generated_at": "2026-10-07T06:05:26Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 73,
-    "skipped": 19
+    "skipped": 16,
+    "success": 75
   },
   "results": [
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "8-cast",
-      "path": "latest/radars/legacy/8-cast.json"
+      "path": "latest/radars/legacy/8-cast.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -41,19 +42,17 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "azorius-control",
-      "path": "latest/radars/legacy/azorius-control.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/azorius-control.json"
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "azorius-stoneblade",
-      "path": "latest/radars/legacy/azorius-stoneblade.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/azorius-stoneblade.json"
     },
     {
       "scope": "archetype-radar",
@@ -347,11 +346,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "maverick",
-      "path": "latest/radars/legacy/maverick.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/maverick.json"
     },
     {
       "scope": "archetype-radar",
@@ -420,11 +418,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "oops-all-spells",
-      "path": "latest/radars/legacy/oops-all-spells.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/oops-all-spells.json"
     },
     {
       "scope": "archetype-radar",
@@ -560,13 +557,6 @@
       "format": "legacy",
       "archetype": "death-and-taxes-yorion-mono-selesnya",
       "path": "latest/radars/legacy/death-and-taxes-yorion-mono-selesnya.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "death-s-shadow",
-      "path": "latest/radars/legacy/death-s-shadow.json"
     },
     {
       "scope": "archetype-radar",

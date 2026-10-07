@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-06T18:32:22Z",
+  "generated_at": "2026-10-07T06:05:21Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 36,
-    "success": 37
+    "skipped": 38,
+    "success": 35
   },
   "results": [
     {
@@ -112,10 +112,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "boros-convoke",
-      "path": "latest/radars/pioneer/boros-convoke.json"
+      "path": "latest/radars/pioneer/boros-convoke.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -375,10 +376,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "orzhov-greasefang",
-      "path": "latest/radars/pioneer/orzhov-greasefang.json"
+      "path": "latest/radars/pioneer/orzhov-greasefang.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

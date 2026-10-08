@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-08T13:35:38Z",
+  "generated_at": "2026-10-08T23:26:47Z",
   "command": "scrape-radars-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 59,
-    "skipped": 22
+    "success": 61,
+    "skipped": 21
   },
   "results": [
     {
@@ -368,11 +368,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pauper",
       "archetype": "mono-black",
-      "path": "latest/radars/pauper/mono-black.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pauper/mono-black.json"
     },
     {
       "scope": "archetype-radar",
@@ -556,6 +555,13 @@
       "format": "pauper",
       "archetype": "ub",
       "path": "latest/radars/pauper/ub.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pauper",
+      "archetype": "ubrg",
+      "path": "latest/radars/pauper/ubrg.json"
     },
     {
       "scope": "archetype-radar",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-08T13:35:45Z",
+  "generated_at": "2026-10-08T23:26:44Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "success": 44,
-    "skipped": 71
+    "skipped": 73
   },
   "results": [
     {
@@ -494,10 +494,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "jeskai-elementals",
-      "path": "latest/radars/standard/jeskai-elementals.json"
+      "path": "latest/radars/standard/jeskai-elementals.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -628,6 +629,14 @@
       "format": "standard",
       "archetype": "orzhov-aggro",
       "path": "latest/radars/standard/orzhov-aggro.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "standard",
+      "archetype": "orzhov-aristocrats",
+      "path": "latest/radars/standard/orzhov-aristocrats.json",
       "message": "No published decks were available for radar generation."
     },
     {
@@ -843,6 +852,13 @@
       "format": "standard",
       "archetype": "ub",
       "path": "latest/radars/standard/ub.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "ubr",
+      "path": "latest/radars/standard/ubr.json"
     },
     {
       "scope": "archetype-radar",

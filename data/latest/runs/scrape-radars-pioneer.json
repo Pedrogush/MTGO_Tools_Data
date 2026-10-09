@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-09T13:26:26Z",
+  "generated_at": "2026-10-09T22:44:30Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 43,
-    "success": 29
+    "success": 30
   },
   "results": [
     {
@@ -388,6 +388,13 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "orzhov-midrange",
+      "path": "latest/radars/pioneer/orzhov-midrange.json"
+    },
+    {
+      "scope": "archetype-radar",
       "status": "skipped",
       "format": "pioneer",
       "archetype": "quintorius-combo",
@@ -491,6 +498,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pioneer",
+      "archetype": "4c-midrange",
+      "path": "latest/radars/pioneer/4c-midrange.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
       "archetype": "b",
       "path": "latest/radars/pioneer/b.json"
     },
@@ -507,13 +521,6 @@
       "format": "pioneer",
       "archetype": "g",
       "path": "latest/radars/pioneer/g.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pioneer",
-      "archetype": "orzhov-midrange",
-      "path": "latest/radars/pioneer/orzhov-midrange.json"
     },
     {
       "scope": "archetype-radar",

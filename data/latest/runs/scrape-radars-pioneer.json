@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-08T23:26:42Z",
+  "generated_at": "2026-10-09T06:13:52Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 38,
-    "success": 35
+    "skipped": 43,
+    "success": 29
   },
   "results": [
     {
@@ -83,10 +83,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "abzan-greasefang",
-      "path": "latest/radars/pioneer/abzan-greasefang.json"
+      "path": "latest/radars/pioneer/abzan-greasefang.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -97,10 +98,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "azorius-flash",
-      "path": "latest/radars/pioneer/azorius-flash.json"
+      "path": "latest/radars/pioneer/azorius-flash.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -235,17 +237,19 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "hidden-strings",
-      "path": "latest/radars/pioneer/hidden-strings.json"
+      "path": "latest/radars/pioneer/hidden-strings.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "izzet-aggro",
-      "path": "latest/radars/pioneer/izzet-aggro.json"
+      "path": "latest/radars/pioneer/izzet-aggro.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -423,10 +427,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "selesnya-angels",
-      "path": "latest/radars/pioneer/selesnya-angels.json"
+      "path": "latest/radars/pioneer/selesnya-angels.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -507,8 +512,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pioneer",
-      "archetype": "ub",
-      "path": "latest/radars/pioneer/ub.json"
+      "archetype": "orzhov-midrange",
+      "path": "latest/radars/pioneer/orzhov-midrange.json"
     },
     {
       "scope": "archetype-radar",
@@ -537,13 +542,6 @@
       "format": "pioneer",
       "archetype": "wubg",
       "path": "latest/radars/pioneer/wubg.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pioneer",
-      "archetype": "wubrg",
-      "path": "latest/radars/pioneer/wubrg.json"
     },
     {
       "scope": "archetype-radar",

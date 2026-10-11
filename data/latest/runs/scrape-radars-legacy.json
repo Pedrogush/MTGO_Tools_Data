@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-11T12:55:28Z",
+  "generated_at": "2026-10-11T22:07:24Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 16,
-    "success": 80
+    "skipped": 17,
+    "success": 79
   },
   "results": [
     {
@@ -78,10 +78,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "beanstalk-control-yorion",
-      "path": "latest/radars/legacy/beanstalk-control-yorion.json"
+      "path": "latest/radars/legacy/beanstalk-control-yorion.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -527,6 +528,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
+      "archetype": "the-epic-gamble",
+      "path": "latest/radars/legacy/the-epic-gamble.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
       "archetype": "the-epic-storm",
       "path": "latest/radars/legacy/the-epic-storm.json"
     },
@@ -613,13 +621,6 @@
       "format": "legacy",
       "archetype": "r",
       "path": "latest/radars/legacy/r.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "the-epic-gamble",
-      "path": "latest/radars/legacy/the-epic-gamble.json"
     },
     {
       "scope": "archetype-radar",

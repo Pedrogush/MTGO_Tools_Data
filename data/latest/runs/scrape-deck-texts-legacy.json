@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-11T12:54:35Z",
+  "generated_at": "2026-10-11T22:00:43Z",
   "command": "scrape-deck-texts-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 25,
-    "skipped": 69
+    "success": 40,
+    "skipped": 64
   },
   "results": [
     {
@@ -15,14 +15,6 @@
       "status": "success",
       "format": "legacy",
       "path": "latest/archetypes/legacy.json"
-    },
-    {
-      "scope": "archetype-decks",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "8-cast",
-      "path": "latest/decks/legacy/8-cast.json",
-      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
@@ -74,6 +66,14 @@
       "scope": "archetype-decks",
       "status": "skipped",
       "format": "legacy",
+      "archetype": "beanstalk-control-yorion",
+      "path": "latest/decks/legacy/beanstalk-control-yorion.json",
+      "message": "No decks found within the last 7 days."
+    },
+    {
+      "scope": "archetype-decks",
+      "status": "skipped",
+      "format": "legacy",
       "archetype": "beseech-storm",
       "path": "latest/decks/legacy/beseech-storm.json",
       "message": "No decks found within the last 7 days."
@@ -96,19 +96,17 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "boros-energy",
-      "path": "latest/decks/legacy/boros-energy.json",
-      "message": "No decks found within the last 7 days."
+      "path": "latest/decks/legacy/boros-energy.json"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "burn",
-      "path": "latest/decks/legacy/burn.json",
-      "message": "No decks found within the last 7 days."
+      "path": "latest/decks/legacy/burn.json"
     },
     {
       "scope": "archetype-decks",
@@ -242,6 +240,13 @@
       "scope": "archetype-decks",
       "status": "success",
       "format": "legacy",
+      "archetype": "jeskai-stoneblade",
+      "path": "latest/decks/legacy/jeskai-stoneblade.json"
+    },
+    {
+      "scope": "archetype-decks",
+      "status": "success",
+      "format": "legacy",
       "archetype": "jeskai-tempo",
       "path": "latest/decks/legacy/jeskai-tempo.json"
     },
@@ -277,18 +282,10 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "mardu-energy",
-      "path": "latest/decks/legacy/mardu-energy.json",
-      "message": "No decks found within the last 7 days."
-    },
-    {
-      "scope": "archetype-decks",
       "status": "success",
       "format": "legacy",
-      "archetype": "merfolk",
-      "path": "latest/decks/legacy/merfolk.json"
+      "archetype": "mardu-energy",
+      "path": "latest/decks/legacy/mardu-energy.json"
     },
     {
       "scope": "archetype-decks",
@@ -413,11 +410,10 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "stiflenought",
-      "path": "latest/decks/legacy/stiflenought.json",
-      "message": "No decks found within the last 7 days."
+      "path": "latest/decks/legacy/stiflenought.json"
     },
     {
       "scope": "archetype-decks",
@@ -429,18 +425,18 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
-      "format": "legacy",
-      "archetype": "sultai-tempo",
-      "path": "latest/decks/legacy/sultai-tempo.json",
-      "message": "No decks found within the last 7 days."
-    },
-    {
-      "scope": "archetype-decks",
       "status": "success",
       "format": "legacy",
       "archetype": "temur-delver",
       "path": "latest/decks/legacy/temur-delver.json"
+    },
+    {
+      "scope": "archetype-decks",
+      "status": "skipped",
+      "format": "legacy",
+      "archetype": "the-epic-gamble",
+      "path": "latest/decks/legacy/the-epic-gamble.json",
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
@@ -524,14 +520,6 @@
       "scope": "deck-text",
       "status": "skipped",
       "format": "legacy",
-      "deck_id": "7987658",
-      "path": "archive/deck-texts/legacy/7987658.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "legacy",
       "deck_id": "7987659",
       "path": "archive/deck-texts/legacy/7987659.json",
       "message": "Reused existing published deck-text blob."
@@ -551,6 +539,13 @@
       "deck_id": "7987661",
       "path": "archive/deck-texts/legacy/7987661.json",
       "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "success",
+      "format": "legacy",
+      "deck_id": "7987662",
+      "path": "archive/deck-texts/legacy/7987662.json"
     },
     {
       "scope": "deck-text",
@@ -735,6 +730,76 @@
       "deck_id": "7992499",
       "path": "archive/deck-texts/legacy/7992499.json",
       "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "success",
+      "format": "legacy",
+      "deck_id": "7994820",
+      "path": "archive/deck-texts/legacy/7994820.json"
+    },
+    {
+      "scope": "deck-text",
+      "status": "success",
+      "format": "legacy",
+      "deck_id": "7994821",
+      "path": "archive/deck-texts/legacy/7994821.json"
+    },
+    {
+      "scope": "deck-text",
+      "status": "success",
+      "format": "legacy",
+      "deck_id": "7994822",
+      "path": "archive/deck-texts/legacy/7994822.json"
+    },
+    {
+      "scope": "deck-text",
+      "status": "success",
+      "format": "legacy",
+      "deck_id": "7994823",
+      "path": "archive/deck-texts/legacy/7994823.json"
+    },
+    {
+      "scope": "deck-text",
+      "status": "success",
+      "format": "legacy",
+      "deck_id": "7994824",
+      "path": "archive/deck-texts/legacy/7994824.json"
+    },
+    {
+      "scope": "deck-text",
+      "status": "success",
+      "format": "legacy",
+      "deck_id": "7994825",
+      "path": "archive/deck-texts/legacy/7994825.json"
+    },
+    {
+      "scope": "deck-text",
+      "status": "success",
+      "format": "legacy",
+      "deck_id": "7994827",
+      "path": "archive/deck-texts/legacy/7994827.json"
+    },
+    {
+      "scope": "deck-text",
+      "status": "success",
+      "format": "legacy",
+      "deck_id": "7994828",
+      "path": "archive/deck-texts/legacy/7994828.json"
+    },
+    {
+      "scope": "deck-text",
+      "status": "success",
+      "format": "legacy",
+      "deck_id": "7994830",
+      "path": "archive/deck-texts/legacy/7994830.json"
+    },
+    {
+      "scope": "deck-text",
+      "status": "success",
+      "format": "legacy",
+      "deck_id": "7994831",
+      "path": "archive/deck-texts/legacy/7994831.json"
     }
   ]
 }

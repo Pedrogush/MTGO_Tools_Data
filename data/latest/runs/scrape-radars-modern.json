@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-10T22:14:27Z",
+  "generated_at": "2026-10-11T05:52:09Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 97,
-    "skipped": 15
+    "success": 94,
+    "skipped": 16
   },
   "results": [
     {
@@ -210,10 +210,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "generic-ragavan",
-      "path": "latest/radars/modern/generic-ragavan.json"
+      "path": "latest/radars/modern/generic-ragavan.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -743,13 +744,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "wb",
-      "path": "latest/radars/modern/wb.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "wbg",
       "path": "latest/radars/modern/wbg.json"
     },
@@ -773,13 +767,6 @@
       "format": "modern",
       "archetype": "wu",
       "path": "latest/radars/modern/wu.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "wub",
-      "path": "latest/radars/modern/wub.json"
     },
     {
       "scope": "archetype-radar",

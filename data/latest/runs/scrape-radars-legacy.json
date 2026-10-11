@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-10T22:14:29Z",
+  "generated_at": "2026-10-11T05:52:02Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 14,
-    "success": 87
+    "skipped": 16,
+    "success": 79
   },
   "results": [
     {
@@ -180,10 +180,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "dimir-control",
-      "path": "latest/radars/legacy/dimir-control.json"
+      "path": "latest/radars/legacy/dimir-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -288,10 +289,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "izzet-tempo",
-      "path": "latest/radars/legacy/izzet-tempo.json"
+      "path": "latest/radars/legacy/izzet-tempo.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -567,13 +569,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "colorless",
-      "path": "latest/radars/legacy/colorless.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
       "archetype": "death-and-taxes-yorion-mono-selesnya",
       "path": "latest/radars/legacy/death-and-taxes-yorion-mono-selesnya.json"
     },
@@ -658,20 +653,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "w",
-      "path": "latest/radars/legacy/w.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "wb",
-      "path": "latest/radars/legacy/wb.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
       "archetype": "wbg",
       "path": "latest/radars/legacy/wbg.json"
     },
@@ -681,27 +662,6 @@
       "format": "legacy",
       "archetype": "wu",
       "path": "latest/radars/legacy/wu.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "wub",
-      "path": "latest/radars/legacy/wub.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "wubg",
-      "path": "latest/radars/legacy/wubg.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "wubrg",
-      "path": "latest/radars/legacy/wubrg.json"
     },
     {
       "scope": "archetype-radar",

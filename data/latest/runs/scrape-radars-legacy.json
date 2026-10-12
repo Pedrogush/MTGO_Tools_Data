@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-12T06:03:16Z",
+  "generated_at": "2026-10-12T15:32:22Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 18,
-    "success": 79
+    "success": 80
   },
   "results": [
     {
@@ -545,6 +545,13 @@
       "format": "legacy",
       "archetype": "tron",
       "path": "latest/radars/legacy/tron.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "5c-zenith",
+      "path": "latest/radars/legacy/5c-zenith.json"
     },
     {
       "scope": "archetype-radar",

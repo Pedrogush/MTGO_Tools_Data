@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-11T22:07:25Z",
+  "generated_at": "2026-10-12T06:03:10Z",
   "command": "scrape-radars-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 9,
-    "success": 33
+    "skipped": 8,
+    "success": 36
   },
   "results": [
     {
@@ -85,11 +85,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "vintage",
       "archetype": "eldrazi",
-      "path": "latest/radars/vintage/eldrazi.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/vintage/eldrazi.json"
     },
     {
       "scope": "archetype-radar",
@@ -268,6 +267,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "vintage",
+      "archetype": "4c-psychic-frog",
+      "path": "latest/radars/vintage/4c-psychic-frog.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "vintage",
       "archetype": "grixis-tinker",
       "path": "latest/radars/vintage/grixis-tinker.json"
     },
@@ -291,6 +297,13 @@
       "format": "vintage",
       "archetype": "wu",
       "path": "latest/radars/vintage/wu.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "vintage",
+      "archetype": "wubr",
+      "path": "latest/radars/vintage/wubr.json"
     },
     {
       "scope": "archetype-radar",

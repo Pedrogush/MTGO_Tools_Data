@@ -1,12 +1,12 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-11T22:07:24Z",
+  "generated_at": "2026-10-12T06:03:16Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 17,
+    "skipped": 18,
     "success": 79
   },
   "results": [
@@ -28,10 +28,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "affinity-stompy",
-      "path": "latest/radars/legacy/affinity-stompy.json"
+      "path": "latest/radars/legacy/affinity-stompy.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -144,10 +145,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "cradle-control",
-      "path": "latest/radars/legacy/cradle-control.json"
+      "path": "latest/radars/legacy/cradle-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -340,11 +342,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "loam-pox",
-      "path": "latest/radars/legacy/loam-pox.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/loam-pox.json"
     },
     {
       "scope": "archetype-radar",
@@ -570,15 +571,15 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "brg",
-      "path": "latest/radars/legacy/brg.json"
+      "archetype": "bg",
+      "path": "latest/radars/legacy/bg.json"
     },
     {
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "death-and-taxes-yorion-mono-selesnya",
-      "path": "latest/radars/legacy/death-and-taxes-yorion-mono-selesnya.json"
+      "archetype": "brg",
+      "path": "latest/radars/legacy/brg.json"
     },
     {
       "scope": "archetype-radar",
@@ -626,6 +627,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
+      "archetype": "simic-cloudpost",
+      "path": "latest/radars/legacy/simic-cloudpost.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
       "archetype": "u",
       "path": "latest/radars/legacy/u.json"
     },
@@ -661,6 +669,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
+      "archetype": "w",
+      "path": "latest/radars/legacy/w.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
       "archetype": "wbg",
       "path": "latest/radars/legacy/wbg.json"
     },
@@ -677,13 +692,6 @@
       "format": "legacy",
       "archetype": "wug",
       "path": "latest/radars/legacy/wug.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "wur",
-      "path": "latest/radars/legacy/wur.json"
     },
     {
       "scope": "archetype-radar",

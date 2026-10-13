@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-13T14:17:09Z",
+  "generated_at": "2026-10-13T23:36:49Z",
   "command": "scrape-radars-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 36,
-    "skipped": 8
+    "success": 39,
+    "skipped": 6
   },
   "results": [
     {
@@ -171,11 +171,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "vintage",
       "archetype": "lurrus-vault-key",
-      "path": "latest/radars/vintage/lurrus-vault-key.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/vintage/lurrus-vault-key.json"
     },
     {
       "scope": "archetype-radar",
@@ -201,11 +200,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "vintage",
       "archetype": "other-shops",
-      "path": "latest/radars/vintage/other-shops.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/vintage/other-shops.json"
     },
     {
       "scope": "archetype-radar",
@@ -311,6 +309,13 @@
       "format": "vintage",
       "archetype": "wubrg",
       "path": "latest/radars/vintage/wubrg.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "vintage",
+      "archetype": "wug",
+      "path": "latest/radars/vintage/wug.json"
     },
     {
       "scope": "archetype-radar",

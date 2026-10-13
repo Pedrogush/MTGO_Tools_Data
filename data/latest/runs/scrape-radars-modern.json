@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-13T14:17:02Z",
+  "generated_at": "2026-10-13T23:36:51Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 92,
-    "skipped": 19
+    "success": 96,
+    "skipped": 16
   },
   "results": [
     {
@@ -142,6 +142,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
+      "archetype": "crashing-footfalls",
+      "path": "latest/radars/modern/crashing-footfalls.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
       "archetype": "death-s-shadow",
       "path": "latest/radars/modern/death-s-shadow.json"
     },
@@ -217,19 +224,17 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "esper-reanimator",
-      "path": "latest/radars/modern/esper-reanimator.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/esper-reanimator.json"
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "generic-ragavan",
-      "path": "latest/radars/modern/generic-ragavan.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/generic-ragavan.json"
     },
     {
       "scope": "archetype-radar",
@@ -254,11 +259,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "grixis-midrange",
-      "path": "latest/radars/modern/grixis-midrange.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/grixis-midrange.json"
     },
     {
       "scope": "archetype-radar",

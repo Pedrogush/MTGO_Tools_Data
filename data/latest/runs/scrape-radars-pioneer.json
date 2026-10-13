@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-12T15:32:22Z",
+  "generated_at": "2026-10-13T00:52:49Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 40,
-    "success": 35
+    "skipped": 42,
+    "success": 31
   },
   "results": [
     {
@@ -153,10 +153,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "boros-token-control",
-      "path": "latest/radars/pioneer/boros-token-control.json"
+      "path": "latest/radars/pioneer/boros-token-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -250,10 +251,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "izzet-ensoul-artifact",
-      "path": "latest/radars/pioneer/izzet-ensoul-artifact.json"
+      "path": "latest/radars/pioneer/izzet-ensoul-artifact.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -544,13 +546,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pioneer",
-      "archetype": "wg",
-      "path": "latest/radars/pioneer/wg.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pioneer",
       "archetype": "wr",
       "path": "latest/radars/pioneer/wr.json"
     },
@@ -560,13 +555,6 @@
       "format": "pioneer",
       "archetype": "wubg",
       "path": "latest/radars/pioneer/wubg.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pioneer",
-      "archetype": "wug",
-      "path": "latest/radars/pioneer/wug.json"
     },
     {
       "scope": "format-card-pool",

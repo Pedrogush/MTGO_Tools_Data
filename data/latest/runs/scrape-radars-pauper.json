@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-12T15:32:28Z",
+  "generated_at": "2026-10-13T00:52:46Z",
   "command": "scrape-radars-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 24,
-    "success": 59
+    "skipped": 26,
+    "success": 57
   },
   "results": [
     {
@@ -311,10 +311,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "izzet-terror",
-      "path": "latest/radars/pauper/izzet-terror.json"
+      "path": "latest/radars/pauper/izzet-terror.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -403,6 +404,14 @@
       "format": "pauper",
       "archetype": "mono-red-madness",
       "path": "latest/radars/pauper/mono-red-madness.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "pauper",
+      "archetype": "mono-red-pingers",
+      "path": "latest/radars/pauper/mono-red-pingers.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -563,6 +572,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pauper",
+      "archetype": "ubg",
+      "path": "latest/radars/pauper/ubg.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pauper",
       "archetype": "ubrg",
       "path": "latest/radars/pauper/ubrg.json"
     },
@@ -593,20 +609,6 @@
       "format": "pauper",
       "archetype": "wub",
       "path": "latest/radars/pauper/wub.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pauper",
-      "archetype": "wubr",
-      "path": "latest/radars/pauper/wubr.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pauper",
-      "archetype": "wubrg",
-      "path": "latest/radars/pauper/wubrg.json"
     },
     {
       "scope": "format-card-pool",

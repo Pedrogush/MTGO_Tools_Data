@@ -1,15 +1,22 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-12T15:32:25Z",
+  "generated_at": "2026-10-13T00:52:40Z",
   "command": "scrape-radars-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 8,
-    "success": 36
+    "success": 36,
+    "skipped": 8
   },
   "results": [
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "vintage",
+      "archetype": "4c-psychic-frog",
+      "path": "latest/radars/vintage/4c-psychic-frog.json"
+    },
     {
       "scope": "archetype-radar",
       "status": "skipped",
@@ -262,13 +269,6 @@
       "format": "vintage",
       "archetype": "underworld-breach",
       "path": "latest/radars/vintage/underworld-breach.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "vintage",
-      "archetype": "4c-psychic-frog",
-      "path": "latest/radars/vintage/4c-psychic-frog.json"
     },
     {
       "scope": "archetype-radar",

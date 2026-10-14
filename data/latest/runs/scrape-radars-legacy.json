@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-14T17:15:50Z",
+  "generated_at": "2026-10-14T21:45:25Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 21,
-    "success": 79
+    "skipped": 20,
+    "success": 81
   },
   "results": [
     {
@@ -50,11 +50,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "azorius-stoneblade",
-      "path": "latest/radars/legacy/azorius-stoneblade.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/azorius-stoneblade.json"
     },
     {
       "scope": "archetype-radar",
@@ -548,6 +547,13 @@
       "format": "legacy",
       "archetype": "tron",
       "path": "latest/radars/legacy/tron.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "4c",
+      "path": "latest/radars/legacy/4c.json"
     },
     {
       "scope": "archetype-radar",

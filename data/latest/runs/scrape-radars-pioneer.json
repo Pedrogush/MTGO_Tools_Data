@@ -1,7 +1,7 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-13T23:37:02Z",
+  "generated_at": "2026-10-14T04:58:57Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
@@ -59,11 +59,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "5c-legends",
-      "path": "latest/radars/pioneer/5c-legends.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pioneer/5c-legends.json"
     },
     {
       "scope": "archetype-radar",
@@ -168,10 +167,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "dimir-control",
-      "path": "latest/radars/pioneer/dimir-control.json"
+      "path": "latest/radars/pioneer/dimir-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

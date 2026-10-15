@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-14T21:45:38Z",
+  "generated_at": "2026-10-15T04:45:25Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "success": 68,
-    "skipped": 57
+    "skipped": 58
   },
   "results": [
     {
@@ -809,10 +809,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "temur-kona",
-      "path": "latest/radars/standard/temur-kona.json"
+      "path": "latest/radars/standard/temur-kona.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -871,6 +872,13 @@
       "format": "standard",
       "archetype": "esper-excruciator",
       "path": "latest/radars/standard/esper-excruciator.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "g",
+      "path": "latest/radars/standard/g.json"
     },
     {
       "scope": "archetype-radar",

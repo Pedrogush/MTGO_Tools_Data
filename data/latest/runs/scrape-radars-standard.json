@@ -1,12 +1,12 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-15T17:05:27Z",
+  "generated_at": "2026-10-15T21:28:22Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 68,
+    "success": 70,
     "skipped": 58
   },
   "results": [
@@ -553,6 +553,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
+      "archetype": "mardu-cat-pact",
+      "path": "latest/radars/standard/mardu-cat-pact.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
       "archetype": "mardu-discard",
       "path": "latest/radars/standard/mardu-discard.json"
     },
@@ -570,6 +577,13 @@
       "archetype": "mono-black-midrange",
       "path": "latest/radars/standard/mono-black-midrange.json",
       "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "mono-blue-spellementals",
+      "path": "latest/radars/standard/mono-blue-spellementals.json"
     },
     {
       "scope": "archetype-radar",

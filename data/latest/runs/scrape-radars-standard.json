@@ -1,12 +1,12 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-16T11:29:25Z",
+  "generated_at": "2026-10-16T16:43:02Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 64,
+    "success": 65,
     "skipped": 59
   },
   "results": [
@@ -887,6 +887,13 @@
       "format": "standard",
       "archetype": "esper-excruciator",
       "path": "latest/radars/standard/esper-excruciator.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "g",
+      "path": "latest/radars/standard/g.json"
     },
     {
       "scope": "archetype-radar",

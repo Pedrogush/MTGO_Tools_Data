@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-15T21:28:22Z",
+  "generated_at": "2026-10-16T04:36:44Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 70,
-    "skipped": 58
+    "success": 65,
+    "skipped": 59
   },
   "results": [
     {
@@ -421,10 +421,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "izzet-control",
-      "path": "latest/radars/standard/izzet-control.json"
+      "path": "latest/radars/standard/izzet-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -905,29 +906,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
-      "archetype": "rg",
-      "path": "latest/radars/standard/rg.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
-      "archetype": "selesnya-gearhulk",
-      "path": "latest/radars/standard/selesnya-gearhulk.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
       "archetype": "ub",
       "path": "latest/radars/standard/ub.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
-      "archetype": "ubr",
-      "path": "latest/radars/standard/ubr.json"
     },
     {
       "scope": "archetype-radar",
@@ -942,13 +922,6 @@
       "format": "standard",
       "archetype": "wr",
       "path": "latest/radars/standard/wr.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
-      "archetype": "wub",
-      "path": "latest/radars/standard/wub.json"
     },
     {
       "scope": "archetype-radar",

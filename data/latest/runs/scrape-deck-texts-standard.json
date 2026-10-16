@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-15T21:25:37Z",
+  "generated_at": "2026-10-16T04:35:41Z",
   "command": "scrape-deck-texts-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 44,
-    "skipped": 171
+    "success": 42,
+    "skipped": 173
   },
   "results": [
     {
@@ -235,7 +235,7 @@
       "format": "standard",
       "archetype": "izzet-aggro",
       "path": "latest/decks/standard/izzet-aggro.json",
-      "message": "All MTGGoldfish rows were MTGO events; published via mtgo-decklists."
+      "message": "No decks found within the last 7 days."
     },
     {
       "scope": "archetype-decks",
@@ -889,10 +889,11 @@
     },
     {
       "scope": "deck-text",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "deck_id": "7996073",
-      "path": "archive/deck-texts/standard/7996073.json"
+      "path": "archive/deck-texts/standard/7996073.json",
+      "message": "Reused existing published deck-text blob."
     },
     {
       "scope": "deck-text",
@@ -1104,10 +1105,11 @@
     },
     {
       "scope": "deck-text",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "deck_id": "7996130",
-      "path": "archive/deck-texts/standard/7996130.json"
+      "path": "archive/deck-texts/standard/7996130.json",
+      "message": "Reused existing published deck-text blob."
     },
     {
       "scope": "deck-text",

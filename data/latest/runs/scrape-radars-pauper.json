@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-15T21:28:27Z",
+  "generated_at": "2026-10-16T04:36:31Z",
   "command": "scrape-radars-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 64,
-    "skipped": 20
+    "success": 62,
+    "skipped": 21
   },
   "results": [
     {
@@ -65,10 +65,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "azorius-gates",
-      "path": "latest/radars/pauper/azorius-gates.json"
+      "path": "latest/radars/pauper/azorius-gates.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -575,13 +576,6 @@
       "format": "pauper",
       "archetype": "ubg",
       "path": "latest/radars/pauper/ubg.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pauper",
-      "archetype": "ubrg",
-      "path": "latest/radars/pauper/ubrg.json"
     },
     {
       "scope": "archetype-radar",

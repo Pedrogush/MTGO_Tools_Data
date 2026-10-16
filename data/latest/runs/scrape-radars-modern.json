@@ -1,12 +1,12 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-15T21:28:23Z",
+  "generated_at": "2026-10-16T04:36:37Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 93,
+    "success": 95,
     "skipped": 16
   },
   "results": [
@@ -435,10 +435,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "mill",
-      "path": "latest/radars/modern/mill.json"
+      "path": "latest/radars/modern/mill.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -544,11 +545,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "sam-combo",
-      "path": "latest/radars/modern/sam-combo.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/sam-combo.json"
     },
     {
       "scope": "archetype-radar",
@@ -688,8 +688,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "rg",
-      "path": "latest/radars/modern/rg.json"
+      "archetype": "rakdos-burn",
+      "path": "latest/radars/modern/rakdos-burn.json"
     },
     {
       "scope": "archetype-radar",
@@ -716,8 +716,22 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
+      "archetype": "ug",
+      "path": "latest/radars/modern/ug.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
       "archetype": "ur",
       "path": "latest/radars/modern/ur.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "urg",
+      "path": "latest/radars/modern/urg.json"
     },
     {
       "scope": "archetype-radar",

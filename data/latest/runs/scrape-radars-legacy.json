@@ -1,12 +1,12 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-15T21:28:21Z",
+  "generated_at": "2026-10-16T04:36:45Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 21,
+    "skipped": 20,
     "success": 75
   },
   "results": [
@@ -145,11 +145,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "cradle-control",
-      "path": "latest/radars/legacy/cradle-control.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/cradle-control.json"
     },
     {
       "scope": "archetype-radar",
@@ -660,13 +659,6 @@
       "format": "legacy",
       "archetype": "w",
       "path": "latest/radars/legacy/w.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "wbg",
-      "path": "latest/radars/legacy/wbg.json"
     },
     {
       "scope": "archetype-radar",

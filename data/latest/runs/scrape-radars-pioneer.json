@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-15T21:28:27Z",
+  "generated_at": "2026-10-16T04:36:36Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 41,
-    "success": 33
+    "skipped": 42,
+    "success": 34
   },
   "results": [
     {
@@ -386,10 +386,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "orzhov-midrange",
-      "path": "latest/radars/pioneer/orzhov-midrange.json"
+      "path": "latest/radars/pioneer/orzhov-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -432,11 +433,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "selesnya-angels",
-      "path": "latest/radars/pioneer/selesnya-angels.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pioneer/selesnya-angels.json"
     },
     {
       "scope": "archetype-radar",
@@ -479,10 +479,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "temur-indomitable-creativity",
-      "path": "latest/radars/pioneer/temur-indomitable-creativity.json"
+      "path": "latest/radars/pioneer/temur-indomitable-creativity.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -519,6 +520,13 @@
       "format": "pioneer",
       "archetype": "g",
       "path": "latest/radars/pioneer/g.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "selesnya-counters",
+      "path": "latest/radars/pioneer/selesnya-counters.json"
     },
     {
       "scope": "archetype-radar",
@@ -561,6 +569,13 @@
       "format": "pioneer",
       "archetype": "wubg",
       "path": "latest/radars/pioneer/wubg.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "wubrg",
+      "path": "latest/radars/pioneer/wubrg.json"
     },
     {
       "scope": "format-card-pool",

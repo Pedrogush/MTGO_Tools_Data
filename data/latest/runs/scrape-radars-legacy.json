@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-17T15:39:04Z",
+  "generated_at": "2026-10-17T20:40:33Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 21,
-    "success": 74
+    "skipped": 20,
+    "success": 76
   },
   "results": [
     {
@@ -384,6 +384,14 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "legacy",
+      "archetype": "mono-black-reanimator",
+      "path": "latest/radars/legacy/mono-black-reanimator.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
       "archetype": "mystic-forge-combo",
@@ -413,11 +421,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "ninjas",
-      "path": "latest/radars/legacy/ninjas.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/ninjas.json"
     },
     {
       "scope": "archetype-radar",
@@ -457,11 +464,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "red-stompy",
-      "path": "latest/radars/legacy/red-stompy.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/red-stompy.json"
     },
     {
       "scope": "archetype-radar",

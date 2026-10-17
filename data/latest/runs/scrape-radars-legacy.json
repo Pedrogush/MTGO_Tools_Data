@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-17T04:32:17Z",
+  "generated_at": "2026-10-17T10:48:56Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 22,
-    "success": 72
+    "skipped": 21,
+    "success": 74
   },
   "results": [
     {
@@ -292,11 +292,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "izzet-tempo",
-      "path": "latest/radars/legacy/izzet-tempo.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/izzet-tempo.json"
     },
     {
       "scope": "archetype-radar",
@@ -619,6 +618,13 @@
       "format": "legacy",
       "archetype": "gruul-initiative",
       "path": "latest/radars/legacy/gruul-initiative.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "r",
+      "path": "latest/radars/legacy/r.json"
     },
     {
       "scope": "archetype-radar",

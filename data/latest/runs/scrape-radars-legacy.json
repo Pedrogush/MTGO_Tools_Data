@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-16T21:15:30Z",
+  "generated_at": "2026-10-17T04:32:17Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 19,
-    "success": 77
+    "skipped": 22,
+    "success": 72
   },
   "results": [
     {
@@ -101,10 +101,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "blue-cloudpost",
-      "path": "latest/radars/legacy/blue-cloudpost.json"
+      "path": "latest/radars/legacy/blue-cloudpost.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -131,10 +132,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "burn",
-      "path": "latest/radars/legacy/burn.json"
+      "path": "latest/radars/legacy/burn.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -397,10 +399,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "necrodominance-combo",
-      "path": "latest/radars/legacy/necrodominance-combo.json"
+      "path": "latest/radars/legacy/necrodominance-combo.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -621,13 +624,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "izzet-artifacts",
-      "path": "latest/radars/legacy/izzet-artifacts.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
       "archetype": "simic-cloudpost",
       "path": "latest/radars/legacy/simic-cloudpost.json"
     },
@@ -637,13 +633,6 @@
       "format": "legacy",
       "archetype": "ub",
       "path": "latest/radars/legacy/ub.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "ubrg",
-      "path": "latest/radars/legacy/ubrg.json"
     },
     {
       "scope": "archetype-radar",

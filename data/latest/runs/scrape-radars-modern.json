@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-16T21:15:29Z",
+  "generated_at": "2026-10-17T04:32:22Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 96,
-    "skipped": 16
+    "success": 86,
+    "skipped": 25
   },
   "results": [
     {
@@ -26,10 +26,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "4c-midrange",
-      "path": "latest/radars/modern/4c-midrange.json"
+      "path": "latest/radars/modern/4c-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -54,10 +55,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "asmo-food",
-      "path": "latest/radars/modern/asmo-food.json"
+      "path": "latest/radars/modern/asmo-food.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -90,10 +92,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "bant-blink",
-      "path": "latest/radars/modern/bant-blink.json"
+      "path": "latest/radars/modern/bant-blink.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -217,17 +220,19 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "esper-midrange",
-      "path": "latest/radars/modern/esper-midrange.json"
+      "path": "latest/radars/modern/esper-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "esper-reanimator",
-      "path": "latest/radars/modern/esper-reanimator.json"
+      "path": "latest/radars/modern/esper-reanimator.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -259,10 +264,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "grixis-midrange",
-      "path": "latest/radars/modern/grixis-midrange.json"
+      "path": "latest/radars/modern/grixis-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -281,10 +287,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "gruul-basking-broodscale-combo",
-      "path": "latest/radars/modern/gruul-basking-broodscale-combo.json"
+      "path": "latest/radars/modern/gruul-basking-broodscale-combo.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -386,10 +393,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "jeskai-prowess",
-      "path": "latest/radars/modern/jeskai-prowess.json"
+      "path": "latest/radars/modern/jeskai-prowess.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -487,10 +495,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "mono-red-burn",
-      "path": "latest/radars/modern/mono-red-burn.json"
+      "path": "latest/radars/modern/mono-red-burn.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -618,13 +627,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "4-5c-omnath",
-      "path": "latest/radars/modern/4-5c-omnath.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "amalia-combo",
       "path": "latest/radars/modern/amalia-combo.json"
     },
@@ -669,6 +671,13 @@
       "format": "modern",
       "archetype": "esper-murktide",
       "path": "latest/radars/modern/esper-murktide.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "g",
+      "path": "latest/radars/modern/g.json"
     },
     {
       "scope": "archetype-radar",
@@ -788,13 +797,6 @@
       "format": "modern",
       "archetype": "wubrg",
       "path": "latest/radars/modern/wubrg.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "wug",
-      "path": "latest/radars/modern/wug.json"
     },
     {
       "scope": "archetype-radar",

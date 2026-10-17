@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-16T21:15:32Z",
+  "generated_at": "2026-10-17T04:32:19Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 65,
-    "skipped": 59
+    "success": 60,
+    "skipped": 65
   },
   "results": [
     {
@@ -64,10 +64,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "5c-elementals",
-      "path": "latest/radars/standard/5c-elementals.json"
+      "path": "latest/radars/standard/5c-elementals.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -139,10 +140,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "bant-airbending-combo",
-      "path": "latest/radars/standard/bant-airbending-combo.json"
+      "path": "latest/radars/standard/bant-airbending-combo.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -329,10 +331,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "golgari-landfall",
-      "path": "latest/radars/standard/golgari-landfall.json"
+      "path": "latest/radars/standard/golgari-landfall.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -444,10 +447,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "izzet-looting",
-      "path": "latest/radars/standard/izzet-looting.json"
+      "path": "latest/radars/standard/izzet-looting.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -516,10 +520,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "jeskai-momo",
-      "path": "latest/radars/standard/jeskai-momo.json"
+      "path": "latest/radars/standard/jeskai-momo.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -750,10 +755,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "selesnya-ouroboroid",
-      "path": "latest/radars/standard/selesnya-ouroboroid.json"
+      "path": "latest/radars/standard/selesnya-ouroboroid.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -906,6 +912,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
+      "archetype": "mardu-control",
+      "path": "latest/radars/standard/mardu-control.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
       "archetype": "ub",
       "path": "latest/radars/standard/ub.json"
     },
@@ -927,8 +940,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
-      "archetype": "wur",
-      "path": "latest/radars/standard/wur.json"
+      "archetype": "wu",
+      "path": "latest/radars/standard/wu.json"
     },
     {
       "scope": "format-card-pool",

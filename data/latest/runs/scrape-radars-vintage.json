@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-17T20:40:28Z",
+  "generated_at": "2026-10-18T04:38:48Z",
   "command": "scrape-radars-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 30,
-    "skipped": 12
+    "success": 31,
+    "skipped": 14
   },
   "results": [
     {
@@ -50,10 +50,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "blue-tinker",
-      "path": "latest/radars/vintage/blue-tinker.json"
+      "path": "latest/radars/vintage/blue-tinker.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -269,10 +270,18 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "underworld-breach",
-      "path": "latest/radars/vintage/underworld-breach.json"
+      "path": "latest/radars/vintage/underworld-breach.json",
+      "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "vintage",
+      "archetype": "oops-all-spells",
+      "path": "latest/radars/vintage/oops-all-spells.json"
     },
     {
       "scope": "archetype-radar",
@@ -280,6 +289,20 @@
       "format": "vintage",
       "archetype": "temur-tempo",
       "path": "latest/radars/vintage/temur-tempo.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "vintage",
+      "archetype": "ubr",
+      "path": "latest/radars/vintage/ubr.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "vintage",
+      "archetype": "ur",
+      "path": "latest/radars/vintage/ur.json"
     },
     {
       "scope": "archetype-radar",

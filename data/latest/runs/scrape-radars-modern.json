@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-17T20:40:32Z",
+  "generated_at": "2026-10-18T04:38:45Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 89,
-    "skipped": 24
+    "success": 87,
+    "skipped": 26
   },
   "results": [
     {
@@ -143,10 +143,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "crashing-footfalls",
-      "path": "latest/radars/modern/crashing-footfalls.json"
+      "path": "latest/radars/modern/crashing-footfalls.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -257,10 +258,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "grixis-control",
-      "path": "latest/radars/modern/grixis-control.json"
+      "path": "latest/radars/modern/grixis-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -518,11 +520,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "orzhov-midrange",
-      "path": "latest/radars/modern/orzhov-midrange.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/orzhov-midrange.json"
     },
     {
       "scope": "archetype-radar",
@@ -575,10 +576,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "sultai-midrange",
-      "path": "latest/radars/modern/sultai-midrange.json"
+      "path": "latest/radars/modern/sultai-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -710,6 +712,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
+      "archetype": "rg",
+      "path": "latest/radars/modern/rg.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
       "archetype": "u",
       "path": "latest/radars/modern/u.json"
     },
@@ -719,13 +728,6 @@
       "format": "modern",
       "archetype": "ub",
       "path": "latest/radars/modern/ub.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "ubr",
-      "path": "latest/radars/modern/ubr.json"
     },
     {
       "scope": "archetype-radar",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-17T20:40:28Z",
+  "generated_at": "2026-10-18T04:38:40Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 42,
-    "success": 33
+    "skipped": 41,
+    "success": 37
   },
   "results": [
     {
@@ -82,11 +82,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "abzan-greasefang",
-      "path": "latest/radars/pioneer/abzan-greasefang.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pioneer/abzan-greasefang.json"
     },
     {
       "scope": "archetype-radar",
@@ -166,11 +165,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "dimir-control",
-      "path": "latest/radars/pioneer/dimir-control.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pioneer/dimir-control.json"
     },
     {
       "scope": "archetype-radar",
@@ -349,10 +347,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "mono-white-humans",
-      "path": "latest/radars/pioneer/mono-white-humans.json"
+      "path": "latest/radars/pioneer/mono-white-humans.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -525,6 +524,20 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pioneer",
+      "archetype": "jund-food",
+      "path": "latest/radars/pioneer/jund-food.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "rakdos-prowess",
+      "path": "latest/radars/pioneer/rakdos-prowess.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
       "archetype": "ub",
       "path": "latest/radars/pioneer/ub.json"
     },
@@ -541,6 +554,13 @@
       "format": "pioneer",
       "archetype": "ubr",
       "path": "latest/radars/pioneer/ubr.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "ubrg",
+      "path": "latest/radars/pioneer/ubrg.json"
     },
     {
       "scope": "archetype-radar",

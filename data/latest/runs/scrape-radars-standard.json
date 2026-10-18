@@ -1,12 +1,12 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-18T15:55:14Z",
+  "generated_at": "2026-10-18T20:59:33Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 54,
+    "success": 55,
     "skipped": 71
   },
   "results": [
@@ -173,6 +173,13 @@
     },
     {
       "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "boros-angels",
+      "path": "latest/radars/standard/boros-angels.json"
+    },
+    {
+      "scope": "archetype-radar",
       "status": "skipped",
       "format": "standard",
       "archetype": "boros-burn",
@@ -290,6 +297,13 @@
       "archetype": "esper-control",
       "path": "latest/radars/standard/esper-control.json",
       "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "esper-excruciator",
+      "path": "latest/radars/standard/esper-excruciator.json"
     },
     {
       "scope": "archetype-radar",
@@ -892,13 +906,6 @@
       "format": "standard",
       "archetype": "brg",
       "path": "latest/radars/standard/brg.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
-      "archetype": "esper-excruciator",
-      "path": "latest/radars/standard/esper-excruciator.json"
     },
     {
       "scope": "archetype-radar",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-19T13:23:27Z",
+  "generated_at": "2026-10-19T22:29:25Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 47,
-    "skipped": 79
+    "success": 48,
+    "skipped": 78
   },
   "results": [
     {
@@ -559,6 +559,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
+      "archetype": "jund-midrange",
+      "path": "latest/radars/standard/jund-midrange.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
       "archetype": "jund-sacrifice",
       "path": "latest/radars/standard/jund-sacrifice.json"
     },
@@ -703,11 +710,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
       "archetype": "orzhov-aristocrats",
-      "path": "latest/radars/standard/orzhov-aristocrats.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/standard/orzhov-aristocrats.json"
     },
     {
       "scope": "archetype-radar",
@@ -921,13 +927,6 @@
       "format": "standard",
       "archetype": "g",
       "path": "latest/radars/standard/g.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
-      "archetype": "jund-midrange",
-      "path": "latest/radars/standard/jund-midrange.json"
     },
     {
       "scope": "archetype-radar",

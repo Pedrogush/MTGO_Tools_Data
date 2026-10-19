@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-18T20:59:34Z",
+  "generated_at": "2026-10-19T04:45:58Z",
   "command": "scrape-radars-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 33,
-    "skipped": 14
+    "success": 28,
+    "skipped": 18
   },
   "results": [
     {
@@ -94,10 +94,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "eldrazi",
-      "path": "latest/radars/vintage/eldrazi.json"
+      "path": "latest/radars/vintage/eldrazi.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -249,10 +250,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "scam",
-      "path": "latest/radars/vintage/scam.json"
+      "path": "latest/radars/vintage/scam.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -263,17 +265,19 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "stiflenought",
-      "path": "latest/radars/vintage/stiflenought.json"
+      "path": "latest/radars/vintage/stiflenought.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "sultai-psychic-frog",
-      "path": "latest/radars/vintage/sultai-psychic-frog.json"
+      "path": "latest/radars/vintage/sultai-psychic-frog.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -310,13 +314,6 @@
       "format": "vintage",
       "archetype": "ur",
       "path": "latest/radars/vintage/ur.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "vintage",
-      "archetype": "wr",
-      "path": "latest/radars/vintage/wr.json"
     },
     {
       "scope": "archetype-radar",

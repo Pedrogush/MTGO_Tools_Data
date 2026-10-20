@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-20T17:11:35Z",
+  "generated_at": "2026-10-20T21:39:31Z",
   "command": "scrape-deck-texts-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 22,
-    "skipped": 90
+    "success": 26,
+    "skipped": 88
   },
   "results": [
     {
@@ -50,6 +50,13 @@
       "scope": "archetype-decks",
       "status": "success",
       "format": "standard",
+      "archetype": "abzan-control",
+      "path": "latest/decks/standard/abzan-control.json"
+    },
+    {
+      "scope": "archetype-decks",
+      "status": "success",
+      "format": "standard",
       "archetype": "azorius-control",
       "path": "latest/decks/standard/azorius-control.json"
     },
@@ -59,6 +66,14 @@
       "format": "standard",
       "archetype": "azorius-momo",
       "path": "latest/decks/standard/azorius-momo.json",
+      "message": "No decks found within the last 7 days."
+    },
+    {
+      "scope": "archetype-decks",
+      "status": "skipped",
+      "format": "standard",
+      "archetype": "azorius-oculus",
+      "path": "latest/decks/standard/azorius-oculus.json",
       "message": "No decks found within the last 7 days."
     },
     {
@@ -116,14 +131,6 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
-      "format": "standard",
-      "archetype": "dimir-aggro",
-      "path": "latest/decks/standard/dimir-aggro.json",
-      "message": "All MTGGoldfish rows were MTGO events; published via mtgo-decklists."
-    },
-    {
-      "scope": "archetype-decks",
       "status": "success",
       "format": "standard",
       "archetype": "dimir-control",
@@ -163,14 +170,6 @@
       "scope": "archetype-decks",
       "status": "skipped",
       "format": "standard",
-      "archetype": "esper-midrange",
-      "path": "latest/decks/standard/esper-midrange.json",
-      "message": "No decks found within the last 7 days."
-    },
-    {
-      "scope": "archetype-decks",
-      "status": "skipped",
-      "format": "standard",
       "archetype": "esper-reanimator",
       "path": "latest/decks/standard/esper-reanimator.json",
       "message": "No decks found within the last 7 days."
@@ -187,14 +186,6 @@
       "scope": "archetype-decks",
       "status": "skipped",
       "format": "standard",
-      "archetype": "golgari-midrange",
-      "path": "latest/decks/standard/golgari-midrange.json",
-      "message": "No decks found within the last 7 days."
-    },
-    {
-      "scope": "archetype-decks",
-      "status": "skipped",
-      "format": "standard",
       "archetype": "golgari-self-mill",
       "path": "latest/decks/standard/golgari-self-mill.json",
       "message": "No decks found within the last 7 days."
@@ -203,8 +194,8 @@
       "scope": "archetype-decks",
       "status": "skipped",
       "format": "standard",
-      "archetype": "gruul-aggro",
-      "path": "latest/decks/standard/gruul-aggro.json",
+      "archetype": "grixis-discard",
+      "path": "latest/decks/standard/grixis-discard.json",
       "message": "No decks found within the last 7 days."
     },
     {
@@ -364,14 +355,6 @@
       "scope": "archetype-decks",
       "status": "skipped",
       "format": "standard",
-      "archetype": "mono-black-midrange",
-      "path": "latest/decks/standard/mono-black-midrange.json",
-      "message": "No decks found within the last 7 days."
-    },
-    {
-      "scope": "archetype-decks",
-      "status": "skipped",
-      "format": "standard",
       "archetype": "mono-blue-spellementals",
       "path": "latest/decks/standard/mono-blue-spellementals.json",
       "message": "No decks found within the last 7 days."
@@ -400,10 +383,33 @@
     },
     {
       "scope": "archetype-decks",
+      "status": "skipped",
+      "format": "standard",
+      "archetype": "naya-aggro",
+      "path": "latest/decks/standard/naya-aggro.json",
+      "message": "No decks found within the last 7 days."
+    },
+    {
+      "scope": "archetype-decks",
       "status": "success",
       "format": "standard",
       "archetype": "orzhov-aristocrats",
       "path": "latest/decks/standard/orzhov-aristocrats.json"
+    },
+    {
+      "scope": "archetype-decks",
+      "status": "skipped",
+      "format": "standard",
+      "archetype": "rakdos-aggro",
+      "path": "latest/decks/standard/rakdos-aggro.json",
+      "message": "No decks found within the last 7 days."
+    },
+    {
+      "scope": "archetype-decks",
+      "status": "success",
+      "format": "standard",
+      "archetype": "rakdos-discard",
+      "path": "latest/decks/standard/rakdos-discard.json"
     },
     {
       "scope": "archetype-decks",
@@ -458,14 +464,6 @@
       "format": "standard",
       "archetype": "sultai-reanimator",
       "path": "latest/decks/standard/sultai-reanimator.json",
-      "message": "No decks found within the last 7 days."
-    },
-    {
-      "scope": "archetype-decks",
-      "status": "skipped",
-      "format": "standard",
-      "archetype": "temur-battlecrier-combo",
-      "path": "latest/decks/standard/temur-battlecrier-combo.json",
       "message": "No decks found within the last 7 days."
     },
     {
@@ -602,6 +600,13 @@
       "deck_id": "8005792",
       "path": "archive/deck-texts/standard/8005792.json",
       "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "success",
+      "format": "standard",
+      "deck_id": "8005793",
+      "path": "archive/deck-texts/standard/8005793.json"
     },
     {
       "scope": "deck-text",
@@ -786,6 +791,13 @@
       "deck_id": "8005820",
       "path": "archive/deck-texts/standard/8005820.json",
       "message": "Reused existing published deck-text blob."
+    },
+    {
+      "scope": "deck-text",
+      "status": "success",
+      "format": "standard",
+      "deck_id": "8005821",
+      "path": "archive/deck-texts/standard/8005821.json"
     },
     {
       "scope": "deck-text",

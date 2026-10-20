@@ -1,12 +1,12 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-20T17:12:36Z",
+  "generated_at": "2026-10-20T21:42:13Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 46,
+    "success": 48,
     "skipped": 80
   },
   "results": [
@@ -85,6 +85,13 @@
       "archetype": "5c-legends",
       "path": "latest/radars/standard/5c-legends.json",
       "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "abzan-control",
+      "path": "latest/radars/standard/abzan-control.json"
     },
     {
       "scope": "archetype-radar",
@@ -736,9 +743,16 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "standard",
-      "archetype": "rakdos-discard",
-      "path": "latest/radars/standard/rakdos-discard.json",
+      "archetype": "rakdos-aggro",
+      "path": "latest/radars/standard/rakdos-aggro.json",
       "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "rakdos-discard",
+      "path": "latest/radars/standard/rakdos-discard.json"
     },
     {
       "scope": "archetype-radar",

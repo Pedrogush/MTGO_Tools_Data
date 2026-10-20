@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-19T22:29:25Z",
+  "generated_at": "2026-10-20T04:55:37Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 48,
-    "skipped": 78
+    "success": 46,
+    "skipped": 80
   },
   "results": [
     {
@@ -301,10 +301,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "esper-excruciator",
-      "path": "latest/radars/standard/esper-excruciator.json"
+      "path": "latest/radars/standard/esper-excruciator.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -841,10 +842,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "sultai-reanimator",
-      "path": "latest/radars/standard/sultai-reanimator.json"
+      "path": "latest/radars/standard/sultai-reanimator.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

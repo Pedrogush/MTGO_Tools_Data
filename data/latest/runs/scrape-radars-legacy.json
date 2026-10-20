@@ -1,12 +1,12 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-19T22:29:27Z",
+  "generated_at": "2026-10-20T04:55:33Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 78,
+    "success": 79,
     "skipped": 17
   },
   "results": [
@@ -642,6 +642,13 @@
       "format": "legacy",
       "archetype": "r",
       "path": "latest/radars/legacy/r.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "riddlesmith-combo",
+      "path": "latest/radars/legacy/riddlesmith-combo.json"
     },
     {
       "scope": "archetype-radar",

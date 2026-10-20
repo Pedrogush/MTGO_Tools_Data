@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-19T22:29:22Z",
+  "generated_at": "2026-10-20T04:55:35Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 93,
-    "skipped": 19
+    "success": 89,
+    "skipped": 21
   },
   "results": [
     {
@@ -527,17 +527,19 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "rakdos-aggro",
-      "path": "latest/radars/modern/rakdos-aggro.json"
+      "path": "latest/radars/modern/rakdos-aggro.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "rakdos-hollowone",
-      "path": "latest/radars/modern/rakdos-hollowone.json"
+      "path": "latest/radars/modern/rakdos-hollowone.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -663,13 +665,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "dredge",
-      "path": "latest/radars/modern/dredge.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "esper-murktide",
       "path": "latest/radars/modern/esper-murktide.json"
     },
@@ -756,13 +751,6 @@
       "format": "modern",
       "archetype": "wbg",
       "path": "latest/radars/modern/wbg.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "wbr",
-      "path": "latest/radars/modern/wbr.json"
     },
     {
       "scope": "archetype-radar",

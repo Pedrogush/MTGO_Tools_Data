@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-21T11:54:43Z",
+  "generated_at": "2026-10-21T17:16:09Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 47,
-    "skipped": 81
+    "success": 50,
+    "skipped": 79
   },
   "results": [
     {
@@ -451,11 +451,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
       "archetype": "izzet-control",
-      "path": "latest/radars/standard/izzet-control.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/standard/izzet-control.json"
     },
     {
       "scope": "archetype-radar",
@@ -741,11 +740,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
       "archetype": "rakdos-aggro",
-      "path": "latest/radars/standard/rakdos-aggro.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/standard/rakdos-aggro.json"
     },
     {
       "scope": "archetype-radar",
@@ -958,6 +956,13 @@
       "format": "standard",
       "archetype": "mardu-control",
       "path": "latest/radars/standard/mardu-control.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "mono-red-burn",
+      "path": "latest/radars/standard/mono-red-burn.json"
     },
     {
       "scope": "archetype-radar",

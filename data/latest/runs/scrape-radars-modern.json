@@ -1,12 +1,12 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-20T21:42:14Z",
+  "generated_at": "2026-10-21T04:54:06Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 89,
+    "success": 88,
     "skipped": 21
   },
   "results": [
@@ -227,11 +227,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "esper-midrange",
-      "path": "latest/radars/modern/esper-midrange.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/esper-midrange.json"
     },
     {
       "scope": "archetype-radar",
@@ -571,10 +570,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "song-of-creation",
-      "path": "latest/radars/modern/song-of-creation.json"
+      "path": "latest/radars/modern/song-of-creation.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -639,6 +639,13 @@
       "format": "modern",
       "archetype": "bg",
       "path": "latest/radars/modern/bg.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "bogles",
+      "path": "latest/radars/modern/bogles.json"
     },
     {
       "scope": "archetype-radar",
@@ -728,13 +735,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "ur",
-      "path": "latest/radars/modern/ur.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "urg",
       "path": "latest/radars/modern/urg.json"
     },
@@ -786,13 +786,6 @@
       "format": "modern",
       "archetype": "wub",
       "path": "latest/radars/modern/wub.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "wubrg",
-      "path": "latest/radars/modern/wubrg.json"
     },
     {
       "scope": "format-card-pool",

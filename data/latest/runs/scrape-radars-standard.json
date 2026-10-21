@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-20T21:42:13Z",
+  "generated_at": "2026-10-21T04:54:11Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 48,
-    "skipped": 80
+    "success": 47,
+    "skipped": 81
   },
   "results": [
     {
@@ -34,10 +34,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "4c-omniscience",
-      "path": "latest/radars/standard/4c-omniscience.json"
+      "path": "latest/radars/standard/4c-omniscience.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -395,11 +396,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
       "archetype": "grixis-reanimator",
-      "path": "latest/radars/standard/grixis-reanimator.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/standard/grixis-reanimator.json"
     },
     {
       "scope": "archetype-radar",
@@ -872,10 +872,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "temur-harmonizer-combo",
-      "path": "latest/radars/standard/temur-harmonizer-combo.json"
+      "path": "latest/radars/standard/temur-harmonizer-combo.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -927,6 +928,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
+      "archetype": "5c-omniscience",
+      "path": "latest/radars/standard/5c-omniscience.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
       "archetype": "allies",
       "path": "latest/radars/standard/allies.json"
     },
@@ -964,13 +972,6 @@
       "format": "standard",
       "archetype": "ur",
       "path": "latest/radars/standard/ur.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
-      "archetype": "wr",
-      "path": "latest/radars/standard/wr.json"
     },
     {
       "scope": "archetype-radar",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-20T21:42:30Z",
+  "generated_at": "2026-10-21T04:54:08Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 85,
-    "skipped": 14
+    "success": 82,
+    "skipped": 15
   },
   "results": [
     {
@@ -316,10 +316,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "jeskai-stoneblade",
-      "path": "latest/radars/legacy/jeskai-stoneblade.json"
+      "path": "latest/radars/legacy/jeskai-stoneblade.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -574,22 +575,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "b",
-      "path": "latest/radars/legacy/b.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
       "archetype": "bant-depths",
       "path": "latest/radars/legacy/bant-depths.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "bant-tempo",
-      "path": "latest/radars/legacy/bant-tempo.json"
     },
     {
       "scope": "archetype-radar",

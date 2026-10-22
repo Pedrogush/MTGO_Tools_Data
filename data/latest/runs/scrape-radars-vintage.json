@@ -1,12 +1,12 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-22T11:58:09Z",
+  "generated_at": "2026-10-22T17:14:30Z",
   "command": "scrape-radars-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 29,
+    "success": 30,
     "skipped": 17
   },
   "results": [
@@ -292,6 +292,13 @@
       "format": "vintage",
       "archetype": "4c-midrange",
       "path": "latest/radars/vintage/4c-midrange.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "vintage",
+      "archetype": "hogaak",
+      "path": "latest/radars/vintage/hogaak.json"
     },
     {
       "scope": "archetype-radar",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-21T21:48:29Z",
+  "generated_at": "2026-10-22T04:53:34Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 88,
-    "skipped": 21
+    "success": 90,
+    "skipped": 22
   },
   "results": [
     {
@@ -424,10 +424,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "mardu-energy",
-      "path": "latest/radars/modern/mardu-energy.json"
+      "path": "latest/radars/modern/mardu-energy.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -714,8 +715,22 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
+      "archetype": "rakdos-delirium",
+      "path": "latest/radars/modern/rakdos-delirium.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
       "archetype": "rg",
       "path": "latest/radars/modern/rg.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "selesnya-midrange",
+      "path": "latest/radars/modern/selesnya-midrange.json"
     },
     {
       "scope": "archetype-radar",
@@ -730,6 +745,13 @@
       "format": "modern",
       "archetype": "ug",
       "path": "latest/radars/modern/ug.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "ur",
+      "path": "latest/radars/modern/ur.json"
     },
     {
       "scope": "archetype-radar",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-21T21:48:21Z",
+  "generated_at": "2026-10-22T04:53:25Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 50,
-    "skipped": 79
+    "success": 48,
+    "skipped": 81
   },
   "results": [
     {
@@ -823,10 +823,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "simic-landfall",
-      "path": "latest/radars/standard/simic-landfall.json"
+      "path": "latest/radars/standard/simic-landfall.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -838,10 +839,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "sultai-control",
-      "path": "latest/radars/standard/sultai-control.json"
+      "path": "latest/radars/standard/sultai-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -947,13 +949,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
-      "archetype": "g",
-      "path": "latest/radars/standard/g.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
       "archetype": "mardu-control",
       "path": "latest/radars/standard/mardu-control.json"
     },
@@ -984,6 +979,13 @@
       "format": "standard",
       "archetype": "wu",
       "path": "latest/radars/standard/wu.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "wur",
+      "path": "latest/radars/standard/wur.json"
     },
     {
       "scope": "format-card-pool",

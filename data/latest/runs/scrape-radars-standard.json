@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-23T04:56:28Z",
+  "generated_at": "2026-10-23T11:44:16Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 48,
-    "skipped": 81
+    "success": 50,
+    "skipped": 80
   },
   "results": [
     {
@@ -823,11 +823,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
       "archetype": "simic-landfall",
-      "path": "latest/radars/standard/simic-landfall.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/standard/simic-landfall.json"
     },
     {
       "scope": "archetype-radar",
@@ -972,6 +971,13 @@
       "format": "standard",
       "archetype": "ub",
       "path": "latest/radars/standard/ub.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "ubr",
+      "path": "latest/radars/standard/ubr.json"
     },
     {
       "scope": "archetype-radar",

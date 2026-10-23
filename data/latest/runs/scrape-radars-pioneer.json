@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-22T21:42:30Z",
+  "generated_at": "2026-10-23T04:56:24Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 41,
-    "success": 37
+    "skipped": 45,
+    "success": 31
   },
   "results": [
     {
@@ -228,10 +228,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "gruul-prowess",
-      "path": "latest/radars/pioneer/gruul-prowess.json"
+      "path": "latest/radars/pioneer/gruul-prowess.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -281,10 +282,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "izzet-phoenix",
-      "path": "latest/radars/pioneer/izzet-phoenix.json"
+      "path": "latest/radars/pioneer/izzet-phoenix.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -454,10 +456,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "selesnya-angels",
-      "path": "latest/radars/pioneer/selesnya-angels.json"
+      "path": "latest/radars/pioneer/selesnya-angels.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -468,10 +471,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "selesnya-counters",
-      "path": "latest/radars/pioneer/selesnya-counters.json"
+      "path": "latest/radars/pioneer/selesnya-counters.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -575,20 +579,6 @@
       "format": "pioneer",
       "archetype": "wr",
       "path": "latest/radars/pioneer/wr.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pioneer",
-      "archetype": "wubg",
-      "path": "latest/radars/pioneer/wubg.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pioneer",
-      "archetype": "wubrg",
-      "path": "latest/radars/pioneer/wubrg.json"
     },
     {
       "scope": "format-card-pool",

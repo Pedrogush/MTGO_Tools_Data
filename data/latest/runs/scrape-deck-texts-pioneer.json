@@ -1,13 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-23T11:43:22Z",
+  "generated_at": "2026-10-23T17:11:35Z",
   "command": "scrape-deck-texts-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "success": 1,
-    "skipped": 41
+    "skipped": 40,
+    "stale-fallback": 1
   },
   "results": [
     {
@@ -322,11 +323,11 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "stale-fallback",
       "format": "pioneer",
       "archetype": "temur-indomitable-creativity",
       "path": "latest/decks/pioneer/temur-indomitable-creativity.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Temur Indomitable Creativity"
     },
     {
       "scope": "archetype-decks",

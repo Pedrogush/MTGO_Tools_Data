@@ -1,12 +1,12 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-24T04:41:46Z",
+  "generated_at": "2026-10-24T11:07:12Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 47,
+    "success": 48,
     "skipped": 80
   },
   "results": [
@@ -936,6 +936,13 @@
       "archetype": "temur-stormsplitter",
       "path": "latest/radars/standard/temur-stormsplitter.json",
       "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "allies",
+      "path": "latest/radars/standard/allies.json"
     },
     {
       "scope": "archetype-radar",

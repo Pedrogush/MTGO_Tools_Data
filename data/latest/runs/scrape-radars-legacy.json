@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-23T21:30:48Z",
+  "generated_at": "2026-10-24T04:41:35Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 88,
-    "skipped": 13
+    "success": 83,
+    "skipped": 18
   },
   "results": [
     {
@@ -237,10 +237,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "esper-control",
-      "path": "latest/radars/legacy/esper-control.json"
+      "path": "latest/radars/legacy/esper-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -259,10 +260,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "green-cloudpost",
-      "path": "latest/radars/legacy/green-cloudpost.json"
+      "path": "latest/radars/legacy/green-cloudpost.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -424,10 +426,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "nic-fit",
-      "path": "latest/radars/legacy/nic-fit.json"
+      "path": "latest/radars/legacy/nic-fit.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -522,10 +525,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "sultai-depths",
-      "path": "latest/radars/legacy/sultai-depths.json"
+      "path": "latest/radars/legacy/sultai-depths.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -536,10 +540,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "temur-delver",
-      "path": "latest/radars/legacy/temur-delver.json"
+      "path": "latest/radars/legacy/temur-delver.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -610,13 +615,6 @@
       "format": "legacy",
       "archetype": "golgari",
       "path": "latest/radars/legacy/golgari.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "gruul-initiative",
-      "path": "latest/radars/legacy/gruul-initiative.json"
     },
     {
       "scope": "archetype-radar",
@@ -701,6 +699,13 @@
       "format": "legacy",
       "archetype": "wub",
       "path": "latest/radars/legacy/wub.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "wubr",
+      "path": "latest/radars/legacy/wubr.json"
     },
     {
       "scope": "archetype-radar",

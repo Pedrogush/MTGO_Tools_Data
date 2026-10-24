@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-23T21:30:45Z",
+  "generated_at": "2026-10-24T04:41:37Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 41,
-    "success": 37
+    "skipped": 42,
+    "success": 36
   },
   "results": [
     {
@@ -445,10 +445,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "rakdos-sacrifice",
-      "path": "latest/radars/pioneer/rakdos-sacrifice.json"
+      "path": "latest/radars/pioneer/rakdos-sacrifice.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

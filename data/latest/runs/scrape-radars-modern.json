@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-23T21:30:47Z",
+  "generated_at": "2026-10-24T04:41:41Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 93,
-    "skipped": 20
+    "success": 85,
+    "skipped": 25
   },
   "results": [
     {
@@ -33,10 +33,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "5c-midrange",
-      "path": "latest/radars/modern/5c-midrange.json"
+      "path": "latest/radars/modern/5c-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -298,10 +299,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "hammer-time",
-      "path": "latest/radars/modern/hammer-time.json"
+      "path": "latest/radars/modern/hammer-time.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -438,17 +440,19 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "merfolk",
-      "path": "latest/radars/modern/merfolk.json"
+      "path": "latest/radars/modern/merfolk.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "mill",
-      "path": "latest/radars/modern/mill.json"
+      "path": "latest/radars/modern/mill.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -562,10 +566,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "simic-midrange",
-      "path": "latest/radars/modern/simic-midrange.json"
+      "path": "latest/radars/modern/simic-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -666,13 +671,6 @@
       "format": "modern",
       "archetype": "brg",
       "path": "latest/radars/modern/brg.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "crab-vine",
-      "path": "latest/radars/modern/crab-vine.json"
     },
     {
       "scope": "archetype-radar",
@@ -790,13 +788,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "wg",
-      "path": "latest/radars/modern/wg.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "wr",
       "path": "latest/radars/modern/wr.json"
     },
@@ -806,13 +797,6 @@
       "format": "modern",
       "archetype": "wu",
       "path": "latest/radars/modern/wu.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "wub",
-      "path": "latest/radars/modern/wub.json"
     },
     {
       "scope": "format-card-pool",

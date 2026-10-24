@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-23T21:30:47Z",
+  "generated_at": "2026-10-24T04:41:46Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 52,
-    "skipped": 78
+    "success": 47,
+    "skipped": 80
   },
   "results": [
     {
@@ -65,10 +65,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "5c-elementals",
-      "path": "latest/radars/standard/5c-elementals.json"
+      "path": "latest/radars/standard/5c-elementals.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -270,10 +271,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "dimir-excruciator",
-      "path": "latest/radars/standard/dimir-excruciator.json"
+      "path": "latest/radars/standard/dimir-excruciator.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -441,11 +443,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
       "archetype": "izzet-aggro",
-      "path": "latest/radars/standard/izzet-aggro.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/standard/izzet-aggro.json"
     },
     {
       "scope": "archetype-radar",
@@ -487,10 +488,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "izzet-maestro",
-      "path": "latest/radars/standard/izzet-maestro.json"
+      "path": "latest/radars/standard/izzet-maestro.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -939,13 +941,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
-      "archetype": "allies",
-      "path": "latest/radars/standard/allies.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
       "archetype": "boros-leyline-aggro",
       "path": "latest/radars/standard/boros-leyline-aggro.json"
     },
@@ -960,13 +955,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
-      "archetype": "mardu-control",
-      "path": "latest/radars/standard/mardu-control.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
       "archetype": "ub",
       "path": "latest/radars/standard/ub.json"
     },
@@ -976,13 +964,6 @@
       "format": "standard",
       "archetype": "ubr",
       "path": "latest/radars/standard/ubr.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
-      "archetype": "wu",
-      "path": "latest/radars/standard/wu.json"
     },
     {
       "scope": "archetype-radar",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-24T16:00:44Z",
+  "generated_at": "2026-10-24T21:07:07Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 42,
-    "success": 36
+    "skipped": 38,
+    "success": 41
   },
   "results": [
     {
@@ -338,11 +338,17 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "mono-black-discard",
+      "path": "latest/radars/pioneer/mono-black-discard.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
       "format": "pioneer",
       "archetype": "mono-black-midrange",
-      "path": "latest/radars/pioneer/mono-black-midrange.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pioneer/mono-black-midrange.json"
     },
     {
       "scope": "archetype-radar",
@@ -377,11 +383,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "niv-to-light",
-      "path": "latest/radars/pioneer/niv-to-light.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pioneer/niv-to-light.json"
     },
     {
       "scope": "archetype-radar",
@@ -430,11 +435,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "rakdos-midrange",
-      "path": "latest/radars/pioneer/rakdos-midrange.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pioneer/rakdos-midrange.json"
     },
     {
       "scope": "archetype-radar",
@@ -515,11 +519,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "temur-lessons",
-      "path": "latest/radars/pioneer/temur-lessons.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pioneer/temur-lessons.json"
     },
     {
       "scope": "archetype-radar",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-24T21:07:01Z",
+  "generated_at": "2026-10-25T04:46:46Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 61,
-    "skipped": 68
+    "success": 59,
+    "skipped": 70
   },
   "results": [
     {
@@ -200,10 +200,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "boros-control",
-      "path": "latest/radars/standard/boros-control.json"
+      "path": "latest/radars/standard/boros-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -722,10 +723,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "orzhov-aristocrats",
-      "path": "latest/radars/standard/orzhov-aristocrats.json"
+      "path": "latest/radars/standard/orzhov-aristocrats.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -957,8 +959,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
-      "archetype": "ub",
-      "path": "latest/radars/standard/ub.json"
+      "archetype": "gruul-random-encounter",
+      "path": "latest/radars/standard/gruul-random-encounter.json"
     },
     {
       "scope": "archetype-radar",

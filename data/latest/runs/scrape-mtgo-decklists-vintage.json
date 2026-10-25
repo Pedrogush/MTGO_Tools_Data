@@ -1,15 +1,22 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-24T20:52:55Z",
+  "generated_at": "2026-10-25T04:45:53Z",
   "command": "scrape-mtgo-decklists-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "success": 3,
-    "cached": 10
+    "cached": 9
   },
   "results": [
+    {
+      "scope": "mtgo-event",
+      "status": "success",
+      "format": "vintage",
+      "path": "archive/mtgo-decklists/vintage/12856980.json",
+      "message": "Cached 32/32 decks."
+    },
     {
       "scope": "mtgo-event",
       "status": "success",
@@ -19,10 +26,10 @@
     },
     {
       "scope": "mtgo-event",
-      "status": "success",
+      "status": "cached",
       "format": "vintage",
       "path": "archive/mtgo-decklists/vintage/n1762315608.json",
-      "message": "Cached 7/7 decks."
+      "message": "Loaded 7 decks from archive."
     },
     {
       "scope": "mtgo-event",
@@ -79,20 +86,6 @@
       "format": "vintage",
       "path": "archive/mtgo-decklists/vintage/n9423360.json",
       "message": "Loaded 5 decks from archive."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "cached",
-      "format": "vintage",
-      "path": "archive/mtgo-decklists/vintage/12856595.json",
-      "message": "Loaded 32 decks from archive."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "cached",
-      "format": "vintage",
-      "path": "archive/mtgo-decklists/vintage/n41605941.json",
-      "message": "Loaded 7 decks from archive."
     },
     {
       "scope": "mtgo-decklists",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-24T21:07:01Z",
+  "generated_at": "2026-10-25T04:46:55Z",
   "command": "scrape-radars-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "success": 31,
-    "skipped": 16
+    "skipped": 15
   },
   "results": [
     {
@@ -50,11 +50,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "vintage",
       "archetype": "blue-tinker",
-      "path": "latest/radars/vintage/blue-tinker.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/vintage/blue-tinker.json"
     },
     {
       "scope": "archetype-radar",
@@ -198,10 +197,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "oops-all-spells",
-      "path": "latest/radars/vintage/oops-all-spells.json"
+      "path": "latest/radars/vintage/oops-all-spells.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -235,11 +235,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "vintage",
       "archetype": "red-prison",
-      "path": "latest/radars/vintage/red-prison.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/vintage/red-prison.json"
     },
     {
       "scope": "archetype-radar",
@@ -312,13 +311,6 @@
       "format": "vintage",
       "archetype": "ubr",
       "path": "latest/radars/vintage/ubr.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "vintage",
-      "archetype": "ur",
-      "path": "latest/radars/vintage/ur.json"
     },
     {
       "scope": "archetype-radar",

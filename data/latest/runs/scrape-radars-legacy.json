@@ -1,21 +1,22 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-24T21:07:12Z",
+  "generated_at": "2026-10-25T04:46:58Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 84,
-    "skipped": 17
+    "skipped": 24,
+    "success": 76
   },
   "results": [
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "8-cast",
-      "path": "latest/radars/legacy/8-cast.json"
+      "path": "latest/radars/legacy/8-cast.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -48,10 +49,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "azorius-stoneblade",
-      "path": "latest/radars/legacy/azorius-stoneblade.json"
+      "path": "latest/radars/legacy/azorius-stoneblade.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -62,10 +64,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "bant-control",
-      "path": "latest/radars/legacy/bant-control.json"
+      "path": "latest/radars/legacy/bant-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -186,17 +189,19 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "death-s-shadow",
-      "path": "latest/radars/legacy/death-s-shadow.json"
+      "path": "latest/radars/legacy/death-s-shadow.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "dimir-control",
-      "path": "latest/radars/legacy/dimir-control.json"
+      "path": "latest/radars/legacy/dimir-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -302,10 +307,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "izzet-tempo",
-      "path": "latest/radars/legacy/izzet-tempo.json"
+      "path": "latest/radars/legacy/izzet-tempo.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -547,10 +553,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "the-epic-gamble",
-      "path": "latest/radars/legacy/the-epic-gamble.json"
+      "path": "latest/radars/legacy/the-epic-gamble.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -607,13 +614,6 @@
       "format": "legacy",
       "archetype": "dimir-cloudpost",
       "path": "latest/radars/legacy/dimir-cloudpost.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "golgari",
-      "path": "latest/radars/legacy/golgari.json"
     },
     {
       "scope": "archetype-radar",

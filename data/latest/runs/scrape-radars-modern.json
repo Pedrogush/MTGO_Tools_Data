@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-24T21:07:04Z",
+  "generated_at": "2026-10-25T04:46:50Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 87,
-    "skipped": 24
+    "success": 82,
+    "skipped": 27
   },
   "results": [
     {
@@ -242,10 +242,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "generic-ragavan",
-      "path": "latest/radars/modern/generic-ragavan.json"
+      "path": "latest/radars/modern/generic-ragavan.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -522,10 +523,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "orzhov-midrange",
-      "path": "latest/radars/modern/orzhov-midrange.json"
+      "path": "latest/radars/modern/orzhov-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -610,10 +612,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "titan-shift",
-      "path": "latest/radars/modern/titan-shift.json"
+      "path": "latest/radars/modern/titan-shift.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -647,6 +650,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
+      "archetype": "5c-reanimator",
+      "path": "latest/radars/modern/5c-reanimator.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
       "archetype": "bg",
       "path": "latest/radars/modern/bg.json"
     },
@@ -675,8 +685,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "esper-murktide",
-      "path": "latest/radars/modern/esper-murktide.json"
+      "archetype": "death-taxes",
+      "path": "latest/radars/modern/death-taxes.json"
     },
     {
       "scope": "archetype-radar",
@@ -712,13 +722,6 @@
       "format": "modern",
       "archetype": "orzhov-blink",
       "path": "latest/radars/modern/orzhov-blink.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "r",
-      "path": "latest/radars/modern/r.json"
     },
     {
       "scope": "archetype-radar",
@@ -766,13 +769,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "urg",
-      "path": "latest/radars/modern/urg.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "w",
       "path": "latest/radars/modern/w.json"
     },
@@ -789,13 +785,6 @@
       "format": "modern",
       "archetype": "wbrg",
       "path": "latest/radars/modern/wbrg.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "wr",
-      "path": "latest/radars/modern/wr.json"
     },
     {
       "scope": "archetype-radar",

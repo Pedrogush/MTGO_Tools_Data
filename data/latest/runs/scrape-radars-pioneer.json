@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-25T16:26:54Z",
+  "generated_at": "2026-10-25T21:06:59Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 37,
-    "success": 42
+    "skipped": 36,
+    "success": 44
   },
   "results": [
     {
@@ -360,6 +360,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pioneer",
+      "archetype": "mono-red-aggro",
+      "path": "latest/radars/pioneer/mono-red-aggro.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
       "archetype": "mono-red-prowess",
       "path": "latest/radars/pioneer/mono-red-prowess.json"
     },
@@ -409,11 +416,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "quintorius-combo",
-      "path": "latest/radars/pioneer/quintorius-combo.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pioneer/quintorius-combo.json"
     },
     {
       "scope": "archetype-radar",

@@ -1,17 +1,28 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-25T20:53:53Z",
+  "generated_at": "2026-10-26T04:51:23Z",
   "command": "scrape-mtgo-decklists-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 2,
-    "cached": 11,
-    "stale-fallback": 1,
+    "skipped": 4,
+    "cached": 10,
     "success": 1
   },
   "results": [
+    {
+      "scope": "mtgo-event",
+      "status": "skipped",
+      "format": "legacy",
+      "message": "https://api.videreproject.com/decks?event_id=12856991: fetch failed; will retry next run. Error: expected string or bytes-like object, got 'dict'"
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "skipped",
+      "format": "legacy",
+      "message": "https://api.videreproject.com/decks?event_id=12856952: fetch failed; will retry next run. Error: expected string or bytes-like object, got 'dict'"
+    },
     {
       "scope": "mtgo-event",
       "status": "skipped",
@@ -33,10 +44,10 @@
     },
     {
       "scope": "mtgo-event",
-      "status": "stale-fallback",
+      "status": "cached",
       "format": "legacy",
       "path": "archive/mtgo-decklists/legacy/n587499552.json",
-      "message": "https://api.videreproject.com/decks?event_id=-587499552: fetch failed, using existing archive. Error: expected string or bytes-like object, got 'dict'"
+      "message": "Loaded 28 decks from archive."
     },
     {
       "scope": "mtgo-event",
@@ -93,20 +104,6 @@
       "format": "legacy",
       "path": "archive/mtgo-decklists/legacy/n1068181642.json",
       "message": "Loaded 17 decks from archive."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "cached",
-      "format": "legacy",
-      "path": "archive/mtgo-decklists/legacy/12856606.json",
-      "message": "Loaded 32 decks from archive."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "cached",
-      "format": "legacy",
-      "path": "archive/mtgo-decklists/legacy/n309016469.json",
-      "message": "Loaded 18 decks from archive."
     },
     {
       "scope": "mtgo-decklists",

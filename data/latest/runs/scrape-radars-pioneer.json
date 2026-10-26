@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-25T21:06:59Z",
+  "generated_at": "2026-10-26T04:52:18Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 36,
-    "success": 44
+    "skipped": 40,
+    "success": 39
   },
   "results": [
     {
@@ -171,10 +171,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "dimir-midrange",
-      "path": "latest/radars/pioneer/dimir-midrange.json"
+      "path": "latest/radars/pioneer/dimir-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -232,10 +233,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "gruul-transmogrify",
-      "path": "latest/radars/pioneer/gruul-transmogrify.json"
+      "path": "latest/radars/pioneer/gruul-transmogrify.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -284,10 +286,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "izzet-prowess",
-      "path": "latest/radars/pioneer/izzet-prowess.json"
+      "path": "latest/radars/pioneer/izzet-prowess.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -517,10 +520,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "temur-indomitable-creativity",
-      "path": "latest/radars/pioneer/temur-indomitable-creativity.json"
+      "path": "latest/radars/pioneer/temur-indomitable-creativity.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -563,13 +567,6 @@
       "format": "pioneer",
       "archetype": "rg",
       "path": "latest/radars/pioneer/rg.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pioneer",
-      "archetype": "ubg",
-      "path": "latest/radars/pioneer/ubg.json"
     },
     {
       "scope": "archetype-radar",

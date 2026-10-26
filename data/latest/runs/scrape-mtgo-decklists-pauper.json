@@ -1,16 +1,23 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-25T20:53:48Z",
+  "generated_at": "2026-10-26T04:51:23Z",
   "command": "scrape-mtgo-decklists-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "stale-fallback": 2,
-    "cached": 12,
+    "skipped": 1,
+    "stale-fallback": 1,
+    "cached": 11,
     "success": 1
   },
   "results": [
+    {
+      "scope": "mtgo-event",
+      "status": "skipped",
+      "format": "pauper",
+      "message": "https://api.videreproject.com/decks?event_id=12856992: fetch failed; will retry next run. Error: expected string or bytes-like object, got 'dict'"
+    },
     {
       "scope": "mtgo-event",
       "status": "stale-fallback",
@@ -27,10 +34,10 @@
     },
     {
       "scope": "mtgo-event",
-      "status": "stale-fallback",
+      "status": "cached",
       "format": "pauper",
       "path": "archive/mtgo-decklists/pauper/n1971009881.json",
-      "message": "https://api.videreproject.com/decks?event_id=-1971009881: fetch failed, using existing archive. Error: expected string or bytes-like object, got 'dict'"
+      "message": "Loaded 21 decks from archive."
     },
     {
       "scope": "mtgo-event",
@@ -94,20 +101,6 @@
       "format": "pauper",
       "path": "archive/mtgo-decklists/pauper/n286837225.json",
       "message": "Loaded 22 decks from archive."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "cached",
-      "format": "pauper",
-      "path": "archive/mtgo-decklists/pauper/12856607.json",
-      "message": "Loaded 32 decks from archive."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "cached",
-      "format": "pauper",
-      "path": "archive/mtgo-decklists/pauper/n500614194.json",
-      "message": "Loaded 14 decks from archive."
     },
     {
       "scope": "mtgo-decklists",

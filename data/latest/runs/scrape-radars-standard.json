@@ -1,12 +1,12 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-25T21:07:00Z",
+  "generated_at": "2026-10-26T04:52:19Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 62,
+    "success": 61,
     "skipped": 68
   },
   "results": [
@@ -222,11 +222,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
       "archetype": "boros-leyline-aggro",
-      "path": "latest/radars/standard/boros-leyline-aggro.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/standard/boros-leyline-aggro.json"
     },
     {
       "scope": "archetype-radar",
@@ -570,10 +569,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "jund-midrange",
-      "path": "latest/radars/standard/jund-midrange.json"
+      "path": "latest/radars/standard/jund-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -945,13 +945,6 @@
       "archetype": "temur-stormsplitter",
       "path": "latest/radars/standard/temur-stormsplitter.json",
       "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
-      "archetype": "allies",
-      "path": "latest/radars/standard/allies.json"
     },
     {
       "scope": "archetype-radar",

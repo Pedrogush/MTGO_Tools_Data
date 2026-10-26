@@ -1,21 +1,22 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-25T21:07:07Z",
+  "generated_at": "2026-10-26T04:52:29Z",
   "command": "scrape-radars-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 31,
-    "skipped": 15
+    "skipped": 19,
+    "success": 23
   },
   "results": [
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "4c-psychic-frog",
-      "path": "latest/radars/vintage/4c-psychic-frog.json"
+      "path": "latest/radars/vintage/4c-psychic-frog.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -79,10 +80,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "doomsday",
-      "path": "latest/radars/vintage/doomsday.json"
+      "path": "latest/radars/vintage/doomsday.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -161,10 +163,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "lurrus-drs",
-      "path": "latest/radars/vintage/lurrus-drs.json"
+      "path": "latest/radars/vintage/lurrus-drs.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -242,10 +245,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "rug-control",
-      "path": "latest/radars/vintage/rug-control.json"
+      "path": "latest/radars/vintage/rug-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -302,13 +306,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "vintage",
-      "archetype": "u",
-      "path": "latest/radars/vintage/u.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "vintage",
       "archetype": "ubr",
       "path": "latest/radars/vintage/ubr.json"
     },
@@ -318,27 +315,6 @@
       "format": "vintage",
       "archetype": "wu",
       "path": "latest/radars/vintage/wu.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "vintage",
-      "archetype": "wub",
-      "path": "latest/radars/vintage/wub.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "vintage",
-      "archetype": "wubr",
-      "path": "latest/radars/vintage/wubr.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "vintage",
-      "archetype": "wug",
-      "path": "latest/radars/vintage/wug.json"
     },
     {
       "scope": "format-card-pool",

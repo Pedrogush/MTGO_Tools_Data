@@ -1,17 +1,22 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-25T20:53:52Z",
+  "generated_at": "2026-10-26T04:51:24Z",
   "command": "scrape-mtgo-decklists-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 2,
-    "cached": 10,
-    "stale-fallback": 1,
+    "skipped": 3,
+    "cached": 8,
     "success": 1
   },
   "results": [
+    {
+      "scope": "mtgo-event",
+      "status": "skipped",
+      "format": "vintage",
+      "message": "https://api.videreproject.com/decks?event_id=12856994: fetch failed; will retry next run. Error: expected string or bytes-like object, got 'dict'"
+    },
     {
       "scope": "mtgo-event",
       "status": "skipped",
@@ -33,10 +38,10 @@
     },
     {
       "scope": "mtgo-event",
-      "status": "stale-fallback",
+      "status": "cached",
       "format": "vintage",
       "path": "archive/mtgo-decklists/vintage/n776918057.json",
-      "message": "https://api.videreproject.com/decks?event_id=-776918057: fetch failed, using existing archive. Error: expected string or bytes-like object, got 'dict'"
+      "message": "Loaded 2 decks from archive."
     },
     {
       "scope": "mtgo-event",
@@ -79,27 +84,6 @@
       "format": "vintage",
       "path": "archive/mtgo-decklists/vintage/n323072401.json",
       "message": "Loaded 4 decks from archive."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "cached",
-      "format": "vintage",
-      "path": "archive/mtgo-decklists/vintage/12856609.json",
-      "message": "Loaded 32 decks from archive."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "cached",
-      "format": "vintage",
-      "path": "archive/mtgo-decklists/vintage/12856602.json",
-      "message": "Loaded 28 decks from archive."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "cached",
-      "format": "vintage",
-      "path": "archive/mtgo-decklists/vintage/n9423360.json",
-      "message": "Loaded 5 decks from archive."
     },
     {
       "scope": "mtgo-decklists",

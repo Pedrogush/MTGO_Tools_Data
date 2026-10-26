@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-26T13:09:48Z",
+  "generated_at": "2026-10-26T22:47:22Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "success": 61,
-    "skipped": 68
+    "skipped": 70
   },
   "results": [
     {
@@ -222,10 +222,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "boros-leyline-aggro",
-      "path": "latest/radars/standard/boros-leyline-aggro.json"
+      "path": "latest/radars/standard/boros-leyline-aggro.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -445,8 +446,16 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
+      "archetype": "gruul-self-mill",
+      "path": "latest/radars/standard/gruul-self-mill.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "skipped",
+      "format": "standard",
       "archetype": "izzet-aggro",
-      "path": "latest/radars/standard/izzet-aggro.json"
+      "path": "latest/radars/standard/izzet-aggro.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -677,6 +686,13 @@
       "archetype": "mono-red-leyline-aggro",
       "path": "latest/radars/standard/mono-red-leyline-aggro.json",
       "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "mono-red-prowess",
+      "path": "latest/radars/standard/mono-red-prowess.json"
     },
     {
       "scope": "archetype-radar",

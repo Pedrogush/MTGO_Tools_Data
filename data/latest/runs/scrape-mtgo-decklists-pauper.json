@@ -1,16 +1,23 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-27T12:16:34Z",
+  "generated_at": "2026-10-27T22:17:09Z",
   "command": "scrape-mtgo-decklists-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 4,
+    "skipped": 5,
+    "stale-fallback": 1,
     "cached": 10,
     "success": 1
   },
   "results": [
+    {
+      "scope": "mtgo-event",
+      "status": "skipped",
+      "format": "pauper",
+      "message": "https://api.videreproject.com/decks?event_id=12857008: fetch failed; will retry next run. Error: expected string or bytes-like object, got 'dict'"
+    },
     {
       "scope": "mtgo-event",
       "status": "skipped",
@@ -22,6 +29,13 @@
       "status": "skipped",
       "format": "pauper",
       "message": "https://api.videreproject.com/decks?event_id=12857001: fetch failed; will retry next run. Error: expected string or bytes-like object, got 'dict'"
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "stale-fallback",
+      "format": "pauper",
+      "path": "archive/mtgo-decklists/pauper/n669266701.json",
+      "message": "https://api.videreproject.com/decks?event_id=-669266701: fetch failed, using existing archive. Error: expected string or bytes-like object, got 'dict'"
     },
     {
       "scope": "mtgo-event",

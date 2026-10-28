@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-28T13:00:56Z",
+  "generated_at": "2026-10-28T22:40:36Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 63,
-    "skipped": 68
+    "success": 62,
+    "skipped": 69
   },
   "results": [
     {
@@ -450,10 +450,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "izzet-aggro",
-      "path": "latest/radars/standard/izzet-aggro.json"
+      "path": "latest/radars/standard/izzet-aggro.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

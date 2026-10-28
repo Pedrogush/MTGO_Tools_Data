@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-27T22:26:21Z",
+  "generated_at": "2026-10-28T05:47:14Z",
   "command": "scrape-radars-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 19,
-    "success": 23
+    "skipped": 20,
+    "success": 21
   },
   "results": [
     {
@@ -253,10 +253,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "scam",
-      "path": "latest/radars/vintage/scam.json"
+      "path": "latest/radars/vintage/scam.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -287,13 +288,6 @@
       "archetype": "underworld-breach",
       "path": "latest/radars/vintage/underworld-breach.json",
       "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "vintage",
-      "archetype": "4c-midrange",
-      "path": "latest/radars/vintage/4c-midrange.json"
     },
     {
       "scope": "archetype-radar",

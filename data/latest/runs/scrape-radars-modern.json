@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-27T22:26:16Z",
+  "generated_at": "2026-10-28T05:47:27Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 86,
-    "skipped": 23
+    "success": 84,
+    "skipped": 24
   },
   "results": [
     {
@@ -351,10 +351,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "izzet-steel-cutter",
-      "path": "latest/radars/modern/izzet-steel-cutter.json"
+      "path": "latest/radars/modern/izzet-steel-cutter.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -655,13 +656,6 @@
       "format": "modern",
       "archetype": "bg",
       "path": "latest/radars/modern/bg.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "bogles",
-      "path": "latest/radars/modern/bogles.json"
     },
     {
       "scope": "archetype-radar",

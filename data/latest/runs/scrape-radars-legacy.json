@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-28T22:40:39Z",
+  "generated_at": "2026-10-29T05:53:02Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 22,
-    "success": 72
+    "skipped": 26,
+    "success": 65
   },
   "results": [
     {
@@ -285,10 +285,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "high-tide",
-      "path": "latest/radars/legacy/high-tide.json"
+      "path": "latest/radars/legacy/high-tide.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -365,10 +366,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "mardu-energy",
-      "path": "latest/radars/legacy/mardu-energy.json"
+      "path": "latest/radars/legacy/mardu-energy.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -380,10 +382,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "merfolk",
-      "path": "latest/radars/legacy/merfolk.json"
+      "path": "latest/radars/legacy/merfolk.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -438,10 +441,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "ninjas",
-      "path": "latest/radars/legacy/ninjas.json"
+      "path": "latest/radars/legacy/ninjas.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -603,20 +607,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "infect",
-      "path": "latest/radars/legacy/infect.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "r",
-      "path": "latest/radars/legacy/r.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
       "archetype": "ub",
       "path": "latest/radars/legacy/ub.json"
     },
@@ -633,13 +623,6 @@
       "format": "legacy",
       "archetype": "ubr",
       "path": "latest/radars/legacy/ubr.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "ubrg",
-      "path": "latest/radars/legacy/ubrg.json"
     },
     {
       "scope": "archetype-radar",

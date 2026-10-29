@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-28T22:40:36Z",
+  "generated_at": "2026-10-29T05:53:08Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 62,
-    "skipped": 69
+    "success": 57,
+    "skipped": 73
   },
   "results": [
     {
@@ -88,10 +88,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "5c-omniscience",
-      "path": "latest/radars/standard/5c-omniscience.json"
+      "path": "latest/radars/standard/5c-omniscience.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -621,10 +622,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "mono-black-aggro",
-      "path": "latest/radars/standard/mono-black-aggro.json"
+      "path": "latest/radars/standard/mono-black-aggro.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -665,10 +667,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "mono-red-burn",
-      "path": "latest/radars/standard/mono-red-burn.json"
+      "path": "latest/radars/standard/mono-red-burn.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -767,10 +770,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "rakdos-aggro",
-      "path": "latest/radars/standard/rakdos-aggro.json"
+      "path": "latest/radars/standard/rakdos-aggro.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -981,13 +985,6 @@
       "format": "standard",
       "archetype": "ubr",
       "path": "latest/radars/standard/ubr.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
-      "archetype": "wur",
-      "path": "latest/radars/standard/wur.json"
     },
     {
       "scope": "format-card-pool",

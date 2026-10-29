@@ -1,16 +1,22 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-29T05:52:07Z",
+  "generated_at": "2026-10-29T13:06:45Z",
   "command": "scrape-mtgo-decklists-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 12,
+    "skipped": 13,
     "cached": 8,
     "success": 1
   },
   "results": [
+    {
+      "scope": "mtgo-event",
+      "status": "skipped",
+      "format": "modern",
+      "message": "https://api.videreproject.com/decks?event_id=-2020770575: fetch failed; will retry next run. Error: expected string or bytes-like object, got 'dict'"
+    },
     {
       "scope": "mtgo-event",
       "status": "skipped",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-30T05:53:18Z",
+  "generated_at": "2026-10-30T12:59:36Z",
   "command": "scrape-mtgo-decklists-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 9,
-    "cached": 3,
+    "cached": 4,
     "success": 1
   },
   "results": [
@@ -28,6 +28,13 @@
       "status": "skipped",
       "format": "vintage",
       "message": "https://api.videreproject.com/decks?event_id=-729457930: fetch failed; will retry next run. Error: expected string or bytes-like object, got 'dict'"
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "cached",
+      "format": "vintage",
+      "path": "archive/mtgo-decklists/vintage/n952213767.json",
+      "message": "Loaded 6 decks from archive."
     },
     {
       "scope": "mtgo-event",

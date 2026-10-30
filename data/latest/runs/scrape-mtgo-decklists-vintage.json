@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-29T22:47:06Z",
+  "generated_at": "2026-10-30T05:53:18Z",
   "command": "scrape-mtgo-decklists-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 7,
-    "cached": 5,
+    "skipped": 9,
+    "cached": 3,
     "success": 1
   },
   "results": [
@@ -15,7 +15,19 @@
       "scope": "mtgo-event",
       "status": "skipped",
       "format": "vintage",
+      "message": "https://api.videreproject.com/decks?event_id=-247073014: fetch failed; will retry next run. Error: expected string or bytes-like object, got 'dict'"
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "skipped",
+      "format": "vintage",
       "message": "https://api.videreproject.com/decks?event_id=12857459: fetch failed; will retry next run. Error: expected string or bytes-like object, got 'dict'"
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "skipped",
+      "format": "vintage",
+      "message": "https://api.videreproject.com/decks?event_id=-729457930: fetch failed; will retry next run. Error: expected string or bytes-like object, got 'dict'"
     },
     {
       "scope": "mtgo-event",
@@ -73,20 +85,6 @@
       "format": "vintage",
       "path": "archive/mtgo-decklists/vintage/n1762315608.json",
       "message": "Loaded 7 decks from archive."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "cached",
-      "format": "vintage",
-      "path": "archive/mtgo-decklists/vintage/12856960.json",
-      "message": "Loaded 32 decks from archive."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "cached",
-      "format": "vintage",
-      "path": "archive/mtgo-decklists/vintage/n528045891.json",
-      "message": "Loaded 10 decks from archive."
     },
     {
       "scope": "mtgo-decklists",

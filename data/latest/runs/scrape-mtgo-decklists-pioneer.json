@@ -1,16 +1,28 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-29T22:47:04Z",
+  "generated_at": "2026-10-30T05:53:19Z",
   "command": "scrape-mtgo-decklists-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 7,
-    "cached": 5,
+    "skipped": 9,
+    "cached": 3,
     "success": 1
   },
   "results": [
+    {
+      "scope": "mtgo-event",
+      "status": "skipped",
+      "format": "pioneer",
+      "message": "https://api.videreproject.com/decks?event_id=-548904961: fetch failed; will retry next run. Error: expected string or bytes-like object, got 'dict'"
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "skipped",
+      "format": "pioneer",
+      "message": "https://api.videreproject.com/decks?event_id=12857379: fetch failed; will retry next run. Error: expected string or bytes-like object, got 'dict'"
+    },
     {
       "scope": "mtgo-event",
       "status": "skipped",
@@ -73,20 +85,6 @@
       "format": "pioneer",
       "path": "archive/mtgo-decklists/pioneer/n1037256259.json",
       "message": "Loaded 6 decks from archive."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "cached",
-      "format": "pioneer",
-      "path": "archive/mtgo-decklists/pioneer/12856963.json",
-      "message": "Loaded 32 decks from archive."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "cached",
-      "format": "pioneer",
-      "path": "archive/mtgo-decklists/pioneer/n954869460.json",
-      "message": "Loaded 10 decks from archive."
     },
     {
       "scope": "mtgo-decklists",

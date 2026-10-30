@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-29T22:49:55Z",
+  "generated_at": "2026-10-30T05:54:10Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 58,
-    "skipped": 73
+    "success": 51,
+    "skipped": 79
   },
   "results": [
     {
@@ -57,10 +57,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "4c-reanimator",
-      "path": "latest/radars/standard/4c-reanimator.json"
+      "path": "latest/radars/standard/4c-reanimator.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -72,10 +73,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "5c-elementals",
-      "path": "latest/radars/standard/5c-elementals.json"
+      "path": "latest/radars/standard/5c-elementals.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -329,10 +331,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "esper-excruciator",
-      "path": "latest/radars/standard/esper-excruciator.json"
+      "path": "latest/radars/standard/esper-excruciator.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -570,10 +573,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "jeskai-momo",
-      "path": "latest/radars/standard/jeskai-momo.json"
+      "path": "latest/radars/standard/jeskai-momo.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -860,10 +864,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "selesnya-yuna",
-      "path": "latest/radars/standard/selesnya-yuna.json"
+      "path": "latest/radars/standard/selesnya-yuna.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -951,10 +956,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "temur-prowess",
-      "path": "latest/radars/standard/temur-prowess.json"
+      "path": "latest/radars/standard/temur-prowess.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -985,13 +991,6 @@
       "format": "standard",
       "archetype": "gruul-random-encounter",
       "path": "latest/radars/standard/gruul-random-encounter.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
-      "archetype": "ubr",
-      "path": "latest/radars/standard/ubr.json"
     },
     {
       "scope": "format-card-pool",

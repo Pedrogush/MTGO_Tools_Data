@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-29T22:49:48Z",
+  "generated_at": "2026-10-30T05:54:12Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 26,
-    "success": 66
+    "skipped": 28,
+    "success": 58
   },
   "results": [
     {
@@ -139,10 +139,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "burn",
-      "path": "latest/radars/legacy/burn.json"
+      "path": "latest/radars/legacy/burn.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -505,10 +506,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "saga-storm",
-      "path": "latest/radars/legacy/saga-storm.json"
+      "path": "latest/radars/legacy/saga-storm.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -593,27 +595,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "b",
-      "path": "latest/radars/legacy/b.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "bg",
-      "path": "latest/radars/legacy/bg.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "br",
-      "path": "latest/radars/legacy/br.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
       "archetype": "ub",
       "path": "latest/radars/legacy/ub.json"
     },
@@ -623,20 +604,6 @@
       "format": "legacy",
       "archetype": "ubg",
       "path": "latest/radars/legacy/ubg.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "ubr",
-      "path": "latest/radars/legacy/ubr.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "w",
-      "path": "latest/radars/legacy/w.json"
     },
     {
       "scope": "archetype-radar",
@@ -658,13 +625,6 @@
       "format": "legacy",
       "archetype": "wubr",
       "path": "latest/radars/legacy/wubr.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "wur",
-      "path": "latest/radars/legacy/wur.json"
     },
     {
       "scope": "archetype-radar",

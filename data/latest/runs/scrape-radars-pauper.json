@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-30T22:42:48Z",
+  "generated_at": "2026-10-31T05:48:22Z",
   "command": "scrape-radars-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 52,
-    "skipped": 31
+    "success": 45,
+    "skipped": 34
   },
   "results": [
     {
@@ -145,10 +145,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "devotion",
-      "path": "latest/radars/pauper/devotion.json"
+      "path": "latest/radars/pauper/devotion.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -343,10 +344,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "jeskai-ephemerate",
-      "path": "latest/radars/pauper/jeskai-ephemerate.json"
+      "path": "latest/radars/pauper/jeskai-ephemerate.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -389,10 +391,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "mardu-synthesizer",
-      "path": "latest/radars/pauper/mardu-synthesizer.json"
+      "path": "latest/radars/pauper/mardu-synthesizer.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -577,13 +580,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pauper",
-      "archetype": "w",
-      "path": "latest/radars/pauper/w.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pauper",
       "archetype": "wb",
       "path": "latest/radars/pauper/wb.json"
     },
@@ -591,29 +587,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pauper",
-      "archetype": "wg",
-      "path": "latest/radars/pauper/wg.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pauper",
       "archetype": "wr",
       "path": "latest/radars/pauper/wr.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pauper",
-      "archetype": "wub",
-      "path": "latest/radars/pauper/wub.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pauper",
-      "archetype": "wubr",
-      "path": "latest/radars/pauper/wubr.json"
     },
     {
       "scope": "format-card-pool",

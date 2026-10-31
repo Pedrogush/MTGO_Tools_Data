@@ -1,16 +1,28 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-30T22:24:09Z",
+  "generated_at": "2026-10-31T05:47:22Z",
   "command": "scrape-mtgo-decklists-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 11,
-    "cached": 4,
+    "skipped": 13,
+    "cached": 2,
     "success": 1
   },
   "results": [
+    {
+      "scope": "mtgo-event",
+      "status": "skipped",
+      "format": "legacy",
+      "message": "https://api.videreproject.com/decks?event_id=-1331234814: fetch failed; will retry next run. Error: expected string or bytes-like object, got 'dict'"
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "skipped",
+      "format": "legacy",
+      "message": "https://api.videreproject.com/decks?event_id=12857388: Event returned no decklists."
+    },
     {
       "scope": "mtgo-event",
       "status": "skipped",
@@ -90,20 +102,6 @@
       "format": "legacy",
       "path": "archive/mtgo-decklists/legacy/n587499552.json",
       "message": "Loaded 28 decks from archive."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "cached",
-      "format": "legacy",
-      "path": "archive/mtgo-decklists/legacy/12856972.json",
-      "message": "Loaded 32 decks from archive."
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "cached",
-      "format": "legacy",
-      "path": "archive/mtgo-decklists/legacy/n1737096261.json",
-      "message": "Loaded 22 decks from archive."
     },
     {
       "scope": "mtgo-decklists",

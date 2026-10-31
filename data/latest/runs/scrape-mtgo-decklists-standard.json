@@ -1,12 +1,12 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-31T05:47:28Z",
+  "generated_at": "2026-10-31T12:37:14Z",
   "command": "scrape-mtgo-decklists-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 12,
+    "skipped": 13,
     "cached": 3,
     "success": 1
   },
@@ -96,6 +96,12 @@
       "format": "standard",
       "path": "archive/mtgo-decklists/standard/12856977.json",
       "message": "Loaded 32 decks from archive."
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "skipped",
+      "format": "standard",
+      "message": "https://api.videreproject.com/decks?event_id=-53497148: fetch failed; will retry next run. Error: expected string or bytes-like object, got 'dict'"
     },
     {
       "scope": "mtgo-event",

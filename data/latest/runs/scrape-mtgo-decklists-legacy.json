@@ -1,7 +1,7 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-31T05:47:22Z",
+  "generated_at": "2026-10-31T12:37:16Z",
   "command": "scrape-mtgo-decklists-legacy",
   "status": "success",
   "max_stale_hours": 24,
@@ -21,7 +21,7 @@
       "scope": "mtgo-event",
       "status": "skipped",
       "format": "legacy",
-      "message": "https://api.videreproject.com/decks?event_id=12857388: Event returned no decklists."
+      "message": "https://api.videreproject.com/decks?event_id=12857388: fetch failed; will retry next run. Error: expected string or bytes-like object, got 'dict'"
     },
     {
       "scope": "mtgo-event",

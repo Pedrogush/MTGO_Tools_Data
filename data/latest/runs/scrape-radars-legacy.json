@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-31T12:38:17Z",
+  "generated_at": "2026-10-31T21:41:45Z",
   "command": "scrape-radars-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 37,
-    "success": 45
+    "skipped": 35,
+    "success": 48
   },
   "results": [
     {
@@ -95,11 +95,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "beseech-storm",
-      "path": "latest/radars/legacy/beseech-storm.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/beseech-storm.json"
     },
     {
       "scope": "archetype-radar",
@@ -426,6 +425,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
+      "archetype": "mono-white-initiative",
+      "path": "latest/radars/legacy/mono-white-initiative.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
       "archetype": "mystic-forge-combo",
       "path": "latest/radars/legacy/mystic-forge-combo.json"
     },
@@ -447,11 +453,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "nic-fit",
-      "path": "latest/radars/legacy/nic-fit.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/nic-fit.json"
     },
     {
       "scope": "archetype-radar",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-10-31T21:41:50Z",
+  "generated_at": "2026-11-01T06:11:34Z",
   "command": "scrape-radars-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 49,
-    "skipped": 30
+    "success": 45,
+    "skipped": 33
   },
   "results": [
     {
@@ -232,10 +232,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "food-gardens",
-      "path": "latest/radars/pauper/food-gardens.json"
+      "path": "latest/radars/pauper/food-gardens.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -405,10 +406,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "mono-blue-delver",
-      "path": "latest/radars/pauper/mono-blue-delver.json"
+      "path": "latest/radars/pauper/mono-blue-delver.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -440,10 +442,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "mono-white-aggro",
-      "path": "latest/radars/pauper/mono-white-aggro.json"
+      "path": "latest/radars/pauper/mono-white-aggro.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -571,13 +574,6 @@
       "format": "pauper",
       "archetype": "white-aggro",
       "path": "latest/radars/pauper/white-aggro.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pauper",
-      "archetype": "wb",
-      "path": "latest/radars/pauper/wb.json"
     },
     {
       "scope": "archetype-radar",

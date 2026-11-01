@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-01T13:29:11Z",
+  "generated_at": "2026-11-01T22:04:44Z",
   "command": "scrape-mtgo-decklists-legacy",
-  "status": "success",
+  "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 14,
-    "stale-fallback": 1
+    "hard-failure": 1
   },
   "results": [
     {
@@ -96,7 +96,7 @@
     },
     {
       "scope": "mtgo-decklists",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "legacy",
       "path": "latest/mtgo-decklists/legacy.json",
       "message": "Failed to persist any MTGO events for this format; see run results for failures."

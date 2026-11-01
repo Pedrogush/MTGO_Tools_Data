@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-01T13:29:57Z",
+  "generated_at": "2026-11-01T22:46:49Z",
   "command": "scrape-radars-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 26,
-    "success": 13
+    "skipped": 24,
+    "success": 17
   },
   "results": [
     {
@@ -37,9 +37,16 @@
       "scope": "archetype-radar",
       "status": "skipped",
       "format": "vintage",
-      "archetype": "beseech-storm",
-      "path": "latest/radars/vintage/beseech-storm.json",
+      "archetype": "bant-nadu",
+      "path": "latest/radars/vintage/bant-nadu.json",
       "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "vintage",
+      "archetype": "beseech-storm",
+      "path": "latest/radars/vintage/beseech-storm.json"
     },
     {
       "scope": "archetype-radar",
@@ -128,11 +135,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "vintage",
       "archetype": "goblins",
-      "path": "latest/radars/vintage/goblins.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/vintage/goblins.json"
     },
     {
       "scope": "archetype-radar",
@@ -206,6 +212,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "vintage",
+      "archetype": "naya-initiative",
+      "path": "latest/radars/vintage/naya-initiative.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "vintage",
       "archetype": "oath-of-druids",
       "path": "latest/radars/vintage/oath-of-druids.json"
     },
@@ -219,11 +232,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "vintage",
       "archetype": "orzhov-initiative",
-      "path": "latest/radars/vintage/orzhov-initiative.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/vintage/orzhov-initiative.json"
     },
     {
       "scope": "archetype-radar",

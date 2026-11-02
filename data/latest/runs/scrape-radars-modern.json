@@ -1,13 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-02T06:15:01Z",
+  "generated_at": "2026-11-02T16:10:41Z",
   "command": "scrape-radars-modern",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 45,
-    "skipped": 53
+    "success": 43,
+    "skipped": 53,
+    "stale-fallback": 2
   },
   "results": [
     {
@@ -88,10 +89,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "modern",
       "archetype": "azorius-genericblink",
-      "path": "latest/radars/modern/azorius-genericblink.json"
+      "path": "latest/radars/modern/azorius-genericblink.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -431,10 +433,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "modern",
       "archetype": "lantern",
-      "path": "latest/radars/modern/lantern.json"
+      "path": "latest/radars/modern/lantern.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",

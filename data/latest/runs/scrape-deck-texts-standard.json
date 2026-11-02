@@ -1,13 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-02T06:10:58Z",
+  "generated_at": "2026-11-02T16:00:42Z",
   "command": "scrape-deck-texts-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 53,
-    "skipped": 770
+    "success": 50,
+    "skipped": 768,
+    "stale-fallback": 4
   },
   "results": [
     {
@@ -69,10 +70,11 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "azorius-enchantments",
-      "path": "latest/decks/standard/azorius-enchantments.json"
+      "path": "latest/decks/standard/azorius-enchantments.json",
+      "message": "Deck scrape returned no rows for Azorius Enchantments"
     },
     {
       "scope": "archetype-decks",
@@ -97,11 +99,11 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "boros-aggro",
       "path": "latest/decks/standard/boros-aggro.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Boros Aggro"
     },
     {
       "scope": "archetype-decks",
@@ -147,10 +149,11 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "dimir-excruciator",
-      "path": "latest/decks/standard/dimir-excruciator.json"
+      "path": "latest/decks/standard/dimir-excruciator.json",
+      "message": "Deck scrape returned no rows for Dimir Excruciator"
     },
     {
       "scope": "archetype-decks",
@@ -161,10 +164,11 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "dimir-reanimator",
-      "path": "latest/decks/standard/dimir-reanimator.json"
+      "path": "latest/decks/standard/dimir-reanimator.json",
+      "message": "Deck scrape returned no rows for Dimir Reanimator"
     },
     {
       "scope": "archetype-decks",
@@ -954,14 +958,6 @@
       "format": "standard",
       "deck_id": "8022990",
       "path": "archive/deck-texts/standard/8022990.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "standard",
-      "deck_id": "8022992",
-      "path": "archive/deck-texts/standard/8022992.json",
       "message": "Reused existing published deck-text blob."
     },
     {

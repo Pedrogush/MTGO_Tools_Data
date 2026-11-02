@@ -1,13 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-02T06:10:55Z",
+  "generated_at": "2026-11-02T16:00:43Z",
   "command": "scrape-deck-texts-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "success": 1,
-    "skipped": 50
+    "skipped": 45,
+    "stale-fallback": 5
   },
   "results": [
     {
@@ -50,11 +51,11 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "stale-fallback",
       "format": "pioneer",
       "archetype": "5c-scapeshift",
       "path": "latest/decks/pioneer/5c-scapeshift.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for 5c Scapeshift"
     },
     {
       "scope": "archetype-decks",
@@ -90,11 +91,11 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "stale-fallback",
       "format": "pioneer",
       "archetype": "boros-heroic",
       "path": "latest/decks/pioneer/boros-heroic.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Boros Heroic"
     },
     {
       "scope": "archetype-decks",
@@ -114,11 +115,11 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "stale-fallback",
       "format": "pioneer",
       "archetype": "dimir-aggro",
       "path": "latest/decks/pioneer/dimir-aggro.json",
-      "message": "All MTGGoldfish rows were MTGO events; published via mtgo-decklists."
+      "message": "Deck scrape returned no rows for Dimir Aggro"
     },
     {
       "scope": "archetype-decks",
@@ -154,11 +155,11 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "stale-fallback",
       "format": "pioneer",
       "archetype": "gruul-prowess",
       "path": "latest/decks/pioneer/gruul-prowess.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Gruul Prowess"
     },
     {
       "scope": "archetype-decks",
@@ -186,11 +187,11 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "stale-fallback",
       "format": "pioneer",
       "archetype": "izzet-ensoul-artifact",
       "path": "latest/decks/pioneer/izzet-ensoul-artifact.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Izzet Ensoul Artifact"
     },
     {
       "scope": "archetype-decks",

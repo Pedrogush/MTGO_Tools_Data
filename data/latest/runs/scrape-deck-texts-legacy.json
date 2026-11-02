@@ -1,13 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-02T06:10:55Z",
+  "generated_at": "2026-11-02T16:00:39Z",
   "command": "scrape-deck-texts-legacy",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 18,
-    "skipped": 69
+    "success": 16,
+    "skipped": 64,
+    "stale-fallback": 7
   },
   "results": [
     {
@@ -26,11 +27,11 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "stale-fallback",
       "format": "legacy",
       "archetype": "aluren",
       "path": "latest/decks/legacy/aluren.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Aluren"
     },
     {
       "scope": "archetype-decks",
@@ -42,11 +43,11 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "stale-fallback",
       "format": "legacy",
       "archetype": "azorius-tempo",
       "path": "latest/decks/legacy/azorius-tempo.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Azorius Tempo"
     },
     {
       "scope": "archetype-decks",
@@ -66,10 +67,11 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "legacy",
       "archetype": "beseech-storm",
-      "path": "latest/decks/legacy/beseech-storm.json"
+      "path": "latest/decks/legacy/beseech-storm.json",
+      "message": "Deck scrape returned no rows for Beseech Storm"
     },
     {
       "scope": "archetype-decks",
@@ -81,27 +83,27 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "stale-fallback",
       "format": "legacy",
       "archetype": "boros-energy",
       "path": "latest/decks/legacy/boros-energy.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Boros Energy"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "stale-fallback",
       "format": "legacy",
       "archetype": "burn",
       "path": "latest/decks/legacy/burn.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Burn"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "stale-fallback",
       "format": "legacy",
       "archetype": "cephalid-breakfast",
       "path": "latest/decks/legacy/cephalid-breakfast.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Cephalid Breakfast"
     },
     {
       "scope": "archetype-decks",
@@ -144,10 +146,11 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "legacy",
       "archetype": "dimir-tempo",
-      "path": "latest/decks/legacy/dimir-tempo.json"
+      "path": "latest/decks/legacy/dimir-tempo.json",
+      "message": "Deck scrape returned no rows for Dimir Tempo"
     },
     {
       "scope": "archetype-decks",

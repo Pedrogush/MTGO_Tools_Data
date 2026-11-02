@@ -1,13 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-02T06:11:04Z",
+  "generated_at": "2026-11-02T16:00:39Z",
   "command": "scrape-deck-texts-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 41,
-    "skipped": 156
+    "success": 36,
+    "skipped": 153,
+    "stale-fallback": 8
   },
   "results": [
     {
@@ -33,11 +34,11 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "stale-fallback",
       "format": "pauper",
       "archetype": "azorius-faeries",
       "path": "latest/decks/pauper/azorius-faeries.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Azorius Faeries"
     },
     {
       "scope": "archetype-decks",
@@ -84,10 +85,11 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "pauper",
       "archetype": "boros-synthesizer",
-      "path": "latest/decks/pauper/boros-synthesizer.json"
+      "path": "latest/decks/pauper/boros-synthesizer.json",
+      "message": "Deck scrape returned no rows for Boros Synthesizer"
     },
     {
       "scope": "archetype-decks",
@@ -98,25 +100,27 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "pauper",
       "archetype": "cycle-storm",
-      "path": "latest/decks/pauper/cycle-storm.json"
+      "path": "latest/decks/pauper/cycle-storm.json",
+      "message": "Deck scrape returned no rows for Cycle Storm"
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "stale-fallback",
       "format": "pauper",
       "archetype": "devotion",
       "path": "latest/decks/pauper/devotion.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Devotion"
     },
     {
       "scope": "archetype-decks",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "pauper",
       "archetype": "dimir-affinity",
-      "path": "latest/decks/pauper/dimir-affinity.json"
+      "path": "latest/decks/pauper/dimir-affinity.json",
+      "message": "Deck scrape returned no rows for Dimir Affinity"
     },
     {
       "scope": "archetype-decks",
@@ -127,10 +131,11 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "pauper",
       "archetype": "dimir-faeries",
-      "path": "latest/decks/pauper/dimir-faeries.json"
+      "path": "latest/decks/pauper/dimir-faeries.json",
+      "message": "Deck scrape returned no rows for Dimir Faeries"
     },
     {
       "scope": "archetype-decks",
@@ -193,11 +198,11 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "skipped",
+      "status": "stale-fallback",
       "format": "pauper",
       "archetype": "food-gardens",
       "path": "latest/decks/pauper/food-gardens.json",
-      "message": "No decks found within the last 7 days."
+      "message": "Deck scrape returned no rows for Food Gardens"
     },
     {
       "scope": "archetype-decks",
@@ -409,10 +414,11 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "pauper",
       "archetype": "slivers",
-      "path": "latest/decks/pauper/slivers.json"
+      "path": "latest/decks/pauper/slivers.json",
+      "message": "Deck scrape returned no rows for Slivers"
     },
     {
       "scope": "archetype-decks",

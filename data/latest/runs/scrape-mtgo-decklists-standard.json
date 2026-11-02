@@ -1,16 +1,21 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-01T22:04:43Z",
+  "generated_at": "2026-11-02T06:11:02Z",
   "command": "scrape-mtgo-decklists-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 15,
-    "cached": 1,
-    "success": 1
+    "stale-fallback": 1
   },
   "results": [
+    {
+      "scope": "mtgo-event",
+      "status": "skipped",
+      "format": "standard",
+      "message": "https://api.videreproject.com/decks?event_id=12857409: fetch failed; will retry next run. Error: expected string or bytes-like object, got 'dict'"
+    },
     {
       "scope": "mtgo-event",
       "status": "skipped",
@@ -96,23 +101,11 @@
       "message": "https://api.videreproject.com/decks?event_id=-1050181312: fetch failed; will retry next run. Error: expected string or bytes-like object, got 'dict'"
     },
     {
-      "scope": "mtgo-event",
-      "status": "skipped",
-      "format": "standard",
-      "message": "https://api.videreproject.com/decks?event_id=12856995: fetch failed; will retry next run. Error: expected string or bytes-like object, got 'dict'"
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "cached",
-      "format": "standard",
-      "path": "archive/mtgo-decklists/standard/n965383671.json",
-      "message": "Loaded 1 decks from archive."
-    },
-    {
       "scope": "mtgo-decklists",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
-      "path": "latest/mtgo-decklists/standard.json"
+      "path": "latest/mtgo-decklists/standard.json",
+      "message": "Failed to persist any MTGO events for this format; see run results for failures."
     }
   ]
 }

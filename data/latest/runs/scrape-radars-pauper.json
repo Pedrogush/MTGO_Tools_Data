@@ -1,13 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-02T16:10:51Z",
+  "generated_at": "2026-11-03T01:02:41Z",
   "command": "scrape-radars-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 35,
-    "success": 43
+    "success": 42,
+    "stale-fallback": 1
   },
   "results": [
     {
@@ -74,10 +75,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "pauper",
       "archetype": "bant-control",
-      "path": "latest/radars/pauper/bant-control.json"
+      "path": "latest/radars/pauper/bant-control.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",

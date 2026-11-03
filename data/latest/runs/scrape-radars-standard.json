@@ -1,14 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-02T16:10:46Z",
+  "generated_at": "2026-11-03T01:02:34Z",
   "command": "scrape-radars-standard",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 60,
+    "success": 55,
     "skipped": 71,
-    "stale-fallback": 2
+    "stale-fallback": 7
   },
   "results": [
     {
@@ -370,10 +370,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "golgari-control",
-      "path": "latest/radars/standard/golgari-control.json"
+      "path": "latest/radars/standard/golgari-control.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -537,10 +538,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "izzet-self-bounce",
-      "path": "latest/radars/standard/izzet-self-bounce.json"
+      "path": "latest/radars/standard/izzet-self-bounce.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -662,10 +664,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "mono-black-midrange",
-      "path": "latest/radars/standard/mono-black-midrange.json"
+      "path": "latest/radars/standard/mono-black-midrange.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -809,10 +812,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "rakdos-discard",
-      "path": "latest/radars/standard/rakdos-discard.json"
+      "path": "latest/radars/standard/rakdos-discard.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -965,10 +969,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "temur-lessons",
-      "path": "latest/radars/standard/temur-lessons.json"
+      "path": "latest/radars/standard/temur-lessons.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",

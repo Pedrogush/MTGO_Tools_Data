@@ -1,19 +1,20 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-02T16:00:47Z",
+  "generated_at": "2026-11-03T01:00:28Z",
   "command": "scrape-metagame-pauper",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 1
+    "stale-fallback": 1
   },
   "results": [
     {
       "scope": "metagame",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "pauper",
-      "path": "latest/metagame/pauper.json"
+      "path": "latest/metagame/pauper.json",
+      "message": "HTTP Error 403: "
     }
   ]
 }

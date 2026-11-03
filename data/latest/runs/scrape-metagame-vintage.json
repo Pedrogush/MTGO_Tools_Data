@@ -1,19 +1,20 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-02T16:00:52Z",
+  "generated_at": "2026-11-03T01:00:33Z",
   "command": "scrape-metagame-vintage",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "success": 1
+    "stale-fallback": 1
   },
   "results": [
     {
       "scope": "metagame",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "vintage",
-      "path": "latest/metagame/vintage.json"
+      "path": "latest/metagame/vintage.json",
+      "message": "HTTP Error 403: "
     }
   ]
 }

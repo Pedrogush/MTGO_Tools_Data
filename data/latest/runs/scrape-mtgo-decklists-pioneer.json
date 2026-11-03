@@ -1,15 +1,27 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-03T01:00:26Z",
+  "generated_at": "2026-11-03T14:20:06Z",
   "command": "scrape-mtgo-decklists-pioneer",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 12,
+    "skipped": 14,
     "hard-failure": 1
   },
   "results": [
+    {
+      "scope": "mtgo-event",
+      "status": "skipped",
+      "format": "pioneer",
+      "message": "https://api.videreproject.com/decks?event_id=-835091230: fetch failed; will retry next run. Error: expected string or bytes-like object, got 'dict'"
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "skipped",
+      "format": "pioneer",
+      "message": "https://api.videreproject.com/decks?event_id=12857417: fetch failed; will retry next run. Error: expected string or bytes-like object, got 'dict'"
+    },
     {
       "scope": "mtgo-event",
       "status": "skipped",

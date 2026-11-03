@@ -1,12 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-03T01:00:33Z",
+  "generated_at": "2026-11-03T14:20:10Z",
   "command": "scrape-deck-texts-modern",
-  "status": "success",
+  "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "stale-fallback": 60,
+    "stale-fallback": 57,
+    "hard-failure": 3,
     "skipped": 6
   },
   "results": [
@@ -75,7 +76,7 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "modern",
       "archetype": "bant-blink",
       "path": "latest/decks/modern/bant-blink.json",
@@ -83,7 +84,7 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "modern",
       "archetype": "bant-midrange",
       "path": "latest/decks/modern/bant-midrange.json",
@@ -91,7 +92,7 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "modern",
       "archetype": "belcher",
       "path": "latest/decks/modern/belcher.json",

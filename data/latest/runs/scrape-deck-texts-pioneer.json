@@ -1,12 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-03T01:00:26Z",
+  "generated_at": "2026-11-03T14:20:14Z",
   "command": "scrape-deck-texts-pioneer",
-  "status": "success",
+  "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "stale-fallback": 50,
+    "stale-fallback": 45,
+    "hard-failure": 5,
     "skipped": 1
   },
   "results": [
@@ -51,7 +52,7 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "pioneer",
       "archetype": "5c-scapeshift",
       "path": "latest/decks/pioneer/5c-scapeshift.json",
@@ -91,7 +92,7 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "pioneer",
       "archetype": "boros-heroic",
       "path": "latest/decks/pioneer/boros-heroic.json",
@@ -115,7 +116,7 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "pioneer",
       "archetype": "dimir-aggro",
       "path": "latest/decks/pioneer/dimir-aggro.json",
@@ -155,7 +156,7 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "pioneer",
       "archetype": "gruul-prowess",
       "path": "latest/decks/pioneer/gruul-prowess.json",
@@ -187,7 +188,7 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "pioneer",
       "archetype": "izzet-ensoul-artifact",
       "path": "latest/decks/pioneer/izzet-ensoul-artifact.json",

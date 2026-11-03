@@ -1,13 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-03T01:00:35Z",
+  "generated_at": "2026-11-03T14:20:09Z",
   "command": "scrape-deck-texts-vintage",
-  "status": "success",
+  "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "stale-fallback": 36,
-    "skipped": 161
+    "stale-fallback": 31,
+    "hard-failure": 5,
+    "skipped": 160
   },
   "results": [
     {
@@ -35,7 +36,7 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "bant-nadu",
       "path": "latest/decks/vintage/bant-nadu.json",
@@ -75,7 +76,7 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "dimir-lurrus-control",
       "path": "latest/decks/vintage/dimir-lurrus-control.json",
@@ -83,7 +84,7 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "doomsday",
       "path": "latest/decks/vintage/doomsday.json",
@@ -91,7 +92,7 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "dredge",
       "path": "latest/decks/vintage/dredge.json",
@@ -123,7 +124,7 @@
     },
     {
       "scope": "archetype-decks",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "goblins",
       "path": "latest/decks/vintage/goblins.json",
@@ -991,14 +992,6 @@
       "format": "vintage",
       "deck_id": "8026675",
       "path": "archive/deck-texts/vintage/8026675.json",
-      "message": "Reused existing published deck-text blob."
-    },
-    {
-      "scope": "deck-text",
-      "status": "skipped",
-      "format": "vintage",
-      "deck_id": "8026678",
-      "path": "archive/deck-texts/vintage/8026678.json",
       "message": "Reused existing published deck-text blob."
     },
     {

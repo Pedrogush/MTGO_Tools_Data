@@ -1,14 +1,15 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-03T01:02:34Z",
+  "generated_at": "2026-11-03T14:21:14Z",
   "command": "scrape-radars-standard",
-  "status": "success",
+  "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "success": 55,
+    "success": 54,
     "skipped": 71,
-    "stale-fallback": 7
+    "hard-failure": 2,
+    "stale-fallback": 6
   },
   "results": [
     {
@@ -105,7 +106,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "abzan-control",
       "path": "latest/radars/standard/abzan-control.json",
@@ -204,7 +205,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "boros-angels",
       "path": "latest/radars/standard/boros-angels.json",
@@ -462,10 +463,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "gruul-self-mill",
-      "path": "latest/radars/standard/gruul-self-mill.json"
+      "path": "latest/radars/standard/gruul-self-mill.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",

@@ -1,14 +1,15 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-03T01:02:38Z",
+  "generated_at": "2026-11-03T14:21:20Z",
   "command": "scrape-radars-modern",
-  "status": "success",
+  "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "stale-fallback": 7,
+    "stale-fallback": 5,
     "skipped": 53,
-    "success": 38
+    "success": 38,
+    "hard-failure": 2
   },
   "results": [
     {
@@ -90,7 +91,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "modern",
       "archetype": "azorius-genericblink",
       "path": "latest/radars/modern/azorius-genericblink.json",
@@ -436,7 +437,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "modern",
       "archetype": "lantern",
       "path": "latest/radars/modern/lantern.json",

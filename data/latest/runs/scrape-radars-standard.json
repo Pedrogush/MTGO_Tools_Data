@@ -1,15 +1,15 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-03T14:21:14Z",
+  "generated_at": "2026-11-03T23:27:04Z",
   "command": "scrape-radars-standard",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "success": 54,
     "skipped": 71,
-    "hard-failure": 2,
-    "stale-fallback": 6
+    "hard-failure": 7,
+    "stale-fallback": 1
   },
   "results": [
     {
@@ -371,7 +371,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "golgari-control",
       "path": "latest/radars/standard/golgari-control.json",
@@ -540,7 +540,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "izzet-self-bounce",
       "path": "latest/radars/standard/izzet-self-bounce.json",
@@ -666,7 +666,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "mono-black-midrange",
       "path": "latest/radars/standard/mono-black-midrange.json",
@@ -814,7 +814,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "rakdos-discard",
       "path": "latest/radars/standard/rakdos-discard.json",
@@ -971,7 +971,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "temur-lessons",
       "path": "latest/radars/standard/temur-lessons.json",

@@ -1,15 +1,21 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-03T14:20:10Z",
+  "generated_at": "2026-11-03T23:26:15Z",
   "command": "scrape-mtgo-decklists-pauper",
-  "status": "success",
+  "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 15,
-    "stale-fallback": 1
+    "skipped": 16,
+    "hard-failure": 1
   },
   "results": [
+    {
+      "scope": "mtgo-event",
+      "status": "skipped",
+      "format": "pauper",
+      "message": "https://api.videreproject.com/decks?event_id=12857421: fetch failed; will retry next run. Error: expected string or bytes-like object, got 'dict'"
+    },
     {
       "scope": "mtgo-event",
       "status": "skipped",
@@ -102,7 +108,7 @@
     },
     {
       "scope": "mtgo-decklists",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "pauper",
       "path": "latest/mtgo-decklists/pauper.json",
       "message": "Failed to persist any MTGO events for this format; see run results for failures."

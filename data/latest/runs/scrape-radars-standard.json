@@ -1,15 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-03T23:27:04Z",
+  "generated_at": "2026-11-04T06:29:10Z",
   "command": "scrape-radars-standard",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "success": 54,
     "skipped": 71,
-    "hard-failure": 7,
-    "stale-fallback": 1
+    "hard-failure": 8
   },
   "results": [
     {
@@ -463,7 +462,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "gruul-self-mill",
       "path": "latest/radars/standard/gruul-self-mill.json",

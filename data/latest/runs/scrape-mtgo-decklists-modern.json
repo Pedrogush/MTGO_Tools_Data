@@ -1,15 +1,21 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-03T23:26:10Z",
+  "generated_at": "2026-11-04T06:28:12Z",
   "command": "scrape-mtgo-decklists-modern",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 23,
+    "skipped": 20,
     "hard-failure": 1
   },
   "results": [
+    {
+      "scope": "mtgo-event",
+      "status": "skipped",
+      "format": "modern",
+      "message": "https://api.videreproject.com/decks?event_id=12857426: fetch failed; will retry next run. Error: expected string or bytes-like object, got 'dict'"
+    },
     {
       "scope": "mtgo-event",
       "status": "skipped",
@@ -123,30 +129,6 @@
       "status": "skipped",
       "format": "modern",
       "message": "https://api.videreproject.com/decks?event_id=-1133911092: fetch failed; will retry next run. Error: expected string or bytes-like object, got 'dict'"
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "skipped",
-      "format": "modern",
-      "message": "https://api.videreproject.com/decks?event_id=12857015: fetch failed; will retry next run. Error: expected string or bytes-like object, got 'dict'"
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "skipped",
-      "format": "modern",
-      "message": "https://api.videreproject.com/decks?event_id=12857013: fetch failed; will retry next run. Error: expected string or bytes-like object, got 'dict'"
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "skipped",
-      "format": "modern",
-      "message": "https://api.videreproject.com/decks?event_id=12857007: fetch failed; will retry next run. Error: expected string or bytes-like object, got 'dict'"
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "skipped",
-      "format": "modern",
-      "message": "https://api.videreproject.com/decks?event_id=-1135531015: fetch failed; will retry next run. Error: expected string or bytes-like object, got 'dict'"
     },
     {
       "scope": "mtgo-decklists",

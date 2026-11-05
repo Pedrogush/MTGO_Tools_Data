@@ -1,14 +1,15 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-05T06:52:37Z",
+  "generated_at": "2026-11-05T20:00:38Z",
   "command": "scrape-radars-pauper",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 35,
-    "success": 42,
-    "hard-failure": 1
+    "success": 41,
+    "hard-failure": 1,
+    "stale-fallback": 1
   },
   "results": [
     {
@@ -303,10 +304,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "pauper",
       "archetype": "infect",
-      "path": "latest/radars/pauper/infect.json"
+      "path": "latest/radars/pauper/infect.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",

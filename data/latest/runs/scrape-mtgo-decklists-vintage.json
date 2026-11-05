@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-05T06:51:49Z",
+  "generated_at": "2026-11-05T19:59:28Z",
   "command": "scrape-mtgo-decklists-vintage",
-  "status": "success",
+  "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 10,
-    "stale-fallback": 1
+    "hard-failure": 1
   },
   "results": [
     {
@@ -72,7 +72,7 @@
     },
     {
       "scope": "mtgo-decklists",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "vintage",
       "path": "latest/mtgo-decklists/vintage.json",
       "message": "Failed to persist any MTGO events for this format; see run results for failures."

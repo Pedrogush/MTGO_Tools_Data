@@ -1,15 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-04T19:48:57Z",
+  "generated_at": "2026-11-05T06:52:43Z",
   "command": "scrape-radars-legacy",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 43,
-    "stale-fallback": 1,
-    "success": 36,
-    "hard-failure": 3
+    "hard-failure": 4,
+    "success": 36
   },
   "results": [
     {
@@ -54,7 +53,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "legacy",
       "archetype": "azorius-stoneblade",
       "path": "latest/radars/legacy/azorius-stoneblade.json",

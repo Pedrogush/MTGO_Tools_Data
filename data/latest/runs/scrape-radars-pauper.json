@@ -1,15 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-05T20:00:38Z",
+  "generated_at": "2026-11-06T06:53:39Z",
   "command": "scrape-radars-pauper",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 35,
     "success": 41,
-    "hard-failure": 1,
-    "stale-fallback": 1
+    "hard-failure": 2
   },
   "results": [
     {
@@ -304,7 +303,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "pauper",
       "archetype": "infect",
       "path": "latest/radars/pauper/infect.json",

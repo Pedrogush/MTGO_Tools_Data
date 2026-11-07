@@ -1,14 +1,15 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-06T19:28:08Z",
+  "generated_at": "2026-11-07T06:02:48Z",
   "command": "scrape-radars-modern",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "hard-failure": 7,
     "skipped": 53,
-    "success": 38
+    "success": 37,
+    "stale-fallback": 1
   },
   "results": [
     {
@@ -233,10 +234,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "modern",
       "archetype": "esper-genericblink",
-      "path": "latest/radars/modern/esper-genericblink.json"
+      "path": "latest/radars/modern/esper-genericblink.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",

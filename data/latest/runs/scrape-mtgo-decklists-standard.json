@@ -1,7 +1,7 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-06T19:27:01Z",
+  "generated_at": "2026-11-07T06:01:52Z",
   "command": "scrape-mtgo-decklists-standard",
   "status": "hard-failure",
   "max_stale_hours": 24,
@@ -10,6 +10,18 @@
     "hard-failure": 1
   },
   "results": [
+    {
+      "scope": "mtgo-event",
+      "status": "skipped",
+      "format": "standard",
+      "message": "https://api.videreproject.com/decks?event_id=-1478263966: fetch failed; will retry next run. Error: expected string or bytes-like object, got 'dict'"
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "skipped",
+      "format": "standard",
+      "message": "https://api.videreproject.com/decks?event_id=12857679: fetch failed; will retry next run. Error: expected string or bytes-like object, got 'dict'"
+    },
     {
       "scope": "mtgo-event",
       "status": "skipped",
@@ -87,18 +99,6 @@
       "status": "skipped",
       "format": "standard",
       "message": "https://api.videreproject.com/decks?event_id=-53497148: fetch failed; will retry next run. Error: expected string or bytes-like object, got 'dict'"
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "skipped",
-      "format": "standard",
-      "message": "https://api.videreproject.com/decks?event_id=12857386: fetch failed; will retry next run. Error: expected string or bytes-like object, got 'dict'"
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "skipped",
-      "format": "standard",
-      "message": "https://api.videreproject.com/decks?event_id=-1232541543: fetch failed; will retry next run. Error: expected string or bytes-like object, got 'dict'"
     },
     {
       "scope": "mtgo-decklists",

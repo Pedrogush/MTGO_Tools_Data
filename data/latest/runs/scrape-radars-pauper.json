@@ -1,15 +1,15 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-07T06:02:50Z",
+  "generated_at": "2026-11-07T13:07:35Z",
   "command": "scrape-radars-pauper",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 35,
-    "success": 35,
-    "hard-failure": 2,
-    "stale-fallback": 6
+    "success": 34,
+    "hard-failure": 8,
+    "stale-fallback": 1
   },
   "results": [
     {
@@ -128,7 +128,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "pauper",
       "archetype": "boros-synthesizer",
       "path": "latest/radars/pauper/boros-synthesizer.json",
@@ -136,7 +136,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "pauper",
       "archetype": "burn",
       "path": "latest/radars/pauper/burn.json",
@@ -144,7 +144,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "pauper",
       "archetype": "cycle-storm",
       "path": "latest/radars/pauper/cycle-storm.json",
@@ -189,7 +189,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "pauper",
       "archetype": "dredge",
       "path": "latest/radars/pauper/dredge.json",
@@ -301,7 +301,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "pauper",
       "archetype": "gruul-ramp",
       "path": "latest/radars/pauper/gruul-ramp.json",
@@ -424,10 +424,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "pauper",
       "archetype": "mono-blue-faeries",
-      "path": "latest/radars/pauper/mono-blue-faeries.json"
+      "path": "latest/radars/pauper/mono-blue-faeries.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -530,7 +531,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "pauper",
       "archetype": "snacker-gates",
       "path": "latest/radars/pauper/snacker-gates.json",

@@ -1,22 +1,24 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-07T06:02:39Z",
+  "generated_at": "2026-11-07T13:07:40Z",
   "command": "scrape-radars-standard",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "success": 54,
+    "stale-fallback": 3,
+    "success": 51,
     "skipped": 71,
     "hard-failure": 8
   },
   "results": [
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "4c-artifacts",
-      "path": "latest/radars/standard/4c-artifacts.json"
+      "path": "latest/radars/standard/4c-artifacts.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -850,10 +852,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "selesnya-gearhulk",
-      "path": "latest/radars/standard/selesnya-gearhulk.json"
+      "path": "latest/radars/standard/selesnya-gearhulk.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -880,10 +883,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "selesnya-ouroboroid",
-      "path": "latest/radars/standard/selesnya-ouroboroid.json"
+      "path": "latest/radars/standard/selesnya-ouroboroid.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",

@@ -1,15 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-07T13:07:31Z",
+  "generated_at": "2026-11-07T21:54:50Z",
   "command": "scrape-radars-modern",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "hard-failure": 7,
+    "hard-failure": 8,
     "skipped": 53,
-    "success": 37,
-    "stale-fallback": 1
+    "success": 37
   },
   "results": [
     {
@@ -234,7 +233,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "modern",
       "archetype": "esper-genericblink",
       "path": "latest/radars/modern/esper-genericblink.json",

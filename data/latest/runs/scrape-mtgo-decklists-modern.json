@@ -1,15 +1,27 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-07T21:54:06Z",
+  "generated_at": "2026-11-08T06:06:06Z",
   "command": "scrape-mtgo-decklists-modern",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 22,
+    "skipped": 21,
     "hard-failure": 1
   },
   "results": [
+    {
+      "scope": "mtgo-event",
+      "status": "skipped",
+      "format": "modern",
+      "message": "https://api.videreproject.com/decks?event_id=-1463793907: fetch failed; will retry next run. Error: expected string or bytes-like object, got 'dict'"
+    },
+    {
+      "scope": "mtgo-event",
+      "status": "skipped",
+      "format": "modern",
+      "message": "https://api.videreproject.com/decks?event_id=12857687: fetch failed; will retry next run. Error: expected string or bytes-like object, got 'dict'"
+    },
     {
       "scope": "mtgo-event",
       "status": "skipped",
@@ -123,24 +135,6 @@
       "status": "skipped",
       "format": "modern",
       "message": "https://api.videreproject.com/decks?event_id=-1800173488: fetch failed; will retry next run. Error: expected string or bytes-like object, got 'dict'"
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "skipped",
-      "format": "modern",
-      "message": "https://api.videreproject.com/decks?event_id=12857398: fetch failed; will retry next run. Error: expected string or bytes-like object, got 'dict'"
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "skipped",
-      "format": "modern",
-      "message": "https://api.videreproject.com/decks?event_id=12857394: fetch failed; will retry next run. Error: expected string or bytes-like object, got 'dict'"
-    },
-    {
-      "scope": "mtgo-event",
-      "status": "skipped",
-      "format": "modern",
-      "message": "https://api.videreproject.com/decks?event_id=-1514858494: fetch failed; will retry next run. Error: expected string or bytes-like object, got 'dict'"
     },
     {
       "scope": "mtgo-decklists",

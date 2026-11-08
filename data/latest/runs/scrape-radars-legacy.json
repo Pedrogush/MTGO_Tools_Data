@@ -1,15 +1,15 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-07T21:54:49Z",
+  "generated_at": "2026-11-08T06:07:07Z",
   "command": "scrape-radars-legacy",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 43,
-    "hard-failure": 4,
-    "success": 31,
-    "stale-fallback": 5
+    "hard-failure": 9,
+    "success": 29,
+    "stale-fallback": 2
   },
   "results": [
     {
@@ -101,10 +101,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "legacy",
       "archetype": "beseech-storm",
-      "path": "latest/radars/legacy/beseech-storm.json"
+      "path": "latest/radars/legacy/beseech-storm.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -267,7 +268,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "legacy",
       "archetype": "goblins",
       "path": "latest/radars/legacy/goblins.json",
@@ -388,7 +389,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "legacy",
       "archetype": "mardu-energy",
       "path": "latest/radars/legacy/mardu-energy.json",
@@ -404,7 +405,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "legacy",
       "archetype": "merfolk",
       "path": "latest/radars/legacy/merfolk.json",
@@ -412,7 +413,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "legacy",
       "archetype": "mono-black-midrange",
       "path": "latest/radars/legacy/mono-black-midrange.json",
@@ -467,10 +468,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "legacy",
       "archetype": "nic-fit",
-      "path": "latest/radars/legacy/nic-fit.json"
+      "path": "latest/radars/legacy/nic-fit.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -529,7 +531,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "legacy",
       "archetype": "red-stompy",
       "path": "latest/radars/legacy/red-stompy.json",

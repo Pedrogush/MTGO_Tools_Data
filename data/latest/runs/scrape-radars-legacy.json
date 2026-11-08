@@ -1,15 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-08T13:29:57Z",
+  "generated_at": "2026-11-08T22:10:13Z",
   "command": "scrape-radars-legacy",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 43,
-    "hard-failure": 9,
-    "success": 29,
-    "stale-fallback": 2
+    "hard-failure": 11,
+    "success": 29
   },
   "results": [
     {
@@ -101,7 +100,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "legacy",
       "archetype": "beseech-storm",
       "path": "latest/radars/legacy/beseech-storm.json",
@@ -468,7 +467,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "legacy",
       "archetype": "nic-fit",
       "path": "latest/radars/legacy/nic-fit.json",

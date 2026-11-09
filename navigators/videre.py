@@ -31,7 +31,7 @@ _MAX_PAGES = 50
 # runtime guardrail; the same request typically succeeds moments later.
 _RETRYABLE_STATUSES = {408, 429, 500, 502, 503, 504}
 
-# Card entries arrive as Postgres composite row literals:
+# Card entries originally arrived as Postgres composite row literals:
 #   (18115,"Birchlore Rangers",4)  or  (129825,Forest,2)
 # Names containing commas/spaces are double-quoted; embedded quotes double.
 _CARD_ENTRY_PATTERN = re.compile(r'^\((\d+),(?:"((?:[^"]|"")*)"|([^,]*)),(\d+)\)$')
@@ -108,7 +108,16 @@ def normalize_card_name(name: str) -> str:
     return name
 
 
-def parse_card_entry(entry: str) -> tuple[str, int]:
+def parse_card_entry(entry: str | dict[str, Any]) -> tuple[str, int]:
+    # Since late October 2026 the API serializes board columns with
+    # ``to_jsonb``, so entries arrive as {"id", "name", "quantity"} objects
+    # instead of composite row literals. Accept both shapes.
+    if isinstance(entry, dict):
+        name = entry.get("name")
+        qty = entry.get("quantity")
+        if not isinstance(name, str) or not name or qty is None:
+            raise ValueError(f"Unparseable Videre card entry: {entry!r}")
+        return normalize_card_name(name), int(qty)
     match = _CARD_ENTRY_PATTERN.match(entry)
     if not match:
         raise ValueError(f"Unparseable Videre card entry: {entry!r}")
@@ -157,7 +166,7 @@ def _clean_deck(
     standing = standings.get(player.casefold(), {})
     wins, losses = _record_to_wins_losses(standing.get("record") or default_record)
 
-    def _board(entries: list[str] | None, sideboard: str) -> list[dict[str, Any]]:
+    def _board(entries: list[str | dict[str, Any]] | None, sideboard: str) -> list[dict[str, Any]]:
         cards: dict[str, int] = {}
         for entry in entries or []:
             name, qty = parse_card_entry(entry)

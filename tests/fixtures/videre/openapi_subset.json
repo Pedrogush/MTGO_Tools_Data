@@ -1,0 +1,853 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Videre API",
+    "version": "1.0.0",
+    "description": "Public API for Magic Online catalog and tournament data."
+  },
+  "servers": [
+    {
+      "url": "https://api.videreproject.com"
+    }
+  ],
+  "paths": {
+    "/decks": {
+      "get": {
+        "tags": [
+          "Decks"
+        ],
+        "operationId": "getDecksByQuery",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/EventDeck"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "408": {
+            "$ref": "#/components/responses/ServerError"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
+          }
+        },
+        "parameters": [
+          {
+            "name": "format",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "Standard",
+                "Modern",
+                "Pioneer",
+                "Vintage",
+                "Legacy",
+                "Pauper",
+                "Premodern",
+                "Extended",
+                "Classic"
+              ]
+            }
+          },
+          {
+            "name": "event_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "min_date",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "max_date",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "player",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "archetype",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 500,
+              "default": 100
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0
+            }
+          }
+        ]
+      }
+    },
+    "/events": {
+      "get": {
+        "tags": [
+          "Events"
+        ],
+        "operationId": "getEventsByQuery",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/Event"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "408": {
+            "$ref": "#/components/responses/ServerError"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
+          }
+        },
+        "parameters": [
+          {
+            "name": "format",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "Standard",
+                "Modern",
+                "Pioneer",
+                "Vintage",
+                "Legacy",
+                "Pauper",
+                "Premodern",
+                "Extended",
+                "Classic"
+              ]
+            }
+          },
+          {
+            "name": "event_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "min_date",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "max_date",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 500,
+              "default": 100
+            }
+          },
+          {
+            "name": "kind",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "League",
+                "Preliminary",
+                "Challenge",
+                "Showcase",
+                "Qualifier",
+                "Daily",
+                "Premier",
+                "Championship"
+              ]
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0
+            }
+          }
+        ]
+      }
+    },
+    "/standings": {
+      "get": {
+        "tags": [
+          "Standings"
+        ],
+        "operationId": "getStandingsByQuery",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/EventStanding"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "408": {
+            "$ref": "#/components/responses/ServerError"
+          },
+          "500": {
+            "$ref": "#/components/responses/ServerError"
+          }
+        },
+        "parameters": [
+          {
+            "name": "format",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "Standard",
+                "Modern",
+                "Pioneer",
+                "Vintage",
+                "Legacy",
+                "Pauper",
+                "Premodern",
+                "Extended",
+                "Classic"
+              ]
+            }
+          },
+          {
+            "name": "event_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "min_date",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "max_date",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "player",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "archetype",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 500,
+              "default": 100
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0
+            }
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "BadRequest": {
+        "description": "Invalid request or no matching results",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "ServerError": {
+        "description": "The request could not be completed",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      }
+    },
+    "schemas": {
+      "Error": {
+        "type": "object",
+        "properties": {
+          "object": {
+            "type": "string",
+            "enum": [
+              "error"
+            ]
+          },
+          "status": {
+            "type": "integer"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "body": {}
+        },
+        "required": [
+          "message",
+          "object",
+          "reason",
+          "status"
+        ]
+      },
+      "ListResponse": {
+        "type": "object",
+        "properties": {
+          "object": {
+            "type": "string",
+            "enum": [
+              "list"
+            ]
+          },
+          "parameters": {
+            "type": "object",
+            "additionalProperties": {}
+          },
+          "meta": {
+            "type": "object",
+            "properties": {
+              "database": {
+                "type": "string"
+              },
+              "backend": {
+                "type": "string"
+              },
+              "exec_ms": {
+                "type": "number"
+              },
+              "row_count": {
+                "type": "integer"
+              },
+              "total": {
+                "type": "integer",
+                "nullable": true
+              },
+              "limit": {
+                "type": "integer"
+              },
+              "offset": {
+                "type": "integer"
+              },
+              "has_more": {
+                "type": "boolean"
+              },
+              "next_offset": {
+                "type": "integer",
+                "nullable": true
+              }
+            },
+            "required": [
+              "backend",
+              "database",
+              "exec_ms",
+              "has_more",
+              "limit",
+              "next_offset",
+              "offset",
+              "row_count",
+              "total"
+            ]
+          },
+          "data": {
+            "type": "array",
+            "items": {}
+          }
+        },
+        "required": [
+          "data",
+          "meta",
+          "object",
+          "parameters"
+        ]
+      },
+      "Event": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "format": {
+            "enum": [
+              "Classic",
+              "Extended",
+              "Legacy",
+              "Modern",
+              "Pauper",
+              "Pioneer",
+              "Premodern",
+              "Standard",
+              "Vintage"
+            ],
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "Challenge",
+              "Championship",
+              "Daily",
+              "League",
+              "Preliminary",
+              "Premier",
+              "Qualifier",
+              "Showcase"
+            ],
+            "type": "string"
+          },
+          "rounds": {
+            "type": "integer"
+          },
+          "players": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "date",
+          "format",
+          "id",
+          "kind",
+          "name",
+          "players",
+          "rounds"
+        ]
+      },
+      "EventDeck": {
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "event_id": {
+                "type": "integer"
+              },
+              "player": {
+                "type": "string"
+              },
+              "mainboard": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "quantity": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "name",
+                    "quantity"
+                  ]
+                },
+                "nullable": true
+              },
+              "sideboard": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "quantity": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "name",
+                    "quantity"
+                  ]
+                },
+                "nullable": true
+              }
+            },
+            "required": [
+              "event_id",
+              "id",
+              "mainboard",
+              "player",
+              "sideboard"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "date": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "format": {
+                "enum": [
+                  "Classic",
+                  "Extended",
+                  "Legacy",
+                  "Modern",
+                  "Pauper",
+                  "Pioneer",
+                  "Premodern",
+                  "Standard",
+                  "Vintage"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "date",
+              "format"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "archetype": {
+                "type": "string",
+                "nullable": true
+              },
+              "archetype_id": {
+                "type": "integer",
+                "nullable": true
+              }
+            },
+            "required": [
+              "archetype",
+              "archetype_id"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "event_name": {
+                "type": "string"
+              },
+              "event_type": {
+                "enum": [
+                  "Challenge",
+                  "Championship",
+                  "Daily",
+                  "League",
+                  "Preliminary",
+                  "Premier",
+                  "Qualifier",
+                  "Showcase"
+                ],
+                "type": "string"
+              },
+              "deck_name": {
+                "type": "string",
+                "nullable": true
+              }
+            },
+            "required": [
+              "deck_name",
+              "event_name",
+              "event_type"
+            ]
+          }
+        ]
+      },
+      "EventStanding": {
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "event_id": {
+                "type": "integer"
+              },
+              "rank": {
+                "type": "integer",
+                "nullable": true
+              },
+              "player": {
+                "type": "string"
+              },
+              "record": {
+                "type": "string"
+              },
+              "points": {
+                "type": "integer",
+                "nullable": true
+              },
+              "omwp": {
+                "type": "number",
+                "nullable": true
+              },
+              "gwp": {
+                "type": "number",
+                "nullable": true
+              },
+              "owp": {
+                "type": "number",
+                "nullable": true
+              }
+            },
+            "required": [
+              "event_id",
+              "gwp",
+              "omwp",
+              "owp",
+              "player",
+              "points",
+              "rank",
+              "record"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "date": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "format": {
+                "enum": [
+                  "Classic",
+                  "Extended",
+                  "Legacy",
+                  "Modern",
+                  "Pauper",
+                  "Pioneer",
+                  "Premodern",
+                  "Standard",
+                  "Vintage"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "date",
+              "format"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "archetype": {
+                "type": "string",
+                "nullable": true
+              },
+              "archetype_id": {
+                "type": "integer",
+                "nullable": true
+              }
+            },
+            "required": [
+              "archetype",
+              "archetype_id"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "event_name": {
+                "type": "string"
+              },
+              "event_type": {
+                "enum": [
+                  "Challenge",
+                  "Championship",
+                  "Daily",
+                  "League",
+                  "Preliminary",
+                  "Premier",
+                  "Qualifier",
+                  "Showcase"
+                ],
+                "type": "string"
+              },
+              "deck_id": {
+                "type": "integer",
+                "nullable": true
+              },
+              "deck_name": {
+                "type": "string",
+                "nullable": true
+              }
+            },
+            "required": [
+              "deck_id",
+              "deck_name",
+              "event_name",
+              "event_type"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

@@ -7,31 +7,6 @@ projects and community resources. We gratefully acknowledge the following:
 
 ## Data Sources
 
-### MTGGoldfish
-
-**Website:** https://www.mtggoldfish.com/
-
-**What we use:**
-- Metagame deck lists
-- Tournament results
-- Archetype categorization
-- Player names and standings
-
-**Usage:**
-We scrape MTGGoldfish in compliance with their `robots.txt` file. Our scraping
-is rate-limited and respects their terms of service. We do not republish or
-redistribute their data commercially.
-
-**Files influenced:**
-- `navigators/mtggoldfish.py` - Web scraping implementation
-- `navigators/mtggoldfish_visual.py` - Visual decklist page parser
-
-**Credit:**
-MTGGoldfish is an invaluable resource for the Magic: The Gathering community.
-Their metagame data and tournament coverage provide the foundation for
-competitive deck research. Please support them by visiting their site and
-considering their premium services.
-
 ### Videre Project API
 
 **Website:** https://api.videreproject.com
@@ -54,8 +29,11 @@ free community service with no published data-usage terms
 
 **Files influenced:**
 - `navigators/videre.py` - Videre API client
+- `navigators/videre_contract.py` - the API fields the client depends on
 - `services/mtgo_background_service.py` - MTGO event fetch window
 - `publisher/runner.py` - MTGO decklist snapshot publishing
+- `publisher/mtgo_archive.py` - every other published product, derived from
+  the MTGO decklist snapshot
 
 **Credit:**
 The Videre Project maintains the community's most complete open MTGO
@@ -71,8 +49,7 @@ https://github.com/videre-project.
 
 - **msgspec** - Fast JSON serialization
 - **loguru** - Logging
-- **BeautifulSoup4 + lxml** - HTML parsing
-- **curl-cffi** - HTTP client for web scraping
+- **curl-cffi** - HTTP client for the Videre API
 
 ---
 
@@ -119,7 +96,6 @@ This project is **not affiliated with or endorsed by:**
 - Wizards of the Coast
 - Hasbro
 - Daybreak Games
-- MTGGoldfish
 - Any of the attributed projects above
 
 Magic: The Gathering and MTGO are trademarks of Wizards of the Coast LLC.
@@ -129,7 +105,7 @@ intellectual property rights and terms of service.
 
 ---
 
-**Last Updated:** 2026-09-11
+**Last Updated:** 2026-11-09
 
 **Maintained By:** Pedro (https://github.com/Pedrogush)
 

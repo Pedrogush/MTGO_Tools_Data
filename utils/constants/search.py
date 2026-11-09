@@ -1,8 +1,0 @@
-"""MTGGoldfish table parsing constants."""
-
-# MTGGoldfish archetype deck table column indices
-GOLDFISH_DECK_TABLE_COL_DATE = 0
-GOLDFISH_DECK_TABLE_COL_NUMBER = 1
-GOLDFISH_DECK_TABLE_COL_PLAYER = 2
-GOLDFISH_DECK_TABLE_COL_EVENT = 3
-GOLDFISH_DECK_TABLE_COL_RESULT = 4

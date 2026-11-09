@@ -1,0 +1,44 @@
+name: videre-contract
+
+# Early warning for Videre API changes that would break the publisher's parser.
+# Deliberately separate from publish-data: a spec change should alert, not stop
+# the scheduled publish (which already falls back to the last good snapshots).
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "40 7 * * *"
+  pull_request:
+    paths:
+      - navigators/videre.py
+      - navigators/videre_contract.py
+      - scripts/check_videre_contract.py
+      - .github/workflows/videre-contract.yml
+
+permissions:
+  contents: read
+
+jobs:
+  check-openapi:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v5
+        with:
+          sparse-checkout: |
+            navigators
+            scripts
+            utils
+          sparse-checkout-cone-mode: true
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Compare live openapi.json against the pinned fields
+        run: python scripts/check_videre_contract.py

@@ -27,7 +27,7 @@ def test_contract_builders_validate_examples() -> None:
     archetype_snapshot = build_archetype_list_snapshot(
         generated_at=TIMESTAMP,
         format_name="modern",
-        source="mtggoldfish",
+        source="mtgo",
         archetypes=archetypes,
     )
     assert validate_archetype_list_snapshot(archetype_snapshot)["archetypes"] == archetypes
@@ -37,7 +37,7 @@ def test_contract_builders_validate_examples() -> None:
         format_name="modern",
         source="both",
         archetype=archetypes[0],
-        decks=[{"number": "123", "source": "mtggoldfish", "date": "2026-03-22"}],
+        decks=[{"number": "123", "source": "mtgo", "date": "2026-03-22"}],
     )
     assert validate_archetype_deck_snapshot(deck_snapshot)["archetype"]["name"] == "Temur Rhinos"
 
@@ -84,7 +84,7 @@ def test_contract_builders_validate_examples() -> None:
     metagame_snapshot = build_metagame_snapshot(
         generated_at=TIMESTAMP,
         format_name="modern",
-        source="mtggoldfish",
+        source="mtgo",
         generated_for_day="2026-03-23",
         stats=[{"archetype": "Temur Rhinos", "deck_count": 4, "daily_counts": {"2026-03-22": 4}}],
     )

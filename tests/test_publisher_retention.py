@@ -64,7 +64,7 @@ def test_prune_output_tree_removes_old_snapshots_and_only_expired_deck_texts(tmp
             generated_at=NOW,
             format_name="modern",
             deck_id="123",
-            source="mtggoldfish",
+            source="mtgo",
             deck_name="keep-referenced",
             deck_text="keep",
         ),
@@ -75,7 +75,7 @@ def test_prune_output_tree_removes_old_snapshots_and_only_expired_deck_texts(tmp
             generated_at=NOW,
             format_name="modern",
             deck_id="999",
-            source="mtggoldfish",
+            source="mtgo",
             deck_name="keep-unreferenced",
             deck_text="keep",
         ),
@@ -86,7 +86,7 @@ def test_prune_output_tree_removes_old_snapshots_and_only_expired_deck_texts(tmp
             generated_at=OLD_BLOB_TIMESTAMP,
             format_name="modern",
             deck_id="888",
-            source="mtggoldfish",
+            source="mtgo",
             deck_name="drop-expired",
             deck_text="drop",
         ),
@@ -155,3 +155,41 @@ def test_prune_output_tree_removes_old_snapshots_and_only_expired_deck_texts(tmp
             "updated_at": NOW,
         }
     ]
+
+
+def test_prune_output_tree_removes_snapshots_for_archetypes_not_in_list(tmp_path):
+    from publisher.contracts import build_archetype_list_snapshot
+    from publisher.retention import prune_orphan_archetype_snapshots
+
+    list_path = tmp_path / "latest" / "archetypes" / "modern.json"
+    list_path.parent.mkdir(parents=True)
+    list_path.write_text(
+        json.dumps(
+            build_archetype_list_snapshot(
+                generated_at=NOW,
+                format_name="modern",
+                source="videre-api",
+                archetypes=[
+                    {"name": "Boros Energy", "href": "modern-boros-energy", "source": "mtgo"},
+                    {"name": "BR", "href": "modern-br", "source": "mtgo"},
+                ],
+            )
+        ),
+        encoding="utf-8",
+    )
+    kept, orphans = [], []
+    for category in ("decks", "radars"):
+        for stem, bucket in (("boros-energy", kept), ("br", kept), ("izzet-cauldron", orphans)):
+            path = tmp_path / "latest" / category / "modern" / f"{stem}.json"
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text("{}", encoding="utf-8")
+            bucket.append(path)
+    # A format with no archetype list is left alone.
+    untouched = tmp_path / "latest" / "decks" / "legacy" / "doomsday.json"
+    untouched.parent.mkdir(parents=True)
+    untouched.write_text("{}", encoding="utf-8")
+
+    assert prune_orphan_archetype_snapshots(tmp_path) == 2
+    assert all(path.exists() for path in kept)
+    assert not any(path.exists() for path in orphans)
+    assert untouched.exists()

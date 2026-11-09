@@ -100,8 +100,8 @@ def _paginate(path: str, params: dict[str, Any]) -> list[dict[str, Any]]:
 def normalize_card_name(name: str) -> str:
     """Match the published deck-text convention for split cards.
 
-    The Videre catalog stores split cards as "Wear/Tear" while MTGGoldfish
-    deck texts use "Wear // Tear".
+    The Videre catalog stores split cards as "Wear/Tear" while the published
+    deck texts (and the MTGO_Tools client) use "Wear // Tear".
     """
     if "/" in name and "//" not in name:
         return name.replace("/", " // ")

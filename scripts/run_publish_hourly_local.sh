@@ -1,18 +1,16 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Run the same publisher command path as publish-decklists.yml, but target the
-# repository's data tree by default so local warmups populate
-# data/archive/deck-texts for later GitHub Actions runs.
-#
-# publisher.runner already skips the per-deck delay when it can reuse an
-# existing published deck-text blob from the output root.
+# Run the same publisher command path as the publish-decklists-mtgo and
+# publish-decklists jobs, but target the repository's data tree by default so
+# local warmups populate data/archive for later GitHub Actions runs. Only the
+# MTGO ingest touches the network (the Videre API); deck snapshots and
+# deck-text blobs are derived from the snapshot it writes.
 
 formats=(Modern Standard Pioneer Legacy Vintage Pauper)
 days="${PUBLISH_WARMUP_DAYS:-7}"
 output_root="${PUBLISH_OUTPUT_ROOT:-data}"
 retention_days="${PUBLISH_RETENTION_DAYS:-7}"
-deck_download_delay_seconds="${PUBLISH_DECK_DOWNLOAD_DELAY_SECONDS:-0.5}"
 mtgo_event_delay_seconds="${PUBLISH_MTGO_EVENT_DELAY_SECONDS:-0.5}"
 
 export MTGO_DECKLISTS_ENABLED="${MTGO_DECKLISTS_ENABLED:-true}"
@@ -20,7 +18,6 @@ export MTGO_DECKLISTS_ENABLED="${MTGO_DECKLISTS_ENABLED:-true}"
 echo "Output root: $output_root"
 echo "Retention days: $retention_days"
 echo "Warmup window days: $days"
-echo "Deck download delay seconds: $deck_download_delay_seconds"
 echo "MTGO event delay seconds: $mtgo_event_delay_seconds"
 echo "MTGO decklists enabled: $MTGO_DECKLISTS_ENABLED"
 echo "Formats: ${formats[*]}"
@@ -51,7 +48,6 @@ for format in "${formats[@]}"; do
     --retention-days "$retention_days"
     scrape-deck-texts
     --format "$format"
-    --deck-download-delay-seconds "$deck_download_delay_seconds"
     --days "$days"
   )
 

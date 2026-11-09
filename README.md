@@ -1,17 +1,16 @@
 # MTGO_Tools_Data
 
 Metagame data feed for the [MTGO_Tools](https://github.com/Pedrogush/MTGO_Tools)
-client: MTGGoldfish paper tournament results plus MTGO results from the
+client: MTGO tournament results from the
 [Videre Project API](https://api.videreproject.com), published on a schedule
 to the `data-publish` branch (including the single-request
 `client-bundle.tar.gz`, which is also mirrored to the rolling `client-bundle`
 release).
 
 This repository was carved out of MTGO_Tools — the original full desktop
-application — and reduced to its scraper and publisher path. Fixes that
-affect the live MTGGoldfish scraper are typically discovered in `MTGO_Tools`
-first; check that repo's `navigators/` module for the authoritative
-implementation when this one stops collecting data.
+application — and reduced to its publisher path. Every product (archetype
+lists, deck lists, deck texts, radars, card pools, metagame counts) is derived
+from Videre API data; nothing is scraped from MTGGoldfish anymore.
 
 ![Version](https://img.shields.io/badge/version-0.2-blue)
 ![Python](https://img.shields.io/badge/python-3.11+-green)
@@ -38,7 +37,7 @@ implementation when this one stops collecting data.
 
 4. **Run the scraper tests**:
    ```bash
-   python -m pytest tests/test_mtggoldfish.py tests/test_metagame_repository.py tests/test_metagame_stats.py tests/test_scraping_surface.py
+   python -m pytest
    ```
 
 ## Architecture
@@ -59,8 +58,18 @@ Publisher outputs are written under `data/`:
   The committed copy is a gzipped tarball that git cannot delta, so one blob per
   publish run is what grew this repository to ~4 GB; it stays only until shipped
   MTGO_Tools clients read the release asset instead.
+- `data/latest/mtgo-decklists/<format>.json` for the MTGO events of the last
+  seven days (Videre API), with every deck's metadata and deck text. All other
+  per-format products below are derived from this snapshot.
+- `data/latest/archetypes/<format>.json` for the archetypes present in that
+  window. Names are Videre's archetype labels; hrefs are
+  `<format>-<normalized name>`. Decks Videre could not classify keep its
+  colour-code label (e.g. `BR`) as their archetype; decks with no label at all
+  are `Unknown` and are not listed.
+- `data/latest/decks/<format>/<archetype>.json` for each archetype's decks
+  (`source: "mtgo"`), referencing deck-text blobs by `deck_text_path`.
 - `data/latest/radars/<format>/<archetype>.json` for published archetype radar
-  snapshots derived from published deck-text blobs.
+  snapshots derived from the same decks.
 - `data/latest/card-pools/<format>.json` for the format-wide card pool built
   from all published decklists in that format. It includes the unique card list
   and per-card total copies played, sorted descending by copies.
@@ -85,6 +94,7 @@ publisher workflows.
 The headless publisher entrypoint is `python -m publisher.runner`.
 
 ```bash
+python -m publisher.runner --output-root data --timestamp 2026-03-23T12:00:00Z scrape-mtgo-decklists --format Modern --days 7
 python -m publisher.runner --output-root data --timestamp 2026-03-23T12:00:00Z scrape-archetypes --format Modern
 python -m publisher.runner --output-root data --timestamp 2026-03-23T12:00:00Z scrape-decks --format Modern --archetype "Temur Rhinos" --days 7
 python -m publisher.runner --output-root data --timestamp 2026-03-23T12:00:00Z scrape-deck-texts --format Modern --archetype "Temur Rhinos" --days 7
@@ -92,6 +102,10 @@ python -m publisher.runner --output-root data --timestamp 2026-03-23T12:00:00Z s
 python -m publisher.runner --output-root data --timestamp 2026-03-23T12:00:00Z scrape-metagame --format Modern --day 2026-03-23
 python -m publisher.retention --output-root data --timestamp 2026-03-23T18:00:00Z --retention-days 7
 ```
+
+`scrape-mtgo-decklists` is the only command that makes network requests (to
+the Videre API, with `MTGO_DECKLISTS_ENABLED=true`); the others read
+`data/latest/mtgo-decklists/<format>.json`, so run it first.
 
 Outputs are written into repository-managed staging paths under `data/latest/`,
 `data/hourly/`, `data/daily/`, and `data/archive/`.
@@ -107,10 +121,11 @@ See [docs/publishing_workflows.md](docs/publishing_workflows.md) for the exact
 workflow behavior. In short:
 
 - `publish-data.yml` runs hourly at minute `15`.
-- Decklist and metagame publishing fan out into one job per format for
-  `Modern`, `Standard`, `Pioneer`, `Legacy`, `Vintage`, and `Pauper`.
-- Radar publishing then runs in the same workflow, one job per format, using
-  the same-run decklist artifacts instead of waiting on a separate workflow.
+- MTGO decklist ingest (the only Videre API traffic) fans out into one job
+  per format for `Modern`, `Standard`, `Pioneer`, `Legacy`, `Vintage`, and
+  `Pauper`.
+- Deck-list, metagame, and radar publishing then run one job per format each,
+  derived from that same-run MTGO artifact.
 - A single final merge job downloads every format artifact, prunes retention,
   rebuilds `data/latest/latest.json`, rebuilds
   `data/latest/client-bundle.tar.gz` and mirrors it to the `client-bundle`
@@ -162,12 +177,13 @@ Configuration is in `pyproject.toml`.
 
 ```
 MTGO_Tools_Data/
+├── publisher/              # Publisher CLI, contracts, retention, bundle
+│   └── mtgo_archive.py     # Derives every product from the MTGO snapshot
 ├── scraping/               # Headless scrape facade
-├── services/               # MTGO event processing
-├── repositories/           # Metagame repository
+├── services/               # MTGO event processing, radar maths
 ├── navigators/             # External API integrations
-│   ├── mtggoldfish.py      # MTGGoldfish scraper
-│   └── videre.py           # Videre API client (MTGO events)
+│   ├── videre.py           # Videre API client (MTGO events)
+│   └── videre_contract.py  # Fields we read from the Videre API, and checks
 ├── utils/                  # Utility modules
 │   ├── deck_text_cache.py
 │   └── metagame_stats.py
@@ -187,19 +203,17 @@ Contributions are welcome! Please:
 
 ## Data Sources
 
-- **Metagame Data**: [MTGGoldfish](https://www.mtggoldfish.com/)
 - **MTGO Decklists**: [Videre Project API](https://api.videreproject.com) —
   community REST API over MTGO event data ([videre-project](https://github.com/videre-project)).
-  MTGGoldfish rows for MTGO events are dropped to avoid double-counting; only
-  paper tournament rows are kept from MTGGoldfish.
+  It is the only data source.
 - **MTGO Archetypes**: published by the same Videre API alongside each deck.
   Their labels come from the [Badaro/MTGOFormatData](https://github.com/Badaro/MTGOFormatData)
   taxonomy, so this repo no longer vendors those rules or classifies locally.
 
 ## Known Limitations
 
-- The MTGGoldfish scraper depends on their page structure; upstream markup
-  changes can break collection until the parsers are updated
+- Paper tournament results are not collected. MTGGoldfish was the only paper
+  source and was removed; the feed is MTGO-only
 - MTGO decklist coverage is bounded by what Daybreak publishes (Top 32 of
   scheduled events plus a curated selection of league 5-0s), regardless of
   the API serving it
@@ -210,11 +224,12 @@ Contributions are welcome! Please:
 
 ## Troubleshooting
 
-### Scrapers not collecting data
+### Publisher not collecting data
 - Ensure Python 3.11+ is installed
 - Check all dependencies are installed: `pip install -r requirements-dev.txt`
-- Fixes usually land in [MTGO_Tools](https://github.com/Pedrogush/MTGO_Tools)
-  first; check that repo's `navigators/` module for the authoritative parsers
+- Check https://api.videreproject.com/events?limit=1 responds, and run
+  `python scripts/check_videre_contract.py` to see whether a field the client
+  reads changed
 
 ## License
 
@@ -222,7 +237,6 @@ MIT License - see LICENSE file for details
 
 ## Acknowledgments
 
-- **MTGGoldfish**: For metagame statistics and decklists
 - **Videre Project**: For the community MTGO data API this repo consumes
 - **Badaro**: For the MTGOFormatData archetype taxonomy behind the Videre
   API's classifications

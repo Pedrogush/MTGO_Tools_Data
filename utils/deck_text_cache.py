@@ -1,7 +1,7 @@
 """
 SQLite-based deck text cache for scalable, high-performance caching.
 
-This module provides a robust caching layer for MTGGoldfish deck texts using SQLite,
+This module provides a robust caching layer for published deck texts using SQLite,
 eliminating the performance issues of large JSON files and providing instant lookups
 even with millions of cached decks.
 """
@@ -145,14 +145,14 @@ class DeckTextCache:
             logger.error(f"Error reading from deck cache: {exc}")
             return None
 
-    def set(self, deck_number: str, deck_text: str, source: str = "mtggoldfish") -> bool:
+    def set(self, deck_number: str, deck_text: str, source: str = "mtgo") -> bool:
         """
         Store deck text in cache with retry logic for database locks.
 
         Args:
             deck_number: Deck number/ID
             deck_text: Deck list as text
-            source: Data source ('mtggoldfish' or 'mtgo')
+            source: Data source (always "mtgo" since the feed became Videre-only)
 
         Returns:
             True if successful, False otherwise

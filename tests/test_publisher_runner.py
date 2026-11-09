@@ -1,7 +1,6 @@
 import json
 
 from publisher.contracts import (
-    build_archetype_deck_snapshot,
     build_archetype_list_snapshot,
     build_deck_text_blob,
     build_mtgo_decklists_snapshot,
@@ -12,922 +11,276 @@ TIMESTAMP = "2026-03-23T12:00:00Z"
 LATER_TIMESTAMP = "2026-03-23T18:00:00Z"
 
 
-class _FakeRepo:
-    def get_decks_for_archetype(self, archetype, force_refresh=False, source_filter=None):
-        assert force_refresh is True
-        return [
-            {
-                "name": archetype["name"],
-                "number": "123",
-                "date": "2026-03-22",
-                "player": "Alice",
-                "event": "Modern Challenge",
-                "source": "mtggoldfish",
-            }
-        ]
-
-    def download_deck_content(self, deck, source_filter=None):
-        return f"Deck {deck['number']}"
-
-
-def test_scrape_archetypes_writes_run_manifest_and_posix_path(monkeypatch, tmp_path):
-    monkeypatch.setattr(
-        "publisher.runner.fetch_archetypes",
-        lambda *args, **kwargs: [{"name": "Temur Rhinos", "href": "modern-temur-rhinos"}],
-    )
-
-    exit_code = main(
-        [
-            "--output-root",
-            str(tmp_path),
-            "--timestamp",
-            TIMESTAMP,
-            "scrape-archetypes",
-            "--format",
-            "Modern",
-        ]
-    )
-
-    assert exit_code == 0
-    latest_path = tmp_path / "latest" / "archetypes" / "modern.json"
-    manifest_path = tmp_path / "latest" / "latest.json"
-    run_path = tmp_path / "latest" / "runs" / "scrape-archetypes-modern.json"
-    assert latest_path.exists()
-    assert (tmp_path / "hourly" / "2026-03-23T12-00-00Z" / "archetypes" / "modern.json").exists()
-    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-    run_manifest = json.loads(run_path.read_text(encoding="utf-8"))
-    assert manifest["latest"]["archetype_lists"][0]["path"] == "latest/archetypes/modern.json"
-    assert run_manifest["summary"]["success"] == 1
+def _deck_row(number, archetype, *, date="2026-03-22", archetype_id=1, fmt="modern", text=None):
+    slug = (archetype or "unknown").lower().replace(" ", "-")
+    return {
+        "number": number,
+        "date": date,
+        "event": f"Modern Challenge 32 {date}",
+        "result": "5-2",
+        "player": f"player-{number}",
+        "archetype": archetype or "Unknown",
+        "archetype_href": f"{fmt}-{slug}",
+        "archetype_id": archetype_id,
+        "name": archetype or "Unknown",
+        "source": "mtgo",
+        "format": fmt,
+        "deck_text": text or f"4 Lightning Bolt\n4 Card {number}\nsideboard\n2 Smash to Smithereens",
+    }
 
 
-def test_scrape_archetypes_uses_stale_fallback_when_latest_is_fresh(monkeypatch, tmp_path):
-    monkeypatch.setattr(
-        "publisher.runner.fetch_archetypes",
-        lambda *args, **kwargs: [{"name": "Temur Rhinos", "href": "modern-temur-rhinos"}],
-    )
-    first_exit = main(
-        [
-            "--output-root",
-            str(tmp_path),
-            "--timestamp",
-            TIMESTAMP,
-            "scrape-archetypes",
-            "--format",
-            "Modern",
-        ]
-    )
-    assert first_exit == 0
-
-    def _boom(*args, **kwargs):
-        raise RuntimeError("network down")
-
-    monkeypatch.setattr("publisher.runner.fetch_archetypes", _boom)
-    second_exit = main(
-        [
-            "--output-root",
-            str(tmp_path),
-            "--timestamp",
-            LATER_TIMESTAMP,
-            "--max-stale-hours",
-            "24",
-            "scrape-archetypes",
-            "--format",
-            "Modern",
-        ]
-    )
-
-    assert second_exit == 0
-    run_manifest = json.loads(
-        (tmp_path / "latest" / "runs" / "scrape-archetypes-modern.json").read_text(encoding="utf-8")
-    )
-    assert run_manifest["results"][0]["status"] == "stale-fallback"
-
-
-def test_scrape_metagame_writes_daily_snapshot(monkeypatch, tmp_path):
-    monkeypatch.setattr(
-        "publisher.runner.get_archetype_stats",
-        lambda _format: {
-            "modern": {
-                "timestamp": 1.0,
-                "Temur Rhinos": {
-                    "decks": [{"number": "123"}],
-                    "results": {"2026-03-22": 1, "2026-03-23": 0},
-                },
-            }
-        },
-    )
-
-    exit_code = main(
-        [
-            "--output-root",
-            str(tmp_path),
-            "--timestamp",
-            TIMESTAMP,
-            "scrape-metagame",
-            "--format",
-            "Modern",
-            "--day",
-            "2026-03-23",
-        ]
-    )
-
-    assert exit_code == 0
-    latest_path = tmp_path / "latest" / "metagame" / "modern.json"
-    daily_path = tmp_path / "daily" / "2026-03-23" / "metagame" / "modern.json"
-    snapshot = json.loads(latest_path.read_text(encoding="utf-8"))
-    assert latest_path.exists()
-    assert daily_path.exists()
-    assert snapshot["stats"][0]["archetype"] == "Temur Rhinos"
-
-
-def test_scrape_metagame_accepts_titlecase_stats_key(monkeypatch, tmp_path):
-    monkeypatch.setattr(
-        "publisher.runner.get_archetype_stats",
-        lambda _format: {
-            "Modern": {
-                "timestamp": 1.0,
-                "Temur Rhinos": {
-                    "decks": [{"number": "123"}],
-                    "results": {"2026-03-22": 1, "2026-03-23": 0},
-                },
-            }
-        },
-    )
-
-    exit_code = main(
-        [
-            "--output-root",
-            str(tmp_path),
-            "--timestamp",
-            TIMESTAMP,
-            "scrape-metagame",
-            "--format",
-            "Modern",
-            "--day",
-            "2026-03-23",
-        ]
-    )
-
-    assert exit_code == 0
-    latest_path = tmp_path / "latest" / "metagame" / "modern.json"
-    snapshot = json.loads(latest_path.read_text(encoding="utf-8"))
-    assert latest_path.exists()
-    assert snapshot["stats"][0]["archetype"] == "Temur Rhinos"
-
-
-def test_scrape_decks_references_shared_deck_text_blob(monkeypatch, tmp_path):
-    monkeypatch.setattr(
-        "publisher.runner.fetch_archetypes",
-        lambda *args, **kwargs: [{"name": "Temur Rhinos", "href": "modern-temur-rhinos"}],
-    )
-    monkeypatch.setattr("publisher.runner.ScrapingMetagameRepository", _FakeRepo)
-
-    exit_code = main(
-        [
-            "--output-root",
-            str(tmp_path),
-            "--timestamp",
-            TIMESTAMP,
-            "scrape-decks",
-            "--format",
-            "Modern",
-            "--archetype",
-            "Temur Rhinos",
-            "--days",
-            "7",
-        ]
-    )
-
-    assert exit_code == 0
-    latest_path = tmp_path / "latest" / "decks" / "modern" / "temur-rhinos.json"
-    snapshot = json.loads(latest_path.read_text(encoding="utf-8"))
-    assert snapshot["decks"][0]["deck_text_path"] == "archive/deck-texts/modern/123.json"
-
-
-def test_scrape_deck_texts_deduplicates_by_deck_id(monkeypatch, tmp_path):
-    monkeypatch.setattr(
-        "publisher.runner.fetch_archetypes",
-        lambda *args, **kwargs: [
-            {"name": "Temur Rhinos", "href": "modern-temur-rhinos"},
-            {"name": "Rhinos Copy", "href": "modern-rhinos-copy"},
-        ],
-    )
-
-    class _DuplicatingRepo(_FakeRepo):
-        def get_decks_for_archetype(self, archetype, force_refresh=False, source_filter=None):
-            deck = super().get_decks_for_archetype(archetype, force_refresh, source_filter)[0]
-            return [dict(deck, name=archetype["name"])]
-
-    monkeypatch.setattr("publisher.runner.ScrapingMetagameRepository", _DuplicatingRepo)
-
-    exit_code = main(
-        [
-            "--output-root",
-            str(tmp_path),
-            "--timestamp",
-            TIMESTAMP,
-            "scrape-deck-texts",
-            "--format",
-            "Modern",
-            "--days",
-            "7",
-        ]
-    )
-
-    assert exit_code == 0
-    deck_text_path = tmp_path / "archive" / "deck-texts" / "modern" / "123.json"
-    manifest_path = tmp_path / "latest" / "latest.json"
-    blob = json.loads(deck_text_path.read_text(encoding="utf-8"))
-    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-    assert blob["deck_text"] == "Deck 123"
-    assert len(manifest["latest"]["deck_text_blobs"]) == 1
-    assert manifest["latest"]["deck_text_blobs"][0]["path"] == "archive/deck-texts/modern/123.json"
-
-
-def test_scrape_deck_texts_sleeps_between_unique_downloads(monkeypatch, tmp_path):
-    monkeypatch.setattr(
-        "publisher.runner.fetch_archetypes",
-        lambda *args, **kwargs: [{"name": "Temur Rhinos", "href": "modern-temur-rhinos"}],
-    )
-
-    class _MultiDeckRepo(_FakeRepo):
-        def get_decks_for_archetype(self, archetype, force_refresh=False, source_filter=None):
-            return [
-                {
-                    "name": archetype["name"],
-                    "number": "123",
-                    "date": "2026-03-22",
-                    "player": "Alice",
-                    "event": "Modern Challenge",
-                    "source": "mtggoldfish",
-                },
-                {
-                    "name": archetype["name"],
-                    "number": "456",
-                    "date": "2026-03-22",
-                    "player": "Bob",
-                    "event": "Modern Challenge",
-                    "source": "mtggoldfish",
-                },
-            ]
-
-    sleeps: list[float] = []
-    monkeypatch.setattr("publisher.runner.ScrapingMetagameRepository", _MultiDeckRepo)
-    monkeypatch.setattr("publisher.runner.time.sleep", sleeps.append)
-
-    exit_code = main(
-        [
-            "--output-root",
-            str(tmp_path),
-            "--timestamp",
-            TIMESTAMP,
-            "scrape-deck-texts",
-            "--format",
-            "Modern",
-            "--days",
-            "7",
-            "--deck-download-delay-seconds",
-            "3",
-        ]
-    )
-
-    assert exit_code == 0
-    assert sleeps == [3.0]
-
-
-def test_scrape_deck_texts_reuses_existing_published_blob(monkeypatch, tmp_path):
-    monkeypatch.setattr(
-        "publisher.runner.fetch_archetypes",
-        lambda *args, **kwargs: [{"name": "Temur Rhinos", "href": "modern-temur-rhinos"}],
-    )
-    monkeypatch.setattr("publisher.runner.ScrapingMetagameRepository", _FakeRepo)
-
-    archive_path = tmp_path / "archive" / "deck-texts" / "modern" / "123.json"
-    archive_path.parent.mkdir(parents=True, exist_ok=True)
-    archive_path.write_text(
-        json.dumps(
-            {
-                "schema_version": "1",
-                "kind": "deck_text_blob",
-                "generated_at": "2026-03-22T12:00:00Z",
-                "format": "modern",
-                "source": "mtggoldfish",
-                "deck_id": "123",
-                "deck_name": "Temur Rhinos",
-                "deck_text": "Deck 123",
-            }
-        ),
-        encoding="utf-8",
-    )
-
-    sleeps: list[float] = []
-    monkeypatch.setattr("publisher.runner.time.sleep", sleeps.append)
-
-    def _boom(*args, **kwargs):
-        raise AssertionError("download_deck_content should not be called for reused blobs")
-
-    monkeypatch.setattr(_FakeRepo, "download_deck_content", _boom)
-
-    exit_code = main(
-        [
-            "--output-root",
-            str(tmp_path),
-            "--timestamp",
-            TIMESTAMP,
-            "scrape-deck-texts",
-            "--format",
-            "Modern",
-            "--days",
-            "7",
-            "--deck-download-delay-seconds",
-            "3",
-        ]
-    )
-
-    assert exit_code == 0
-    assert sleeps == []
-    run_manifest = json.loads(
-        (tmp_path / "latest" / "runs" / "scrape-deck-texts-modern.json").read_text(encoding="utf-8")
-    )
-    assert run_manifest["results"][-1]["status"] == "skipped"
-    assert run_manifest["results"][-1]["message"] == "Reused existing published deck-text blob."
-
-
-def test_scrape_deck_texts_skips_empty_recent_window_without_failing(monkeypatch, tmp_path):
-    monkeypatch.setattr(
-        "publisher.runner.fetch_archetypes",
-        lambda *args, **kwargs: [{"name": "Temur Rhinos", "href": "modern-temur-rhinos"}],
-    )
-
-    class _OldDeckRepo(_FakeRepo):
-        def get_decks_for_archetype(self, archetype, force_refresh=False, source_filter=None):
-            return [
-                {
-                    "name": archetype["name"],
-                    "number": "123",
-                    "date": "2026-03-01",
-                    "player": "Alice",
-                    "event": "Modern Challenge",
-                    "source": "mtggoldfish",
-                }
-            ]
-
-    monkeypatch.setattr("publisher.runner.ScrapingMetagameRepository", _OldDeckRepo)
-
-    exit_code = main(
-        [
-            "--output-root",
-            str(tmp_path),
-            "--timestamp",
-            TIMESTAMP,
-            "scrape-deck-texts",
-            "--format",
-            "Modern",
-            "--days",
-            "7",
-        ]
-    )
-
-    assert exit_code == 0
-    latest_path = tmp_path / "latest" / "decks" / "modern" / "temur-rhinos.json"
-    snapshot = json.loads(latest_path.read_text(encoding="utf-8"))
-    run_manifest = json.loads(
-        (tmp_path / "latest" / "runs" / "scrape-deck-texts-modern.json").read_text(encoding="utf-8")
-    )
-
-    assert snapshot["decks"] == []
-    assert run_manifest["status"] == "success"
-    assert run_manifest["results"][1]["status"] == "skipped"
-    assert run_manifest["results"][1]["message"] == "No decks found within the last 7 days."
-
-
-def test_scrape_radars_writes_snapshots_from_published_deck_texts(tmp_path):
-    deck_snapshot_path = tmp_path / "latest" / "decks" / "modern" / "temur-rhinos.json"
-    deck_snapshot_path.parent.mkdir(parents=True, exist_ok=True)
-    deck_snapshot_path.write_text(
-        json.dumps(
-            build_archetype_deck_snapshot(
-                generated_at=TIMESTAMP,
-                format_name="modern",
-                source="both",
-                archetype={"name": "Temur Rhinos", "href": "modern-temur-rhinos"},
-                decks=[
-                    {
-                        "name": "Temur Rhinos",
-                        "number": "123",
-                        "date": "2026-03-22",
-                        "player": "Alice",
-                        "event": "Modern Challenge",
-                        "source": "mtggoldfish",
-                        "deck_text_path": "archive/deck-texts/modern/123.json",
-                    },
-                    {
-                        "name": "Temur Rhinos",
-                        "number": "456",
-                        "date": "2026-03-22",
-                        "player": "Bob",
-                        "event": "Modern Challenge",
-                        "source": "mtggoldfish",
-                        "deck_text_path": "archive/deck-texts/modern/456.json",
-                    },
-                ],
-            ),
-            indent=2,
-        ),
-        encoding="utf-8",
-    )
-
-    for deck_id, deck_text in {
-        "123": "4 Crashing Footfalls\n4 Fire // Ice\nsideboard\n2 Force of Vigor\n",
-        "456": "4 Crashing Footfalls\n2 Fire // Ice\nsideboard\n1 Force of Vigor\n",
-    }.items():
-        blob_path = tmp_path / "archive" / "deck-texts" / "modern" / f"{deck_id}.json"
-        blob_path.parent.mkdir(parents=True, exist_ok=True)
-        blob_path.write_text(
-            json.dumps(
-                build_deck_text_blob(
-                    generated_at=TIMESTAMP,
-                    format_name="modern",
-                    source="mtggoldfish",
-                    deck_id=deck_id,
-                    deck_name="Temur Rhinos",
-                    deck_text=deck_text,
-                ),
-                indent=2,
-            ),
-            encoding="utf-8",
-        )
-
-    exit_code = main(
-        [
-            "--output-root",
-            str(tmp_path),
-            "--timestamp",
-            TIMESTAMP,
-            "scrape-radars",
-            "--format",
-            "Modern",
-        ]
-    )
-
-    assert exit_code == 0
-    latest_path = tmp_path / "latest" / "radars" / "modern" / "temur-rhinos.json"
-    card_pool_path = tmp_path / "latest" / "card-pools" / "modern.json"
-    manifest_path = tmp_path / "latest" / "latest.json"
-    run_path = tmp_path / "latest" / "runs" / "scrape-radars-modern.json"
-    snapshot = json.loads(latest_path.read_text(encoding="utf-8"))
-    card_pool = json.loads(card_pool_path.read_text(encoding="utf-8"))
-    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-    run_manifest = json.loads(run_path.read_text(encoding="utf-8"))
-
-    assert latest_path.exists()
-    assert card_pool_path.exists()
-    assert snapshot["kind"] == "archetype_radar"
-    assert snapshot["total_decks_analyzed"] == 2
-    assert snapshot["mainboard_cards"][0]["card_name"] == "Crashing Footfalls"
-    assert card_pool["kind"] == "format_card_pool"
-    assert card_pool["cards"] == ["Crashing Footfalls", "Fire // Ice", "Force of Vigor"]
-    assert card_pool["copy_totals"] == [
-        {"card_name": "Crashing Footfalls", "copies_played": 8},
-        {"card_name": "Fire // Ice", "copies_played": 6},
-        {"card_name": "Force of Vigor", "copies_played": 3},
-    ]
-    assert (
-        manifest["latest"]["archetype_radars"][0]["path"]
-        == "latest/radars/modern/temur-rhinos.json"
-    )
-    assert manifest["latest"]["format_card_pools"][0]["path"] == "latest/card-pools/modern.json"
-    assert run_manifest["summary"]["success"] == 2
-
-
-def _write_mtgo_decklists_fixture(tmp_path, decks):
+def _seed_mtgo_snapshot(tmp_path, decks, *, fmt="modern", generated_at=TIMESTAMP):
     snapshot = build_mtgo_decklists_snapshot(
-        generated_at=TIMESTAMP,
-        format_name="modern",
+        generated_at=generated_at,
+        format_name=fmt,
         source="videre-api",
         days=7,
         events=[
             {
-                "id": "12345",
-                "url": "https://api.videreproject.com/decks?event_id=12345",
-                "title": "Modern League",
+                "id": "1",
+                "url": "https://api.videreproject.com/decks?event_id=1",
+                "title": "Modern Challenge 32",
                 "publish_date": "2026-03-22",
-                "event_type": "league",
+                "event_type": "challenge",
                 "decks_total": len(decks),
                 "decks_cached": len(decks),
-                "path": "archive/mtgo-decklists/modern/12345.json",
+                "path": f"archive/mtgo-decklists/{fmt}/1.json",
                 "decks": decks,
             }
         ],
     )
-    path = tmp_path / "latest" / "mtgo-decklists" / "modern.json"
+    path = tmp_path / "latest" / "mtgo-decklists" / f"{fmt}.json"
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(snapshot, indent=2), encoding="utf-8")
+    path.write_text(json.dumps(snapshot), encoding="utf-8")
+    return path
 
 
-def test_scrape_radars_merges_mtgo_decklists_into_radars_and_card_pool(tmp_path):
-    deck_snapshot_path = tmp_path / "latest" / "decks" / "modern" / "temur-rhinos.json"
-    deck_snapshot_path.parent.mkdir(parents=True, exist_ok=True)
-    deck_snapshot_path.write_text(
-        json.dumps(
-            build_archetype_deck_snapshot(
-                generated_at=TIMESTAMP,
-                format_name="modern",
-                source="both",
-                archetype={"name": "Temur Rhinos", "href": "modern-temur-rhinos"},
-                decks=[
-                    {
-                        "name": "Temur Rhinos",
-                        "number": "123",
-                        "date": "2026-03-22",
-                        "player": "Alice",
-                        "event": "Modern Challenge",
-                        "source": "mtggoldfish",
-                        "deck_text_path": "archive/deck-texts/modern/123.json",
-                    }
-                ],
-            ),
-            indent=2,
-        ),
-        encoding="utf-8",
-    )
-    blob_path = tmp_path / "archive" / "deck-texts" / "modern" / "123.json"
-    blob_path.parent.mkdir(parents=True, exist_ok=True)
-    blob_path.write_text(
-        json.dumps(
-            build_deck_text_blob(
-                generated_at=TIMESTAMP,
-                format_name="modern",
-                source="mtggoldfish",
-                deck_id="123",
-                deck_name="Temur Rhinos",
-                deck_text="4 Crashing Footfalls\n",
-            ),
-            indent=2,
-        ),
-        encoding="utf-8",
-    )
-    _write_mtgo_decklists_fixture(
+def _run(tmp_path, *args, timestamp=TIMESTAMP):
+    return main(["--output-root", str(tmp_path), "--timestamp", timestamp, *args])
+
+
+def _load(path):
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def test_scrape_archetypes_derives_list_from_mtgo_snapshot(tmp_path):
+    _seed_mtgo_snapshot(
         tmp_path,
         [
-            {
-                "number": "999",
-                "archetype": "Temur Rhinos",
-                "name": "Temur Rhinos",
-                "source": "mtgo",
-                "deck_text": "4 Crashing Footfalls\n4 Bonecrusher Giant\n",
-            },
-            {
-                "number": "888",
-                "archetype": "Izzet Murktide",
-                "name": "Izzet Murktide",
-                "source": "mtgo",
-                "deck_text": "4 Murktide Regent\n",
-            },
-            {
-                "number": "777",
-                "archetype": "Unknown",
-                "name": "Unknown",
-                "source": "mtgo",
-                "deck_text": "4 Island\n",
-            },
+            _deck_row("1", "Boros Energy"),
+            _deck_row("2", "Boros Energy"),
+            # Videre's fallback for decks it cannot place: a colour code with
+            # a null archetype_id. Kept as its own archetype.
+            _deck_row("3", "BR", archetype_id=None),
+            # No archetype at all: never listed.
+            _deck_row("4", None, archetype_id=None),
         ],
     )
 
-    exit_code = main(
-        [
-            "--output-root",
-            str(tmp_path),
-            "--timestamp",
-            TIMESTAMP,
-            "scrape-radars",
-            "--format",
-            "Modern",
-        ]
-    )
+    assert _run(tmp_path, "scrape-archetypes", "--format", "Modern") == 0
 
-    assert exit_code == 0
-    rhinos_radar = json.loads(
-        (tmp_path / "latest" / "radars" / "modern" / "temur-rhinos.json").read_text(
-            encoding="utf-8"
-        )
-    )
-    assert rhinos_radar["total_decks_analyzed"] == 2
-
-    murktide_radar = json.loads(
-        (tmp_path / "latest" / "radars" / "modern" / "izzet-murktide.json").read_text(
-            encoding="utf-8"
-        )
-    )
-    assert murktide_radar["archetype"] == {
-        "name": "Izzet Murktide",
-        "href": "modern-izzet-murktide",
-    }
-    assert murktide_radar["total_decks_analyzed"] == 1
-
-    assert not (tmp_path / "latest" / "radars" / "modern" / "unknown.json").exists()
-
-    card_pool = json.loads(
-        (tmp_path / "latest" / "card-pools" / "modern.json").read_text(encoding="utf-8")
-    )
-    assert card_pool["total_decks_analyzed"] == 4
-    assert {"Crashing Footfalls", "Bonecrusher Giant", "Murktide Regent", "Island"} <= set(
-        card_pool["cards"]
-    )
-
-
-def test_scrape_radars_succeeds_when_goldfish_has_no_decks(tmp_path):
-    deck_snapshot_path = tmp_path / "latest" / "decks" / "modern" / "temur-rhinos.json"
-    deck_snapshot_path.parent.mkdir(parents=True, exist_ok=True)
-    deck_snapshot_path.write_text(
-        json.dumps(
-            build_archetype_deck_snapshot(
-                generated_at=TIMESTAMP,
-                format_name="modern",
-                source="both",
-                archetype={"name": "Temur Rhinos", "href": "modern-temur-rhinos"},
-                decks=[],
-            ),
-            indent=2,
-        ),
-        encoding="utf-8",
-    )
-    _write_mtgo_decklists_fixture(
-        tmp_path,
-        [
-            {
-                "number": "999",
-                "archetype": "Temur Rhinos",
-                "name": "Temur Rhinos",
-                "source": "mtgo",
-                "deck_text": "4 Crashing Footfalls\n",
-            }
-        ],
-    )
-
-    exit_code = main(
-        [
-            "--output-root",
-            str(tmp_path),
-            "--timestamp",
-            TIMESTAMP,
-            "scrape-radars",
-            "--format",
-            "Modern",
-        ]
-    )
-
-    assert exit_code == 0
-    radar = json.loads(
-        (tmp_path / "latest" / "radars" / "modern" / "temur-rhinos.json").read_text(
-            encoding="utf-8"
-        )
-    )
-    assert radar["total_decks_analyzed"] == 1
-    card_pool = json.loads(
-        (tmp_path / "latest" / "card-pools" / "modern.json").read_text(encoding="utf-8")
-    )
-    assert card_pool["total_decks_analyzed"] == 1
-    assert card_pool["cards"] == ["Crashing Footfalls"]
-    run_manifest = json.loads(
-        (tmp_path / "latest" / "runs" / "scrape-radars-modern.json").read_text(encoding="utf-8")
-    )
+    snapshot = _load(tmp_path / "latest" / "archetypes" / "modern.json")
+    assert snapshot["source"] == "videre-api"
+    assert snapshot["archetypes"] == [
+        {"name": "Boros Energy", "href": "modern-boros-energy", "source": "mtgo"},
+        {"name": "BR", "href": "modern-br", "source": "mtgo"},
+    ]
+    run_manifest = _load(tmp_path / "latest" / "runs" / "scrape-archetypes-modern.json")
     assert run_manifest["status"] == "success"
-    assert not any(result["status"] == "hard-failure" for result in run_manifest["results"])
+    assert run_manifest["results"][0]["path"] == "latest/archetypes/modern.json"
 
 
-def test_scrape_radars_merges_mtgo_decks_under_canonical_archetype_name(tmp_path):
-    archetypes_path = tmp_path / "latest" / "archetypes" / "modern.json"
-    archetypes_path.parent.mkdir(parents=True, exist_ok=True)
-    archetypes_path.write_text(
+def test_scrape_archetypes_uses_stale_fallback_without_mtgo_snapshot(tmp_path):
+    latest_path = tmp_path / "latest" / "archetypes" / "modern.json"
+    latest_path.parent.mkdir(parents=True)
+    latest_path.write_text(
         json.dumps(
             build_archetype_list_snapshot(
                 generated_at=TIMESTAMP,
                 format_name="modern",
-                source="mtggoldfish",
-                archetypes=[{"name": "Counter Vine", "href": "modern-counter-vine"}],
-            ),
-            indent=2,
-        ),
-        encoding="utf-8",
-    )
-    deck_snapshot_path = tmp_path / "latest" / "decks" / "modern" / "counter-vine.json"
-    deck_snapshot_path.parent.mkdir(parents=True, exist_ok=True)
-    deck_snapshot_path.write_text(
-        json.dumps(
-            build_archetype_deck_snapshot(
-                generated_at=TIMESTAMP,
-                format_name="modern",
-                source="both",
-                archetype={"name": "Counter Vine", "href": "modern-counter-vine"},
-                decks=[],
-            ),
-            indent=2,
-        ),
-        encoding="utf-8",
-    )
-    _write_mtgo_decklists_fixture(
-        tmp_path,
-        [
-            {
-                "number": "999",
-                "archetype": "Countervine",
-                "name": "Countervine",
-                "source": "mtgo",
-                "deck_text": "4 Vengevine\n",
-            }
-        ],
-    )
-
-    exit_code = main(
-        [
-            "--output-root",
-            str(tmp_path),
-            "--timestamp",
-            TIMESTAMP,
-            "scrape-radars",
-            "--format",
-            "Modern",
-        ]
-    )
-
-    assert exit_code == 0
-    radar = json.loads(
-        (tmp_path / "latest" / "radars" / "modern" / "counter-vine.json").read_text(
-            encoding="utf-8"
-        )
-    )
-    assert radar["total_decks_analyzed"] == 1
-    assert radar["archetype"] == {"name": "Counter Vine", "href": "modern-counter-vine"}
-    assert not (tmp_path / "latest" / "radars" / "modern" / "countervine.json").exists()
-
-
-def test_scrape_archetypes_unions_mtgo_only_archetypes(monkeypatch, tmp_path):
-    _write_mtgo_decklists_fixture(
-        tmp_path,
-        [
-            {
-                "number": "1",
-                "archetype": "Temur Rhinos",
-                "name": "Temur Rhinos",
-                "source": "mtgo",
-                "deck_text": "4 Crashing Footfalls\n",
-            },
-            {
-                "number": "2",
-                "archetype": "Broodscale",
-                "name": "Broodscale",
-                "source": "mtgo",
-                "deck_text": "4 Basking Broodscale\n",
-            },
-            {
-                "number": "3",
-                "archetype": "Unknown",
-                "name": "Unknown",
-                "source": "mtgo",
-                "deck_text": "4 Island\n",
-            },
-        ],
-    )
-    monkeypatch.setattr(
-        "publisher.runner.fetch_archetypes",
-        lambda *args, **kwargs: [{"name": "Temur Rhinos", "href": "modern-temur-rhinos"}],
-    )
-
-    exit_code = main(
-        [
-            "--output-root",
-            str(tmp_path),
-            "--timestamp",
-            TIMESTAMP,
-            "scrape-archetypes",
-            "--format",
-            "Modern",
-        ]
-    )
-
-    assert exit_code == 0
-    snapshot = json.loads(
-        (tmp_path / "latest" / "archetypes" / "modern.json").read_text(encoding="utf-8")
-    )
-    by_name = {entry["name"]: entry for entry in snapshot["archetypes"]}
-    assert by_name["Broodscale"] == {
-        "name": "Broodscale",
-        "href": "modern-broodscale",
-        "source": "mtgo",
-    }
-    assert "source" not in by_name["Temur Rhinos"]
-    assert "Unknown" not in by_name
-
-
-def test_scrape_decks_skips_mtgo_union_archetypes(monkeypatch, tmp_path):
-    _write_mtgo_decklists_fixture(
-        tmp_path,
-        [
-            {
-                "number": "2",
-                "archetype": "Broodscale",
-                "name": "Broodscale",
-                "source": "mtgo",
-                "deck_text": "4 Basking Broodscale\n",
-            }
-        ],
-    )
-    monkeypatch.setattr(
-        "publisher.runner.fetch_archetypes",
-        lambda *args, **kwargs: [{"name": "Temur Rhinos", "href": "modern-temur-rhinos"}],
-    )
-
-    class _GoldfishOnlyRepo(_FakeRepo):
-        def get_decks_for_archetype(self, archetype, force_refresh=False, source_filter=None):
-            assert archetype.get("source") != "mtgo"
-            return super().get_decks_for_archetype(
-                archetype, force_refresh=force_refresh, source_filter=source_filter
+                source="videre-api",
+                archetypes=[{"name": "Burn", "href": "modern-burn", "source": "mtgo"}],
             )
-
-    monkeypatch.setattr("publisher.runner.ScrapingMetagameRepository", _GoldfishOnlyRepo)
-
-    exit_code = main(
-        [
-            "--output-root",
-            str(tmp_path),
-            "--timestamp",
-            TIMESTAMP,
-            "scrape-decks",
-            "--format",
-            "Modern",
-        ]
-    )
-
-    assert exit_code == 0
-    assert (tmp_path / "latest" / "decks" / "modern" / "temur-rhinos.json").exists()
-    assert not (tmp_path / "latest" / "decks" / "modern" / "broodscale.json").exists()
-
-
-def test_scrape_radars_skips_format_card_pool_for_filtered_runs(tmp_path):
-    deck_snapshot_path = tmp_path / "latest" / "decks" / "modern" / "temur-rhinos.json"
-    deck_snapshot_path.parent.mkdir(parents=True, exist_ok=True)
-    deck_snapshot_path.write_text(
-        json.dumps(
-            build_archetype_deck_snapshot(
-                generated_at=TIMESTAMP,
-                format_name="modern",
-                source="both",
-                archetype={"name": "Temur Rhinos", "href": "modern-temur-rhinos"},
-                decks=[
-                    {
-                        "name": "Temur Rhinos",
-                        "number": "123",
-                        "date": "2026-03-22",
-                        "player": "Alice",
-                        "event": "Modern Challenge",
-                        "source": "mtggoldfish",
-                        "deck_text_path": "archive/deck-texts/modern/123.json",
-                    }
-                ],
-            ),
-            indent=2,
         ),
         encoding="utf-8",
     )
-    blob_path = tmp_path / "archive" / "deck-texts" / "modern" / "123.json"
-    blob_path.parent.mkdir(parents=True, exist_ok=True)
+
+    exit_code = _run(tmp_path, "scrape-archetypes", "--format", "Modern", timestamp=LATER_TIMESTAMP)
+
+    assert exit_code == 0
+    run_manifest = _load(tmp_path / "latest" / "runs" / "scrape-archetypes-modern.json")
+    assert run_manifest["results"][0]["status"] == "stale-fallback"
+    assert "scrape-mtgo-decklists" in run_manifest["results"][0]["message"]
+
+
+def test_scrape_archetypes_hard_fails_without_any_input(tmp_path):
+    assert _run(tmp_path, "scrape-archetypes", "--format", "Modern") == 1
+
+
+def test_scrape_metagame_counts_decks_per_day(tmp_path):
+    _seed_mtgo_snapshot(
+        tmp_path,
+        [
+            _deck_row("1", "Burn", date="2026-03-22"),
+            _deck_row("2", "Burn", date="2026-03-21"),
+            _deck_row("3", "Burn", date="2026-03-21"),
+            _deck_row("4", "Amulet Titan", date="2026-03-20"),
+            _deck_row("5", None, archetype_id=None),
+        ],
+    )
+
+    assert _run(tmp_path, "scrape-metagame", "--format", "Modern", "--day", "2026-03-23") == 0
+
+    snapshot = _load(tmp_path / "latest" / "metagame" / "modern.json")
+    daily = _load(tmp_path / "daily" / "2026-03-23" / "metagame" / "modern.json")
+    assert snapshot == daily
+    assert snapshot["source"] == "videre-api"
+    assert [row["archetype"] for row in snapshot["stats"]] == ["Amulet Titan", "Burn"]
+    burn = snapshot["stats"][1]
+    assert burn["deck_count"] == 3
+    assert burn["daily_counts"]["2026-03-21"] == 2
+    assert burn["daily_counts"]["2026-03-22"] == 1
+    assert burn["daily_counts"]["2026-03-23"] == 0
+    assert len(burn["daily_counts"]) == 7
+
+
+def test_scrape_deck_texts_publishes_snapshots_and_blobs_from_mtgo_rows(tmp_path):
+    _seed_mtgo_snapshot(
+        tmp_path,
+        [
+            _deck_row("10", "Burn", date="2026-03-22"),
+            _deck_row("11", "Burn", date="2026-03-21"),
+            _deck_row("12", "BR", archetype_id=None),
+            _deck_row("13", None, archetype_id=None),
+        ],
+    )
+
+    assert _run(tmp_path, "scrape-deck-texts", "--format", "Modern", "--days", "7") == 0
+
+    burn = _load(tmp_path / "latest" / "decks" / "modern" / "burn.json")
+    assert burn["source"] == "mtgo"
+    assert burn["archetype"] == {"name": "Burn", "href": "modern-burn", "source": "mtgo"}
+    assert [deck["number"] for deck in burn["decks"]] == ["10", "11"]
+    first = burn["decks"][0]
+    # The fields MTGO_Tools v1.3.0 reads from a deck row, with source "mtgo".
+    for field in ("date", "number", "player", "event", "result", "name", "source"):
+        assert field in first
+    assert first["source"] == "mtgo"
+    assert first["deck_text_path"] == "archive/deck-texts/modern/10.json"
+    assert "deck_text" not in first
+
+    assert (tmp_path / "latest" / "decks" / "modern" / "br.json").exists()
+    assert not (tmp_path / "latest" / "decks" / "modern" / "unknown.json").exists()
+
+    blob = _load(tmp_path / "archive" / "deck-texts" / "modern" / "10.json")
+    assert blob["source"] == "mtgo"
+    assert blob["deck_id"] == "10"
+    assert blob["deck_name"] == "Burn"
+    assert "Lightning Bolt" in blob["deck_text"]
+    # Unclassified decks have no archetype snapshot, so no blob either.
+    assert not (tmp_path / "archive" / "deck-texts" / "modern" / "13.json").exists()
+
+
+def test_scrape_deck_texts_reuses_existing_published_blob(tmp_path):
+    _seed_mtgo_snapshot(tmp_path, [_deck_row("10", "Burn")])
+    blob_path = tmp_path / "archive" / "deck-texts" / "modern" / "10.json"
+    blob_path.parent.mkdir(parents=True)
     blob_path.write_text(
         json.dumps(
             build_deck_text_blob(
                 generated_at=TIMESTAMP,
                 format_name="modern",
-                source="mtggoldfish",
-                deck_id="123",
-                deck_name="Temur Rhinos",
-                deck_text="4 Crashing Footfalls\n",
-            ),
-            indent=2,
+                deck_id="10",
+                source="mtgo",
+                deck_name="Burn",
+                deck_text="4 Already Published",
+            )
         ),
         encoding="utf-8",
     )
 
-    exit_code = main(
+    assert _run(tmp_path, "scrape-deck-texts", "--format", "Modern", "--days", "7") == 0
+
+    assert _load(blob_path)["deck_text"] == "4 Already Published"
+    run_manifest = _load(tmp_path / "latest" / "runs" / "scrape-deck-texts-modern.json")
+    blob_results = [r for r in run_manifest["results"] if r["scope"] == "deck-text"]
+    assert blob_results[0]["message"] == "Reused existing published deck-text blob."
+
+
+def test_scrape_decks_windows_out_rows_older_than_retention(tmp_path):
+    _seed_mtgo_snapshot(
+        tmp_path,
         [
-            "--output-root",
-            str(tmp_path),
-            "--timestamp",
-            TIMESTAMP,
-            "scrape-radars",
-            "--format",
-            "Modern",
-            "--archetype",
-            "Temur Rhinos",
-        ]
+            _deck_row("1", "Burn", date="2026-03-22"),
+            # Stale-fallback snapshots can hold events past the window.
+            _deck_row("2", "Burn", date="2026-03-01"),
+            _deck_row("3", "Living End", date="2026-03-01"),
+        ],
     )
 
-    assert exit_code == 0
-    assert not (tmp_path / "latest" / "card-pools" / "modern.json").exists()
-    run_manifest = json.loads(
-        (tmp_path / "latest" / "runs" / "scrape-radars-modern.json").read_text(encoding="utf-8")
+    assert _run(tmp_path, "scrape-decks", "--format", "Modern", "--days", "7") == 0
+
+    archetypes = _load(tmp_path / "latest" / "archetypes" / "modern.json")["archetypes"]
+    assert [entry["name"] for entry in archetypes] == ["Burn"]
+    burn = _load(tmp_path / "latest" / "decks" / "modern" / "burn.json")
+    assert [deck["number"] for deck in burn["decks"]] == ["1"]
+
+
+def test_archetype_list_and_deck_snapshots_share_the_window(tmp_path):
+    # TIMESTAMP is 2026-03-23T12:00Z; 2026-03-16 is the window's first day.
+    _seed_mtgo_snapshot(
+        tmp_path,
+        [_deck_row("1", "Dredge", date="2026-03-16"), _deck_row("2", "Burn", date="2026-03-15")],
     )
-    assert run_manifest["results"][-1]["scope"] == "format-card-pool"
-    assert run_manifest["results"][-1]["status"] == "skipped"
+
+    assert _run(tmp_path, "scrape-deck-texts", "--format", "Modern", "--days", "7") == 0
+
+    archetypes = _load(tmp_path / "latest" / "archetypes" / "modern.json")["archetypes"]
+    assert [entry["name"] for entry in archetypes] == ["Dredge"]
+    dredge = _load(tmp_path / "latest" / "decks" / "modern" / "dredge.json")
+    assert [deck["number"] for deck in dredge["decks"]] == ["1"]
+
+
+def test_scrape_radars_builds_radars_and_card_pool_from_mtgo_rows(tmp_path):
+    _seed_mtgo_snapshot(
+        tmp_path,
+        [
+            _deck_row("1", "Burn", text="4 Lightning Bolt\n4 Goblin Guide\nsideboard\n2 Path to Exile"),
+            _deck_row("2", "Burn", text="4 Lightning Bolt\n3 Goblin Guide\nsideboard\n1 Path to Exile"),
+            _deck_row("3", "BR", archetype_id=None, text="4 Thoughtseize\nsideboard\n1 Duress"),
+            _deck_row("4", None, archetype_id=None, text="4 Ornithopter\nsideboard\n"),
+        ],
+    )
+
+    assert _run(tmp_path, "scrape-radars", "--format", "Modern") == 0
+
+    radar = _load(tmp_path / "latest" / "radars" / "modern" / "burn.json")
+    assert radar["archetype"] == {"name": "Burn", "href": "modern-burn", "source": "mtgo"}
+    assert radar["source"] == "published-deck-texts"
+    assert radar["total_decks_analyzed"] == 2
+    bolt = next(c for c in radar["mainboard_cards"] if c["card_name"] == "Lightning Bolt")
+    assert bolt["appearances"] == 2
+    assert {c["card_name"] for c in radar["sideboard_cards"]} == {"Path to Exile"}
+    assert (tmp_path / "latest" / "radars" / "modern" / "br.json").exists()
+    assert not (tmp_path / "latest" / "radars" / "modern" / "unknown.json").exists()
+
+    card_pool = _load(tmp_path / "latest" / "card-pools" / "modern.json")
+    assert card_pool["total_decks_analyzed"] == 4
+    assert "Ornithopter" in card_pool["cards"]
+
+
+def test_scrape_radars_skips_format_card_pool_for_filtered_runs(tmp_path):
+    _seed_mtgo_snapshot(tmp_path, [_deck_row("1", "Burn"), _deck_row("2", "Living End")])
+
+    assert _run(tmp_path, "scrape-radars", "--format", "Modern", "--archetype", "Burn") == 0
+
+    assert (tmp_path / "latest" / "radars" / "modern" / "burn.json").exists()
+    assert not (tmp_path / "latest" / "radars" / "modern" / "living-end.json").exists()
+    assert not (tmp_path / "latest" / "card-pools" / "modern.json").exists()
+
+
+def test_scrape_radars_hard_fails_without_mtgo_snapshot(tmp_path):
+    assert _run(tmp_path, "scrape-radars", "--format", "Modern") == 1
 
 
 def test_scrape_mtgo_decklists_writes_archived_event_snapshots(monkeypatch, tmp_path):
@@ -1013,50 +366,9 @@ def test_scrape_mtgo_decklists_writes_archived_event_snapshots(monkeypatch, tmp_
     assert event_snapshot["decks"][0]["archetype"] == "Mono Red Prowess"
     assert event_snapshot["decks"][0]["archetype_href"] == "modern-mono-red-prowess"
     assert latest_snapshot["events"][0]["decks"][0]["archetype_href"] == "modern-mono-red-prowess"
+    assert latest_snapshot["events"][0]["decks"][0]["source"] == "mtgo"
+    assert event_snapshot["archetype_taxonomy"] == "videre"
     assert latest_manifest["latest"]["mtgo_decklists"][0]["path"] == "latest/mtgo-decklists/modern.json"
-
-
-def test_scrape_decks_mtgo_only_archetype_writes_empty_snapshot(monkeypatch, tmp_path):
-    monkeypatch.setattr(
-        "publisher.runner.fetch_archetypes",
-        lambda *args, **kwargs: [{"name": "Raker Shops", "href": "vintage-raker-shops"}],
-    )
-
-    class _MtgoOnlyRepo(_FakeRepo):
-        last_goldfish_rows_before_partition = 3
-
-        def get_decks_for_archetype(self, archetype, force_refresh=False, source_filter=None):
-            return []
-
-    monkeypatch.setattr("publisher.runner.ScrapingMetagameRepository", _MtgoOnlyRepo)
-
-    exit_code = main(
-        [
-            "--output-root",
-            str(tmp_path),
-            "--timestamp",
-            TIMESTAMP,
-            "scrape-decks",
-            "--format",
-            "Vintage",
-            "--days",
-            "7",
-        ]
-    )
-
-    assert exit_code == 0
-    snapshot = json.loads(
-        (tmp_path / "latest" / "decks" / "vintage" / "raker-shops.json").read_text(encoding="utf-8")
-    )
-    run_manifest = json.loads(
-        (tmp_path / "latest" / "runs" / "scrape-decks-vintage.json").read_text(encoding="utf-8")
-    )
-
-    assert snapshot["decks"] == []
-    assert run_manifest["status"] == "success"
-    skip = [r for r in run_manifest["results"] if r["scope"] == "archetype-decks"][0]
-    assert skip["status"] == "skipped"
-    assert "MTGO events" in skip["message"]
 
 
 def test_scrape_mtgo_decklists_single_event_failure_is_skipped(monkeypatch, tmp_path):
@@ -1147,6 +459,7 @@ def test_recent_league_refetches_despite_archive(monkeypatch, tmp_path):
             json.dumps(
                 {
                     "event_title": title,
+                    "archetype_taxonomy": "videre",
                     "publish_date": "2026-03-22",
                     "event_type": "league",
                     "decks_total": 2,
@@ -1245,3 +558,107 @@ def test_remove_legacy_event_archives_is_a_noop_without_legacy_copies(tmp_path):
     _remove_legacy_event_archives(tmp_path, "vintage", "12848175")
 
     assert canonical.exists()
+
+
+def _clean_deck(deck_id, archetype, archetype_id=1):
+    return {
+        "deck_id": deck_id,
+        "login_id": None,
+        "player": f"player-{deck_id}",
+        "wins": "5",
+        "losses": "0",
+        "archetype": archetype,
+        "archetype_id": archetype_id,
+        "mainboard": [{"card_name": "Lightning Bolt", "qty": 4, "sideboard": "false"}],
+        "sideboard": [],
+    }
+
+
+class _NullDeckCache:
+    def set(self, deck_id, deck_text, source):
+        return True
+
+
+def test_scrape_mtgo_decklists_refetches_archives_with_pre_videre_names(monkeypatch, tmp_path):
+    """Archives whose names were rewritten onto MTGGoldfish's taxonomy are re-fetched once."""
+    events = [{"id": 8, "name": "Modern Challenge 32", "date": "2026-03-20", "kind": "Challenge"}]
+    monkeypatch.setattr("publisher.runner.fetch_mtgo_events_for_period", lambda **kwargs: events)
+    archive = tmp_path / "archive" / "mtgo-decklists" / "modern" / "8.json"
+    archive.parent.mkdir(parents=True)
+    archive.write_text(
+        json.dumps(
+            {
+                "event_title": "Modern Challenge 32 2026-03-20",
+                "publish_date": "2026-03-20",
+                "event_type": "challenge",
+                "decks": [_deck_row("80", "Counter Vine", date="2026-03-20")],
+            }
+        ),
+        encoding="utf-8",
+    )
+    fetched = []
+
+    def _fetch_event(event):
+        fetched.append(event["id"])
+        return {
+            "event_id": "8",
+            "title": "Modern Challenge 32 2026-03-20",
+            "publish_date": "2026-03-20",
+            "event_type": "challenge",
+            "decks": [_clean_deck("80", "Countervine")],
+        }
+
+    monkeypatch.setattr("publisher.runner.fetch_event", _fetch_event)
+    monkeypatch.setattr("publisher.runner.get_deck_cache", lambda: _NullDeckCache())
+    monkeypatch.setattr("publisher.runner.save_mtgo_deck_metadata", lambda *args, **kwargs: None)
+
+    args = ["scrape-mtgo-decklists", "--format", "Modern", "--event-delay-seconds", "0"]
+    assert _run(tmp_path, *args) == 0
+    assert fetched == [8]
+    rewritten = _load(archive)
+    assert rewritten["archetype_taxonomy"] == "videre"
+    assert rewritten["decks"][0]["archetype"] == "Countervine"
+
+    # Second run reuses the now-tagged archive.
+    assert _run(tmp_path, *args, timestamp=LATER_TIMESTAMP) == 0
+    assert fetched == [8]
+
+
+def test_scrape_mtgo_decklists_unifies_spellings_and_keeps_colour_codes(monkeypatch, tmp_path):
+    events = [
+        {"id": 1, "name": "Modern Challenge 32", "date": "2026-03-22", "kind": "Challenge"},
+        {"id": 2, "name": "Modern Challenge 32", "date": "2026-03-21", "kind": "Challenge"},
+    ]
+    monkeypatch.setattr("publisher.runner.fetch_mtgo_events_for_period", lambda **kwargs: events)
+    decks_by_event = {
+        1: [_clean_deck("1", "Death & Taxes"), _clean_deck("2", "Death & Taxes")],
+        2: [
+            _clean_deck("3", "Death & taxes"),
+            _clean_deck("4", "BR", archetype_id=None),
+            _clean_deck("5", None, archetype_id=None),
+        ],
+    }
+    monkeypatch.setattr(
+        "publisher.runner.fetch_event",
+        lambda event: {
+            "event_id": str(event["id"]),
+            "title": f"Modern Challenge 32 {event['date']}",
+            "publish_date": event["date"],
+            "event_type": "challenge",
+            "decks": decks_by_event[event["id"]],
+        },
+    )
+    monkeypatch.setattr("publisher.runner.get_deck_cache", lambda: _NullDeckCache())
+    monkeypatch.setattr("publisher.runner.save_mtgo_deck_metadata", lambda *args, **kwargs: None)
+
+    assert _run(tmp_path, "scrape-mtgo-decklists", "--format", "Modern", "--event-delay-seconds", "0") == 0
+
+    snapshot = _load(tmp_path / "latest" / "mtgo-decklists" / "modern.json")
+    rows = {deck["number"]: deck for event in snapshot["events"] for deck in event["decks"]}
+    assert {rows[n]["archetype"] for n in ("1", "2", "3")} == {"Death & Taxes"}
+    assert rows["3"]["archetype_href"] == "modern-death-taxes"
+    assert rows["4"]["archetype"] == "BR"
+    assert rows["4"]["archetype_href"] == "modern-br"
+    assert rows["4"]["archetype_id"] is None
+    assert rows["5"]["archetype"] == "Unknown"
+    assert all(row["source"] == "mtgo" for row in rows.values())

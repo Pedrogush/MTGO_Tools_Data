@@ -9,7 +9,12 @@ from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 from publisher.contracts import build_latest_manifest, validate_latest_manifest
-from publisher.layout import DEFAULT_OUTPUT_ROOT, DEFAULT_RETENTION_DAYS, write_json
+from publisher.layout import (
+    DEFAULT_OUTPUT_ROOT,
+    DEFAULT_RETENTION_DAYS,
+    normalize_name,
+    write_json,
+)
 
 try:
     from datetime import UTC
@@ -80,6 +85,40 @@ def _existing_entries(output_root: Path, entries: list[dict[str, str]]) -> list[
     ]
 
 
+def prune_orphan_archetype_snapshots(output_root: Path) -> int:
+    """Remove deck and radar snapshots for archetypes no longer in the format's list.
+
+    Each publish rewrites ``latest/decks/<format>/<slug>.json`` and
+    ``latest/radars/<format>/<slug>.json`` only for archetypes still present,
+    and the commit job overlays job artifacts onto the checkout, so files for
+    archetypes that left the window (or older names, such as the MTGGoldfish
+    slugs published before the feed became Videre-only) would otherwise be
+    bundled forever. Formats without a readable archetype list are left alone.
+    """
+    removed = 0
+    lists_root = output_root / "latest" / "archetypes"
+    if not lists_root.exists():
+        return removed
+    for list_path in sorted(lists_root.glob("*.json")):
+        try:
+            payload = json.loads(list_path.read_text(encoding="utf-8"))
+            archetypes = payload["archetypes"]
+            current = {normalize_name(str(entry["name"])) for entry in archetypes}
+        except (OSError, json.JSONDecodeError, KeyError, TypeError):
+            continue
+        if not current:
+            continue
+        for category in ("decks", "radars"):
+            directory = output_root / "latest" / category / list_path.stem
+            if not directory.exists():
+                continue
+            for path in sorted(directory.glob("*.json")):
+                if normalize_name(path.stem) not in current:
+                    path.unlink()
+                    removed += 1
+    return removed
+
+
 def prune_output_tree(
     output_root: Path,
     *,
@@ -98,6 +137,7 @@ def prune_output_tree(
         "daily_dirs_removed": 0,
         "deck_text_blobs_removed": 0,
         "deck_text_manifest_entries_removed": 0,
+        "orphan_archetype_snapshots_removed": 0,
     }
 
     hourly_root = output_root / "hourly"
@@ -130,6 +170,8 @@ def prune_output_tree(
             path.unlink()
             summary["deck_text_blobs_removed"] += 1
             _prune_empty_parents(path.parent, stop_at=archive_root)
+
+    summary["orphan_archetype_snapshots_removed"] = prune_orphan_archetype_snapshots(output_root)
 
     manifest_path = output_root / "latest" / "latest.json"
     if manifest_path.exists():

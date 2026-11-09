@@ -18,15 +18,13 @@ setuptools.setup(
     version="0.2",
     author="yochi",
     author_email="pedrogush@gmail.com",
-    description="Headless MTGO and MTGGoldfish scrape publisher",
+    description="Headless MTGO (Videre API) data publisher",
     packages=setuptools.find_packages(
         include=[
             "navigators",
             "navigators.*",
             "publisher",
             "publisher.*",
-            "repositories",
-            "repositories.*",
             "scraping",
             "scraping.*",
             "services",

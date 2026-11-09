@@ -1,4 +1,10 @@
-"""CLI entrypoint for headless scrape publishing."""
+"""CLI entrypoint for headless scrape publishing.
+
+Every product is sourced from the Videre Project API. ``scrape-mtgo-decklists``
+is the only command that talks to the network; the others derive their output
+from the ``latest/mtgo-decklists/<format>.json`` snapshot it publishes (see
+``publisher.mtgo_archive``).
+"""
 
 from __future__ import annotations
 
@@ -13,7 +19,6 @@ from typing import Any
 
 from loguru import logger
 
-from navigators.mtggoldfish import get_archetype_stats
 from publisher.contracts import (
     build_archetype_deck_snapshot,
     build_archetype_list_snapshot,
@@ -43,7 +48,13 @@ from publisher.layout import (
     update_latest_manifest,
     write_json,
 )
-from scraping import ScrapingMetagameRepository, fetch_archetypes
+from publisher.mtgo_archive import (
+    MTGO_SOURCE,
+    UNKNOWN_SLUG,
+    MtgoArchiveRepository,
+    canonical_archetype,
+    preferred_display_names,
+)
 from scraping.mtgo import fetch_event
 from services.mtgo_background_service import (
     deck_to_text,
@@ -51,7 +62,11 @@ from services.mtgo_background_service import (
     save_mtgo_deck_metadata,
 )
 from services.radar_service import RadarService
-from utils.constants import MTGO_BACKGROUND_FETCH_DAYS, MTGO_LEAGUE_REFRESH_WINDOW_DAYS
+from utils.constants import (
+    METAGAME_STATS_LOOKBACK_DAYS,
+    MTGO_BACKGROUND_FETCH_DAYS,
+    MTGO_LEAGUE_REFRESH_WINDOW_DAYS,
+)
 from utils.deck_text_cache import get_deck_cache
 
 try:
@@ -65,8 +80,13 @@ STATUS_SKIPPED = "skipped"
 STATUS_STALE_FALLBACK = "stale-fallback"
 STATUS_HARD_FAILURE = "hard-failure"
 HARD_FAILURE_STATES = {STATUS_HARD_FAILURE}
-DEFAULT_DECK_DOWNLOAD_DELAY_SECONDS = 0.0
 DEFAULT_MTGO_EVENT_DELAY_SECONDS = 1.0
+VIDERE_SOURCE = "videre-api"
+# Event archives record which taxonomy their deck rows' archetype names use.
+# Archives written before the MTGGoldfish source was removed carry names that
+# were rewritten onto MTGGoldfish's taxonomy; those are re-fetched once rather
+# than reused, so a format never mixes the two vocabularies.
+ARCHETYPE_TAXONOMY = "videre"
 
 
 def _utc_now() -> str:
@@ -129,166 +149,6 @@ def _load_reusable_deck_text_blob(
     return validated
 
 
-def _load_published_deck_snapshot(path: Path, *, format_name: str) -> dict[str, Any] | None:
-    payload = _load_json_if_present(path)
-    if not payload:
-        return None
-    try:
-        validated = validate_archetype_deck_snapshot(payload)
-    except ValueError:
-        return None
-    if validated.get("format") != format_name:
-        return None
-    return validated
-
-
-class _ArchetypeHrefResolver:
-    """Resolve MTGOFormatData archetype names onto the published archetype list.
-
-    The MTGO classifier uses the MTGOFormatData taxonomy while the archetype
-    list uses MTGGoldfish's; names for the same archetype frequently differ
-    ("Countervine" vs "Counter Vine"). Matching is deliberately conservative:
-    exact slug, then dash-insensitive slug, then a token-subset match that only
-    applies when a single candidate qualifies. Unmatched names keep their
-    display string and get a synthesized "{format}-{slug}" href, the same
-    scheme MTGGoldfish hrefs follow.
-    """
-
-    def __init__(self, archetypes: list[dict[str, Any]], normalized_format: str) -> None:
-        self.normalized_format = normalized_format
-        self._by_slug: dict[str, dict[str, Any]] = {}
-        self._by_compact: dict[str, list[dict[str, Any]]] = {}
-        self._token_entries: list[tuple[frozenset[str], dict[str, Any]]] = []
-        for entry in archetypes:
-            name = str(entry.get("name", "")).strip()
-            href = str(entry.get("href", "")).strip()
-            if not name or not href:
-                continue
-            slug = normalize_name(name)
-            self._by_slug.setdefault(slug, entry)
-            self._by_compact.setdefault(slug.replace("-", ""), []).append(entry)
-            self._token_entries.append((frozenset(slug.split("-")), entry))
-
-    def resolve(self, archetype_name: str) -> dict[str, Any] | None:
-        slug = normalize_name(archetype_name)
-        if not slug:
-            return None
-        match = self._by_slug.get(slug)
-        if match is not None:
-            return match
-        compact_matches = self._by_compact.get(slug.replace("-", ""), [])
-        if len(compact_matches) == 1:
-            return compact_matches[0]
-        tokens = frozenset(slug.split("-"))
-        token_matches = [
-            entry
-            for entry_tokens, entry in self._token_entries
-            if tokens <= entry_tokens or entry_tokens <= tokens
-        ]
-        if len(token_matches) == 1:
-            return token_matches[0]
-        return None
-
-    def canonicalize(self, archetype_name: str) -> tuple[str, str]:
-        """Return (canonical display name, stable href) for an archetype name."""
-        match = self.resolve(archetype_name)
-        if match is not None:
-            return str(match["name"]), str(match["href"])
-        display = archetype_name.strip() or "Unknown"
-        return display, f"{self.normalized_format}-{normalize_name(display)}"
-
-
-def _load_archetype_href_resolver(
-    output_root: Path, normalized_format: str
-) -> _ArchetypeHrefResolver:
-    payload = _load_json_if_present(
-        output_root / "latest" / "archetypes" / f"{normalized_format}.json"
-    )
-    archetypes = list(payload.get("archetypes", [])) if payload else []
-    return _ArchetypeHrefResolver(archetypes, normalized_format)
-
-
-def _merge_mtgo_only_archetypes(
-    archetypes: list[dict[str, Any]], *, output_root: Path, normalized_format: str
-) -> list[dict[str, Any]]:
-    """Union MTGO-only archetypes into the archetype list.
-
-    Videre archetypes with no MTGGoldfish counterpart would otherwise have no
-    list entry for their decks and radars to attach to. Union entries carry
-    source="mtgo" so the MTGGoldfish deck scraper knows to skip them.
-    """
-    payload = _load_json_if_present(
-        output_root / "latest" / "mtgo-decklists" / f"{normalized_format}.json"
-    )
-    if not payload:
-        return archetypes
-    resolver = _ArchetypeHrefResolver(archetypes, normalized_format)
-    seen_hrefs = {str(entry.get("href", "")) for entry in archetypes}
-    extras: dict[str, dict[str, Any]] = {}
-    for event in payload.get("events", []):
-        for deck in event.get("decks", []):
-            name = str(deck.get("archetype") or deck.get("name") or "").strip()
-            if not name or normalize_name(name) == "unknown":
-                continue
-            if resolver.resolve(name) is not None:
-                continue
-            display, href = resolver.canonicalize(name)
-            if href in seen_hrefs:
-                continue
-            extras.setdefault(href, {"name": display, "href": href, "source": "mtgo"})
-    if not extras:
-        return archetypes
-    merged = [*archetypes, *(extras[href] for href in sorted(extras))]
-    return sorted(
-        merged, key=lambda item: (item.get("name", "").lower(), item.get("href", "").lower())
-    )
-
-
-def _load_mtgo_radar_decks(
-    output_root: Path, format_name: str
-) -> tuple[dict[str, list[dict[str, str]]], dict[str, str]]:
-    """Load published MTGO deck texts grouped by archetype slug.
-
-    Returns (decks_by_archetype, display_names). Decks are deduplicated by
-    deck id across events; rows without an id or deck text are ignored.
-    """
-    latest_path = output_root / "latest" / "mtgo-decklists" / f"{format_name}.json"
-    payload = _load_json_if_present(latest_path)
-    if not payload:
-        return {}, {}
-    try:
-        snapshot = validate_mtgo_decklists_snapshot(payload)
-    except ValueError:
-        return {}, {}
-    if snapshot.get("format") != format_name:
-        return {}, {}
-
-    resolver = _load_archetype_href_resolver(output_root, format_name)
-    decks_by_archetype: dict[str, list[dict[str, str]]] = {}
-    display_names: dict[str, str] = {}
-    seen_deck_ids: set[str] = set()
-    for event in snapshot.get("events", []):
-        for deck in event.get("decks", []):
-            deck_id = str(deck.get("number", "")).strip()
-            deck_text = str(deck.get("deck_text") or "")
-            if not deck_id or not deck_text.strip() or deck_id in seen_deck_ids:
-                continue
-            seen_deck_ids.add(deck_id)
-            raw_name = str(deck.get("archetype") or deck.get("name") or "").strip() or "Unknown"
-            archetype_name, _href = resolver.canonicalize(raw_name)
-            archetype_slug = normalize_name(archetype_name)
-            display_names.setdefault(archetype_slug, archetype_name)
-            decks_by_archetype.setdefault(archetype_slug, []).append(
-                {
-                    "dedupe_key": deck_id,
-                    "deck_id": deck_id,
-                    "deck_name": archetype_name,
-                    "deck_text": deck_text,
-                }
-            )
-    return decks_by_archetype, display_names
-
-
 def _is_path_fresh(path: Path, *, generated_at: str, max_stale_hours: int) -> bool:
     payload = _load_json_if_present(path)
     if not payload:
@@ -298,20 +158,6 @@ def _is_path_fresh(path: Path, *, generated_at: str, max_stale_hours: int) -> bo
     if existing_generated_at is None or current_generated_at is None:
         return False
     return current_generated_at - existing_generated_at <= timedelta(hours=max_stale_hours)
-
-
-def _filter_recent_decks(
-    decks: list[dict[str, Any]], days: int | None, *, reference_time: datetime | None = None
-) -> list[dict[str, Any]]:
-    if days is None:
-        return decks
-    cutoff = (reference_time or datetime.now(UTC)).replace(tzinfo=None) - timedelta(days=days)
-    filtered: list[dict[str, Any]] = []
-    for deck in decks:
-        parsed = _parse_deck_date(deck.get("date", ""))
-        if parsed is None or parsed >= cutoff:
-            filtered.append(deck)
-    return filtered
 
 
 def _deck_text_archive_path(output_root: Path, format_name: str, deck_id: str) -> Path:
@@ -371,15 +217,6 @@ def _with_deck_text_refs(
             )
         enriched.append(entry)
     return enriched
-
-
-def _filter_requested_snapshot_paths(
-    paths: list[Path], archetype_filters: list[str] | None
-) -> list[Path]:
-    if not archetype_filters:
-        return paths
-    wanted = {normalize_name(value) for value in archetype_filters}
-    return [path for path in paths if normalize_name(path.stem) in wanted]
 
 
 class RunRecorder:
@@ -463,6 +300,20 @@ class RunRecorder:
         return latest_path, manifest
 
 
+def _archive_repository(
+    output_root: Path, format_name: str, generated_at: str, *, days: int | None = None
+) -> MtgoArchiveRepository:
+    # One window for every product derived in a run: the archetype list and
+    # the deck snapshots must agree on which decks count, or an archetype
+    # whose decks sit on the window's first day is listed with no decks.
+    return MtgoArchiveRepository(
+        output_root,
+        format_name,
+        days=days or MTGO_BACKGROUND_FETCH_DAYS,
+        reference_time=_parse_generated_at(generated_at),
+    )
+
+
 def _selected_archetypes(
     *,
     output_root: Path,
@@ -470,23 +321,19 @@ def _selected_archetypes(
     max_stale_hours: int,
     recorder: RunRecorder,
     format_name: str,
+    repo: MtgoArchiveRepository | None = None,
 ) -> list[dict[str, Any]]:
     normalized_format = normalize_name(format_name)
     latest_path = output_root / "latest" / "archetypes" / f"{normalized_format}.json"
     try:
-        archetypes = sorted(
-            fetch_archetypes(format_name, allow_stale=True),
-            key=lambda item: (item.get("name", "").lower(), item.get("href", "").lower()),
-        )
+        repo = repo or _archive_repository(output_root, format_name, generated_at)
+        archetypes = repo.get_archetypes()
         if not archetypes:
-            raise RuntimeError(f"Archetype scrape returned no rows for {format_name}")
-        archetypes = _merge_mtgo_only_archetypes(
-            archetypes, output_root=output_root, normalized_format=normalized_format
-        )
+            raise RuntimeError(f"No MTGO decks in the window yield archetypes for {format_name}")
         snapshot = build_archetype_list_snapshot(
             generated_at=generated_at,
             format_name=normalized_format,
-            source="mtggoldfish",
+            source=VIDERE_SOURCE,
             archetypes=archetypes,
         )
         validate_archetype_list_snapshot(snapshot)
@@ -558,26 +405,20 @@ def _write_metagame_snapshot(
     normalized_format = normalize_name(format_name)
     latest_path = output_root / "latest" / "metagame" / f"{normalized_format}.json"
     try:
-        raw_stats = get_archetype_stats(format_name)
-        format_stats = raw_stats.get(format_name) or raw_stats.get(normalized_format, {})
-        if not format_stats:
-            raise RuntimeError(f"Metagame scrape returned no stats for {format_name}")
-        stats_rows = []
-        for archetype, payload in sorted(format_stats.items()):
-            if archetype == "timestamp":
-                continue
-            daily_counts = payload.get("results", {})
-            stats_rows.append(
-                {
-                    "archetype": archetype,
-                    "deck_count": len(payload.get("decks", [])),
-                    "daily_counts": {key: daily_counts[key] for key in sorted(daily_counts)},
-                }
-            )
+        day_anchor = datetime.strptime(generated_for_day, "%Y-%m-%d")
+        lookback_dates = [
+            (day_anchor - timedelta(days=offset)).strftime("%Y-%m-%d")
+            for offset in range(METAGAME_STATS_LOOKBACK_DAYS)
+        ]
+        stats_rows = _archive_repository(
+            output_root, format_name, generated_at
+        ).get_archetype_stats(lookback_dates=lookback_dates)
+        if not stats_rows:
+            raise RuntimeError(f"No MTGO decks in the window yield metagame stats for {format_name}")
         snapshot = build_metagame_snapshot(
             generated_at=generated_at,
             format_name=normalized_format,
-            source="mtggoldfish",
+            source=VIDERE_SOURCE,
             generated_for_day=generated_for_day,
             stats=stats_rows,
         )
@@ -622,6 +463,44 @@ def _write_metagame_snapshot(
         )
 
 
+def _write_deck_snapshot_file(
+    *,
+    output_root: Path,
+    generated_at: str,
+    recorder: RunRecorder,
+    normalized_format: str,
+    archetype: dict[str, Any],
+    archetype_slug: str,
+    decks: list[dict[str, Any]],
+) -> Path:
+    latest_path = output_root / "latest" / "decks" / normalized_format / f"{archetype_slug}.json"
+    snapshot = build_archetype_deck_snapshot(
+        generated_at=generated_at,
+        format_name=normalized_format,
+        archetype=archetype,
+        source=MTGO_SOURCE,
+        decks=decks,
+    )
+    validate_archetype_deck_snapshot(snapshot)
+    hourly_path = (
+        hourly_snapshot_dir(output_root, generated_at)
+        / "decks"
+        / normalized_format
+        / f"{archetype_slug}.json"
+    )
+    write_json(latest_path, snapshot)
+    write_json(hourly_path, snapshot)
+    update_latest_manifest(
+        output_root,
+        generated_at=generated_at,
+        retention_days=recorder.retention_days,
+        category="archetype_decks",
+        discriminator={"format": normalized_format, "archetype": archetype_slug},
+        relative_path=relative_posix_path(latest_path, output_root),
+    )
+    return latest_path
+
+
 def _write_archetype_deck_snapshots(
     *,
     output_root: Path,
@@ -631,10 +510,10 @@ def _write_archetype_deck_snapshots(
     format_name: str,
     archetype_filters: list[str] | None,
     days: int | None,
-    source_filter: str | None,
+    repo: MtgoArchiveRepository | None = None,
 ) -> list[dict[str, Any]]:
-    repo = ScrapingMetagameRepository()
     normalized_format = normalize_name(format_name)
+    repo = repo or _archive_repository(output_root, format_name, generated_at, days=days)
     archetypes = _filter_requested_archetypes(
         _selected_archetypes(
             output_root=output_root,
@@ -642,6 +521,7 @@ def _write_archetype_deck_snapshots(
             max_stale_hours=max_stale_hours,
             recorder=recorder,
             format_name=format_name,
+            repo=repo,
         ),
         archetype_filters,
     )
@@ -656,68 +536,17 @@ def _write_archetype_deck_snapshots(
 
     selected_decks: list[dict[str, Any]] = []
     for archetype in archetypes:
-        if archetype.get("source") == "mtgo":
-            # Union entries from _merge_mtgo_only_archetypes have no
-            # MTGGoldfish page to scrape; their decks ship via mtgo-decklists.
-            continue
         archetype_slug = normalize_name(archetype["name"])
         latest_path = (
             output_root / "latest" / "decks" / normalized_format / f"{archetype_slug}.json"
         )
         try:
-            decks = repo.get_decks_for_archetype(
-                archetype,
-                force_refresh=True,
-                source_filter=source_filter,
-            )
-            filtered_decks = _filter_recent_decks(
-                decks, days, reference_time=_parse_generated_at(generated_at)
-            )
-            # An archetype whose MTGGoldfish rows were all MTGO events has no
-            # paper decks to publish here (they land in mtgo-decklists); only a
-            # scrape that returned nothing at all is a failure.
-            had_source_rows = bool(decks) or getattr(repo, "last_goldfish_rows_before_partition", 0) > 0
-            if had_source_rows and not filtered_decks:
-                snapshot = build_archetype_deck_snapshot(
-                    generated_at=generated_at,
-                    format_name=normalized_format,
-                    archetype=archetype,
-                    source=source_filter or "both",
-                    decks=[],
-                )
-                validate_archetype_deck_snapshot(snapshot)
-                hourly_path = (
-                    hourly_snapshot_dir(output_root, generated_at)
-                    / "decks"
-                    / normalized_format
-                    / f"{archetype_slug}.json"
-                )
-                write_json(latest_path, snapshot)
-                write_json(hourly_path, snapshot)
-                update_latest_manifest(
-                    output_root,
-                    generated_at=generated_at,
-                    retention_days=recorder.retention_days,
-                    category="archetype_decks",
-                    discriminator={"format": normalized_format, "archetype": archetype_slug},
-                    relative_path=relative_posix_path(latest_path, output_root),
-                )
-                recorder.add(
-                    scope="archetype-decks",
-                    status=STATUS_SKIPPED,
-                    format_name=normalized_format,
-                    archetype=archetype_slug,
-                    path=relative_posix_path(latest_path, output_root),
-                    message=(
-                        f"No decks found within the last {days} days."
-                        if decks
-                        else "All MTGGoldfish rows were MTGO events; published via mtgo-decklists."
-                    ),
-                )
-                continue
+            decks = repo.get_decks_for_archetype(archetype)
+            if not decks:
+                raise RuntimeError(f"No MTGO decks found for {archetype['name']}")
             recent_decks = sorted(
                 _with_deck_text_refs(
-                    filtered_decks,
+                    decks,
                     output_root=output_root,
                     format_name=normalized_format,
                 ),
@@ -728,31 +557,14 @@ def _write_archetype_deck_snapshots(
                 ),
                 reverse=True,
             )
-            if not recent_decks:
-                raise RuntimeError(f"Deck scrape returned no rows for {archetype['name']}")
-            snapshot = build_archetype_deck_snapshot(
+            _write_deck_snapshot_file(
+                output_root=output_root,
                 generated_at=generated_at,
-                format_name=normalized_format,
+                recorder=recorder,
+                normalized_format=normalized_format,
                 archetype=archetype,
-                source=source_filter or "both",
+                archetype_slug=archetype_slug,
                 decks=recent_decks,
-            )
-            validate_archetype_deck_snapshot(snapshot)
-            hourly_path = (
-                hourly_snapshot_dir(output_root, generated_at)
-                / "decks"
-                / normalized_format
-                / f"{archetype_slug}.json"
-            )
-            write_json(latest_path, snapshot)
-            write_json(hourly_path, snapshot)
-            update_latest_manifest(
-                output_root,
-                generated_at=generated_at,
-                retention_days=recorder.retention_days,
-                category="archetype_decks",
-                discriminator={"format": normalized_format, "archetype": archetype_slug},
-                relative_path=relative_posix_path(latest_path, output_root),
             )
             recorder.add(
                 scope="archetype-decks",
@@ -797,11 +609,9 @@ def _write_deck_text_blobs(
     format_name: str,
     archetype_filters: list[str] | None,
     days: int | None,
-    source_filter: str | None,
-    deck_download_delay_seconds: float,
 ) -> None:
-    repo = ScrapingMetagameRepository()
     normalized_format = normalize_name(format_name)
+    repo = _archive_repository(output_root, format_name, generated_at, days=days)
     decks = _write_archetype_deck_snapshots(
         output_root=output_root,
         generated_at=generated_at,
@@ -810,7 +620,7 @@ def _write_deck_text_blobs(
         format_name=format_name,
         archetype_filters=archetype_filters,
         days=days,
-        source_filter=source_filter,
+        repo=repo,
     )
     unique_decks: dict[str, dict[str, Any]] = {}
     for deck in decks:
@@ -827,7 +637,7 @@ def _write_deck_text_blobs(
         )
         return
 
-    for index, (deck_id, deck) in enumerate(sorted(unique_decks.items())):
+    for deck_id, deck in sorted(unique_decks.items()):
         archive_path = _deck_text_archive_path(output_root, normalized_format, deck_id)
         try:
             reused_blob = _load_reusable_deck_text_blob(
@@ -853,21 +663,13 @@ def _write_deck_text_blobs(
                     message="Reused existing published deck-text blob.",
                 )
                 continue
-            if index > 0 and deck_download_delay_seconds > 0:
-                logger.info(
-                    "Sleeping {} seconds before downloading deck {}",
-                    deck_download_delay_seconds,
-                    deck_id,
-                )
-                time.sleep(deck_download_delay_seconds)
-            deck_text = repo.download_deck_content(deck, source_filter=source_filter)
             snapshot = build_deck_text_blob(
                 generated_at=generated_at,
                 format_name=normalized_format,
                 deck_id=deck_id,
-                source=deck.get("source", source_filter or "mtggoldfish"),
+                source=MTGO_SOURCE,
                 deck_name=deck.get("name", deck_id),
-                deck_text=deck_text,
+                deck_text=repo.download_deck_content(deck),
             )
             validate_deck_text_blob(snapshot)
             write_json(archive_path, snapshot)
@@ -907,64 +709,6 @@ def _write_deck_text_blobs(
                 path=relative_posix_path(archive_path, output_root),
                 message=str(exc),
             )
-
-
-def _load_radar_source_texts(
-    *,
-    output_root: Path,
-    format_name: str,
-    decks: list[dict[str, Any]],
-    repo: ScrapingMetagameRepository,
-) -> tuple[list[dict[str, str]], int]:
-    loaded_decks: list[dict[str, str]] = []
-    failed_decks = 0
-
-    for index, deck in enumerate(decks, 1):
-        deck_id = str(deck.get("number", "")).strip()
-        deck_name = str(deck.get("name", "")).strip() or deck_id or f"Deck {index}"
-        dedupe_key = deck_id or f"anon-{index}-{deck_name}"
-
-        blob_path: Path | None = None
-        deck_text_path = deck.get("deck_text_path")
-        if isinstance(deck_text_path, str) and deck_text_path:
-            blob_path = output_root / Path(deck_text_path)
-        elif deck_id:
-            blob_path = _deck_text_archive_path(output_root, format_name, deck_id)
-
-        if blob_path is not None and deck_id:
-            reusable_blob = _load_reusable_deck_text_blob(
-                blob_path,
-                format_name=format_name,
-                deck_id=deck_id,
-            )
-            if reusable_blob is not None:
-                loaded_decks.append(
-                    {
-                        "dedupe_key": dedupe_key,
-                        "deck_id": deck_id,
-                        "deck_name": deck_name,
-                        "deck_text": reusable_blob["deck_text"],
-                    }
-                )
-                continue
-
-        try:
-            source_filter = deck.get("source")
-            if source_filter not in {"mtggoldfish", "mtgo"}:
-                source_filter = None
-            loaded_decks.append(
-                {
-                    "dedupe_key": dedupe_key,
-                    "deck_id": deck_id,
-                    "deck_name": deck_name,
-                    "deck_text": repo.download_deck_content(deck, source_filter=source_filter),
-                }
-            )
-        except Exception as exc:  # noqa: BLE001
-            logger.warning("Failed to load radar source deck {}: {}", deck_name, exc)
-            failed_decks += 1
-
-    return loaded_decks, failed_decks
 
 
 def _write_format_card_pool_snapshot(
@@ -1097,6 +841,24 @@ def _publish_archetype_radar_snapshot(
     )
 
 
+def _radar_source_decks(rows: list[dict[str, Any]], display: str) -> list[dict[str, str]]:
+    decks: list[dict[str, str]] = []
+    for deck in rows:
+        deck_id = str(deck.get("number", "")).strip()
+        deck_text = str(deck.get("deck_text") or "")
+        if not deck_id or not deck_text.strip():
+            continue
+        decks.append(
+            {
+                "dedupe_key": deck_id,
+                "deck_id": deck_id,
+                "deck_name": display,
+                "deck_text": deck_text,
+            }
+        )
+    return decks
+
+
 def _write_archetype_radar_snapshots(
     *,
     output_root: Path,
@@ -1108,184 +870,51 @@ def _write_archetype_radar_snapshots(
     max_decks: int | None,
 ) -> None:
     normalized_format = normalize_name(format_name)
-    deck_root = output_root / "latest" / "decks" / normalized_format
-    snapshot_paths = (
-        sorted(deck_root.glob("*.json"), key=lambda path: path.name) if deck_root.exists() else []
-    )
-    snapshot_paths = _filter_requested_snapshot_paths(snapshot_paths, archetype_filters)
-
-    mtgo_decks_by_archetype, mtgo_display_names = _load_mtgo_radar_decks(
-        output_root, normalized_format
-    )
-    if archetype_filters:
-        wanted = {normalize_name(value) for value in archetype_filters}
-        mtgo_decks_by_archetype = {
-            slug: decks for slug, decks in mtgo_decks_by_archetype.items() if slug in wanted
-        }
-
-    if archetype_filters and not snapshot_paths and not mtgo_decks_by_archetype:
-        recorder.add(
-            scope="archetype-radar",
-            status=STATUS_SKIPPED,
-            format_name=normalized_format,
-            message="No requested archetypes matched the current published deck snapshots.",
-        )
-        return
-
-    if not snapshot_paths and not mtgo_decks_by_archetype:
+    repo = _archive_repository(output_root, format_name, generated_at)
+    try:
+        groups = repo.archetype_groups()
+        if not groups:
+            raise RuntimeError("The MTGO decklist snapshot holds no decks in the window.")
+    except Exception as exc:  # noqa: BLE001
         recorder.add(
             scope="archetype-radar",
             status=STATUS_HARD_FAILURE,
             format_name=normalized_format,
-            message="No latest deck snapshots or MTGO decklists were found for radar publishing.",
+            message=f"No MTGO decks were available for radar publishing: {exc}",
         )
         return
 
-    repo = ScrapingMetagameRepository()
+    wanted = {normalize_name(value) for value in archetype_filters or []}
+    radar_slugs = [
+        slug for slug in sorted(groups) if slug != UNKNOWN_SLUG and (not wanted or slug in wanted)
+    ]
+    if archetype_filters and not radar_slugs:
+        recorder.add(
+            scope="archetype-radar",
+            status=STATUS_SKIPPED,
+            format_name=normalized_format,
+            message="No requested archetypes matched the current MTGO decks.",
+        )
+        return
+
     radar_service = RadarService()
-    format_card_pool_decks: dict[str, dict[str, str]] = {}
-    format_card_pool_failed_decks = 0
-
-    for snapshot_path in snapshot_paths:
-        archetype_slug = normalize_name(snapshot_path.stem)
-        latest_path = output_root / "latest" / "radars" / normalized_format / snapshot_path.name
-        mtgo_decks = mtgo_decks_by_archetype.pop(archetype_slug, [])
-
+    for slug in radar_slugs:
+        display, rows = groups[slug]
+        latest_path = output_root / "latest" / "radars" / normalized_format / f"{slug}.json"
+        loaded_decks = _radar_source_decks(rows, display)
+        if max_decks is not None:
+            loaded_decks = loaded_decks[:max_decks]
         try:
-            deck_snapshot = _load_published_deck_snapshot(
-                snapshot_path,
-                format_name=normalized_format,
-            )
-            if deck_snapshot is None:
-                raise RuntimeError(f"Published deck snapshot is invalid: {snapshot_path}")
-
-            archetype = deck_snapshot["archetype"]
-            archetype_slug = normalize_name(archetype.get("name", snapshot_path.stem))
-            mtgo_decks.extend(mtgo_decks_by_archetype.pop(archetype_slug, []))
-            selected_decks = list(deck_snapshot.get("decks", []))
-            if max_decks is not None:
-                selected_decks = selected_decks[:max_decks]
-
-            if not selected_decks and not mtgo_decks:
-                snapshot = build_archetype_radar_snapshot(
-                    generated_at=generated_at,
-                    format_name=normalized_format,
-                    archetype=archetype,
-                    source="published-deck-texts",
-                    total_decks_analyzed=0,
-                    decks_failed=0,
-                    mainboard_cards=[],
-                    sideboard_cards=[],
-                )
-                validate_archetype_radar_snapshot(snapshot)
-                hourly_path = (
-                    hourly_snapshot_dir(output_root, generated_at)
-                    / "radars"
-                    / normalized_format
-                    / snapshot_path.name
-                )
-                write_json(latest_path, snapshot)
-                write_json(hourly_path, snapshot)
-                update_latest_manifest(
-                    output_root,
-                    generated_at=generated_at,
-                    retention_days=recorder.retention_days,
-                    category="archetype_radars",
-                    discriminator={"format": normalized_format, "archetype": archetype_slug},
-                    relative_path=relative_posix_path(latest_path, output_root),
-                )
-                recorder.add(
-                    scope="archetype-radar",
-                    status=STATUS_SKIPPED,
-                    format_name=normalized_format,
-                    archetype=archetype_slug,
-                    path=relative_posix_path(latest_path, output_root),
-                    message="No published decks were available for radar generation.",
-                )
-                continue
-
-            loaded_decks: list[dict[str, str]] = []
-            failed_decks = 0
-            if selected_decks:
-                loaded_decks, failed_decks = _load_radar_source_texts(
-                    output_root=output_root,
-                    format_name=normalized_format,
-                    decks=selected_decks,
-                    repo=repo,
-                )
-            merged_decks: dict[str, dict[str, str]] = {}
-            for deck in [*loaded_decks, *mtgo_decks]:
-                merged_decks.setdefault(deck["dedupe_key"], deck)
-            loaded_decks = list(merged_decks.values())
-            if max_decks is not None:
-                loaded_decks = loaded_decks[:max_decks]
             if not loaded_decks:
                 raise RuntimeError("No deck texts were available for radar generation.")
-
-            format_card_pool_failed_decks += failed_decks
-            for deck in loaded_decks:
-                format_card_pool_decks.setdefault(deck["dedupe_key"], deck)
-
             _publish_archetype_radar_snapshot(
                 output_root=output_root,
                 generated_at=generated_at,
                 recorder=recorder,
                 radar_service=radar_service,
                 normalized_format=normalized_format,
-                archetype=archetype,
-                archetype_slug=archetype_slug,
-                latest_path=latest_path,
-                loaded_decks=loaded_decks,
-                failed_decks=failed_decks,
-            )
-        except Exception as exc:  # noqa: BLE001
-            if _is_path_fresh(
-                latest_path,
-                generated_at=generated_at,
-                max_stale_hours=max_stale_hours,
-            ):
-                recorder.add(
-                    scope="archetype-radar",
-                    status=STATUS_STALE_FALLBACK,
-                    format_name=normalized_format,
-                    archetype=archetype_slug,
-                    path=relative_posix_path(latest_path, output_root),
-                    message=str(exc),
-                )
-                continue
-            recorder.add(
-                scope="archetype-radar",
-                status=STATUS_HARD_FAILURE,
-                format_name=normalized_format,
-                archetype=archetype_slug,
-                path=relative_posix_path(latest_path, output_root),
-                message=str(exc),
-            )
-
-    for archetype_slug in sorted(mtgo_decks_by_archetype):
-        mtgo_decks = mtgo_decks_by_archetype[archetype_slug]
-        for deck in mtgo_decks:
-            format_card_pool_decks.setdefault(deck["dedupe_key"], deck)
-        if archetype_slug == "unknown":
-            # Unclassified decks feed the card pool but have no meaningful radar.
-            continue
-        latest_path = (
-            output_root / "latest" / "radars" / normalized_format / f"{archetype_slug}.json"
-        )
-        archetype = {
-            "name": mtgo_display_names.get(archetype_slug, archetype_slug),
-            "href": f"{normalized_format}-{archetype_slug}",
-        }
-        loaded_decks = mtgo_decks[:max_decks] if max_decks is not None else mtgo_decks
-        try:
-            _publish_archetype_radar_snapshot(
-                output_root=output_root,
-                generated_at=generated_at,
-                recorder=recorder,
-                radar_service=radar_service,
-                normalized_format=normalized_format,
-                archetype=archetype,
-                archetype_slug=archetype_slug,
+                archetype=repo.archetype_entry(slug, display),
+                archetype_slug=slug,
                 latest_path=latest_path,
                 loaded_decks=loaded_decks,
                 failed_decks=0,
@@ -1300,7 +929,7 @@ def _write_archetype_radar_snapshots(
                     scope="archetype-radar",
                     status=STATUS_STALE_FALLBACK,
                     format_name=normalized_format,
-                    archetype=archetype_slug,
+                    archetype=slug,
                     path=relative_posix_path(latest_path, output_root),
                     message=str(exc),
                 )
@@ -1309,7 +938,7 @@ def _write_archetype_radar_snapshots(
                 scope="archetype-radar",
                 status=STATUS_HARD_FAILURE,
                 format_name=normalized_format,
-                archetype=archetype_slug,
+                archetype=slug,
                 path=relative_posix_path(latest_path, output_root),
                 message=str(exc),
             )
@@ -1323,14 +952,19 @@ def _write_archetype_radar_snapshots(
         )
         return
 
+    # Unclassified decks have no meaningful radar but still belong in the pool.
     _write_format_card_pool_snapshot(
         output_root=output_root,
         generated_at=generated_at,
         recorder=recorder,
         max_stale_hours=max_stale_hours,
         format_name=format_name,
-        loaded_decks=list(format_card_pool_decks.values()),
-        failed_decks=format_card_pool_failed_decks,
+        loaded_decks=[
+            deck
+            for display, rows in groups.values()
+            for deck in _radar_source_decks(rows, display)
+        ],
+        failed_decks=0,
     )
 
 
@@ -1346,7 +980,6 @@ def _write_mtgo_decklist_snapshots(
 ) -> None:
     normalized_format = normalize_name(format_name)
     latest_path = output_root / "latest" / "mtgo-decklists" / f"{normalized_format}.json"
-    href_resolver = _load_archetype_href_resolver(output_root, normalized_format)
     deck_cache = get_deck_cache()
     end_date = datetime.now(UTC)
     start_date = end_date - timedelta(days=days)
@@ -1375,6 +1008,8 @@ def _write_mtgo_decklist_snapshots(
             if archive_path.exists() and not _is_recent_league_event(event, generated_at):
                 try:
                     existing = json.loads(archive_path.read_text(encoding="utf-8"))
+                    if existing.get("archetype_taxonomy") != ARCHETYPE_TAXONOMY:
+                        raise ValueError("archive predates Videre archetype names")
                     decks = existing.get("decks", [])
                     for deck in decks:
                         deck_id = str(deck.get("number", "")).strip()
@@ -1436,8 +1071,8 @@ def _write_mtgo_decklist_snapshots(
 
                     wins = str(clean_deck.get("wins", "?")).strip() or "?"
                     losses = str(clean_deck.get("losses", "?")).strip() or "?"
-                    archetype, archetype_href = href_resolver.canonicalize(
-                        str(clean_deck.get("archetype") or "Unknown")
+                    archetype, archetype_href = canonical_archetype(
+                        clean_deck.get("archetype"), normalized_format
                     )
                     deck_metadata = {
                         "number": deck_id,
@@ -1449,7 +1084,7 @@ def _write_mtgo_decklist_snapshots(
                         "archetype_href": archetype_href,
                         "archetype_id": clean_deck.get("archetype_id"),
                         "name": archetype,
-                        "source": "mtgo",
+                        "source": MTGO_SOURCE,
                         "format": normalized_format,
                         "deck_text": deck_to_text(clean_deck).rstrip("\n"),
                     }
@@ -1462,6 +1097,7 @@ def _write_mtgo_decklist_snapshots(
                     "generated_at": generated_at,
                     "format": normalized_format,
                     "event_id": event_id,
+                    "archetype_taxonomy": ARCHETYPE_TAXONOMY,
                     "event_url": event_url,
                     "event_title": event_title,
                     "publish_date": event_date,
@@ -1542,21 +1178,29 @@ def _write_mtgo_decklist_snapshots(
                 "Failed to persist any MTGO events for this format; see run results for failures."
             )
 
-        # Rows loaded from event archives may predate archetype-href
-        # canonicalization; re-resolve every row so the published snapshot is
-        # uniformly keyed. Idempotent for rows that are already canonical.
-        for archived_event in archived_events:
-            for deck in archived_event.get("decks", []):
-                raw_name = str(deck.get("archetype") or deck.get("name") or "Unknown")
-                archetype, archetype_href = href_resolver.canonicalize(raw_name)
-                deck["archetype"] = archetype
-                deck["name"] = archetype
-                deck["archetype_href"] = archetype_href
+        # One display name and href per archetype slug across the window, so
+        # the client's exact-name match between deck rows and the archetype
+        # list holds even if Videre's spelling of a label drifts between
+        # events. Idempotent for rows that are already canonical.
+        window_decks = [deck for event in archived_events for deck in event.get("decks", [])]
+        display_names = preferred_display_names(
+            str(deck.get("archetype") or deck.get("name") or "") for deck in window_decks
+        )
+        for deck in window_decks:
+            display, _href = canonical_archetype(
+                deck.get("archetype") or deck.get("name"), normalized_format
+            )
+            archetype, archetype_href = canonical_archetype(
+                display_names.get(normalize_name(display), display), normalized_format
+            )
+            deck["archetype"] = archetype
+            deck["name"] = archetype
+            deck["archetype_href"] = archetype_href
 
         snapshot = build_mtgo_decklists_snapshot(
             generated_at=generated_at,
             format_name=normalized_format,
-            source="videre-api",
+            source=VIDERE_SOURCE,
             days=days,
             events=archived_events,
         )
@@ -1625,20 +1269,11 @@ def build_parser() -> argparse.ArgumentParser:
     deck_texts.add_argument("--format", dest="formats", action="append", required=True)
     deck_texts.add_argument("--archetype", dest="archetypes", action="append")
     deck_texts.add_argument("--days", type=int)
-    deck_texts.add_argument(
-        "--deck-download-delay-seconds",
-        type=float,
-        default=DEFAULT_DECK_DOWNLOAD_DELAY_SECONDS,
-    )
-    deck_texts.add_argument(
-        "--source-filter", choices=["mtggoldfish", "mtgo", "both"], default="both"
-    )
 
     decks = subparsers.add_parser("scrape-decks")
     decks.add_argument("--format", dest="formats", action="append", required=True)
     decks.add_argument("--archetype", dest="archetypes", action="append")
     decks.add_argument("--days", type=int)
-    decks.add_argument("--source-filter", choices=["mtggoldfish", "mtgo", "both"], default="both")
 
     radars = subparsers.add_parser("scrape-radars")
     radars.add_argument("--format", dest="formats", action="append", required=True)
@@ -1701,8 +1336,6 @@ def main(argv: list[str] | None = None) -> int:
                 format_name=format_name,
                 archetype_filters=args.archetypes,
                 days=args.days,
-                source_filter=None if args.source_filter == "both" else args.source_filter,
-                deck_download_delay_seconds=args.deck_download_delay_seconds,
             )
     elif args.command == "scrape-decks":
         for format_name in args.formats:
@@ -1714,7 +1347,6 @@ def main(argv: list[str] | None = None) -> int:
                 format_name=format_name,
                 archetype_filters=args.archetypes,
                 days=args.days,
-                source_filter=None if args.source_filter == "both" else args.source_filter,
             )
     elif args.command == "scrape-radars":
         for format_name in args.formats:

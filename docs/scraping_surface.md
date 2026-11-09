@@ -7,10 +7,11 @@ publisher only needs a headless scrape surface.
 
 Keep these modules in the scrape/publish path:
 
-- `navigators/mtggoldfish.py`
-- `navigators/mtgo_decklists.py`
-- `repositories/metagame_repository.py`
+- `navigators/videre.py`
+- `navigators/videre_contract.py`
+- `publisher/`
 - `services/mtgo_background_service.py`
+- `services/radar_service.py`
 - `utils/metagame_stats.py`
 - `utils/deck_text_cache.py`
 - `utils/atomic_io.py`
@@ -33,9 +34,10 @@ Treat these areas as desktop-only and keep them out of supported scrape entrypoi
 
 Use the `scraping/` package for scrape-only workflows:
 
-- `scraping.mtggoldfish`
-- `scraping.mtgo`
-- `scraping.metagame`
+- `scraping.mtgo` (Videre API event index and event decklists)
+
+MTGGoldfish scraping (`scraping.mtggoldfish`, `scraping.metagame`) was removed
+when the feed became Videre-only.
 
 The `scraping` package is intentionally small and must remain importable without
 `wx`.

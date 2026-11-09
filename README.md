@@ -204,7 +204,9 @@ Contributions are welcome! Please:
   scheduled events plus a curated selection of league 5-0s), regardless of
   the API serving it
 - The Videre API is a community service with no SLA; MTGO publishing falls
-  back to the last published snapshots when it is unreachable
+  back to the last published snapshots when it is unreachable. The
+  `videre-contract` workflow checks its `/openapi.json` daily against the
+  fields `navigators/videre.py` reads (`python scripts/check_videre_contract.py`)
 
 ## Troubleshooting
 

@@ -74,3 +74,13 @@ Optional environment variables:
 - `PUBLISH_RETENTION_DAYS` (default: `7`)
 - `PUBLISH_MTGO_EVENT_DELAY_SECONDS` (default: `0.5`)
 - `PUBLISH_DECK_DOWNLOAD_DELAY_SECONDS` (default: `0.5`)
+
+## Videre API contract
+
+`.github/workflows/videre-contract.yml` runs `scripts/check_videre_contract.py`
+daily (and on pull requests touching the Videre client). It fetches
+`https://api.videreproject.com/openapi.json` and fails if any field pinned in
+`navigators/videre_contract.py` disappears or changes type. It is deliberately
+not a dependency of `publish-data.yml`: an API change should alert, not stop the
+scheduled publish. `tests/test_videre_contract.py` checks the same pins offline
+against the response fixtures in `tests/fixtures/videre/`.

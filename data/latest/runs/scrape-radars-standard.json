@@ -1,14 +1,15 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-08T22:10:19Z",
+  "generated_at": "2026-11-09T06:38:46Z",
   "command": "scrape-radars-standard",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "hard-failure": 11,
-    "success": 51,
-    "skipped": 71
+    "stale-fallback": 49,
+    "skipped": 71,
+    "success": 2
   },
   "results": [
     {
@@ -21,17 +22,19 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "4c-control",
-      "path": "latest/radars/standard/4c-control.json"
+      "path": "latest/radars/standard/4c-control.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "4c-kona",
-      "path": "latest/radars/standard/4c-kona.json"
+      "path": "latest/radars/standard/4c-kona.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -59,10 +62,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "4c-reanimator",
-      "path": "latest/radars/standard/4c-reanimator.json"
+      "path": "latest/radars/standard/4c-reanimator.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -122,17 +126,19 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "azorius-control",
-      "path": "latest/radars/standard/azorius-control.json"
+      "path": "latest/radars/standard/azorius-control.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "azorius-enchantments",
-      "path": "latest/radars/standard/azorius-enchantments.json"
+      "path": "latest/radars/standard/azorius-enchantments.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -144,10 +150,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "azorius-momo",
-      "path": "latest/radars/standard/azorius-momo.json"
+      "path": "latest/radars/standard/azorius-momo.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -159,10 +166,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "azorius-tempo",
-      "path": "latest/radars/standard/azorius-tempo.json"
+      "path": "latest/radars/standard/azorius-tempo.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -174,10 +182,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "bant-airbending-combo",
-      "path": "latest/radars/standard/bant-airbending-combo.json"
+      "path": "latest/radars/standard/bant-airbending-combo.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -221,31 +230,35 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "boros-control",
-      "path": "latest/radars/standard/boros-control.json"
+      "path": "latest/radars/standard/boros-control.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "boros-dragons",
-      "path": "latest/radars/standard/boros-dragons.json"
+      "path": "latest/radars/standard/boros-dragons.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "boros-dwarves",
-      "path": "latest/radars/standard/boros-dwarves.json"
+      "path": "latest/radars/standard/boros-dwarves.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "boros-leyline-aggro",
-      "path": "latest/radars/standard/boros-leyline-aggro.json"
+      "path": "latest/radars/standard/boros-leyline-aggro.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -273,10 +286,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "boros-tokens",
-      "path": "latest/radars/standard/boros-tokens.json"
+      "path": "latest/radars/standard/boros-tokens.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -288,17 +302,19 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "dimir-control",
-      "path": "latest/radars/standard/dimir-control.json"
+      "path": "latest/radars/standard/dimir-control.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "dimir-excruciator",
-      "path": "latest/radars/standard/dimir-excruciator.json"
+      "path": "latest/radars/standard/dimir-excruciator.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -310,17 +326,19 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "dimir-midrange",
-      "path": "latest/radars/standard/dimir-midrange.json"
+      "path": "latest/radars/standard/dimir-midrange.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "dimir-reanimator",
-      "path": "latest/radars/standard/dimir-reanimator.json"
+      "path": "latest/radars/standard/dimir-reanimator.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -356,10 +374,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "esper-reanimator",
-      "path": "latest/radars/standard/esper-reanimator.json"
+      "path": "latest/radars/standard/esper-reanimator.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -395,10 +414,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "golgari-midrange",
-      "path": "latest/radars/standard/golgari-midrange.json"
+      "path": "latest/radars/standard/golgari-midrange.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -426,10 +446,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "grixis-reanimator",
-      "path": "latest/radars/standard/grixis-reanimator.json"
+      "path": "latest/radars/standard/grixis-reanimator.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -441,10 +462,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "gruul-delirium",
-      "path": "latest/radars/standard/gruul-delirium.json"
+      "path": "latest/radars/standard/gruul-delirium.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -456,10 +478,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "gruul-leyline-aggro",
-      "path": "latest/radars/standard/gruul-leyline-aggro.json"
+      "path": "latest/radars/standard/gruul-leyline-aggro.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -495,10 +518,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "izzet-equipments",
-      "path": "latest/radars/standard/izzet-equipments.json"
+      "path": "latest/radars/standard/izzet-equipments.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -526,17 +550,19 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "izzet-maestro",
-      "path": "latest/radars/standard/izzet-maestro.json"
+      "path": "latest/radars/standard/izzet-maestro.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "izzet-prowess",
-      "path": "latest/radars/standard/izzet-prowess.json"
+      "path": "latest/radars/standard/izzet-prowess.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -548,10 +574,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "izzet-spellementals",
-      "path": "latest/radars/standard/izzet-spellementals.json"
+      "path": "latest/radars/standard/izzet-spellementals.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -563,17 +590,19 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "jeskai-artifacts",
-      "path": "latest/radars/standard/jeskai-artifacts.json"
+      "path": "latest/radars/standard/jeskai-artifacts.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "jeskai-control",
-      "path": "latest/radars/standard/jeskai-control.json"
+      "path": "latest/radars/standard/jeskai-control.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -593,10 +622,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "jeskai-momo",
-      "path": "latest/radars/standard/jeskai-momo.json"
+      "path": "latest/radars/standard/jeskai-momo.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -616,17 +646,19 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "jund-sacrifice",
-      "path": "latest/radars/standard/jund-sacrifice.json"
+      "path": "latest/radars/standard/jund-sacrifice.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "lifegain",
-      "path": "latest/radars/standard/lifegain.json"
+      "path": "latest/radars/standard/lifegain.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -638,31 +670,35 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "mardu-cat-pact",
-      "path": "latest/radars/standard/mardu-cat-pact.json"
+      "path": "latest/radars/standard/mardu-cat-pact.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "mardu-control",
-      "path": "latest/radars/standard/mardu-control.json"
+      "path": "latest/radars/standard/mardu-control.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "mardu-discard",
-      "path": "latest/radars/standard/mardu-discard.json"
+      "path": "latest/radars/standard/mardu-discard.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "mono-black-aggro",
-      "path": "latest/radars/standard/mono-black-aggro.json"
+      "path": "latest/radars/standard/mono-black-aggro.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -690,24 +726,27 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "mono-green-landfall",
-      "path": "latest/radars/standard/mono-green-landfall.json"
+      "path": "latest/radars/standard/mono-green-landfall.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "mono-red-aggro",
-      "path": "latest/radars/standard/mono-red-aggro.json"
+      "path": "latest/radars/standard/mono-red-aggro.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "mono-red-burn",
-      "path": "latest/radars/standard/mono-red-burn.json"
+      "path": "latest/radars/standard/mono-red-burn.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -727,10 +766,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "mono-red-prowess",
-      "path": "latest/radars/standard/mono-red-prowess.json"
+      "path": "latest/radars/standard/mono-red-prowess.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -822,10 +862,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "rakdos-lizards",
-      "path": "latest/radars/standard/rakdos-lizards.json"
+      "path": "latest/radars/standard/rakdos-lizards.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -837,17 +878,19 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "rakdos-reanimator",
-      "path": "latest/radars/standard/rakdos-reanimator.json"
+      "path": "latest/radars/standard/rakdos-reanimator.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "selesnya-aggro",
-      "path": "latest/radars/standard/selesnya-aggro.json"
+      "path": "latest/radars/standard/selesnya-aggro.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -867,10 +910,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "selesnya-landfall",
-      "path": "latest/radars/standard/selesnya-landfall.json"
+      "path": "latest/radars/standard/selesnya-landfall.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -906,10 +950,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "simic-landfall",
-      "path": "latest/radars/standard/simic-landfall.json"
+      "path": "latest/radars/standard/simic-landfall.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -921,10 +966,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "sultai-control",
-      "path": "latest/radars/standard/sultai-control.json"
+      "path": "latest/radars/standard/sultai-control.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -944,17 +990,19 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "sultai-reanimator",
-      "path": "latest/radars/standard/sultai-reanimator.json"
+      "path": "latest/radars/standard/sultai-reanimator.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "temur-battlecrier-combo",
-      "path": "latest/radars/standard/temur-battlecrier-combo.json"
+      "path": "latest/radars/standard/temur-battlecrier-combo.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -966,10 +1014,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "temur-kona",
-      "path": "latest/radars/standard/temur-kona.json"
+      "path": "latest/radars/standard/temur-kona.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -989,10 +1038,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "temur-prowess",
-      "path": "latest/radars/standard/temur-prowess.json"
+      "path": "latest/radars/standard/temur-prowess.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",

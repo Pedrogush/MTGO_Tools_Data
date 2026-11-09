@@ -1,14 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-09T06:38:51Z",
+  "generated_at": "2026-11-09T22:26:08Z",
   "command": "scrape-radars-vintage",
-  "status": "success",
+  "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 24,
-    "stale-fallback": 12,
-    "success": 5
+    "skipped": 10,
+    "hard-failure": 10,
+    "success": 25
   },
   "results": [
     {
@@ -21,7 +21,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "abzan-initiative",
       "path": "latest/radars/vintage/abzan-initiative.json",
@@ -45,7 +45,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "beseech-storm",
       "path": "latest/radars/vintage/beseech-storm.json",
@@ -53,7 +53,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "blue-tempo",
       "path": "latest/radars/vintage/blue-tempo.json",
@@ -61,55 +61,49 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "vintage",
       "archetype": "blue-tinker",
-      "path": "latest/radars/vintage/blue-tinker.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/vintage/blue-tinker.json"
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "vintage",
       "archetype": "counter-vine",
-      "path": "latest/radars/vintage/counter-vine.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/vintage/counter-vine.json"
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "vintage",
       "archetype": "dimir-lurrus-control",
-      "path": "latest/radars/vintage/dimir-lurrus-control.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/vintage/dimir-lurrus-control.json"
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "vintage",
       "archetype": "dimir-psychic-frog",
-      "path": "latest/radars/vintage/dimir-psychic-frog.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/vintage/dimir-psychic-frog.json"
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "vintage",
       "archetype": "doomsday",
-      "path": "latest/radars/vintage/doomsday.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/vintage/doomsday.json"
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "vintage",
       "archetype": "dredge",
-      "path": "latest/radars/vintage/dredge.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/vintage/dredge.json"
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "eldrazi",
       "path": "latest/radars/vintage/eldrazi.json",
@@ -117,11 +111,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "vintage",
       "archetype": "esper-lurrus-control",
-      "path": "latest/radars/vintage/esper-lurrus-control.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/vintage/esper-lurrus-control.json"
     },
     {
       "scope": "archetype-radar",
@@ -133,7 +126,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "fastbond-lands",
       "path": "latest/radars/vintage/fastbond-lands.json",
@@ -141,7 +134,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "goblins",
       "path": "latest/radars/vintage/goblins.json",
@@ -149,15 +142,14 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "vintage",
       "archetype": "grixis-lurrus-control",
-      "path": "latest/radars/vintage/grixis-lurrus-control.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/vintage/grixis-lurrus-control.json"
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "hammer-time",
       "path": "latest/radars/vintage/hammer-time.json",
@@ -179,11 +171,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "success",
       "format": "vintage",
       "archetype": "lurrus-breach",
-      "path": "latest/radars/vintage/lurrus-breach.json",
-      "message": "No deck texts were available for radar generation."
+      "path": "latest/radars/vintage/lurrus-breach.json"
     },
     {
       "scope": "archetype-radar",
@@ -195,11 +186,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "vintage",
       "archetype": "lurrus-po",
-      "path": "latest/radars/vintage/lurrus-po.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/vintage/lurrus-po.json"
     },
     {
       "scope": "archetype-radar",
@@ -211,15 +201,14 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "vintage",
       "archetype": "mono-white-initiative",
-      "path": "latest/radars/vintage/mono-white-initiative.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/vintage/mono-white-initiative.json"
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "naya-initiative",
       "path": "latest/radars/vintage/naya-initiative.json",
@@ -242,7 +231,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "orzhov-initiative",
       "path": "latest/radars/vintage/orzhov-initiative.json",
@@ -250,11 +239,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "vintage",
       "archetype": "other-shops",
-      "path": "latest/radars/vintage/other-shops.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/vintage/other-shops.json"
     },
     {
       "scope": "archetype-radar",
@@ -265,15 +253,14 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "vintage",
       "archetype": "raker-shops",
-      "path": "latest/radars/vintage/raker-shops.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/vintage/raker-shops.json"
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "red-prison",
       "path": "latest/radars/vintage/red-prison.json",
@@ -289,19 +276,17 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "success",
       "format": "vintage",
       "archetype": "scam",
-      "path": "latest/radars/vintage/scam.json",
-      "message": "No deck texts were available for radar generation."
+      "path": "latest/radars/vintage/scam.json"
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "vintage",
       "archetype": "sphere-shops",
-      "path": "latest/radars/vintage/sphere-shops.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/vintage/sphere-shops.json"
     },
     {
       "scope": "archetype-radar",
@@ -313,11 +298,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "vintage",
       "archetype": "sultai-psychic-frog",
-      "path": "latest/radars/vintage/sultai-psychic-frog.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/vintage/sultai-psychic-frog.json"
     },
     {
       "scope": "archetype-radar",
@@ -326,6 +310,34 @@
       "archetype": "underworld-breach",
       "path": "latest/radars/vintage/underworld-breach.json",
       "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "vintage",
+      "archetype": "g",
+      "path": "latest/radars/vintage/g.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "vintage",
+      "archetype": "wg",
+      "path": "latest/radars/vintage/wg.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "vintage",
+      "archetype": "wu",
+      "path": "latest/radars/vintage/wu.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "vintage",
+      "archetype": "wug",
+      "path": "latest/radars/vintage/wug.json"
     },
     {
       "scope": "format-card-pool",

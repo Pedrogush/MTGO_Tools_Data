@@ -1,3 +1,5 @@
+import pytest
+
 from navigators.videre import (
     fetch_event_payload,
     normalize_card_name,
@@ -141,8 +143,6 @@ def test_get_retries_on_408_then_succeeds(monkeypatch):
 
 
 def test_get_raises_after_exhausted_retries(monkeypatch):
-    import pytest
-
     from navigators.videre import fetch_event_decks
 
     _no_sleep(monkeypatch)
@@ -153,8 +153,6 @@ def test_get_raises_after_exhausted_retries(monkeypatch):
 
 
 def test_get_does_not_retry_client_errors(monkeypatch):
-    import pytest
-
     from navigators.videre import fetch_event_decks
 
     _no_sleep(monkeypatch)
@@ -206,3 +204,19 @@ def test_league_payload_skips_standings_and_synthesizes_five_zero(monkeypatch):
 
     deck = payload["decks"][0]
     assert (deck["wins"], deck["losses"]) == ("5", "0")
+
+
+def test_parse_card_entry_jsonb_object():
+    assert parse_card_entry({"id": 126417, "name": "Psychic Frog", "quantity": 4}) == (
+        "Psychic Frog",
+        4,
+    )
+
+
+def test_parse_card_entry_jsonb_object_normalizes_split_cards():
+    assert parse_card_entry({"id": 12345, "name": "Wear/Tear", "quantity": 2}) == ("Wear // Tear", 2)
+
+
+def test_parse_card_entry_jsonb_object_missing_fields_raises():
+    with pytest.raises(ValueError):
+        parse_card_entry({"id": 1, "quantity": 2})

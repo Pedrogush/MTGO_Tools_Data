@@ -1,14 +1,15 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-09T22:26:08Z",
+  "generated_at": "2026-11-10T07:23:39Z",
   "command": "scrape-radars-standard",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "hard-failure": 33,
-    "success": 45,
-    "skipped": 62
+    "success": 44,
+    "skipped": 62,
+    "stale-fallback": 1
   },
   "results": [
     {
@@ -191,11 +192,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
       "archetype": "bant-ouroboroid",
-      "path": "latest/radars/standard/bant-ouroboroid.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/standard/bant-ouroboroid.json"
     },
     {
       "scope": "archetype-radar",
@@ -535,10 +535,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "izzet-maestro",
-      "path": "latest/radars/standard/izzet-maestro.json"
+      "path": "latest/radars/standard/izzet-maestro.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -871,10 +872,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "selesnya-kona",
-      "path": "latest/radars/standard/selesnya-kona.json"
+      "path": "latest/radars/standard/selesnya-kona.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

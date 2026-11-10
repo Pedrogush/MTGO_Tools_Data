@@ -1,14 +1,15 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-09T22:26:09Z",
+  "generated_at": "2026-11-10T07:23:41Z",
   "command": "scrape-radars-pauper",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 24,
-    "success": 47,
-    "hard-failure": 12
+    "success": 46,
+    "hard-failure": 11,
+    "stale-fallback": 2
   },
   "results": [
     {
@@ -126,10 +127,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "pauper",
       "archetype": "boros-synthesizer",
-      "path": "latest/radars/pauper/boros-synthesizer.json"
+      "path": "latest/radars/pauper/boros-synthesizer.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -185,10 +187,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "pauper",
       "archetype": "dredge",
-      "path": "latest/radars/pauper/dredge.json"
+      "path": "latest/radars/pauper/dredge.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -286,11 +289,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "hard-failure",
+      "status": "success",
       "format": "pauper",
       "archetype": "gruul-ponza",
-      "path": "latest/radars/pauper/gruul-ponza.json",
-      "message": "No deck texts were available for radar generation."
+      "path": "latest/radars/pauper/gruul-ponza.json"
     },
     {
       "scope": "archetype-radar",

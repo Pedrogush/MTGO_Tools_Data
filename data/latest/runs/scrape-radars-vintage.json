@@ -1,14 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-10T07:23:34Z",
+  "generated_at": "2026-11-10T19:47:16Z",
   "command": "scrape-radars-vintage",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 10,
-    "hard-failure": 10,
-    "success": 25
+    "hard-failure": 9,
+    "success": 26
   },
   "results": [
     {
@@ -103,11 +103,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "hard-failure",
+      "status": "success",
       "format": "vintage",
       "archetype": "eldrazi",
-      "path": "latest/radars/vintage/eldrazi.json",
-      "message": "No deck texts were available for radar generation."
+      "path": "latest/radars/vintage/eldrazi.json"
     },
     {
       "scope": "archetype-radar",

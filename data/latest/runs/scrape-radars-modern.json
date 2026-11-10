@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-10T07:23:40Z",
+  "generated_at": "2026-11-10T19:47:16Z",
   "command": "scrape-radars-modern",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "success": 82,
-    "skipped": 28,
+    "success": 84,
+    "skipped": 27,
     "hard-failure": 4
   },
   "results": [
@@ -117,11 +117,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "boros-burn",
-      "path": "latest/radars/modern/boros-burn.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/boros-burn.json"
     },
     {
       "scope": "archetype-radar",
@@ -784,6 +783,13 @@
       "format": "modern",
       "archetype": "ub",
       "path": "latest/radars/modern/ub.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "ubr",
+      "path": "latest/radars/modern/ubr.json"
     },
     {
       "scope": "archetype-radar",

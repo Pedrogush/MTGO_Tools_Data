@@ -1,15 +1,15 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-10T19:47:15Z",
+  "generated_at": "2026-11-11T06:29:32Z",
   "command": "scrape-radars-standard",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "hard-failure": 33,
-    "success": 44,
-    "skipped": 62,
-    "stale-fallback": 1
+    "hard-failure": 34,
+    "success": 40,
+    "skipped": 63,
+    "stale-fallback": 3
   },
   "results": [
     {
@@ -83,10 +83,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "5c-kona",
-      "path": "latest/radars/standard/5c-kona.json"
+      "path": "latest/radars/standard/5c-kona.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -432,10 +433,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "grixis-reanimator",
-      "path": "latest/radars/standard/grixis-reanimator.json"
+      "path": "latest/radars/standard/grixis-reanimator.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -535,7 +537,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "izzet-maestro",
       "path": "latest/radars/standard/izzet-maestro.json",
@@ -558,10 +560,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "izzet-spellementals",
-      "path": "latest/radars/standard/izzet-spellementals.json"
+      "path": "latest/radars/standard/izzet-spellementals.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -959,10 +962,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "sultai-reanimator",
-      "path": "latest/radars/standard/sultai-reanimator.json"
+      "path": "latest/radars/standard/sultai-reanimator.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",

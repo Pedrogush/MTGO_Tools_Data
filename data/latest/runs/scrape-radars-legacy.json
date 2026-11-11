@@ -1,14 +1,15 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-10T19:47:09Z",
+  "generated_at": "2026-11-11T06:29:27Z",
   "command": "scrape-radars-legacy",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 29,
-    "success": 65,
-    "hard-failure": 5
+    "skipped": 28,
+    "success": 66,
+    "hard-failure": 5,
+    "stale-fallback": 1
   },
   "results": [
     {
@@ -102,11 +103,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "blue-artifacts",
-      "path": "latest/radars/legacy/blue-artifacts.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/blue-artifacts.json"
     },
     {
       "scope": "archetype-radar",
@@ -141,18 +141,18 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "burn",
-      "path": "latest/radars/legacy/burn.json"
+      "path": "latest/radars/legacy/burn.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "cephalid-breakfast",
-      "path": "latest/radars/legacy/cephalid-breakfast.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/cephalid-breakfast.json"
     },
     {
       "scope": "archetype-radar",
@@ -373,11 +373,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "loam-pox",
-      "path": "latest/radars/legacy/loam-pox.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/loam-pox.json"
     },
     {
       "scope": "archetype-radar",
@@ -454,10 +453,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "legacy",
       "archetype": "nic-fit",
-      "path": "latest/radars/legacy/nic-fit.json"
+      "path": "latest/radars/legacy/nic-fit.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -571,10 +571,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "sultai-tempo",
-      "path": "latest/radars/legacy/sultai-tempo.json"
+      "path": "latest/radars/legacy/sultai-tempo.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -630,6 +631,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
+      "archetype": "bg",
+      "path": "latest/radars/legacy/bg.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
       "archetype": "coveted-jewel-combo",
       "path": "latest/radars/legacy/coveted-jewel-combo.json"
     },
@@ -639,13 +647,6 @@
       "format": "legacy",
       "archetype": "death-and-taxes-yorion-mono-azorius",
       "path": "latest/radars/legacy/death-and-taxes-yorion-mono-azorius.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "golgari",
-      "path": "latest/radars/legacy/golgari.json"
     },
     {
       "scope": "archetype-radar",
@@ -695,6 +696,13 @@
       "format": "legacy",
       "archetype": "ubr",
       "path": "latest/radars/legacy/ubr.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "ur",
+      "path": "latest/radars/legacy/ur.json"
     },
     {
       "scope": "archetype-radar",

@@ -1,22 +1,24 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-10T19:47:16Z",
+  "generated_at": "2026-11-11T06:29:31Z",
   "command": "scrape-radars-modern",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "success": 84,
-    "skipped": 27,
+    "stale-fallback": 1,
+    "success": 79,
+    "skipped": 28,
     "hard-failure": 4
   },
   "results": [
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "modern",
       "archetype": "4c-energy",
-      "path": "latest/radars/modern/4c-energy.json"
+      "path": "latest/radars/modern/4c-energy.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -271,10 +273,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "grixis-control",
-      "path": "latest/radars/modern/grixis-control.json"
+      "path": "latest/radars/modern/grixis-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -308,11 +311,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "hammer-time",
-      "path": "latest/radars/modern/hammer-time.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/hammer-time.json"
     },
     {
       "scope": "archetype-radar",
@@ -532,10 +534,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "orzhov-midrange",
-      "path": "latest/radars/modern/orzhov-midrange.json"
+      "path": "latest/radars/modern/orzhov-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -732,13 +735,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "mardu-blink",
-      "path": "latest/radars/modern/mardu-blink.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "mono-black-coffers",
       "path": "latest/radars/modern/mono-black-coffers.json"
     },
@@ -804,20 +800,6 @@
       "format": "modern",
       "archetype": "w",
       "path": "latest/radars/modern/w.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "wbg",
-      "path": "latest/radars/modern/wbg.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "wbrg",
-      "path": "latest/radars/modern/wbrg.json"
     },
     {
       "scope": "archetype-radar",

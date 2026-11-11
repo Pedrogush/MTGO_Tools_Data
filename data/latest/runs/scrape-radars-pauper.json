@@ -1,15 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-10T19:47:11Z",
+  "generated_at": "2026-11-11T06:29:29Z",
   "command": "scrape-radars-pauper",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 24,
-    "success": 47,
-    "hard-failure": 11,
-    "stale-fallback": 2
+    "skipped": 23,
+    "success": 48,
+    "hard-failure": 13
   },
   "results": [
     {
@@ -127,7 +126,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "pauper",
       "archetype": "boros-synthesizer",
       "path": "latest/radars/pauper/boros-synthesizer.json",
@@ -187,7 +186,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "pauper",
       "archetype": "dredge",
       "path": "latest/radars/pauper/dredge.json",
@@ -281,11 +280,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pauper",
       "archetype": "grixis-faeries",
-      "path": "latest/radars/pauper/grixis-faeries.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pauper/grixis-faeries.json"
     },
     {
       "scope": "archetype-radar",

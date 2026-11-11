@@ -1,14 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-11T06:29:32Z",
+  "generated_at": "2026-11-11T19:39:21Z",
   "command": "scrape-radars-standard",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "hard-failure": 34,
-    "success": 40,
-    "skipped": 63,
+    "hard-failure": 33,
+    "success": 44,
+    "skipped": 62,
     "stale-fallback": 3
   },
   "results": [
@@ -278,11 +278,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "hard-failure",
+      "status": "success",
       "format": "standard",
       "archetype": "boros-tokens",
-      "path": "latest/radars/standard/boros-tokens.json",
-      "message": "No deck texts were available for radar generation."
+      "path": "latest/radars/standard/boros-tokens.json"
     },
     {
       "scope": "archetype-radar",
@@ -457,11 +456,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
       "archetype": "gruul-landfall",
-      "path": "latest/radars/standard/gruul-landfall.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/standard/gruul-landfall.json"
     },
     {
       "scope": "archetype-radar",
@@ -1040,6 +1038,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
+      "archetype": "azorius-artifacts",
+      "path": "latest/radars/standard/azorius-artifacts.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
       "archetype": "bg",
       "path": "latest/radars/standard/bg.json"
     },
@@ -1070,6 +1075,13 @@
       "format": "standard",
       "archetype": "ubg",
       "path": "latest/radars/standard/ubg.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "wr",
+      "path": "latest/radars/standard/wr.json"
     },
     {
       "scope": "archetype-radar",

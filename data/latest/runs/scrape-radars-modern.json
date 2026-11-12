@@ -1,20 +1,20 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-11T19:39:19Z",
+  "generated_at": "2026-11-12T07:16:46Z",
   "command": "scrape-radars-modern",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "stale-fallback": 1,
-    "success": 79,
-    "skipped": 28,
-    "hard-failure": 4
+    "hard-failure": 5,
+    "success": 85,
+    "skipped": 25,
+    "stale-fallback": 1
   },
   "results": [
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "modern",
       "archetype": "4c-energy",
       "path": "latest/radars/modern/4c-energy.json",
@@ -163,11 +163,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "devoted-combo",
-      "path": "latest/radars/modern/devoted-combo.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/devoted-combo.json"
     },
     {
       "scope": "archetype-radar",
@@ -185,11 +184,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "dimir-reanimator",
-      "path": "latest/radars/modern/dimir-reanimator.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/dimir-reanimator.json"
     },
     {
       "scope": "archetype-radar",
@@ -318,11 +316,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "hollow-one",
-      "path": "latest/radars/modern/hollow-one.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/hollow-one.json"
     },
     {
       "scope": "archetype-radar",
@@ -415,10 +412,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "modern",
       "archetype": "kethis-combo",
-      "path": "latest/radars/modern/kethis-combo.json"
+      "path": "latest/radars/modern/kethis-combo.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -707,6 +705,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
+      "archetype": "gruul-midrange",
+      "path": "latest/radars/modern/gruul-midrange.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
       "archetype": "hardened-scales",
       "path": "latest/radars/modern/hardened-scales.json"
     },
@@ -756,6 +761,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
+      "archetype": "r",
+      "path": "latest/radars/modern/r.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
       "archetype": "rakdos-delirium",
       "path": "latest/radars/modern/rakdos-delirium.json"
     },
@@ -800,6 +812,20 @@
       "format": "modern",
       "archetype": "w",
       "path": "latest/radars/modern/w.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "wbg",
+      "path": "latest/radars/modern/wbg.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "wbr",
+      "path": "latest/radars/modern/wbr.json"
     },
     {
       "scope": "archetype-radar",

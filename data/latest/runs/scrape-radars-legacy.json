@@ -1,15 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-11T19:39:21Z",
+  "generated_at": "2026-11-12T07:17:06Z",
   "command": "scrape-radars-legacy",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 28,
-    "success": 66,
-    "hard-failure": 5,
-    "stale-fallback": 1
+    "skipped": 27,
+    "success": 68,
+    "hard-failure": 6
   },
   "results": [
     {
@@ -156,11 +155,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "cradle-control",
-      "path": "latest/radars/legacy/cradle-control.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/cradle-control.json"
     },
     {
       "scope": "archetype-radar",
@@ -187,11 +185,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "death-and-taxes-yorion-mono-white",
-      "path": "latest/radars/legacy/death-and-taxes-yorion-mono-white.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/death-and-taxes-yorion-mono-white.json"
     },
     {
       "scope": "archetype-radar",
@@ -293,10 +290,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "helm-leyline-stompy",
-      "path": "latest/radars/legacy/helm-leyline-stompy.json"
+      "path": "latest/radars/legacy/helm-leyline-stompy.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -352,10 +350,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "jund",
-      "path": "latest/radars/legacy/jund.json"
+      "path": "latest/radars/legacy/jund.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -453,7 +452,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "legacy",
       "archetype": "nic-fit",
       "path": "latest/radars/legacy/nic-fit.json",
@@ -586,11 +585,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "the-epic-gamble",
-      "path": "latest/radars/legacy/the-epic-gamble.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/the-epic-gamble.json"
     },
     {
       "scope": "archetype-radar",
@@ -617,13 +615,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "b",
-      "path": "latest/radars/legacy/b.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
       "archetype": "bant-depths",
       "path": "latest/radars/legacy/bant-depths.json"
     },
@@ -638,6 +629,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
+      "archetype": "br",
+      "path": "latest/radars/legacy/br.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
       "archetype": "coveted-jewel-combo",
       "path": "latest/radars/legacy/coveted-jewel-combo.json"
     },
@@ -647,6 +645,20 @@
       "format": "legacy",
       "archetype": "death-and-taxes-yorion-mono-azorius",
       "path": "latest/radars/legacy/death-and-taxes-yorion-mono-azorius.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "esper-tempo",
+      "path": "latest/radars/legacy/esper-tempo.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "golgari",
+      "path": "latest/radars/legacy/golgari.json"
     },
     {
       "scope": "archetype-radar",
@@ -731,13 +743,6 @@
       "format": "legacy",
       "archetype": "wur",
       "path": "latest/radars/legacy/wur.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "wurg",
-      "path": "latest/radars/legacy/wurg.json"
     },
     {
       "scope": "format-card-pool",

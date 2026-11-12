@@ -1,15 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-12T07:16:46Z",
+  "generated_at": "2026-11-12T19:58:10Z",
   "command": "scrape-radars-modern",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "hard-failure": 5,
+    "hard-failure": 6,
     "success": 85,
-    "skipped": 25,
-    "stale-fallback": 1
+    "skipped": 25
   },
   "results": [
     {
@@ -412,7 +411,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "modern",
       "archetype": "kethis-combo",
       "path": "latest/radars/modern/kethis-combo.json",

@@ -1,12 +1,12 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-12T07:16:45Z",
+  "generated_at": "2026-11-12T19:58:11Z",
   "command": "scrape-radars-pauper",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 23,
+    "skipped": 24,
     "success": 49,
     "hard-failure": 13
   },
@@ -59,10 +59,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "azorius-faeries",
-      "path": "latest/radars/pauper/azorius-faeries.json"
+      "path": "latest/radars/pauper/azorius-faeries.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -597,6 +598,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pauper",
+      "archetype": "ubg",
+      "path": "latest/radars/pauper/ubg.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pauper",
       "archetype": "ubr",
       "path": "latest/radars/pauper/ubr.json"
     },
@@ -625,8 +633,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pauper",
-      "archetype": "wg",
-      "path": "latest/radars/pauper/wg.json"
+      "archetype": "wub",
+      "path": "latest/radars/pauper/wub.json"
     },
     {
       "scope": "archetype-radar",

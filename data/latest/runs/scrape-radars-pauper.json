@@ -1,14 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-13T06:50:17Z",
+  "generated_at": "2026-11-13T19:46:21Z",
   "command": "scrape-radars-pauper",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "success": 48,
+    "success": 49,
     "skipped": 24,
-    "hard-failure": 12,
+    "hard-failure": 11,
     "stale-fallback": 2
   },
   "results": [
@@ -348,11 +348,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "hard-failure",
+      "status": "success",
       "format": "pauper",
       "archetype": "jeskai-ephemerate",
-      "path": "latest/radars/pauper/jeskai-ephemerate.json",
-      "message": "No deck texts were available for radar generation."
+      "path": "latest/radars/pauper/jeskai-ephemerate.json"
     },
     {
       "scope": "archetype-radar",

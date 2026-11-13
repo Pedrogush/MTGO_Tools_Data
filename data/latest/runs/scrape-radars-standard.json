@@ -1,14 +1,15 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-12T19:58:14Z",
+  "generated_at": "2026-11-13T06:50:16Z",
   "command": "scrape-radars-standard",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "hard-failure": 34,
-    "success": 50,
-    "skipped": 59
+    "success": 46,
+    "skipped": 62,
+    "stale-fallback": 1
   },
   "results": [
     {
@@ -43,10 +44,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "4c-omniscience",
-      "path": "latest/radars/standard/4c-omniscience.json"
+      "path": "latest/radars/standard/4c-omniscience.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -334,10 +336,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "esper-control",
-      "path": "latest/radars/standard/esper-control.json"
+      "path": "latest/radars/standard/esper-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -575,10 +578,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "jeskai-control",
-      "path": "latest/radars/standard/jeskai-control.json"
+      "path": "latest/radars/standard/jeskai-control.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -837,10 +841,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "rakdos-midrange",
-      "path": "latest/radars/standard/rakdos-midrange.json"
+      "path": "latest/radars/standard/rakdos-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

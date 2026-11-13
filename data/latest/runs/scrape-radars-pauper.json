@@ -1,30 +1,31 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-12T19:58:11Z",
+  "generated_at": "2026-11-13T06:50:17Z",
   "command": "scrape-radars-pauper",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
+    "success": 48,
     "skipped": 24,
-    "success": 49,
-    "hard-failure": 13
+    "hard-failure": 12,
+    "stale-fallback": 2
   },
   "results": [
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pauper",
       "archetype": "4c-affinity",
-      "path": "latest/radars/pauper/4c-affinity.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pauper/4c-affinity.json"
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "4c-ephemerate",
-      "path": "latest/radars/pauper/4c-ephemerate.json"
+      "path": "latest/radars/pauper/4c-ephemerate.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -187,11 +188,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "hard-failure",
+      "status": "success",
       "format": "pauper",
       "archetype": "dredge",
-      "path": "latest/radars/pauper/dredge.json",
-      "message": "No deck texts were available for radar generation."
+      "path": "latest/radars/pauper/dredge.json"
     },
     {
       "scope": "archetype-radar",
@@ -523,10 +523,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "pauper",
       "archetype": "snacker-gates",
-      "path": "latest/radars/pauper/snacker-gates.json"
+      "path": "latest/radars/pauper/snacker-gates.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -575,10 +576,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "pauper",
       "archetype": "white-aggro",
-      "path": "latest/radars/pauper/white-aggro.json"
+      "path": "latest/radars/pauper/white-aggro.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",

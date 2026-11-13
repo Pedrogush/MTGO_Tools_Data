@@ -1,14 +1,15 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-12T19:58:10Z",
+  "generated_at": "2026-11-13T06:50:12Z",
   "command": "scrape-radars-modern",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "hard-failure": 6,
-    "success": 85,
-    "skipped": 25
+    "success": 84,
+    "skipped": 25,
+    "stale-fallback": 1
   },
   "results": [
     {
@@ -464,10 +465,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "modern",
       "archetype": "miracles",
-      "path": "latest/radars/modern/miracles.json"
+      "path": "latest/radars/modern/miracles.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",

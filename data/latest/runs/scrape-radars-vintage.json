@@ -1,14 +1,15 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-12T19:58:06Z",
+  "generated_at": "2026-11-13T06:50:16Z",
   "command": "scrape-radars-vintage",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 10,
     "hard-failure": 9,
-    "success": 25
+    "success": 25,
+    "stale-fallback": 1
   },
   "results": [
     {
@@ -275,10 +276,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "vintage",
       "archetype": "scam",
-      "path": "latest/radars/vintage/scam.json"
+      "path": "latest/radars/vintage/scam.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -309,6 +311,13 @@
       "archetype": "underworld-breach",
       "path": "latest/radars/vintage/underworld-breach.json",
       "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "vintage",
+      "archetype": "hogaak-vine",
+      "path": "latest/radars/vintage/hogaak-vine.json"
     },
     {
       "scope": "archetype-radar",

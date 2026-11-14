@@ -1,15 +1,15 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-13T19:46:33Z",
+  "generated_at": "2026-11-14T06:29:07Z",
   "command": "scrape-radars-legacy",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 29,
-    "success": 65,
-    "stale-fallback": 1,
-    "hard-failure": 6
+    "success": 64,
+    "hard-failure": 7,
+    "stale-fallback": 1
   },
   "results": [
     {
@@ -52,7 +52,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "legacy",
       "archetype": "azorius-stoneblade",
       "path": "latest/radars/legacy/azorius-stoneblade.json",
@@ -405,10 +405,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "legacy",
       "archetype": "mono-black-midrange",
-      "path": "latest/radars/legacy/mono-black-midrange.json"
+      "path": "latest/radars/legacy/mono-black-midrange.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",

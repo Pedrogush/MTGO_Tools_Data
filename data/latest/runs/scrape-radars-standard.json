@@ -1,14 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-13T19:46:27Z",
+  "generated_at": "2026-11-14T06:29:07Z",
   "command": "scrape-radars-standard",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "hard-failure": 34,
-    "success": 46,
-    "skipped": 62,
+    "success": 47,
+    "skipped": 61,
     "stale-fallback": 1
   },
   "results": [
@@ -518,11 +518,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
       "archetype": "izzet-leyline-aggro",
-      "path": "latest/radars/standard/izzet-leyline-aggro.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/standard/izzet-leyline-aggro.json"
     },
     {
       "scope": "archetype-radar",
@@ -555,11 +554,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "hard-failure",
+      "status": "success",
       "format": "standard",
       "archetype": "izzet-spellementals",
-      "path": "latest/radars/standard/izzet-spellementals.json",
-      "message": "No deck texts were available for radar generation."
+      "path": "latest/radars/standard/izzet-spellementals.json"
     },
     {
       "scope": "archetype-radar",
@@ -578,7 +576,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "jeskai-control",
       "path": "latest/radars/standard/jeskai-control.json",
@@ -709,10 +707,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "mono-red-aggro",
-      "path": "latest/radars/standard/mono-red-aggro.json"
+      "path": "latest/radars/standard/mono-red-aggro.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",

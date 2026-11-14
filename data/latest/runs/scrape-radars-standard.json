@@ -1,15 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-14T18:08:15Z",
+  "generated_at": "2026-11-14T22:29:02Z",
   "command": "scrape-radars-standard",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "hard-failure": 33,
-    "success": 48,
-    "skipped": 61,
-    "stale-fallback": 1
+    "success": 52,
+    "skipped": 61
   },
   "results": [
     {
@@ -707,7 +706,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "mono-red-aggro",
       "path": "latest/radars/standard/mono-red-aggro.json",
@@ -957,11 +956,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "hard-failure",
+      "status": "success",
       "format": "standard",
       "archetype": "sultai-reanimator",
-      "path": "latest/radars/standard/sultai-reanimator.json",
-      "message": "No deck texts were available for radar generation."
+      "path": "latest/radars/standard/sultai-reanimator.json"
     },
     {
       "scope": "archetype-radar",
@@ -1056,6 +1054,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
+      "archetype": "br",
+      "path": "latest/radars/standard/br.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
       "archetype": "brg",
       "path": "latest/radars/standard/brg.json"
     },
@@ -1084,6 +1089,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
+      "archetype": "ur",
+      "path": "latest/radars/standard/ur.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
       "archetype": "wr",
       "path": "latest/radars/standard/wr.json"
     },
@@ -1093,6 +1105,13 @@
       "format": "standard",
       "archetype": "wub",
       "path": "latest/radars/standard/wub.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "wubrg",
+      "path": "latest/radars/standard/wubrg.json"
     },
     {
       "scope": "archetype-radar",

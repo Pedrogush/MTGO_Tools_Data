@@ -1,15 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-14T18:08:20Z",
+  "generated_at": "2026-11-14T22:29:02Z",
   "command": "scrape-radars-legacy",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 27,
-    "success": 66,
-    "hard-failure": 7,
-    "stale-fallback": 1
+    "success": 67,
+    "hard-failure": 8
   },
   "results": [
     {
@@ -403,7 +402,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "legacy",
       "archetype": "mono-black-midrange",
       "path": "latest/radars/legacy/mono-black-midrange.json",
@@ -746,6 +745,13 @@
       "format": "legacy",
       "archetype": "wur",
       "path": "latest/radars/legacy/wur.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "wurg",
+      "path": "latest/radars/legacy/wurg.json"
     },
     {
       "scope": "format-card-pool",

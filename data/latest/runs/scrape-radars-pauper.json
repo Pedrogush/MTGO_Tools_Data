@@ -1,14 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-14T06:29:03Z",
+  "generated_at": "2026-11-14T18:08:20Z",
   "command": "scrape-radars-pauper",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "success": 48,
+    "success": 49,
     "skipped": 24,
-    "hard-failure": 12,
+    "hard-failure": 11,
     "stale-fallback": 1
   },
   "results": [
@@ -67,11 +67,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "hard-failure",
+      "status": "success",
       "format": "pauper",
       "archetype": "azorius-gates",
-      "path": "latest/radars/pauper/azorius-gates.json",
-      "message": "No deck texts were available for radar generation."
+      "path": "latest/radars/pauper/azorius-gates.json"
     },
     {
       "scope": "archetype-radar",

@@ -1,14 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-14T22:29:02Z",
+  "generated_at": "2026-11-15T06:38:11Z",
   "command": "scrape-radars-modern",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "hard-failure": 6,
-    "success": 88,
-    "skipped": 24
+    "success": 84,
+    "skipped": 26
   },
   "results": [
     {
@@ -28,11 +28,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "4c-midrange",
-      "path": "latest/radars/modern/4c-midrange.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/4c-midrange.json"
     },
     {
       "scope": "archetype-radar",
@@ -80,10 +79,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "azorius-energy",
-      "path": "latest/radars/modern/azorius-energy.json"
+      "path": "latest/radars/modern/azorius-energy.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -176,10 +176,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "dimir-murktide",
-      "path": "latest/radars/modern/dimir-murktide.json"
+      "path": "latest/radars/modern/dimir-murktide.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -624,10 +625,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "titan-shift",
-      "path": "latest/radars/modern/titan-shift.json"
+      "path": "latest/radars/modern/titan-shift.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -696,8 +698,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "esper-murktide",
-      "path": "latest/radars/modern/esper-murktide.json"
+      "archetype": "g",
+      "path": "latest/radars/modern/g.json"
     },
     {
       "scope": "archetype-radar",
@@ -712,13 +714,6 @@
       "format": "modern",
       "archetype": "hardened-scales",
       "path": "latest/radars/modern/hardened-scales.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "izzet-control",
-      "path": "latest/radars/modern/izzet-control.json"
     },
     {
       "scope": "archetype-radar",
@@ -745,13 +740,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "mono-white-control",
-      "path": "latest/radars/modern/mono-white-control.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "orzhov-blink",
       "path": "latest/radars/modern/orzhov-blink.json"
     },
@@ -761,13 +749,6 @@
       "format": "modern",
       "archetype": "r",
       "path": "latest/radars/modern/r.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "rakdos-delirium",
-      "path": "latest/radars/modern/rakdos-delirium.json"
     },
     {
       "scope": "archetype-radar",
@@ -803,6 +784,13 @@
       "format": "modern",
       "archetype": "ubrg",
       "path": "latest/radars/modern/ubrg.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "ug",
+      "path": "latest/radars/modern/ug.json"
     },
     {
       "scope": "archetype-radar",

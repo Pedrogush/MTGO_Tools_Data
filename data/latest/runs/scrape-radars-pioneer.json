@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-14T22:29:05Z",
+  "generated_at": "2026-11-15T06:38:13Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 47,
-    "success": 41
+    "skipped": 46,
+    "success": 43
   },
   "results": [
     {
@@ -251,11 +251,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "hidden-strings",
-      "path": "latest/radars/pioneer/hidden-strings.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pioneer/hidden-strings.json"
     },
     {
       "scope": "archetype-radar",
@@ -295,11 +294,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "izzet-prowess",
-      "path": "latest/radars/pioneer/izzet-prowess.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pioneer/izzet-prowess.json"
     },
     {
       "scope": "archetype-radar",
@@ -357,10 +355,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "mono-black-midrange",
-      "path": "latest/radars/pioneer/mono-black-midrange.json"
+      "path": "latest/radars/pioneer/mono-black-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -628,6 +627,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pioneer",
+      "archetype": "rg",
+      "path": "latest/radars/pioneer/rg.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
       "archetype": "temur-prowess",
       "path": "latest/radars/pioneer/temur-prowess.json"
     },
@@ -656,15 +662,15 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pioneer",
-      "archetype": "wu",
-      "path": "latest/radars/pioneer/wu.json"
+      "archetype": "wr",
+      "path": "latest/radars/pioneer/wr.json"
     },
     {
       "scope": "archetype-radar",
       "status": "success",
       "format": "pioneer",
-      "archetype": "wug",
-      "path": "latest/radars/pioneer/wug.json"
+      "archetype": "wu",
+      "path": "latest/radars/pioneer/wu.json"
     },
     {
       "scope": "format-card-pool",

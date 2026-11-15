@@ -1,14 +1,15 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-14T22:29:02Z",
+  "generated_at": "2026-11-15T06:38:13Z",
   "command": "scrape-radars-standard",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "hard-failure": 33,
-    "success": 52,
-    "skipped": 61
+    "success": 50,
+    "skipped": 62,
+    "stale-fallback": 1
   },
   "results": [
     {
@@ -722,10 +723,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "mono-red-dragons",
-      "path": "latest/radars/standard/mono-red-dragons.json"
+      "path": "latest/radars/standard/mono-red-dragons.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -832,10 +834,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "rakdos-lizards",
-      "path": "latest/radars/standard/rakdos-lizards.json"
+      "path": "latest/radars/standard/rakdos-lizards.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",

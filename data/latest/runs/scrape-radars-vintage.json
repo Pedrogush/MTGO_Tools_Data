@@ -1,14 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-14T22:28:55Z",
+  "generated_at": "2026-11-15T06:38:16Z",
   "command": "scrape-radars-vintage",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 9,
-    "hard-failure": 10,
-    "success": 26
+    "hard-failure": 9,
+    "success": 28
   },
   "results": [
     {
@@ -125,11 +125,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "hard-failure",
+      "status": "success",
       "format": "vintage",
       "archetype": "fastbond-lands",
-      "path": "latest/radars/vintage/fastbond-lands.json",
-      "message": "No deck texts were available for radar generation."
+      "path": "latest/radars/vintage/fastbond-lands.json"
     },
     {
       "scope": "archetype-radar",
@@ -297,18 +296,25 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "sultai-psychic-frog",
-      "path": "latest/radars/vintage/sultai-psychic-frog.json"
+      "path": "latest/radars/vintage/sultai-psychic-frog.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "vintage",
       "archetype": "underworld-breach",
-      "path": "latest/radars/vintage/underworld-breach.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/vintage/underworld-breach.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "vintage",
+      "archetype": "g",
+      "path": "latest/radars/vintage/g.json"
     },
     {
       "scope": "archetype-radar",

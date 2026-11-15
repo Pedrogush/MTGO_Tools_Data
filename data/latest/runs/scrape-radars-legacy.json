@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-14T22:29:02Z",
+  "generated_at": "2026-11-15T06:38:12Z",
   "command": "scrape-radars-legacy",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 27,
-    "success": 67,
+    "skipped": 29,
+    "success": 62,
     "hard-failure": 8
   },
   "results": [
@@ -267,10 +267,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "green-cloudpost",
-      "path": "latest/radars/legacy/green-cloudpost.json"
+      "path": "latest/radars/legacy/green-cloudpost.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -520,10 +521,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "saga-storm",
-      "path": "latest/radars/legacy/saga-storm.json"
+      "path": "latest/radars/legacy/saga-storm.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -645,13 +647,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "death-and-taxes-yorion-mono-azorius",
-      "path": "latest/radars/legacy/death-and-taxes-yorion-mono-azorius.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
       "archetype": "esper-tempo",
       "path": "latest/radars/legacy/esper-tempo.json"
     },
@@ -668,13 +663,6 @@
       "format": "legacy",
       "archetype": "hogaak-tempo",
       "path": "latest/radars/legacy/hogaak-tempo.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "izzet-artifacts",
-      "path": "latest/radars/legacy/izzet-artifacts.json"
     },
     {
       "scope": "archetype-radar",
@@ -703,13 +691,6 @@
       "format": "legacy",
       "archetype": "ubg",
       "path": "latest/radars/legacy/ubg.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "ubr",
-      "path": "latest/radars/legacy/ubr.json"
     },
     {
       "scope": "archetype-radar",

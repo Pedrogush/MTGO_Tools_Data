@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-15T18:54:24Z",
+  "generated_at": "2026-11-16T06:35:31Z",
   "command": "scrape-radars-legacy",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 27,
-    "success": 67,
+    "skipped": 25,
+    "success": 68,
     "hard-failure": 7
   },
   "results": [
@@ -299,11 +299,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "high-tide",
-      "path": "latest/radars/legacy/high-tide.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/high-tide.json"
     },
     {
       "scope": "archetype-radar",
@@ -548,11 +547,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "stiflenought",
-      "path": "latest/radars/legacy/stiflenought.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/stiflenought.json"
     },
     {
       "scope": "archetype-radar",
@@ -667,13 +665,6 @@
       "format": "legacy",
       "archetype": "mono-blue-tempo",
       "path": "latest/radars/legacy/mono-blue-tempo.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "r",
-      "path": "latest/radars/legacy/r.json"
     },
     {
       "scope": "archetype-radar",

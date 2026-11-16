@@ -1,14 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-15T18:54:20Z",
+  "generated_at": "2026-11-16T06:35:27Z",
   "command": "scrape-radars-vintage",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 8,
-    "hard-failure": 9,
-    "success": 29
+    "hard-failure": 8,
+    "success": 30
   },
   "results": [
     {
@@ -140,10 +140,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "grixis-lurrus-control",
-      "path": "latest/radars/vintage/grixis-lurrus-control.json"
+      "path": "latest/radars/vintage/grixis-lurrus-control.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -220,11 +221,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "vintage",
       "archetype": "oops-all-spells",
-      "path": "latest/radars/vintage/oops-all-spells.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/vintage/oops-all-spells.json"
     },
     {
       "scope": "archetype-radar",
@@ -273,11 +273,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "hard-failure",
+      "status": "success",
       "format": "vintage",
       "archetype": "scam",
-      "path": "latest/radars/vintage/scam.json",
-      "message": "No deck texts were available for radar generation."
+      "path": "latest/radars/vintage/scam.json"
     },
     {
       "scope": "archetype-radar",
@@ -326,8 +325,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "vintage",
-      "archetype": "wg",
-      "path": "latest/radars/vintage/wg.json"
+      "archetype": "urg",
+      "path": "latest/radars/vintage/urg.json"
     },
     {
       "scope": "archetype-radar",

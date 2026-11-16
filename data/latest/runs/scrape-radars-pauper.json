@@ -1,15 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-16T06:35:31Z",
+  "generated_at": "2026-11-16T22:08:27Z",
   "command": "scrape-radars-pauper",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "success": 46,
+    "success": 47,
     "skipped": 26,
-    "hard-failure": 12,
-    "stale-fallback": 1
+    "hard-failure": 12
   },
   "results": [
     {
@@ -486,11 +485,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "success",
       "format": "pauper",
       "archetype": "rakdos-madness",
-      "path": "latest/radars/pauper/rakdos-madness.json",
-      "message": "No deck texts were available for radar generation."
+      "path": "latest/radars/pauper/rakdos-madness.json"
     },
     {
       "scope": "archetype-radar",

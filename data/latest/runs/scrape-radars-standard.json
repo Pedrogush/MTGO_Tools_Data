@@ -1,14 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-16T22:08:28Z",
+  "generated_at": "2026-11-17T07:59:49Z",
   "command": "scrape-radars-standard",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "hard-failure": 34,
-    "success": 48,
-    "skipped": 64
+    "hard-failure": 33,
+    "success": 47,
+    "skipped": 65
   },
   "results": [
     {
@@ -191,10 +191,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "bant-ouroboroid",
-      "path": "latest/radars/standard/bant-ouroboroid.json"
+      "path": "latest/radars/standard/bant-ouroboroid.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -707,11 +708,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "hard-failure",
+      "status": "success",
       "format": "standard",
       "archetype": "mono-red-aggro",
-      "path": "latest/radars/standard/mono-red-aggro.json",
-      "message": "No deck texts were available for radar generation."
+      "path": "latest/radars/standard/mono-red-aggro.json"
     },
     {
       "scope": "archetype-radar",
@@ -1025,13 +1025,6 @@
       "archetype": "temur-stormsplitter",
       "path": "latest/radars/standard/temur-stormsplitter.json",
       "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
-      "archetype": "4c-elementals",
-      "path": "latest/radars/standard/4c-elementals.json"
     },
     {
       "scope": "archetype-radar",

@@ -1,14 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-16T22:08:51Z",
+  "generated_at": "2026-11-17T08:00:00Z",
   "command": "scrape-radars-modern",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "hard-failure": 6,
-    "success": 84,
-    "skipped": 25
+    "success": 82,
+    "skipped": 27
   },
   "results": [
     {
@@ -118,10 +118,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "boros-burn",
-      "path": "latest/radars/modern/boros-burn.json"
+      "path": "latest/radars/modern/boros-burn.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -546,10 +547,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "rakdos-hollowone",
-      "path": "latest/radars/modern/rakdos-hollowone.json"
+      "path": "latest/radars/modern/rakdos-hollowone.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -683,8 +685,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "esper-control",
-      "path": "latest/radars/modern/esper-control.json"
+      "archetype": "esper-murktide",
+      "path": "latest/radars/modern/esper-murktide.json"
     },
     {
       "scope": "archetype-radar",

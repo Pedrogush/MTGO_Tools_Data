@@ -1,14 +1,15 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-16T22:08:27Z",
+  "generated_at": "2026-11-17T07:59:44Z",
   "command": "scrape-radars-pauper",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "success": 47,
-    "skipped": 26,
-    "hard-failure": 12
+    "success": 46,
+    "skipped": 27,
+    "hard-failure": 11,
+    "stale-fallback": 1
   },
   "results": [
     {
@@ -36,10 +37,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "4c-synthesizer",
-      "path": "latest/radars/pauper/4c-synthesizer.json"
+      "path": "latest/radars/pauper/4c-synthesizer.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -214,10 +216,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "pauper",
       "archetype": "esper-ephemerate",
-      "path": "latest/radars/pauper/esper-ephemerate.json"
+      "path": "latest/radars/pauper/esper-ephemerate.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -575,11 +578,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "hard-failure",
+      "status": "success",
       "format": "pauper",
       "archetype": "white-aggro",
-      "path": "latest/radars/pauper/white-aggro.json",
-      "message": "No deck texts were available for radar generation."
+      "path": "latest/radars/pauper/white-aggro.json"
     },
     {
       "scope": "archetype-radar",

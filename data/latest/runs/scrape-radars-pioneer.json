@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-17T20:59:21Z",
+  "generated_at": "2026-11-18T07:33:49Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 49,
-    "success": 37
+    "skipped": 50,
+    "success": 36
   },
   "results": [
     {
@@ -105,10 +105,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "azorius-flash",
-      "path": "latest/radars/pioneer/azorius-flash.json"
+      "path": "latest/radars/pioneer/azorius-flash.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -418,10 +419,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "orzhov-greasefang",
-      "path": "latest/radars/pioneer/orzhov-greasefang.json"
+      "path": "latest/radars/pioneer/orzhov-greasefang.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -456,11 +458,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "rakdos-midrange",
-      "path": "latest/radars/pioneer/rakdos-midrange.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pioneer/rakdos-midrange.json"
     },
     {
       "scope": "archetype-radar",

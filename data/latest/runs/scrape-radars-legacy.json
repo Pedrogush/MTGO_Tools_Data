@@ -1,14 +1,15 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-17T20:59:11Z",
+  "generated_at": "2026-11-18T07:33:48Z",
   "command": "scrape-radars-legacy",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 25,
-    "success": 67,
-    "hard-failure": 7
+    "skipped": 28,
+    "success": 62,
+    "hard-failure": 7,
+    "stale-fallback": 1
   },
   "results": [
     {
@@ -96,17 +97,19 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "legacy",
       "archetype": "beseech-storm",
-      "path": "latest/radars/legacy/beseech-storm.json"
+      "path": "latest/radars/legacy/beseech-storm.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "blue-artifacts",
-      "path": "latest/radars/legacy/blue-artifacts.json"
+      "path": "latest/radars/legacy/blue-artifacts.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -372,10 +375,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "loam-pox",
-      "path": "latest/radars/legacy/loam-pox.json"
+      "path": "latest/radars/legacy/loam-pox.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -577,10 +581,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "temur-delver",
-      "path": "latest/radars/legacy/temur-delver.json"
+      "path": "latest/radars/legacy/temur-delver.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -672,13 +677,6 @@
       "format": "legacy",
       "archetype": "ubg",
       "path": "latest/radars/legacy/ubg.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "ur",
-      "path": "latest/radars/legacy/ur.json"
     },
     {
       "scope": "archetype-radar",

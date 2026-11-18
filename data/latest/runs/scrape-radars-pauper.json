@@ -1,15 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-17T20:59:07Z",
+  "generated_at": "2026-11-18T07:33:46Z",
   "command": "scrape-radars-pauper",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "success": 47,
+    "success": 46,
     "skipped": 26,
-    "hard-failure": 11,
-    "stale-fallback": 1
+    "hard-failure": 12
   },
   "results": [
     {
@@ -215,7 +214,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "pauper",
       "archetype": "esper-ephemerate",
       "path": "latest/radars/pauper/esper-ephemerate.json",
@@ -588,13 +587,6 @@
       "format": "pauper",
       "archetype": "ubg",
       "path": "latest/radars/pauper/ubg.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pauper",
-      "archetype": "ubr",
-      "path": "latest/radars/pauper/ubr.json"
     },
     {
       "scope": "archetype-radar",

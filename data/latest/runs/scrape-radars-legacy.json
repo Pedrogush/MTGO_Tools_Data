@@ -1,15 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-18T20:36:14Z",
+  "generated_at": "2026-11-19T07:30:46Z",
   "command": "scrape-radars-legacy",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 28,
-    "success": 62,
-    "hard-failure": 7,
-    "stale-fallback": 1
+    "success": 59,
+    "hard-failure": 8
   },
   "results": [
     {
@@ -97,7 +96,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "legacy",
       "archetype": "beseech-storm",
       "path": "latest/radars/legacy/beseech-storm.json",
@@ -612,13 +611,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "4c-loam",
-      "path": "latest/radars/legacy/4c-loam.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
       "archetype": "bg",
       "path": "latest/radars/legacy/bg.json"
     },
@@ -628,13 +620,6 @@
       "format": "legacy",
       "archetype": "br",
       "path": "latest/radars/legacy/br.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "esper-tempo",
-      "path": "latest/radars/legacy/esper-tempo.json"
     },
     {
       "scope": "archetype-radar",
@@ -698,13 +683,6 @@
       "format": "legacy",
       "archetype": "wu",
       "path": "latest/radars/legacy/wu.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "wub",
-      "path": "latest/radars/legacy/wub.json"
     },
     {
       "scope": "archetype-radar",

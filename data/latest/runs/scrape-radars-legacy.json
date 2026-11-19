@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-19T07:30:46Z",
+  "generated_at": "2026-11-19T20:41:31Z",
   "command": "scrape-radars-legacy",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 28,
-    "success": 59,
+    "skipped": 27,
+    "success": 60,
     "hard-failure": 8
   },
   "results": [
@@ -374,11 +374,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "loam-pox",
-      "path": "latest/radars/legacy/loam-pox.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/loam-pox.json"
     },
     {
       "scope": "archetype-radar",

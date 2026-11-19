@@ -1,15 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-19T07:30:49Z",
+  "generated_at": "2026-11-19T20:41:30Z",
   "command": "scrape-radars-standard",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "hard-failure": 33,
-    "success": 40,
-    "skipped": 67,
-    "stale-fallback": 1
+    "success": 43,
+    "skipped": 67
   },
   "results": [
     {
@@ -277,7 +276,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "boros-tokens",
       "path": "latest/radars/standard/boros-tokens.json",
@@ -550,11 +549,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "hard-failure",
+      "status": "success",
       "format": "standard",
       "archetype": "izzet-self-bounce",
-      "path": "latest/radars/standard/izzet-self-bounce.json",
-      "message": "No deck texts were available for radar generation."
+      "path": "latest/radars/standard/izzet-self-bounce.json"
     },
     {
       "scope": "archetype-radar",
@@ -1064,6 +1062,20 @@
       "format": "standard",
       "archetype": "ub",
       "path": "latest/radars/standard/ub.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "ubg",
+      "path": "latest/radars/standard/ubg.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "ubrg",
+      "path": "latest/radars/standard/ubrg.json"
     },
     {
       "scope": "archetype-radar",

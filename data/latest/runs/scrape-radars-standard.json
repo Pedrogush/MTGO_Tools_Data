@@ -1,14 +1,15 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-19T20:41:30Z",
+  "generated_at": "2026-11-20T07:21:21Z",
   "command": "scrape-radars-standard",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "hard-failure": 33,
-    "success": 43,
-    "skipped": 67
+    "success": 40,
+    "skipped": 68,
+    "stale-fallback": 1
   },
   "results": [
     {
@@ -82,10 +83,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "5c-kona",
-      "path": "latest/radars/standard/5c-kona.json"
+      "path": "latest/radars/standard/5c-kona.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -664,10 +666,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "mardu-discard",
-      "path": "latest/radars/standard/mardu-discard.json"
+      "path": "latest/radars/standard/mardu-discard.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -1027,13 +1030,6 @@
       "archetype": "temur-stormsplitter",
       "path": "latest/radars/standard/temur-stormsplitter.json",
       "message": "No published decks were available for radar generation."
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
-      "archetype": "4c-manufacturing",
-      "path": "latest/radars/standard/4c-manufacturing.json"
     },
     {
       "scope": "archetype-radar",

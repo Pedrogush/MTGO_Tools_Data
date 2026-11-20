@@ -1,14 +1,15 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-19T20:41:30Z",
+  "generated_at": "2026-11-20T07:21:20Z",
   "command": "scrape-radars-pauper",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "success": 44,
     "skipped": 26,
-    "hard-failure": 13
+    "hard-failure": 12,
+    "stale-fallback": 1
   },
   "results": [
     {
@@ -133,11 +134,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "hard-failure",
+      "status": "success",
       "format": "pauper",
       "archetype": "burn",
-      "path": "latest/radars/pauper/burn.json",
-      "message": "No deck texts were available for radar generation."
+      "path": "latest/radars/pauper/burn.json"
     },
     {
       "scope": "archetype-radar",
@@ -288,10 +288,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "pauper",
       "archetype": "gruul-ponza",
-      "path": "latest/radars/pauper/gruul-ponza.json"
+      "path": "latest/radars/pauper/gruul-ponza.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -586,8 +587,15 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pauper",
-      "archetype": "ubg",
-      "path": "latest/radars/pauper/ubg.json"
+      "archetype": "mono-black-sacrifice",
+      "path": "latest/radars/pauper/mono-black-sacrifice.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pauper",
+      "archetype": "orzhov-aggro",
+      "path": "latest/radars/pauper/orzhov-aggro.json"
     },
     {
       "scope": "archetype-radar",
@@ -609,13 +617,6 @@
       "format": "pauper",
       "archetype": "w",
       "path": "latest/radars/pauper/w.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pauper",
-      "archetype": "wub",
-      "path": "latest/radars/pauper/wub.json"
     },
     {
       "scope": "archetype-radar",

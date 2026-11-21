@@ -1,14 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-20T20:25:50Z",
+  "generated_at": "2026-11-21T07:14:08Z",
   "command": "scrape-radars-vintage",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 8,
+    "skipped": 9,
     "hard-failure": 8,
-    "success": 29
+    "success": 28
   },
   "results": [
     {
@@ -177,10 +177,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "lurrus-drs",
-      "path": "latest/radars/vintage/lurrus-drs.json"
+      "path": "latest/radars/vintage/lurrus-drs.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

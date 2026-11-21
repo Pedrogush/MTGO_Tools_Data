@@ -1,15 +1,15 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-20T20:26:00Z",
+  "generated_at": "2026-11-21T07:14:10Z",
   "command": "scrape-radars-standard",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "hard-failure": 32,
+    "hard-failure": 33,
     "success": 41,
-    "skipped": 68,
-    "stale-fallback": 1
+    "stale-fallback": 2,
+    "skipped": 68
   },
   "results": [
     {
@@ -29,10 +29,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "4c-kona",
-      "path": "latest/radars/standard/4c-kona.json"
+      "path": "latest/radars/standard/4c-kona.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -537,10 +538,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "izzet-maestro",
-      "path": "latest/radars/standard/izzet-maestro.json"
+      "path": "latest/radars/standard/izzet-maestro.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -666,7 +668,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "mardu-discard",
       "path": "latest/radars/standard/mardu-discard.json",
@@ -1034,6 +1036,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
+      "archetype": "bg",
+      "path": "latest/radars/standard/bg.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
       "archetype": "br",
       "path": "latest/radars/standard/br.json"
     },
@@ -1043,6 +1052,13 @@
       "format": "standard",
       "archetype": "brg",
       "path": "latest/radars/standard/brg.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "mono-white-token-control",
+      "path": "latest/radars/standard/mono-white-token-control.json"
     },
     {
       "scope": "archetype-radar",

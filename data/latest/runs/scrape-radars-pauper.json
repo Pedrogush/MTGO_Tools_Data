@@ -1,14 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-20T20:25:51Z",
+  "generated_at": "2026-11-21T07:14:12Z",
   "command": "scrape-radars-pauper",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "success": 44,
-    "skipped": 26,
-    "hard-failure": 12,
+    "success": 45,
+    "skipped": 27,
+    "hard-failure": 10,
     "stale-fallback": 1
   },
   "results": [
@@ -60,10 +60,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "azorius-faeries",
-      "path": "latest/radars/pauper/azorius-faeries.json"
+      "path": "latest/radars/pauper/azorius-faeries.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -141,11 +142,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "hard-failure",
+      "status": "success",
       "format": "pauper",
       "archetype": "cycle-storm",
-      "path": "latest/radars/pauper/cycle-storm.json",
-      "message": "No deck texts were available for radar generation."
+      "path": "latest/radars/pauper/cycle-storm.json"
     },
     {
       "scope": "archetype-radar",
@@ -186,10 +186,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "pauper",
       "archetype": "dredge",
-      "path": "latest/radars/pauper/dredge.json"
+      "path": "latest/radars/pauper/dredge.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -288,7 +289,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "pauper",
       "archetype": "gruul-ponza",
       "path": "latest/radars/pauper/gruul-ponza.json",
@@ -296,11 +297,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "hard-failure",
+      "status": "success",
       "format": "pauper",
       "archetype": "gruul-ramp",
-      "path": "latest/radars/pauper/gruul-ramp.json",
-      "message": "No deck texts were available for radar generation."
+      "path": "latest/radars/pauper/gruul-ramp.json"
     },
     {
       "scope": "archetype-radar",
@@ -334,11 +334,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "hard-failure",
+      "status": "success",
       "format": "pauper",
       "archetype": "izzet-terror",
-      "path": "latest/radars/pauper/izzet-terror.json",
-      "message": "No deck texts were available for radar generation."
+      "path": "latest/radars/pauper/izzet-terror.json"
     },
     {
       "scope": "archetype-radar",

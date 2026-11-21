@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-21T07:14:14Z",
+  "generated_at": "2026-11-21T19:20:09Z",
   "command": "scrape-radars-modern",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "hard-failure": 5,
-    "success": 72,
+    "success": 74,
     "skipped": 37
   },
   "results": [
@@ -715,8 +715,22 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
+      "archetype": "izzet-control",
+      "path": "latest/radars/modern/izzet-control.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
       "archetype": "jund",
       "path": "latest/radars/modern/jund.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "jund-saga",
+      "path": "latest/radars/modern/jund-saga.json"
     },
     {
       "scope": "archetype-radar",

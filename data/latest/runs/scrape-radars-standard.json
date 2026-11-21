@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-21T07:14:10Z",
+  "generated_at": "2026-11-21T19:20:15Z",
   "command": "scrape-radars-standard",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "hard-failure": 33,
-    "success": 41,
+    "hard-failure": 32,
+    "success": 42,
     "stale-fallback": 2,
     "skipped": 68
   },
@@ -436,11 +436,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "hard-failure",
+      "status": "success",
       "format": "standard",
       "archetype": "grixis-reanimator",
-      "path": "latest/radars/standard/grixis-reanimator.json",
-      "message": "No deck texts were available for radar generation."
+      "path": "latest/radars/standard/grixis-reanimator.json"
     },
     {
       "scope": "archetype-radar",

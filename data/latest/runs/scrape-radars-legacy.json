@@ -1,15 +1,15 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-21T19:20:11Z",
+  "generated_at": "2026-11-22T06:54:48Z",
   "command": "scrape-radars-legacy",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 28,
-    "success": 59,
-    "hard-failure": 8,
-    "stale-fallback": 1
+    "skipped": 25,
+    "success": 60,
+    "hard-failure": 7,
+    "stale-fallback": 2
   },
   "results": [
     {
@@ -22,11 +22,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "ad-nauseam-tendrils",
-      "path": "latest/radars/legacy/ad-nauseam-tendrils.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/ad-nauseam-tendrils.json"
     },
     {
       "scope": "archetype-radar",
@@ -45,11 +44,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "azorius-control",
-      "path": "latest/radars/legacy/azorius-control.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/azorius-control.json"
     },
     {
       "scope": "archetype-radar",
@@ -98,19 +96,17 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "hard-failure",
+      "status": "success",
       "format": "legacy",
       "archetype": "beseech-storm",
-      "path": "latest/radars/legacy/beseech-storm.json",
-      "message": "No deck texts were available for radar generation."
+      "path": "latest/radars/legacy/beseech-storm.json"
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "blue-artifacts",
-      "path": "latest/radars/legacy/blue-artifacts.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/blue-artifacts.json"
     },
     {
       "scope": "archetype-radar",
@@ -189,10 +185,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "death-and-taxes-yorion-mono-white",
-      "path": "latest/radars/legacy/death-and-taxes-yorion-mono-white.json"
+      "path": "latest/radars/legacy/death-and-taxes-yorion-mono-white.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -346,10 +343,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "legacy",
       "archetype": "jeskai-tempo",
-      "path": "latest/radars/legacy/jeskai-tempo.json"
+      "path": "latest/radars/legacy/jeskai-tempo.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -405,10 +403,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "legacy",
       "archetype": "mono-black-midrange",
-      "path": "latest/radars/legacy/mono-black-midrange.json"
+      "path": "latest/radars/legacy/mono-black-midrange.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -442,11 +441,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "naya-initiative",
-      "path": "latest/radars/legacy/naya-initiative.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/naya-initiative.json"
     },
     {
       "scope": "archetype-radar",
@@ -516,11 +514,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "success",
       "format": "legacy",
       "archetype": "red-stompy",
-      "path": "latest/radars/legacy/red-stompy.json",
-      "message": "No deck texts were available for radar generation."
+      "path": "latest/radars/legacy/red-stompy.json"
     },
     {
       "scope": "archetype-radar",
@@ -634,6 +631,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
+      "archetype": "colorless",
+      "path": "latest/radars/legacy/colorless.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
       "archetype": "golgari",
       "path": "latest/radars/legacy/golgari.json"
     },
@@ -648,22 +652,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "u",
-      "path": "latest/radars/legacy/u.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
       "archetype": "ub",
       "path": "latest/radars/legacy/ub.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "ubg",
-      "path": "latest/radars/legacy/ubg.json"
     },
     {
       "scope": "archetype-radar",
@@ -678,13 +668,6 @@
       "format": "legacy",
       "archetype": "urg",
       "path": "latest/radars/legacy/urg.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "legacy",
-      "archetype": "w",
-      "path": "latest/radars/legacy/w.json"
     },
     {
       "scope": "archetype-radar",

@@ -1,14 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-21T19:20:05Z",
+  "generated_at": "2026-11-22T06:54:51Z",
   "command": "scrape-radars-vintage",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 9,
+    "skipped": 11,
     "hard-failure": 8,
-    "success": 29
+    "success": 27
   },
   "results": [
     {
@@ -237,10 +237,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "other-shops",
-      "path": "latest/radars/vintage/other-shops.json"
+      "path": "latest/radars/vintage/other-shops.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -303,17 +304,18 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "underworld-breach",
-      "path": "latest/radars/vintage/underworld-breach.json"
+      "path": "latest/radars/vintage/underworld-breach.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
       "status": "success",
       "format": "vintage",
-      "archetype": "g",
-      "path": "latest/radars/vintage/g.json"
+      "archetype": "u",
+      "path": "latest/radars/vintage/u.json"
     },
     {
       "scope": "archetype-radar",

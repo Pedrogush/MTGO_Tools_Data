@@ -1,14 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-21T19:20:09Z",
+  "generated_at": "2026-11-22T06:54:53Z",
   "command": "scrape-radars-modern",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "hard-failure": 5,
-    "success": 74,
-    "skipped": 37
+    "success": 73,
+    "skipped": 35
   },
   "results": [
     {
@@ -28,10 +28,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "4c-midrange",
-      "path": "latest/radars/modern/4c-midrange.json"
+      "path": "latest/radars/modern/4c-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -72,11 +73,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "azorius-control",
-      "path": "latest/radars/modern/azorius-control.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/azorius-control.json"
     },
     {
       "scope": "archetype-radar",
@@ -104,11 +104,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "bant-midrange",
-      "path": "latest/radars/modern/bant-midrange.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/bant-midrange.json"
     },
     {
       "scope": "archetype-radar",
@@ -119,11 +118,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "boros-burn",
-      "path": "latest/radars/modern/boros-burn.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/boros-burn.json"
     },
     {
       "scope": "archetype-radar",
@@ -462,10 +460,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "mill",
-      "path": "latest/radars/modern/mill.json"
+      "path": "latest/radars/modern/mill.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -514,11 +513,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "mono-red-burn",
-      "path": "latest/radars/modern/mono-red-burn.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/mono-red-burn.json"
     },
     {
       "scope": "archetype-radar",
@@ -701,13 +699,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "g",
-      "path": "latest/radars/modern/g.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "hardened-scales",
       "path": "latest/radars/modern/hardened-scales.json"
     },
@@ -806,13 +797,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "ubrg",
-      "path": "latest/radars/modern/ubrg.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "ug",
       "path": "latest/radars/modern/ug.json"
     },
@@ -836,13 +820,6 @@
       "format": "modern",
       "archetype": "wbrg",
       "path": "latest/radars/modern/wbrg.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "wg",
-      "path": "latest/radars/modern/wg.json"
     },
     {
       "scope": "archetype-radar",

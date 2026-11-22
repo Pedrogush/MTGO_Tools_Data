@@ -1,14 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-21T19:20:14Z",
+  "generated_at": "2026-11-22T06:54:43Z",
   "command": "scrape-radars-pauper",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "success": 48,
+    "success": 45,
     "skipped": 27,
-    "hard-failure": 10,
+    "hard-failure": 11,
     "stale-fallback": 1
   },
   "results": [
@@ -179,14 +179,15 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "dimir-terror",
-      "path": "latest/radars/pauper/dimir-terror.json"
+      "path": "latest/radars/pauper/dimir-terror.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "pauper",
       "archetype": "dredge",
       "path": "latest/radars/pauper/dredge.json",
@@ -201,10 +202,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "pauper",
       "archetype": "ephemerate-tron",
-      "path": "latest/radars/pauper/ephemerate-tron.json"
+      "path": "latest/radars/pauper/ephemerate-tron.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -479,11 +481,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pauper",
       "archetype": "poison-storm",
-      "path": "latest/radars/pauper/poison-storm.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pauper/poison-storm.json"
     },
     {
       "scope": "archetype-radar",
@@ -621,13 +622,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pauper",
-      "archetype": "urg",
-      "path": "latest/radars/pauper/urg.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pauper",
       "archetype": "w",
       "path": "latest/radars/pauper/w.json"
     },
@@ -637,13 +631,6 @@
       "format": "pauper",
       "archetype": "wu",
       "path": "latest/radars/pauper/wu.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "pauper",
-      "archetype": "wubr",
-      "path": "latest/radars/pauper/wubr.json"
     },
     {
       "scope": "format-card-pool",

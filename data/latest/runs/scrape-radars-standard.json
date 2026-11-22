@@ -1,15 +1,15 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-21T19:20:15Z",
+  "generated_at": "2026-11-22T06:54:53Z",
   "command": "scrape-radars-standard",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "hard-failure": 32,
-    "success": 42,
-    "stale-fallback": 2,
-    "skipped": 68
+    "hard-failure": 34,
+    "success": 40,
+    "skipped": 68,
+    "stale-fallback": 2
   },
   "results": [
     {
@@ -29,7 +29,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "4c-kona",
       "path": "latest/radars/standard/4c-kona.json",
@@ -537,7 +537,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "izzet-maestro",
       "path": "latest/radars/standard/izzet-maestro.json",
@@ -871,10 +871,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "selesnya-gearhulk",
-      "path": "latest/radars/standard/selesnya-gearhulk.json"
+      "path": "latest/radars/standard/selesnya-gearhulk.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -964,10 +965,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "sultai-reanimator",
-      "path": "latest/radars/standard/sultai-reanimator.json"
+      "path": "latest/radars/standard/sultai-reanimator.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -1030,6 +1032,13 @@
       "archetype": "temur-stormsplitter",
       "path": "latest/radars/standard/temur-stormsplitter.json",
       "message": "No published decks were available for radar generation."
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "4c-aggro",
+      "path": "latest/radars/standard/4c-aggro.json"
     },
     {
       "scope": "archetype-radar",
@@ -1100,13 +1109,6 @@
       "format": "standard",
       "archetype": "wr",
       "path": "latest/radars/standard/wr.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
-      "archetype": "wubrg",
-      "path": "latest/radars/standard/wubrg.json"
     },
     {
       "scope": "archetype-radar",

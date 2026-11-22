@@ -1,15 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-22T06:54:48Z",
+  "generated_at": "2026-11-22T19:45:05Z",
   "command": "scrape-radars-legacy",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 25,
-    "success": 60,
-    "hard-failure": 7,
-    "stale-fallback": 2
+    "skipped": 24,
+    "success": 62,
+    "hard-failure": 9
   },
   "results": [
     {
@@ -141,11 +140,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "burn",
-      "path": "latest/radars/legacy/burn.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/burn.json"
     },
     {
       "scope": "archetype-radar",
@@ -343,7 +341,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "legacy",
       "archetype": "jeskai-tempo",
       "path": "latest/radars/legacy/jeskai-tempo.json",
@@ -403,7 +401,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "legacy",
       "archetype": "mono-black-midrange",
       "path": "latest/radars/legacy/mono-black-midrange.json",
@@ -612,6 +610,13 @@
       "format": "legacy",
       "archetype": "b",
       "path": "latest/radars/legacy/b.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "bant-tempo",
+      "path": "latest/radars/legacy/bant-tempo.json"
     },
     {
       "scope": "archetype-radar",

@@ -1,15 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-22T06:54:53Z",
+  "generated_at": "2026-11-22T19:45:15Z",
   "command": "scrape-radars-standard",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "hard-failure": 34,
-    "success": 40,
-    "skipped": 68,
-    "stale-fallback": 2
+    "hard-failure": 36,
+    "success": 41,
+    "skipped": 68
   },
   "results": [
     {
@@ -871,7 +870,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "selesnya-gearhulk",
       "path": "latest/radars/standard/selesnya-gearhulk.json",
@@ -965,7 +964,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "sultai-reanimator",
       "path": "latest/radars/standard/sultai-reanimator.json",
@@ -1039,6 +1038,13 @@
       "format": "standard",
       "archetype": "4c-aggro",
       "path": "latest/radars/standard/4c-aggro.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "4c-sacrifice",
+      "path": "latest/radars/standard/4c-sacrifice.json"
     },
     {
       "scope": "archetype-radar",

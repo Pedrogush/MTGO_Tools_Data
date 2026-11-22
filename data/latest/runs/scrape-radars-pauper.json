@@ -1,15 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-22T06:54:43Z",
+  "generated_at": "2026-11-22T19:44:58Z",
   "command": "scrape-radars-pauper",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "success": 45,
-    "skipped": 27,
-    "hard-failure": 11,
-    "stale-fallback": 1
+    "success": 47,
+    "skipped": 25,
+    "hard-failure": 12
   },
   "results": [
     {
@@ -202,7 +201,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "pauper",
       "archetype": "ephemerate-tron",
       "path": "latest/radars/pauper/ephemerate-tron.json",
@@ -247,11 +246,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pauper",
       "archetype": "glintblade",
-      "path": "latest/radars/pauper/glintblade.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pauper/glintblade.json"
     },
     {
       "scope": "archetype-radar",
@@ -457,11 +455,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pauper",
       "archetype": "mono-white-heroic",
-      "path": "latest/radars/pauper/mono-white-heroic.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pauper/mono-white-heroic.json"
     },
     {
       "scope": "archetype-radar",

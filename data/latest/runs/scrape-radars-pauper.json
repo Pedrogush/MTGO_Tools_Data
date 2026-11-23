@@ -1,15 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-23T07:44:25Z",
+  "generated_at": "2026-11-23T23:57:25Z",
   "command": "scrape-radars-pauper",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "success": 45,
+    "success": 46,
     "skipped": 26,
-    "hard-failure": 12,
-    "stale-fallback": 1
+    "hard-failure": 13
   },
   "results": [
     {
@@ -91,7 +90,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "pauper",
       "archetype": "black-sacrifice",
       "path": "latest/radars/pauper/black-sacrifice.json",
@@ -631,6 +630,13 @@
       "format": "pauper",
       "archetype": "wu",
       "path": "latest/radars/pauper/wu.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pauper",
+      "archetype": "wub",
+      "path": "latest/radars/pauper/wub.json"
     },
     {
       "scope": "format-card-pool",

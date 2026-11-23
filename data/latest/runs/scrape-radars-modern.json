@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-23T07:44:29Z",
+  "generated_at": "2026-11-23T23:57:28Z",
   "command": "scrape-radars-modern",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "hard-failure": 5,
-    "success": 74,
+    "hard-failure": 4,
+    "success": 76,
     "skipped": 34
   },
   "results": [
@@ -414,11 +414,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "hard-failure",
+      "status": "success",
       "format": "modern",
       "archetype": "kethis-combo",
-      "path": "latest/radars/modern/kethis-combo.json",
-      "message": "No deck texts were available for radar generation."
+      "path": "latest/radars/modern/kethis-combo.json"
     },
     {
       "scope": "archetype-radar",
@@ -714,6 +713,13 @@
       "format": "modern",
       "archetype": "jund-saga",
       "path": "latest/radars/modern/jund-saga.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "kiki-chord",
+      "path": "latest/radars/modern/kiki-chord.json"
     },
     {
       "scope": "archetype-radar",

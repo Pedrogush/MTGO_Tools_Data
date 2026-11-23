@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-23T07:44:21Z",
+  "generated_at": "2026-11-23T23:57:28Z",
   "command": "scrape-radars-legacy",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 23,
-    "success": 64,
+    "success": 66,
     "hard-failure": 8
   },
   "results": [
@@ -613,6 +613,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
+      "archetype": "bant-depths",
+      "path": "latest/radars/legacy/bant-depths.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
       "archetype": "bant-tempo",
       "path": "latest/radars/legacy/bant-tempo.json"
     },
@@ -636,6 +643,13 @@
       "format": "legacy",
       "archetype": "colorless",
       "path": "latest/radars/legacy/colorless.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "legacy",
+      "archetype": "esper-tempo",
+      "path": "latest/radars/legacy/esper-tempo.json"
     },
     {
       "scope": "archetype-radar",

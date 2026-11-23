@@ -1,15 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-23T07:44:27Z",
+  "generated_at": "2026-11-23T23:57:23Z",
   "command": "scrape-radars-vintage",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 12,
-    "hard-failure": 8,
-    "success": 26,
-    "stale-fallback": 1
+    "hard-failure": 9,
+    "success": 26
   },
   "results": [
     {
@@ -104,7 +103,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "vintage",
       "archetype": "eldrazi",
       "path": "latest/radars/vintage/eldrazi.json",

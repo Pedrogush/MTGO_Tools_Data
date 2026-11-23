@@ -1,12 +1,12 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-22T19:45:02Z",
+  "generated_at": "2026-11-23T07:44:29Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 51,
+    "skipped": 52,
     "success": 33
   },
   "results": [
@@ -238,10 +238,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "gruul-prowess",
-      "path": "latest/radars/pioneer/gruul-prowess.json"
+      "path": "latest/radars/pioneer/gruul-prowess.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -253,10 +254,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "hidden-strings",
-      "path": "latest/radars/pioneer/hidden-strings.json"
+      "path": "latest/radars/pioneer/hidden-strings.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -474,11 +476,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "pioneer",
       "archetype": "rakdos-sacrifice",
-      "path": "latest/radars/pioneer/rakdos-sacrifice.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/pioneer/rakdos-sacrifice.json"
     },
     {
       "scope": "archetype-radar",
@@ -557,6 +558,13 @@
       "format": "pioneer",
       "archetype": "temur-lessons",
       "path": "latest/radars/pioneer/temur-lessons.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "pioneer",
+      "archetype": "4c-lessons",
+      "path": "latest/radars/pioneer/4c-lessons.json"
     },
     {
       "scope": "archetype-radar",

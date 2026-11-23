@@ -1,14 +1,15 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-22T19:44:58Z",
+  "generated_at": "2026-11-23T07:44:25Z",
   "command": "scrape-radars-pauper",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "success": 47,
-    "skipped": 25,
-    "hard-failure": 12
+    "success": 45,
+    "skipped": 26,
+    "hard-failure": 12,
+    "stale-fallback": 1
   },
   "results": [
     {
@@ -90,10 +91,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "pauper",
       "archetype": "black-sacrifice",
-      "path": "latest/radars/pauper/black-sacrifice.json"
+      "path": "latest/radars/pauper/black-sacrifice.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -448,10 +450,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "mono-white-aggro",
-      "path": "latest/radars/pauper/mono-white-aggro.json"
+      "path": "latest/radars/pauper/mono-white-aggro.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

@@ -1,14 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-22T19:45:05Z",
+  "generated_at": "2026-11-23T07:44:21Z",
   "command": "scrape-radars-legacy",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 24,
-    "success": 62,
-    "hard-failure": 9
+    "skipped": 23,
+    "success": 64,
+    "hard-failure": 8
   },
   "results": [
     {
@@ -28,11 +28,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "affinity-stompy",
-      "path": "latest/radars/legacy/affinity-stompy.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/affinity-stompy.json"
     },
     {
       "scope": "archetype-radar",
@@ -385,11 +384,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "legacy",
       "archetype": "maverick",
-      "path": "latest/radars/legacy/maverick.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/legacy/maverick.json"
     },
     {
       "scope": "archetype-radar",
@@ -401,11 +399,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "hard-failure",
+      "status": "success",
       "format": "legacy",
       "archetype": "mono-black-midrange",
-      "path": "latest/radars/legacy/mono-black-midrange.json",
-      "message": "No deck texts were available for radar generation."
+      "path": "latest/radars/legacy/mono-black-midrange.json"
     },
     {
       "scope": "archetype-radar",
@@ -585,10 +582,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "legacy",
       "archetype": "the-epic-gamble",
-      "path": "latest/radars/legacy/the-epic-gamble.json"
+      "path": "latest/radars/legacy/the-epic-gamble.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -678,8 +676,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "legacy",
-      "archetype": "wu",
-      "path": "latest/radars/legacy/wu.json"
+      "archetype": "wbrg",
+      "path": "latest/radars/legacy/wbrg.json"
     },
     {
       "scope": "archetype-radar",

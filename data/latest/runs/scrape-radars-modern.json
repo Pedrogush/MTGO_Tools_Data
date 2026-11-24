@@ -1,14 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-23T23:57:28Z",
+  "generated_at": "2026-11-24T09:58:42Z",
   "command": "scrape-radars-modern",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "hard-failure": 4,
-    "success": 76,
-    "skipped": 34
+    "success": 74,
+    "skipped": 33
   },
   "results": [
     {
@@ -176,10 +176,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "dimir-murktide",
-      "path": "latest/radars/modern/dimir-murktide.json"
+      "path": "latest/radars/modern/dimir-murktide.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -451,11 +452,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "merfolk",
-      "path": "latest/radars/modern/merfolk.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/merfolk.json"
     },
     {
       "scope": "archetype-radar",
@@ -579,11 +579,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "selesnya-midrange",
-      "path": "latest/radars/modern/selesnya-midrange.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/selesnya-midrange.json"
     },
     {
       "scope": "archetype-radar",
@@ -690,8 +689,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "esper-murktide",
-      "path": "latest/radars/modern/esper-murktide.json"
+      "archetype": "g",
+      "path": "latest/radars/modern/g.json"
     },
     {
       "scope": "archetype-radar",
@@ -760,13 +759,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "r",
-      "path": "latest/radars/modern/r.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "saheeli-combo",
       "path": "latest/radars/modern/saheeli-combo.json"
     },
@@ -788,13 +780,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "ubg",
-      "path": "latest/radars/modern/ubg.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "ug",
       "path": "latest/radars/modern/ug.json"
     },
@@ -811,13 +796,6 @@
       "format": "modern",
       "archetype": "w",
       "path": "latest/radars/modern/w.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "wbg",
-      "path": "latest/radars/modern/wbg.json"
     },
     {
       "scope": "archetype-radar",

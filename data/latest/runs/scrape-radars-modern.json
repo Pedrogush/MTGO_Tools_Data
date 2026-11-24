@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-24T09:58:42Z",
+  "generated_at": "2026-11-24T22:30:47Z",
   "command": "scrape-radars-modern",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "hard-failure": 4,
-    "success": 74,
+    "success": 75,
     "skipped": 33
   },
   "results": [
@@ -803,6 +803,13 @@
       "format": "modern",
       "archetype": "wbrg",
       "path": "latest/radars/modern/wbrg.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "wr",
+      "path": "latest/radars/modern/wr.json"
     },
     {
       "scope": "archetype-radar",

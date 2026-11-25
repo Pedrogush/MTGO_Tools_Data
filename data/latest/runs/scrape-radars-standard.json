@@ -1,14 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-25T08:40:56Z",
+  "generated_at": "2026-11-25T21:45:18Z",
   "command": "scrape-radars-standard",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "hard-failure": 31,
-    "success": 48,
-    "skipped": 66
+    "success": 50,
+    "skipped": 65
   },
   "results": [
     {
@@ -75,11 +75,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "standard",
       "archetype": "5c-elementals",
-      "path": "latest/radars/standard/5c-elementals.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/standard/5c-elementals.json"
     },
     {
       "scope": "archetype-radar",
@@ -1115,6 +1114,13 @@
       "format": "standard",
       "archetype": "wur",
       "path": "latest/radars/standard/wur.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "wurg",
+      "path": "latest/radars/standard/wurg.json"
     },
     {
       "scope": "format-card-pool",

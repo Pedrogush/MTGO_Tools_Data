@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-25T08:41:02Z",
+  "generated_at": "2026-11-25T21:45:24Z",
   "command": "scrape-radars-modern",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "hard-failure": 4,
-    "success": 76,
+    "success": 78,
     "skipped": 33
   },
   "results": [
@@ -766,6 +766,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
+      "archetype": "rg",
+      "path": "latest/radars/modern/rg.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
       "archetype": "saheeli-combo",
       "path": "latest/radars/modern/saheeli-combo.json"
     },
@@ -803,6 +810,13 @@
       "format": "modern",
       "archetype": "w",
       "path": "latest/radars/modern/w.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "wbg",
+      "path": "latest/radars/modern/wbg.json"
     },
     {
       "scope": "archetype-radar",

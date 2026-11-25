@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-24T22:30:32Z",
+  "generated_at": "2026-11-25T08:40:56Z",
   "command": "scrape-radars-standard",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "hard-failure": 32,
-    "success": 45,
+    "hard-failure": 31,
+    "success": 48,
     "skipped": 66
   },
   "results": [
@@ -934,11 +934,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "hard-failure",
+      "status": "success",
       "format": "standard",
       "archetype": "sultai-control",
-      "path": "latest/radars/standard/sultai-control.json",
-      "message": "No deck texts were available for radar generation."
+      "path": "latest/radars/standard/sultai-control.json"
     },
     {
       "scope": "archetype-radar",
@@ -1044,6 +1043,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
+      "archetype": "abzan-yuna",
+      "path": "latest/radars/standard/abzan-yuna.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
       "archetype": "bg",
       "path": "latest/radars/standard/bg.json"
     },
@@ -1088,6 +1094,13 @@
       "format": "standard",
       "archetype": "ur",
       "path": "latest/radars/standard/ur.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "wbr",
+      "path": "latest/radars/standard/wbr.json"
     },
     {
       "scope": "archetype-radar",

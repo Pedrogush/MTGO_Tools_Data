@@ -1,14 +1,15 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-24T22:30:30Z",
+  "generated_at": "2026-11-25T08:40:56Z",
   "command": "scrape-radars-vintage",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "skipped": 12,
     "hard-failure": 9,
-    "success": 26
+    "success": 25,
+    "stale-fallback": 1
   },
   "results": [
     {
@@ -126,10 +127,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "vintage",
       "archetype": "fastbond-lands",
-      "path": "latest/radars/vintage/fastbond-lands.json"
+      "path": "latest/radars/vintage/fastbond-lands.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",

@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-25T21:45:18Z",
+  "generated_at": "2026-11-26T08:25:13Z",
   "command": "scrape-radars-standard",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "hard-failure": 31,
-    "success": 50,
+    "success": 48,
     "skipped": 65
   },
   "results": [
@@ -1063,22 +1063,15 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
+      "archetype": "esper-graveyard",
+      "path": "latest/radars/standard/esper-graveyard.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
       "archetype": "mono-white-token-control",
       "path": "latest/radars/standard/mono-white-token-control.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
-      "archetype": "ub",
-      "path": "latest/radars/standard/ub.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
-      "archetype": "ubg",
-      "path": "latest/radars/standard/ubg.json"
     },
     {
       "scope": "archetype-radar",
@@ -1100,13 +1093,6 @@
       "format": "standard",
       "archetype": "wbr",
       "path": "latest/radars/standard/wbr.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
-      "archetype": "wr",
-      "path": "latest/radars/standard/wr.json"
     },
     {
       "scope": "archetype-radar",

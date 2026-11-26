@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-25T21:45:24Z",
+  "generated_at": "2026-11-26T08:25:10Z",
   "command": "scrape-radars-modern",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "hard-failure": 4,
-    "success": 78,
+    "success": 76,
     "skipped": 33
   },
   "results": [
@@ -28,11 +28,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "skipped",
+      "status": "success",
       "format": "modern",
       "archetype": "4c-midrange",
-      "path": "latest/radars/modern/4c-midrange.json",
-      "message": "No published decks were available for radar generation."
+      "path": "latest/radars/modern/4c-midrange.json"
     },
     {
       "scope": "archetype-radar",
@@ -249,10 +248,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "generic-ragavan",
-      "path": "latest/radars/modern/generic-ragavan.json"
+      "path": "latest/radars/modern/generic-ragavan.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -738,22 +738,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "mono-white-midrange",
-      "path": "latest/radars/modern/mono-white-midrange.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "mono-white-norinsisters",
       "path": "latest/radars/modern/mono-white-norinsisters.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "naya-burn",
-      "path": "latest/radars/modern/naya-burn.json"
     },
     {
       "scope": "archetype-radar",
@@ -829,15 +815,15 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "wr",
-      "path": "latest/radars/modern/wr.json"
+      "archetype": "wg",
+      "path": "latest/radars/modern/wg.json"
     },
     {
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "wrg",
-      "path": "latest/radars/modern/wrg.json"
+      "archetype": "wr",
+      "path": "latest/radars/modern/wr.json"
     },
     {
       "scope": "archetype-radar",

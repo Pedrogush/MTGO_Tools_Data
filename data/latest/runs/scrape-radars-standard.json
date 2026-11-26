@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-26T08:25:13Z",
+  "generated_at": "2026-11-26T21:37:34Z",
   "command": "scrape-radars-standard",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "hard-failure": 31,
-    "success": 48,
+    "hard-failure": 29,
+    "success": 53,
     "skipped": 65
   },
   "results": [
@@ -300,11 +300,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "hard-failure",
+      "status": "success",
       "format": "standard",
       "archetype": "dimir-excruciator",
-      "path": "latest/radars/standard/dimir-excruciator.json",
-      "message": "No deck texts were available for radar generation."
+      "path": "latest/radars/standard/dimir-excruciator.json"
     },
     {
       "scope": "archetype-radar",
@@ -956,11 +955,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "hard-failure",
+      "status": "success",
       "format": "standard",
       "archetype": "sultai-reanimator",
-      "path": "latest/radars/standard/sultai-reanimator.json",
-      "message": "No deck texts were available for radar generation."
+      "path": "latest/radars/standard/sultai-reanimator.json"
     },
     {
       "scope": "archetype-radar",
@@ -1070,6 +1068,20 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
+      "archetype": "grixis-control",
+      "path": "latest/radars/standard/grixis-control.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "jeskai-mission",
+      "path": "latest/radars/standard/jeskai-mission.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
       "archetype": "mono-white-token-control",
       "path": "latest/radars/standard/mono-white-token-control.json"
     },
@@ -1093,6 +1105,13 @@
       "format": "standard",
       "archetype": "wbr",
       "path": "latest/radars/standard/wbr.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "wbrg",
+      "path": "latest/radars/standard/wbrg.json"
     },
     {
       "scope": "archetype-radar",

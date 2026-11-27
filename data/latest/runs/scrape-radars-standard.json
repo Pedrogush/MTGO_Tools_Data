@@ -1,14 +1,15 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-26T21:37:34Z",
+  "generated_at": "2026-11-27T08:40:12Z",
   "command": "scrape-radars-standard",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "hard-failure": 29,
-    "success": 53,
-    "skipped": 65
+    "success": 49,
+    "skipped": 66,
+    "stale-fallback": 1
   },
   "results": [
     {
@@ -525,10 +526,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "standard",
       "archetype": "izzet-looting",
-      "path": "latest/radars/standard/izzet-looting.json"
+      "path": "latest/radars/standard/izzet-looting.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -546,10 +548,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "standard",
       "archetype": "izzet-self-bounce",
-      "path": "latest/radars/standard/izzet-self-bounce.json"
+      "path": "latest/radars/standard/izzet-self-bounce.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -1054,13 +1057,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
-      "archetype": "br",
-      "path": "latest/radars/standard/br.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
       "archetype": "esper-graveyard",
       "path": "latest/radars/standard/esper-graveyard.json"
     },
@@ -1084,13 +1080,6 @@
       "format": "standard",
       "archetype": "mono-white-token-control",
       "path": "latest/radars/standard/mono-white-token-control.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "standard",
-      "archetype": "ubrg",
-      "path": "latest/radars/standard/ubrg.json"
     },
     {
       "scope": "archetype-radar",

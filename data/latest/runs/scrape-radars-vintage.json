@@ -1,14 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-26T21:37:32Z",
+  "generated_at": "2026-11-27T08:40:08Z",
   "command": "scrape-radars-vintage",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 11,
+    "skipped": 13,
     "hard-failure": 10,
-    "success": 26
+    "success": 23
   },
   "results": [
     {
@@ -82,10 +82,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "dimir-psychic-frog",
-      "path": "latest/radars/vintage/dimir-psychic-frog.json"
+      "path": "latest/radars/vintage/dimir-psychic-frog.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -291,10 +292,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "vintage",
       "archetype": "stiflenought",
-      "path": "latest/radars/vintage/stiflenought.json"
+      "path": "latest/radars/vintage/stiflenought.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -325,13 +327,6 @@
       "format": "vintage",
       "archetype": "ubg",
       "path": "latest/radars/vintage/ubg.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "vintage",
-      "archetype": "wg",
-      "path": "latest/radars/vintage/wg.json"
     },
     {
       "scope": "archetype-radar",

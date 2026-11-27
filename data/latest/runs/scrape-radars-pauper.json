@@ -1,14 +1,15 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-26T21:37:38Z",
+  "generated_at": "2026-11-27T08:40:06Z",
   "command": "scrape-radars-pauper",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "success": 47,
+    "success": 46,
     "skipped": 27,
-    "hard-failure": 12
+    "hard-failure": 11,
+    "stale-fallback": 2
   },
   "results": [
     {
@@ -67,10 +68,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "pauper",
       "archetype": "azorius-gates",
-      "path": "latest/radars/pauper/azorius-gates.json"
+      "path": "latest/radars/pauper/azorius-gates.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -135,10 +137,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "pauper",
       "archetype": "burn",
-      "path": "latest/radars/pauper/burn.json"
+      "path": "latest/radars/pauper/burn.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -200,11 +203,10 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "hard-failure",
+      "status": "success",
       "format": "pauper",
       "archetype": "ephemerate-tron",
-      "path": "latest/radars/pauper/ephemerate-tron.json",
-      "message": "No deck texts were available for radar generation."
+      "path": "latest/radars/pauper/ephemerate-tron.json"
     },
     {
       "scope": "archetype-radar",
@@ -607,8 +609,8 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pauper",
-      "archetype": "orzhov-aggro",
-      "path": "latest/radars/pauper/orzhov-aggro.json"
+      "archetype": "ubr",
+      "path": "latest/radars/pauper/ubr.json"
     },
     {
       "scope": "archetype-radar",

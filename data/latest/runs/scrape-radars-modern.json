@@ -1,14 +1,15 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-27T21:21:28Z",
+  "generated_at": "2026-11-28T07:54:39Z",
   "command": "scrape-radars-modern",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
     "hard-failure": 4,
-    "success": 72,
-    "skipped": 33
+    "success": 67,
+    "skipped": 36,
+    "stale-fallback": 1
   },
   "results": [
     {
@@ -139,10 +140,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "boros-ponza",
-      "path": "latest/radars/modern/boros-ponza.json"
+      "path": "latest/radars/modern/boros-ponza.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -256,10 +258,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "stale-fallback",
       "format": "modern",
       "archetype": "golgari-basking-broodscale-combo",
-      "path": "latest/radars/modern/golgari-basking-broodscale-combo.json"
+      "path": "latest/radars/modern/golgari-basking-broodscale-combo.json",
+      "message": "No deck texts were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -278,10 +281,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "grixis-midrange",
-      "path": "latest/radars/modern/grixis-midrange.json"
+      "path": "latest/radars/modern/grixis-midrange.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -631,10 +635,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "modern",
       "archetype": "titan-shift",
-      "path": "latest/radars/modern/titan-shift.json"
+      "path": "latest/radars/modern/titan-shift.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -675,6 +680,13 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
+      "archetype": "cheeri0s",
+      "path": "latest/radars/modern/cheeri0s.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
       "archetype": "esper-murktide",
       "path": "latest/radars/modern/esper-murktide.json"
     },
@@ -689,20 +701,6 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "modern",
-      "archetype": "hardened-scales",
-      "path": "latest/radars/modern/hardened-scales.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "izzet-control",
-      "path": "latest/radars/modern/izzet-control.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
       "archetype": "jund-saga",
       "path": "latest/radars/modern/jund-saga.json"
     },
@@ -712,13 +710,6 @@
       "format": "modern",
       "archetype": "kiki-chord",
       "path": "latest/radars/modern/kiki-chord.json"
-    },
-    {
-      "scope": "archetype-radar",
-      "status": "success",
-      "format": "modern",
-      "archetype": "mardu-midrange",
-      "path": "latest/radars/modern/mardu-midrange.json"
     },
     {
       "scope": "archetype-radar",
@@ -803,6 +794,13 @@
       "format": "modern",
       "archetype": "wu",
       "path": "latest/radars/modern/wu.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "modern",
+      "archetype": "wug",
+      "path": "latest/radars/modern/wug.json"
     },
     {
       "scope": "format-card-pool",

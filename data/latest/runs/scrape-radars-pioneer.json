@@ -1,13 +1,13 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-27T21:21:40Z",
+  "generated_at": "2026-11-28T07:54:40Z",
   "command": "scrape-radars-pioneer",
   "status": "success",
   "max_stale_hours": 24,
   "summary": {
-    "skipped": 50,
-    "success": 32
+    "skipped": 51,
+    "success": 31
   },
   "results": [
     {
@@ -337,10 +337,11 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pioneer",
       "archetype": "jund-sacrifice",
-      "path": "latest/radars/pioneer/jund-sacrifice.json"
+      "path": "latest/radars/pioneer/jund-sacrifice.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",

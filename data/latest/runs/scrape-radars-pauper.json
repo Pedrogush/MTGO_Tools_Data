@@ -1,30 +1,31 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-27T21:21:36Z",
+  "generated_at": "2026-11-28T07:54:39Z",
   "command": "scrape-radars-pauper",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "success": 46,
-    "skipped": 27,
-    "hard-failure": 11,
-    "stale-fallback": 2
+    "skipped": 29,
+    "hard-failure": 13,
+    "success": 44
   },
   "results": [
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "4c-affinity",
-      "path": "latest/radars/pauper/4c-affinity.json"
+      "path": "latest/radars/pauper/4c-affinity.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
-      "status": "success",
+      "status": "skipped",
       "format": "pauper",
       "archetype": "4c-ephemerate",
-      "path": "latest/radars/pauper/4c-ephemerate.json"
+      "path": "latest/radars/pauper/4c-ephemerate.json",
+      "message": "No published decks were available for radar generation."
     },
     {
       "scope": "archetype-radar",
@@ -68,7 +69,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "pauper",
       "archetype": "azorius-gates",
       "path": "latest/radars/pauper/azorius-gates.json",
@@ -137,7 +138,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "pauper",
       "archetype": "burn",
       "path": "latest/radars/pauper/burn.json",
@@ -616,15 +617,15 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "pauper",
-      "archetype": "ur",
-      "path": "latest/radars/pauper/ur.json"
+      "archetype": "w",
+      "path": "latest/radars/pauper/w.json"
     },
     {
       "scope": "archetype-radar",
       "status": "success",
       "format": "pauper",
-      "archetype": "w",
-      "path": "latest/radars/pauper/w.json"
+      "archetype": "wrg",
+      "path": "latest/radars/pauper/wrg.json"
     },
     {
       "scope": "archetype-radar",

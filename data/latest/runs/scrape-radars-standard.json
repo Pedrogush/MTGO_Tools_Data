@@ -1,15 +1,14 @@
 {
   "schema_version": "1",
   "kind": "publisher_run",
-  "generated_at": "2026-11-27T21:21:38Z",
+  "generated_at": "2026-11-28T07:54:39Z",
   "command": "scrape-radars-standard",
   "status": "hard-failure",
   "max_stale_hours": 24,
   "summary": {
-    "hard-failure": 29,
-    "success": 49,
-    "skipped": 66,
-    "stale-fallback": 1
+    "hard-failure": 30,
+    "success": 50,
+    "skipped": 66
   },
   "results": [
     {
@@ -548,7 +547,7 @@
     },
     {
       "scope": "archetype-radar",
-      "status": "stale-fallback",
+      "status": "hard-failure",
       "format": "standard",
       "archetype": "izzet-self-bounce",
       "path": "latest/radars/standard/izzet-self-bounce.json",
@@ -1071,15 +1070,15 @@
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
-      "archetype": "jeskai-mission",
-      "path": "latest/radars/standard/jeskai-mission.json"
+      "archetype": "izzet-mission",
+      "path": "latest/radars/standard/izzet-mission.json"
     },
     {
       "scope": "archetype-radar",
       "status": "success",
       "format": "standard",
-      "archetype": "mono-white-token-control",
-      "path": "latest/radars/standard/mono-white-token-control.json"
+      "archetype": "jeskai-mission",
+      "path": "latest/radars/standard/jeskai-mission.json"
     },
     {
       "scope": "archetype-radar",
@@ -1101,6 +1100,13 @@
       "format": "standard",
       "archetype": "wbrg",
       "path": "latest/radars/standard/wbrg.json"
+    },
+    {
+      "scope": "archetype-radar",
+      "status": "success",
+      "format": "standard",
+      "archetype": "wr",
+      "path": "latest/radars/standard/wr.json"
     },
     {
       "scope": "archetype-radar",
